@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FDPN</title>
+
+
+ 
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link href="~/Content/grids-responsive-min.css" rel="stylesheet" />
+    <link href="~/Content/Fonawesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+      <link href="~/Content/Apnea.css" rel="stylesheet" />
+    <link href="~/Content/Calendario/Calendario.css" rel="stylesheet" />
+    <style>
+            /*
+        When setting the primary font stack, apply it to the Pure grid units along
+        with `html`, `button`, `input`, `select`, and `textarea`. Pure Grids use
+        specific font stacks to ensure the greatest OS/browser compatibility.
+        */
+        html, button, input, select, textarea,
+        .pure-g [class *= "pure-u"] {
+            /* Set your content font stack here: */
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    
+
+
+  
+</head>
+<body class="js-body">
+  
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Add your site or application content here -->
+    <!-- keep width for all viewport sizes -->
+    <div class="container">
+
+        @Html.Action("_TopBar", "home")
+        <main>
+            @RenderBody()
+        </main>
+        @Html.Partial("_footer")
+    </div>
+    <script src="~/Scripts/jquery37.js"></script>
+
+
+    <script src="~/Scripts/PublicPages.js"></script>
+    <script src="~/Content/Calendario/Calendario.js"></script>
+    <script src="~/Scripts/Sitio.js"></script>
+    @*<script src="~/Scripts/js-IndexPartialLoad.js"></script>*@
+</body>
+
+<!-- Mirrored from aidainternational.org/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 27 Apr 2017 17:17:56 GMT -->
+</html>

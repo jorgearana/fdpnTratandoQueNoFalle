@@ -1,0 +1,1415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_9B1F4C_MVCcompetenciasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DB_9B1F4C_MVCcompetenciasEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Athlete" EntityType="DB_9B1F4C_MVCcompetenciasModel.Athlete" />
+    <EntitySet Name="Atletas" EntityType="DB_9B1F4C_MVCcompetenciasModel.Atletas" />
+    <EntitySet Name="BASETIMES" EntityType="DB_9B1F4C_MVCcompetenciasModel.BASETIMES" />
+    <EntitySet Name="Calendario" EntityType="DB_9B1F4C_MVCcompetenciasModel.Calendario" />
+    <EntitySet Name="CategoriaNoticia" EntityType="DB_9B1F4C_MVCcompetenciasModel.CategoriaNoticia" />
+    <EntitySet Name="Comentarios" EntityType="DB_9B1F4C_MVCcompetenciasModel.Comentarios" />
+    <EntitySet Name="Disciplina" EntityType="DB_9B1F4C_MVCcompetenciasModel.Disciplina" />
+    <EntitySet Name="Encuentros" EntityType="DB_9B1F4C_MVCcompetenciasModel.Encuentros" />
+    <EntitySet Name="Entradas" EntityType="DB_9B1F4C_MVCcompetenciasModel.Entradas" />
+    <EntitySet Name="Equipos" EntityType="DB_9B1F4C_MVCcompetenciasModel.Equipos" />
+    <EntitySet Name="Eventos" EntityType="DB_9B1F4C_MVCcompetenciasModel.Eventos" />
+    <EntitySet Name="Fotos" EntityType="DB_9B1F4C_MVCcompetenciasModel.Fotos" />
+    <EntitySet Name="Goleadores" EntityType="DB_9B1F4C_MVCcompetenciasModel.Goleadores" />
+    <EntitySet Name="Hoja1_" EntityType="DB_9B1F4C_MVCcompetenciasModel.Hoja1_" />
+    <EntitySet Name="Hoja2_" EntityType="DB_9B1F4C_MVCcompetenciasModel.Hoja2_" />
+    <EntitySet Name="Jugadores" EntityType="DB_9B1F4C_MVCcompetenciasModel.Jugadores" />
+    <EntitySet Name="MarcasMinimas" EntityType="DB_9B1F4C_MVCcompetenciasModel.MarcasMinimas" />
+    <EntitySet Name="MEET" EntityType="DB_9B1F4C_MVCcompetenciasModel.MEET" />
+    <EntitySet Name="Noticias" EntityType="DB_9B1F4C_MVCcompetenciasModel.Noticias" />
+    <EntitySet Name="Pais" EntityType="DB_9B1F4C_MVCcompetenciasModel.Pais" />
+    <EntitySet Name="PosicionFinal" EntityType="DB_9B1F4C_MVCcompetenciasModel.PosicionFinal" />
+    <EntitySet Name="Pruebas" EntityType="DB_9B1F4C_MVCcompetenciasModel.Pruebas" />
+    <EntitySet Name="Resultados" EntityType="DB_9B1F4C_MVCcompetenciasModel.Resultados" />
+    <EntitySet Name="RESULTS" EntityType="DB_9B1F4C_MVCcompetenciasModel.RESULTS" />
+    <EntitySet Name="Sesion" EntityType="DB_9B1F4C_MVCcompetenciasModel.Sesion" />
+    <EntitySet Name="SessionItem" EntityType="DB_9B1F4C_MVCcompetenciasModel.SessionItem" />
+    <EntitySet Name="sysdiagrams" EntityType="DB_9B1F4C_MVCcompetenciasModel.sysdiagrams" />
+    <EntitySet Name="TEAM" EntityType="DB_9B1F4C_MVCcompetenciasModel.TEAM" />
+    <EntitySet Name="Torneo" EntityType="DB_9B1F4C_MVCcompetenciasModel.Torneo" />
+    <EntitySet Name="TorneoDestacado" EntityType="DB_9B1F4C_MVCcompetenciasModel.TorneoDestacado" />
+    <EntitySet Name="Vivo" EntityType="DB_9B1F4C_MVCcompetenciasModel.Vivo" />
+    <EntitySet Name="Consulta" EntityType="DB_9B1F4C_MVCcompetenciasModel.Consulta" />
+    <EntitySet Name="Estilos" EntityType="DB_9B1F4C_MVCcompetenciasModel.Estilos" />
+    <EntitySet Name="MultiEdad" EntityType="DB_9B1F4C_MVCcompetenciasModel.MultiEdad" />
+    <EntitySet Name="Session" EntityType="DB_9B1F4C_MVCcompetenciasModel.Session" />
+    <EntitySet Name="Sessitem" EntityType="DB_9B1F4C_MVCcompetenciasModel.Sessitem" />
+    <AssociationSet Name="FK_RESULTS_Athlete" Association="DB_9B1F4C_MVCcompetenciasModel.FK_RESULTS_Athlete">
+      <End Role="Athlete" EntitySet="Athlete" />
+      <End Role="RESULTS" EntitySet="RESULTS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Atletas_Equipos" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Atletas_Equipos">
+      <End Role="Equipos" EntitySet="Equipos" />
+      <End Role="Atletas" EntitySet="Atletas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Entradas_Atletas" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Entradas_Atletas">
+      <End Role="Atletas" EntitySet="Atletas" />
+      <End Role="Entradas" EntitySet="Entradas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Noticias_CategoriaNoticia" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Noticias_CategoriaNoticia">
+      <End Role="CategoriaNoticia" EntitySet="CategoriaNoticia" />
+      <End Role="Noticias" EntitySet="Noticias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comentarios_Noticias" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Comentarios_Noticias">
+      <End Role="Noticias" EntitySet="Noticias" />
+      <End Role="Comentarios" EntitySet="Comentarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Noticias_Disciplina" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Noticias_Disciplina">
+      <End Role="Disciplina" EntitySet="Disciplina" />
+      <End Role="Noticias" EntitySet="Noticias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Encuentros_Pais" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Encuentros_Pais">
+      <End Role="Pais" EntitySet="Pais" />
+      <End Role="Encuentros" EntitySet="Encuentros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Encuentros_Pais1" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Encuentros_Pais1">
+      <End Role="Pais" EntitySet="Pais" />
+      <End Role="Encuentros" EntitySet="Encuentros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Resultados_Encuentros" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Resultados_Encuentros">
+      <End Role="Encuentros" EntitySet="Encuentros" />
+      <End Role="Resultados" EntitySet="Resultados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Entradas_Eventos" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Entradas_Eventos">
+      <End Role="Eventos" EntitySet="Eventos" />
+      <End Role="Entradas" EntitySet="Entradas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Entradas_Torneo" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Entradas_Torneo">
+      <End Role="Torneo" EntitySet="Torneo" />
+      <End Role="Entradas" EntitySet="Entradas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipos_Torneo" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Equipos_Torneo">
+      <End Role="Torneo" EntitySet="Torneo" />
+      <End Role="Equipos" EntitySet="Equipos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Eventos_Torneo" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Eventos_Torneo">
+      <End Role="Torneo" EntitySet="Torneo" />
+      <End Role="Eventos" EntitySet="Eventos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MultiEdad_Eventos" Association="DB_9B1F4C_MVCcompetenciasModel.FK_MultiEdad_Eventos">
+      <End Role="Eventos" EntitySet="Eventos" />
+      <End Role="MultiEdad" EntitySet="MultiEdad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SessionItem_Eventos" Association="DB_9B1F4C_MVCcompetenciasModel.FK_SessionItem_Eventos">
+      <End Role="Eventos" EntitySet="Eventos" />
+      <End Role="SessionItem" EntitySet="SessionItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fotos_Noticias1" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Fotos_Noticias1">
+      <End Role="Noticias" EntitySet="Noticias" />
+      <End Role="Fotos" EntitySet="Fotos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Goleadores_Jugadores" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Goleadores_Jugadores">
+      <End Role="Jugadores" EntitySet="Jugadores" />
+      <End Role="Goleadores" EntitySet="Goleadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jugadores_Pais" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Jugadores_Pais">
+      <End Role="Pais" EntitySet="Pais" />
+      <End Role="Jugadores" EntitySet="Jugadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MarcasMinimas_Torneo" Association="DB_9B1F4C_MVCcompetenciasModel.FK_MarcasMinimas_Torneo">
+      <End Role="Torneo" EntitySet="Torneo" />
+      <End Role="MarcasMinimas" EntitySet="MarcasMinimas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RESULTS_MEET" Association="DB_9B1F4C_MVCcompetenciasModel.FK_RESULTS_MEET">
+      <End Role="MEET" EntitySet="MEET" />
+      <End Role="RESULTS" EntitySet="RESULTS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PosicionFinal_Pais" Association="DB_9B1F4C_MVCcompetenciasModel.FK_PosicionFinal_Pais">
+      <End Role="Pais" EntitySet="Pais" />
+      <End Role="PosicionFinal" EntitySet="PosicionFinal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RESULTS_TEAM" Association="DB_9B1F4C_MVCcompetenciasModel.FK_RESULTS_TEAM">
+      <End Role="TEAM" EntitySet="TEAM" />
+      <End Role="RESULTS" EntitySet="RESULTS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sesion_Torneo" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Sesion_Torneo">
+      <End Role="Torneo" EntitySet="Torneo" />
+      <End Role="Sesion" EntitySet="Sesion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SessionItem_Sesion" Association="DB_9B1F4C_MVCcompetenciasModel.FK_SessionItem_Sesion">
+      <End Role="Sesion" EntitySet="Sesion" />
+      <End Role="SessionItem" EntitySet="SessionItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SessionItem_Torneo" Association="DB_9B1F4C_MVCcompetenciasModel.FK_SessionItem_Torneo">
+      <End Role="Torneo" EntitySet="Torneo" />
+      <End Role="SessionItem" EntitySet="SessionItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MultiEdad_Torneo" Association="DB_9B1F4C_MVCcompetenciasModel.FK_MultiEdad_Torneo">
+      <End Role="Torneo" EntitySet="Torneo" />
+      <End Role="MultiEdad" EntitySet="MultiEdad" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Athlete">
+    <Key>
+      <PropertyRef Name="AthleteId" />
+    </Key>
+    <Property Name="Athlete1" Type="Int32" Nullable="false" />
+    <Property Name="First" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Last" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Birth" Type="DateTime" Precision="0" />
+    <Property Name="Age" Type="Int16" Nullable="false" />
+    <Property Name="ID_NO" Type="String" Nullable="false" MaxLength="17" FixedLength="false" Unicode="true" />
+    <Property Name="AthleteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="RESULTS" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_RESULTS_Athlete" FromRole="Athlete" ToRole="RESULTS" />
+  </EntityType>
+  <EntityType Name="Atletas">
+    <Key>
+      <PropertyRef Name="AtletaId" />
+    </Key>
+    <Property Name="Ath_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Last_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="First_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Initial" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Ath_Sex" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Birth_date" Type="DateTime" Precision="0" />
+    <Property Name="Team_no" Type="Int32" />
+    <Property Name="Schl_yr" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Ath_age" Type="Int16" />
+    <Property Name="Reg_no" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+    <Property Name="Ath_stat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Div_no" Type="Int32" />
+    <Property Name="Comp_no" Type="Int32" />
+    <Property Name="Pref_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Home_addr1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Home_addr2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Home_city" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Home_prov" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Home_statenew" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Home_zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Home_cntry" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Home_daytele" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Home_evetele" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Home_faxtele" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Home_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Citizen_of" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Picture_bmp" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="second_club" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="Home_celltele" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="bcssa_type" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Home_emergcontact" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Home_emergtele" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Disab_Scode" Type="Int16" />
+    <Property Name="Disab_SBcode" Type="Int16" />
+    <Property Name="Disab_SMcode" Type="Int16" />
+    <Property Name="Disab_SDMSID" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+    <Property Name="Disab_Exeptioncodes" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+    <Property Name="Masters_RegVerified" Type="Boolean" Nullable="false" />
+    <Property Name="TeamId" Type="Int32" />
+    <Property Name="AtletaId" Type="Int32" Nullable="false" />
+    <Property Name="Meetid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Equipos" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Atletas_Equipos" FromRole="Atletas" ToRole="Equipos" />
+    <NavigationProperty Name="Entradas" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Entradas_Atletas" FromRole="Atletas" ToRole="Entradas" />
+  </EntityType>
+  <EntityType Name="BASETIMES">
+    <Key>
+      <PropertyRef Name="tiempoId" />
+    </Key>
+    <Property Name="YEAR" Type="Double" />
+    <Property Name="COURSE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="GENDER" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="RELAY__COUNT" Type="Double" />
+    <Property Name="DISTANCE" Type="Double" />
+    <Property Name="STROKE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="BASETIME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SEGUNDOS" Type="Double" />
+    <Property Name="tiempoId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Calendario">
+    <Key>
+      <PropertyRef Name="EventoId" />
+    </Key>
+    <Property Name="Disciplina" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Inicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Fin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Evento" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Sede" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Carácter" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Observación" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Organizador" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="EventoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="clase" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CategoriaNoticia">
+    <Key>
+      <PropertyRef Name="CategoriaId" />
+    </Key>
+    <Property Name="CategoriaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoNoticia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Noticias" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Noticias_CategoriaNoticia" FromRole="CategoriaNoticia" ToRole="Noticias" />
+  </EntityType>
+  <EntityType Name="Comentarios">
+    <Key>
+      <PropertyRef Name="ComentarioId" />
+    </Key>
+    <Property Name="ComentarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Comentario" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+    <Property Name="NoticiaId" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Noticias" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Comentarios_Noticias" FromRole="Comentarios" ToRole="Noticias" />
+  </EntityType>
+  <EntityType Name="Disciplina">
+    <Key>
+      <PropertyRef Name="DisciplinaId" />
+    </Key>
+    <Property Name="DisciplinaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoDisciplina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Noticias" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Noticias_Disciplina" FromRole="Disciplina" ToRole="Noticias" />
+  </EntityType>
+  <EntityType Name="Encuentros">
+    <Key>
+      <PropertyRef Name="EncuentroId" />
+    </Key>
+    <Property Name="EncuentroId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pais1" Type="Int32" Nullable="false" />
+    <Property Name="Pais2" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Genero" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="Ronda" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Grupo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Pais" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Encuentros_Pais" FromRole="Encuentros" ToRole="Pais" />
+    <NavigationProperty Name="Pais3" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Encuentros_Pais1" FromRole="Encuentros" ToRole="Pais" />
+    <NavigationProperty Name="Resultados" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Resultados_Encuentros" FromRole="Encuentros" ToRole="Resultados" />
+  </EntityType>
+  <EntityType Name="Entradas">
+    <Key>
+      <PropertyRef Name="EntryId" />
+    </Key>
+    <Property Name="Event_ptr" Type="Int32" />
+    <Property Name="Ath_no" Type="Int32" />
+    <Property Name="ActSeed_course" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="ActualSeed_time" Type="Single" />
+    <Property Name="ConvSeed_course" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="ConvSeed_time" Type="Single" />
+    <Property Name="Scr_stat" Type="Boolean" Nullable="false" />
+    <Property Name="Spec_stat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Dec_stat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Alt_stat" Type="Boolean" Nullable="false" />
+    <Property Name="Bonus_event" Type="Boolean" />
+    <Property Name="Div_no" Type="Int32" />
+    <Property Name="Ev_score" Type="Single" />
+    <Property Name="JDEv_score" Type="Single" />
+    <Property Name="Seed_place" Type="Int16" />
+    <Property Name="event_age" Type="Int16" />
+    <Property Name="Pre_heat" Type="Int16" />
+    <Property Name="Pre_lane" Type="Int16" />
+    <Property Name="Pre_stat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Pre_Time" Type="Single" />
+    <Property Name="Pre_course" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Pre_heatplace" Type="Int16" />
+    <Property Name="Pre_place" Type="Int16" />
+    <Property Name="Pre_jdplace" Type="Int16" />
+    <Property Name="Pre_exh" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Pre_points" Type="Int16" />
+    <Property Name="Pre_back1" Type="Single" />
+    <Property Name="Pre_back2" Type="Single" />
+    <Property Name="Pre_back3" Type="Single" />
+    <Property Name="Pre_watch1" Type="Single" />
+    <Property Name="Pre_pad" Type="Single" />
+    <Property Name="Pre_reactiontime1" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Pre_dqcode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Pre_dqcodeSecond" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Pre_TimeType" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Fin_heat" Type="Int16" />
+    <Property Name="Fin_lane" Type="Int16" />
+    <Property Name="Fin_stat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Fin_Time" Type="Single" />
+    <Property Name="Fin_course" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Fin_heatplace" Type="Int16" />
+    <Property Name="Fin_jdheatplace" Type="Int16" />
+    <Property Name="Fin_place" Type="Int16" />
+    <Property Name="Fin_jdplace" Type="Int16" />
+    <Property Name="Fin_exh" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Fin_points" Type="Int16" />
+    <Property Name="Fin_back1" Type="Single" />
+    <Property Name="Fin_back2" Type="Single" />
+    <Property Name="Fin_back3" Type="Single" />
+    <Property Name="Fin_watch1" Type="Single" />
+    <Property Name="Fin_pad" Type="Single" />
+    <Property Name="Fin_reactiontime1" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Fin_dqcode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Fin_dqcodeSecond" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Fin_ptsplace" Type="Int16" />
+    <Property Name="fin_heatltr" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="fin_TimeType" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Sem_heat" Type="Int16" />
+    <Property Name="Sem_lane" Type="Int16" />
+    <Property Name="Sem_stat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Sem_Time" Type="Single" />
+    <Property Name="Sem_course" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Sem_heatplace" Type="Int16" />
+    <Property Name="Sem_place" Type="Int16" />
+    <Property Name="Sem_jdplace" Type="Int16" />
+    <Property Name="Sem_exh" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Sem_points" Type="Int16" />
+    <Property Name="Sem_back1" Type="Single" />
+    <Property Name="Sem_back2" Type="Single" />
+    <Property Name="Sem_back3" Type="Single" />
+    <Property Name="Sem_watch1" Type="Single" />
+    <Property Name="Sem_pad" Type="Single" />
+    <Property Name="Sem_reactiontime1" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Sem_dqcode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Sem_dqcodeSecond" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Sem_TimeType" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="dq_type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Fin_group" Type="Int16" />
+    <Property Name="Fin_dolphin1" Type="Single" />
+    <Property Name="Fin_dolphin2" Type="Single" />
+    <Property Name="Fin_dolphin3" Type="Single" />
+    <Property Name="Pre_dolphin1" Type="Single" />
+    <Property Name="Pre_dolphin2" Type="Single" />
+    <Property Name="Pre_dolphin3" Type="Single" />
+    <Property Name="Sem_dolphin1" Type="Single" />
+    <Property Name="Sem_dolphin2" Type="Single" />
+    <Property Name="Sem_dolphin3" Type="Single" />
+    <Property Name="early_seed" Type="Boolean" Nullable="false" />
+    <Property Name="super_prefinalist" Type="Boolean" Nullable="false" />
+    <Property Name="super_finfinalist" Type="Boolean" Nullable="false" />
+    <Property Name="fin_adjuststat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="pre_adjuststat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="sem_adjuststat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="fin_divingdd" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="pre_divingdd" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="sem_divingdd" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="entry_method" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="fin_dqofficial" Type="Int32" />
+    <Property Name="pre_dqofficial" Type="Int32" />
+    <Property Name="sem_dqofficial" Type="Int32" />
+    <Property Name="pre_contacted" Type="Boolean" Nullable="false" />
+    <Property Name="EntryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MeetId" Type="Int32" Nullable="false" />
+    <Property Name="AtletaId" Type="Int32" Nullable="false" />
+    <Property Name="EventId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Atletas" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Entradas_Atletas" FromRole="Entradas" ToRole="Atletas" />
+    <NavigationProperty Name="Eventos" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Entradas_Eventos" FromRole="Entradas" ToRole="Eventos" />
+    <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Entradas_Torneo" FromRole="Entradas" ToRole="Torneo" />
+  </EntityType>
+  <EntityType Name="Equipos">
+    <Key>
+      <PropertyRef Name="TeamId" />
+    </Key>
+    <Property Name="Team_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Team_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_short" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="Team_abbr" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Team_stat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Team_lsc" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Team_div" Type="Int16" />
+    <Property Name="Team_region" Type="Int16" />
+    <Property Name="Team_head" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_asst" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_addr1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_addr2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_city" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_prov" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_statenew" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Team_zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Team_cntry" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Team_daytele" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Team_evetele" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Team_faxtele" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Team_email" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="Team_c3" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_c4" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_c5" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_c6" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_c7" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_c8" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_c9" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_c10" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_altabbr" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Team_NoPoints" Type="Boolean" Nullable="false" />
+    <Property Name="Team_Selected" Type="Boolean" Nullable="false" />
+    <Property Name="Team_altname" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="NoTeam_surcharge" Type="Boolean" Nullable="false" />
+    <Property Name="NoFacility_surcharge" Type="Boolean" Nullable="false" />
+    <Property Name="NoAthlete_surcharge" Type="Boolean" Nullable="false" />
+    <Property Name="Team_cell" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="NoRelayOnly_surcharge" Type="Boolean" Nullable="false" />
+    <Property Name="TeamId" Type="Int32" Nullable="false" />
+    <Property Name="MeetId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Atletas" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Atletas_Equipos" FromRole="Equipos" ToRole="Atletas" />
+    <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Equipos_Torneo" FromRole="Equipos" ToRole="Torneo" />
+  </EntityType>
+  <EntityType Name="Eventos">
+    <Key>
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="Event_no" Type="Int16" />
+    <Property Name="Event_ltr" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Event_ptr" Type="Int32" Nullable="false" />
+    <Property Name="Ind_rel" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Event_sex" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Event_gender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Event_dist" Type="Single" />
+    <Property Name="Event_stroke" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Low_age" Type="Int16" />
+    <Property Name="High_Age" Type="Int16" />
+    <Property Name="Multi_age" Type="Boolean" Nullable="false" />
+    <Property Name="Event_stat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Event_rounds" Type="Int16" />
+    <Property Name="Num_prelanes" Type="Int16" />
+    <Property Name="Num_finlanes" Type="Int16" />
+    <Property Name="Heats_infinal" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Heats_insemi" Type="Int16" />
+    <Property Name="Std_lanes" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Auto_seed" Type="Boolean" Nullable="false" />
+    <Property Name="Twoperlane_req" Type="Boolean" Nullable="false" />
+    <Property Name="Preheat_order" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Finheat_order" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Score_event" Type="Boolean" Nullable="false" />
+    <Property Name="Div_no" Type="Int16" />
+    <Property Name="Relay_size" Type="Int16" />
+    <Property Name="Comm_1" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="Comm_2" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="Comm_3" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="Comm_4" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="Entry_fee" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Is_locked" Type="Boolean" Nullable="false" />
+    <Property Name="Locked_by" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Event_Type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Locked_list" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="Event_note" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Suppress_stroke" Type="Boolean" Nullable="false" />
+    <Property Name="Custom_ABCFinal" Type="Boolean" Nullable="false" />
+    <Property Name="Num_dives" Type="Int16" />
+    <Property Name="Num_HeatsInFinal" Type="Int16" />
+    <Property Name="Multiage_SuperFinal" Type="Boolean" Nullable="false" />
+    <Property Name="Finals_LanesVary" Type="Boolean" Nullable="false" />
+    <Property Name="Finals_LanesVaryOrder" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+    <Property Name="ABCfinal_order" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="ABC_Style" Type="Boolean" Nullable="false" />
+    <Property Name="PrelimsAs_ExtendedFinal" Type="Boolean" Nullable="false" />
+    <Property Name="Num_LanesInBestHeatsTimedFinal" Type="Int16" />
+    <Property Name="Num_BestHeatsTimedFinal" Type="Int16" />
+    <Property Name="TimedFinal_LanesVary" Type="Boolean" Nullable="false" />
+    <Property Name="ScoreTimedFinal_asABC" Type="Boolean" Nullable="false" />
+    <Property Name="Num_HeatsInTimedFinalToScore" Type="Int16" />
+    <Property Name="Pads_BothEnds" Type="Boolean" Nullable="false" />
+    <Property Name="Multiage_SuperSeed" Type="Boolean" Nullable="false" />
+    <Property Name="Suppress_distance" Type="Boolean" Nullable="false" />
+    <Property Name="Fin_AwardsPrinted" Type="Boolean" Nullable="false" />
+    <Property Name="Pre_AwardsPrinted" Type="Boolean" Nullable="false" />
+    <Property Name="Sem_AwardsPrinted" Type="Boolean" Nullable="false" />
+    <Property Name="FastTimeStd_Abbr" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="SlowTimeStd_Abbr" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="SuperFinal_ElimOldAgeGrp" Type="Boolean" Nullable="false" />
+    <Property Name="SeedMultiAge_OldToYoung" Type="Boolean" Nullable="false" />
+    <Property Name="Multi_ageScnd" Type="Boolean" Nullable="false" />
+    <Property Name="Num_RelayLegs" Type="Int16" />
+    <Property Name="Pads_BothEndsFinals" Type="Boolean" Nullable="false" />
+    <Property Name="Checkin_starttime" Type="Int32" />
+    <Property Name="Checkin_endtime" Type="Int32" />
+    <Property Name="Checkin_startdate" Type="DateTime" Precision="0" />
+    <Property Name="Checkin_enddate" Type="DateTime" Precision="0" />
+    <Property Name="Num_semlanes" Type="Int16" />
+    <Property Name="EvtMaxAgeFor_CFinal" Type="Int16" />
+    <Property Name="EvtMaxAgeNumHeats_CFinal" Type="Int16" />
+    <Property Name="fin_actualstarttime" Type="Int32" />
+    <Property Name="sem_actualstarttime" Type="Int32" />
+    <Property Name="pre_actualstarttime" Type="Int32" />
+    <Property Name="EventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MeetId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Entradas" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Entradas_Eventos" FromRole="Eventos" ToRole="Entradas" />
+    <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Eventos_Torneo" FromRole="Eventos" ToRole="Torneo" />
+    <NavigationProperty Name="MultiEdad" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_MultiEdad_Eventos" FromRole="Eventos" ToRole="MultiEdad" />
+    <NavigationProperty Name="SessionItem" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_SessionItem_Eventos" FromRole="Eventos" ToRole="SessionItem" />
+  </EntityType>
+  <EntityType Name="Fotos">
+    <Key>
+      <PropertyRef Name="FotoId" />
+    </Key>
+    <Property Name="FotoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombrefoto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NoticiaId" Type="Int32" />
+    <NavigationProperty Name="Noticias" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Fotos_Noticias1" FromRole="Fotos" ToRole="Noticias" />
+  </EntityType>
+  <EntityType Name="Goleadores">
+    <Key>
+      <PropertyRef Name="GoleadorId" />
+    </Key>
+    <Property Name="GoleadorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JugadorId" Type="Int32" Nullable="false" />
+    <Property Name="Goles" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Jugadores" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Goleadores_Jugadores" FromRole="Goleadores" ToRole="Jugadores" />
+  </EntityType>
+  <EntityType Name="Hoja1_">
+    <Key>
+      <PropertyRef Name="ResultadoId" />
+    </Key>
+    <Property Name="Número" Type="Int32" Nullable="false" />
+    <Property Name="Grupo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Género" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Equipo_1" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Equipo_2" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Q_1" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Q_2" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Q_3" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Q_4" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Resultado" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ResultadoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="Hoja2_">
+    <Key>
+      <PropertyRef Name="PosicionId" />
+    </Key>
+    <Property Name="Equipo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PJ" Type="Int32" Nullable="false" />
+    <Property Name="PG" Type="Int32" Nullable="false" />
+    <Property Name="PE" Type="Int32" Nullable="false" />
+    <Property Name="PP" Type="Int32" Nullable="false" />
+    <Property Name="GF" Type="Int32" Nullable="false" />
+    <Property Name="GC" Type="Int32" Nullable="false" />
+    <Property Name="DG" Type="Int32" Nullable="false" />
+    <Property Name="PTS" Type="Int32" Nullable="false" />
+    <Property Name="PosicionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="grupoid" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Jugadores">
+    <Key>
+      <PropertyRef Name="JugadorId" />
+    </Key>
+    <Property Name="JugadorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PaisId" Type="Int32" Nullable="false" />
+    <Property Name="Sexo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="Edad" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Goleadores" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Goleadores_Jugadores" FromRole="Jugadores" ToRole="Goleadores" />
+    <NavigationProperty Name="Pais" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Jugadores_Pais" FromRole="Jugadores" ToRole="Pais" />
+  </EntityType>
+  <EntityType Name="MarcasMinimas">
+    <Key>
+      <PropertyRef Name="TimeStdId" />
+    </Key>
+    <Property Name="tag_ptr" Type="Int32" />
+    <Property Name="tag_gender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="tag_indrel" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="tag_dist" Type="Int32" />
+    <Property Name="tag_stroke" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="low_age" Type="Int16" />
+    <Property Name="high_Age" Type="Int16" />
+    <Property Name="tag_time" Type="Single" />
+    <Property Name="tag_course" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="div_abbr" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="TimeStdId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Meetid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_MarcasMinimas_Torneo" FromRole="MarcasMinimas" ToRole="Torneo" />
+  </EntityType>
+  <EntityType Name="MEET">
+    <Key>
+      <PropertyRef Name="MeetId" />
+    </Key>
+    <Property Name="Meet1" Type="Int32" Nullable="false" />
+    <Property Name="MName" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="true" />
+    <Property Name="Start" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="End" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Course" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="MeetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="RESULTS" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_RESULTS_MEET" FromRole="MEET" ToRole="RESULTS" />
+  </EntityType>
+  <EntityType Name="Noticias">
+    <Key>
+      <PropertyRef Name="NoticiaId" />
+    </Key>
+    <Property Name="NoticiaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Corta" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Larga" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DisciplinaId" Type="Int32" Nullable="false" />
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="CategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="Palabrasclaves" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Visible" Type="Boolean" />
+    <Property Name="Youtube" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CategoriaNoticia" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Noticias_CategoriaNoticia" FromRole="Noticias" ToRole="CategoriaNoticia" />
+    <NavigationProperty Name="Comentarios" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Comentarios_Noticias" FromRole="Noticias" ToRole="Comentarios" />
+    <NavigationProperty Name="Disciplina" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Noticias_Disciplina" FromRole="Noticias" ToRole="Disciplina" />
+    <NavigationProperty Name="Fotos" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Fotos_Noticias1" FromRole="Noticias" ToRole="Fotos" />
+  </EntityType>
+  <EntityType Name="Pais">
+    <Key>
+      <PropertyRef Name="PaisId" />
+    </Key>
+    <Property Name="PaisId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sexo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Encuentros" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Encuentros_Pais" FromRole="Pais" ToRole="Encuentros" />
+    <NavigationProperty Name="Encuentros1" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Encuentros_Pais1" FromRole="Pais" ToRole="Encuentros" />
+    <NavigationProperty Name="Jugadores" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Jugadores_Pais" FromRole="Pais" ToRole="Jugadores" />
+    <NavigationProperty Name="PosicionFinal" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_PosicionFinal_Pais" FromRole="Pais" ToRole="PosicionFinal" />
+  </EntityType>
+  <EntityType Name="PosicionFinal">
+    <Key>
+      <PropertyRef Name="PosicionId" />
+    </Key>
+    <Property Name="PosicionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pasiid" Type="Int32" Nullable="false" />
+    <Property Name="Posicion" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Pais" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_PosicionFinal_Pais" FromRole="PosicionFinal" ToRole="Pais" />
+  </EntityType>
+  <EntityType Name="Pruebas">
+    <Key>
+      <PropertyRef Name="PruebaId" />
+    </Key>
+    <Property Name="PruebaId" Type="Int32" Nullable="false" />
+    <Property Name="distancia" Type="Int32" Nullable="false" />
+    <Property Name="estilo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Resultados">
+    <Key>
+      <PropertyRef Name="ResultadoId" />
+    </Key>
+    <Property Name="ResultadoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EncuentroId" Type="Int32" />
+    <Property Name="A1" Type="Int32" Nullable="false" />
+    <Property Name="A2" Type="Int32" Nullable="false" />
+    <Property Name="A3" Type="Int32" Nullable="false" />
+    <Property Name="A4" Type="Int32" Nullable="false" />
+    <Property Name="B1" Type="Int32" Nullable="false" />
+    <Property Name="B2" Type="Int32" Nullable="false" />
+    <Property Name="B3" Type="Int32" Nullable="false" />
+    <Property Name="B4" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Encuentros" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Resultados_Encuentros" FromRole="Resultados" ToRole="Encuentros" />
+  </EntityType>
+  <EntityType Name="RESULTS">
+    <Key>
+      <PropertyRef Name="ResultId" />
+    </Key>
+    <Property Name="MEET" Type="Int32" Nullable="false" />
+    <Property Name="ATHLETE" Type="Int32" Nullable="false" />
+    <Property Name="I_R" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="TEAM" Type="Int32" Nullable="false" />
+    <Property Name="SCORE" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="F_P" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="EX" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="NT" Type="Byte" Nullable="false" />
+    <Property Name="AGE" Type="Int16" Nullable="false" />
+    <Property Name="DISTANCE" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="STROKE" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="MTEV" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="LO_HI" Type="Int16" Nullable="false" />
+    <Property Name="POINTS" Type="Int16" Nullable="false" />
+    <Property Name="PLACE" Type="Int16" Nullable="false" />
+    <Property Name="COURSE" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="DIVISION" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="PFina" Type="Int32" />
+    <Property Name="AthleteId" Type="Int32" />
+    <Property Name="MeetId" Type="Int32" />
+    <Property Name="TeamId" Type="Int32" />
+    <Property Name="PruebaId" Type="Int32" />
+    <Property Name="ResultId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tiempobase" Type="Double" />
+    <NavigationProperty Name="Athlete1" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_RESULTS_Athlete" FromRole="RESULTS" ToRole="Athlete" />
+    <NavigationProperty Name="MEET1" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_RESULTS_MEET" FromRole="RESULTS" ToRole="MEET" />
+    <NavigationProperty Name="TEAM1" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_RESULTS_TEAM" FromRole="RESULTS" ToRole="TEAM" />
+  </EntityType>
+  <EntityType Name="Sesion">
+    <Key>
+      <PropertyRef Name="SessionId" />
+    </Key>
+    <Property Name="Sess_no" Type="Int16" />
+    <Property Name="Sess_ltr" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Sess_ptr" Type="Int32" Nullable="false" />
+    <Property Name="Sess_day" Type="Int16" />
+    <Property Name="Sess_starttime" Type="Int32" />
+    <Property Name="Sess_entrymax" Type="Int16" />
+    <Property Name="Sess_name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Sess_interval" Type="Int16" />
+    <Property Name="Sess_course" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Sess_entrymaxind" Type="Int16" />
+    <Property Name="Sess_entrymaxrel" Type="Int16" />
+    <Property Name="Sess_backinterval" Type="Int16" />
+    <Property Name="Sess_divinginterval" Type="Int16" />
+    <Property Name="Sess_chaseinterval" Type="Int16" />
+    <Property Name="MeetId" Type="Int32" Nullable="false" />
+    <Property Name="SessionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Sesion_Torneo" FromRole="Sesion" ToRole="Torneo" />
+    <NavigationProperty Name="SessionItem" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_SessionItem_Sesion" FromRole="Sesion" ToRole="SessionItem" />
+  </EntityType>
+  <EntityType Name="SessionItem">
+    <Key>
+      <PropertyRef Name="SessitemId" />
+    </Key>
+    <Property Name="Sess_order" Type="Int32" />
+    <Property Name="Sess_ptr" Type="Int32" />
+    <Property Name="Event_ptr" Type="Int32" />
+    <Property Name="Sess_rnd" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Rept_type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Delay_seconds" Type="Int32" />
+    <Property Name="Alt_With" Type="Boolean" Nullable="false" />
+    <Property Name="Timed_finalheats" Type="Int16" />
+    <Property Name="EventTo_AlternateWith" Type="Int32" />
+    <Property Name="Delay_desc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AltHeats_StartCount" Type="Int16" />
+    <Property Name="SessitemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Meetid" Type="Int32" Nullable="false" />
+    <Property Name="EventId" Type="Int32" Nullable="false" />
+    <Property Name="SesionId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Eventos" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_SessionItem_Eventos" FromRole="SessionItem" ToRole="Eventos" />
+    <NavigationProperty Name="Sesion" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_SessionItem_Sesion" FromRole="SessionItem" ToRole="Sesion" />
+    <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_SessionItem_Torneo" FromRole="SessionItem" ToRole="Torneo" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TEAM">
+    <Key>
+      <PropertyRef Name="TeamId" />
+    </Key>
+    <Property Name="Team1" Type="Int32" Nullable="false" />
+    <Property Name="TeamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="TName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RESULTS" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_RESULTS_TEAM" FromRole="TEAM" ToRole="RESULTS" />
+  </EntityType>
+  <EntityType Name="Torneo">
+    <Key>
+      <PropertyRef Name="MeetId" />
+    </Key>
+    <Property Name="Meet_name1" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_header1" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_header2" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_location" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_start" Type="DateTime" Precision="0" />
+    <Property Name="Meet_end" Type="DateTime" Precision="0" />
+    <Property Name="Meet_idformat" Type="Int16" />
+    <Property Name="Meet_class" Type="Int16" />
+    <Property Name="Meet_meettype" Type="Int16" />
+    <Property Name="Meet_course" Type="Int16" />
+    <Property Name="Enter_ages" Type="Boolean" Nullable="false" />
+    <Property Name="Enter_birthdate" Type="Boolean" Nullable="false" />
+    <Property Name="Calc_date" Type="DateTime" Precision="0" />
+    <Property Name="Enter_schoolyr" Type="Boolean" Nullable="false" />
+    <Property Name="A_Relaysonly" Type="Boolean" Nullable="false" />
+    <Property Name="Use_hometown" Type="Boolean" Nullable="false" />
+    <Property Name="Show_countrycode" Type="Boolean" Nullable="false" />
+    <Property Name="Scores_afterevt" Type="Boolean" Nullable="false" />
+    <Property Name="Lastname_first" Type="Boolean" Nullable="false" />
+    <Property Name="Punct_names" Type="Boolean" Nullable="false" />
+    <Property Name="Punct_teams" Type="Boolean" Nullable="false" />
+    <Property Name="win_mm" Type="Boolean" Nullable="false" />
+    <Property Name="meet_numlanes" Type="Int16" />
+    <Property Name="prelimheats_circle" Type="Int16" />
+    <Property Name="timedfinal_circleseed" Type="Boolean" Nullable="false" />
+    <Property Name="foreign_infinal" Type="Boolean" Nullable="false" />
+    <Property Name="exh_infinal" Type="Boolean" Nullable="false" />
+    <Property Name="nonconform_last" Type="Boolean" Nullable="false" />
+    <Property Name="course_order" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="seed_exhlast" Type="Boolean" Nullable="false" />
+    <Property Name="dual_evenodd" Type="Boolean" Nullable="false" />
+    <Property Name="strict_evenodd" Type="Boolean" Nullable="false" />
+    <Property Name="team_evenlanes" Type="Int32" />
+    <Property Name="team_oddlanes" Type="Int32" />
+    <Property Name="masters_bytimeonly" Type="Boolean" Nullable="false" />
+    <Property Name="masters_agegrpsskip" Type="Int16" />
+    <Property Name="timer_port" Type="Int16" />
+    <Property Name="scbd_port" Type="Int16" />
+    <Property Name="timer_vendor" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="scbd_vendor" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="show_initial" Type="Boolean" Nullable="false" />
+    <Property Name="ucase_names" Type="Boolean" Nullable="false" />
+    <Property Name="ucase_teams" Type="Boolean" Nullable="false" />
+    <Property Name="open_senior_none" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="entryqual_faster" Type="Boolean" Nullable="false" />
+    <Property Name="Facility_Surcharge" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="anyone_onrelay" Type="Boolean" Nullable="false" />
+    <Property Name="language_choice" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="military_time" Type="Boolean" Nullable="false" />
+    <Property Name="check_times" Type="Boolean" Nullable="false" />
+    <Property Name="enterkey_astab" Type="Boolean" Nullable="false" />
+    <Property Name="double_endedsplits" Type="Boolean" Nullable="false" />
+    <Property Name="use_compnumbers" Type="Boolean" Nullable="false" />
+    <Property Name="flighted_minentries" Type="Int16" />
+    <Property Name="diffpts_malefemale" Type="Boolean" Nullable="false" />
+    <Property Name="diffpts_eachdivision" Type="Boolean" Nullable="false" />
+    <Property Name="scoreonly_ifexceedqualtime" Type="Boolean" Nullable="false" />
+    <Property Name="score_fastestheatonly" Type="Boolean" Nullable="false" />
+    <Property Name="entrylimits_warn" Type="Boolean" Nullable="false" />
+    <Property Name="pointsbasedon_seedtime" Type="Boolean" Nullable="false" />
+    <Property Name="pointsfor_overachievers" Type="Boolean" Nullable="false" />
+    <Property Name="pointsfor_underachievers" Type="Boolean" Nullable="false" />
+    <Property Name="indmaxscorers_perteam" Type="Int16" />
+    <Property Name="relmaxscorers_perteam" Type="Int16" />
+    <Property Name="indtopmany_awards" Type="Int16" />
+    <Property Name="reltopmany_awards" Type="Int16" />
+    <Property Name="entrymax_total" Type="Int16" />
+    <Property Name="indmax_perath" Type="Int16" />
+    <Property Name="relmax_perath" Type="Int16" />
+    <Property Name="foreign_getteampoints" Type="Boolean" Nullable="false" />
+    <Property Name="include_swimupsinteamscore" Type="Boolean" Nullable="false" />
+    <Property Name="enter_citizenof" Type="Boolean" Nullable="false" />
+    <Property Name="meet_meetstyle" Type="Int16" />
+    <Property Name="flag_overachievers" Type="Boolean" Nullable="false" />
+    <Property Name="flag_underachievers" Type="Boolean" Nullable="false" />
+    <Property Name="scbd_punctuation" Type="Int16" />
+    <Property Name="scbd_names" Type="Int16" />
+    <Property Name="scbd_relaynames" Type="Int16" />
+    <Property Name="scbd_cycle" Type="Boolean" Nullable="false" />
+    <Property Name="scbd_cycleseconds" Type="Int16" />
+    <Property Name="copies_toprinter" Type="Int16" />
+    <Property Name="report_headersonly" Type="Boolean" Nullable="false" />
+    <Property Name="autoinc_compno" Type="Boolean" Nullable="false" />
+    <Property Name="pentscoring_usedqtime" Type="Boolean" Nullable="false" />
+    <Property Name="swimmer_surcharge" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="directly_toprinter" Type="Boolean" Nullable="false" />
+    <Property Name="lastname_asinitial" Type="Boolean" Nullable="false" />
+    <Property Name="under_eventname" Type="Boolean" Nullable="false" />
+    <Property Name="suppress_Arelay" Type="Boolean" Nullable="false" />
+    <Property Name="Punct_recholders" Type="Boolean" Nullable="false" />
+    <Property Name="ucase_recholders" Type="Boolean" Nullable="false" />
+    <Property Name="suppress_lsc" Type="Boolean" Nullable="false" />
+    <Property Name="showathlete_status" Type="Boolean" Nullable="false" />
+    <Property Name="open_lowage" Type="Int16" />
+    <Property Name="useeventsex_teamscore" Type="Boolean" Nullable="false" />
+    <Property Name="suppress_smallx" Type="Boolean" Nullable="false" />
+    <Property Name="score_Arelayonly" Type="Boolean" Nullable="false" />
+    <Property Name="thirteenandover_assenior" Type="Boolean" Nullable="false" />
+    <Property Name="suppress_jd" Type="Boolean" Nullable="false" />
+    <Property Name="abcfinal_order" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="maxagefor_cfinal" Type="Int16" />
+    <Property Name="Sanction_number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="include_sanction" Type="Boolean" Nullable="false" />
+    <Property Name="special_points" Type="Int16" />
+    <Property Name="countrelay_alt" Type="Boolean" Nullable="false" />
+    <Property Name="UseNonConforming_PoolFactor" Type="Boolean" Nullable="false" />
+    <Property Name="NonConforming_PoolFactor" Type="Single" />
+    <Property Name="apnews_team" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="PointsAwarded_ForDQ" Type="Single" />
+    <Property Name="PointsAwarded_ForScratch" Type="Single" />
+    <Property Name="PointsAwarded_ForNT" Type="Single" />
+    <Property Name="Enter_AthStat" Type="Boolean" Nullable="false" />
+    <Property Name="Show_secondclub" Type="Boolean" Nullable="false" />
+    <Property Name="firstinitial_fulllastname" Type="Boolean" Nullable="false" />
+    <Property Name="turnon_autobackup" Type="Boolean" Nullable="false" />
+    <Property Name="autobackup_interval" Type="Int16" />
+    <Property Name="PointsAwarded_ForExh" Type="Boolean" Nullable="false" />
+    <Property Name="Use_AltTeamAbbr" Type="Boolean" Nullable="false" />
+    <Property Name="IsCanadian_Masters" Type="Boolean" Nullable="false" />
+    <Property Name="entry_msg" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="timedfinalnonconform_last" Type="Boolean" Nullable="false" />
+    <Property Name="referee_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="referee_homphone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="referee_offphone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_altitude" Type="Int32" />
+    <Property Name="Import_Dir" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Export_Dir" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Backup_Dir" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="RestoreFrom_Dir" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="RestoreTo_Dir" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="FlatHtml_Dir" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="APNews_Dir" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="AllowSameEvent_DupRelayNames" Type="Boolean" Nullable="false" />
+    <Property Name="dualteam_lane1" Type="Int32" />
+    <Property Name="dualteam_lane2" Type="Int32" />
+    <Property Name="dualteam_lane3" Type="Int32" />
+    <Property Name="dualteam_lane4" Type="Int32" />
+    <Property Name="dualteam_lane5" Type="Int32" />
+    <Property Name="dualteam_lane6" Type="Int32" />
+    <Property Name="dualteam_lane7" Type="Int32" />
+    <Property Name="dualteam_lane8" Type="Int32" />
+    <Property Name="dualteam_lane9" Type="Int32" />
+    <Property Name="dualteam_lane10" Type="Int32" />
+    <Property Name="strict_evenoddfastestheatonly" Type="Boolean" Nullable="false" />
+    <Property Name="dualseeding_altunusedlane" Type="Boolean" Nullable="false" />
+    <Property Name="team_surcharge" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Display_ActualEntryTime" Type="Boolean" Nullable="false" />
+    <Property Name="indmaxadvance_perteam" Type="Int16" />
+    <Property Name="relmaxadvance_perteam" Type="Int16" />
+    <Property Name="RelayNames_LinkByLSC" Type="Boolean" Nullable="false" />
+    <Property Name="Read_Only" Type="Boolean" Nullable="false" />
+    <Property Name="Flighted_BasedOnResultsTime" Type="Boolean" Nullable="false" />
+    <Property Name="ShowYear_InPlaceOfAge" Type="Boolean" Nullable="false" />
+    <Property Name="PenaltyPts_ForNS" Type="Single" />
+    <Property Name="EntryEligibility_date" Type="DateTime" Precision="0" />
+    <Property Name="Suppress_TimeStdAbbr" Type="Boolean" Nullable="false" />
+    <Property Name="masters_indlowage" Type="Int16" />
+    <Property Name="masters_rellowage" Type="Int16" />
+    <Property Name="Custom_QualTimes" Type="Boolean" Nullable="false" />
+    <Property Name="Suppress_SplitsForDQs" Type="Boolean" Nullable="false" />
+    <Property Name="Suppress_SplitsForDQsRelay" Type="Boolean" Nullable="false" />
+    <Property Name="DQCodes_Type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="SuppressTimes_NotMeetQualTime" Type="Boolean" Nullable="false" />
+    <Property Name="Show_AgeandBirthYear" Type="Boolean" Nullable="false" />
+    <Property Name="Meet_state" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_country" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_lsc" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="BCSSA_DivbyTimeStd" Type="Boolean" Nullable="false" />
+    <Property Name="Show_HyTekDecimals" Type="Boolean" Nullable="false" />
+    <Property Name="Suppress_ResultsAdvQ" Type="Boolean" Nullable="false" />
+    <Property Name="RelaysAs_4x100Style" Type="Boolean" Nullable="false" />
+    <Property Name="flighted_flightcount" Type="Int16" />
+    <Property Name="flighted_inclDQ" Type="Boolean" Nullable="false" />
+    <Property Name="RelaysAlternate_TwoFastestFirst" Type="Boolean" Nullable="false" />
+    <Property Name="dualteam_lane11" Type="Int32" />
+    <Property Name="dualteam_lane12" Type="Int32" />
+    <Property Name="entry_deadline" Type="DateTime" Precision="0" />
+    <Property Name="Meet_addr1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_addr2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_city" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_hostlsc" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_USMastersMeetID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ShowFirstName_OverPreferred" Type="Boolean" Nullable="false" />
+    <Property Name="ExcludeNTEntries_WhenImporting" Type="Boolean" Nullable="false" />
+    <Property Name="Enter_birthcentury" Type="Boolean" Nullable="false" />
+    <Property Name="Using_twopools" Type="Boolean" Nullable="false" />
+    <Property Name="Pool1_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Pool2_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="indtopmany_awardsSr" Type="Int16" />
+    <Property Name="reltopmany_awardsSr" Type="Int16" />
+    <Property Name="maxforeign_infinal" Type="Int16" />
+    <Property Name="Flag_FastestRecordOnly" Type="Boolean" Nullable="false" />
+    <Property Name="athlete_earlysurcharge" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="athlete_latesurcharge" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="athlete_earlysurchargedate" Type="DateTime" Precision="0" />
+    <Property Name="athlete_latesurchargedate" Type="DateTime" Precision="0" />
+    <Property Name="entry_OpenDate" Type="DateTime" Precision="0" />
+    <Property Name="DisplayNTfor_TimesUnder5Sec" Type="Boolean" Nullable="false" />
+    <Property Name="SortTeamCombos_ByTeamName" Type="Boolean" Nullable="false" />
+    <Property Name="FastestHeat_SomeLanesDoNotScore" Type="Boolean" Nullable="false" />
+    <Property Name="RankDisabled_ByPoints" Type="Boolean" Nullable="false" />
+    <Property Name="special_parapoints" Type="Int16" />
+    <Property Name="DisabledDoNot_AdvanceToFinals" Type="Boolean" Nullable="false" />
+    <Property Name="prelimheats_circledist" Type="Int16" />
+    <Property Name="DisabledIgnoreQualTime_ForScoring" Type="Boolean" Nullable="false" />
+    <Property Name="CountTimeTrial_Events" Type="Boolean" Nullable="false" />
+    <Property Name="QualNonConformCourse_UseMinStd" Type="Boolean" Nullable="false" />
+    <Property Name="Last_updated" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="MixedRelays_DividedPoints" Type="Boolean" Nullable="false" />
+    <Property Name="RelayOnly_Surcharge" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TimeAdj_Method" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="DisabledSeedWithAgeGroup_IfTimedFinalSuperSeed" Type="Boolean" Nullable="false" />
+    <Property Name="MeetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Entradas" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Entradas_Torneo" FromRole="Torneo" ToRole="Entradas" />
+    <NavigationProperty Name="Equipos" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Equipos_Torneo" FromRole="Torneo" ToRole="Equipos" />
+    <NavigationProperty Name="Eventos" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Eventos_Torneo" FromRole="Torneo" ToRole="Eventos" />
+    <NavigationProperty Name="MarcasMinimas" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_MarcasMinimas_Torneo" FromRole="Torneo" ToRole="MarcasMinimas" />
+    <NavigationProperty Name="Sesion" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Sesion_Torneo" FromRole="Torneo" ToRole="Sesion" />
+    <NavigationProperty Name="SessionItem" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_SessionItem_Torneo" FromRole="Torneo" ToRole="SessionItem" />
+    <NavigationProperty Name="MultiEdad" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_MultiEdad_Torneo" FromRole="Torneo" ToRole="MultiEdad" />
+  </EntityType>
+  <EntityType Name="TorneoDestacado">
+    <Key>
+      <PropertyRef Name="DestacadoId" />
+    </Key>
+    <Property Name="DestacadoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Meet" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vivo">
+    <Key>
+      <PropertyRef Name="VivoId" />
+    </Key>
+    <Property Name="VivoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Directorio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Consulta">
+    <Key>
+      <PropertyRef Name="Athlete" />
+      <PropertyRef Name="First" />
+      <PropertyRef Name="Last" />
+      <PropertyRef Name="Sex" />
+      <PropertyRef Name="Age" />
+      <PropertyRef Name="ID_NO" />
+      <PropertyRef Name="AthleteId" />
+    </Key>
+    <Property Name="Athlete" Type="Int32" Nullable="false" />
+    <Property Name="First" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Last" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Birth" Type="DateTime" Precision="3" />
+    <Property Name="Age" Type="Int16" Nullable="false" />
+    <Property Name="ID_NO" Type="String" Nullable="false" MaxLength="17" FixedLength="false" Unicode="true" />
+    <Property Name="AthleteId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estilos">
+    <Key>
+      <PropertyRef Name="EstiloId" />
+      <PropertyRef Name="Estilo" />
+      <PropertyRef Name="tag_stroke" />
+    </Key>
+    <Property Name="EstiloId" Type="Int32" Nullable="false" />
+    <Property Name="Estilo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag_stroke" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MultiEdad">
+    <Key>
+      <PropertyRef Name="MeetId" />
+      <PropertyRef Name="MultiAge" />
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="event_ptr" Type="Int32" />
+    <Property Name="low_age" Type="Int16" />
+    <Property Name="high_age" Type="Int16" />
+    <Property Name="Heats_infinal" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Num_Heatsinfinal" Type="Int16" />
+    <Property Name="MeetId" Type="Int32" Nullable="false" />
+    <Property Name="MultiAge" Type="Int32" Nullable="false" />
+    <Property Name="EventId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Eventos" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_MultiEdad_Eventos" FromRole="MultiEdad" ToRole="Eventos" />
+    <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_MultiEdad_Torneo" FromRole="MultiEdad" ToRole="Torneo" />
+  </EntityType>
+  <EntityType Name="Session">
+    <Key>
+      <PropertyRef Name="Sess_ptr" />
+    </Key>
+    <Property Name="Sess_no" Type="Int16" />
+    <Property Name="Sess_ltr" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Sess_ptr" Type="Int32" Nullable="false" />
+    <Property Name="Sess_day" Type="Int16" />
+    <Property Name="Sess_starttime" Type="Int32" />
+    <Property Name="Sess_entrymax" Type="Int16" />
+    <Property Name="Sess_name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Sess_interval" Type="Int16" />
+    <Property Name="Sess_course" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Sess_entrymaxind" Type="Int16" />
+    <Property Name="Sess_entrymaxrel" Type="Int16" />
+    <Property Name="Sess_backinterval" Type="Int16" />
+    <Property Name="Sess_divinginterval" Type="Int16" />
+    <Property Name="Sess_chaseinterval" Type="Int16" />
+  </EntityType>
+  <EntityType Name="Sessitem">
+    <Key>
+      <PropertyRef Name="Alt_With" />
+    </Key>
+    <Property Name="Sess_order" Type="Int32" />
+    <Property Name="Sess_ptr" Type="Int32" />
+    <Property Name="Event_ptr" Type="Int32" />
+    <Property Name="Sess_rnd" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Rept_type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Delay_seconds" Type="Int32" />
+    <Property Name="Alt_With" Type="Boolean" Nullable="false" />
+    <Property Name="Timed_finalheats" Type="Int16" />
+    <Property Name="EventTo_AlternateWith" Type="Int32" />
+    <Property Name="Delay_desc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AltHeats_StartCount" Type="Int16" />
+  </EntityType>
+  <Association Name="FK_RESULTS_Athlete">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Athlete" Role="Athlete" Multiplicity="0..1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.RESULTS" Role="RESULTS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Athlete">
+        <PropertyRef Name="AthleteId" />
+      </Principal>
+      <Dependent Role="RESULTS">
+        <PropertyRef Name="AthleteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Atletas_Equipos">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Equipos" Role="Equipos" Multiplicity="0..1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Atletas" Role="Atletas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipos">
+        <PropertyRef Name="TeamId" />
+      </Principal>
+      <Dependent Role="Atletas">
+        <PropertyRef Name="TeamId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Entradas_Atletas">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Atletas" Role="Atletas" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Entradas" Role="Entradas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Atletas">
+        <PropertyRef Name="AtletaId" />
+      </Principal>
+      <Dependent Role="Entradas">
+        <PropertyRef Name="AtletaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Noticias_CategoriaNoticia">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.CategoriaNoticia" Role="CategoriaNoticia" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Noticias" Role="Noticias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoriaNoticia">
+        <PropertyRef Name="CategoriaId" />
+      </Principal>
+      <Dependent Role="Noticias">
+        <PropertyRef Name="CategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comentarios_Noticias">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Noticias" Role="Noticias" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Comentarios" Role="Comentarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Noticias">
+        <PropertyRef Name="NoticiaId" />
+      </Principal>
+      <Dependent Role="Comentarios">
+        <PropertyRef Name="NoticiaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Noticias_Disciplina">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Disciplina" Role="Disciplina" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Noticias" Role="Noticias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Disciplina">
+        <PropertyRef Name="DisciplinaId" />
+      </Principal>
+      <Dependent Role="Noticias">
+        <PropertyRef Name="DisciplinaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Encuentros_Pais">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Pais" Role="Pais" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Encuentros" Role="Encuentros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pais">
+        <PropertyRef Name="PaisId" />
+      </Principal>
+      <Dependent Role="Encuentros">
+        <PropertyRef Name="Pais1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Encuentros_Pais1">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Pais" Role="Pais" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Encuentros" Role="Encuentros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pais">
+        <PropertyRef Name="PaisId" />
+      </Principal>
+      <Dependent Role="Encuentros">
+        <PropertyRef Name="Pais2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Resultados_Encuentros">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Encuentros" Role="Encuentros" Multiplicity="0..1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Resultados" Role="Resultados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Encuentros">
+        <PropertyRef Name="EncuentroId" />
+      </Principal>
+      <Dependent Role="Resultados">
+        <PropertyRef Name="EncuentroId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Entradas_Eventos">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Eventos" Role="Eventos" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Entradas" Role="Entradas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Eventos">
+        <PropertyRef Name="EventId" />
+      </Principal>
+      <Dependent Role="Entradas">
+        <PropertyRef Name="EventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Entradas_Torneo">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Torneo" Role="Torneo" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Entradas" Role="Entradas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Torneo">
+        <PropertyRef Name="MeetId" />
+      </Principal>
+      <Dependent Role="Entradas">
+        <PropertyRef Name="MeetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Equipos_Torneo">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Torneo" Role="Torneo" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Equipos" Role="Equipos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Torneo">
+        <PropertyRef Name="MeetId" />
+      </Principal>
+      <Dependent Role="Equipos">
+        <PropertyRef Name="MeetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Eventos_Torneo">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Torneo" Role="Torneo" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Eventos" Role="Eventos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Torneo">
+        <PropertyRef Name="MeetId" />
+      </Principal>
+      <Dependent Role="Eventos">
+        <PropertyRef Name="MeetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MultiEdad_Eventos">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Eventos" Role="Eventos" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.MultiEdad" Role="MultiEdad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Eventos">
+        <PropertyRef Name="EventId" />
+      </Principal>
+      <Dependent Role="MultiEdad">
+        <PropertyRef Name="EventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SessionItem_Eventos">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Eventos" Role="Eventos" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.SessionItem" Role="SessionItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Eventos">
+        <PropertyRef Name="EventId" />
+      </Principal>
+      <Dependent Role="SessionItem">
+        <PropertyRef Name="EventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fotos_Noticias1">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Noticias" Role="Noticias" Multiplicity="0..1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Fotos" Role="Fotos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Noticias">
+        <PropertyRef Name="NoticiaId" />
+      </Principal>
+      <Dependent Role="Fotos">
+        <PropertyRef Name="NoticiaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Goleadores_Jugadores">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Jugadores" Role="Jugadores" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Goleadores" Role="Goleadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Jugadores">
+        <PropertyRef Name="JugadorId" />
+      </Principal>
+      <Dependent Role="Goleadores">
+        <PropertyRef Name="JugadorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jugadores_Pais">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Pais" Role="Pais" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Jugadores" Role="Jugadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pais">
+        <PropertyRef Name="PaisId" />
+      </Principal>
+      <Dependent Role="Jugadores">
+        <PropertyRef Name="PaisId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MarcasMinimas_Torneo">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Torneo" Role="Torneo" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.MarcasMinimas" Role="MarcasMinimas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Torneo">
+        <PropertyRef Name="MeetId" />
+      </Principal>
+      <Dependent Role="MarcasMinimas">
+        <PropertyRef Name="Meetid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RESULTS_MEET">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.MEET" Role="MEET" Multiplicity="0..1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.RESULTS" Role="RESULTS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEET">
+        <PropertyRef Name="MeetId" />
+      </Principal>
+      <Dependent Role="RESULTS">
+        <PropertyRef Name="MeetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PosicionFinal_Pais">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Pais" Role="Pais" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.PosicionFinal" Role="PosicionFinal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pais">
+        <PropertyRef Name="PaisId" />
+      </Principal>
+      <Dependent Role="PosicionFinal">
+        <PropertyRef Name="Pasiid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RESULTS_TEAM">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.TEAM" Role="TEAM" Multiplicity="0..1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.RESULTS" Role="RESULTS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TEAM">
+        <PropertyRef Name="TeamId" />
+      </Principal>
+      <Dependent Role="RESULTS">
+        <PropertyRef Name="TeamId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sesion_Torneo">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Torneo" Role="Torneo" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Sesion" Role="Sesion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Torneo">
+        <PropertyRef Name="MeetId" />
+      </Principal>
+      <Dependent Role="Sesion">
+        <PropertyRef Name="MeetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SessionItem_Sesion">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Sesion" Role="Sesion" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.SessionItem" Role="SessionItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sesion">
+        <PropertyRef Name="SessionId" />
+      </Principal>
+      <Dependent Role="SessionItem">
+        <PropertyRef Name="SesionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SessionItem_Torneo">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Torneo" Role="Torneo" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.SessionItem" Role="SessionItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Torneo">
+        <PropertyRef Name="MeetId" />
+      </Principal>
+      <Dependent Role="SessionItem">
+        <PropertyRef Name="Meetid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MultiEdad_Torneo">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Torneo" Role="Torneo" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.MultiEdad" Role="MultiEdad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Torneo">
+        <PropertyRef Name="MeetId" />
+      </Principal>
+      <Dependent Role="MultiEdad">
+        <PropertyRef Name="MeetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

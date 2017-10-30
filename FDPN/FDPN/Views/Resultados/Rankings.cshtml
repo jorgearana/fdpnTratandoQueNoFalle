@@ -1,0 +1,211 @@
+﻿@model FDPN.ViewModels.Resultados.RankingViewModel
+
+@{
+    ViewBag.Title = "Rankings";
+
+}
+
+@using (Html.BeginForm("Rankings", "Resultados", FormMethod.Post))
+{
+    <section>
+        <div class="wrapper site-homepage__pushup">
+            <header class="site-homepage__section__header">
+                <h2 class="site-title site-title--ultra site-title--ultra--primary">Rankings</h2>
+                <p class="u-type--medium u-type--delta u-spc-bottom--med"> @Model.distancia m estilo @Model.estilo en piscina @Model.piscina </p>
+            </header>
+            <div class="site-homepage__section__content">
+                <div class="u-grid u-spc-bottom--med">
+
+                    <div class="site-ranking__filter">
+                        <h3 class="control-label col-md-3 btn--ghost">Distancia</h3>
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.distancia, new SelectList(Model.distancias), "Escoja la distancia", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+                        </div>
+                    </div>
+                    <div class="site-ranking__filter">
+
+                        <h3 class="control-label col-md-3 btn--ghost">Estilo</h3>
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.estilo, new SelectList(Model.Estilos), "Escoja el estilo", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+                        </div>
+                    </div>
+
+                    <div class="site-ranking__filter">
+                        <h3 class="control-label col-md-3 btn--ghost">
+                            Piscina
+                        </h3>
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.piscina, new SelectList(Model.piscinas, "Key", "Value"), "Escoja el tipo de piscina", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+                        </div>
+                    </div>
+
+                    <div class="site-ranking__filter">
+                        <h3 class="control-label col-md-3 btn--ghost">Sexo</h3>
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.Sexo, new SelectList(Model.Sexo, "Key", "Value"), "Escoja el sexo", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+                        </div>
+                    </div>
+                </div>
+                <div class="espaciado"></div>
+                <div class="u-grid u-spc-bottom--med">
+                    <div class="site-ranking__filter">
+                        <h3 class="control-label col-md-3 btn--ghost">
+                            Periodo
+                        </h3>
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.Periodo, new SelectList(Model.Periodo), "Escoja el periodo a filtrar", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+                        </div>
+                    </div>
+                    <div class="site-ranking__filter">
+                        <h3 class="control-label col-md-3 btn--ghost">
+                            Edad mínima
+                        </h3>
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.edadminima, new SelectList(Model.edadminima), "Escoja la edad mínima", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+                        </div>
+                    </div>
+                    <div class="site-ranking__filter">
+                        <h3 class="control-label col-md-3 btn--ghost">
+                            Edad máxima
+                        </h3>
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.edadmaxima, new SelectList(Model.edadmaxima), "Escoja la edad máxima", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+                        </div>
+                    </div>
+                    <div class="site-ranking__filter">
+                        <input type="submit" class="btn btn--primary btn--lrg u-rounded" value="Ver ranking">
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+}
+<div class="site-homepage__section site-aboutwidget u-bg--poolpeopleranking u-bg--blueoverlay">
+    <div class="site-contentpage">
+
+                @for (int i = 0; i < 2; i++)
+                {
+                    //Los dos primeros puestos 
+
+                    <div class="pure-u-1 ">
+                        <div class="l-box">
+                            <div class="pure-u-lg-1-6 pure-u-1">
+                                <div class="rankingposicion">
+                                    <div class="posicionranking">Ranking </div> <div class="ranking1">@(i + 1)</div>
+                                </div>
+                            </div>
+                            <div class="pure-u-sm-2-3 pure-u-md-2-3 pure-u-lg-2-3  pure-u-1">
+                                <h2 class="site-title site-title--basic site-title--basic--negative u-spc-bottom--med">
+
+                                    @Html.ActionLink(Model.resultados[i].Athlete1.First, "Nadador", "Resultados", new { id = Model.resultados[i].AthleteId }, new { @class = "ranking1detalle" })
+                                    @Html.ActionLink(Model.resultados[i].Athlete1.Last, "Nadador", "Resultados", new { @id = Model.resultados[i].AthleteId }, new { @class = "ranking1detalle" })
+
+                                </h2>
+                                <p class="u-type--medium u-type--delta u-type--negative">@Model.resultados[i].SCORE</p>
+                                <p class="u-type--medium u-type--delta u-type--negative">@Model.resultados[i].MEET1.Start.ToShortDateString()</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                   
+                }
+        @*El resto del ranking*@
+        <table class="site-rankingwidget__table">
+            <tbody>
+               @for (int i = 2; i < Model.resultados.Count(); i++)
+               {
+                    <tr>
+                        <td>@(i+1)</td>
+                        <td>
+                            @Html.ActionLink(Model.resultados[i].Athlete1.First, "Nadador", "Resultados", new { id = Model.resultados[i].AthleteId }, new { @class = "ranking1detalle" })
+                            @Html.ActionLink(Model.resultados[i].Athlete1.Last, "Nadador", "Resultados", new { @id = Model.resultados[i].AthleteId }, new { @class = "ranking1detalle" })
+
+                        </td>
+                        <td>@Model.resultados[i].SCORE</td>
+                        <td class="weak">@Model.resultados[i].MEET1.Start.ToShortDateString()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    @*<div class="site-homepage__section site-aboutwidget u-bg--poolpeople u-bg--blueoverlay">
+        <div class="is-ontop u-animation--fadeInSection">
+            <div class="espaciado"></div>
+            <div class="espaciado"></div>
+          
+            <div class="pure-g">
+                @for (int i = 0; i < 2; i++)
+                {
+                  
+
+                    <div class="pure-u-sm-1-2 pure-u-lg-1-2 pure-u-1 ">
+                        <div class="l-box">
+                            <div class="pure-u-lg-1-6 pure-u-1">
+                                <div class="rankingposicion">
+                                    <div class="posicionranking">Ranking </div> <div class="ranking1">@(i + 1)</div>
+                                </div>
+                            </div>
+                            <div class="pure-u-sm-2-3 pure-u-md-2-3 pure-u-lg-2-3  pure-u-1">
+                                <h2 class="site-title site-title--basic site-title--basic--negative u-spc-bottom--med">
+
+                                    @Html.ActionLink(Model.resultados[i].Athlete1.First, "Nadador", "Resultados", new { id = Model.resultados[i].AthleteId }, new { @class = "ranking1detalle" })
+                                    @Html.ActionLink(Model.resultados[i].Athlete1.Last, "Nadador", "Resultados", new { @id = Model.resultados[i].AthleteId }, new { @class = "ranking1detalle" })
+
+                                </h2>
+                                <p class="u-type--medium u-type--delta u-type--negative">@Model.resultados[i].SCORE</p>
+                                <p class="u-type--medium u-type--delta u-type--negative">@Model.resultados[i].MEET1.Start.ToShortDateString()</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                }
+            </div>
+            <div class="espaciado"></div>
+            <div class="espaciado"></div>
+        </div>
+    </div>*@
+
+    
+
+
+
+    @*<section class="site-homepage__section site-homepage__section--alt u-animation--fadeInSection">
+
+
+        <div>
+            <div class="pure-g">
+                @for (int i = 2; i < Model.resultados.Count(); i++)
+                {
+
+
+                    <div class="rankingcard pure-u-1 pure-u-sm-1-2 pure-u-md-1-3 pure-u-lg-5-24 l-box" style="background-color: gainsboro; border-radius: 5px;">
+
+                        <p>Ranking @(i + 1)</p>
+                        <h3 class="rankingdetalle">
+                            @Html.ActionLink(Model.resultados[i].Athlete1.First, "Nadador", "Resultados", new { id = Model.resultados[i].AthleteId }, new { @class = "rankingdetalle" })
+                            @Html.ActionLink(Model.resultados[i].Athlete1.Last, "Nadador", "Resultados", new { @id = Model.resultados[i].AthleteId }, new { @class = "rankingdetalle" })
+                        </h3>
+
+                        <p class="rankingdetalle">@Model.resultados[i].SCORE</p>
+
+
+                        <p>@Model.resultados[i].MEET1.Start.ToShortDateString()</p>
+
+                    </div>
+                }
+            </div>
+        </div>
+
+
+    </section>*@

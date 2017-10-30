@@ -1,0 +1,26 @@
+﻿@model List<FDPN.Models.RESULTS>
+
+<div class="site-homepage__section site-aboutwidget u-bg--poolpeopleranking u-bg--blueoverlay">
+    <div class="site-contentpage">
+
+        @*El resto del ranking*@
+        <table class="site-rankingwidget__table">
+            <tbody>
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    <tr>
+                        <td>@(i + 1)</td>
+                        <td>
+                            @Html.ActionLink(Model[i].Athlete1.First, "Nadador", "Resultados", new { id = Model[i].AthleteId }, new { @class = "ranking1detalle" })
+                            @Html.ActionLink(Model[i].Athlete1.Last, "Nadador", "Resultados", new { @id = Model[i].AthleteId }, new { @class = "ranking1detalle" })
+
+                        </td>
+                        <td>@Model[i].SCORE</td>
+                        <td class="weak">@Model[i].MEET1.Start.ToShortDateString()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

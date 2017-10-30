@@ -1,0 +1,56 @@
+﻿@model FDPN.ViewModels.Administrador.BorrarViewModel
+@{
+    ViewBag.Title = "Borrar";
+    Layout = "~/Views/Shared/_LayoutWYSWYG.cshtml";
+    string path = Url.Content("../Content/img/Fotos/");
+}
+<div class="panel panel-primary">
+
+    <div class="col-lg-12 text-center panel-heading panel-head">
+        <h2 class="section-heading">Borrar datos</h2>
+        <h5 class="section-subheading">¿Está seguro de querer borrar este dato?</h5>
+    </div>
+</div>
+@using (Html.BeginForm())
+{
+<section class="site-news site-homepage__pushup u-bg">
+
+    <div class="wrapper site-athleteswidget__info">
+
+        <div class="site-news__visual u-animation--fadeInSection" data-wow-duration="700ms" data-wow-delay="100ms">
+
+            @Html.HiddenFor(model=>model.noticiaid)
+            <div class="pure-u-lg-1">
+                <h2 class="site-title ">@Model.noticia.Titulo</h2>
+
+                Publicado por <span><a class="userBy">Prensa</a></span> el <span>@Model.noticia.Fecha.ToShortDateString()</span>
+            </div>
+            <div class="espaciado"></div>
+            <div class="row">
+                
+                <div class="col-lg-3 col-lg-offset-1" >
+
+                    @foreach (var foto in Model.fotos)
+                    {
+                        <div class="card pure-u-lg-1">
+                            <a href=@Url.Action(path + foto.Nombrefoto) target="_blank">
+                                <div class="ImagenNoticia" style="background-image: url(@Url.Action(path + foto.Nombrefoto));"></div>
+                            </a>
+                        </div>
+                    }
+
+                </div>
+               
+                <div class="col-lg-7 col-lg-offset-1">
+                    @Html.Raw(@Model.noticia.Larga.ToString())
+                    <div class="espaciado"></div>
+                    <input type="submit" value="Borrar" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+}

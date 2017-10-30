@@ -1,0 +1,157 @@
+﻿@{ 
+    string clase = ViewBag.clase;
+}
+<div class="layout layout--fullWidth">
+    <header role="banner" class="site-header @clase js-siteHeader">
+     
+        <div class="site-header__pre u-group">
+            <div class="wrapper">
+                @using (Html.BeginForm("Nadadores", "Resultados", FormMethod.Post))
+                {
+
+                    <div class="pure-g">
+                        <div class="pure-u-1 pure-u-md-1-5"><p class="tenue">Buscar por nombre o apellido</p></div>
+                        <div class="pure-u-1 pure-u-md-1-5">@Html.TextBox("searchString", null, new { @class = "input input--text input--sml input--sml--padded" })</div>
+                        <div class="pure-u-1 pure-u-md-3-5"> <input type="submit" value="Buscar" class="btn btn--primary btn--sml u-rounded" /> </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <div class="site-header__content">
+
+                <div class="site-header__branding">
+
+                    <a href=@Url.Action("index", "Home") class="logo">
+                        <img src="~/Content/img/Logo_fdpn.png" style="width:150px;" alt="FDPN" />
+                    </a>
+                </div>
+                <div class="site-header__copy">
+                    <h4 class="site-header__claim">Federación deportiva peruana de natación</h4>
+                    @*<p class="site-header__subtitle u-spc-bottom--sml">Water is our world</p>*@
+                </div>
+                <nav role="navigation" class="site-header__sidenav js-nav">
+
+                    <ul class="site-nav site-nav--primary titulo">
+                        <li class="site-nav--primary__item ">
+                            @Html.ActionLink("Inicio", "index", "home")
+                        </li>
+                        <li class="site-nav--primary__item ">
+                            @Html.ActionLink("Nadadores", "nadadores", "resultados")
+                        </li>
+                        <li class="site-nav--primary__item ">
+                            @Html.ActionLink("Rankings", "Rankings", "resultados")
+                        </li>
+                        <li class="site-nav--primary__item ">
+                            @Html.ActionLink("Subvenciones", "Subvenciones", "Documentos")
+                        </li>
+                        <li class="site-nav--primary__item ">
+                            @Html.ActionLink("Calendarios", "Calendarios", "resultados")
+                        </li>
+                        <li class="site-nav--primary__item ">
+                            @Html.ActionLink("Resultados", "resultados", "resultados")
+                        </li>
+                        <li class="site-nav--primary__item ">
+                            @Html.ActionLink("Noticias", "Noticias", "Noticias")
+                        </li>
+                        <li class="site-nav--primary__item ">
+                            <a href="http://afiliaciones.jorgearananeyra.com/Home/Login">Afiliaciones</a>
+                        </li>
+                        <li class="site-nav--primary__item ">
+                            @Html.ActionLink("Documentos diversos", "Documentos", "Documentos")
+                        </li>
+                        <li class="site-nav--primary__item ">
+                            @Html.ActionLink("Resultados en vivo", "EnVivo", "Documentos")
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <div class="site-header__topnav">
+                    <ul class="site-nav site-nav--secondary u-group">
+                        <li class="site-nav--secondary__item">
+                            <div class="site-nav--secondary__droptitle">Disciplinas </div>
+                            <ul class="site-nav--secondary__subnav titulo">
+                                <li class="site-nav--secondary__subnav__item ">
+                                    @Html.ActionLink("Natación", "index", "home")
+                                </li>
+                                <li class="site-nav--secondary__subnav__item ">
+                                    @Html.ActionLink("Polo acuático", "construccion", "home")
+                                </li>
+                                <li class="site-nav--secondary__subnav__item ">
+                                    @Html.ActionLink("Aguas abiertas", "construccion", "home")
+                                </li>
+                                <li class="site-nav--secondary__subnav__item ">
+                                    @Html.ActionLink("Clavados", "construccion", "home")
+                                </li>
+                                <li class="site-nav--secondary__subnav__item ">
+                                    @Html.ActionLink("Natación artística", "construccion", "home")
+                                </li>
+                                <li class="site-nav--secondary__subnav__item ">
+                                    @Html.ActionLink("Masters", "construccion", "home")
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="site-nav--secondary__item">
+                            <div class="site-nav--secondary__droptitle">Bases y reglamentos <i class="fa fa-caret-down" aria-hidden="true"></i></div>
+                            <ul class="site-nav--secondary__subnav titulo">
+
+                                <li class="site-nav--secondary__subnav__item ">
+                                    @Html.ActionLink("Reglamentos", "Reglamentos", "documentos")
+                                </li>
+                                <li class="site-nav--secondary__subnav__item ">
+                                    @Html.ActionLink("Comunicados", "comunicados", "documentos")
+                                </li>
+                                <li class="site-nav--secondary__subnav__item ">
+                                    @Html.ActionLink("Criterios de selección", "normas", "documentos")
+                                </li>
+                                <li class="site-nav--secondary__subnav__item ">
+                                    @Html.ActionLink("Bases de torneos", "bases", "documentos")
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="site-nav--secondary__item">
+                            <div class="site-nav--secondary__droptitle">Nosotros<i class="fa fa-caret-down" aria-hidden="true"></i></div>
+                            <ul class="site-nav--secondary__subnav titulo">
+
+                                @*<li class="site-nav--secondary__subnav__item ">
+                            @Html.ActionLink("La Federación", "fdpn", "nosotros")
+                        </li>*@
+                                <li class="site-nav--secondary__subnav__item ">
+                                    @Html.ActionLink("El directorio", "directorio", "nosotros")
+                                </li>
+                                <li class="site-nav--secondary__subnav__item ">
+                                    @Html.ActionLink("Estatuto", "estatuto", "nosotros")
+                                </li>
+                                <li class="site-nav--secondary__subnav__item ">
+                                    @Html.ActionLink("IPD", "ipd", "nosotros")
+                                </li>
+                                <li class="site-nav--secondary__subnav__item ">
+                                    @Html.ActionLink("FINA", "fina", "nosotros")
+                                </li>
+                                <li class="site-nav--secondary__subnav__item ">
+                                    @Html.ActionLink("UANA", "uana", "nosotros")
+                                </li>
+                                <li class="site-nav--secondary__subnav__item ">
+                                    @Html.ActionLink("CONSANAT", "consanat", "nosotros")
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="site-header__mobilenav">
+                    <span class="hamburger js-toggleNav"><span></span></span>
+                </div>
+            </div>
+        </div>
+
+        @*@Html.Partial("_menu", "Home")*@
+    </header>
+   
+</div>
+
+
+

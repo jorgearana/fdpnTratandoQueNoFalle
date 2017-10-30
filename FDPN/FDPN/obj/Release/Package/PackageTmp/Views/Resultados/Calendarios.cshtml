@@ -1,0 +1,55 @@
+﻿@model FDPN.ViewModels.Resultados.CalendarioViewModel
+
+@{
+    ViewBag.Title = "Calendarios";
+    //Layout = "~/Views/Shared/_LayoutAnimo.cshtml";
+    string path = "~/Content/img/Imgsmall/";
+}
+
+<section class="site-homepage__section site-athletedetails">
+    <div class="wrapper site-homepage__pushup">
+
+        @using (Html.BeginForm("Calendarios", "Resultados", FormMethod.Post))
+        {
+            <header class="site-homepage__section__header">
+                <h2 class="site-title site-title--ultra site-title--ultra--primary">Calendario anual</h2>  
+                        @Html.DropDownListFor(model => model.disciplina, new SelectList(Model.disciplinas), "Filtre por disciplina", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+                <div class="espaciado"></div>
+                  <input type="submit" value="Buscar" class="btn btn--primary btn--lrg u-rounded" /> 
+            </header>          
+
+        }
+        
+        <div class="site-homepage__section__content u-grid">
+            <section id="cd-timeline">
+              
+                <ul class="cbp_tmtimeline">
+                    @foreach (var item in Model.calendario)
+                    {
+                        <li>
+                            <time class="cbp_tmtime" datetime=@item.Inicio.ToString("dd/MM/yyyy")><span>@item.Inicio.ToString("dd/MM/yyyy")</span> 
+                            <span>al @item.Fin.ToString("dd/MM/yyyy")</span>
+                            </time>
+                            <div class="cbp_tmicon" >
+                                <img class="iconCalendario" src="@Url.Content(path + item.clase + ".jpg")" />
+                            </div>
+                            <div class="cbp_tmlabel  @item.clase">
+                                <h2>@item.Evento</h2>
+                                <p>Disciplina: <strong>@item.Disciplina</strong></p>
+                                <p>Sede: <strong>@item.Sede</strong></p>
+                                <p>Carácter del evento <strong>@item.Carácter</strong></p>
+                            </div>
+                        </li>
+                    }
+
+                </ul>
+                <div class="espaciadogrande"></div>
+                @*<center>
+
+                    @Html.ActionLink("Ver todos los eventos", "calendarios", "resultados", null, new { @class = "btn btn--primary btn--lrg u-rounded" })
+                </center>*@
+            </section>
+        </div>
+    </div>
+</section>
+

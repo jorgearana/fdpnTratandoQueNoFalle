@@ -1,0 +1,55 @@
+﻿@model List<FDPN.Models.Fotos>
+
+@{
+    ViewBag.Title = "subvenciones";
+    string path = Url.Content("../Content/img/Fotos/");
+}
+
+<section class="site-contentpage site-homepage__pushup">
+    @using (Html.BeginForm())
+    {
+        <header class="site-homepage__section__header">
+            <h2 class="site-title site-title--ultra site-title--ultra--primary">Reglamentos</h2>
+            <p class="u-type--medium u-type--delta u-spc-bottom--med">Buscar</p>
+            @Html.TextBox("SearchString", null, new { @class = "btn btn--primary btn--lrg u-rounded" })
+            <input type="submit" value="Buscar" class="btn btn--primary btn--lrg u-rounded" />
+        </header>
+    }
+    <br />
+    <p class="u-type--gamma">
+       
+        <table class="tablaNormal">
+            <thead>
+                <tr>
+                    <th>
+                        Descipción
+                    </th>
+                    <th>
+                        <i class="fa fa-download" aria-hidden="true"></i> Documento
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                   
+                    <tr>
+                        <td>
+
+                            @item.Noticias.Titulo
+                        </td>
+                        <td>
+                            <a href=@Url.Action(path + item.Nombrefoto) target="_blank">
+                                <i class="fa fa-download" aria-hidden="true"></i> Descargar
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </p>
+
+    <div class="espaciado"></div>
+
+
+</section>

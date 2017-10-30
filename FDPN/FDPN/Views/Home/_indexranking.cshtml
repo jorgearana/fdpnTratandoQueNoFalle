@@ -1,0 +1,51 @@
+﻿@model List<FDPN.Models.RESULTS >
+
+<div class="is-ontop">
+    <header class="site-homepage__section__header">
+        <h2 class="site-title site-title--ultra site-title--ultra--negative">TOP&nbsp;10</h2>
+    </header>
+    <div class="site-rankingwidget">
+        <div class="site-athleteswidget__info site-athleteswidget__info--negative">
+            <h3 class="site-athleteswidget__name">@Model[0].DISTANCE  @Model[0].STROKE - @Model[0].Athlete1.Sex  </h3>
+            
+                @if (Model[0].COURSE == "S")
+                {
+                    <h4 class="site-athleteswidget__name"> Piscina Corta </h4>
+                }
+                else
+                {
+                    <h4 class="site-athleteswidget__name"> Piscina Larga </h4>
+                }
+            <p class="site-athleteswidget__subtitle"></p>
+            <table class="site-rankingwidget__table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Tiempo</th>
+                        <th>Puntos FINA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                    <tr>
+                        <td>@(i+1)</td>
+                        <td><span>@Model[i].Athlete1.First.ToUpper()</span><span>  @Model[i].Athlete1.Last.ToUpper()</span> </td>
+                        <td>
+                            @Model[i].SCORE
+                        </td>
+                        <td>@Model[i].MEET1.Start.ToString("dd/MMM/yyyy")</td>
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer class="site-homepage__section__footer">
+        @Html.ActionLink("Ver ranking", "Rankings", "Resultados", null, new { @class= "btn btn--negative btn--lrg u-rounded" })
+    </footer>
+    <CODE>* Se consideran los tiempos registrados a partir del año 2000</CODE>
+</div>
+

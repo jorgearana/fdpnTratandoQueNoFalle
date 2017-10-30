@@ -1,0 +1,73 @@
+﻿@model FDPN.ViewModels.Resultados.RankingFInaViewModel
+
+@{
+    ViewBag.Title = "Rankings por puntos FINA";
+
+}
+
+    <section>
+        <div class="wrapper site-homepage__pushup">
+            <header class="site-homepage__section__header">
+                <h2 class="site-title site-title--ultra site-title--ultra--primary">Rankings por puntos FINA</h2>
+                <code>* Tiempos registrados desde el año 2000 en adelante</code>
+            </header>
+        </div>
+    </section>
+
+
+@using (Html.BeginForm("Rankings", "Resultados", FormMethod.Post))
+{
+<div class="site-homepage__section site-aboutwidget u-bg--poolpeopleranking u-bg--blueoverlay">
+    <div class="site-contentpage">
+        <div class="row">
+            <div class="col-lg-8">
+                @*Torneos*@
+                <table class="site-rankingwidget__table">
+                    <tbody>
+                        @foreach (var item in Model.torneos)
+                        {
+                            <tr>
+                                <td>@item.MName</td>
+                                <td>
+                                    @item.Start.ToString("dd/MMM/yyyy")
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4">
+                <div class="site-ranking__filter">
+                    <h3 class="control-label col-md-3 btn--ghost">Distancia</h3>
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(model => model.periodoid, new SelectList(Model.periodo, Model.periodo.Keys, Model.periodo.Values), "Escoja el periodo", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+                    </div>
+                </div>
+                <div class="site-ranking__filter">
+
+                    <h3 class="control-label col-md-3 btn--ghost">Edad mínima</h3>
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(model => model.edadminima, new SelectList(Model.edadesminimas), "Escoja la edad inicial", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+                    </div>
+                </div>
+
+                <div class="site-ranking__filter">
+                    <h3 class="control-label col-md-3 btn--ghost">Edad máxima</h3>
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(model => model.edadmaxima, new SelectList(Model.edadesmaximas), "Escoja la edad final", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+                    </div>
+                </div>
+
+                <div class="site-ranking__filter">
+                    <input type="submit" class="btn btn--primary btn--lrg u-rounded" value="Ver ranking">
+                </div>
+
+
+            </div>
+        </div>
+      
+       
+    </div>
+</div>
+
+}

@@ -1,0 +1,776 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_9B1F4C_afiliacionesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Afiliacion">
+    <Key>
+      <PropertyRef Name="AfiliacionID" />
+    </Key>
+    <Property Name="AfiliacionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DNI" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="UsuarioId" Type="int" Nullable="false" />
+    <Property Name="FechaAfiliacion" Type="date" Nullable="false" />
+    <Property Name="VoucherId" Type="int" Nullable="false" />
+    <Property Name="ClubId" Type="int" Nullable="false" />
+    <Property Name="ProcesadoId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Afiliado">
+    <Key>
+      <PropertyRef Name="DNI" />
+    </Key>
+    <Property Name="DeportistaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido Paterno" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido Materno" Type="varchar" MaxLength="50" />
+    <Property Name="DNI" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Tipo de documento" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="ClubID" Type="int" Nullable="false" />
+    <Property Name="TipoAfiliadoID" Type="int" Nullable="false" />
+    <Property Name="EstadoID" Type="int" Nullable="false" />
+    <Property Name="ProcesadoID" Type="int" Nullable="false" />
+    <Property Name="Fecha de nacimiento" Type="date" Nullable="false" />
+    <Property Name="Sexo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="AntiguoId" Type="int" Nullable="false" />
+    <Property Name="RutaFoto" Type="varchar" MaxLength="100" />
+    <Property Name="Disciplina" Type="varchar" MaxLength="20" />
+    <Property Name="Borrado" Type="int" />
+    <Property Name="FotoDNI" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="Antiguo">
+    <Key>
+      <PropertyRef Name="AntiguoId" />
+    </Key>
+    <Property Name="AntiguoId" Type="int" Nullable="false" />
+    <Property Name="Detalle" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CambiosDNI">
+    <Key>
+      <PropertyRef Name="CambioId" />
+    </Key>
+    <Property Name="CambioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DNI" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="fecha" Type="date" Nullable="false" />
+    <Property Name="DNIAntiguo" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categorias">
+    <Key>
+      <PropertyRef Name="CategoriaId" />
+    </Key>
+    <Property Name="CategoriaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreCategoria" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Edad maxima" Type="int" Nullable="false" />
+    <Property Name="Edad minima" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Club">
+    <Key>
+      <PropertyRef Name="ClubID" />
+    </Key>
+    <Property Name="ClubID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreClub" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Iniciales" Type="varchar" MaxLength="5" />
+    <Property Name="NombreUsuario" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Activo" Type="int" Nullable="false" />
+    <Property Name="Afiliado" Type="bit" />
+    <Property Name="Testimonio" Type="varchar" MaxLength="50" />
+    <Property Name="ConsejoDirectivo" Type="varchar" MaxLength="50" />
+    <Property Name="AcuerdoAfiliacion" Type="varchar" MaxLength="50" />
+    <Property Name="DatosPersonaJuridica" Type="varchar(max)" />
+    <Property Name="DatosConsejoDirectivo" Type="varchar(max)" />
+    <Property Name="InscripcionDeportistas" Type="bit" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Consulta' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Consulta">
+    <Key>
+      <PropertyRef Name="name" />
+      <PropertyRef Name="principal_id" />
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="image" />
+  </EntityType>
+  <EntityType Name="Entrenadores">
+    <Key>
+      <PropertyRef Name="EntrenadorId" />
+    </Key>
+    <Property Name="EntrenadorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Paterno" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Materno" Type="varchar" MaxLength="50" />
+    <Property Name="DNI" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Clubid" Type="int" Nullable="false" />
+    <Property Name="EstadoId" Type="int" Nullable="false" />
+    <Property Name="Fecha de nacimiento" Type="date" Nullable="false" />
+    <Property Name="Sexo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="AntiguoId" Type="int" Nullable="false" />
+    <Property Name="RutaFoto" Type="varchar" MaxLength="100" />
+    <Property Name="Email1" Type="varchar" MaxLength="150" />
+    <Property Name="Celular1" Type="varchar" MaxLength="15" />
+    <Property Name="Celular2" Type="varchar" MaxLength="15" />
+    <Property Name="Email2" Type="varchar" MaxLength="150" />
+    <Property Name="UsuarioId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="EstadoID" />
+    </Key>
+    <Property Name="EstadoID" Type="int" Nullable="false" />
+    <Property Name="Detalle" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HistorialdeAfiliaciones">
+    <Key>
+      <PropertyRef Name="afiliacionId" />
+    </Key>
+    <Property Name="afiliacionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="afiliadoId" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HistorialEntrenador">
+    <Key>
+      <PropertyRef Name="HistoriaId" />
+    </Key>
+    <Property Name="HistoriaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EntrenadorId" Type="int" Nullable="false" />
+    <Property Name="ClubId" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HistorialTraspasos">
+    <Key>
+      <PropertyRef Name="HistorialId" />
+    </Key>
+    <Property Name="HistorialId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsuarioId" Type="int" Nullable="false" />
+    <Property Name="ClubId" Type="int" Nullable="false" />
+    <Property Name="DNI" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="VieneDe" Type="int" Nullable="false" />
+    <Property Name="FechaTraspaso" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Multas">
+    <Key>
+      <PropertyRef Name="MultaId" />
+    </Key>
+    <Property Name="MultaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DNI" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TorneoId" Type="int" Nullable="false" />
+    <Property Name="Eventos1" Type="int" Nullable="false" />
+    <Property Name="Eventos2" Type="int" Nullable="false" />
+    <Property Name="Eventos3" Type="int" Nullable="false" />
+    <Property Name="Eventos4" Type="int" Nullable="false" />
+    <Property Name="Eventos5" Type="int" Nullable="false" />
+    <Property Name="FechaPago" Type="date" />
+    <Property Name="Boleta" Type="nchar" MaxLength="10" />
+    <Property Name="Monto" Type="float" />
+    <Property Name="DcsoMedico" Type="nvarchar" MaxLength="50" />
+    <Property Name="UsuarioId" Type="int" />
+    <Property Name="Subsanada" Type="bit" />
+    <Property Name="Torneo" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Procesado">
+    <Key>
+      <PropertyRef Name="ProcesadoId" />
+    </Key>
+    <Property Name="ProcesadoId" Type="int" Nullable="false" />
+    <Property Name="Detalle" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="RolId" />
+    </Key>
+    <Property Name="RolId" Type="int" Nullable="false" />
+    <Property Name="Rol" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Detalle" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="name" />
+      <PropertyRef Name="principal_id" />
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TipoAfiliado">
+    <Key>
+      <PropertyRef Name="AfiliadoId" />
+    </Key>
+    <Property Name="AfiliadoId" Type="int" Nullable="false" />
+    <Property Name="Detalle" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Traspasos">
+    <Key>
+      <PropertyRef Name="TraspasoId" />
+    </Key>
+    <Property Name="TraspasoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsuarioId" Type="int" Nullable="false" />
+    <Property Name="ClubId" Type="int" Nullable="false" />
+    <Property Name="Numero de operacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha de traspaso" Type="date" Nullable="false" />
+    <Property Name="Numero de traspasos" Type="int" Nullable="false" />
+    <Property Name="Monto" Type="float" Nullable="false" />
+    <Property Name="Traspasos restantes" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TraspasosEnEspera">
+    <Key>
+      <PropertyRef Name="eEsperaId" />
+    </Key>
+    <Property Name="eEsperaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DNI" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="ClubSolicitante" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="Liberado" Type="bit" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="UsuarioID" />
+    </Key>
+    <Property Name="UsuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="RolId" Type="int" Nullable="false" />
+    <Property Name="ClubId" Type="int" Nullable="false" />
+    <Property Name="RememberMe" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vouchers">
+    <Key>
+      <PropertyRef Name="VoucherId" />
+    </Key>
+    <Property Name="VoucherId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Monto" Type="float" Nullable="false" />
+    <Property Name="Numero de afiliados" Type="int" Nullable="false" />
+    <Property Name="Numero de reafiliados" Type="int" Nullable="false" />
+    <Property Name="UsuarioId" Type="int" Nullable="false" />
+    <Property Name="AfiliadosRestantes" Type="int" Nullable="false" />
+    <Property Name="ReafiliadosRestantes" Type="int" Nullable="false" />
+    <Property Name="ClubId" Type="int" Nullable="false" />
+    <Property Name="Fecha de creacion" Type="datetime" Nullable="false" />
+    <Property Name="Fecha de modificacion" Type="datetime" Nullable="false" />
+    <Property Name="Nro. operacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Numero de vinculados" Type="int" />
+    <Property Name="VinculadosRestantes" Type="int" />
+  </EntityType>
+  <Association Name="FK_Afiliacion_Afiliado1">
+    <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="1" />
+    <End Role="Afiliacion" Type="Self.Afiliacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliado">
+        <PropertyRef Name="DNI" />
+      </Principal>
+      <Dependent Role="Afiliacion">
+        <PropertyRef Name="DNI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Afiliacion_Club">
+    <End Role="Club" Type="Self.Club" Multiplicity="1" />
+    <End Role="Afiliacion" Type="Self.Afiliacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Club">
+        <PropertyRef Name="ClubID" />
+      </Principal>
+      <Dependent Role="Afiliacion">
+        <PropertyRef Name="ClubId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Afiliacion_Procesado">
+    <End Role="Procesado" Type="Self.Procesado" Multiplicity="1" />
+    <End Role="Afiliacion" Type="Self.Afiliacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Procesado">
+        <PropertyRef Name="ProcesadoId" />
+      </Principal>
+      <Dependent Role="Afiliacion">
+        <PropertyRef Name="ProcesadoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Afiliacion_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Afiliacion" Type="Self.Afiliacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioID" />
+      </Principal>
+      <Dependent Role="Afiliacion">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Afiliacion_Vouchers">
+    <End Role="Vouchers" Type="Self.Vouchers" Multiplicity="1" />
+    <End Role="Afiliacion" Type="Self.Afiliacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vouchers">
+        <PropertyRef Name="VoucherId" />
+      </Principal>
+      <Dependent Role="Afiliacion">
+        <PropertyRef Name="VoucherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Afiliado_Antiguo">
+    <End Role="Antiguo" Type="Self.Antiguo" Multiplicity="1" />
+    <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Antiguo">
+        <PropertyRef Name="AntiguoId" />
+      </Principal>
+      <Dependent Role="Afiliado">
+        <PropertyRef Name="AntiguoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Afiliado_Club">
+    <End Role="Club" Type="Self.Club" Multiplicity="1" />
+    <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Club">
+        <PropertyRef Name="ClubID" />
+      </Principal>
+      <Dependent Role="Afiliado">
+        <PropertyRef Name="ClubID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Afiliado_Estado">
+    <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+    <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="EstadoID" />
+      </Principal>
+      <Dependent Role="Afiliado">
+        <PropertyRef Name="EstadoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Afiliado_Procesado">
+    <End Role="Procesado" Type="Self.Procesado" Multiplicity="1" />
+    <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Procesado">
+        <PropertyRef Name="ProcesadoId" />
+      </Principal>
+      <Dependent Role="Afiliado">
+        <PropertyRef Name="ProcesadoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Afiliado_TipoAfiliado">
+    <End Role="TipoAfiliado" Type="Self.TipoAfiliado" Multiplicity="1" />
+    <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoAfiliado">
+        <PropertyRef Name="AfiliadoId" />
+      </Principal>
+      <Dependent Role="Afiliado">
+        <PropertyRef Name="TipoAfiliadoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CambiosDNI_Afiliado">
+    <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="1" />
+    <End Role="CambiosDNI" Type="Self.CambiosDNI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliado">
+        <PropertyRef Name="DNI" />
+      </Principal>
+      <Dependent Role="CambiosDNI">
+        <PropertyRef Name="DNI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Entrenadores_Antiguo">
+    <End Role="Antiguo" Type="Self.Antiguo" Multiplicity="1" />
+    <End Role="Entrenadores" Type="Self.Entrenadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Antiguo">
+        <PropertyRef Name="AntiguoId" />
+      </Principal>
+      <Dependent Role="Entrenadores">
+        <PropertyRef Name="AntiguoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Entrenadores_Club">
+    <End Role="Club" Type="Self.Club" Multiplicity="1" />
+    <End Role="Entrenadores" Type="Self.Entrenadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Club">
+        <PropertyRef Name="ClubID" />
+      </Principal>
+      <Dependent Role="Entrenadores">
+        <PropertyRef Name="Clubid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Entrenadores_Estado">
+    <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+    <End Role="Entrenadores" Type="Self.Entrenadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="EstadoID" />
+      </Principal>
+      <Dependent Role="Entrenadores">
+        <PropertyRef Name="EstadoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Entrenadores_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Entrenadores" Type="Self.Entrenadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioID" />
+      </Principal>
+      <Dependent Role="Entrenadores">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HistorialEntrenador_Club">
+    <End Role="Club" Type="Self.Club" Multiplicity="1" />
+    <End Role="HistorialEntrenador" Type="Self.HistorialEntrenador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Club">
+        <PropertyRef Name="ClubID" />
+      </Principal>
+      <Dependent Role="HistorialEntrenador">
+        <PropertyRef Name="ClubId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HistorialEntrenador_Entrenadores">
+    <End Role="Entrenadores" Type="Self.Entrenadores" Multiplicity="1" />
+    <End Role="HistorialEntrenador" Type="Self.HistorialEntrenador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entrenadores">
+        <PropertyRef Name="EntrenadorId" />
+      </Principal>
+      <Dependent Role="HistorialEntrenador">
+        <PropertyRef Name="EntrenadorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HistorialTraspasos_Afiliado1">
+    <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="1" />
+    <End Role="HistorialTraspasos" Type="Self.HistorialTraspasos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliado">
+        <PropertyRef Name="DNI" />
+      </Principal>
+      <Dependent Role="HistorialTraspasos">
+        <PropertyRef Name="DNI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HistorialTraspasos_Club">
+    <End Role="Club" Type="Self.Club" Multiplicity="1" />
+    <End Role="HistorialTraspasos" Type="Self.HistorialTraspasos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Club">
+        <PropertyRef Name="ClubID" />
+      </Principal>
+      <Dependent Role="HistorialTraspasos">
+        <PropertyRef Name="ClubId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HistorialTraspasos_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="HistorialTraspasos" Type="Self.HistorialTraspasos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioID" />
+      </Principal>
+      <Dependent Role="HistorialTraspasos">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Multas_Afiliado">
+    <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="1" />
+    <End Role="Multas" Type="Self.Multas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliado">
+        <PropertyRef Name="DNI" />
+      </Principal>
+      <Dependent Role="Multas">
+        <PropertyRef Name="DNI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Multas_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Multas" Type="Self.Multas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioID" />
+      </Principal>
+      <Dependent Role="Multas">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Traspasos_Club">
+    <End Role="Club" Type="Self.Club" Multiplicity="1" />
+    <End Role="Traspasos" Type="Self.Traspasos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Club">
+        <PropertyRef Name="ClubID" />
+      </Principal>
+      <Dependent Role="Traspasos">
+        <PropertyRef Name="ClubId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Traspasos_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Traspasos" Type="Self.Traspasos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioID" />
+      </Principal>
+      <Dependent Role="Traspasos">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TraspasosEnEspera_Afiliado">
+    <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="1" />
+    <End Role="TraspasosEnEspera" Type="Self.TraspasosEnEspera" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Afiliado">
+        <PropertyRef Name="DNI" />
+      </Principal>
+      <Dependent Role="TraspasosEnEspera">
+        <PropertyRef Name="DNI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TraspasosEnEspera_Club">
+    <End Role="Club" Type="Self.Club" Multiplicity="1" />
+    <End Role="TraspasosEnEspera" Type="Self.TraspasosEnEspera" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Club">
+        <PropertyRef Name="ClubID" />
+      </Principal>
+      <Dependent Role="TraspasosEnEspera">
+        <PropertyRef Name="ClubSolicitante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Club">
+    <End Role="Club" Type="Self.Club" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Club">
+        <PropertyRef Name="ClubID" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="ClubId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="RolId" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="RolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vouchers_Club">
+    <End Role="Club" Type="Self.Club" Multiplicity="1" />
+    <End Role="Vouchers" Type="Self.Vouchers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Club">
+        <PropertyRef Name="ClubID" />
+      </Principal>
+      <Dependent Role="Vouchers">
+        <PropertyRef Name="ClubId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vouchers_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Vouchers" Type="Self.Vouchers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="UsuarioID" />
+      </Principal>
+      <Dependent Role="Vouchers">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_9B1F4C_afiliacionesModelStoreContainer">
+    <EntitySet Name="Afiliacion" EntityType="Self.Afiliacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Afiliado" EntityType="Self.Afiliado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Antiguo" EntityType="Self.Antiguo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CambiosDNI" EntityType="Self.CambiosDNI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Club" EntityType="Self.Club" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Entrenadores" EntityType="Self.Entrenadores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HistorialdeAfiliaciones" EntityType="Self.HistorialdeAfiliaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HistorialEntrenador" EntityType="Self.HistorialEntrenador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HistorialTraspasos" EntityType="Self.HistorialTraspasos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Multas" EntityType="Self.Multas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Procesado" EntityType="Self.Procesado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoAfiliado" EntityType="Self.TipoAfiliado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Traspasos" EntityType="Self.Traspasos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TraspasosEnEspera" EntityType="Self.TraspasosEnEspera" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vouchers" EntityType="Self.Vouchers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Consulta" EntityType="Self.Consulta" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Consulta].[name] AS [name], 
+    [Consulta].[principal_id] AS [principal_id], 
+    [Consulta].[diagram_id] AS [diagram_id], 
+    [Consulta].[version] AS [version], 
+    [Consulta].[definition] AS [definition]
+    FROM [dbo].[Consulta] AS [Consulta]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [sysdiagrams].[name] AS [name], 
+    [sysdiagrams].[principal_id] AS [principal_id], 
+    [sysdiagrams].[diagram_id] AS [diagram_id], 
+    [sysdiagrams].[version] AS [version], 
+    [sysdiagrams].[definition] AS [definition]
+    FROM [dbo].[sysdiagrams] AS [sysdiagrams]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Afiliacion_Afiliado1" Association="Self.FK_Afiliacion_Afiliado1">
+      <End Role="Afiliado" EntitySet="Afiliado" />
+      <End Role="Afiliacion" EntitySet="Afiliacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Afiliacion_Club" Association="Self.FK_Afiliacion_Club">
+      <End Role="Club" EntitySet="Club" />
+      <End Role="Afiliacion" EntitySet="Afiliacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Afiliacion_Procesado" Association="Self.FK_Afiliacion_Procesado">
+      <End Role="Procesado" EntitySet="Procesado" />
+      <End Role="Afiliacion" EntitySet="Afiliacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Afiliacion_Usuario" Association="Self.FK_Afiliacion_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Afiliacion" EntitySet="Afiliacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Afiliacion_Vouchers" Association="Self.FK_Afiliacion_Vouchers">
+      <End Role="Vouchers" EntitySet="Vouchers" />
+      <End Role="Afiliacion" EntitySet="Afiliacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Afiliado_Antiguo" Association="Self.FK_Afiliado_Antiguo">
+      <End Role="Antiguo" EntitySet="Antiguo" />
+      <End Role="Afiliado" EntitySet="Afiliado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Afiliado_Club" Association="Self.FK_Afiliado_Club">
+      <End Role="Club" EntitySet="Club" />
+      <End Role="Afiliado" EntitySet="Afiliado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Afiliado_Estado" Association="Self.FK_Afiliado_Estado">
+      <End Role="Estado" EntitySet="Estado" />
+      <End Role="Afiliado" EntitySet="Afiliado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Afiliado_Procesado" Association="Self.FK_Afiliado_Procesado">
+      <End Role="Procesado" EntitySet="Procesado" />
+      <End Role="Afiliado" EntitySet="Afiliado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Afiliado_TipoAfiliado" Association="Self.FK_Afiliado_TipoAfiliado">
+      <End Role="TipoAfiliado" EntitySet="TipoAfiliado" />
+      <End Role="Afiliado" EntitySet="Afiliado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CambiosDNI_Afiliado" Association="Self.FK_CambiosDNI_Afiliado">
+      <End Role="Afiliado" EntitySet="Afiliado" />
+      <End Role="CambiosDNI" EntitySet="CambiosDNI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Entrenadores_Antiguo" Association="Self.FK_Entrenadores_Antiguo">
+      <End Role="Antiguo" EntitySet="Antiguo" />
+      <End Role="Entrenadores" EntitySet="Entrenadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Entrenadores_Club" Association="Self.FK_Entrenadores_Club">
+      <End Role="Club" EntitySet="Club" />
+      <End Role="Entrenadores" EntitySet="Entrenadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Entrenadores_Estado" Association="Self.FK_Entrenadores_Estado">
+      <End Role="Estado" EntitySet="Estado" />
+      <End Role="Entrenadores" EntitySet="Entrenadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Entrenadores_Usuario" Association="Self.FK_Entrenadores_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Entrenadores" EntitySet="Entrenadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HistorialEntrenador_Club" Association="Self.FK_HistorialEntrenador_Club">
+      <End Role="Club" EntitySet="Club" />
+      <End Role="HistorialEntrenador" EntitySet="HistorialEntrenador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HistorialEntrenador_Entrenadores" Association="Self.FK_HistorialEntrenador_Entrenadores">
+      <End Role="Entrenadores" EntitySet="Entrenadores" />
+      <End Role="HistorialEntrenador" EntitySet="HistorialEntrenador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HistorialTraspasos_Afiliado1" Association="Self.FK_HistorialTraspasos_Afiliado1">
+      <End Role="Afiliado" EntitySet="Afiliado" />
+      <End Role="HistorialTraspasos" EntitySet="HistorialTraspasos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HistorialTraspasos_Club" Association="Self.FK_HistorialTraspasos_Club">
+      <End Role="Club" EntitySet="Club" />
+      <End Role="HistorialTraspasos" EntitySet="HistorialTraspasos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HistorialTraspasos_Usuario" Association="Self.FK_HistorialTraspasos_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="HistorialTraspasos" EntitySet="HistorialTraspasos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Multas_Afiliado" Association="Self.FK_Multas_Afiliado">
+      <End Role="Afiliado" EntitySet="Afiliado" />
+      <End Role="Multas" EntitySet="Multas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Multas_Usuario" Association="Self.FK_Multas_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Multas" EntitySet="Multas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Traspasos_Club" Association="Self.FK_Traspasos_Club">
+      <End Role="Club" EntitySet="Club" />
+      <End Role="Traspasos" EntitySet="Traspasos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Traspasos_Usuario" Association="Self.FK_Traspasos_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Traspasos" EntitySet="Traspasos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TraspasosEnEspera_Afiliado" Association="Self.FK_TraspasosEnEspera_Afiliado">
+      <End Role="Afiliado" EntitySet="Afiliado" />
+      <End Role="TraspasosEnEspera" EntitySet="TraspasosEnEspera" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TraspasosEnEspera_Club" Association="Self.FK_TraspasosEnEspera_Club">
+      <End Role="Club" EntitySet="Club" />
+      <End Role="TraspasosEnEspera" EntitySet="TraspasosEnEspera" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Club" Association="Self.FK_Usuario_Club">
+      <End Role="Club" EntitySet="Club" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Rol" Association="Self.FK_Usuario_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vouchers_Club" Association="Self.FK_Vouchers_Club">
+      <End Role="Club" EntitySet="Club" />
+      <End Role="Vouchers" EntitySet="Vouchers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vouchers_Usuario" Association="Self.FK_Vouchers_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Vouchers" EntitySet="Vouchers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

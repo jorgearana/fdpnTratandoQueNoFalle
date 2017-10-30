@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "PluginUpload";
+    Layout = "~/Views/Shared/_LayoutWYSWYG.cshtml";
+}
+
+
+<input id="fileupload" type="file" name="files[]" data-url="/UploadFiles" multiple>
+<script src="~/Content/FileUpload/js/vendor/jquery.ui.widget.js"></script>
+<script src="~/Content/FileUpload/js/jquery.iframe-transport.js"></script>
+<script src="~/Content/FileUpload/js/jquery.fileupload.js"></script>
+<script>
+$(function () {
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo(document.body);
+            });
+        }
+    });
+});
+</script>

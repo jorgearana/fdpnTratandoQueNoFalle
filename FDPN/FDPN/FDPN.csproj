@@ -1,0 +1,775 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{78955757-CD90-4EF7-BDEA-2AAFB9BD9B94}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FDPN</RootNamespace>
+    <AssemblyName>FDPN</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0-beta1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0-beta1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MoreLinq, Version=2.8.21218.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
+      <HintPath>..\packages\morelinq.2.8.0\lib\net40\MoreLinq.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdministradorController.cs" />
+    <Compile Include="Controllers\DocumentosController.cs" />
+    <Compile Include="Controllers\FileUploadController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NosotrosController.cs" />
+    <Compile Include="Controllers\NoticiasController.cs" />
+    <Compile Include="Controllers\ResultadosController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\FilesHelper.cs" />
+    <Compile Include="Helpers\ImageHandler.cs" />
+    <Compile Include="Models\Afiliacion.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Afiliado.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Antiguo.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Athlete.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Atletas.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BASETIMES.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Calendario.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CambiosDNI.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CategoriaNoticia.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Categorias.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Club.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Comentarios.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Consulta.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Disciplina.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Encuentros.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entradas.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entrenadores.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Equipos.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Estado.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Estilos.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Eventos.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fotos.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Goleadores.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HistorialdeAfiliaciones.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HistorialEntrenador.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HistorialTraspasos.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hoja1_.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hoja2_.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Jugadores.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MarcasMinimas.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MEET.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <None Include="Models\ModeloAfiliaciones.Context.cs.NO" />
+    <Compile Include="Models\ModeloAfiliaciones.Context1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloAfiliaciones.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModeloAfiliaciones.cs" />
+    <Compile Include="Models\ModeloAfiliaciones.Designer.cs">
+      <DependentUpon>ModeloAfiliaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModeloAfiliaciones1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModeloAfiliaciones1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloAfiliaciones.edmx</DependentUpon>
+    </Compile>
+    <None Include="Models\ModeloResultados.Context.cs.NO" />
+    <Compile Include="Models\ModeloResultados.Context1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloResultados.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModeloResultados.cs" />
+    <Compile Include="Models\ModeloResultados.Designer.cs">
+      <DependentUpon>ModeloResultados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModeloResultados1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModeloResultados1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloResultados.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Multas.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MultiEdad.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Noticias.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pais.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PosicionFinal.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Procesado.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pruebas.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resultados.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RESULTS.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rol.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sesion.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Session.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SessionItem.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sessitem.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TEAM.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TipoAfiliado.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Torneo.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TorneoDestacado.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Traspasos.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TraspasosEnEspera.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Usuario.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Vivo.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Vouchers.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Administrador\BorrarViewModel.cs" />
+    <Compile Include="ViewModels\Administrador\EditarViewModel.cs" />
+    <Compile Include="ViewModels\Administrador\IndexViewModel.cs" />
+    <Compile Include="ViewModels\Administrador\IngresoDatosViewModel.cs" />
+    <Compile Include="ViewModels\Documento\BasesViewModel.cs" />
+    <Compile Include="ViewModels\Home\NadadorDestacadoViewModels.cs" />
+    <Compile Include="ViewModels\Home\previewNoticiasViewModel.cs" />
+    <Compile Include="ViewModels\Noticia\DetalleNoticiaViewModel.cs" />
+    <Compile Include="ViewModels\Resultados\CalendarioViewModel.cs" />
+    <Compile Include="ViewModels\Resultados\DetalleNadadorViewModel.cs" />
+    <Compile Include="ViewModels\Resultados\NadadoresOrdenadosViewModel.cs" />
+    <Compile Include="ViewModels\Resultados\RankingFInaViewModel.cs" />
+    <Compile Include="ViewModels\Resultados\RankingViewModel.cs" />
+    <Compile Include="ViewModels\Resultados\RendimientoDeUnaPruebaViewModel.cs" />
+    <Compile Include="ViewModels\Resultados\resultadodelnadadorenuntorneoViewModel.cs" />
+    <Compile Include="ViewModels\Resultados\ResultadoDeUnTorneoViewModel.cs" />
+    <Compile Include="ViewModels\Resultados\ResultadosDeUnaPruebaViewModel.cs" />
+    <Compile Include="ViewModels\Shared\IndexViewModels.cs" />
+    <Compile Include="Views\Administrador\FilesViewModel.cs" />
+    <Content Include="Views\Noticias\Eventos.cshtml" />
+    <Content Include="Views\Home\_PreviewEnVivo.cshtml" />
+    <Content Include="Views\Documentos\EnVivo.cshtml" />
+    <Content Include="Views\Resultados\RankingsFINA.cshtml" />
+    <Content Include="Views\Resultados\CalcularRankignFina.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Apnea.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Calendario\Calendario.css" />
+    <Content Include="Content\Calendario\Calendario.js" />
+    <Content Include="Content\FileUpload\css\blueimp-gallery.min.css" />
+    <Content Include="Content\FileUpload\css\demo-ie8.css" />
+    <Content Include="Content\FileUpload\css\demo.css" />
+    <Content Include="Content\FileUpload\css\jquery.fileupload-noscript.css" />
+    <Content Include="Content\FileUpload\css\jquery.fileupload-ui-noscript.css" />
+    <Content Include="Content\FileUpload\css\jquery.fileupload-ui.css" />
+    <Content Include="Content\FileUpload\css\jquery.fileupload.css" />
+    <Content Include="Content\FileUpload\css\style.css" />
+    <Content Include="Content\FileUpload\js\app.js" />
+    <Content Include="Content\FileUpload\js\canvas-to-blob.min.js" />
+    <Content Include="Content\FileUpload\js\cors\jquery.postmessage-transport.js" />
+    <Content Include="Content\FileUpload\js\cors\jquery.xdr-transport.js" />
+    <Content Include="Content\FileUpload\js\jquery.blueimp-gallery.min.js" />
+    <Content Include="Content\FileUpload\js\jquery.fileupload-angular.js" />
+    <Content Include="Content\FileUpload\js\jquery.fileupload-audio.js" />
+    <Content Include="Content\FileUpload\js\jquery.fileupload-image.js" />
+    <Content Include="Content\FileUpload\js\jquery.fileupload-jquery-ui.js" />
+    <Content Include="Content\FileUpload\js\jquery.fileupload-process.js" />
+    <Content Include="Content\FileUpload\js\jquery.fileupload-ui.js" />
+    <Content Include="Content\FileUpload\js\jquery.fileupload-validate.js" />
+    <Content Include="Content\FileUpload\js\jquery.fileupload-video.js" />
+    <Content Include="Content\FileUpload\js\jquery.fileupload.js" />
+    <Content Include="Content\FileUpload\js\jquery.iframe-transport.js" />
+    <Content Include="Content\FileUpload\js\load-image.all.min.js" />
+    <Content Include="Content\FileUpload\js\main.js" />
+    <Content Include="Content\FileUpload\js\tmpl.min.js" />
+    <Content Include="Content\FileUpload\js\vendor\jquery.ui.widget.js" />
+    <Content Include="Content\Fonawesome\css\font-awesome.css" />
+    <Content Include="Content\Fonawesome\css\font-awesome.min.css" />
+    <Content Include="Content\Fonawesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\grids-responsive-min.css" />
+    <Content Include="Content\img\1.JPG" />
+    <Content Include="Content\img\10.jpg" />
+    <Content Include="Content\img\11.jpg" />
+    <Content Include="Content\img\12.jpg" />
+    <Content Include="Content\img\13.jpg" />
+    <Content Include="Content\img\14.jpg" />
+    <Content Include="Content\img\15.jpg" />
+    <Content Include="Content\img\16.jpg" />
+    <Content Include="Content\img\17.jpg" />
+    <Content Include="Content\img\18.jpg" />
+    <Content Include="Content\img\2.JPG" />
+    <Content Include="Content\img\3.JPG" />
+    <Content Include="Content\img\4.JPG" />
+    <Content Include="Content\img\5.JPG" />
+    <Content Include="Content\img\6.JPG" />
+    <Content Include="Content\img\7.jpg" />
+    <Content Include="Content\img\8.jpg" />
+    <Content Include="Content\img\9.jpg" />
+    <Content Include="Content\img\covermask.png" />
+    <Content Include="Content\img\fondoconferencia.jpg" />
+    <Content Include="Content\img\fondolargo.jpg" />
+    <Content Include="Content\img\fondos\consanat.jpg" />
+    <Content Include="Content\img\fondos\Construccion.jpg" />
+    <Content Include="Content\img\fondos\directiva.jpg" />
+    <Content Include="Content\img\fondos\fdpn.jpg" />
+    <Content Include="Content\img\fondos\fina.jpg" />
+    <Content Include="Content\img\fondos\ipd-banner.jpg" />
+    <Content Include="Content\img\fondos\pattern.svg" />
+    <Content Include="Content\img\fondos\puzzlePatern.svg" />
+    <Content Include="Content\img\fondos\swoosh-negative.svg" />
+    <Content Include="Content\img\fondos\swoosh-positive.svg" />
+    <Content Include="Content\img\fondos\uana.jpg" />
+    <Content Include="Content\img\fondoTrujillo.jpg" />
+    <Content Include="Content\img\Fotos\0001723x102449.jpg" />
+    <Content Include="Content\img\Fotos\210.jpg" />
+    <Content Include="Content\img\Fotos\carnet50.jpg" />
+    <Content Include="Content\img\Fotos\FOTODIRECTIVA33.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\0001723x10244980x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\21080x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\carnet5080x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\FOTODIRECTIVA3380x80.jpg" />
+    <Content Include="Content\img\Imgsmall\aguas.jpg" />
+    <Content Include="Content\img\Imgsmall\clavados.jpg" />
+    <Content Include="Content\img\Imgsmall\facebook_logos_PNG19761.png" />
+    <Content Include="Content\img\Imgsmall\fdpn.ico" />
+    <Content Include="Content\img\Imgsmall\ico_fdpn.jpg" />
+    <Content Include="Content\img\Imgsmall\master.jpg" />
+    <Content Include="Content\img\Imgsmall\natacion.jpg" />
+    <Content Include="Content\img\Imgsmall\sincro.jpg" />
+    <Content Include="Content\img\Imgsmall\SinFoto.jpg" />
+    <Content Include="Content\img\Imgsmall\social-facebook.svg" />
+    <Content Include="Content\img\Imgsmall\wp.jpg" />
+    <Content Include="Content\img\Logo_fdpn.png" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\pdf\Estatuto-FDPN.html" />
+    <Content Include="Content\Summernote\lang\summernote-ar-AR.js" />
+    <Content Include="Content\Summernote\lang\summernote-bg-BG.js" />
+    <Content Include="Content\Summernote\lang\summernote-ca-ES.js" />
+    <Content Include="Content\Summernote\lang\summernote-cs-CZ.js" />
+    <Content Include="Content\Summernote\lang\summernote-da-DK.js" />
+    <Content Include="Content\Summernote\lang\summernote-de-DE.js" />
+    <Content Include="Content\Summernote\lang\summernote-el-GR.js" />
+    <Content Include="Content\Summernote\lang\summernote-es-ES.js" />
+    <Content Include="Content\Summernote\lang\summernote-es-EU.js" />
+    <Content Include="Content\Summernote\lang\summernote-fa-IR.js" />
+    <Content Include="Content\Summernote\lang\summernote-fi-FI.js" />
+    <Content Include="Content\Summernote\lang\summernote-fr-FR.js" />
+    <Content Include="Content\Summernote\lang\summernote-gl-ES.js" />
+    <Content Include="Content\Summernote\lang\summernote-he-IL.js" />
+    <Content Include="Content\Summernote\lang\summernote-hr-HR.js" />
+    <Content Include="Content\Summernote\lang\summernote-hu-HU.js" />
+    <Content Include="Content\Summernote\lang\summernote-id-ID.js" />
+    <Content Include="Content\Summernote\lang\summernote-it-IT.js" />
+    <Content Include="Content\Summernote\lang\summernote-ja-JP.js" />
+    <Content Include="Content\Summernote\lang\summernote-ko-KR.js" />
+    <Content Include="Content\Summernote\lang\summernote-lt-LT.js" />
+    <Content Include="Content\Summernote\lang\summernote-lt-LV.js" />
+    <Content Include="Content\Summernote\lang\summernote-mn-MN.js" />
+    <Content Include="Content\Summernote\lang\summernote-nb-NO.js" />
+    <Content Include="Content\Summernote\lang\summernote-nl-NL.js" />
+    <Content Include="Content\Summernote\lang\summernote-pl-PL.js" />
+    <Content Include="Content\Summernote\lang\summernote-pt-BR.js" />
+    <Content Include="Content\Summernote\lang\summernote-pt-PT.js" />
+    <Content Include="Content\Summernote\lang\summernote-ro-RO.js" />
+    <Content Include="Content\Summernote\lang\summernote-ru-RU.js" />
+    <Content Include="Content\Summernote\lang\summernote-sk-SK.js" />
+    <Content Include="Content\Summernote\lang\summernote-sl-SI.js" />
+    <Content Include="Content\Summernote\lang\summernote-sr-RS-Latin.js" />
+    <Content Include="Content\Summernote\lang\summernote-sr-RS.js" />
+    <Content Include="Content\Summernote\lang\summernote-sv-SE.js" />
+    <Content Include="Content\Summernote\lang\summernote-ta-IN.js" />
+    <Content Include="Content\Summernote\lang\summernote-th-TH.js" />
+    <Content Include="Content\Summernote\lang\summernote-tr-TR.js" />
+    <Content Include="Content\Summernote\lang\summernote-uk-UA.js" />
+    <Content Include="Content\Summernote\lang\summernote-vi-VN.js" />
+    <Content Include="Content\Summernote\lang\summernote-zh-CN.js" />
+    <Content Include="Content\Summernote\lang\summernote-zh-TW.js" />
+    <Content Include="Content\Summernote\plugin\databasic\summernote-ext-databasic.css" />
+    <Content Include="Content\Summernote\plugin\databasic\summernote-ext-databasic.js" />
+    <Content Include="Content\Summernote\plugin\hello\summernote-ext-hello.js" />
+    <Content Include="Content\Summernote\plugin\specialchars\summernote-ext-specialchars.js" />
+    <Content Include="Content\Summernote\summernote-bs4.css" />
+    <Content Include="Content\Summernote\summernote-bs4.js" />
+    <Content Include="Content\Summernote\summernote-bs4.min.js" />
+    <Content Include="Content\Summernote\summernote-lite.css" />
+    <Content Include="Content\Summernote\summernote-lite.js" />
+    <Content Include="Content\Summernote\summernote.css" />
+    <Content Include="Content\Summernote\summernote.js" />
+    <Content Include="Content\Summernote\summernote.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Files\somefiles\descarga %286%29.jpeg" />
+    <Content Include="Files\somefiles\images %2810%29.jpeg" />
+    <Content Include="Files\somefiles\images %2811%29.jpeg" />
+    <Content Include="Files\somefiles\modo.png" />
+    <Content Include="Files\somefiles\p1.jpeg" />
+    <Content Include="Files\somefiles\p2.jpeg" />
+    <Content Include="Files\somefiles\So+just+survive+_024ddc024331630b321bedb947971d0b.gif" />
+    <Content Include="Files\somefiles\thumbs\280x80.jpg" />
+    <Content Include="Files\somefiles\thumbs\descarga %285%2980x80.jpg" />
+    <Content Include="Files\somefiles\thumbs\descarga %286%2980x80.jpg" />
+    <Content Include="Files\somefiles\thumbs\images %2810%2980x80.jpg" />
+    <Content Include="Files\somefiles\thumbs\images %2811%2980x80.jpg" />
+    <Content Include="Files\somefiles\thumbs\images %288%2980x80.jpg" />
+    <Content Include="Files\somefiles\thumbs\modo80x80.jpg" />
+    <Content Include="Files\somefiles\thumbs\p180x80.jpg" />
+    <Content Include="Files\somefiles\thumbs\p280x80.jpg" />
+    <Content Include="Files\somefiles\thumbs\unnamed80x80.jpg" />
+    <Content Include="Files\somefiles\thumbs\WhatsApp Image 2017-09-30 at 5.02.26 PM80x80.jpg" />
+    <Content Include="Files\somefiles\thumbs\WhatsApp Image 2017-09-30 at 5.02.58 PM80x80.jpg" />
+    <Content Include="Files\somefiles\thumbs\WhatsApp Image 2017-10-01 at 8.07.56 PM80x80.jpg" />
+    <Content Include="Files\somefiles\unnamed.jpg" />
+    <Content Include="Files\somefiles\WhatsApp Image 2017-09-30 at 5.02.26 PM.jpeg" />
+    <Content Include="Files\somefiles\WhatsApp Image 2017-09-30 at 5.02.58 PM.jpeg" />
+    <Content Include="Files\somefiles\WhatsApp Image 2017-10-01 at 8.07.56 PM.jpeg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Models\ModeloAfiliaciones.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModeloAfiliaciones.Context1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModeloAfiliaciones.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModeloAfiliaciones1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModeloResultados.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModeloResultados.Context1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModeloResultados.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModeloResultados1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\somefiles\Bases Selectivo Bolivarianos Copa Pacífico 2017-Aguas Abiertas.pdf" />
+    <Content Include="Files\somefiles\Criterios de Seleccion Bolivarianos%252c Copa Pacífico 2017-Aguas Abiertas.pdf" />
+    <Content Include="Files\somefiles\FINA Scholarships for Athletes - Guidelines - 2017-18.pdf" />
+    <Content Include="Files\somefiles\ING ARANA CORDINADOR GENERAL.docx" />
+    <Content Include="Files\somefiles\LIC. LILIANA.docx" />
+    <Content Include="Content\Fonawesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Fonawesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Fonawesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Fonawesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Fonawesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\pdf\Estatuto FDPN.pdf" />
+    <Content Include="Content\Summernote\font\summernote.eot" />
+    <Content Include="Content\Summernote\font\summernote.ttf" />
+    <Content Include="Content\Summernote\font\summernote.woff" />
+    <EntityDeploy Include="Models\ModeloAfiliaciones.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModeloAfiliaciones1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModeloAfiliaciones.edmx.diagram">
+      <DependentUpon>ModeloAfiliaciones.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\ModeloResultados.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModeloResultados1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModeloResultados.edmx.diagram">
+      <DependentUpon>ModeloResultados.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery37.js" />
+    <Content Include="Scripts\js-IndexPartialLoad.js" />
+    <Content Include="Scripts\Menu.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\noticaSummerNote.js" />
+    <Content Include="Scripts\PublicPages.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\script-custom-editor.js" />
+    <Content Include="Scripts\Sitio.js" />
+    <Content Include="Scripts\sni0wes.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Administrador\Borrar.cshtml" />
+    <Content Include="Views\Administrador\Editar.cshtml" />
+    <Content Include="Views\Administrador\index.cshtml" />
+    <Content Include="Views\Administrador\IngresoDatos.cshtml" />
+    <Content Include="Views\Administrador\PluginUpload.cshtml" />
+    <Content Include="Views\Administrador\Show.cshtml" />
+    <Content Include="Views\Administrador\_Files.cshtml" />
+    <Content Include="Views\Administrador\_PluginUpload.cshtml" />
+    <Content Include="Views\Administrador\_SubirFotos.cshtml" />
+    <Content Include="Views\Documentos\Bases.cshtml" />
+    <Content Include="Views\Documentos\Comunicados.cshtml" />
+    <Content Include="Views\Documentos\Documentos.cshtml" />
+    <Content Include="Views\Documentos\Normas.cshtml" />
+    <Content Include="Views\Documentos\Records.cshtml" />
+    <Content Include="Views\Documentos\Reglamentos.cshtml" />
+    <Content Include="Views\Documentos\Subvenciones.cshtml" />
+    <Content Include="Views\Documentos\todos.cshtml" />
+    <Content Include="Views\Nosotros\consanat.cshtml" />
+    <Content Include="Views\Nosotros\directorio.cshtml" />
+    <Content Include="Views\Nosotros\estatuto.cshtml" />
+    <Content Include="Views\Nosotros\fdpn.cshtml" />
+    <Content Include="Views\Nosotros\fina.cshtml" />
+    <Content Include="Views\Nosotros\ipd.cshtml" />
+    <Content Include="Views\Nosotros\nume.cshtml" />
+    <Content Include="Views\Nosotros\reglamentos.cshtml" />
+    <Content Include="Views\Nosotros\subvenciones.cshtml" />
+    <Content Include="Views\Nosotros\uana.cshtml" />
+    <Content Include="Views\Noticias\Noticia.cshtml" />
+    <Content Include="Views\Noticias\Noticias.cshtml" />
+    <Content Include="Views\Resultados\Borrar.cshtml" />
+    <Content Include="Views\Resultados\Calendarios.cshtml" />
+    <Content Include="Views\Resultados\Nadador.cshtml" />
+    <Content Include="Views\Resultados\Nadadores.cshtml" />
+    <Content Include="Views\Resultados\Rankings.cshtml" />
+    <Content Include="Views\Resultados\RendimientoDelNadadorEnUnaPrueba.cshtml" />
+    <Content Include="Views\Resultados\ResultadoDelNadadorEnUnTorneo.cshtml" />
+    <Content Include="Views\Resultados\ResultadoPorClubes.cshtml" />
+    <Content Include="Views\Resultados\ResultadoPorPruebas.cshtml" />
+    <Content Include="Views\Resultados\Resultados.cshtml" />
+    <Content Include="Views\Resultados\ResultadosDeUnTorneo.cshtml" />
+    <Content Include="Views\Home\construccion.cshtml" />
+    <Content Include="Views\Home\_indexranking.cshtml" />
+    <Content Include="Views\Home\_nadadordestacado.cshtml" />
+    <Content Include="Views\Home\_PreviewCalendario.cshtml" />
+    <Content Include="Views\Home\_PreviewComunicados.cshtml" />
+    <Content Include="Views\Home\_PreviewEventos.cshtml" />
+    <Content Include="Views\Home\_PreviewNoticias.cshtml" />
+    <Content Include="Views\Home\_TopBar.cshtml" />
+    <Content Include="Views\Shared\_footer.cshtml" />
+    <Content Include="Views\Shared\_LayoutAnimo.cshtml" />
+    <Content Include="Views\Shared\_LayoutDocumentos.cshtml" />
+    <Content Include="Views\Shared\_LayoutNosotros.cshtml" />
+    <Content Include="Views\Shared\_LayoutPrensa.cshtml" />
+    <Content Include="Views\Shared\_LayoutRankings.cshtml" />
+    <Content Include="Views\Shared\_LayoutResultados.cshtml" />
+    <Content Include="Views\Shared\_LayoutWYSWYG.cshtml" />
+    <Content Include="Views\Shared\_menu.cshtml" />
+    <Content Include="Views\Shared\_tablaResultados.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\Uploads\" />
+    <Folder Include="Models\Metadata\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55334</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:55334/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

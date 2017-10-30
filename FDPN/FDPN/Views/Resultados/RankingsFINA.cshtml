@@ -1,0 +1,79 @@
+﻿@model FDPN.ViewModels.Resultados.RankingFInaViewModel
+
+@{
+    ViewBag.Title = "Rankings por puntos FINA";
+
+}
+
+    <section>
+        <div class="wrapper site-homepage__pushup">
+            <header class="site-homepage__section__header">
+                <h2 class="site-title site-title--ultra site-title--ultra--primary">Rankings por puntos FINA</h2>
+                <code>* Tiempos registrados desde el año 2000 en adelante</code>
+            </header>
+        </div>
+    </section>
+
+
+@*@using (Html.BeginForm("Rankings", "Resultados", FormMethod.Post))
+{*@
+<div class="">
+    <div class="">
+        <div class="pure-g">
+            <div class="pure-u-lg-1-2">
+                <div class="">
+                    <h3 class="control-label pure-u-lg-2-3 btn--ghost">Distancia</h3>
+                    <div class="pure-u-lg-1-4">
+                        @Html.DropDownListFor(model => model.periodoid, new SelectList(Model.periodo, Model.periodo.Keys, Model.periodo.Values), "Escoja el periodo", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+                    </div>
+                </div>
+                <div class="espaciado"></div>
+                <div class="">
+                    <h3 class="control-label pure-u-lg-2-3 btn--ghost">Edad mínima</h3>
+                    <div class="pure-u-lg-1-4">
+                        @Html.DropDownListFor(model => model.edadminima, new SelectList(Model.edadesminimas), "Escoja la edad inicial", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+                    </div>
+                </div>
+                <div class="espaciado"></div>
+                <div class="">
+                    <h3 class="control-label pure-u-lg-2-3 btn--ghost">Edad máxima</h3>
+                    <div class="pure-u-lg-1-4">
+                        @Html.DropDownListFor(model => model.edadmaxima, new SelectList(Model.edadesmaximas), "Escoja la edad final", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+                    </div>
+                </div>
+                <div class="espaciado"></div>
+
+                <center>
+                    <input id="buscarRankingFINA" type="submit" class="btn btn--primary btn--lrg u-rounded" value="Ver ranking">
+                </center>
+
+
+            </div>
+            <div class="pure-u-lg-1-2">
+                @*Torneos*@
+                <table class="tablaNormal example"  id="tablaDeshabilitada" style="visibility:hidden">
+                    <tbody>
+                        @foreach (var item in Model.torneos)
+                        {
+                            <tr>
+                                <td>@item.MName</td>
+                                <td>
+                                    @item.Start.ToString("dd/MMM/yyyy")
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+           
+        </div>  
+      
+       
+    </div>
+</div>
+
+@*}*@
+
+<div id="rankingPuntoFINA">
+
+</div>

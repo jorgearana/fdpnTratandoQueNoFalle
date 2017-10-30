@@ -1,0 +1,66 @@
+﻿@model FDPN.ViewModels.Resultados.ResultadoDeUnTorneoViewModel
+@{
+    ViewBag.Title = "Resultados De Un Torneo";
+}
+<section class="site-homepage__section site-athletedetails">
+    <div class="wrapper site-homepage__pushup">
+        <header class="site-homepage__section__header">
+
+            <h2 class="site-title site-title--ultra site-title--ultra--primary">Resultados del torneo</h2>
+            <h2 class="site-title">@Model.resultado[0].MEET1.MName</h2>
+          
+        </header>
+        <div class="site-homepage__section site-aboutwidget u-bg--poolpeople u-bg--blueoverlay">
+            <div class="is-ontop u-animation--fadeInSection">
+
+                <section class="site-aboutwidget__about">
+                    <header class="site-homepage__section__header">
+                        <h2 class="site-title site-title--basic site-title--basic--negative u-spc-bottom--med">Clubes participantes</h2>
+                        <p class="u-type--medium u-type--delta u-type--negative">Ver el resultado de los deportistas de un club</p>
+                    </header>
+                    <footer class="site-homepage__section__footer">
+                        @using (Html.BeginForm("ResultadoPorClubes", "Resultados", FormMethod.Post))
+                        {
+                        @Html.HiddenFor(model => model.meetid)
+                        @Html.DropDownListFor(model => model.clubid, new SelectList(Model.EquiposParticipantes, "TeamId", "TName"), "Seleccione un club", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+                        <div class="espaciado"></div>
+                        <div class="u-type--center">
+                            <input type="submit" value="Ver resultados" name="subscribe" class="btn btn--negative btn--lrg u-rounded">
+                        </div>
+                        }
+
+                    </footer>
+                </section>
+
+
+                <section class="site-aboutwidget__newsletter">
+                    <header class="site-homepage__section__header">
+                        <h2 class="site-title site-title--basic site-title--basic--negative u-spc-bottom--med">Pruebas en el torneo</h2>
+                        <p class="u-type--medium u-type--delta u-type--negative">Ver el resultado de una prueba de este torneo</p>
+                    </header>
+                    <!-- Begin MailChimp Signup Form -->
+                    <footer class="site-homepage__section__footer">
+
+                        @using (Html.BeginForm("ResultadoPorPruebas", "Resultados", FormMethod.Post))
+                        {
+                        @Html.HiddenFor(model => model.meetid)
+                        @Html.DropDownListFor(model => model.pruebaid, new SelectList(Model.pruebas, "Key", "Value.NombrePrueba"), "Escoja una prueba", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+                        <div class="espaciado"></div>
+                        <div class="u-type--center">
+                            <input type="submit" value="Ver resultados" name="subscribe" class="btn btn--negative btn--lrg u-rounded">
+                        </div>
+                        }
+
+                    </footer>
+                </section>
+                <header class="site-homepage__section__header">
+                    <h6 class="u-type--medium u-type--delta u-spc-bottom--med">    </h6>
+                    buscar otro torneo
+                    @Html.TextBox("searchString", null, new { @class = " input input--text input--med input--med--padded" })
+                    <input type="submit" value="Buscar" class="btn btn--primary btn--lrg u-rounded" />
+                </header>
+            </div>
+        </div>
+    </div>
+
+</section>

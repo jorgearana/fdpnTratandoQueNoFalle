@@ -1,0 +1,66 @@
+﻿@model FDPN.ViewModels.Documento.BasesViewModel
+
+@{
+    ViewBag.Title = "subvenciones";
+    //Layout = "~/Views/Shared/_LayoutDocumentos.cshtml";
+    string path = Url.Content("../Content/img/Fotos/");
+}
+
+<section class="site-contentpage site-homepage__pushup">
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        <header class="site-homepage__section__header">
+            <h2 class="site-title site-title--ultra site-title--ultra--primary">Bases de torneos</h2>
+            @Html.DropDownListFor(model => model.disciplinaid, new SelectList(Model.disciplinas, "disciplinaid", "tipodisciplina"), "Filtre por disciplina", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+            <div class="espaciado"></div>
+            <input type="submit" value="Buscar" class="btn btn--primary btn--lrg u-rounded" />
+        </header>
+    }
+   
+    <br />
+    <h2 class="u-type--delta u-type--upper u-spc-bottom--sml"><strong> Listado de bases de torneos</strong></h2>
+
+
+    <p class="u-type--gamma">
+
+        <table class="tablaNormal">
+            <thead>
+                <tr>
+                    <th>
+                        Descipción
+                    </th>
+                    <th>
+                        Disciplina
+                    </th>
+                    <th>
+                        Documento
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.fotos)
+                {
+                    <tr>
+                        <td>
+
+                            @item.Noticias.Titulo
+                        </td>
+                        <td>
+
+                            @item.Noticias.Disciplina.TipoDisciplina
+                        </td>
+                        <td>
+                            <a href=@Url.Action(path + item.Nombrefoto) target="_blank">
+                                <i class="fa fa-download" aria-hidden="true"></i> Descargar
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </p>
+
+    <div class="espaciado"></div>
+
+
+</section>
