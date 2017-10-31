@@ -819,3 +819,7 @@ aside {
 [tooltip]:hover::after, [tooltip]:hover::before {
     opacity: 1
 }
+
+.selected {
+    background-color: #a2aec7;
+}

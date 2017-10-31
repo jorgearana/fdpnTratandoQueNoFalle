@@ -19,25 +19,25 @@
 {*@
 <div class="">
     <div class="">
-        <div class="pure-g">
-            <div class="pure-u-lg-1-2">
+        <div class="">
+            <div class="pure-u-lg-5-12">
                 <div class="">
-                    <h3 class="control-label pure-u-lg-2-3 btn--ghost">Distancia</h3>
-                    <div class="pure-u-lg-1-4">
-                        @Html.DropDownListFor(model => model.periodoid, new SelectList(Model.periodo, Model.periodo.Keys, Model.periodo.Values), "Escoja el periodo", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+                    <h3 class="control-label pure-u-lg-11-24 btn--ghost">Periodo a buscar</h3>
+                    <div class="pure-u-lg-11-24">
+                        @Html.DropDownListFor(model => model.periodoid, new SelectList(Model.periodo, "Key", "Value"), "Escoja el periodo", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
                     </div>
                 </div>
                 <div class="espaciado"></div>
                 <div class="">
-                    <h3 class="control-label pure-u-lg-2-3 btn--ghost">Edad mínima</h3>
-                    <div class="pure-u-lg-1-4">
+                    <h3 class="control-label pure-u-lg-11-24 btn--ghost">Edad mínima</h3>
+                    <div class="pure-u-lg-11-24">
                         @Html.DropDownListFor(model => model.edadminima, new SelectList(Model.edadesminimas), "Escoja la edad inicial", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
                     </div>
                 </div>
                 <div class="espaciado"></div>
                 <div class="">
-                    <h3 class="control-label pure-u-lg-2-3 btn--ghost">Edad máxima</h3>
-                    <div class="pure-u-lg-1-4">
+                    <h3 class="control-label pure-u-lg-11-24 btn--ghost">Edad máxima</h3>
+                    <div class="pure-u-lg-11-24">
                         @Html.DropDownListFor(model => model.edadmaxima, new SelectList(Model.edadesmaximas), "Escoja la edad final", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
                     </div>
                 </div>
@@ -47,15 +47,23 @@
                     <input id="buscarRankingFINA" type="submit" class="btn btn--primary btn--lrg u-rounded" value="Ver ranking">
                 </center>
 
-
+               
             </div>
-            <div class="pure-u-lg-1-2">
+            <div class="pure-u-lg-5-12" id="tablaDeshabilitada">
                 @*Torneos*@
-                <table class="tablaNormal example"  id="tablaDeshabilitada" style="visibility:hidden">
+                <table class="tablaNormal example datatabla" >
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Torneo</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         @foreach (var item in Model.torneos)
                         {
                             <tr>
+                                <td>@item.MeetId</td>
                                 <td>@item.MName</td>
                                 <td>
                                     @item.Start.ToString("dd/MMM/yyyy")
@@ -70,10 +78,11 @@
       
        
     </div>
+    <div class="espaciadogrande"></div>
+    <div id="rankingPuntoFINA">
+
+    </div>
 </div>
 
 @*}*@
 
-<div id="rankingPuntoFINA">
-
-</div>

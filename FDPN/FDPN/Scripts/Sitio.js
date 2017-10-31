@@ -15,15 +15,83 @@
             $("container").css({ "margin-top": 0 });
         }
     });
+    $(document).ready(function () {
+        $('.datatabla').DataTable({
+            "order": [[0, "desc"]],
+            "pageLength": 20
+        });
+    });
+   
 
-    var tabla = $('#tablaDeshabilitada');
-   tabla.attr('disabled', 'disabled');
+
+
 });
 
-$('#example tbody').on('click', 'tr', function () {
+$('#tablaDeshabilitada tbody').on('click', 'tr', function () {
     $(this).toggleClass('selected');
 });
+    
 
-$("#buscarRankingFINA").on("click", function () {
 
+
+$("#periodoid")
+    .change(function () {
+        var valordrop = $("#periodoid").val();
+        
+        var tabla = $('#tablaDeshabilitada');
+        if (valordrop === "3")
+        {           
+            tabla.css('visibility', 'visible');
+        }
+        else {
+            tabla.css('visibility', 'hidden');
+        }
+
+    })
+    .change();
+
+$('#buscarRankingFINA').on('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    var table = $('#tablaDeshabilitada');
+    //var selectedRows = table.rows('.selected').data();
+    var filas = $(".selected");
+    var selectedRows = filas.data();
+    if (filas.length > 0) {
+        // build array of records
+        var arrayRecords = [];
+        
+
+        SLen = filas.length;
+        for (i = 0; i < SLen; i++) {
+            var celda = filas[i].cells[0].innerHTML;
+            Ids.push(celda);
+            var nada = "nada";
+        }
+       
+        
+    }
+    if (filas.length = 0) {
+        var Ids = new Array();
+        Ids.push(0);
+    }
+    var periodoid = $("#periodoid").val();
+    var edadminima = $("#edadminima").val();
+    var edadmaxima = $("#edadmaxima").val();
+
+    $.ajax({
+        url: '/Resultados/CalcularRankignFina',
+        type: 'POST',
+        //dataType: 'JsonSendAfiliar',
+        data: { torneosid: Ids, periodoid: periodoid, edadminima, edadmaxima },
+        async: false,
+        success: function (result) {
+            $('#rankingPuntoFINA').html(result);
+        },
+
+    });
 });
+
+
+

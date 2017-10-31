@@ -351,10 +351,14 @@ namespace FDPN.Controllers
         }
 
 
-        public ActionResult CalcularRankignFina( int[] torneosid, int periodoid )
+        public ActionResult CalcularRankignFina( int[] torneosid, int periodoid, int? edadminima, int? edadmaxima )
         {
             DateTime haceunanno = DateTime.Now.AddYears(-1).AddDays(-15);
-            var Query = db.RESULTS.AsQueryable();
+            
+
+            int minima = edadminima ?? 0;
+            int maxima = edadmaxima ?? 109;
+            var Query = db.RESULTS.Where(x => x.AGE >= minima && x.AGE <= maxima && x.Athlete1 != null && x.PLACE!=0).AsQueryable();
 
             switch (periodoid)
             {
@@ -368,16 +372,11 @@ namespace FDPN.Controllers
 
                     break;
                 case 3:
-
-                    var queryconcat = db.RESULTS.AsQueryable();
-                    for (int i = 0; i < torneosid.Length; i++)
-                    {
-                        Query = Query.Concat(queryconcat.Where(x => x.MeetId == torneosid[i]).AsQueryable());
-                    }
-                    
+            
+                    Query = Query.Where(x => torneosid.Contains(x.MeetId ?? 0));
                     break;
             }
-            List<RESULTS> resultados = Query.OrderByDescending(x => x.PFina).ToList();
+            List<RESULTS> resultados = Query.OrderByDescending(x => x.PFina).Take(200).ToList();
             return PartialView(resultados);
 
         }
