@@ -10,7 +10,7 @@ namespace FDPN.ViewModels.Resultados
     {
         public List<TEAM> EquiposParticipantes { get; set; }
         public List<RESULTS> resultado { get; set; }
-        public Dictionary<string, DiccionarioPruebas> pruebas { get; set; }
+        public  Dictionary<float, DiccionarioPruebas> pruebas { get; set; }
         public int meetid { get; set; }
         public int clubid { get; set; }
         public string pruebaid { get; set; }
@@ -22,7 +22,7 @@ namespace FDPN.ViewModels.Resultados
 
     public class DiccionarioPruebas
     {
-        public string MeetEvent { get; set; }
+        public float MeetEvent { get; set; }
         public string NombrePrueba { get; set; }
     }
 }

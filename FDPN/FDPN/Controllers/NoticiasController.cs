@@ -29,7 +29,7 @@ namespace FDPN.Controllers
                                        || s.Palabrasclaves.Contains(searchString)
                                         || s.Larga.Contains(searchString));
             }
-            var noticias = query.OrderByDescending(x => x.Fecha).ThenByDescending(x=>x.NoticiaId).ToList();
+            var noticias = query.OrderByDescending(x => x.Fecha).ThenByDescending(x=>x.NoticiaId).Take(24).ToList();
           
             foreach (Noticias noticia in noticias)
             {

@@ -11,7 +11,8 @@ body {
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
-    display: block
+    display: block;
+    z-index: 2;
 }
 
 audio, canvas, progress, video {
@@ -256,7 +257,7 @@ h4, h5, h6 {
         font-size: 34px
     }
 
-    h4, h5, h6 {
+    h4, h5 {
         font-size: 26px;
         line-height: 30px
     }
@@ -1077,7 +1078,7 @@ table th {
 
 .formatted dl, .formatted ol, .formatted ul {
     list-style: inherit;
-    list-style-position: inside
+    list-style-position: outside;
 }
 
 .formatted p {
@@ -1289,7 +1290,7 @@ table th {
 .site-header {
     position: relative;
     overflow: hidden;
-    padding-top: 54px
+    /*padding-top: 54px*/
 }
 
 @media(min-width:48em) {
@@ -1345,7 +1346,7 @@ table th {
 @media(max-width:47.9375em) {
     .site-header {
         background: url('img/10.jpg') no-repeat;
-        max-height: 260px
+        max-height: 360px;
     }
 }
 
@@ -1377,8 +1378,8 @@ table th {
 .site-header__branding {
     position: absolute;
     z-index: 1;
-    top: 24px;
-    left: 30%;
+    top: 60px;
+    left: 50%;
     transform: translateX(-50%)
 }
 

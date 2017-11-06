@@ -13,14 +13,21 @@
     {
         <div class="BannerDelgadoFoto">
             <center>
-                <div class="pure-g cardsubtitulo-blanca">
-                    <div class="pure-u-1 pure-u-md-1" style="text-align:center;"><p class="formatted__hugephoto__title TextoBannerDelgado">NOTICIAS</p></div>
+                <div class="row cardsubtitulo-blanca">
+                    <div class="col-lg-12" style="text-align:center;"><p class="formatted__hugephoto__title TextoBannerDelgado">NOTICIAS</p></div>
                 </div>
-                <div class="pure-g cardsubtitulo-blanca">
-                    <div class="pure-u-md-1-6"></div>
-                    <div class="pure-u-md-1-6"><p class="">Buscar</p></div>
-                    <div class="pure-u-md-1-3">@Html.TextBox("searchString", null, new { @class = "input input--text input--sml input--sml--padded" })</div>
-                    <div class="pure-u-md-1-6"> <input type="submit" value="Buscar" class="btn btn--negative btn--sml u-rounded" /> </div>
+                <div class="container cardsubtitulo-blanca">
+                    <div class="row">
+                        <div class="col-lg-2 col-lg-offset-2">
+                            Buscar
+                        </div>
+                        <div class="col-lg-4">
+                            @Html.TextBox("searchString", null, new { @class = "input input--text input--sml input--sml--padded" })
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="submit" value="Buscar" class="btn btn--negative btn--sml u-rounded" />
+                        </div>
+                    </div>
                     <div class="espaciado"></div>
                 </div>
             </center>
@@ -32,10 +39,10 @@
     <div class="wrapper site-athleteswidget">
         @if (Model.Count() > 0)
         {
-            <div class="pure-g">
+            <div class="row">
                 @foreach (var item in Model)
                 {
-                    <div class="pure-u-lg-7-24 pure-u-md-10-24 pure-u-sm-1 marco">
+                    <div class="col-lg-4 col-md-6 col-sm-12 marco">
                         <div class="card">
                             <a href=@Url.Action("noticia", "noticias", new { @id= item.noticia.NoticiaId})>
                                 <div class="site-news__visual u-animation--fadeInSection" data-wow-duration="700ms" data-wow-delay="100ms">
@@ -68,7 +75,7 @@
                 }
                 else
                 {
-                <div class="card pure-u-sm-1 marco">
+                <div class="card col-sm-12 marco">
                     <div class="site-news__visual u-animation--fadeInSection" data-wow-duration="700ms" data-wow-delay="100ms">
                         <h3 class="cardsubtitulo">No hemos encontrado resultados</h3>
                     </div>

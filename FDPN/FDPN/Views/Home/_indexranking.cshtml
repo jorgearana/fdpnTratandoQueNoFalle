@@ -1,6 +1,6 @@
 ﻿@model List<FDPN.Models.RESULTS >
 
-<div class="is-ontop">
+<div class="is-ontop u-animation--fadeInSection u-animation--fadeInWithMove">
     <header class="site-homepage__section__header">
         <h2 class="site-title site-title--ultra site-title--ultra--negative">TOP&nbsp;10</h2>
     </header>
@@ -23,7 +23,7 @@
                         <th>#</th>
                         <th>Nombre</th>
                         <th>Tiempo</th>
-                        <th>Puntos FINA</th>
+                        <th>Fecha</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,6 +46,8 @@
     <footer class="site-homepage__section__footer">
         @Html.ActionLink("Ver ranking", "Rankings", "Resultados", null, new { @class= "btn btn--negative btn--lrg u-rounded" })
     </footer>
-    <CODE>* Se consideran los tiempos registrados a partir del año 2000</CODE>
+    <center>
+        <h6>* Se consideran los tiempos registrados a partir del año 2000</h6>
+    </center>
 </div>
 

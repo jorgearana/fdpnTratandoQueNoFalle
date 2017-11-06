@@ -51,10 +51,10 @@
                          <thead>
                              <tr>
                                  <th>Prueba</th>
-                                 <th>Piscina larga</th>
-                                 <th>Piscina corta</th>
-                                 <th>Últimos doce meses en larga</th>
-                                 <th>Últimos doce meses en corta</th>
+                                 <th >Piscina larga</th>
+                                 <th >Piscina corta</th>
+                                 <th >Últimos doce meses en larga</th>
+                                 <th >Últimos doce meses en corta</th>
 
                              </tr>
                          </thead>
@@ -62,11 +62,37 @@
                              @foreach (var item in Model.Mejorestiempos)
                                 {
                              <tr>
-                                 <td tooltip="Vea los resultados de esta prueba" tooltip-position="right">@Html.ActionLink(@item.Key.distancia.ToString() + " " + @item.Key.estilo.ToString(), "RendimientoDelNadadorEnUnaPrueba", "Resultados", new { athleteid = Model.nadador.AthleteId, pruebaid = item.Key.PruebaId }, null)</td>
-                                 <td tooltip="Vea donde hizo esta marca" tooltip-position="right">@Html.ActionLink(@item.Value.Mejortiempolarga.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.Mejortiempolarga.MeetId, athleteid = item.Value.Mejortiempolarga.AthleteId }, null) </td>
-                                 <td tooltip="Vea donde hizo esta marca" tooltip-position="right">@Html.ActionLink(@item.Value.Mejortiempocorta.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.Mejortiempocorta.MeetId, athleteid = item.Value.Mejortiempocorta.AthleteId }, null) </td>
-                                 <td tooltip="Vea donde hizo esta marca" tooltip-position="right">@Html.ActionLink(@item.Value.Ultimoannolarga.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.Ultimoannolarga.MeetId, athleteid = item.Value.Ultimoannolarga.AthleteId }, null) </td>
-                                 <td tooltip="Vea donde hizo esta marca" tooltip-position="right">@Html.ActionLink(@item.Value.Ultimoannocorta.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.Ultimoannocorta.MeetId, athleteid = item.Value.Ultimoannocorta.AthleteId }, null) </td>
+                                 <td>
+                                     <a href="@Url.Action("RendimientoDelNadadorEnUnaPrueba", "Resultados", new { athleteid = Model.nadador.AthleteId, pruebaid = item.Key.PruebaId })" class="hasTooltip">
+                                         @item.Key.distancia.ToString() @item.Key.estilo.ToString()
+                                         <span>Vea el rendimiento en esta prueba</span>
+                                     </a>
+                                    
+                                 </td>
+                                 <td>
+                                     <a href="@Url.Action("ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.Mejortiempolarga.MeetId, athleteid = item.Value.Mejortiempolarga.AthleteId })" class="hasTooltip">
+                                         @item.Value.Mejortiempolarga.SCORE
+                                         <span>Detalles del torneo</span>
+                                     </a>
+                                      </td>
+                                 <td>
+                                     <a href="@Url.Action("ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.Mejortiempocorta.MeetId, athleteid = item.Value.Mejortiempocorta.AthleteId })" class="hasTooltip">
+                                         @item.Value.Mejortiempocorta.SCORE
+                                         <span>Detalles del torneo</span>
+                                     </a>
+                                  </td>
+                                 <td>
+                                     <a href="@Url.Action("ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.Ultimoannolarga.MeetId, athleteid = item.Value.Ultimoannolarga.AthleteId })" class="hasTooltip">
+                                        @item.Value.Ultimoannolarga.SCORE
+                                         <span>Detalles del torneo</span>
+                                     </a>
+                                  </td>
+                                 <td>
+                                     <a href="@Url.Action("ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.Ultimoannocorta.MeetId, athleteid = item.Value.Ultimoannocorta.AthleteId })" class="hasTooltip">
+                                         @item.Value.Ultimoannocorta.SCORE
+                                         <span>Detalles del torneo</span>
+                                     </a>
+                                     </td>
                              </tr>
                                 }
 
@@ -147,7 +173,7 @@
                  <div class="espaciadogrande"></div>
 
                  @*seccion para poner los puestos*@
-                 <div class="espaciadogrande"></div>
+                 @*<div class="espaciadogrande"></div>
 
                  <div class="table fondoceleste">
                      <h2 class="u-type--gamma u-spc-bottom--med textoblanco">Puestos logrados en su carrera</h2>
@@ -174,7 +200,7 @@
 
                          </tbody>
                      </table>
-                 </div>
+                 </div>*@
 
 
                  @*sección para las ultimas participaciones*@

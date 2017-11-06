@@ -1,5 +1,6 @@
 ﻿
 
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -18,6 +19,7 @@ input,
 select,
 textarea {
     max-width: 280px;
+    border-radius: 10px;
 }
 
 .inputYoutube {
@@ -63,7 +65,7 @@ textarea {
 }
 
 .master {
-    background: #77c36e;
+    background: #558000;
 }
 
 .aguas {
@@ -71,11 +73,11 @@ textarea {
 }
 
 .wp {
-    background: #ca8551;
+    background: #ff8800;
 }
 
 .clavados {
-    background: #944f4f;
+    background: #cc0000;
 }
 
 .sincro {
@@ -191,7 +193,8 @@ aside {
         transform: rotate(-90deg);
         white-space: nowrap;
         vertical-align: baseline;
-        /* margin-top: 50px; */
+        margin-top: -90px;
+        margin-left: -90px;
     }
 
     .ranking1 {
@@ -200,7 +203,7 @@ aside {
         text-transform: uppercase;
         font-size: 150px !important;
         line-height: 87px;
-        /* margin-top: -35px; */
+        margin-top: 80px;
         margin-left: 120px;
     }
 
@@ -218,7 +221,7 @@ aside {
     }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-device-width: 800px) and (max-device-width: 1100px) {
     .rankingposicion {
         border-right: 1px solid rgba(255, 255, 255, 0.25);
         margin-left: -120px;
@@ -238,7 +241,8 @@ aside {
         transform: rotate(-90deg);
         white-space: nowrap;
         vertical-align: baseline;
-        /* margin-top: 50px; */
+        margin-top: -90px;
+        margin-left: -50px;
     }
 
     .ranking1 {
@@ -247,8 +251,8 @@ aside {
         text-transform: uppercase;
         font-size: 150px !important;
         line-height: 87px;
-        /* margin-top: -35px; */
-        margin-left: 120px;
+        margin-top: 70px;
+        margin-left: 150px;
     }
 
     .TituloDentroDePagina {
@@ -266,7 +270,7 @@ aside {
 }
 
 
-@media screen and (min-width: 500px) {
+@media screen and (min-device-width: 500px) and (max-device-width: 800px) {
     .rankingposicion {
         border-right: 1px solid rgba(255, 255, 255, 0.25);
         margin-left: -80px;
@@ -523,7 +527,7 @@ aside {
             -webkit-font-smoothing: antialiased;
             position: absolute;
             color: #fff;
-            background: #46a4da;
+            /*background: #46a4da;*/
             border-radius: 20%;
             box-shadow: 0 0 0 8px #afdcf8;
             text-align: center;
@@ -632,6 +636,28 @@ aside {
     margin-top: 20px;
 }
 
+
+.minicard {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 100%;
+    /*height: 180px;*/
+    position: relative;
+}
+
+.miniimagen {
+    width: 100%;
+    height: auto;
+}
+
+.minicard:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+
+
+
 .card {
     display: inline-block;
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.15);
@@ -701,10 +727,11 @@ aside {
 }
 
 .marco {
-    margin-right: 10px;
+    /*margin-right: 10px;
     margin-left: 10px;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 10px;*/
+    margin:10px;
 }
 
 .cuerpoconmargen {
@@ -728,98 +755,62 @@ aside {
         width: 100%;
         height: 100%;
     }
-
-
-[tooltip] {
-    margin: 20px 60px;
-    position: relative;
-    display: inline-block;
+.hasTooltip span {
+    display: none;
+    color: #000;
+    text-decoration: none;
+    padding: 3px;
 }
 
-    [tooltip]::before {
-        content: "";
-        position: absolute;
-        top: -6px;
-        left: 50%;
-        transform: translateX(-50%);
-        border-width: 4px 6px 0 6px;
-        border-style: solid;
-        border-color: rgba(0,0,0,0.7) transparent transparent transparent;
-        z-index: 99;
-        opacity: 0;
-    }
-
-[tooltip-position='left']::before {
-    left: 0%;
-    top: 50%;
-    margin-left: -12px;
-    transform: translatey(-50%) rotate(-90deg)
-}
-
-[tooltip-position='top']::before {
-    left: 50%;
-}
-
-[tooltip-position='buttom']::before {
-    top: 100%;
-    margin-top: 8px;
-    transform: translateX(-50%) translatey(-100%) rotate(-180deg)
-}
-
-[tooltip-position='right']::before {
-    left: 100%;
-    top: 50%;
-    margin-left: 1px;
-    transform: translatey(-50%) rotate(90deg)
-}
-
-[tooltip]::after {
-    content: attr(tooltip);
+.hasTooltip:hover span {
+    display: block;
     position: absolute;
-    left: 50%;
-    top: -6px;
-    transform: translateX(-50%) translateY(-100%);
-    background: rgba(0,0,0,0.7);
-    text-align: center;
-    color: #fff;
-    padding: 4px 2px;
-    font-size: 12px;
-    min-width: 80px;
-    border-radius: 5px;
-    pointer-events: none;
-    padding: 4px 4px;
-    z-index: 99;
-    opacity: 0;
-}
-
-[tooltip-position='left']::after {
-    left: 0%;
-    top: 50%;
-    margin-left: -8px;
-    transform: translateX(-100%) translateY(-50%);
-}
-
-[tooltip-position='top']::after {
-    left: 50%;
-}
-
-[tooltip-position='buttom']::after {
-    top: 100%;
-    margin-top: 8px;
-    transform: translateX(-50%) translateY(0%);
-}
-
-[tooltip-position='right']::after {
-    left: 100%;
-    top: 50%;
-    margin-left: 8px;
-    transform: translateX(0%) translateY(-50%);
-}
-
-[tooltip]:hover::after, [tooltip]:hover::before {
-    opacity: 1
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    margin: 2px 10px;
 }
 
 .selected {
     background-color: #a2aec7;
+}
+
+.menubarraback {
+    background: rgba(0,0,0,.4);
+    /*position: absolute;*/
+}
+
+.margenes {
+    margin-top: 24px;
+    margin-bottom :24px;
+    padding: 24px
+
+}
+
+.contenedor{
+    width:100%;
+}
+
+.navbar-default {
+    background-color: rgba(47, 164, 231, 0);
+    border-color: rgba(25, 149, 220, 0);
+}
+
+.dropdown-menu {
+    background-color: rgba(0, 22, 113, 0.37);
+}
+
+    .dropdown-menu > li > a {
+        color: #f4f7fa;
+    }
+
+.navbar-default {
+    background-image: linear-gradient(#000a53, #001773 60%, #001267);
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.btn-default {
+    color: #f5f5f5;
 }

@@ -20,7 +20,7 @@
         <div class="site-news__visual u-animation--fadeInSection" data-wow-duration="700ms" data-wow-delay="100ms">
 
             @Html.HiddenFor(model=>model.noticiaid)
-            <div class="pure-u-lg-1">
+            <div class="col-lg-12">
                 <h2 class="site-title ">@Model.noticia.Titulo</h2>
 
                 Publicado por <span><a class="userBy">Prensa</a></span> el <span>@Model.noticia.Fecha.ToShortDateString()</span>
@@ -32,10 +32,12 @@
 
                     @foreach (var foto in Model.fotos)
                     {
-                        <div class="card pure-u-lg-1">
-                            <a href=@Url.Action(path + foto.Nombrefoto) target="_blank">
-                                <div class="ImagenNoticia" style="background-image: url(@Url.Action(path + foto.Nombrefoto));"></div>
-                            </a>
+                        <div class="card row">
+                            <div class="col-lg-12">
+                                <a href=@Url.Action(path + foto.Nombrefoto) target="_blank">
+                                    <div class="ImagenNoticia" style="background-image: url(@Url.Action(path + foto.Nombrefoto));"></div>
+                                </a>
+                            </div>
                         </div>
                     }
 

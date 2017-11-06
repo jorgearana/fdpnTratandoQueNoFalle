@@ -23,40 +23,62 @@
                 <div class="site-news__visual u-animation--fadeInSection" data-wow-duration="700ms" data-wow-delay="100ms">
 
 
-                    <div class="pure-u-lg-1">
+                    <div class="col-lg-12">
                         <h2 class="site-title ">@Model.noticia.Titulo</h2>
 
                         Publicado por <span><a class="userBy">Prensa</a></span> el <span>@Model.noticia.Fecha.ToShortDateString()</span>
                     </div>
                     <div class="espaciado"></div>
+                    <div class="container">
+                        <div class="row">
 
-                    <div class="">
-                        <div class="pure-u-lg-1-24">
+                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                @if (Model.fotos.Count > 1)
+                                {
+                                    for (int i = 0; i < 1; i++)
+                                    {
+                                        <div class="card">
+                                            <a href=@Url.Action(path + Model.fotos[i].Nombrefoto) target="_blank">
+                                                <div class="ImagenNoticia" style="background-image: url(@Url.Action(path + Model.fotos[i].Nombrefoto));"></div>
+                                            </a>
+                                        </div>
+                                    }
+                                    <div class="row">
+                                        @for (int i = 1; i < Model.fotos.Count(); i++)
+                                        { <div class="col-ld-4 col-md-6 col-sm-12">
+                                            <div class="minicard">
+                                                <a href=@Url.Action(path + Model.fotos[i].Nombrefoto) target="_blank">
+                                                    <img src="@Url.Action(path + Model.fotos[i].Nombrefoto)" class="miniimagen" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                        }
+                                    </div>
+                                }
+                                else
+                                {
+                                    for (int i = 0; i < Model.fotos.Count; i++)
+                                    {
+                                        <div class="card">
+                                            <a href=@Url.Action(path + Model.fotos[i].Nombrefoto) target="_blank">
+                                                <div class="ImagenNoticia" style="background-image: url(@Url.Action(path + Model.fotos[i].Nombrefoto));"></div>
+                                            </a>
+                                        </div>
+                                        }
+                                        }
 
-                        </div>
-                        <div class="pure-u-lg-7-24">
-
-                            @foreach (var foto in Model.fotos)
-                            {
-                                <div class="card">
-                                    <a href=@Url.Action(path + foto.Nombrefoto) target="_blank">
-                                        <div class="ImagenNoticia" style="background-image: url(@Url.Action(path + foto.Nombrefoto));"></div>
-                                    </a>
-                                </div>
-                            }
 
 
 
-                        </div>
-                        <div class="pure-u-lg-2-24">
 
-                        </div>
-                        <div class="pure-u-lg-13-24">
-                            @Html.Raw(Model.noticia.Larga.ToString())
+                                    </div>
+                           
+                            <div class="col-lg-8 col-md-8 col-sm-12">
+                                @Html.Raw(Model.noticia.Larga.ToString())
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </section>
         @Html.Action("_PreviewNoticias", "home")

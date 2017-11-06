@@ -130,5 +130,11 @@ namespace FDPN.Controllers
         }
 
 
+        public ActionResult AfiliarClub()
+        {
+            
+            return View();
         }
+
+    }
 }

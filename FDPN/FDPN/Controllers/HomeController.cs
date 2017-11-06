@@ -106,7 +106,7 @@ namespace FDPN.Controllers
                 piscina = "S";
             }
             List<RESULTS> resultado = db.RESULTS
-                .Where(x => x.PruebaId == prueba && x.NT ==0  && x.SCORE != "" && x.ATHLETE !=0 && x.Athlete1.Sex== sexo && x.COURSE== piscina)
+                .Where(x => x.PruebaId == prueba && x.NT ==0  && x.SCORE != "" && x.ATHLETE !=0 && x.Athlete1.Sex== sexo && x.COURSE== piscina && x.PLACE!=0)
                 .OrderBy(x => x.SCORE)
                 .DistinctBy(x=>x.AthleteId)
                 .Take(10).ToList();

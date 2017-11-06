@@ -11,30 +11,32 @@
         <header class="site-homepage__section__header">
             <h2 class="site-title site-title--ultra site-title--ultra--primary">Rendimiento en una prueba</h2>
             <p class="u-type--medium u-type--delta u-spc-bottom--med">@Model.atleta.First @Model.atleta.Last</p>
-            <h2 class="site-title site-title--ultra site-title--ultra--primary">Prueba: @Model.prueba.distancia  @Model.prueba.estilo Piscina Larga</h2>
+            <h2 class="site-title">Prueba: @Model.prueba.distancia  @Model.prueba.estilo Piscina Larga</h2>
             <div class="site-athleteswidget__photo">
                 <img src=@Url.Content(path + "/" + Model.afiliado.RutaFoto + ".jpg")>
             </div>
         </header>
 
-        <div id="js-table" class="site-contentpage js-table table">
+        <div id="js-table" class="js-table table">
             <table class="table__data">
                 <thead>
                     <tr>
                         <th>Tiempo</th>
+                        <th>Prueba</th>
                         <th>Torneo</th>
-                        <th>Fecha</th>                      
+                        <th>Fecha</th>
                         <th>Equipo</th>
                         <th>Piscina</th>
                         <th>Puntos</th>
 
                     </tr>
                 </thead>
-                <tbody> 
+                <tbody>
                     @foreach (var item in Model.ResultadosLarga)
                     {
                         <tr>
                             <td>@item.SCORE</td>
+                            <td>@item.DISTANCE  @item.STROKE</td>
                             <td>@item.MEET1.MName</td>
                             <td>@item.MEET1.Start.ToShortDateString()</td>
                             <td>@item.TEAM1.TName</td>
@@ -49,9 +51,9 @@
 
 
         </div>
-        <div class="espaciadogrande"></div>
+        <div class="espaciado"></div>
         <header class="site-homepage__section__header">
-           
+
             <p class="u-type--medium u-type--delta u-spc-bottom--med">@Model.atleta.First @Model.atleta.Last</p>
             <p class="u-type--medium u-type--delta u-spc-bottom--med">Prueba: @Model.prueba.distancia  @Model.prueba.estilo Piscina Corta </p>
         </header>
@@ -60,6 +62,8 @@
                 <thead>
                     <tr>
                         <th>Tiempo</th>
+                        <th>Prueba</th>
+                        <th>Torneo</th>
                         <th>Fecha</th>
                         <th>Equipo</th>
                         <th>Piscina</th>
@@ -72,6 +76,8 @@
                     {
                         <tr>
                             <td>@item.SCORE</td>
+                            <td>@item.DISTANCE  @item.STROKE</td>
+                            <td>@item.MEET1.MName</td>
                             <td>@item.MEET1.Start.ToShortDateString()</td>
                             <td>@item.TEAM1.TName</td>
                             <td>@item.COURSE</td>

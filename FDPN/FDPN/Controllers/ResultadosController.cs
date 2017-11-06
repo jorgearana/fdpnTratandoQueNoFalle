@@ -8,6 +8,7 @@ using FDPN.ViewModels.Resultados;
 using PagedList;
 using System.Globalization;
 using MoreLinq;
+using System.Text.RegularExpressions;
 
 namespace FDPN.Controllers
 {
@@ -244,8 +245,10 @@ namespace FDPN.Controllers
         {
 
             int anno = DateTime.Now.Year - 1;
-            int annominimo = anno - edadmaxima ?? 0;
-            int annomaximo = anno - edadminima ?? 0;
+            int annominimo = anno -( edadmaxima ?? 109);
+            int annomaximo = anno -( edadminima ?? 0);
+            DateTime inicio = new DateTime(annominimo, 1, 1);
+            DateTime fin = new DateTime(annomaximo, 12, 31);
 
 
             RankingViewModel VM = new RankingViewModel
@@ -255,7 +258,7 @@ namespace FDPN.Controllers
             };
 
             var resultado = db.RESULTS
-                .Where(x => x.NT == 0 && x.SCORE != "" && x.PLACE != 0 && x.ATHLETE != 0 && x.AthleteId != null && x.PLACE != 0 && x.AGE >= VM.Minima && x.AGE <= VM.Maxima)
+                .Where(x => x.NT == 0 && x.SCORE != "" && x.PLACE != 0 &&  x.AthleteId != null && x.PLACE != 0 && x.Athlete1.Birth >= inicio && x.Athlete1.Birth <= fin)
 
                 .AsQueryable();
 
@@ -410,8 +413,8 @@ namespace FDPN.Controllers
 
         public ActionResult ResultadosDeUnTorneo(int meetid)
         {
-            List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == meetid && x.PLACE != 0 && x.ATHLETE != 0).OrderBy(x => x.MTEV).ToList();
-
+            List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == meetid && x.PLACE != 0 && x.ATHLETE != 0 && x.TEAM != 0).ToList();
+            SortedDictionary<float, DiccionarioPruebas> pruebasdesordenadas = new SortedDictionary<float, DiccionarioPruebas>();
             ResultadoDeUnTorneoViewModel VM = new ResultadoDeUnTorneoViewModel
             {
                 EquiposParticipantes = resultados.Select(x => x.TEAM1)
@@ -421,7 +424,7 @@ namespace FDPN.Controllers
                 resultado = resultados
                 .DistinctBy(m => m.MTEV)
                 .ToList(),
-                pruebas = new Dictionary<string, DiccionarioPruebas>(),
+                pruebas = new Dictionary<float, DiccionarioPruebas>(),
 
             };
             for (int i = 0; i < VM.resultado.Count(); i++)
@@ -447,17 +450,71 @@ namespace FDPN.Controllers
                         break;
                 }
 
+                string evento = VM.resultado[i].MTEV.Replace(" ", "");
+                string chars = "";
+                float numero = 0;
+                float num = 0F;
+
+                int index = evento.IndexOfAny(new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' });
+                
+                if (index>0)
+                {
+                    string numeros = evento.Substring(0, index);
+
+                     num = float.Parse(numeros);
+                    chars = evento.Substring(numeros.Length);
+                   
+                   
+                }
+                else
+                {
+                    num = float.Parse(evento);
+                }
+                switch (chars)
+                {
+                    case "A":
+                        numero = 0.1F;
+                        break;
+                    case "B":
+                        numero = 0.2F;
+                        break;
+                    case "C":
+                        numero = 0.3F;
+                        break;
+                    case "D":
+                        numero = 0.4F;
+                        break;
+                    case "E":
+                        numero = 0.5F;
+                        break;
+                    case "F":
+                        numero = 0.6F;
+                        break;
+                    case "G":
+                        numero = 0.7F;
+                        break;
+                    case "H":
+                        numero = 0.8F;
+                        break;
+                    case "I":
+                        numero = 0.9F;
+                        break;
+                }
+                num = num + numero;
                 DiccionarioPruebas dic = new DiccionarioPruebas
                 {
-                    MeetEvent = VM.resultado[i].MTEV,
+                    MeetEvent = num,
                     NombrePrueba = VM.resultado[i].DISTANCE.ToString() + " " + VM.resultado[i].STROKE + " " + edadbaja + " a " + edadalta + " años - " + VM.resultado[i].Athlete1.Sex,
                 };
 
 
-                VM.pruebas.Add(dic.MeetEvent, dic);
+                pruebasdesordenadas.Add(dic.MeetEvent, dic);
             }
-
-
+            foreach(var item in pruebasdesordenadas)
+            {
+                VM.pruebas.Add(item.Key, item.Value);
+            }
+           
             return View(VM);
         }
 
@@ -508,7 +565,7 @@ namespace FDPN.Controllers
         {
             List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == VM.meetid && x.PLACE != 0).ToList();
 
-            VM.resultado = resultados.Where(x => x.TeamId == VM.clubid).OrderBy(x => x.MTEV).ThenBy(x => x.PLACE).ToList();
+            VM.resultado = resultados.Where(x => x.TeamId == VM.clubid && x.AthleteId != null).OrderBy(x => x.MTEV).ThenBy(x => x.PLACE).ToList();
             VM.EquiposParticipantes = resultados.Select(x => x.TEAM1)
                 .DistinctBy(x => x.TeamId)
                 .OrderBy(x => x.TName).ToList();
@@ -522,7 +579,50 @@ namespace FDPN.Controllers
         {
 
             MEET meet = db.MEET.Where(x => x.MeetId == modelo.meetid).FirstOrDefault();
-            List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == modelo.meetid && x.PLACE != 0 && x.MTEV == modelo.pruebaid)
+
+          
+            int index = modelo.pruebaid.IndexOf(",");
+            string evento = modelo.pruebaid;
+            if (index>0)
+            {
+                string entero = modelo.pruebaid.Substring(0, index);
+                string fraccion = modelo.pruebaid.Substring(index);
+                string caracter = "";
+
+                switch (fraccion)
+                {
+                    case "1":
+                        caracter = "A";
+                        break;
+                    case "2":
+                        caracter = "B";
+                        break;
+                    case "3":
+                        caracter = "C";
+                        break;
+                    case "4":
+                        caracter = "D";
+                        break;
+                    case "5":
+                        caracter = "E";
+                        break;
+                    case "6":
+                        caracter = "F";
+                        break;
+                    case "7":
+                        caracter = "G";
+                        break;
+                    case "8":
+                        caracter = "H";
+                        break;
+                    case "9":
+                        caracter = "I";
+                        break;
+                }
+                evento = entero + caracter;
+            }
+           
+            List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == modelo.meetid && x.PLACE != 0 && x.MTEV == evento)
 
                 .OrderBy(x => x.SCORE).ToList();
 

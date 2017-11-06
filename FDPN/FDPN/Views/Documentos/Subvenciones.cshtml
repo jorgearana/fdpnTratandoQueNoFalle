@@ -11,9 +11,9 @@
     {
         <header class="site-homepage__section__header">
             <h2 class="site-title site-title--ultra site-title--ultra--primary">Subvenciones</h2>
-            <p class="u-type--medium u-type--delta u-spc-bottom--med">Filtrar</p>
+            @*<p class="u-type--medium u-type--delta u-spc-bottom--med">Filtrar</p>
             @Html.TextBox("SearchString", null, new { @class = "btn btn--primary btn--lrg u-rounded" })
-            <input type="submit" value="Buscar" class="btn btn--primary btn--lrg u-rounded" />
+            <input type="submit" value="Buscar" class="btn btn--primary btn--lrg u-rounded" />*@
         </header>
     }
     <br />
@@ -43,7 +43,7 @@
                         </td>
                         <td>
                             <a href=@Url.Action(path + item.Nombrefoto) target="_blank">
-                                <i class="fa fa-download" aria-hidden="true"></i> Descargar
+                                <i class="fa fa-download" aria-hidden="true"></i> Ver documento
                             </a>
                         </td>
                     </tr>

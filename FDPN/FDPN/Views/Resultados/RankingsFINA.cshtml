@@ -19,25 +19,25 @@
 {*@
 <div class="">
     <div class="">
-        <div class="">
-            <div class="pure-u-lg-5-12">
+        <div class="row">
+            <div class="col-md-5">
                 <div class="">
-                    <h3 class="control-label pure-u-lg-11-24 btn--ghost">Periodo a buscar</h3>
-                    <div class="pure-u-lg-11-24">
+                    <h3 class="control-label col-md-6 btn--ghost">Periodo a buscar</h3>
+                    <div class="col-md-6">
                         @Html.DropDownListFor(model => model.periodoid, new SelectList(Model.periodo, "Key", "Value"), "Escoja el periodo", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
                     </div>
                 </div>
                 <div class="espaciado"></div>
                 <div class="">
-                    <h3 class="control-label pure-u-lg-11-24 btn--ghost">Edad mínima</h3>
-                    <div class="pure-u-lg-11-24">
+                    <h3 class="control-label col-md-6 btn--ghost">Edad mínima</h3>
+                    <div class="col-md-6">
                         @Html.DropDownListFor(model => model.edadminima, new SelectList(Model.edadesminimas), "Escoja la edad inicial", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
                     </div>
                 </div>
                 <div class="espaciado"></div>
                 <div class="">
-                    <h3 class="control-label pure-u-lg-11-24 btn--ghost">Edad máxima</h3>
-                    <div class="pure-u-lg-11-24">
+                    <h3 class="control-label col-md-6 btn--ghost">Edad máxima</h3>
+                    <div class="col-md-6">
                         @Html.DropDownListFor(model => model.edadmaxima, new SelectList(Model.edadesmaximas), "Escoja la edad final", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
                     </div>
                 </div>
@@ -49,9 +49,9 @@
 
                
             </div>
-            <div class="pure-u-lg-5-12" id="tablaDeshabilitada">
+            <div class="col-md-7" id="tablaDeshabilitada">
                 @*Torneos*@
-                <table class="tablaNormal example datatabla" >
+                <table class="tablaNormal example datatablaReves" >
                     <thead>
                         <tr>
                             <th>Código</th>
@@ -78,7 +78,7 @@
       
        
     </div>
-    <div class="espaciadogrande"></div>
+    @*<div class="espaciadogrande"></div>*@
     <div id="rankingPuntoFINA">
 
     </div>

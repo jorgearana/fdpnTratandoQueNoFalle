@@ -15,13 +15,84 @@
             $("container").css({ "margin-top": 0 });
         }
     });
+
+    $('.carrusel').slick({
+        lazyLoad: 'ondemand',
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        dots: true,
+        speed: 300,
+        adaptiveHeight: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
+
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+        ]
+    });
     $(document).ready(function () {
-        $('.datatabla').DataTable({
-            "order": [[0, "desc"]],
-            "pageLength": 20
+        $('.datatabla').DataTable({            
+            "pageLength": 20,
+            "language": {
+                "lengthMenu": "Mostrando _MENU_ registros por página",
+                "zeroRecords": "No encontramos datos",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Sin datos disponibles",
+                "infoFiltered": "(filtrado de  _MAX_ registros totales)",
+                "oPaginate": {
+                    "sFirst": "Primera página",
+                    "sLast": "Última página",
+                    "sNext": "Siguiente página",
+                    "sPrevious": "Página anterior",
+                }
+            },
         });
     });
-   
+    $(document).ready(function () {
+        $('.datatablaReves').DataTable({
+            "order": [[0, "desc"]],
+            "pageLength": 20,
+            "language": {
+                "lengthMenu": "Mostrando _MENU_ registros por página",
+                "zeroRecords": "No encontramos datos",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Sin datos disponibles",
+                "infoFiltered": "(filtrado de  _MAX_ registros totales)",
+                "oPaginate": {
+                    "sFirst": "Primera página",
+                    "sLast": "Última página",
+                    "sNext": "Siguiente página",
+                    "sPrevious": "Página anterior",
+                }
+            },
+        });
+    });
 
 
 
@@ -60,8 +131,8 @@ $('#buscarRankingFINA').on('click', function (e) {
     var selectedRows = filas.data();
     if (filas.length > 0) {
         // build array of records
-        var arrayRecords = [];
-        
+      
+        var Ids = new Array();
 
         SLen = filas.length;
         for (i = 0; i < SLen; i++) {
