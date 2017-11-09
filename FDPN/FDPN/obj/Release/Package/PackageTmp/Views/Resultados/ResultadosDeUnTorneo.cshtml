@@ -54,10 +54,12 @@
                     </footer>
                 </section>
                 <header class="site-homepage__section__header">
-                    <h6 class="u-type--medium u-type--delta u-spc-bottom--med">    </h6>
-                    buscar otro torneo
-                    @Html.TextBox("searchString", null, new { @class = " input input--text input--med input--med--padded" })
-                    <input type="submit" value="Buscar" class="btn btn--primary btn--lrg u-rounded" />
+                    @using (Html.BeginForm("Resultados", "Resultados", FormMethod.Post))
+                    {
+                        <h6 class="u-type--medium u-type--delta u-spc-bottom--med">buscar otro torneo </h6>
+                        @Html.TextBox("searchString", null, new { @class = " input input--text input--med input--med--padded" })
+                        <input type="submit" value="Buscar" class="btn btn--primary btn--lrg u-rounded" />
+                    }
                 </header>
             </div>
         </div>

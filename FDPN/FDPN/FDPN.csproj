@@ -260,6 +260,17 @@
     </Compile>
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\img\fondos\Academia de nado.jpg" />
+    <Content Include="Content\img\fondos\AFICHE-ADULTOS1-1024x724.jpg" />
+    <Content Include="Content\img\fondos\AFICHE-AQUABEBÉ-1024x724.jpg" />
+    <Content Include="Content\img\fondos\AFICHE-NIÑOS-1024x853.jpg" />
+    <Content Include="Content\img\fondos\AFICHE-PATERA1-1024x891.jpg" />
+    <Content Include="Content\img\Imgsmall\medal1.png" />
+    <Content Include="Content\img\Imgsmall\medal2.png" />
+    <Content Include="Content\img\Imgsmall\medal3.png" />
+    <Content Include="Content\img\Imgsmall\premio1.png" />
+    <Content Include="Content\img\Imgsmall\premio2.png" />
+    <Content Include="Content\img\Imgsmall\premio3.png" />
     <Content Include="Content\pdf\Calendario Masters.pdf" />
     <Content Include="Content\pdf\Calendario Natacion.pdf" />
     <Content Include="Content\pdf\Calendario Polo.pdf" />
@@ -643,6 +654,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.matchHeight.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />

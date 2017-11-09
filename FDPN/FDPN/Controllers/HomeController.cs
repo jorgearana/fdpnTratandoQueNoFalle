@@ -116,30 +116,52 @@ namespace FDPN.Controllers
 
         public ActionResult _nadadordestacado()
         {
+            DateTime iniciomes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             Random rnd = new Random();
-           List< TorneoDestacado> torneodestacado = db.TorneoDestacado.OrderByDescending(x => x.DestacadoId).Take(3).ToList();
+           //List< TorneoDestacado> torneodestacado = db.TorneoDestacado.OrderByDescending(x => x.DestacadoId).Take(3).ToList();
             int i = rnd.Next(1, 3);
-            int meet = torneodestacado[i].Meet;
-            List<RESULTS> tiempos = db.RESULTS.Where(x => x.MEET == meet )
-                .Where(x=>x.PLACE != 0)
-                .OrderByDescending(x => x.PFina)
-                .ToList();
+            //int meet = torneodestacado[i].Meet;
+            string sexo = "M";
 
-            int ponderado = tiempos.Count() / 5;
-            tiempos = tiempos.Take(ponderado).ToList();
+            List<MEET> torneosDelMes = db.MEET.Where(x => x.Start > iniciomes).ToList();
+            if (torneosDelMes.Count()==0)
+            {
+                iniciomes.AddMonths(-1);
+               
+            }
+            //List<RESULTS> tiempos = db.RESULTS.Where(x => x.MEET == meet )
+            //    .Where(x=>x.PLACE != 0)
+            //    .OrderByDescending(x => x.PFina)
+            //    .ToList();
+            if(i == 2)
+            {
+                sexo = "F";
+            }
+            RESULTS resultadomejor = db.RESULTS.Where(x=>x.Athlete1.Sex==sexo && x.MEET1.Start>iniciomes && x.COURSE!= "Y").OrderByDescending(x => x.PFina).FirstOrDefault();
+            if (resultadomejor.PFina < 500)
+            {
+               iniciomes= iniciomes.AddMonths(-1);
+                resultadomejor = db.RESULTS.Where(x => x.Athlete1.Sex == sexo && x.MEET1.Start > iniciomes && x.COURSE != "Y").OrderByDescending(x => x.PFina).FirstOrDefault();
+            }
+            //int ponderado = tiempos.Count() / 5;
+            //tiempos = tiempos.Take(ponderado).ToList();
 
-           
-            i = rnd.Next(1, tiempos.Count);
-            int athleteID = tiempos[i].AthleteId ?? 0;
 
-            string dni = tiempos[i].Athlete1.ID_NO ?? "";
-            
-         
-            
+            //i = rnd.Next(1, tiempos.Count);
+            //int athleteID = tiempos[i].AthleteId ?? 0;
 
+            //string dni = tiempos[i].Athlete1.ID_NO ?? "";
+
+
+
+
+
+            string dni = resultadomejor.Athlete1.ID_NO ?? "";
             NadadorDestacadoViewModels VM = new NadadorDestacadoViewModels
             {
-                resultados = tiempos.Where(x => x.AthleteId == athleteID).OrderBy(x => x.PLACE).ThenByDescending(x => x.PFina).ToList(),
+               // resultados = tiempos.Where(x => x.AthleteId == athleteID).OrderBy(x => x.PLACE).ThenByDescending(x => x.PFina).ToList(),
+               //afiliado = af.Afiliado.Where(x => x.DNI == dni).FirstOrDefault(),
+               resultados = resultadomejor,
                afiliado = af.Afiliado.Where(x => x.DNI == dni).FirstOrDefault(),
             };
 

@@ -361,7 +361,7 @@ namespace FDPN.Controllers
 
             int minima = edadminima ?? 0;
             int maxima = edadmaxima ?? 109;
-            var Query = db.RESULTS.Where(x => x.AGE >= minima && x.AGE <= maxima && x.Athlete1 != null && x.PLACE!=0).AsQueryable();
+            var Query = db.RESULTS.Where(x => x.AGE >= minima && x.AGE <= maxima && x.ATHLETE != 0 && x.PLACE!=0).AsQueryable();
 
             switch (periodoid)
             {
@@ -375,11 +375,13 @@ namespace FDPN.Controllers
 
                     break;
                 case 3:
-            
                     Query = Query.Where(x => torneosid.Contains(x.MeetId ?? 0));
                     break;
             }
-            List<RESULTS> resultados = Query.OrderByDescending(x => x.PFina).Take(200).ToList();
+            List<RESULTS> provisional = Query.ToList();
+            List<RESULTS> resultados = provisional.OrderByDescending(x => x.PFina).Take(100).ToList();
+
+
             return PartialView(resultados);
 
         }
@@ -586,7 +588,7 @@ namespace FDPN.Controllers
             if (index>0)
             {
                 string entero = modelo.pruebaid.Substring(0, index);
-                string fraccion = modelo.pruebaid.Substring(index);
+                string fraccion = modelo.pruebaid.Substring(index+1);
                 string caracter = "";
 
                 switch (fraccion)
@@ -622,7 +624,7 @@ namespace FDPN.Controllers
                 evento = entero + caracter;
             }
            
-            List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == modelo.meetid && x.PLACE != 0 && x.MTEV == evento)
+            List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == modelo.meetid && x.ATHLETE!=0 && x.PLACE != 0 && x.MTEV == evento)
 
                 .OrderBy(x => x.SCORE).ToList();
 

@@ -99,7 +99,7 @@ namespace FDPN.Controllers
         }
         public ActionResult Records(string searchString)
         {
-            var query = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "Subvencion").OrderBy(x => x.Noticias.Fecha).AsQueryable();
+            var query = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "Record").OrderBy(x => x.Noticias.Fecha).AsQueryable();
 
             if (searchString != null)
             {

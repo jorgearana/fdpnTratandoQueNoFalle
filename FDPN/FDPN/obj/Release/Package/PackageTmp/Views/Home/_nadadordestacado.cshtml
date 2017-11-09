@@ -19,26 +19,28 @@
                 <div class="site-athleteswidget__info site-athleteswidget__info--negative">
                     <h3 class="site-athleteswidget__name">@Model.afiliado.Nombre <strong>@Model.afiliado.Apellido_Paterno</strong></h3>
                     
-                    <p class="site-athleteswidget__subtitle">@Model.resultados[0].MEET1.MName</p>
+                    <p class="site-athleteswidget__subtitle">@Model.resultados.MEET1.MName</p>
                     <table class="site-rankingwidget__table">
                         <thead>
                             <tr>
-                                <th>Puesto</th>
+                                @*<th>Puesto</th>*@
                                 <th>Prueba</th>
                                 <th>Score</th>
+                                <th>Puntos FINA</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model.resultados)
-                            {
+                            @*@foreach (var item in Model.resultados)
+                            {*@
                                 <tr>
-                                    <td>@item.PLACE</td>
-                                    <td>@item.DISTANCE  @item.STROKE</td>
+                                    @*<td>@Model.resultados.PLACE</td>*@
+                                    <td>@Model.resultados.DISTANCE  @Model.resultados.STROKE</td>
                                     <td>
-                                        @item.SCORE
+                                        @Model.resultados.SCORE
                                     </td>
+                                    <td>@Model.resultados.PFina</td>
                                 </tr>
-                            }
+                            @*}*@
                         </tbody>
                     </table>
 

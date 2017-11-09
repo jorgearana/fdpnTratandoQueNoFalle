@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿
+$(document).ready(function () {
 
     // cada vez que se mueva el scroll del navegador se ejecutara
     // este evento
@@ -73,8 +74,23 @@
                 }
             },
         });
-    });
-    $(document).ready(function () {
+        $('.datatablacorta').DataTable({
+            "order": [[0, "desc"]],
+            "pageLength": 10,
+            "language": {
+                "lengthMenu": "Mostrando _MENU_ registros por página",
+                "zeroRecords": "No encontramos datos",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Sin datos disponibles",
+                "infoFiltered": "(filtrado de  _MAX_ registros totales)",
+                "oPaginate": {
+                    "sFirst": "Primera página",
+                    "sLast": "Última página",
+                    "sNext": "Siguiente página",
+                    "sPrevious": "Página anterior",
+                }
+            },
+        });
         $('.datatablaReves').DataTable({
             "order": [[0, "desc"]],
             "pageLength": 20,
@@ -94,7 +110,14 @@
         });
     });
 
-
+    $(function () {
+        $('.item').matchHeight({
+            byRow: true,
+            property: 'height',
+            target: null,
+            remove: false
+        });
+    });
 
 });
 

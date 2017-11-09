@@ -21,37 +21,38 @@
     <div class="">
         <div class="row">
             <div class="col-md-5">
-                <div class="">
-                    <h3 class="control-label col-md-6 btn--ghost">Periodo a buscar</h3>
-                    <div class="col-md-6">
+              
+                    <h6 class="control-label col-md-6 btn--ghost espaciado">Periodo a buscar</h6>
+                    <div class="col-md-6 espaciado">
                         @Html.DropDownListFor(model => model.periodoid, new SelectList(Model.periodo, "Key", "Value"), "Escoja el periodo", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
                     </div>
-                </div>
-                <div class="espaciado"></div>
-                <div class="">
-                    <h3 class="control-label col-md-6 btn--ghost">Edad mínima</h3>
-                    <div class="col-md-6">
+               
+                
+                
+                    <h6 class="control-label col-md-6 btn--ghost espaciado">Edad mínima</h6>
+                    <div class="col-md-6 espaciado">
                         @Html.DropDownListFor(model => model.edadminima, new SelectList(Model.edadesminimas), "Escoja la edad inicial", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
                     </div>
-                </div>
-                <div class="espaciado"></div>
-                <div class="">
-                    <h3 class="control-label col-md-6 btn--ghost">Edad máxima</h3>
-                    <div class="col-md-6">
+               
+               
+               
+                    <h6 class="control-label col-md-6 btn--ghost espaciado">Edad máxima</h6>
+                    <div class="col-md-6 espaciado">
                         @Html.DropDownListFor(model => model.edadmaxima, new SelectList(Model.edadesmaximas), "Escoja la edad final", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
                     </div>
-                </div>
-                <div class="espaciado"></div>
+               
+               
 
                 <center>
                     <input id="buscarRankingFINA" type="submit" class="btn btn--primary btn--lrg u-rounded" value="Ver ranking">
                 </center>
-
                
             </div>
+           
+
             <div class="col-md-7" id="tablaDeshabilitada">
                 @*Torneos*@
-                <table class="tablaNormal example datatablaReves" >
+                <table class="tablaNormal  datatablacorta" >
                     <thead>
                         <tr>
                             <th>Código</th>

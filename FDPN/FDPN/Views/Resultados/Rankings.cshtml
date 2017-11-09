@@ -87,32 +87,41 @@
     <div class="site-contentpage">
         @if(Model.resultados.Count()>0)
         {
-               for (int i = 0; i < 3; i++)
-                {
-                    //Los tres primeros puestos 
-
-                    <div class="row ">
-                        <div class="l-box">
-                            <div class="col-sm-3">
-                                <div class="rankingposicion">
-                                    <div class="posicionranking">Ranking </div> 
-                                    <div class="ranking1">@(i + 1)</div>
-                                </div>
+               
+                    
+                <ul id="ul-example" class="row-fluid">
+                    @for (int i = 0; i < 3; i++)
+                    {
+                    <li class="col-sm-12" data-color="gray">
+                        <div class="col-sm-3">
+                            <div class="espaciado"></div>
+                            <div class=@("premio"+(i+1) )>
+                               
                             </div>
-                            <div class="col-sm-9">
-                                <h2 class="site-title site-title--basic site-title--basic--negative u-spc-bottom--med">
-
-                                    @Html.ActionLink(Model.resultados[i].Athlete1.First, "Nadador", "Resultados", new { id = Model.resultados[i].AthleteId }, new { @class = "ranking1detalle" })
-                                    @Html.ActionLink(Model.resultados[i].Athlete1.Last, "Nadador", "Resultados", new { @id = Model.resultados[i].AthleteId }, new { @class = "ranking1detalle" })
-
-                                </h2>
-                                <p class="u-type--medium u-type--delta u-type--negative">@Model.resultados[i].SCORE</p>
-                                <h6 class="ranking1detalle">@Model.resultados[i].MEET1.Start.ToShortDateString()</h6>
-                                <h6 class="ranking1detalle">@Model.resultados[i].MEET1.MName</h6>
-                            </div>
+                            @*<div class="">
+                            @(i + 1)
+                            </div>*@
+                           
                         </div>
-                    </div>
-                }
+                        <div class="col-sm-9">
+                            <h2 class="site-title site-title--basic site-title--basic--negative u-spc-bottom--med">
+
+                                @Html.ActionLink(Model.resultados[i].Athlete1.First, "Nadador", "Resultados", new { id = Model.resultados[i].AthleteId }, new { @class = "ranking1detalle" })
+                                @Html.ActionLink(Model.resultados[i].Athlete1.Last, "Nadador", "Resultados", new { @id = Model.resultados[i].AthleteId }, new { @class = "ranking1detalle" })
+
+                            </h2>
+                            <p class="u-type--medium u-type--delta u-type--negative">@Model.resultados[i].SCORE</p>
+                            <h6 class="ranking1detalle">@Model.resultados[i].MEET1.Start.ToShortDateString()</h6>
+                            <h6 class="ranking1detalle">@Model.resultados[i].MEET1.MName</h6>
+                            <div class="espaciado"></div>
+                        </div>
+                      
+                    </li>
+                    
+                   }
+                </ul>
+
+                <div class="espaciado"></div>
         @*El resto del ranking*@
         <table class="site-rankingwidget__table">
             <tbody>

@@ -34,8 +34,21 @@
                         @foreach (var item in Model.resultado)
                         {
                             <tr>
-                               
+                               @if (item.PLACE < 4)
+                               {
+                                <td>
+                                    <div class="row">
+                                        <div class="col-xs-2">@item.PLACE</div>
+                                        <div class="col-xs-2"><div class=@("medalla"+(item.PLACE)) aria-hidden="true"></div></div>
+                                    </div>
+
+                                </td>
+                               }
+                               else
+                               {
                                 <td>@item.PLACE</td>
+                               }
+                               
                                 <td>@item.SCORE</td>
                                 <td>@item.DISTANCE</td>
                                 <td>@item.STROKE</td>

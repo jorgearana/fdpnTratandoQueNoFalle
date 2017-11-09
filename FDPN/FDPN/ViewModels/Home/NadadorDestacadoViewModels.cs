@@ -8,7 +8,7 @@ namespace FDPN.ViewModels.Home
 {
     public class NadadorDestacadoViewModels
     {
-        public List<RESULTS> resultados { get; set; }
+        public RESULTS resultados { get; set; }
         public Afiliado afiliado { get; set; }
     }
 }
