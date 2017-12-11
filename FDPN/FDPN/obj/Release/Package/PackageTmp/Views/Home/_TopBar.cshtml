@@ -4,7 +4,7 @@
 
 
 <div class="layout layout--fullWidth">
-  
+
 
     <header role="banner" class="@clase site-header js-siteHeader">
         <nav class="navbar navbar-default navbar-fixed-top">
@@ -17,8 +17,8 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                 
-                    @Html.ActionLink("Home", "index", "home", null, new { @class= "navbar-brand"})
+
+                    @Html.ActionLink("Home", "index", "home", null, new { @class = "navbar-brand" })
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -31,7 +31,7 @@
                                 <li>@Html.ActionLink("El directorio", "directorio", "nosotros")</li>
                                 <li>@Html.ActionLink("Estatuto", "estatuto", "nosotros")</li>
                                 <li role="separator" class="divider"></li>
-                                <li>@Html.ActionLink("IPD", "ipd", "nosotros")</li>                               
+                                <li>@Html.ActionLink("IPD", "ipd", "nosotros")</li>
                                 <li>@Html.ActionLink("FINA", "fina", "nosotros") </li>
                                 <li>@Html.ActionLink("UANA", "uana", "nosotros")</li>
                                 <li>@Html.ActionLink("CONSANAT", "consanat", "nosotros")</li>
@@ -40,7 +40,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bases y reglamentos <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                               
+
                                 <li>
                                     @Html.ActionLink("Reglamentos", "Reglamentos", "documentos")
                                 </li>
@@ -61,10 +61,10 @@
                                 <li class="nav-item">
                                     @Html.ActionLink("Resultados", "resultados", "resultados", null, new { @class = "nav-link" })
                                 </li>
-                               
+
                                 <li class="nav-item">
                                     @Html.ActionLink("Nadadores", "nadadores", "resultados", null, new { @class = "nav-link" })
-                                </li>                               
+                                </li>
                                 <li role="separator" class="divider"></li>
                                 <li class="nav-item">
                                     @Html.ActionLink("Rankings por prueba", "Rankings", "resultados", null, new { @class = "nav-link" })
@@ -74,7 +74,15 @@
                                 </li>
                                 <li role="separator" class="divider"></li>
                                 <li class="nav-item">
+                                    @Html.ActionLink("resultados en pdf", "resultadosPDF", "documentos", null, new { @class = "nav-link" })
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li class="nav-item">
                                     @Html.ActionLink("En vivo", "Envivo", "documentos", null, new { @class = "nav-link" })
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li class="nav-item">
+                                    @Html.ActionLink("Records", "records", "documentos", null, new { @class = "nav-link" })
                                 </li>
                             </ul>
                         </li>
@@ -160,14 +168,14 @@
                                     <a href="~/Content/img/fondos/AFICHE-ADULTOS1-1024x724.jpg" target="_blank">
                                         Academia para adultos
                                     </a>
-                                  </li>
+                                </li>
                                 <li class="nav-item">
                                     <a href="~/Content/img/fondos/AFICHE-AQUABEBÉ-1024x724.jpg" target="_blank">
                                         Academia Aqua bebé
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                   <a href="~/Content/img/fondos/AFICHE-NIÑOS-1024x853.jpg" target="_blank">
+                                    <a href="~/Content/img/fondos/AFICHE-NIÑOS-1024x853.jpg" target="_blank">
                                         Academia para niños
                                     </a>
                                 </li>
@@ -187,16 +195,16 @@
 
                     </ul>
                     @*@using(Html.BeginForm("Nadadores", "Resultados", FormMethod.Post,  new { @class = "navbar-form navbar-left" }))
-                    {
-                        <div class="form-group">
-                            @Html.TextBox("searchString", null, new { @class = "form-control" , @placeholder = "Nombre o apellido" })
-                           
-                        </div>
-                        <button type="submit" class="btn btn-default">Buscar</button>
-                       
-                    }*@
-                   
-                 
+                        {
+                            <div class="form-group">
+                                @Html.TextBox("searchString", null, new { @class = "form-control" , @placeholder = "Nombre o apellido" })
+
+                            </div>
+                            <button type="submit" class="btn btn-default">Buscar</button>
+
+                        }*@
+
+
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
@@ -210,7 +218,22 @@
                     <a href=@Url.Action("index", "Home") class="logo">
                         <img src="~/Content/img/Logo_fdpn.png" style="width:150px;" alt="FDPN" />
                     </a>
+                  
+                        @*<div class="col-lg-2 col-lg-offset-10">
+                            <img src="~/Content/img/fondos/logoIPD.jpg" style="width:50px;"/>
+                        </div>
+                        <div class="col-lg-2 col-lg-offset-10">
+                            <img src="~/Content/img/fondos/logoFina.jpg"  style="width:50px;"/>
+                        </div>
+                        <div class="col-lg-2 col-lg-offset-10">
+                            <img src="~/Content/img/fondos/logoUana.jpg"  style="width:50px;"/>
+                        </div>
+                        <div class="col-lg-2 col-lg-offset-10">
+                            <img src="~/Content/img/fondos/logoConsanat.jpg" style="width:50px;"/>
+                        </div>*@
+                   
                 </div>
+
                 <div class="site-header__copy">
                     <h4 class="site-header__claim">Federación deportiva peruana de natación</h4>
                     @*<p class="site-header__subtitle u-spc-bottom--sml">Water is our world</p>*@

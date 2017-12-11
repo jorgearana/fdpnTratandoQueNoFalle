@@ -15,8 +15,8 @@
         @using (Html.BeginForm())
         {
             <p class="u-type--medium u-type--delta u-spc-bottom--med">Buscar en los torneos</p>
-            @Html.TextBox("SearchString", null, new { @class = "btn btn--primary btn--lrg u-rounded" })
-            <input type="submit" value="Buscar" class="btn btn--primary btn--lrg u-rounded" />
+            @Html.TextBox("SearchString", null, new { @class = "btn btn--primaryapnea btn--lrg u-rounded" })
+            <input type="submit" value="Buscar" class="btn btn--primaryapnea btn--lrg u-rounded" />
         }
     </header>
     <div class="wrapper site-athleteswidget__info">
@@ -63,7 +63,7 @@
         <br />
         Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-        @Html.PagedListPager(Model, page => Url.Action("Index",
+        @Html.PagedListPager(Model, page => Url.Action("Resultados",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
 

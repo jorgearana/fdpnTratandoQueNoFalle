@@ -17,6 +17,7 @@ namespace FDPN.ViewModels.Administrador
         public List<Noticias> Base { get; set; }
         public List<Noticias> Subvencion { get; set; }
         public List<Noticias> Records { get; set; }
-
+        public List<Noticias> Resultados { get; set; }
+        public List<Modals> ventanaModal { get; set; }
     }
 }

@@ -120,6 +120,21 @@ namespace FDPN.Controllers
             Random rnd = new Random();
            //List< TorneoDestacado> torneodestacado = db.TorneoDestacado.OrderByDescending(x => x.DestacadoId).Take(3).ToList();
             int i = rnd.Next(1, 3);
+            int categoria = rnd.Next(0, 3);
+            int edadminima = 0;
+            int edadmaxima = 109;
+            switch(categoria)
+            {
+                case 0:
+                    edadminima = 13;
+                    edadmaxima = 14;
+                    break;
+                case 1:
+                    edadminima = 15;
+                    edadmaxima = 17;
+                    break;
+              
+            }
             //int meet = torneodestacado[i].Meet;
             string sexo = "M";
 
@@ -137,11 +152,11 @@ namespace FDPN.Controllers
             {
                 sexo = "F";
             }
-            RESULTS resultadomejor = db.RESULTS.Where(x=>x.Athlete1.Sex==sexo && x.MEET1.Start>iniciomes && x.COURSE!= "Y").OrderByDescending(x => x.PFina).FirstOrDefault();
-            if (resultadomejor.PFina < 500)
+            RESULTS resultadomejor = db.RESULTS.Where(x=>x.Athlete1.Sex==sexo && x.MEET1.Start>iniciomes && x.COURSE!= "Y" && x.Athlete1.Age >= edadminima && x.Athlete1.Age<=edadmaxima).OrderByDescending(x => x.PFina).FirstOrDefault();
+            if (resultadomejor == null || resultadomejor.PFina < 500  )
             {
                iniciomes= iniciomes.AddMonths(-1);
-                resultadomejor = db.RESULTS.Where(x => x.Athlete1.Sex == sexo && x.MEET1.Start > iniciomes && x.COURSE != "Y").OrderByDescending(x => x.PFina).FirstOrDefault();
+                resultadomejor = db.RESULTS.Where(x => x.Athlete1.Sex == sexo && x.MEET1.Start > iniciomes && x.COURSE != "Y" && x.Athlete1.Age >= edadminima && x.Athlete1.Age <= edadmaxima).OrderByDescending(x => x.PFina).FirstOrDefault();
             }
             //int ponderado = tiempos.Count() / 5;
             //tiempos = tiempos.Take(ponderado).ToList();
@@ -188,7 +203,7 @@ namespace FDPN.Controllers
         public ActionResult _PreviewNoticias()
         {
             List<previewNoticiasViewModel> VM = new List<previewNoticiasViewModel>();
-            List<Noticias> noticias = db.Noticias.Where(x => x.CategoriaId == 1).OrderByDescending(x => x.Fecha).ThenByDescending(x=>x.NoticiaId).Take(6).ToList();
+            List<Noticias> noticias = db.Noticias.Where(x => x.CategoriaId == 1).OrderByDescending(x => x.Fecha).ThenByDescending(x=>x.NoticiaId).Take(9).ToList();
             foreach(Noticias noticia in noticias)
             {
                 previewNoticiasViewModel preview = new previewNoticiasViewModel
@@ -237,6 +252,12 @@ namespace FDPN.Controllers
             List<Vivo> Envivo = new List<Vivo>();
             Envivo = db.Vivo.Where(x=>x.Fecha> haceunasemana).OrderByDescending(x => x.Fecha).ToList();
             return View(Envivo);
+        }
+
+        public ActionResult _Modal()
+        {
+            Modals modal = db.Modals.Where(x => x.Activo).FirstOrDefault();
+            return PartialView("_Modal", modal);
         }
     }
 }

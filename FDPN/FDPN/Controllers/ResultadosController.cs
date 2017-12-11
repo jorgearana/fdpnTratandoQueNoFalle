@@ -63,17 +63,20 @@ namespace FDPN.Controllers
                 nadadores = nadadores.Where(x => x.Last.Substring(0, 1) == letra);
             }
 
-            switch (sortOrder)
-            {
-                case "name_desc":
-                    nadadores = nadadores.OrderByDescending(s => s.Last);
-                    break;
+            //switch (sortOrder)
+            //{
+            //    case "name_desc":
+            //        nadadores = nadadores.OrderByDescending(s => s.Last);
+            //        break;
 
-                default:
-                    nadadores = nadadores.OrderBy(s => s.Last);
-                    break;
-            }
-            int pageSize = 20;
+            //    default:
+            //        nadadores = nadadores.OrderBy(s => s.Last);
+            //        break;
+            //}
+
+            nadadores = nadadores.OrderBy(s => s.First);
+
+            int pageSize = 50;
             int pageNumber = (page ?? 1);
 
 
@@ -115,7 +118,7 @@ namespace FDPN.Controllers
             VM.Annos.Add(haceuatronnos.Year);
             VM.Annos.Add(hacecincoannos.Year);
 
-            List<RESULTS> resultadosDelNadador = db.RESULTS.Where(x => x.AthleteId == id && x.NT != 2 && x.NT != 5 && x.I_R == "i" && x.SCORE != "").ToList();
+            List<RESULTS> resultadosDelNadador = db.RESULTS.Where(x => x.AthleteId == id && x.NT != 2 && x.NT != 5 && x.I_R == "i" && x.SCORE != "" && x.TEAM !=0).ToList();
             int totalderesultados = resultadosDelNadador.Count();
             RESULTS resultadovacio = new RESULTS
             {
@@ -207,7 +210,7 @@ namespace FDPN.Controllers
                 }
             }
 
-            VM.UltimasParticipaciones = resultadosDelNadador.OrderByDescending(x => x.MeetId).DistinctBy(x => x.MeetId).Take(20).ToList();
+            VM.UltimasParticipaciones = resultadosDelNadador.OrderByDescending(x => x.MEET1.Start).DistinctBy(x => x.MeetId).Take(20).ToList();
             VM.MejoresResultados = resultadosDelNadador.OrderBy(x => x.PLACE).ToList();
             return View(VM);
 
@@ -235,7 +238,7 @@ namespace FDPN.Controllers
             VM.calendario = query.ToList();
             VM.disciplinas = new List<string>
             {
-                "Natación", "Master natación", "Aguas abiertas", "Polo Acuático", "Clavados", "Sincro"
+                "Natación", "Master natación", "Aguas abiertas", "Polo Acuático", "Clavados", "Nado Sincronizado"
             };
             return View(VM);
 
@@ -308,7 +311,7 @@ namespace FDPN.Controllers
                 hoy = hoy.AddYears(-1).AddDays(-7);
                 resultado = resultado.Where(x => x.MEET1.Start > hoy);
             }
-            if (periodo != null)
+            if (periodo != "" && periodo!= null)
             {
                 if (periodo.Substring(0, 3) == "Año")
                 {
@@ -520,7 +523,7 @@ namespace FDPN.Controllers
             return View(VM);
         }
 
-        public ActionResult Resultados(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Resultados(int? page, string sortOrder, string currentFilter, string searchString)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = sortOrder == "name" ? "name_desc" : "name";
@@ -624,10 +627,8 @@ namespace FDPN.Controllers
                 evento = entero + caracter;
             }
            
-            List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == modelo.meetid && x.ATHLETE!=0 && x.PLACE != 0 && x.MTEV == evento)
-
-                .OrderBy(x => x.SCORE).ToList();
-
+            List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == modelo.meetid && x.ATHLETE!=0 && x.PLACE != 0 && x.NT!= 2 && x.NT!= 5 && x.MTEV == evento)
+                                .OrderBy(x => x.SCORE).ToList();
             RESULTS resultado = resultados[0];
 
 
@@ -644,13 +645,11 @@ namespace FDPN.Controllers
                 edades = resultado.LO_HI.ToString() ?? "";
             }
             else edades = "";
-
             VM.minima = "0";
             VM.maxima = "99";
 
             switch (edades.Length)
             {
-
                 case 3:
                     VM.minima = "0" + edades.Substring(0, 1);
                     VM.maxima = edades.Substring(1, 2);
@@ -679,6 +678,8 @@ namespace FDPN.Controllers
             }
             return afiliado;
         }
+
+
 
 
     }

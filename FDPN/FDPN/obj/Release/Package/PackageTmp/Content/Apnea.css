@@ -365,17 +365,17 @@ table th {
         outline: 0
     }
 
-.btn--primary {
+.btn--primaryapnea {
     border: 1px solid #0075bc;
     color: #0075bc
 }
 
-    .btn--primary:focus, .btn--primary:hover {
+    .btn--primaryapnea:focus, .btn--primaryapnea:hover {
         background: #0075bc;
         color: #fff
     }
 
-    .btn--primary.is-disabled:focus, .btn--primary.is-disabled:hover, .btn--primary:disabled:focus, .btn--primary:disabled:hover {
+    .btn--primaryapnea.is-disabled:focus, .btn--primaryapnea.is-disabled:hover, .btn--primaryapnea:disabled:focus, .btn--primaryapnea:disabled:hover {
         background-color: transparent;
         color: #0075bc
     }

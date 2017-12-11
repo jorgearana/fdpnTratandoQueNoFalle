@@ -99,7 +99,7 @@ namespace FDPN.Controllers
         }
         public ActionResult Records(string searchString)
         {
-            var query = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "Record").OrderBy(x => x.Noticias.Fecha).AsQueryable();
+            var query = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "Record").OrderBy(x => x.Noticias.Titulo).AsQueryable();
 
             if (searchString != null)
             {
@@ -129,6 +129,21 @@ namespace FDPN.Controllers
             return View(listado);
         }
 
+        public ActionResult resultadosPDF(string searchString)
+        {
+            var query = db.Noticias.AsQueryable();
+            if (searchString != null)
+            {
+                query = query.Where(x => x.Titulo.Contains(searchString) ||
+                x.CategoriaNoticia.TipoNoticia.Contains(searchString) ||
+                x.Corta.Contains(searchString) ||
+                x.Larga.Contains(searchString));
+            }
+            query = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Resultado").OrderByDescending(x => x.NoticiaId).Take(20);
+
+            var VM = query.GroupBy(x => x.Fecha.Year).ToList();
+            return View(VM);
+        }
 
         public ActionResult AfiliarClub()
         {

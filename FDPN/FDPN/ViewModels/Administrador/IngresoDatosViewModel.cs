@@ -11,5 +11,6 @@ namespace FDPN.ViewModels.Administrador
         public Noticias noticia { get; set; }
         public List<Disciplina> disciplinas  { get; set; }
         public List<CategoriaNoticia> categorias { get; set; }
+        public int id { get; set; }
     }
 }

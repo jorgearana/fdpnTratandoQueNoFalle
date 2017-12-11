@@ -18,7 +18,7 @@
                 </div>
                 <div class="site-athleteswidget__info site-athleteswidget__info--negative">
                     <h3 class="site-athleteswidget__name">@Model.afiliado.Nombre <strong>@Model.afiliado.Apellido_Paterno</strong></h3>
-                    
+                    <p class="site-athleteswidget__subtitle">@Model.resultados.Athlete1.Age años</p>
                     <p class="site-athleteswidget__subtitle">@Model.resultados.MEET1.MName</p>
                     <table class="site-rankingwidget__table">
                         <thead>
@@ -51,7 +51,7 @@
     <div class="site-athleteswidget">
          </div>
     <footer class="site-homepage__section__footer">
-        @Html.ActionLink("Ver todos los nadadores", "Nadadores", "Resultados",null, new { @class = "btn btn--primary btn--lrg u-rounded" } )
+        @Html.ActionLink("Ver todos los nadadores", "Nadadores", "Resultados",null, new { @class = "btn btn--primaryapnea btn--lrg u-rounded" } )
      </footer>
     <center>
         <h6>* Se consideran los tiempos registrados a partir del año 2000</h6>

@@ -1,6 +1,6 @@
 ﻿
 $(document).ready(function () {
-
+    $("#mostrarmodal").modal("show");
     // cada vez que se mueva el scroll del navegador se ejecutara
     // este evento
     $(document).scroll(function () {
@@ -59,7 +59,7 @@ $(document).ready(function () {
     });
     $(document).ready(function () {
         $('.datatabla').DataTable({            
-            "pageLength": 20,
+            "pageLength": 25,
             "language": {
                 "lengthMenu": "Mostrando _MENU_ registros por página",
                 "zeroRecords": "No encontramos datos",
@@ -91,6 +91,7 @@ $(document).ready(function () {
                 }
             },
         });
+        
         $('.datatablaReves').DataTable({
             "order": [[0, "desc"]],
             "pageLength": 20,
@@ -118,6 +119,7 @@ $(document).ready(function () {
             remove: false
         });
     });
+
 
 });
 
@@ -187,5 +189,13 @@ $('#buscarRankingFINA').on('click', function (e) {
     });
 });
 
+
+
+
+//var table = $('#tablaActualizarCalendario').DataTable();
+
+//$('#tablaActualizarCalendario tbody').on('click', 'tr', function () {
+//    console.log(table.row(this).data());
+//});
 
 

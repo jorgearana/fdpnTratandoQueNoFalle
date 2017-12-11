@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="site-ranking__filter">
-                        <input type="submit" class="btn btn--primary btn--lrg u-rounded" value="Ver ranking">
+                        <input type="submit" class="btn btn--primaryapnea btn--lrg u-rounded" value="Ver ranking">
                     </div>
 
 
@@ -111,7 +111,7 @@
 
                             </h2>
                             <p class="u-type--medium u-type--delta u-type--negative">@Model.resultados[i].SCORE</p>
-                            <h6 class="ranking1detalle">@Model.resultados[i].MEET1.Start.ToShortDateString()</h6>
+                            <h6 class="ranking1detalle">@Model.resultados[i].MEET1.Start.ToString("dd/MMM/yyyy")</h6>
                             <h6 class="ranking1detalle">@Model.resultados[i].MEET1.MName</h6>
                             <div class="espaciado"></div>
                         </div>
@@ -135,7 +135,7 @@
 
                         </td>
                         <td>@Model.resultados[i].SCORE</td>
-                        <td class="weak">@Model.resultados[i].MEET1.Start.ToShortDateString()</td>
+                        <td class="weak">@Model.resultados[i].MEET1.Start.ToString("dd/MMM/yyyy")</td>
                     </tr>
                 }
             </tbody>

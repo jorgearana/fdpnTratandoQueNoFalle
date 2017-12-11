@@ -141,6 +141,8 @@
       <End Role="Torneo" EntitySet="Torneo" />
       <End Role="MultiEdad" EntitySet="MultiEdad" />
     </AssociationSet>
+    <EntitySet Name="Modals" EntityType="DB_9B1F4C_MVCcompetenciasModel.Modals" />
+    <EntitySet Name="Query" EntityType="DB_9B1F4C_MVCcompetenciasModel.Query" />
   </EntityContainer>
   <EntityType Name="Athlete">
     <Key>
@@ -1412,4 +1414,34 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Modals">
+    <Key>
+      <PropertyRef Name="Modalid" />
+    </Key>
+    <Property Name="Modalid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Cuerpo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Enlace" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Query">
+    <Key>
+      <PropertyRef Name="Athlete" />
+      <PropertyRef Name="First" />
+      <PropertyRef Name="Last" />
+      <PropertyRef Name="Sex" />
+      <PropertyRef Name="Age" />
+      <PropertyRef Name="ID_NO" />
+      <PropertyRef Name="AthleteId" />
+    </Key>
+    <Property Name="Athlete" Type="Int32" Nullable="false" />
+    <Property Name="First" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Last" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Birth" Type="DateTime" Precision="3" />
+    <Property Name="Age" Type="Int16" Nullable="false" />
+    <Property Name="ID_NO" Type="String" Nullable="false" MaxLength="17" FixedLength="false" Unicode="true" />
+    <Property Name="AthleteId" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>

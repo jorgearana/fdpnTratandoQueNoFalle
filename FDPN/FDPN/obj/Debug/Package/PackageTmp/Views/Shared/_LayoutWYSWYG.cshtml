@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrador de datos</title>
+    <link href="~/Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Summernote/summernote.css" rel="stylesheet" />
+    <link href="~/Content/FileUpload/css/jquery.fileupload.css" rel="stylesheet" />
+
+    <link href="~/Content/FileUpload/css/jquery.fileupload-noscript.css" rel="stylesheet" />
+    <link href="~/Content/FileUpload/css/jquery.fileupload-ui-noscript.css" rel="stylesheet" />
+    <link href="~/Content/FileUpload/css/jquery.fileupload-ui.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/img/Imgsmall/fdpn.ico" rel="apple-touch-icon">
+</head>
+<body>
+    @RenderBody()
+
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap/bootstrap.min.js"></script>
+    <script src="~/Content/Summernote/summernote.js"></script>
+    <script src="~/Scripts/noticaSummerNote.js"></script>
+
+    <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+    <script src="~/Content/FileUpload/js/vendor/jquery.ui.widget.js"></script>
+    <script src="~/Content/FileUpload/js/tmpl.min.js"></script>
+
+
+    <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+    <script src="~/Content/FileUpload/js/load-image.all.min.js"></script>
+    <!-- The Canvas to Blob plugin is included for image resizing functionality -->
+    <script src="~/Content/FileUpload/js/canvas-to-blob.min.js"></script>
+   
+
+
+    <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+    <script src="~/Content/FileUpload/js/jquery.iframe-transport.js"></script>
+    <script src="~/Content/FileUpload/js/jquery.fileupload.js"></script>
+    <script src="~/Content/FileUpload/js/jquery.fileupload-process.js"></script>
+
+    <script src="~/Content/FileUpload/js/jquery.fileupload-audio.js"></script>
+    <script src="~/Content/FileUpload/js/jquery.fileupload-image.js"></script>
+    <script src="~/Content/FileUpload/js/jquery.fileupload-jquery-ui.js"></script>
+    <script src="~/Content/FileUpload/js/jquery.fileupload-validate.js"></script>
+    <script src="~/Content/FileUpload/js/jquery.fileupload-video.js"></script>
+
+    <script src="~/Content/FileUpload/js/jquery.fileupload-ui.js"></script>
+
+    <script src="~/Content/FileUpload/js/jquery.blueimp-gallery.min.js"></script>
+
+    <script>
+        var $form = null;
+        $(function () {
+
+            $form = $('#fileupload').fileupload({
+                dataType: 'json'
+            });
+
+        });
+        $('#fileupload').addClass('fileupload-processing');
+        $('.datatabla').DataTable({
+            "pageLength": 20,
+            "language": {
+                "lengthMenu": "Mostrando _MENU_ registros por página",
+                "zeroRecords": "No encontramos datos",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Sin datos disponibles",
+                "infoFiltered": "(filtrado de  _MAX_ registros totales)",
+                "oPaginate": {
+                    "sFirst": "Primera página",
+                    "sLast": "Última página",
+                    "sNext": "Siguiente página",
+                    "sPrevious": "Página anterior",
+                }
+            },
+        });
+    </script>
+
+
+
+
+</body>
+</html>

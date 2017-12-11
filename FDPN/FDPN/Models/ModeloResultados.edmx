@@ -485,6 +485,17 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.Estilos' no ti
           <Property Name="Course" Type="nvarchar" MaxLength="2" Nullable="false" />
           <Property Name="MeetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
+        <EntityType Name="Modals">
+          <Key>
+            <PropertyRef Name="Modalid" />
+          </Key>
+          <Property Name="Modalid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar" MaxLength="500" />
+          <Property Name="Cuerpo" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar" MaxLength="200" />
+          <Property Name="Enlace" Type="nvarchar" MaxLength="200" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.MultiEdad' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="MultiEdad">
@@ -542,6 +553,27 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.MultiEdad' no 
           <Property Name="PruebaId" Type="int" Nullable="false" />
           <Property Name="distancia" Type="int" Nullable="false" />
           <Property Name="estilo" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.Query' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Query">
+          <Key>
+            <PropertyRef Name="Athlete" />
+            <PropertyRef Name="First" />
+            <PropertyRef Name="Last" />
+            <PropertyRef Name="Sex" />
+            <PropertyRef Name="Age" />
+            <PropertyRef Name="ID_NO" />
+            <PropertyRef Name="AthleteId" />
+          </Key>
+          <Property Name="Athlete" Type="int" Nullable="false" />
+          <Property Name="First" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Last" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Birth" Type="datetime2" Precision="3" />
+          <Property Name="Age" Type="smallint" Nullable="false" />
+          <Property Name="ID_NO" Type="nvarchar" MaxLength="17" Nullable="false" />
+          <Property Name="AthleteId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Resultados">
           <Key>
@@ -1252,6 +1284,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.Sessitem' no t
           <EntitySet Name="Jugadores" EntityType="Self.Jugadores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MarcasMinimas" EntityType="Self.MarcasMinimas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MEET" EntityType="Self.MEET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modals" EntityType="Self.Modals" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Noticias" EntityType="Self.Noticias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PosicionFinal" EntityType="Self.PosicionFinal" Schema="dbo" store:Type="Tables" />
@@ -1295,6 +1328,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.Sessitem' no t
     [MultiEdad].[MultiAge] AS [MultiAge], 
     [MultiEdad].[EventId] AS [EventId]
     FROM [dbo].[MultiEdad] AS [MultiEdad]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Query" EntityType="Self.Query" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Query].[Athlete] AS [Athlete], 
+    [Query].[First] AS [First], 
+    [Query].[Last] AS [Last], 
+    [Query].[Sex] AS [Sex], 
+    [Query].[Birth] AS [Birth], 
+    [Query].[Age] AS [Age], 
+    [Query].[ID_NO] AS [ID_NO], 
+    [Query].[AthleteId] AS [AthleteId]
+    FROM [dbo].[Query] AS [Query]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Session" EntityType="Self.Session" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1579,6 +1624,8 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.Sessitem' no t
             <End Role="Torneo" EntitySet="Torneo" />
             <End Role="MultiEdad" EntitySet="MultiEdad" />
           </AssociationSet>
+          <EntitySet Name="Modals" EntityType="DB_9B1F4C_MVCcompetenciasModel.Modals" />
+          <EntitySet Name="Query" EntityType="DB_9B1F4C_MVCcompetenciasModel.Query" />
         </EntityContainer>
         <EntityType Name="Athlete">
           <Key>
@@ -2850,6 +2897,36 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.Sessitem' no t
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Modals">
+          <Key>
+            <PropertyRef Name="Modalid" />
+          </Key>
+          <Property Name="Modalid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Cuerpo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Enlace" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Query">
+          <Key>
+            <PropertyRef Name="Athlete" />
+            <PropertyRef Name="First" />
+            <PropertyRef Name="Last" />
+            <PropertyRef Name="Sex" />
+            <PropertyRef Name="Age" />
+            <PropertyRef Name="ID_NO" />
+            <PropertyRef Name="AthleteId" />
+          </Key>
+          <Property Name="Athlete" Type="Int32" Nullable="false" />
+          <Property Name="First" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Last" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Birth" Type="DateTime" Precision="3" />
+          <Property Name="Age" Type="Int16" Nullable="false" />
+          <Property Name="ID_NO" Type="String" Nullable="false" MaxLength="17" FixedLength="false" Unicode="true" />
+          <Property Name="AthleteId" Type="Int32" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3785,6 +3862,32 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.Sessitem' no t
                 <ScalarProperty Name="Event_ptr" ColumnName="Event_ptr" />
                 <ScalarProperty Name="Sess_ptr" ColumnName="Sess_ptr" />
                 <ScalarProperty Name="Sess_order" ColumnName="Sess_order" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modals">
+            <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.Modals">
+              <MappingFragment StoreEntitySet="Modals">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Enlace" ColumnName="Enlace" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Cuerpo" ColumnName="Cuerpo" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Modalid" ColumnName="Modalid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Query">
+            <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.Query">
+              <MappingFragment StoreEntitySet="Query">
+                <ScalarProperty Name="AthleteId" ColumnName="AthleteId" />
+                <ScalarProperty Name="ID_NO" ColumnName="ID_NO" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Birth" ColumnName="Birth" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Last" ColumnName="Last" />
+                <ScalarProperty Name="First" ColumnName="First" />
+                <ScalarProperty Name="Athlete" ColumnName="Athlete" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -13,7 +13,7 @@
             <div class="site-athleteswidget__photo">
                 <img src=@Url.Content(path + "/" + Model.afiliado.RutaFoto + ".jpg")>
             </div>
-            <p class="u-type--medium u-type--delta u-spc-bottom--med">@Model.torneo.MName - @Model.torneo.Start.ToShortDateString()</p>
+            <p class="u-type--medium u-type--delta u-spc-bottom--med">@Model.torneo.MName - @Model.torneo.Start.ToString("dd/MMM/yyyy")</p>
 
 </header>
       
@@ -51,7 +51,7 @@
         </div>
     </div>
     <div class="site-homepage__section__header u-animation--fadeInSection">
-        @Html.ActionLink("Listado de nadadores", "Nadadores", "Resultados", null, new {@class= "btn btn--med btn--primary u-rounded" })
+        @Html.ActionLink("Listado de nadadores", "Nadadores", "Resultados", null, new {@class= "btn btn--med btn--primaryapnea u-rounded" })
       
     </div>
     <div class="espaciado"></div>

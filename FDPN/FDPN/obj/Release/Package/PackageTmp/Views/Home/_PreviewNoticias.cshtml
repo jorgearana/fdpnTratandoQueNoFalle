@@ -15,7 +15,7 @@
                 <header class="site-homepage__section__header">
                     <h2 class="site-title site-title--ultra site-title--ultra--primary">NOTICIAS</h2>
 
-                    <div class="container cardsubtitulo-blanca">
+                    <div class="container cardsubtitulo">
                         <div class="row">
                             <div class="col-lg-2 col-lg-offset-2">
                                 Buscar
@@ -24,10 +24,10 @@
                                 @Html.TextBox("searchString", null, new { @class = "input input--text input--sml input--sml--padded" })
                             </div>
                             <div class="col-lg-2">
-                                <input type="submit" value="Buscar" class="btn btn--negative btn--sml u-rounded" />
+                                <input type="submit" value="Buscar" class="btn btn--primaryapnea btn--sml u-rounded" />
                             </div>
                         </div>
-                        <div class="espaciado"></div>
+                        @*<div class="espaciado"></div>*@
                     </div>
                 </header>
 
@@ -37,7 +37,7 @@
         </div>
     }
 
-<div class="espaciado"></div>
+@*<div class="espaciado"></div>*@
 <section class="site-news site-homepage__pushup">
 
     <div class="wrapper site-athleteswidget">
@@ -46,7 +46,7 @@
             {
 
                 <div class="col-lg-3 col-md-3 col-sm-6 marco">
-                    <div class="card">
+                    <div data-mh="card" class="card">
                         <a href=@Url.Action("noticia", "noticias", new { @id= item.noticia.NoticiaId})>
                             <div class="site-news__visual" data-wow-duration="700ms" data-wow-delay="100ms">
                                 <div class="item-img-wrap ">
@@ -80,7 +80,7 @@
         </div>
         <center>
 
-            @Html.ActionLink("Ver todos las noticias", "Noticias", "noticias", null, new { @class = "btn btn--primary btn--lrg u-rounded" })
+            @Html.ActionLink("Ver todos las noticias", "Noticias", "noticias", null, new { @class = "btn btn--primaryapnea btn--lrg u-rounded" })
         </center>
     </section>
 

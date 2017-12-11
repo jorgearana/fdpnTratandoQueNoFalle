@@ -17,7 +17,7 @@
                  <h2 class="site-title site-title--ultra site-title--ultra--primary">Nadadores</h2>
                  <p class="u-type--medium u-type--delta u-spc-bottom--med">Buscar por nombre o apellido</p>
                  @Html.TextBox("searchString", null, new { @class = " input input--text input--med input--med--padded" })
-                 <input type="submit" value="Buscar" class="btn btn--primary btn--lrg u-rounded" />
+                 <input type="submit" value="Buscar" class="btn btn--primaryapnea btn--lrg u-rounded" />
 
              </header>
          }
@@ -214,7 +214,7 @@
                              {
                                  <tr>
                                      <td>@Html.ActionLink(item.MEET1.MName, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.MeetId,  athleteid = item.AthleteId  }, null)</td>
-                                     <td>@item.MEET1.Start.ToShortDateString()</td>
+                                     <td>@item.MEET1.Start.ToString("dd/MMM/yyyy")</td>
                                      <td class="weak">@item.TEAM1.TName</td>
                                  </tr>
                              }
@@ -227,7 +227,7 @@
 
                          <p class="u-type--medium u-type--delta u-spc-bottom--med">Buscar otro deportista</p>
                          @Html.TextBox("searchString", null, new { @class = " input input--text input--med input--med--padded" })
-                         <input type="submit" value="Buscar" class="btn btn--primary btn--lrg u-rounded" />
+                         <input type="submit" value="Buscar" class="btn btn--primaryapnea btn--lrg u-rounded" />
 
                      </header>
                  }

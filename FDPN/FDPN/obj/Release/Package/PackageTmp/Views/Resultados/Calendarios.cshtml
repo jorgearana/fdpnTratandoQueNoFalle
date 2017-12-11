@@ -14,7 +14,7 @@
             <header class="site-homepage__section__header">
                 <h2 class="site-title site-title--ultra site-title--ultra--primary">Calendario anual</h2>  
                         @Html.DropDownListFor(model => model.disciplina, new SelectList(Model.disciplinas), "Filtre por disciplina", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
-                <input type="submit" value="Buscar" class="btn btn--primary btn--lrg u-rounded" /> 
+                <input type="submit" value="Buscar" class="btn btn--primaryapnea btn--lrg u-rounded" /> 
                 <div class="espaciado"></div>
                  
             </header>   
@@ -30,7 +30,7 @@
 
                 <a href="~/Content/pdf/Calendario sincro.pdf" class="btn btn-default   sincro">Natación artística</a>
 
-                <a href="~/Content/pdf/Oficial Aguas.pdf" class="btn btn-default   aguas">Aguas abiertas</a>
+                <a href="~/Content/pdf/Calendario aguas.pdf" class="btn btn-default   aguas">Aguas abiertas</a>
 
                 <a href="~/Content/pdf/Calendario Natacion.pdf" class="btn btn-default   clavados">Clavados</a>
 
@@ -64,7 +64,7 @@
                 <div class="espaciadogrande"></div>
                 @*<center>
 
-                    @Html.ActionLink("Ver todos los eventos", "calendarios", "resultados", null, new { @class = "btn btn--primary btn--lrg u-rounded" })
+                    @Html.ActionLink("Ver todos los eventos", "calendarios", "resultados", null, new { @class = "btn btn--primaryapnea btn--lrg u-rounded" })
                 </center>*@
             </section>
         </div>

@@ -61,5 +61,7 @@ namespace FDPN.Models
         public virtual DbSet<MultiEdad> MultiEdad { get; set; }
         public virtual DbSet<Session> Session { get; set; }
         public virtual DbSet<Sessitem> Sessitem { get; set; }
+        public virtual DbSet<Modals> Modals { get; set; }
+        public virtual DbSet<Query> Query { get; set; }
     }
 }

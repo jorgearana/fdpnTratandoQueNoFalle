@@ -69,7 +69,7 @@ textarea {
 }
 
 .aguas {
-    background: #b94ac2;
+    background: #d572ff;
 }
 
 .wp {
@@ -865,4 +865,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     background-size: 100%;
     width: 30px;
     height: 30px;
+}
+
+.FechaOrdenada {
+    display: none;
 }

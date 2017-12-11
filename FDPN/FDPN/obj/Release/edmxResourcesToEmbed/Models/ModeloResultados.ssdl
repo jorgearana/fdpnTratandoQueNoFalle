@@ -480,6 +480,17 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.Estilos' no ti
     <Property Name="Course" Type="nvarchar" MaxLength="2" Nullable="false" />
     <Property Name="MeetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
+  <EntityType Name="Modals">
+    <Key>
+      <PropertyRef Name="Modalid" />
+    </Key>
+    <Property Name="Modalid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titulo" Type="nvarchar" MaxLength="500" />
+    <Property Name="Cuerpo" Type="nvarchar(max)" />
+    <Property Name="Image" Type="nvarchar" MaxLength="200" />
+    <Property Name="Enlace" Type="nvarchar" MaxLength="200" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
   <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.MultiEdad' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
   <EntityType Name="MultiEdad">
@@ -537,6 +548,27 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.MultiEdad' no 
     <Property Name="PruebaId" Type="int" Nullable="false" />
     <Property Name="distancia" Type="int" Nullable="false" />
     <Property Name="estilo" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.Query' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Query">
+    <Key>
+      <PropertyRef Name="Athlete" />
+      <PropertyRef Name="First" />
+      <PropertyRef Name="Last" />
+      <PropertyRef Name="Sex" />
+      <PropertyRef Name="Age" />
+      <PropertyRef Name="ID_NO" />
+      <PropertyRef Name="AthleteId" />
+    </Key>
+    <Property Name="Athlete" Type="int" Nullable="false" />
+    <Property Name="First" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Last" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="Birth" Type="datetime2" Precision="3" />
+    <Property Name="Age" Type="smallint" Nullable="false" />
+    <Property Name="ID_NO" Type="nvarchar" MaxLength="17" Nullable="false" />
+    <Property Name="AthleteId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Resultados">
     <Key>
@@ -1247,6 +1279,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.Sessitem' no t
     <EntitySet Name="Jugadores" EntityType="Self.Jugadores" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MarcasMinimas" EntityType="Self.MarcasMinimas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MEET" EntityType="Self.MEET" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Modals" EntityType="Self.Modals" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Noticias" EntityType="Self.Noticias" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PosicionFinal" EntityType="Self.PosicionFinal" Schema="dbo" store:Type="Tables" />
@@ -1290,6 +1323,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.Sessitem' no t
     [MultiEdad].[MultiAge] AS [MultiAge], 
     [MultiEdad].[EventId] AS [EventId]
     FROM [dbo].[MultiEdad] AS [MultiEdad]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Query" EntityType="Self.Query" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Query].[Athlete] AS [Athlete], 
+    [Query].[First] AS [First], 
+    [Query].[Last] AS [Last], 
+    [Query].[Sex] AS [Sex], 
+    [Query].[Birth] AS [Birth], 
+    [Query].[Age] AS [Age], 
+    [Query].[ID_NO] AS [ID_NO], 
+    [Query].[AthleteId] AS [AthleteId]
+    FROM [dbo].[Query] AS [Query]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="Session" EntityType="Self.Session" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 

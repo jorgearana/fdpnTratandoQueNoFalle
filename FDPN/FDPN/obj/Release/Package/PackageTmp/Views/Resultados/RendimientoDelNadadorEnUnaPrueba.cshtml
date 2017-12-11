@@ -38,7 +38,7 @@
                             <td>@item.SCORE</td>
                             <td>@item.DISTANCE  @item.STROKE</td>
                             <td>@item.MEET1.MName</td>
-                            <td>@item.MEET1.Start.ToShortDateString()</td>
+                            <td>@item.MEET1.Start.ToString("dd/MMM/yyyy")</td>
                             <td>@item.TEAM1.TName</td>
                             <td>@item.COURSE</td>
                             <td>@item.PFina</td>
@@ -78,7 +78,7 @@
                             <td>@item.SCORE</td>
                             <td>@item.DISTANCE  @item.STROKE</td>
                             <td>@item.MEET1.MName</td>
-                            <td>@item.MEET1.Start.ToShortDateString()</td>
+                            <td>@item.MEET1.Start.ToString("dd/MMM/yyyy")</td>
                             <td>@item.TEAM1.TName</td>
                             <td>@item.COURSE</td>
                             <td>@item.PFina</td>
@@ -95,7 +95,7 @@
     </div>
     <div class="espaciadogrande"></div>
     <div class="site-homepage__split u-group u-animation--fadeInSection">
-        @Html.ActionLink("Listado de nadadores", "Nadadores", "Resultados", null, new { @class = "btn btn--med btn--primary u-rounded" })
+        @Html.ActionLink("Listado de nadadores", "Nadadores", "Resultados", null, new { @class = "btn btn--med btn--primaryapnea u-rounded" })
 
     </div>
     <div class="espaciadogrande"></div>

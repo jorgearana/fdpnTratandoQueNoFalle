@@ -260,17 +260,27 @@
     </Compile>
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\ionicons.css" />
+    <Content Include="Content\bootstrap\main.min.css" />
+    <Content Include="Content\img\EnVivo.jpg" />
     <Content Include="Content\img\fondos\Academia de nado.jpg" />
     <Content Include="Content\img\fondos\AFICHE-ADULTOS1-1024x724.jpg" />
     <Content Include="Content\img\fondos\AFICHE-AQUABEBÉ-1024x724.jpg" />
     <Content Include="Content\img\fondos\AFICHE-NIÑOS-1024x853.jpg" />
     <Content Include="Content\img\fondos\AFICHE-PATERA1-1024x891.jpg" />
+    <Content Include="Content\img\fondos\logoConsanat.jpg" />
+    <Content Include="Content\img\fondos\logoFina.jpg" />
+    <Content Include="Content\img\fondos\logoIPD.jpg" />
+    <Content Include="Content\img\fondos\logoUana.jpg" />
+    <Content Include="Content\img\Fotos\Sin título.png" />
+    <Content Include="Content\img\Imgsmall\favicon.ico" />
     <Content Include="Content\img\Imgsmall\medal1.png" />
     <Content Include="Content\img\Imgsmall\medal2.png" />
     <Content Include="Content\img\Imgsmall\medal3.png" />
     <Content Include="Content\img\Imgsmall\premio1.png" />
     <Content Include="Content\img\Imgsmall\premio2.png" />
     <Content Include="Content\img\Imgsmall\premio3.png" />
+    <Content Include="Content\img\logo-JJBB-2xb.png" />
     <Content Include="Content\pdf\Calendario Masters.pdf" />
     <Content Include="Content\pdf\Calendario Natacion.pdf" />
     <Content Include="Content\pdf\Calendario Polo.pdf" />
@@ -285,7 +295,12 @@
     <Content Include="Content\slick\slick.less" />
     <Content Include="Content\slick\slick.scss" />
     <Content Include="Content\slick\Thumbs.db" />
+    <Content Include="Content\pdf\Calendario aguas.pdf" />
+    <Content Include="Content\pdf\Calendario todas.pdf" />
     <None Include="Models\ModeloAfiliaciones.Context.cs.NO" />
+    <Compile Include="Models\Modals.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ModeloAfiliaciones.Context1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -346,6 +361,9 @@
     <Compile Include="Models\Pruebas.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Query.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Resultados.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
@@ -399,6 +417,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Administrador\BorrarViewModel.cs" />
+    <Compile Include="ViewModels\Administrador\EditarCalendarioViewModel.cs" />
     <Compile Include="ViewModels\Administrador\EditarViewModel.cs" />
     <Compile Include="ViewModels\Administrador\IndexViewModel.cs" />
     <Compile Include="ViewModels\Administrador\IngresoDatosViewModel.cs" />
@@ -425,7 +444,9 @@
     <Content Include="Content\slick\slick.css" />
     <Content Include="Content\slick\slick.js" />
     <Content Include="Content\slick\slick.min.js" />
+    <Content Include="fdpn.ico" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\DatePickerReady.js" />
     <Content Include="Views\Noticias\Eventos.cshtml" />
     <Content Include="Views\Home\_PreviewEnVivo.cshtml" />
     <Content Include="Views\Documentos\EnVivo.cshtml" />
@@ -433,6 +454,15 @@
     <Content Include="Views\Resultados\CalcularRankignFina.cshtml" />
     <Content Include="Views\Home\_TopBar.cshtml" />
     <Content Include="Views\Documentos\AfiliarClub.cshtml" />
+    <Content Include="Views\Documentos\resultadosPDF.cshtml" />
+    <Content Include="Views\Administrador\Login.cshtml" />
+    <Content Include="Views\Shared\Noautorizado.cshtml" />
+    <Content Include="Views\Home\_Modal.cshtml" />
+    <Content Include="Views\Administrador\IngresarModal.cshtml" />
+    <Content Include="Views\Administrador\confirmaBorrar.cshtml" />
+    <Content Include="Views\Resultados\CalendariosImpresion.cshtml" />
+    <Content Include="Views\Administrador\MostrarCalendario.cshtml" />
+    <Content Include="Views\Administrador\editarCalendario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Apnea.css" />
@@ -622,6 +652,7 @@
     </Content>
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Files\somefiles\Bases Selectivo Bolivarianos Copa Pacífico 2017-Aguas Abiertas.pdf" />
     <Content Include="Files\somefiles\Criterios de Seleccion Bolivarianos%252c Copa Pacífico 2017-Aguas Abiertas.pdf" />
@@ -758,6 +789,9 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Content\img\Imgsmall\favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

@@ -1,0 +1,95 @@
+﻿@model List<FDPN.Models.Calendario>
+
+@{
+    ViewBag.Title = "MostrarCalendario";
+   Layout = "~/Views/Shared/_LayoutWYSWYG.cshtml";
+    string path = Url.Content("../Content/img/Fotos/");
+}
+<h2>Calendario Oficial</h2>
+
+
+<div class="cuerpoconmargen">
+    <div class="col-lg-12 text-center panel-heading panel-head">
+        <h2 class="section-heading">Administrador de datos</h2>
+
+    </div>
+    <div class="row">
+    </div>
+
+    @*Noticia*@
+    <section class="site-contentpage site-homepage__pushup">
+        <br />
+        <p class="u-type--gamma">
+
+            <table class="tablaNormal datatabla" id="tablaActualizarCalendario">
+                <thead>
+                    <tr>
+                        <th>
+                            Inicio
+                        </th>
+                        <th>
+                            Final
+                        </th>
+                        <th>
+                            Disciplina
+                        </th>
+                        <th>
+                            Torneo
+                        </th>
+                        <th>
+                            Sede
+                        </th>
+                        <th>
+                            Organizador
+                        </th>
+                        <th>
+                            Categorías
+                        </th>
+                       
+                        <th>
+                            <i class="fa fa-download" aria-hidden="true"></i> Acción
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td>
+                                <div class="FechaOrdenada">@item.Inicio.ToString("yyyy/MM/dd")</div>
+                               @item.Inicio.ToString("dd/MM/yyyy")
+                            </td>
+                            <td>
+                                <div class="FechaOrdenada">@item.Inicio.ToString("yyyy/MM/dd")</div>
+                                @item.Fin.ToString("dd/MM/yyyy")
+                            </td>
+                            <td>@item.Disciplina</td>
+                            <td>@item.Evento</td>
+                            <td>@item.Sede</td>
+                            <td>@item.Organizador</td>
+                            <td>@item.Observación</td>
+                            
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Quiero <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Editar", "editarCalendario", "administrador", new { @id = item.EventoId }, null)</li>
+                                        <li role="separator" class="divider"></li>
+                                        <li>@Html.ActionLink("Borrar", "BorrarCalendario", "administrador", new { @id = item.EventoId }, null)</li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </p>
+
+        <div class="espaciado"></div>
+        <hr />
+    </section>
+
+</div>
