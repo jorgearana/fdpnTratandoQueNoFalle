@@ -472,6 +472,10 @@
       <DependentUpon>ModeloResultados.edmx</DependentUpon>
       <LastGenOutput>ModeloResultados.cs</LastGenOutput>
     </Content>
+    <Content Include="Rotativa\msvcp120.dll" />
+    <Content Include="Rotativa\msvcp120_clr0400.dll" />
+    <Content Include="Rotativa\msvcr100_clr0400.dll" />
+    <Content Include="Rotativa\msvcr120.dll" />
     <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\Administrador.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />

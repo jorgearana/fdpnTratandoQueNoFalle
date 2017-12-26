@@ -24,7 +24,15 @@
         </center>
         <div class="wrapper">
             <center>
-                @Html.ActionLink("Masters", "PrintCalendario", "Calendarios", new { disciplina = 6 }, new { @class = "btn btn-default  master" })
+                <a href="~/Content/pdf/Calendario Masters.pdf" class="btn btn-default  master">Masters</a>
+                <a href="~/Content/pdf/Calendario Polo.pdf" class="btn btn-default  wp">Polo Acuático</a>
+                <a href="~/Content/pdf/calendario artistico.pdf" class="btn btn-default  sincro">Natación Artística</a>
+                <a href="~/Content/pdf/Calendario aguas.pdf" class="btn btn-default  aguas">Aguas Abiertas</a>
+                <a href="~/Content/pdf/calendario clavados.pdf" class="btn btn-default  clavados"> Clavados</a>
+                <a href="~/Content/pdf/Calendario Natacion.pdf" class="btn btn-default  natacion">Natación</a>
+                <a href="~/Content/pdf/Calendario todas.pdf" class="btn btn-default">Consolidado</a>
+
+                @*@Html.ActionLink("Masters", "PrintCalendario", "Calendarios", new { disciplina = 6 }, new { @class = "btn btn-default  master" })
 
                 @Html.ActionLink("Polo Acuático", "PrintCalendario", "Calendarios", new { disciplina = 2 }, new { @class = "btn btn-default  wp" })
 
@@ -36,7 +44,7 @@
 
                 @Html.ActionLink("Natación", "PrintCalendario", "Calendarios", new { disciplina = 1 }, new { @class = "btn btn-default  natacion" })
 
-                @Html.ActionLink("Consolidado", "PrintCalendario", "Calendarios", new { disciplina = 7 }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Consolidado", "PrintCalendario", "Calendarios", new { disciplina = 7 }, new { @class = "btn btn-default" })*@
             </center>
         </div>
         <div class="site-homepage__section__content u-grid">
