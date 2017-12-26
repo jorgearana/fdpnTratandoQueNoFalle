@@ -14,7 +14,7 @@ namespace FDPN.Controllers
 {
     public class AdministradorController : Controller
     {
-        DB_9B1F4C_MVCcompetenciasEntities1 db = new DB_9B1F4C_MVCcompetenciasEntities1();
+          DB_9B1F4C_MVCcompetenciasEntities db = new   DB_9B1F4C_MVCcompetenciasEntities();
         DB_9B1F4C_afiliacionesEntities1 af = new DB_9B1F4C_afiliacionesEntities1();
 
         FilesHelper filesHelper;
@@ -50,6 +50,7 @@ namespace FDPN.Controllers
                 Subvencion = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Subvencion").OrderByDescending(x => x.NoticiaId).Take(20).ToList(),
                 Records = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Record").OrderByDescending(x => x.NoticiaId).Take(20).ToList(),
                 Resultados = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Resultado").OrderByDescending(x => x.NoticiaId).Take(20).ToList(),
+                Ranking = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Ranking").OrderByDescending(x => x.NoticiaId).Take(20).ToList(),
                 ventanaModal = db.Modals.OrderBy(x => x.Titulo).ToList(),
             };
             return View(VM);
@@ -306,6 +307,10 @@ namespace FDPN.Controllers
                     {
                         return RedirectToAction("index", "administrador");
                     }
+                    if (rol.RolId == 10)
+                    {
+                        return RedirectToAction("calendario", "administrador");
+                    }
                 }
             }
             ModelState.AddModelError("", "Ooh oh, el nombre de usuario o el password están errados");
@@ -394,31 +399,23 @@ namespace FDPN.Controllers
 
         }
 
-        public ActionResult MostrarCalendario()
+       
+        [HttpGet]
+        public ActionResult Calendario()
         {
             List<Calendario> calendarios = db.Calendario.OrderBy(x => x.Inicio).ToList();
             return View(calendarios);
-
         }
-        [HttpGet]
-        public ActionResult editarCalendario(int id)
+
+       
+        public ActionResult TablaCalendario(int id)
         {
-            EditarCalendarioViewModel VM = new EditarCalendarioViewModel
+            ListarCalendarioViewModel VM = new ListarCalendarioViewModel
             {
                 calendario = db.Calendario.Find(id),
                 disciplinas = db.Disciplina.ToList(),
             };
-            return View(VM);
-        }
-
-        [HttpPost]
-        public ActionResult editarCalendario(EditarCalendarioViewModel VM)
-        {
-            if (!TryUpdateModel(VM.calendario))
-            {
-                return View(VM.calendario);
-            }
-            return RedirectToAction("index");
+            return PartialView(VM);
         }
 
     }

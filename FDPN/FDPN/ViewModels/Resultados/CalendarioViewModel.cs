@@ -8,8 +8,8 @@ namespace FDPN.ViewModels.Resultados
 {
     public class CalendarioViewModel
     {
-        public List<Calendario> calendario { get; set; }
-        public List<string> disciplinas { get; set; }
+        public List<Models.Calendario> calendario { get; set; }
+        public List<Disciplina> disciplinas { get; set; }
         public string disciplina { get; set; }
 
         

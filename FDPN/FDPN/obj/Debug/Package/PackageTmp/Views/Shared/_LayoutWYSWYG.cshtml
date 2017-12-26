@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <title>Administrador de datos</title>
     <link href="~/Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="~/Content/Summernote/summernote.css" rel="stylesheet" />
     <link href="~/Content/FileUpload/css/jquery.fileupload.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 
     <link href="~/Content/FileUpload/css/jquery.fileupload-noscript.css" rel="stylesheet" />
     <link href="~/Content/FileUpload/css/jquery.fileupload-ui-noscript.css" rel="stylesheet" />
@@ -16,13 +19,17 @@
 <body>
     @RenderBody()
 
-
+   
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
     <script src="~/Scripts/bootstrap/bootstrap.min.js"></script>
     <script src="~/Content/Summernote/summernote.js"></script>
     <script src="~/Scripts/noticaSummerNote.js"></script>
 
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js">
+    </script>
+   
     <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
     <script src="~/Content/FileUpload/js/vendor/jquery.ui.widget.js"></script>
     <script src="~/Content/FileUpload/js/tmpl.min.js"></script>
@@ -50,6 +57,8 @@
 
     <script src="~/Content/FileUpload/js/jquery.blueimp-gallery.min.js"></script>
 
+    <script src="~/Scripts/DatePickerReady.js"></script>
+    <script src="~/Scripts/Administrador.js"></script>
     <script>
         var $form = null;
         $(function () {
@@ -60,8 +69,9 @@
 
         });
         $('#fileupload').addClass('fileupload-processing');
-        $('.datatabla').DataTable({
-            "pageLength": 20,
+       
+        $('.datatablaLarga').DataTable({
+            "pageLength": 100,
             "language": {
                 "lengthMenu": "Mostrando _MENU_ registros por página",
                 "zeroRecords": "No encontramos datos",

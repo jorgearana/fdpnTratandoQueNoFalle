@@ -230,3 +230,6 @@ D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.csproj.CoreCompileInput
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.pdb
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.csprojResolveAssemblyReference.cache
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\itextsharp.dll
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Rotativa.Core.dll
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Rotativa.MVC.dll

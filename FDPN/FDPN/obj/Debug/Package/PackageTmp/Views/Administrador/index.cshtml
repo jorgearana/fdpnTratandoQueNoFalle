@@ -1,4 +1,5 @@
 ﻿@model FDPN.ViewModels.Administrador.IndexViewModel
+
 @{
     ViewBag.Title = "index";
     Layout = "~/Views/Shared/_LayoutWYSWYG.cshtml";
@@ -10,7 +11,7 @@
 
     </div>
     <div class="row">
-        <div class="col-lg-5">
+        <div class="col-lg-4">
             <section class="site-news site-homepage__pushup u-bg">
                 <div class="wrapper site-athleteswidget__info">
                     <div class="site-news__visual u-animation--fadeInSection" data-wow-duration="700ms" data-wow-delay="100ms">
@@ -20,7 +21,17 @@
             </section>
 
         </div>
-        <div class="col-lg-5">
+        <div class="col-lg-4">
+            <section class="site-news site-homepage__pushup u-bg">
+                <div class="wrapper site-athleteswidget__info">
+                    <div class="site-news__visual u-animation--fadeInSection" data-wow-duration="700ms" data-wow-delay="100ms">
+                        @Html.ActionLink("Ingresar nuevo Modal", "IngresarModal", "administrador", null, new { @class = "btn btn-warning" })
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <div class="col-lg-4">
             @using (Html.BeginForm())
             {
                 <header class="site-homepage__section__header">
@@ -91,7 +102,7 @@
         <br />
         <p class="u-type--gamma">
 
-            <table class="tablaNormal datatabla">
+            <table class="tablaNormal datatablacorta">
                 <thead>
                     <tr>
                         <th>
@@ -130,7 +141,7 @@
         <br />
         <p class="u-type--gamma">
 
-            <table class="tablaNormal datatabla">
+            <table class="tablaNormal">
                 <thead>
                     <tr>
                         <th>
@@ -168,7 +179,7 @@
         <br />
         <p class="u-type--gamma">
 
-            <table class="tablaNormal datatabla">
+            <table class="tablaNormal">
                 <thead>
                     <tr>
                         <th>
@@ -206,7 +217,7 @@
         <br />
         <p class="u-type--gamma">
 
-            <table class="tablaNormal datatabla">
+            <table class="tablaNormal">
                 <thead>
                     <tr>
                         <th>
@@ -244,7 +255,7 @@
         <br />
         <p class="u-type--gamma">
 
-            <table class="tablaNormal datatabla">
+            <table class="tablaNormal">
                 <thead>
                     <tr>
                         <th>
@@ -283,7 +294,7 @@
         <br />
         <p class="u-type--gamma">
 
-            <table class="tablaNormal datatabla">
+            <table class="tablaNormal datatablaReves">
                 <thead>
                     <tr>
                         <th>
@@ -322,7 +333,7 @@
         <br />
         <p class="u-type--gamma">
 
-            <table class="tablaNormal datatabla">
+            <table class="tablaNormal">
                 <thead>
                     <tr>
                         <th>
@@ -337,15 +348,15 @@
                     @foreach (var item in Model.Evento)
                     {
 
-                        <tr>
-                            <td>
+                    <tr>
+                        <td>
 
-                                @item.Titulo
-                            </td>
-                            <td>
-                                @Html.ActionLink("Borrar", "borrar", "administrador", new { @id = item.NoticiaId }, null)
-                            </td>
-                        </tr>
+                            @item.Titulo
+                        </td>
+                        <td>
+                            @Html.ActionLink("Borrar", "borrar", "administrador", new { @id = item.NoticiaId }, null)
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>
@@ -360,7 +371,7 @@
         <br />
         <p class="u-type--gamma">
 
-            <table class="tablaNormal datatabla">
+            <table class="tablaNormal ">
                 <thead>
                     <tr>
                         <th>
@@ -393,13 +404,51 @@
         <hr />
     </section>
 
+    @*Ranking*@
+    <section class="site-contentpage site-homepage__pushup">
+        <br />
+        <p class="u-type--gamma">
+
+            <table class="tablaNormal ">
+                <thead>
+                    <tr>
+                        <th>
+                            Ranking
+                        </th>
+                        <th>
+                            <i class="fa fa-download" aria-hidden="true"></i> Acción
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Ranking)
+                    {
+
+                        <tr>
+                            <td>
+
+                                @item.Titulo
+                            </td>
+                            <td>
+                                @Html.ActionLink("Borrar", "borrar", "administrador", new { @id = item.NoticiaId }, null)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </p>
+
+        <div class="espaciado"></div>
+        <hr />
+    </section>
+
     @*Modals*@
 
     <section class="site-contentpage site-homepage__pushup">
         <br />
         <p class="u-type--gamma">
 
-            <table class="tablaNormal datatabla">
+            <table class="tablaNormal">
                 <thead>
                     <tr>
                         <th> 
@@ -451,7 +500,14 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li>@Html.ActionLink("Borrar", "BorrarModal", "administrador", new { @id = item.Modalid }, null)</li>
-                                        <li>@Html.ActionLink("Activar", "ActivarModal", "administrador", new { @id = item.Modalid }, null)</li>
+                                        @if (item.Activo)
+                                        {
+                                            <li>@Html.ActionLink("Desactivar", "Desactivar", "administrador", new { @id = item.Modalid }, null)</li>
+                                        }
+                                        else
+                                        {
+                                            <li>@Html.ActionLink("Activar", "ActivarModal", "administrador", new { @id = item.Modalid }, null)</li>
+                                        }                                      
                                      
                                     </ul>
                                 </div>

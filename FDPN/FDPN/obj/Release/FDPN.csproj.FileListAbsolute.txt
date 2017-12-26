@@ -228,3 +228,4 @@ D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Release\FDPN.csprojResolveAssembly
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Release\FDPN.csproj.CoreCompileInputs.cache
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Release\FDPN.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Release\FDPN.pdb
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\itextsharp.dll

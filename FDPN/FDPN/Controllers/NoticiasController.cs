@@ -12,7 +12,7 @@ namespace FDPN.Controllers
 {
     public class NoticiasController : Controller
     {
-        DB_9B1F4C_MVCcompetenciasEntities1 db = new DB_9B1F4C_MVCcompetenciasEntities1();
+          DB_9B1F4C_MVCcompetenciasEntities db = new   DB_9B1F4C_MVCcompetenciasEntities();
 
         // GET: Noticias
         public ActionResult Noticias(string searchString)
@@ -98,6 +98,9 @@ namespace FDPN.Controllers
 
         }
 
-
+        public ActionResult Academia()
+        {
+            return View();
+        }
     }
 }

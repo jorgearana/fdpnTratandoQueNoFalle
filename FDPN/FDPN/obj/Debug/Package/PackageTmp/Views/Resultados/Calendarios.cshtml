@@ -12,48 +12,50 @@
         @using (Html.BeginForm("Calendarios", "Resultados", FormMethod.Post))
         {
             <header class="site-homepage__section__header">
-                <h2 class="site-title site-title--ultra site-title--ultra--primary">Calendario anual</h2>  
-                        @Html.DropDownListFor(model => model.disciplina, new SelectList(Model.disciplinas), "Filtre por disciplina", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
-                <input type="submit" value="Buscar" class="btn btn--primaryapnea btn--lrg u-rounded" /> 
+                <h2 class="site-title site-title--ultra site-title--ultra--primary">Calendario anual</h2>
+                @Html.DropDownListFor(model => model.disciplina, new SelectList(Model.disciplinas, "DisciplinaID", "TipoDisciplina"), "Filtre por disciplina", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+                <input type="submit" value="Buscar" class="btn btn--primaryapnea btn--lrg u-rounded" />
                 <div class="espaciado"></div>
-                 
-            </header>   
+
+            </header>
         }
         <center>
             <p class="u-type--medium u-type--delta u-spc-bottom--med">Vea la versión imprimible de los calendarios</p>
         </center>
         <div class="wrapper">
             <center>
-                <a href="~/Content/pdf/Calendario Masters.pdf" class="btn btn-default  master">Masters</a>
+                @Html.ActionLink("Masters", "PrintCalendario", "Calendarios", new { disciplina = 6 }, new { @class = "btn btn-default  master" })
 
-                <a href="~/Content/pdf/Calendario Polo.pdf" class="btn btn-default  wp">Polo acuático</a>
+                @Html.ActionLink("Polo Acuático", "PrintCalendario", "Calendarios", new { disciplina = 2 }, new { @class = "btn btn-default  wp" })
 
-                <a href="~/Content/pdf/Calendario sincro.pdf" class="btn btn-default   sincro">Natación artística</a>
+                @Html.ActionLink("Natación Artística", "PrintCalendario", "Calendarios", new { disciplina = 4 }, new { @class = "btn btn-default  sincro" })
 
-                <a href="~/Content/pdf/Oficial Aguas.pdf" class="btn btn-default   aguas">Aguas abiertas</a>
+                @Html.ActionLink("Aguas Abiertas", "PrintCalendario", "Calendarios", new { disciplina = 3 }, new { @class = "btn btn-default  aguas" })
 
-                <a href="~/Content/pdf/Calendario Natacion.pdf" class="btn btn-default   clavados">Clavados</a>
+                @Html.ActionLink("Clavados", "PrintCalendario", "Calendarios", new { disciplina = 5 }, new { @class = "btn btn-default  clavados" })
 
-                <a href="~/Content/pdf/Calendario Natacion.pdf" class="btn btn-default   natacion">Natación</a>
+                @Html.ActionLink("Natación", "PrintCalendario", "Calendarios", new { disciplina = 1 }, new { @class = "btn btn-default  natacion" })
 
+                @Html.ActionLink("Consolidado", "PrintCalendario", "Calendarios", new { disciplina = 7 }, new { @class = "btn btn-default" })
             </center>
         </div>
         <div class="site-homepage__section__content u-grid">
             <section id="cd-timeline">
-              
+
                 <ul class="cbp_tmtimeline">
                     @foreach (var item in Model.calendario)
                     {
                         <li>
-                            <time class="cbp_tmtime" datetime=@item.Inicio.ToString("dd/MM/yyyy")><span>@item.Inicio.ToString("dd/MM/yyyy")</span> 
-                            <span>al @item.Fin.ToString("dd/MM/yyyy")</span>
+                            <time class="cbp_tmtime" datetime=@item.Inicio.ToString("dd/MM/yyyy")>
+                                <span>@item.Inicio.ToString("dd/MM/yyyy")</span>
+                                <span>al @item.Fin.ToString("dd/MM/yyyy")</span>
                             </time>
-                            <div class="cbp_tmicon @item.clase" >
-                                <img class="iconCalendario" src="@Url.Content(path + item.clase + ".jpg")" />
+                            <div class="cbp_tmicon @item.Disciplina.clase">
+                                <img class="iconCalendario" src="@Url.Content(path + @item.Disciplina.clase + ".jpg")" />
                             </div>
-                            <div class="cbp_tmlabel  @item.clase">
+                            <div class="cbp_tmlabel  @item.Disciplina.clase">
                                 <h2>@item.Evento</h2>
-                                <p>Disciplina: <strong>@item.Disciplina</strong></p>
+                                <p>Disciplina: <strong>@item.Disciplina.TipoDisciplina</strong></p>
                                 <p>Sede: <strong>@item.Sede</strong></p>
                                 <p>Carácter del evento <strong>@item.Carácter</strong></p>
                             </div>
@@ -64,10 +66,9 @@
                 <div class="espaciadogrande"></div>
                 @*<center>
 
-                    @Html.ActionLink("Ver todos los eventos", "calendarios", "resultados", null, new { @class = "btn btn--primaryapnea btn--lrg u-rounded" })
-                </center>*@
+                        @Html.ActionLink("Ver todos los eventos", "calendarios", "resultados", null, new { @class = "btn btn--primaryapnea btn--lrg u-rounded" })
+                    </center>*@
             </section>
         </div>
     </div>
 </section>
-

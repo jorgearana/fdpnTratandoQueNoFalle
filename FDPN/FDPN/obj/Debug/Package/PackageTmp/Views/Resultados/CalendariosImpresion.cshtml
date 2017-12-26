@@ -1,0 +1,42 @@
+﻿@model List<FDPN.Models.Calendario>
+
+<div class="col-lg-12 text-center panel-heading panel-head">
+
+    <h2 class="section-heading">Calendario - Federación Deportiva Peruana de Natáción</h2>
+    <img src="~/Content/img/Logo_fdpn.png" style="width:100px;"/>
+
+</div>
+<div class="site-homepage__section ">
+   
+        <table class="datatabla stripe">
+            <thead>
+<tr>
+    <th>Mes</th>
+    <th>Inicio</th>
+    <th>Final</th>
+    <th>Disciplina</th>
+    <th>Sede</th>
+    <th>Evento</th>
+    <th>Categorías</th>
+    <th>Organizador</th>
+
+</tr>
+            </thead>
+            <tbody>
+              @foreach(var item in Model)
+              {
+<tr>
+    <td>@item.Inicio.ToString("MMMM")</td>
+    <td>@item.Inicio.ToShortDateString()</td>
+    <td>@item.Fin.ToShortDateString()</td>
+    <td>@item.Disciplina</td>
+    <td>@item.Sede</td>
+    <td>@item.Evento</td>
+    <td>@item.Observación</td>
+    <td>@item.Organizador</td>
+
+</tr>
+              }
+            </tbody>
+            </table>
+</div>

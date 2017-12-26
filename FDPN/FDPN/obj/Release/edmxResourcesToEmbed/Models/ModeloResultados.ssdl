@@ -77,7 +77,6 @@
     <Key>
       <PropertyRef Name="EventoId" />
     </Key>
-    <Property Name="Disciplina" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="Inicio" Type="datetime" Nullable="false" />
     <Property Name="Fin" Type="datetime" Nullable="false" />
     <Property Name="Evento" Type="nvarchar" MaxLength="255" Nullable="false" />
@@ -86,7 +85,7 @@
     <Property Name="Observación" Type="nvarchar" MaxLength="255" />
     <Property Name="Organizador" Type="nvarchar" MaxLength="255" />
     <Property Name="EventoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="clase" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="DisciplinaId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="CategoriaNoticia">
     <Key>
@@ -133,6 +132,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.Consulta' no t
     </Key>
     <Property Name="DisciplinaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TipoDisciplina" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="clase" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Encuentros">
     <Key>
@@ -960,6 +960,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.Sessitem' no t
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Calendario_Disciplina">
+    <End Role="Disciplina" Type="Self.Disciplina" Multiplicity="1" />
+    <End Role="Calendario" Type="Self.Calendario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Disciplina">
+        <PropertyRef Name="DisciplinaId" />
+      </Principal>
+      <Dependent Role="Calendario">
+        <PropertyRef Name="DisciplinaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Comentarios_Noticias">
     <End Role="Noticias" Type="Self.Noticias" Multiplicity="1" />
     <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
@@ -1372,6 +1384,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.Sessitem' no t
     <AssociationSet Name="FK_Atletas_Equipos" Association="Self.FK_Atletas_Equipos">
       <End Role="Equipos" EntitySet="Equipos" />
       <End Role="Atletas" EntitySet="Atletas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Calendario_Disciplina" Association="Self.FK_Calendario_Disciplina">
+      <End Role="Disciplina" EntitySet="Disciplina" />
+      <End Role="Calendario" EntitySet="Calendario" />
     </AssociationSet>
     <AssociationSet Name="FK_Comentarios_Noticias" Association="Self.FK_Comentarios_Noticias">
       <End Role="Noticias" EntitySet="Noticias" />

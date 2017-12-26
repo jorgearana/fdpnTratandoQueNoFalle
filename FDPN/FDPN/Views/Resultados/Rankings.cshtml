@@ -110,7 +110,11 @@
                                 @Html.ActionLink(Model.resultados[i].Athlete1.Last, "Nadador", "Resultados", new { @id = Model.resultados[i].AthleteId }, new { @class = "ranking1detalle" })
 
                             </h2>
-                            <p class="u-type--medium u-type--delta u-type--negative">@Model.resultados[i].SCORE</p>
+                            
+                            @if (Model.resultados[i].I_R == "L")
+                            {  <p class="u-type--medium u-type--delta u-type--negative">@Model.resultados[i].SCORE - Posta</p> }
+                            else
+                            {  <p class="u-type--medium u-type--delta u-type--negative">@Model.resultados[i].SCORE</p>}
                             <h6 class="ranking1detalle">@Model.resultados[i].MEET1.Start.ToString("dd/MMM/yyyy")</h6>
                             <h6 class="ranking1detalle">@Model.resultados[i].MEET1.MName</h6>
                             <div class="espaciado"></div>
@@ -134,7 +138,12 @@
                             @Html.ActionLink(Model.resultados[i].Athlete1.Last, "Nadador", "Resultados", new { @id = Model.resultados[i].AthleteId }, new { @class = "ranking1detalle" })
 
                         </td>
-                        <td>@Model.resultados[i].SCORE</td>
+                        <td>@Model.resultados[i].SCORE
+                        
+                        </td>
+                        @if (Model.resultados[i].I_R == "L")
+                        {  <td>Posta</td> }
+                        else {  <td></td> }
                         <td class="weak">@Model.resultados[i].MEET1.Start.ToString("dd/MMM/yyyy")</td>
                     </tr>
                 }

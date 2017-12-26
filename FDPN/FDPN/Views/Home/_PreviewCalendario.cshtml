@@ -16,17 +16,19 @@
         </center>
         <div class="wrapper">
             <center>
-                <a href="~/Content/pdf/Calendario Masters.pdf" class="btn btn-default  master" target="_blank">Masters</a>
+                @Html.ActionLink("Masters", "PrintCalendario", "Calendarios", new { disciplina = 6 }, new { @class = "btn btn-default  master" })
 
-                <a href="~/Content/pdf/Calendario Polo.pdf" class="btn btn-default  wp" target="_blank">Polo acuático</a>
+                @Html.ActionLink("Polo Acuático", "PrintCalendario", "Calendarios", new { disciplina = 2 }, new { @class = "btn btn-default  wp" })
 
-                <a href="~/Content/pdf/Calendario sincro.pdf" class="btn btn-default   sincro" target="_blank">Natación artística</a>
+                @Html.ActionLink("Natación Artística", "PrintCalendario", "Calendarios", new { disciplina = 4 }, new { @class = "btn btn-default  sincro" })
 
-                <a href="~/Content/pdf/Oficial Aguas.pdf" class="btn btn-default   aguas" target="_blank">Aguas abiertas</a>
+                @Html.ActionLink("Aguas Abiertas", "PrintCalendario", "Calendarios", new { disciplina = 3 }, new { @class = "btn btn-default  aguas" })
 
-                <a href="~/Content/pdf/Calendario Natacion.pdf" class="btn btn-default   clavados" target="_blank">Clavados</a>
+                @Html.ActionLink("Clavados", "PrintCalendario", "Calendarios", new { disciplina = 5 }, new { @class = "btn btn-default  clavados" })
 
-                <a href="~/Content/pdf/Calendario Natacion.pdf" class="btn btn-default   natacion" target="_blank">Natación</a>
+                @Html.ActionLink("Natación", "PrintCalendario", "Calendarios", new { disciplina = 1 }, new { @class = "btn btn-default  natacion" })
+
+                @Html.ActionLink("Consolidado", "PrintCalendario", "Calendarios", new { disciplina = 7 }, new { @class = "btn btn-default" })
 
             </center>
         </div>
@@ -39,16 +41,16 @@
                     {
                         <div class="col-lg-4 col-md-6 col-sm-12">
                             <div  class="card">
-                                <div data-mh="card" class="calendarioficha @item.clase">
+                                <div data-mh="card" class="calendarioficha @item.Disciplina.clase">
                                     <div>
                                         <p class="cardsubtitulo-blanca">@item.Inicio.ToString("dd MMM yyyy") - @item.Fin.ToString("dd MMM yyyy")</p>
                                         <hr />
                                         <h3 class="cardtitulo">@item.Evento</h3>
                                         <p class="cardsubtitulo">Sede: @item.Sede</p>
                                     </div>
-                                    <div class="@item.clase">
-                                        <p class="cardsubtitulo">Disciplina: @item.Disciplina</p>
-                                        <p class="cardsubtitulo-blanca">Categorías:</p>
+                                    <div class="@item.Disciplina.clase">
+                                        <p class="cardsubtitulo">Disciplina: @item.Disciplina.TipoDisciplina</p>
+                                        <p class="cardsubtitulo-blanca">Categorías: @item.Observación</p>
                                     </div>
                                 </div>
                             </div>

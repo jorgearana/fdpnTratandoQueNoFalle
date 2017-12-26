@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DB_9B1F4C_MVCcompetenciasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityContainer Name="DB_9B1F4C_MVCcompetenciasEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="DB_9B1F4C_MVCcompetenciasEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Athlete" EntityType="DB_9B1F4C_MVCcompetenciasModel.Athlete" />
     <EntitySet Name="Atletas" EntityType="DB_9B1F4C_MVCcompetenciasModel.Atletas" />
     <EntitySet Name="BASETIMES" EntityType="DB_9B1F4C_MVCcompetenciasModel.BASETIMES" />
@@ -19,6 +19,7 @@
     <EntitySet Name="Jugadores" EntityType="DB_9B1F4C_MVCcompetenciasModel.Jugadores" />
     <EntitySet Name="MarcasMinimas" EntityType="DB_9B1F4C_MVCcompetenciasModel.MarcasMinimas" />
     <EntitySet Name="MEET" EntityType="DB_9B1F4C_MVCcompetenciasModel.MEET" />
+    <EntitySet Name="Modals" EntityType="DB_9B1F4C_MVCcompetenciasModel.Modals" />
     <EntitySet Name="Noticias" EntityType="DB_9B1F4C_MVCcompetenciasModel.Noticias" />
     <EntitySet Name="Pais" EntityType="DB_9B1F4C_MVCcompetenciasModel.Pais" />
     <EntitySet Name="PosicionFinal" EntityType="DB_9B1F4C_MVCcompetenciasModel.PosicionFinal" />
@@ -35,6 +36,7 @@
     <EntitySet Name="Consulta" EntityType="DB_9B1F4C_MVCcompetenciasModel.Consulta" />
     <EntitySet Name="Estilos" EntityType="DB_9B1F4C_MVCcompetenciasModel.Estilos" />
     <EntitySet Name="MultiEdad" EntityType="DB_9B1F4C_MVCcompetenciasModel.MultiEdad" />
+    <EntitySet Name="Query" EntityType="DB_9B1F4C_MVCcompetenciasModel.Query" />
     <EntitySet Name="Session" EntityType="DB_9B1F4C_MVCcompetenciasModel.Session" />
     <EntitySet Name="Sessitem" EntityType="DB_9B1F4C_MVCcompetenciasModel.Sessitem" />
     <AssociationSet Name="FK_RESULTS_Athlete" Association="DB_9B1F4C_MVCcompetenciasModel.FK_RESULTS_Athlete">
@@ -48,6 +50,10 @@
     <AssociationSet Name="FK_Entradas_Atletas" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Entradas_Atletas">
       <End Role="Atletas" EntitySet="Atletas" />
       <End Role="Entradas" EntitySet="Entradas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Calendario_Disciplina" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Calendario_Disciplina">
+      <End Role="Disciplina" EntitySet="Disciplina" />
+      <End Role="Calendario" EntitySet="Calendario" />
     </AssociationSet>
     <AssociationSet Name="FK_Noticias_CategoriaNoticia" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Noticias_CategoriaNoticia">
       <End Role="CategoriaNoticia" EntitySet="CategoriaNoticia" />
@@ -141,8 +147,6 @@
       <End Role="Torneo" EntitySet="Torneo" />
       <End Role="MultiEdad" EntitySet="MultiEdad" />
     </AssociationSet>
-    <EntitySet Name="Modals" EntityType="DB_9B1F4C_MVCcompetenciasModel.Modals" />
-    <EntitySet Name="Query" EntityType="DB_9B1F4C_MVCcompetenciasModel.Query" />
   </EntityContainer>
   <EntityType Name="Athlete">
     <Key>
@@ -224,7 +228,6 @@
     <Key>
       <PropertyRef Name="EventoId" />
     </Key>
-    <Property Name="Disciplina" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="Inicio" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Fin" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Evento" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -233,7 +236,8 @@
     <Property Name="Observación" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="Organizador" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="EventoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="clase" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DisciplinaId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Disciplina" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Calendario_Disciplina" FromRole="Calendario" ToRole="Disciplina" />
   </EntityType>
   <EntityType Name="CategoriaNoticia">
     <Key>
@@ -261,6 +265,8 @@
     </Key>
     <Property Name="DisciplinaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TipoDisciplina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="clase" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Calendario" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Calendario_Disciplina" FromRole="Disciplina" ToRole="Calendario" />
     <NavigationProperty Name="Noticias" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Noticias_Disciplina" FromRole="Disciplina" ToRole="Noticias" />
   </EntityType>
   <EntityType Name="Encuentros">
@@ -614,6 +620,17 @@
     <Property Name="Course" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
     <Property Name="MeetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="RESULTS" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_RESULTS_MEET" FromRole="MEET" ToRole="RESULTS" />
+  </EntityType>
+  <EntityType Name="Modals">
+    <Key>
+      <PropertyRef Name="Modalid" />
+    </Key>
+    <Property Name="Modalid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Cuerpo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Enlace" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Noticias">
     <Key>
@@ -1067,6 +1084,25 @@
     <NavigationProperty Name="Eventos" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_MultiEdad_Eventos" FromRole="MultiEdad" ToRole="Eventos" />
     <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_MultiEdad_Torneo" FromRole="MultiEdad" ToRole="Torneo" />
   </EntityType>
+  <EntityType Name="Query">
+    <Key>
+      <PropertyRef Name="Athlete" />
+      <PropertyRef Name="First" />
+      <PropertyRef Name="Last" />
+      <PropertyRef Name="Sex" />
+      <PropertyRef Name="Age" />
+      <PropertyRef Name="ID_NO" />
+      <PropertyRef Name="AthleteId" />
+    </Key>
+    <Property Name="Athlete" Type="Int32" Nullable="false" />
+    <Property Name="First" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Last" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Birth" Type="DateTime" Precision="3" />
+    <Property Name="Age" Type="Int16" Nullable="false" />
+    <Property Name="ID_NO" Type="String" Nullable="false" MaxLength="17" FixedLength="false" Unicode="true" />
+    <Property Name="AthleteId" Type="Int32" Nullable="false" />
+  </EntityType>
   <EntityType Name="Session">
     <Key>
       <PropertyRef Name="Sess_ptr" />
@@ -1135,6 +1171,18 @@
       </Principal>
       <Dependent Role="Entradas">
         <PropertyRef Name="AtletaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Calendario_Disciplina">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Disciplina" Role="Disciplina" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Calendario" Role="Calendario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Disciplina">
+        <PropertyRef Name="DisciplinaId" />
+      </Principal>
+      <Dependent Role="Calendario">
+        <PropertyRef Name="DisciplinaId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1414,34 +1462,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="Modals">
-    <Key>
-      <PropertyRef Name="Modalid" />
-    </Key>
-    <Property Name="Modalid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Titulo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Cuerpo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="Enlace" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="Activo" Type="Boolean" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Query">
-    <Key>
-      <PropertyRef Name="Athlete" />
-      <PropertyRef Name="First" />
-      <PropertyRef Name="Last" />
-      <PropertyRef Name="Sex" />
-      <PropertyRef Name="Age" />
-      <PropertyRef Name="ID_NO" />
-      <PropertyRef Name="AthleteId" />
-    </Key>
-    <Property Name="Athlete" Type="Int32" Nullable="false" />
-    <Property Name="First" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="Last" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="Sex" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
-    <Property Name="Birth" Type="DateTime" Precision="3" />
-    <Property Name="Age" Type="Int16" Nullable="false" />
-    <Property Name="ID_NO" Type="String" Nullable="false" MaxLength="17" FixedLength="false" Unicode="true" />
-    <Property Name="AthleteId" Type="Int32" Nullable="false" />
-  </EntityType>
 </Schema>

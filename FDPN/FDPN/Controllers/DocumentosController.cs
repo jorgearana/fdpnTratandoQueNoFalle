@@ -10,7 +10,7 @@ namespace FDPN.Controllers
 {
     public class DocumentosController : Controller
     {
-        DB_9B1F4C_MVCcompetenciasEntities1 db = new DB_9B1F4C_MVCcompetenciasEntities1();
+          DB_9B1F4C_MVCcompetenciasEntities db = new   DB_9B1F4C_MVCcompetenciasEntities();
         // GET: Documentos
         public ActionResult Subvenciones(string searchString)
         {
@@ -142,6 +142,22 @@ namespace FDPN.Controllers
             query = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Resultado").OrderByDescending(x => x.NoticiaId).Take(20);
 
             var VM = query.GroupBy(x => x.Fecha.Year).ToList();
+            return View(VM);
+        }
+
+        public ActionResult RankingPDF(string searchString)
+        {
+            var query = db.Noticias.AsQueryable();
+            if (searchString != null)
+            {
+                query = query.Where(x => x.Titulo.Contains(searchString) ||
+                x.CategoriaNoticia.TipoNoticia.Contains(searchString) ||
+                x.Corta.Contains(searchString) ||
+                x.Larga.Contains(searchString));
+            }
+            query = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Ranking").OrderByDescending(x => x.NoticiaId).Take(20);
+
+            var VM = query.ToList();
             return View(VM);
         }
 

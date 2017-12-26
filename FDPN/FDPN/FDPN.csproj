@@ -52,6 +52,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0-beta1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.0.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.0.5\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MoreLinq, Version=2.8.21218.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
       <HintPath>..\packages\morelinq.2.8.0\lib\net40\MoreLinq.dll</HintPath>
@@ -59,10 +62,22 @@
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\Rotativa.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.Core.2.0.0\lib\net45\Rotativa.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa.MVC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.MVC.2.0.3\lib\net45\Rotativa.MVC.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
@@ -154,6 +169,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdministradorController.cs" />
+    <Compile Include="Controllers\CalendariosController.cs" />
     <Compile Include="Controllers\DocumentosController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -243,6 +259,51 @@
     <Compile Include="Models\HistorialTraspasos.cs">
       <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
     </Compile>
+    <Content Include="Content\bootstrap\bootstrap.css" />
+    <Content Include="Content\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\ionicons.css" />
+    <Content Include="Content\bootstrap\main.min.css" />
+    <Content Include="Content\img\EnVivo.jpg" />
+    <Content Include="Content\img\fondos\academiaadultos.jpg" />
+    <Content Include="Content\img\fondos\academiaaquabebe.jpg" />
+    <Content Include="Content\img\fondos\academiaclavados.jpg" />
+    <Content Include="Content\img\fondos\academiamodal.jpg" />
+    <Content Include="Content\img\fondos\academianinos.jpg" />
+    <Content Include="Content\img\fondos\academiapatera.jpg" />
+    <Content Include="Content\img\fondos\academiapolo.jpg" />
+    <Content Include="Content\img\fondos\academiasincro.jpg" />
+    <Content Include="Content\img\fondos\logoConsanat.jpg" />
+    <Content Include="Content\img\fondos\logoFina.jpg" />
+    <Content Include="Content\img\fondos\logoIPD.jpg" />
+    <Content Include="Content\img\fondos\logoUana.jpg" />
+    <Content Include="Content\img\fondos\piscinalibre.jpg" />
+    <Content Include="Content\img\Fotos\Sin título.png" />
+    <Content Include="Content\img\Imgsmall\favicon.ico" />
+    <Content Include="Content\img\Imgsmall\medal1.png" />
+    <Content Include="Content\img\Imgsmall\medal2.png" />
+    <Content Include="Content\img\Imgsmall\medal3.png" />
+    <Content Include="Content\img\Imgsmall\premio1.png" />
+    <Content Include="Content\img\Imgsmall\premio2.png" />
+    <Content Include="Content\img\Imgsmall\premio3.png" />
+    <Content Include="Content\img\logo-JJBB-2xb.png" />
+    <Content Include="Content\pdf\Calendario Masters.pdf" />
+    <Content Include="Content\pdf\Calendario Natacion.pdf" />
+    <Content Include="Content\pdf\Calendario Polo.pdf" />
+    <Content Include="Content\slick\config.rb" />
+    <Content Include="Content\slick\fonts\slick.eot" />
+    <Content Include="Content\slick\fonts\slick.ttf" />
+    <Content Include="Content\slick\fonts\slick.woff" />
+    <Content Include="Content\slick\slick-theme.less" />
+    <Content Include="Content\slick\slick-theme.scss" />
+    <Content Include="Content\slick\slick.less" />
+    <Content Include="Content\slick\slick.scss" />
+    <Content Include="Content\slick\Thumbs.db" />
+    <Content Include="Content\pdf\Calendario aguas.pdf" />
+    <Content Include="Content\pdf\Calendario todas.pdf" />
+    <Content Include="Content\pdf\calendario artistico.pdf" />
+    <Content Include="Content\pdf\calendario clavados.pdf" />
+    <Content Include="App_Browsers\qt.browser" />
+    <None Include="Models\ModeloAfiliaciones.Context.cs.NO" />
     <Compile Include="Models\Hoja1_.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
@@ -258,46 +319,6 @@
     <Compile Include="Models\MEET.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
-    <Content Include="Content\bootstrap\bootstrap.css" />
-    <Content Include="Content\bootstrap\bootstrap.min.css" />
-    <Content Include="Content\bootstrap\ionicons.css" />
-    <Content Include="Content\bootstrap\main.min.css" />
-    <Content Include="Content\img\EnVivo.jpg" />
-    <Content Include="Content\img\fondos\Academia de nado.jpg" />
-    <Content Include="Content\img\fondos\AFICHE-ADULTOS1-1024x724.jpg" />
-    <Content Include="Content\img\fondos\AFICHE-AQUABEBÉ-1024x724.jpg" />
-    <Content Include="Content\img\fondos\AFICHE-NIÑOS-1024x853.jpg" />
-    <Content Include="Content\img\fondos\AFICHE-PATERA1-1024x891.jpg" />
-    <Content Include="Content\img\fondos\logoConsanat.jpg" />
-    <Content Include="Content\img\fondos\logoFina.jpg" />
-    <Content Include="Content\img\fondos\logoIPD.jpg" />
-    <Content Include="Content\img\fondos\logoUana.jpg" />
-    <Content Include="Content\img\Fotos\Sin título.png" />
-    <Content Include="Content\img\Imgsmall\favicon.ico" />
-    <Content Include="Content\img\Imgsmall\medal1.png" />
-    <Content Include="Content\img\Imgsmall\medal2.png" />
-    <Content Include="Content\img\Imgsmall\medal3.png" />
-    <Content Include="Content\img\Imgsmall\premio1.png" />
-    <Content Include="Content\img\Imgsmall\premio2.png" />
-    <Content Include="Content\img\Imgsmall\premio3.png" />
-    <Content Include="Content\img\logo-JJBB-2xb.png" />
-    <Content Include="Content\pdf\Calendario Masters.pdf" />
-    <Content Include="Content\pdf\Calendario Natacion.pdf" />
-    <Content Include="Content\pdf\Calendario Polo.pdf" />
-    <Content Include="Content\pdf\Calendario sincro.pdf" />
-    <Content Include="Content\pdf\Oficial Aguas.pdf" />
-    <Content Include="Content\slick\config.rb" />
-    <Content Include="Content\slick\fonts\slick.eot" />
-    <Content Include="Content\slick\fonts\slick.ttf" />
-    <Content Include="Content\slick\fonts\slick.woff" />
-    <Content Include="Content\slick\slick-theme.less" />
-    <Content Include="Content\slick\slick-theme.scss" />
-    <Content Include="Content\slick\slick.less" />
-    <Content Include="Content\slick\slick.scss" />
-    <Content Include="Content\slick\Thumbs.db" />
-    <Content Include="Content\pdf\Calendario aguas.pdf" />
-    <Content Include="Content\pdf\Calendario todas.pdf" />
-    <None Include="Models\ModeloAfiliaciones.Context.cs.NO" />
     <Compile Include="Models\Modals.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
@@ -320,22 +341,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModeloAfiliaciones.edmx</DependentUpon>
     </Compile>
-    <None Include="Models\ModeloResultados.Context.cs.NO" />
-    <Compile Include="Models\ModeloResultados.Context1.cs">
+    <Compile Include="Models\ModeloResultados.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModeloResultados.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModeloResultados.cs" />
-    <Compile Include="Models\ModeloResultados.Designer.cs">
-      <DependentUpon>ModeloResultados.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ModeloResultados1.cs">
+    <Compile Include="Models\ModeloResultados.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModeloResultados1.Designer.cs">
+    <Compile Include="Models\ModeloResultados.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModeloResultados.edmx</DependentUpon>
@@ -417,10 +433,11 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Administrador\BorrarViewModel.cs" />
-    <Compile Include="ViewModels\Administrador\EditarCalendarioViewModel.cs" />
+    <Compile Include="ViewModels\Administrador\ListarCalendarioViewModel.cs" />
     <Compile Include="ViewModels\Administrador\EditarViewModel.cs" />
     <Compile Include="ViewModels\Administrador\IndexViewModel.cs" />
     <Compile Include="ViewModels\Administrador\IngresoDatosViewModel.cs" />
+    <Compile Include="ViewModels\Calendario\NuevoCalendarioViewModel.cs" />
     <Compile Include="ViewModels\Documento\BasesViewModel.cs" />
     <Compile Include="ViewModels\Home\NadadorDestacadoViewModels.cs" />
     <Compile Include="ViewModels\Home\previewNoticiasViewModel.cs" />
@@ -445,8 +462,21 @@
     <Content Include="Content\slick\slick.js" />
     <Content Include="Content\slick\slick.min.js" />
     <Content Include="fdpn.ico" />
+    <Content Include="Models\ModeloResultados.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModeloResultados.edmx</DependentUpon>
+      <LastGenOutput>ModeloResultados.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModeloResultados.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModeloResultados.edmx</DependentUpon>
+      <LastGenOutput>ModeloResultados.cs</LastGenOutput>
+    </Content>
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
+    <Content Include="Scripts\Administrador.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\DatePickerReady.js" />
+    <Content Include="Scripts\EditorDatatable.js" />
     <Content Include="Views\Noticias\Eventos.cshtml" />
     <Content Include="Views\Home\_PreviewEnVivo.cshtml" />
     <Content Include="Views\Documentos\EnVivo.cshtml" />
@@ -462,7 +492,19 @@
     <Content Include="Views\Administrador\confirmaBorrar.cshtml" />
     <Content Include="Views\Resultados\CalendariosImpresion.cshtml" />
     <Content Include="Views\Administrador\MostrarCalendario.cshtml" />
-    <Content Include="Views\Administrador\editarCalendario.cshtml" />
+    <Content Include="Views\Noticias\Academia.cshtml" />
+    <Content Include="Views\Home\_TopBarSINBANNER.cshtml" />
+    <Content Include="Views\Documentos\RankingPDF.cshtml" />
+    <Content Include="Views\Administrador\Calendario.cshtml" />
+    <Content Include="Views\Administrador\TablaCalendario.cshtml" />
+    <Content Include="Views\Administrador\View.cshtml" />
+    <Content Include="Views\Calendarios\Create.cshtml" />
+    <Content Include="Views\Calendarios\Delete.cshtml" />
+    <Content Include="Views\Calendarios\Details.cshtml" />
+    <Content Include="Views\Calendarios\Edit.cshtml" />
+    <Content Include="Views\Calendarios\Index.cshtml" />
+    <Content Include="Views\Calendarios\VersionImprimible2.cshtml" />
+    <Content Include="Views\Calendarios\VersionImprimible.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Apnea.css" />
@@ -642,14 +684,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ModeloAfiliaciones1.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ModeloResultados.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModeloResultados.Context1.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\ModeloResultados.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModeloResultados1.cs</LastGenOutput>
-    </Content>
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -677,7 +711,7 @@
     </Content>
     <EntityDeploy Include="Models\ModeloResultados.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModeloResultados1.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModeloResultados.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\ModeloResultados.edmx.diagram">
       <DependentUpon>ModeloResultados.edmx</DependentUpon>
@@ -716,7 +750,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Administrador\Borrar.cshtml" />
     <Content Include="Views\Administrador\Editar.cshtml" />
     <Content Include="Views\Administrador\index.cshtml" />
     <Content Include="Views\Administrador\IngresoDatos.cshtml" />

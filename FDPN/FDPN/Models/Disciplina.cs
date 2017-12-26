@@ -17,12 +17,16 @@ namespace FDPN.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Disciplina()
         {
+            this.Calendario = new HashSet<Calendario>();
             this.Noticias = new HashSet<Noticias>();
         }
     
         public int DisciplinaId { get; set; }
         public string TipoDisciplina { get; set; }
+        public string clase { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Calendario> Calendario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Noticias> Noticias { get; set; }
     }

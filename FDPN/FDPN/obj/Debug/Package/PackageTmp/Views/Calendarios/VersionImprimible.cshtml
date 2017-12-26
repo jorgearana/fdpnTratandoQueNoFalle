@@ -1,0 +1,74 @@
+﻿@model List<FDPN.Models.Calendario>
+
+@{
+    ViewBag.Title = "VersionImprimible";
+    Layout = "~/Views/Shared/_LayoutWYSWYG.cshtml";
+}
+<h2>
+    <img src="~/Content/img/Logo_fdpn.png" style="width:50px;"/>Calendario oficial de actividades</h2>
+
+<div class="wrapper">
+    <table class="tablacalendario" >
+        <thead>
+            <tr>
+                <th>
+                    Mes
+                </th>
+
+                <th>
+                    Inicio
+                </th>
+                <th>
+                    Fin
+                </th>
+
+                <th>
+                    Evento
+                </th>
+                <th>
+                    Sede
+                </th>
+
+                <th>
+                    Categorías
+                </th>
+                <th>
+                    Organizador
+                </th>
+
+               
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+        {
+                <tr>
+                    <td>
+                        @item.Inicio.ToString("MMM")
+                    </td>
+                    <td>
+                        @item.Inicio.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @item.Fin.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @item.Evento
+                    </td>
+                    <td>
+                        @item.Sede
+                    </td>
+                    <td>
+                        @item.Observación
+                    </td>
+                    <td>
+                        @item.Organizador
+                    </td>
+                   
+                </tr>
+        }
+        </tbody>
+    </table>
+
+</div>
+

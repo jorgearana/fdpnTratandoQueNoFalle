@@ -12,7 +12,7 @@ namespace FDPN.Controllers
 {
     public class HomeController : Controller
     {
-        DB_9B1F4C_MVCcompetenciasEntities1 db = new DB_9B1F4C_MVCcompetenciasEntities1();
+          DB_9B1F4C_MVCcompetenciasEntities db = new   DB_9B1F4C_MVCcompetenciasEntities();
         DB_9B1F4C_afiliacionesEntities1 af = new DB_9B1F4C_afiliacionesEntities1(); 
 
         public ActionResult Index()
@@ -116,10 +116,10 @@ namespace FDPN.Controllers
 
         public ActionResult _nadadordestacado()
         {
-            DateTime iniciomes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            DateTime iniciomes = (new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)).AddMonths(-2);
             Random rnd = new Random();
            //List< TorneoDestacado> torneodestacado = db.TorneoDestacado.OrderByDescending(x => x.DestacadoId).Take(3).ToList();
-            int i = rnd.Next(1, 3);
+           
             int categoria = rnd.Next(0, 3);
             int edadminima = 0;
             int edadmaxima = 109;
@@ -137,22 +137,19 @@ namespace FDPN.Controllers
             }
             //int meet = torneodestacado[i].Meet;
             string sexo = "M";
+            List<TorneoDestacado> destacados = db.TorneoDestacado.OrderByDescending(x => x.Meet).Take(5).ToList();
+            int i = rnd.Next(1, destacados.Count);
+            int Meettorneo = destacados[i].Meet;
+            MEET torneoAMostrar = db.MEET.Where(x => x.Meet1 == Meettorneo).FirstOrDefault();
 
-            List<MEET> torneosDelMes = db.MEET.Where(x => x.Start > iniciomes).ToList();
-            if (torneosDelMes.Count()==0)
-            {
-                iniciomes.AddMonths(-1);
-               
-            }
-            //List<RESULTS> tiempos = db.RESULTS.Where(x => x.MEET == meet )
-            //    .Where(x=>x.PLACE != 0)
-            //    .OrderByDescending(x => x.PFina)
-            //    .ToList();
-            if(i == 2)
+            i = rnd.Next(1, 3);
+            if (i == 2)
             {
                 sexo = "F";
             }
-            RESULTS resultadomejor = db.RESULTS.Where(x=>x.Athlete1.Sex==sexo && x.MEET1.Start>iniciomes && x.COURSE!= "Y" && x.Athlete1.Age >= edadminima && x.Athlete1.Age<=edadmaxima).OrderByDescending(x => x.PFina).FirstOrDefault();
+            RESULTS resultadomejor = db.RESULTS.Where(x=>x.Athlete1.Sex==sexo  && x.COURSE!= "Y" && x.Athlete1.Age >= edadminima && x.Athlete1.Age<=edadmaxima && x.MEET == torneoAMostrar.Meet1).OrderByDescending(x => x.PFina).FirstOrDefault();
+
+            
             if (resultadomejor == null || resultadomejor.PFina < 500  )
             {
                iniciomes= iniciomes.AddMonths(-1);

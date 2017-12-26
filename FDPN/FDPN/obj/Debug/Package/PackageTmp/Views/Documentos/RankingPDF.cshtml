@@ -1,0 +1,67 @@
+﻿@model List<FDPN.Models.Noticias>
+
+@{
+    ViewBag.Title = "Rankings";
+    string path = Url.Content("../Content/img/Fotos/");
+}
+
+<section class="site-contentpage site-homepage__pushup">
+    @using (Html.BeginForm())
+    {
+        <header class="site-homepage__section__header">
+            <h2 class="site-title site-title--ultra site-title--ultra--primary">Rankings oficiales</h2>
+            <p class="u-type--medium u-type--delta u-spc-bottom--med">Buscar</p>
+            @Html.TextBox("SearchString", null, new { @class = "btn btn--primaryapnea btn--lrg u-rounded" })
+            <input type="submit" value="Buscar" class="btn btn--primaryapnea btn--lrg u-rounded" />
+        </header>
+    }
+    <br />
+    <p class="u-type--gamma">
+        
+          
+            <table class="tablaNormal">
+                <thead>
+                    <tr>
+                        <th>
+                            Ranking
+                        </th>
+                        
+
+                        <th>
+                            <i class="fa fa-download" aria-hidden="true"></i> Documento
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td>
+
+                                @item.Titulo
+                            </td>
+                           
+                            <td>
+                                @foreach (var foto in item.Fotos)
+                                {
+                                    <a href=@Url.Action(path + foto.Nombrefoto) target="_blank">
+                                        <i class="fa fa-download" aria-hidden="true"></i> Ver documento
+                                    </a>
+                                }
+
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <div class="espaciado"></div>
+       
+    </p>
+
+    <div class="espaciado"></div>
+
+
+</section>

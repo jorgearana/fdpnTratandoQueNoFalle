@@ -14,7 +14,7 @@ namespace FDPN.Controllers
 {
     public class ResultadosController : Controller
     {
-        DB_9B1F4C_MVCcompetenciasEntities1 db = new DB_9B1F4C_MVCcompetenciasEntities1();
+          DB_9B1F4C_MVCcompetenciasEntities db = new   DB_9B1F4C_MVCcompetenciasEntities();
         DB_9B1F4C_afiliacionesEntities1 af = new DB_9B1F4C_afiliacionesEntities1();
         // GET: Resultados
 
@@ -216,30 +216,47 @@ namespace FDPN.Controllers
 
         }
 
-        public ActionResult Calendarios(string disciplina)
+        public ActionResult Calendarios(int? disciplina)
         {
-            if (disciplina == null)
+            var Query = db.Calendario.AsQueryable();
+            Disciplina disciplinaseleccionada = db.Disciplina.Where(x => x.TipoDisciplina == "Todas").FirstOrDefault();
+            int valor = disciplina ?? 0;
+            if (valor != 0 && valor != 7)
             {
-                disciplina = "";
+                Query = Query.Where(x => x.DisciplinaId == valor);
+                disciplinaseleccionada = db.Disciplina.Where(x => x.DisciplinaId == disciplina).FirstOrDefault();
             }
-            DateTime fechainicial = DateTime.Now.AddDays(-15);
-            var query = db.Calendario.Where(x => x.Inicio > fechainicial).OrderBy(x => x.Inicio).AsQueryable();
+
+
             CalendarioViewModel VM = new CalendarioViewModel
             {
-                disciplina = "Todas"
+                disciplina = disciplinaseleccionada.TipoDisciplina,
+                disciplinas = db.Disciplina.ToList(),
+                calendario = Query.ToList(),
             };
 
-            if (disciplina != "" && disciplina != "Todas")
-            {
-                query = query.Where(x => x.Disciplina == disciplina);
-                VM.disciplina = disciplina;
-            }
 
-            VM.calendario = query.ToList();
-            VM.disciplinas = new List<string>
-            {
-                "Natación", "Master natación", "Aguas abiertas", "Polo Acuático", "Clavados", "Nado Sincronizado"
-            };
+
+            //if (disciplina == null)
+            //{
+            //    disciplina = "";
+            //}
+            //DateTime fechainicial = DateTime.Now.AddDays(-15);
+            //var query = db.Calendario.Where(x => x.Inicio > fechainicial).OrderBy(x => x.Inicio).AsQueryable();
+            //CalendarioViewModel VM = new CalendarioViewModel
+            //{
+            //    disciplina = "Todas",
+            //    disciplinas = db.Disciplina.ToList(),
+            //};
+
+            //if (disciplina != "" && disciplina != "Todas")
+            //{
+            //    query = query.Where(x => x.Disciplina.TipoDisciplina == disciplina);
+            //    VM.disciplina = disciplina;
+            //}
+
+            //VM.calendario = query.ToList();
+           
             return View(VM);
 
         }
@@ -261,7 +278,7 @@ namespace FDPN.Controllers
             };
 
             var resultado = db.RESULTS
-                .Where(x => x.NT == 0 && x.SCORE != "" && x.PLACE != 0 &&  x.AthleteId != null && x.PLACE != 0 && x.Athlete1.Birth >= inicio && x.Athlete1.Birth <= fin)
+                .Where(x => x.NT == 0 && x.SCORE != ""  &&  x.AthleteId != null && x.NT==0 && x.Athlete1.Birth >= inicio && x.Athlete1.Birth <= fin)
 
                 .AsQueryable();
 
@@ -326,7 +343,7 @@ namespace FDPN.Controllers
             List<RESULTS> resultadoEnlista = resultado
                 .DistinctBy(x => x.AthleteId).ToList();
 
-            VM.resultados = resultadoEnlista.Take(50).ToList();
+            VM.resultados = resultadoEnlista.Take(100).ToList();
 
 
             VM.distancia = Int32.Parse(distance);

@@ -1,0 +1,78 @@
+﻿@model FDPN.ViewModels.Administrador.ListarCalendarioViewModel
+
+
+@*Noticia*@
+<section class="site-contentpage site-homepage__pushup">
+    <br />
+    <p class="u-type--gamma">
+        
+            <table class="tablaNormal datatabla">
+                <thead>
+                    <tr>
+                        <th>
+                            Mes
+                        </th>
+                        <th>
+                            Inicio
+                        </th>
+                        <th>
+                            Fin
+                        </th>
+                        <th>
+                            Disciplina
+                        </th>
+                        <th>
+                            Sede
+                        </th>
+                        <th>
+                            Evento
+                        </th>
+                        <th>
+                            Categorías
+                        </th>
+                        <th>
+                            Organizador
+                        </th>
+
+                        <th>
+                            <i class="fa fa-download" aria-hidden="true"></i> Acción
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.)
+                    {
+
+                        <tr>
+                            <td>@item.Inicio.Month.ToString("MMMM")</td>
+                            <td><label style="visibility:hidden">@item.Inicio.ToString("yyyy/MM/dd")</label>@item.Inicio.ToString("dd/MM/yyyy")</td>
+                            <td><label style="visibility:hidden">@item.Fin.ToString("yyyy/MM/dd")</label>@item.Fin.ToString("dd/MM/yyyy")</td>
+                            <td>@item.Disciplina</td>
+                            <td>@item.Sede</td>
+                            <td>@item.Evento</td>
+                            <td>@item.Observación</td>
+                            <td>@item.Organizador</td>
+
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Action <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.EventoId }, null)</li>
+                                        <li role="separator" class="divider"></li>
+                                        <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.EventoId }, null)</li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+     
+    </p>
+
+    <div class="espaciado"></div>
+    <hr />
+</section>
+

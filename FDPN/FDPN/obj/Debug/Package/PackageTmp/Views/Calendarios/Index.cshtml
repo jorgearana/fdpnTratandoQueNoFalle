@@ -1,0 +1,96 @@
+﻿@model IEnumerable<FDPN.Models.Calendario>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutWYSWYG.cshtml";
+}
+
+<h2>Listado de todos los eventos del calendario de este año</h2>
+
+<p>
+    @Html.ActionLink("Ingresar nuevo evento", "Create", null, new { @class= "btn btn--primaryapnea btn--lrg u-rounded" })
+</p>
+<table class="datatablaLarga tablaNormal">
+    <thead> 
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Disciplina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Evento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sede)
+            </th>
+           
+            <th >
+               Categorías
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Organizador)
+            </th>
+            
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Disciplina.TipoDisciplina)
+                </td>
+                <td>
+                    <div class="FechaOrdenada">@item.Inicio.ToString("yyyy/MM/dd")</div>
+                    @item.Inicio.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    <div class="FechaOrdenada">@item.Fin.ToString("yyyy/MM/dd")</div>
+                    @item.Fin.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Evento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sede)
+                </td>               
+                <td>
+                    @Html.DisplayFor(modelItem => item.Observación)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Organizador)
+                </td>
+               
+                <td>
+                   
+                    <div class="dropdown">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-info dropdown-toggle btn-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Quiero  <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+
+                                <li>@Html.ActionLink("Edit", "Edit", new { id = item.EventoId }, new { @class = "btn btn-primary" })</li>
+                                <li role="separator" class="divider"></li>
+                                <li>@Html.ActionLink("Delete", "Delete", new { id = item.EventoId }, new { @class = "btn btn-warning" })</li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+  
+</script>

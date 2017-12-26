@@ -14,7 +14,6 @@ namespace FDPN.Models
     
     public partial class Calendario
     {
-        public string Disciplina { get; set; }
         public System.DateTime Inicio { get; set; }
         public System.DateTime Fin { get; set; }
         public string Evento { get; set; }
@@ -23,6 +22,8 @@ namespace FDPN.Models
         public string Observación { get; set; }
         public string Organizador { get; set; }
         public int EventoId { get; set; }
-        public string clase { get; set; }
+        public int DisciplinaId { get; set; }
+    
+        public virtual Disciplina Disciplina { get; set; }
     }
 }

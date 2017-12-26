@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DB_9B1F4C_MVCcompetenciasModelStoreContainer" CdmEntityContainer="DB_9B1F4C_MVCcompetenciasEntities1">
+  <EntityContainerMapping StorageEntityContainer="DB_9B1F4C_MVCcompetenciasModelStoreContainer" CdmEntityContainer="DB_9B1F4C_MVCcompetenciasEntities">
     <EntitySetMapping Name="Athlete">
       <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.Athlete">
         <MappingFragment StoreEntitySet="Athlete">
@@ -80,7 +80,7 @@
     <EntitySetMapping Name="Calendario">
       <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.Calendario">
         <MappingFragment StoreEntitySet="Calendario">
-          <ScalarProperty Name="clase" ColumnName="clase" />
+          <ScalarProperty Name="DisciplinaId" ColumnName="DisciplinaId" />
           <ScalarProperty Name="EventoId" ColumnName="EventoId" />
           <ScalarProperty Name="Organizador" ColumnName="Organizador" />
           <ScalarProperty Name="Observación" ColumnName="Observación" />
@@ -89,7 +89,6 @@
           <ScalarProperty Name="Evento" ColumnName="Evento" />
           <ScalarProperty Name="Fin" ColumnName="Fin" />
           <ScalarProperty Name="Inicio" ColumnName="Inicio" />
-          <ScalarProperty Name="Disciplina" ColumnName="Disciplina" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -116,6 +115,7 @@
     <EntitySetMapping Name="Disciplina">
       <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.Disciplina">
         <MappingFragment StoreEntitySet="Disciplina">
+          <ScalarProperty Name="clase" ColumnName="clase" />
           <ScalarProperty Name="TipoDisciplina" ColumnName="TipoDisciplina" />
           <ScalarProperty Name="DisciplinaId" ColumnName="DisciplinaId" />
         </MappingFragment>
@@ -463,6 +463,18 @@
           <ScalarProperty Name="Start" ColumnName="Start" />
           <ScalarProperty Name="MName" ColumnName="MName" />
           <ScalarProperty Name="Meet1" ColumnName="Meet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modals">
+      <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.Modals">
+        <MappingFragment StoreEntitySet="Modals">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Enlace" ColumnName="Enlace" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Cuerpo" ColumnName="Cuerpo" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Modalid" ColumnName="Modalid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -896,6 +908,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Query">
+      <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.Query">
+        <MappingFragment StoreEntitySet="Query">
+          <ScalarProperty Name="AthleteId" ColumnName="AthleteId" />
+          <ScalarProperty Name="ID_NO" ColumnName="ID_NO" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Birth" ColumnName="Birth" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Last" ColumnName="Last" />
+          <ScalarProperty Name="First" ColumnName="First" />
+          <ScalarProperty Name="Athlete" ColumnName="Athlete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Session">
       <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.Session">
         <MappingFragment StoreEntitySet="Session">
@@ -930,32 +956,6 @@
           <ScalarProperty Name="Event_ptr" ColumnName="Event_ptr" />
           <ScalarProperty Name="Sess_ptr" ColumnName="Sess_ptr" />
           <ScalarProperty Name="Sess_order" ColumnName="Sess_order" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Modals">
-      <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.Modals">
-        <MappingFragment StoreEntitySet="Modals">
-          <ScalarProperty Name="Activo" ColumnName="Activo" />
-          <ScalarProperty Name="Enlace" ColumnName="Enlace" />
-          <ScalarProperty Name="Image" ColumnName="Image" />
-          <ScalarProperty Name="Cuerpo" ColumnName="Cuerpo" />
-          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-          <ScalarProperty Name="Modalid" ColumnName="Modalid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Query">
-      <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.Query">
-        <MappingFragment StoreEntitySet="Query">
-          <ScalarProperty Name="AthleteId" ColumnName="AthleteId" />
-          <ScalarProperty Name="ID_NO" ColumnName="ID_NO" />
-          <ScalarProperty Name="Age" ColumnName="Age" />
-          <ScalarProperty Name="Birth" ColumnName="Birth" />
-          <ScalarProperty Name="Sex" ColumnName="Sex" />
-          <ScalarProperty Name="Last" ColumnName="Last" />
-          <ScalarProperty Name="First" ColumnName="First" />
-          <ScalarProperty Name="Athlete" ColumnName="Athlete" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -61,7 +61,7 @@ textarea {
 }
 
 .natacion {
-    background: #2a9fd6;
+    background: #83a1af;
 }
 
 .master {
@@ -88,6 +88,18 @@ textarea {
     color: #fff;
 }
 
+thead {
+    display: table-header-group
+}
+
+tfoot {
+    display: table-row-group
+}
+
+tr {
+    page-break-inside: avoid
+}
+
 .tablaNormal {
     width: 100%;
     color: #505c69;
@@ -104,6 +116,31 @@ textarea {
     .tablaNormal td, .tablaNormal th {
         font-size: 16px;
         line-height: 24px
+    }
+
+.tablacalendario {
+    width: 100%;
+    color: #505c69;
+}
+
+    .tablacalendario tr {
+        border-bottom: 1px solid #505c69
+    }
+
+    .tablacalendario td, .tablacalendario th {
+        padding: 6px
+    }
+
+    .tablacalendario td, .tablacalendario th {
+        font-size: 10px;
+        line-height: 24px
+    }
+    .tablacalendario tr:nth-child(odd) td {
+        background-color :#fff;
+    }
+
+    .tablacalendario tr:nth-child(even) td {
+        background-color: #e1e3f8;
     }
 
 /*.footer__nav li {

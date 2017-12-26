@@ -57,9 +57,9 @@ $(document).ready(function () {
             // instead of a settings object
         ]
     });
-    $(document).ready(function () {
+   
         $('.datatabla').DataTable({            
-            "pageLength": 20,
+            "pageLength": 25,
             "language": {
                 "lengthMenu": "Mostrando _MENU_ registros por página",
                 "zeroRecords": "No encontramos datos",
@@ -70,7 +70,7 @@ $(document).ready(function () {
                     "sFirst": "Primera página",
                     "sLast": "Última página",
                     "sNext": "Siguiente página",
-                    "sPrevious": "Página anterior",
+                    "sPrevious": "Página anterior"
                 }
             },
         });
@@ -87,7 +87,7 @@ $(document).ready(function () {
                     "sFirst": "Primera página",
                     "sLast": "Última página",
                     "sNext": "Siguiente página",
-                    "sPrevious": "Página anterior",
+                    "sPrevious": "Página anterior"
                 }
             },
         });
@@ -105,11 +105,27 @@ $(document).ready(function () {
                     "sFirst": "Primera página",
                     "sLast": "Última página",
                     "sNext": "Siguiente página",
-                    "sPrevious": "Página anterior",
+                    "sPrevious": "Página anterior"
                 }
             },
         });
-    });
+        $('.datatablaLarga').DataTable({
+            "pageLength": 100,
+            "language": {
+                "lengthMenu": "Mostrando _MENU_ registros por página",
+                "zeroRecords": "No encontramos datos",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Sin datos disponibles",
+                "infoFiltered": "(filtrado de  _MAX_ registros totales)",
+                "oPaginate": {
+                    "sFirst": "Primera página",
+                    "sLast": "Última página",
+                    "sNext": "Siguiente página",
+                    "sPrevious": "Página anterior"
+                }
+            },
+        });
+
 
     $(function () {
         $('.item').matchHeight({
@@ -119,6 +135,7 @@ $(document).ready(function () {
             remove: false
         });
     });
+
 
 });
 
@@ -167,8 +184,8 @@ $('#buscarRankingFINA').on('click', function (e) {
        
         
     }
-    if (filas.length = 0) {
-        var Ids = new Array();
+    if (filas.length === 0) {
+         Ids = new Array();
         Ids.push(0);
     }
     var periodoid = $("#periodoid").val();
@@ -188,5 +205,13 @@ $('#buscarRankingFINA').on('click', function (e) {
     });
 });
 
+
+
+
+//var table = $('#tablaActualizarCalendario').DataTable();
+
+//$('#tablaActualizarCalendario tbody').on('click', 'tr', function () {
+//    console.log(table.row(this).data());
+//});
 
 

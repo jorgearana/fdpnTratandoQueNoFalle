@@ -10,7 +10,7 @@ namespace FDPN.ViewModels.Shared
     {
      public   List<RESULTS> resultado { get; set; }
      public   List<RESULTS> destacados { get; set; }
-     public   List<Calendario> calendario { get; set; }
+     public   List<Models.Calendario> calendario { get; set; }
 
 
     }
