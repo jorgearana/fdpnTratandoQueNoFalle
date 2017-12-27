@@ -5,6 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DB_9B1F4C_MVCcompetenciasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alertas">
+          <Key>
+            <PropertyRef Name="AlertaId" />
+          </Key>
+          <Property Name="AlertaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Alerta" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
         <EntityType Name="Athlete">
           <Key>
             <PropertyRef Name="AthleteId" />
@@ -1278,6 +1286,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.Sessitem' no t
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DB_9B1F4C_MVCcompetenciasModelStoreContainer">
+          <EntitySet Name="Alertas" EntityType="Self.Alertas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Athlete" EntityType="Self.Athlete" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Atletas" EntityType="Self.Atletas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BASETIMES" EntityType="Self.BASETIMES" Schema="dbo" store:Type="Tables" />
@@ -1646,6 +1655,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.Sessitem' no t
             <End Role="Torneo" EntitySet="Torneo" />
             <End Role="MultiEdad" EntitySet="MultiEdad" />
           </AssociationSet>
+          <EntitySet Name="Alertas" EntityType="DB_9B1F4C_MVCcompetenciasModel.Alertas" />
         </EntityContainer>
         <EntityType Name="Athlete">
           <Key>
@@ -2961,6 +2971,14 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.Sessitem' no t
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Alertas">
+          <Key>
+            <PropertyRef Name="AlertaId" />
+          </Key>
+          <Property Name="AlertaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Alerta" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3922,6 +3940,15 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.Sessitem' no t
                 <ScalarProperty Name="Event_ptr" ColumnName="Event_ptr" />
                 <ScalarProperty Name="Sess_ptr" ColumnName="Sess_ptr" />
                 <ScalarProperty Name="Sess_order" ColumnName="Sess_order" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Alertas">
+            <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.Alertas">
+              <MappingFragment StoreEntitySet="Alertas">
+                <ScalarProperty Name="Alerta" ColumnName="Alerta" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="AlertaId" ColumnName="AlertaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

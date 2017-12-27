@@ -179,6 +179,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ConvertirAPeru.cs" />
     <Compile Include="Helpers\FilesHelper.cs" />
     <Compile Include="Helpers\ImageHandler.cs" />
     <Compile Include="Models\Afiliacion.cs">
@@ -186,6 +187,9 @@
     </Compile>
     <Compile Include="Models\Afiliado.cs">
       <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Alertas.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Antiguo.cs">
       <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
@@ -439,6 +443,7 @@
     <Compile Include="ViewModels\Administrador\IngresoDatosViewModel.cs" />
     <Compile Include="ViewModels\Calendario\NuevoCalendarioViewModel.cs" />
     <Compile Include="ViewModels\Documento\BasesViewModel.cs" />
+    <Compile Include="ViewModels\Home\AlertasViewModel.cs" />
     <Compile Include="ViewModels\Home\NadadorDestacadoViewModels.cs" />
     <Compile Include="ViewModels\Home\previewNoticiasViewModel.cs" />
     <Compile Include="ViewModels\Noticia\DetalleNoticiaViewModel.cs" />
@@ -473,8 +478,6 @@
       <LastGenOutput>ModeloResultados.cs</LastGenOutput>
     </Content>
     <Content Include="Rotativa\msvcp120.dll" />
-    <Content Include="Rotativa\msvcp120_clr0400.dll" />
-    <Content Include="Rotativa\msvcr100_clr0400.dll" />
     <Content Include="Rotativa\msvcr120.dll" />
     <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\Administrador.js" />
@@ -509,6 +512,8 @@
     <Content Include="Views\Calendarios\Index.cshtml" />
     <Content Include="Views\Calendarios\VersionImprimible2.cshtml" />
     <Content Include="Views\Calendarios\VersionImprimible.cshtml" />
+    <Content Include="Views\Home\_PreviewAlertas.cshtml" />
+    <Content Include="Views\Administrador\Borrar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Apnea.css" />

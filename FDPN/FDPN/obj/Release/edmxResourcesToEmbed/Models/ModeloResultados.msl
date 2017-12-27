@@ -959,5 +959,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Alertas">
+      <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.Alertas">
+        <MappingFragment StoreEntitySet="Alertas">
+          <ScalarProperty Name="Alerta" ColumnName="Alerta" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="AlertaId" ColumnName="AlertaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

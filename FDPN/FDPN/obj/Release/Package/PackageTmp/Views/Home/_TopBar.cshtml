@@ -213,18 +213,10 @@
                                 </li>
                             </ul>
                         </li>
-
+                        @Html.Action("_PreviewAlertas")
 
                     </ul>
-                    @*@using(Html.BeginForm("Nadadores", "Resultados", FormMethod.Post,  new { @class = "navbar-form navbar-left" }))
-                        {
-                            <div class="form-group">
-                                @Html.TextBox("searchString", null, new { @class = "form-control" , @placeholder = "Nombre o apellido" })
-
-                            </div>
-                            <button type="submit" class="btn btn-default">Buscar</button>
-
-                        }*@
+                  
 
 
                 </div><!-- /.navbar-collapse -->

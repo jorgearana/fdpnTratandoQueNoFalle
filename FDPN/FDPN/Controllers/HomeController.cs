@@ -212,6 +212,17 @@ namespace FDPN.Controllers
             }
             return PartialView("_PreviewNoticias", VM);
         }
+        public ActionResult _PreviewAlertas()
+        {
+            DateTime hacedossemanas = DateTime.Now.AddDays(-15);
+            AlertasViewModel VM = new AlertasViewModel
+            {
+                alertas = db.Alertas.Where(x => x.Fecha > hacedossemanas).ToList()
+            };
+            VM.cantidad = VM.alertas.Count();
+            return PartialView("_PreviewAlertas", VM);
+        }
+
         public ActionResult _PreviewComunicados()
         {
             List<previewNoticiasViewModel> VM = new List<previewNoticiasViewModel>();

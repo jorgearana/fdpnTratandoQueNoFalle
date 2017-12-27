@@ -147,6 +147,7 @@
       <End Role="Torneo" EntitySet="Torneo" />
       <End Role="MultiEdad" EntitySet="MultiEdad" />
     </AssociationSet>
+    <EntitySet Name="Alertas" EntityType="DB_9B1F4C_MVCcompetenciasModel.Alertas" />
   </EntityContainer>
   <EntityType Name="Athlete">
     <Key>
@@ -1462,4 +1463,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Alertas">
+    <Key>
+      <PropertyRef Name="AlertaId" />
+    </Key>
+    <Property Name="AlertaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Alerta" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

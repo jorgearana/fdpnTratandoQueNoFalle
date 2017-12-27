@@ -127,7 +127,7 @@ namespace FDPN.Controllers
                 db.Fotos.Add(foto);
             }
             db.SaveChanges();
-
+            InsertarAlertaNoticia(VM.noticia.Titulo);
 
 
             return RedirectToAction("index");
@@ -307,9 +307,9 @@ namespace FDPN.Controllers
                     {
                         return RedirectToAction("index", "administrador");
                     }
-                    if (rol.RolId == 10)
+                    if (rol.RolId == 5)
                     {
-                        return RedirectToAction("calendario", "administrador");
+                        return RedirectToAction("index", "calendarios");
                     }
                 }
             }
@@ -418,5 +418,18 @@ namespace FDPN.Controllers
             return PartialView(VM);
         }
 
+        public void InsertarAlertaNoticia(string titulo)
+        {
+            ConvertirAPeru convertidor = new Helpers.ConvertirAPeru();
+            DateTime today = convertidor.ToPeru(DateTime.UtcNow);
+            Alertas alerta = new Alertas
+            {
+
+                Alerta = titulo,
+                Fecha = today,
+            };
+            db.Alertas.Add(alerta);
+            db.SaveChanges();
+        }
     }
 }

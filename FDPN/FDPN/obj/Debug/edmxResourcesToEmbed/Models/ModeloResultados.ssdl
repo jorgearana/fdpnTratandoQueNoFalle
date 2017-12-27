@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DB_9B1F4C_MVCcompetenciasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Alertas">
+    <Key>
+      <PropertyRef Name="AlertaId" />
+    </Key>
+    <Property Name="AlertaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="Alerta" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
   <EntityType Name="Athlete">
     <Key>
       <PropertyRef Name="AthleteId" />
@@ -1273,6 +1281,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_MVCcompetencias.dbo.Sessitem' no t
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="DB_9B1F4C_MVCcompetenciasModelStoreContainer">
+    <EntitySet Name="Alertas" EntityType="Self.Alertas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Athlete" EntityType="Self.Athlete" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Atletas" EntityType="Self.Atletas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BASETIMES" EntityType="Self.BASETIMES" Schema="dbo" store:Type="Tables" />

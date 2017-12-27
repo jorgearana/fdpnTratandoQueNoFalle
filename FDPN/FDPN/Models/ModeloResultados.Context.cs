@@ -63,5 +63,6 @@ namespace FDPN.Models
         public virtual DbSet<Query> Query { get; set; }
         public virtual DbSet<Session> Session { get; set; }
         public virtual DbSet<Sessitem> Sessitem { get; set; }
+        public virtual DbSet<Alertas> Alertas { get; set; }
     }
 }

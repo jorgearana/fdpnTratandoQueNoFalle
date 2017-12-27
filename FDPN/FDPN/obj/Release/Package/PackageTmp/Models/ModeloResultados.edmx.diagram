@@ -70,6 +70,7 @@
         <AssociationConnector Association="DB_9B1F4C_MVCcompetenciasModel.FK_SessionItem_Sesion" />
         <AssociationConnector Association="DB_9B1F4C_MVCcompetenciasModel.FK_SessionItem_Torneo" />
         <AssociationConnector Association="DB_9B1F4C_MVCcompetenciasModel.FK_MultiEdad_Torneo" />
+        <EntityTypeShape EntityType="DB_9B1F4C_MVCcompetenciasModel.Alertas" Width="1.5" PointX="15.375" PointY="16.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -8,6 +8,8 @@ using FDPN.Models;
 using FDPN.ViewModels.Calendario;
 using FDPN.ViewModels.Resultados;
 using Rotativa;
+using System;
+using FDPN.Helpers;
 
 namespace FDPN.Controllers
 {
@@ -18,6 +20,10 @@ namespace FDPN.Controllers
         // GET: Calendarios
         public ActionResult Index()
         {
+            if (!ValidarTecnico())
+            {
+                return View("NoAutorizado");
+            }
             List<Calendario> calendarios = db.Calendario.ToList();          
             return View(calendarios);
         }
@@ -41,6 +47,10 @@ namespace FDPN.Controllers
         // GET: Calendarios/Create
         public ActionResult Create()
         {
+            if (!ValidarTecnico())
+            {
+                return View("NoAutorizado");
+            }
             NuevoCalendarioViewModel VM = new NuevoCalendarioViewModel
             {
                 disciplinas = db.Disciplina.ToList(),
@@ -60,15 +70,20 @@ namespace FDPN.Controllers
             {
                 db.Calendario.Add(VM.calendario);
                 db.SaveChanges();
+                InsertarAlertaCalendario();
                 return RedirectToAction("Index");
             }
-
+            
             return View(VM.calendario);
         }
 
         // GET: Calendarios/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (!ValidarTecnico())
+            {
+                return View("NoAutorizado");
+            }
             if (id != null)
             {
                 NuevoCalendarioViewModel VM = new NuevoCalendarioViewModel
@@ -96,12 +111,17 @@ namespace FDPN.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            InsertarAlertaCalendario();
             return View(VM.calendario);
         }
 
         // GET: Calendarios/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (!ValidarTecnico())
+            {
+                return View("NoAutorizado");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -122,6 +142,7 @@ namespace FDPN.Controllers
             Calendario calendario = db.Calendario.Find(id);
             db.Calendario.Remove(calendario);
             db.SaveChanges();
+            InsertarAlertaCalendario();
             return RedirectToAction("Index");
         }
 
@@ -169,5 +190,43 @@ namespace FDPN.Controllers
             };
             return report;
         }
+
+        public bool ValidarTecnico()
+        {
+            if (System.Web.HttpContext.Current.Session["Rol"] != null)
+            {
+
+                FDPN.Models.Rol rol = (System.Web.HttpContext.Current.Session["Rol"] as FDPN.Models.Rol);
+
+                return (rol.Rol1 == "meet" || rol.Rol1 == "admin");
+            }
+            return false;
+        }
+
+        public void InsertarAlertaCalendario()
+        {
+            ConvertirAPeru convertidor = new Helpers.ConvertirAPeru();
+            DateTime today = convertidor.ToPeru(DateTime.UtcNow);
+            Alertas alertaantigua = db.Alertas.Where(x => x.Alerta == "Calendario modificado").FirstOrDefault();
+            
+            if (alertaantigua == null)
+            {
+                Alertas alerta = new Alertas
+                {
+
+                    Alerta = "Calendario modificado ",
+                    Fecha = today,
+                };
+                db.Alertas.Add(alerta);
+            }
+            else
+            {
+                alertaantigua.Fecha = today;
+            }
+            
+            
+            db.SaveChanges();
+        }
+
     }
 }
