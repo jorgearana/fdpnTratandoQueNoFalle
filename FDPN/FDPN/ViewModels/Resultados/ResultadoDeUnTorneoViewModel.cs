@@ -9,7 +9,8 @@ namespace FDPN.ViewModels.Resultados
     public class ResultadoDeUnTorneoViewModel
     {
         public List<TEAM> EquiposParticipantes { get; set; }
-        public List<RESULTS> resultado { get; set; }
+        public List<RESULTS> resultadoFinales { get; set; }
+        public List<RESULTS> resultadoPreliminares { get; set; }
         public  Dictionary<float, DiccionarioPruebas> pruebas { get; set; }
         public int meetid { get; set; }
         public int clubid { get; set; }

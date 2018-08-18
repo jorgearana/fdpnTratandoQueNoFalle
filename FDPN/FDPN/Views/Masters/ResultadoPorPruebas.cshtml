@@ -1,0 +1,87 @@
+﻿@model FDPN.ViewModels.Masters.ResultadosDeUnaPruebaMastersViewModel
+
+@{
+    ViewBag.Title = "Resultado Por Pruebas";
+}
+
+
+<section class="site-homepage__section site-athletedetails">
+
+    <div class="wrapper site-homepage__pushup">
+
+        <header class="site-homepage__section__header">
+            <h2 class="site-title site-title--basic--primary">@Model.torneo.MName </h2>
+            <p class="u-type--medium u-type--delta u-spc-bottom--med">prueba @Model.prueba.distancia @Model.prueba.estilo </p>
+        </header>
+        <div class="site-homepage__section__content">
+            <h2 class="u-type--gamma u-spc-bottom--med">Resultados por categoría</h2>
+
+            @foreach (var resultado in Model.Resultados)
+    {<div class="table">
+    <p class="u-type--medium u-type--delta u-spc-bottom--med">Categoría @resultado.Key.Nombre </p>
+    <table class="table__data">
+        <thead>
+            <tr>
+
+                <th>Puesto</th>
+                <th>Tiempo</th>
+                <th>Distancia</th>
+                <th>Estilo</th>
+                <th>Deportista</th>
+                <th>Sexo</th>
+                <th>Edad</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in resultado.Value)
+            {
+                <tr>
+
+                    @if (item.PLACE < 4)
+                    {
+                        <td>
+                            <div class="row">
+                                <div class="col-xs-2">@item.PLACE</div>
+                                <div class="col-xs-2"><div class=@("medalla"+(item.PLACE)) aria-hidden="true"></div></div>
+
+                            </div>
+
+                        </td>
+                    }
+                    else
+                    {
+                        <td>@item.PLACE</td>
+                    }
+                    <td>@item.SCORE</td>
+                    <td>@item.DISTANCE</td>
+                    <td>@item.STROKE</td>
+                    <td>@Html.ActionLink(@item.AthleteMasters.First + " " + @item.AthleteMasters.Last, "Nadador", "masters", new { id = item.AthleteId }, null)</td>
+                    <td>@item.AthleteMasters.Sex</td>
+                    <td>@item.AthleteMasters.Age</td>
+
+                </tr>
+            }
+
+
+
+
+        </tbody>
+    </table>
+</div>
+            }
+      
+        </div>
+        <button onclick="goBack()" class="btn btn--primaryapnea btn--lrg u-rounded" style="float: right;">Volver</button>
+        <div class="espaciadogrande"></div>
+    </div>
+
+</section>
+
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>

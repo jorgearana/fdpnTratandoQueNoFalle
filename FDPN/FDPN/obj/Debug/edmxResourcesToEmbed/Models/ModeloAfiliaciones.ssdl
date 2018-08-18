@@ -223,7 +223,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
     <Property Name="DNI" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="ClubSolicitante" Type="int" Nullable="false" />
     <Property Name="Fecha" Type="date" />
-    <Property Name="Liberado" Type="bit" />
+    <Property Name="Liberado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Usuario">
     <Key>

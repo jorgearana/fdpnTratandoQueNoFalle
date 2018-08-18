@@ -3,9 +3,19 @@
 @{
     ViewBag.Title = "VersionImprimible";
     Layout = "~/Views/Shared/_LayoutWYSWYG.cshtml";
+
+    string path = "~/Content/img/Imgsmall/";
+    DateTime fecha = ViewBag.modificacion;
 }
-<h2>
-    <img src="~/Content/img/Logo_fdpn.png" style="width:50px;"/>Calendario oficial de actividades</h2>
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-2">
+        <h2>
+            <img src="~/Content/img/Logo_fdpn.png" style="width:50px;" />
+            Calendario oficial de actividades <small>Actualizado al @fecha.ToShortDateString()</small>
+        </h2>
+    </div>
+</div>
+
 
 <div class="wrapper">
     <table class="tablacalendario" >
@@ -44,8 +54,8 @@
         <tbody>
             @foreach (var item in Model)
         {
-                <tr>
-                    <td>
+                <tr >
+                    <td>                        
                         @item.Inicio.ToString("MMM")
                     </td>
                     <td>

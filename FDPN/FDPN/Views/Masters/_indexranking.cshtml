@@ -1,0 +1,54 @@
+﻿
+@model FDPN.ViewModels.Masters.TopRankingMastersViewModel
+
+<div class="is-ontop u-animation--fadeInSection u-animation--fadeInWithMove">
+    <header class="site-homepage__section__header">
+        <h2 class="site-title site-title--ultra site-title--ultra--negative">TOP&nbsp;10</h2>
+    </header>
+    <div class="site-rankingwidget">
+        <div class="site-athleteswidget__info site-athleteswidget__info--negative">
+            <h3 class="site-athleteswidget__name">  @Model.resultado[0].DISTANCE  @Model.resultado[0].STROKE - @Model.resultado[0].AthleteMasters.Sex  </h3>
+            .
+            @if (Model.resultado[0].COURSE == "S")
+            {
+            <h4 class="site-athleteswidget__name">Categoría @Model.minima - @Model.maxima años en Piscina Corta </h4>
+            }
+            else
+            {
+                <h4 class="site-athleteswidget__name">Categoría @Model.minima - @Model.maxima años en Piscina Larga </h4>
+            }
+            <p class="site-athleteswidget__subtitle"></p>
+            <table class="site-rankingwidget__table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Tiempo</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.resultado .Count; i++)
+                    {
+                        <tr>
+                            <td>@(i + 1)</td>
+                            <td><span>@Model.resultado[i].AthleteMasters.First.ToUpper()</span><span>  @Model.resultado[i].AthleteMasters.Last.ToUpper()</span> </td>
+                            <td>
+                                @Model.resultado[i].SCORE
+                            </td>
+                            <td>@Model.resultado[i].MEETMasters.Start.ToString("dd/MMM/yyyy")</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    @*<footer class="site-homepage__section__footer">
+        @Html.ActionLink("Ver ranking", "Rankings", "Resultados", null, new { @class = "btn btn--negative btn--lrg u-rounded" })
+    </footer>*@
+    <center>
+        <h6>* Se consideran los tiempos registrados a partir del año 2000</h6>
+    </center>
+</div>
+

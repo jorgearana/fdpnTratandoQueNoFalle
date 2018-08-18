@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Página de masters";
+}
+
+
+<div class="site-homepage">
+
+    <div class="site-worldrecords u-animation--fadeInSection">
+        <div class="wrapper site-homepage__pushup">
+            <header class="site-homepage__section__header">
+                <h2 class="site-title site-title--ultra site-title--ultra--primary">Nadadores Masters</h2>
+                <p class="u-type--medium u-type--delta">Resultados en línea</p>
+            </header>
+
+        </div>
+    </div>
+    <div class="row u-animation--fadeInSection">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <div data-mh="card" class="card-Derecha u-bg--surface u-bg--blueoverlaydark">
+                    @Html.Action("_indexranking")
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div data-mh="card" class="card-Derecha u-bg--pooldiver u-bg--blueoverlay">
+                    @Html.Action("_mastersdestacado")
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row u-animation--fadeInSection">
+    @Html.Action("_PreviewNoticias", "home")
+    <div class="espaciado"></div>
+</div>
+<div class="row u-animation--fadeInSection">
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div data-mh="card" class="card-Derecha u-bg--poolpeople u-bg--blueoverlaydark">
+                @Html.Action("_Nadadores")
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div data-mh="card" class="card-Derecha u-bg--clavados u-bg--blueoverlay">
+                @Html.Action("_RelacionDeTorneos")
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+@*<div class="site-homepage__split u-group u-animation--fadeInSection">
+        <div class="site-homepage__split u-group u-animation--fadeInSection">
+
+        </div>
+
+
+
+
+
+    </div>*@
+
+<div class="espaciado"></div>
+<div class="espaciado"></div>
+
+
+
+    </div>
+<div class="espaciado"></div>

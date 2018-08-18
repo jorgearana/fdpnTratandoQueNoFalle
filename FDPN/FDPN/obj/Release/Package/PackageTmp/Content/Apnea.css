@@ -4242,17 +4242,22 @@ table th {
 }
 
 .u-bg--pooldiver {
-    background: url('img/3.jpg') no-repeat center center;
+    background: url('img/vertical3.jpg') no-repeat center center;
     background-size: cover
 }
 
 .u-bg--surface {
-    background: url('img/9.jpg') no-repeat right center;
+    background: url('img/vertical2.jpg') no-repeat right center;
     background-size: cover
 }
 
 .u-bg--poolpeople {
-    background: url('img/5.jpg') no-repeat center center;
+    background: url('img/vertical1.jpg') no-repeat center center;
+    background-size: cover
+}
+
+.u-bg--clavados {
+    background: url('img/vertical4.jpg') no-repeat center center;
     background-size: cover
 }
 
@@ -4271,6 +4276,7 @@ table th {
     background-color: #263a62;
     background-blend-mode: multiply
 }
+
 
 .u-well--bordered {
     padding-bottom: 24px;

@@ -1,0 +1,123 @@
+﻿@model FDPN.ViewModels.Masters.ResultadoDeUnTorneoMastersViewModel
+
+@{
+    ViewBag.Title = "Resultado Por clubes";
+}
+
+
+<section class="site-homepage__section site-athletedetails">
+
+    <div class="wrapper site-homepage__pushup">
+
+        <header class="site-homepage__section__header">
+            <h2 class="site-title site-title--ultra site-title--ultra--primary">Resultados del club @Model.club.TName </h2>
+            <p class="u-type--medium u-type--delta u-spc-bottom--med">en el torneo @Model.torneo.MName </p>
+            <p class="u-type--medium u-type--delta u-spc-bottom--med">Fecha: @Model.torneo.Start.ToString("dd/MM/yyyy") </p>
+        </header>
+        <div class="site-homepage__section__content">
+            <h3 class="u-type--gamma u-spc-bottom--med">Resultados de pruebas finales</h3>
+            <div class="table">
+                <table class="table__data datatabla">
+                    <thead>
+                        <tr>
+
+                            <th>Puesto</th>
+                            <th>Tiempo</th>
+                            <th>Distancia</th>
+                            <th>Estilo</th>
+                            <th>Puntos</th>
+                            <th>Deportista</th>
+                            <th>Sexo</th>
+                            <th>Edad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.resultadoFinales)
+                        {
+                            <tr>
+                                @if (item.PLACE < 4)
+                                {
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-xs-2">@item.PLACE</div>
+                                            <div class="col-xs-2"><div class=@("medalla"+(item.PLACE)) aria-hidden="true"></div></div>
+                                        </div>
+
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>@item.PLACE</td>
+                                }
+
+                                <td>@item.SCORE</td>
+                                <td>@item.DISTANCE</td>
+                                <td>@item.STROKE</td>
+                                <td>@item.PFina</td>
+                                <td>@Html.ActionLink(@item.AthleteMasters.First + " " + @item.AthleteMasters.Last, "Nadador", "masters", new { id = item.AthleteId }, null)</td>
+                                <td>@item.AthleteMasters.Sex</td>
+                                <td>@item.AthleteMasters.Age</td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr />
+        <h3 class="u-type--gamma u-spc-bottom--med">Resultados de pruebas preliminares</h3>
+        <div class="site-homepage__section__content">
+            @*<h2 class="u-type--gamma u-spc-bottom--med">Listado de resultados del club</h2>*@
+            <div class="table">
+                <table class="table__data datatabla">
+                    <thead>
+                        <tr>
+
+                            <th>Puesto</th>
+                            <th>Tiempo</th>
+                            <th>Distancia</th>
+                            <th>Estilo</th>
+                            <th>Puntos</th>
+                            <th>Deportista</th>
+                            <th>Sexo</th>
+                            <th>Edad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.resultadoPreliminares)
+                        {
+                            <tr>
+                                @if (item.PLACE < 4)
+                                {
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-xs-2">@item.PLACE</div>
+                                        </div>
+
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>@item.PLACE</td>
+                                }
+
+                                <td>@item.SCORE</td>
+                                <td>@item.DISTANCE</td>
+                                <td>@item.STROKE</td>
+                                <td>@item.PFina</td>
+                                <td>@Html.ActionLink(@item.AthleteMasters.First + " " + @item.AthleteMasters.Last, "Nadador", "masters", new { id = item.AthleteId }, null)</td>
+                                <td>@item.AthleteMasters.Sex</td>
+                                <td>@item.AthleteMasters.Age</td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="espaciadogrande"></div>
+</section>

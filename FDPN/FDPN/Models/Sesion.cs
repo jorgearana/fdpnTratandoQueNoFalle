@@ -37,7 +37,6 @@ namespace FDPN.Models
         public int MeetId { get; set; }
         public int SessionId { get; set; }
     
-        public virtual Torneo Torneo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SessionItem> SessionItem { get; set; }
     }

@@ -14,7 +14,7 @@ namespace FDPN.Controllers
 {
     public class AdministradorController : Controller
     {
-          DB_9B1F4C_MVCcompetenciasEntities db = new   DB_9B1F4C_MVCcompetenciasEntities();
+        DB_9B1F4C_MVCcompetenciasEntities db = new DB_9B1F4C_MVCcompetenciasEntities();
         DB_9B1F4C_afiliacionesEntities1 af = new DB_9B1F4C_afiliacionesEntities1();
 
         FilesHelper filesHelper;
@@ -44,13 +44,16 @@ namespace FDPN.Controllers
                 Comunicado = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Comunicado").OrderByDescending(x => x.NoticiaId).Take(20).ToList(),
                 Curso = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Curso").OrderByDescending(x => x.NoticiaId).Take(20).ToList(),
                 Evento = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Evento").OrderByDescending(x => x.NoticiaId).Take(20).ToList(),
-                Criterio = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Criterio").OrderByDescending(x => x.NoticiaId).Take(20).ToList(),
                 Noticia = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Noticia").OrderByDescending(x => x.NoticiaId).Take(20).ToList(),
                 Reglamento = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Reglamento").OrderByDescending(x => x.NoticiaId).Take(20).ToList(),
                 Subvencion = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Subvencion").OrderByDescending(x => x.NoticiaId).Take(20).ToList(),
                 Records = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Record").OrderByDescending(x => x.NoticiaId).Take(20).ToList(),
                 Resultados = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Resultado").OrderByDescending(x => x.NoticiaId).Take(20).ToList(),
+                Criterios = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Criterio").OrderByDescending(x => x.NoticiaId).Take(20).ToList(),
                 Ranking = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Ranking").OrderByDescending(x => x.NoticiaId).Take(20).ToList(),
+                Marcasminimas = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Marcasminimas").OrderByDescending(x => x.NoticiaId).Take(20).ToList(),
+                Marcasclasificatorias = query.Where(x => x.CategoriaNoticia.TipoNoticia == "MarcasClasificatorias").OrderByDescending(x => x.NoticiaId).Take(20).ToList(),
+                Convocatorias = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Convocatorias").OrderByDescending(x => x.NoticiaId).Take(20).ToList(),
                 ventanaModal = db.Modals.OrderBy(x => x.Titulo).ToList(),
             };
             return View(VM);
@@ -127,7 +130,7 @@ namespace FDPN.Controllers
                 db.Fotos.Add(foto);
             }
             db.SaveChanges();
-            InsertarAlertaNoticia(VM.noticia.Titulo);
+            InsertarAlertaNoticia(VM.noticia);
 
 
             return RedirectToAction("index");
@@ -174,7 +177,8 @@ namespace FDPN.Controllers
                 fotos = db.Fotos.Where(x => x.NoticiaId == id).ToList(),
                 noticiaid = id,
             };
-
+            if (VM.noticia.Larga == null) VM.noticia.Larga = "";
+            if (VM.noticia.Corta == null) VM.noticia.Corta = "";
             return View(VM);
         }
 
@@ -190,6 +194,11 @@ namespace FDPN.Controllers
             foreach (Fotos foto in fotos)
             {
                 db.Fotos.Remove(foto);
+            }
+            Alertas alerta = db.Alertas.Where(x => x.NoticiaId == VM.noticiaid).FirstOrDefault();
+            if (alerta != null)
+            {
+                db.Alertas.Remove(alerta);
             }
             db.SaveChanges();
             db.Noticias.Remove(noticia);
@@ -303,7 +312,7 @@ namespace FDPN.Controllers
                     {
                         return Redirect(ReturnUrl);
                     }
-                    if (rol.RolId == 10)
+                    if (rol.RolId == 4)
                     {
                         return RedirectToAction("index", "administrador");
                     }
@@ -317,6 +326,54 @@ namespace FDPN.Controllers
             return RedirectToAction("index", "administrador");
         }
 
+
+        public bool ValidarPrensa()
+        {
+            if (System.Web.HttpContext.Current.Session["Rol"] != null)
+            {
+
+                FDPN.Models.Rol rol = (System.Web.HttpContext.Current.Session["Rol"] as FDPN.Models.Rol);
+
+                return (rol.Rol1 == "prensa" || rol.RolId == 1 || rol.RolId == 4);
+            }
+            return false;
+        }
+
+        public ActionResult ActivarModal(int id)
+        {
+            List<Modals> modals = db.Modals.ToList();
+            foreach (Modals ventanamodal in modals)
+            {
+                ventanamodal.Activo = false;
+            }
+            Modals Actualmodal = db.Modals.Find(id);
+            Actualmodal.Activo = true;
+            db.SaveChanges();
+            return RedirectToAction("index");
+        }
+
+        public ActionResult Desactivar(int id)
+        {
+            Modals Actualmodal = db.Modals.Find(id);
+            Actualmodal.Activo = false;
+            db.SaveChanges();
+            return RedirectToAction("index");
+        }
+        [HttpGet]
+        public ActionResult BorrarModal(int id)
+        {
+            Modals Actualmodal = db.Modals.Find(id);
+            return View(Actualmodal);
+        }
+        [HttpPost]
+        public ActionResult BorrarModal(Modals modelo)
+        {
+            Modals modalaborrar = db.Modals.Find(modelo.Modalid);
+            db.Modals.Remove(modalaborrar);
+            db.SaveChanges();
+            return RedirectToAction("index");
+
+        }
         [HttpGet]
         public ActionResult IngresarModal()
         {
@@ -351,55 +408,7 @@ namespace FDPN.Controllers
             return View(modal);
         }
 
-        public bool ValidarPrensa()
-        {
-            if (System.Web.HttpContext.Current.Session["Rol"] != null)
-            {
 
-                FDPN.Models.Rol rol = (System.Web.HttpContext.Current.Session["Rol"] as FDPN.Models.Rol);
-
-                return (rol.Rol1 == "prensa" || rol.Rol1 == "admin");
-            }
-            return false;
-        }
-
-        public ActionResult ActivarModal(int id)
-        {
-            List<Modals> modals = db.Modals.ToList();
-            foreach (Modals ventanamodal in modals)
-            {
-                ventanamodal.Activo = false;
-            }
-            Modals Actualmodal = db.Modals.Find(id);
-            Actualmodal.Activo = true;
-            db.SaveChanges();
-            return RedirectToAction("index");
-        }
-
-        public ActionResult Desactivar(int id)
-        {
-            Modals Actualmodal = db.Modals.Find(id);
-            Actualmodal.Activo = false;
-            db.SaveChanges();
-            return RedirectToAction("index");
-        }
-        [HttpGet]
-        public ActionResult BorrarModal(int id)
-        {
-            Modals Actualmodal = db.Modals.Find(id);
-            return View("confirmaBorrar", Actualmodal);
-        }
-        [HttpPost]
-        public ActionResult BorrarModal(Modals modelo)
-        {
-            Modals modalaborrar = db.Modals.Find(modelo.Modalid);
-            db.Modals.Remove(modalaborrar);
-            db.SaveChanges();
-            return RedirectToAction("index");
-
-        }
-
-       
         [HttpGet]
         public ActionResult Calendario()
         {
@@ -407,29 +416,80 @@ namespace FDPN.Controllers
             return View(calendarios);
         }
 
-       
-        public ActionResult TablaCalendario(int id)
-        {
-            ListarCalendarioViewModel VM = new ListarCalendarioViewModel
-            {
-                calendario = db.Calendario.Find(id),
-                disciplinas = db.Disciplina.ToList(),
-            };
-            return PartialView(VM);
-        }
-
-        public void InsertarAlertaNoticia(string titulo)
+        public void InsertarAlertaNoticia(Noticias noticia)
         {
             ConvertirAPeru convertidor = new Helpers.ConvertirAPeru();
             DateTime today = convertidor.ToPeru(DateTime.UtcNow);
             Alertas alerta = new Alertas
             {
-
-                Alerta = titulo,
+                Alerta = noticia.CategoriaNoticia + ": " + noticia.Titulo,
                 Fecha = today,
             };
+            alerta.NoticiaId = noticia.NoticiaId;
             db.Alertas.Add(alerta);
             db.SaveChanges();
+        }
+
+
+        public void ResumenAnnoViewModel(int anno)
+        {
+            DateTime primeroEnero = new DateTime(anno, 01, 01);
+            List<ResumenAnnoViewModel> VM = new List<ViewModels.Administrador.ResumenAnnoViewModel>();
+
+            List<RESULTS> resultadosDelAnno = db.RESULTS.Where(x => x.MEET1.Start > primeroEnero && x.PLACE != 0).ToList();
+
+            var resultadoporClub = resultadosDelAnno.GroupBy(x => x.TEAM).ToList();
+
+            foreach (var resultado in resultadoporClub)
+            {
+
+                var club = db.TEAM.Where(x => x.Team1 == resultado.Key).FirstOrDefault();
+                var Nadadores = resultadosDelAnno.Where(x => x.TEAM == resultado.Key).GroupBy(x => x.ATHLETE);
+                var cuenta = Nadadores.Count();
+                ResumenAnnoViewModel resumen = new ViewModels.Administrador.ResumenAnnoViewModel
+                {
+                    club = db.TEAM.Where(x => x.Team1 == resultado.Key).FirstOrDefault(),
+                    Nadadores = resultadosDelAnno.Where(x => x.TEAM == resultado.Key).GroupBy(x => x.ATHLETE).Count(),
+                    Participaciones = resultadosDelAnno.Where(x => x.TEAM == resultado.Key).GroupBy(x => x.MEET).Count(),
+
+                };
+            }
+
+
+
+
+        }
+
+
+        public ActionResult ResultadosEnVivo(string searchString)
+        {
+            var query = db.Vivo.AsQueryable();
+            if (searchString != null)
+            {
+                query = query.Where(x => x.Nombre.Contains(searchString) ||
+                x.Directorio.Contains(searchString));
+            }
+            query = query.OrderByDescending(x => x.Fecha);
+            List<Vivo> ListadoEnvivo = query.ToList();
+            return View(ListadoEnvivo);
+        }
+
+        [HttpGet]
+        public ActionResult IngresoEnVivo()
+        {
+            Vivo vivo = new Vivo();
+            return View(vivo);
+        }
+
+        [HttpPost]
+        public ActionResult IngresoEnVivo(Vivo vivo)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Vivo.Add(vivo);
+                db.SaveChanges();
+            }
+            return RedirectToAction("ResultadosEnVivo");
         }
     }
 }

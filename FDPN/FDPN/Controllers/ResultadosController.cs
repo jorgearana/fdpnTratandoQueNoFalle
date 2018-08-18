@@ -232,31 +232,9 @@ namespace FDPN.Controllers
             {
                 disciplina = disciplinaseleccionada.TipoDisciplina,
                 disciplinas = db.Disciplina.ToList(),
-                calendario = Query.ToList(),
+                calendario = Query.OrderBy(x=>x.Inicio).ToList(),
             };
-
-
-
-            //if (disciplina == null)
-            //{
-            //    disciplina = "";
-            //}
-            //DateTime fechainicial = DateTime.Now.AddDays(-15);
-            //var query = db.Calendario.Where(x => x.Inicio > fechainicial).OrderBy(x => x.Inicio).AsQueryable();
-            //CalendarioViewModel VM = new CalendarioViewModel
-            //{
-            //    disciplina = "Todas",
-            //    disciplinas = db.Disciplina.ToList(),
-            //};
-
-            //if (disciplina != "" && disciplina != "Todas")
-            //{
-            //    query = query.Where(x => x.Disciplina.TipoDisciplina == disciplina);
-            //    VM.disciplina = disciplina;
-            //}
-
-            //VM.calendario = query.ToList();
-           
+            
             return View(VM);
 
         }
@@ -443,16 +421,16 @@ namespace FDPN.Controllers
                 .DistinctBy(x => x.TeamId)
                 .OrderBy(x => x.TName).ToList(),
 
-                resultado = resultados
+                resultadoFinales = resultados
                 .DistinctBy(m => m.MTEV)
                 .ToList(),
                 pruebas = new Dictionary<float, DiccionarioPruebas>(),
 
             };
-            for (int i = 0; i < VM.resultado.Count(); i++)
+            for (int i = 0; i < VM.resultadoFinales.Count(); i++)
             {
                 //Con esto trato que las edades de las pruebas se puedan separar para ser usadas en el diccionario
-                string edades = VM.resultado[i].LO_HI.ToString();
+                string edades = VM.resultadoFinales[i].LO_HI.ToString();
                 string edadbaja = "00";
                 string edadalta = "99";
 
@@ -472,7 +450,7 @@ namespace FDPN.Controllers
                         break;
                 }
 
-                string evento = VM.resultado[i].MTEV.Replace(" ", "");
+                string evento = VM.resultadoFinales[i].MTEV.Replace(" ", "");
                 string chars = "";
                 float numero = 0;
                 float num = 0F;
@@ -526,7 +504,7 @@ namespace FDPN.Controllers
                 DiccionarioPruebas dic = new DiccionarioPruebas
                 {
                     MeetEvent = num,
-                    NombrePrueba = VM.resultado[i].DISTANCE.ToString() + " " + VM.resultado[i].STROKE + " " + edadbaja + " a " + edadalta + " años - " + VM.resultado[i].Athlete1.Sex,
+                    NombrePrueba = VM.resultadoFinales[i].DISTANCE.ToString() + " " + VM.resultadoFinales[i].STROKE + " " + edadbaja + " a " + edadalta + " años - " + VM.resultadoFinales[i].Athlete1.Sex,
                 };
 
 
@@ -587,7 +565,8 @@ namespace FDPN.Controllers
         {
             List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == VM.meetid && x.PLACE != 0).ToList();
 
-            VM.resultado = resultados.Where(x => x.TeamId == VM.clubid && x.AthleteId != null).OrderBy(x => x.MTEV).ThenBy(x => x.PLACE).ToList();
+            VM.resultadoFinales = resultados.Where(x => x.TeamId == VM.clubid && x.NT==0 && x.F_P =="F" && x.Athlete1 != null).OrderBy(x => x.MTEV).ThenBy(x => x.PLACE).ToList();
+            VM.resultadoPreliminares = resultados.Where(x => x.TeamId == VM.clubid && x.NT == 0 && x.F_P == "P" && x.Athlete1 != null).OrderBy(x => x.MTEV).ThenBy(x => x.PLACE).ToList();
             VM.EquiposParticipantes = resultados.Select(x => x.TEAM1)
                 .DistinctBy(x => x.TeamId)
                 .OrderBy(x => x.TName).ToList();
@@ -601,9 +580,13 @@ namespace FDPN.Controllers
         {
 
             MEET meet = db.MEET.Where(x => x.MeetId == modelo.meetid).FirstOrDefault();
+            List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == modelo.meetid && x.ATHLETE != 0 && x.PLACE != 0).ToList();
 
-          
             int index = modelo.pruebaid.IndexOf(",");
+            if (index<0)
+            {
+                index = modelo.pruebaid.IndexOf(".");
+            }
             string evento = modelo.pruebaid;
             if (index>0)
             {
@@ -644,16 +627,18 @@ namespace FDPN.Controllers
                 evento = entero + caracter;
             }
            
-            List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == modelo.meetid && x.ATHLETE!=0 && x.PLACE != 0 && x.NT!= 2 && x.NT!= 5 && x.MTEV == evento)
-                                .OrderBy(x => x.SCORE).ToList();
-            RESULTS resultado = resultados[0];
-
+            
+            
+            List<RESULTS >resultadosDelEvento = resultados.Where(x =>   x.MTEV.Trim() == evento)
+                                .OrderBy(x => x.PLACE).ToList();
+            RESULTS resultado = resultadosDelEvento[0];
 
             ResultadosDeUnaPruebaViewModel VM = new ResultadosDeUnaPruebaViewModel
             {
-                Resultadosfinales = resultados,
+                Resultadosfinales = resultadosDelEvento.Where(x=>x.F_P=="F").ToList(),
+                Resultadospreliminares= resultadosDelEvento.Where(x => x.F_P == "P").ToList(),
                 prueba = db.Pruebas.Where(x => x.distancia.ToString() == resultado.DISTANCE && x.estilo == resultado.STROKE).FirstOrDefault(),
-                torneo = db.MEET.Where(x => x.MeetId == modelo.meetid).FirstOrDefault(),
+                torneo = meet,
             };
             string edades;
 

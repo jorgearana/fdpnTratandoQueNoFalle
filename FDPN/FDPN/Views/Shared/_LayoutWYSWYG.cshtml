@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
     <title>Administrador de datos</title>
@@ -13,8 +14,8 @@
     <link href="~/Content/FileUpload/css/jquery.fileupload-noscript.css" rel="stylesheet" />
     <link href="~/Content/FileUpload/css/jquery.fileupload-ui-noscript.css" rel="stylesheet" />
     <link href="~/Content/FileUpload/css/jquery.fileupload-ui.css" rel="stylesheet" />
-
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    
+    <link href="~/Content/Fonawesome/css/font-awesome.min.css" rel="stylesheet" />
 
     <link href="~/Content/Site.css" rel="stylesheet" />
     <link href="~/Content/img/Imgsmall/fdpn.ico" rel="apple-touch-icon">
@@ -22,7 +23,7 @@
 <body>
     @RenderBody()
 
-   
+
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
@@ -32,7 +33,8 @@
 
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js">
     </script>
-   
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
     <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
     <script src="~/Content/FileUpload/js/vendor/jquery.ui.widget.js"></script>
     <script src="~/Content/FileUpload/js/tmpl.min.js"></script>
@@ -42,7 +44,7 @@
     <script src="~/Content/FileUpload/js/load-image.all.min.js"></script>
     <!-- The Canvas to Blob plugin is included for image resizing functionality -->
     <script src="~/Content/FileUpload/js/canvas-to-blob.min.js"></script>
-   
+
 
 
     <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
@@ -72,7 +74,7 @@
 
         });
         $('#fileupload').addClass('fileupload-processing');
-       
+
         $('.datatablaLarga').DataTable({
             "pageLength": 100,
             "language": {

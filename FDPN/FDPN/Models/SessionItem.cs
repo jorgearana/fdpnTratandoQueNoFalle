@@ -32,6 +32,5 @@ namespace FDPN.Models
     
         public virtual Eventos Eventos { get; set; }
         public virtual Sesion Sesion { get; set; }
-        public virtual Torneo Torneo { get; set; }
     }
 }

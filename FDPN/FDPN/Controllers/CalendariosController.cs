@@ -109,9 +109,10 @@ namespace FDPN.Controllers
             {
                 db.Entry(VM.calendario).State = EntityState.Modified;
                 db.SaveChanges();
+                InsertarAlertaCalendario();
                 return RedirectToAction("Index");
             }
-            InsertarAlertaCalendario();
+            
             return View(VM.calendario);
         }
 
@@ -171,10 +172,12 @@ namespace FDPN.Controllers
             {
                 disciplina = disciplinaseleccionada.TipoDisciplina,
                 disciplinas = db.Disciplina.ToList(),
-                calendario = Query.ToList(),
+                calendario = Query.OrderBy(x => x.Inicio).ToList(),
+                
             };
-            
-            return PartialView(Query.ToList());
+            Alertas alerta = db.Alertas.Find(1);
+            ViewBag.modificacion = alerta.Fecha;
+            return PartialView(Query.OrderBy(x => x.Inicio).ToList());
         }
 
         public ActionResult PrintCalendario(int? disciplina)
@@ -198,7 +201,7 @@ namespace FDPN.Controllers
 
                 FDPN.Models.Rol rol = (System.Web.HttpContext.Current.Session["Rol"] as FDPN.Models.Rol);
 
-                return (rol.Rol1 == "meet" || rol.Rol1 == "admin");
+                return (rol.RolId ==1 || rol.RolId ==4);
             }
             return false;
         }
@@ -207,26 +210,28 @@ namespace FDPN.Controllers
         {
             ConvertirAPeru convertidor = new Helpers.ConvertirAPeru();
             DateTime today = convertidor.ToPeru(DateTime.UtcNow);
-            Alertas alertaantigua = db.Alertas.Where(x => x.Alerta == "Calendario modificado").FirstOrDefault();
+            Alertas alertaantigua = db.Alertas.Where(x => x.Alerta.Contains("Calendario modificado")).FirstOrDefault();
             
             if (alertaantigua == null)
             {
                 Alertas alerta = new Alertas
                 {
-
-                    Alerta = "Calendario modificado ",
+                    Alerta = "Calendario modificado el día : " + today,
                     Fecha = today,
                 };
                 db.Alertas.Add(alerta);
             }
             else
             {
+               
                 alertaantigua.Fecha = today;
+                alertaantigua.Alerta = "Calendario modificado el día : " + today;
             }
             
             
             db.SaveChanges();
         }
 
+        
     }
 }

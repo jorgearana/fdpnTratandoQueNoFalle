@@ -17,5 +17,8 @@ namespace FDPN.Models
         public int AlertaId { get; set; }
         public System.DateTime Fecha { get; set; }
         public string Alerta { get; set; }
+        public Nullable<int> NoticiaId { get; set; }
+    
+        public virtual Noticias Noticias { get; set; }
     }
 }

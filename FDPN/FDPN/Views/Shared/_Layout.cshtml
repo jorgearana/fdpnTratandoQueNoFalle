@@ -3,7 +3,12 @@
 
 <head>
     <meta charset="utf-8" />
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="natación, natación adultos, natación bebés, natación niños, aquabebé, natación patera, patera, clavados, saltos ornamentales
+          waterpolo, water polo, polo, polo acuático, nado sincronizado, sincro, natación artística, competencias natación, resultados natación, academia, enseñanza natación,
+          federación, deportes acuáticos, aguas abiertas, natación en aguas abiertas, guia didáctica, cursos, cursos natación, juez natación, juez cronometrista,
+          juez nado sincronizado, árbitro polo, árbitro waterpolo, árbitro water polo, árbitro polo acuático,
+          Perú, peruana, natación peruana">
     <title>FDPN</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="~/Content/img/Imgsmall/favicon.ico" />
@@ -15,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <link href="~/Content/slick/slick.css" rel="stylesheet" />
     <link href="~/Content/slick/slick-theme.css" rel="stylesheet" />
-   
+
     <link href="~/Content/Calendario/Calendario.css" rel="stylesheet" />
     <link href="~/Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -23,13 +28,13 @@
     <link href="~/Content/Apnea.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
 
-    
 
 
-  
+
+
 </head>
 <body class="js-body">
-  
+
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -37,8 +42,14 @@
     <!-- keep width for all viewport sizes -->
     <div class="contenedor">
 
-        @Html.Action("_TopBar", "home")
+
+
+        @{ 
+            string titulo = ViewBag.title;
+        }
+        @Html.Action("_TopBar", "Home", new {@titulo = titulo } )
         <main>
+
             @RenderBody()
         </main>
         @Html.Partial("_footer")

@@ -1,0 +1,46 @@
+﻿@model List<FDPN.Models.MEETMasters>
+
+
+<section class="site-homepage__section site-athletes">
+    <div class="wrapper site-homepage__pushup">
+        @using (Html.BeginForm())
+    {
+        <header class="site-homepage__section__header">
+            <h2 class="site-title site-title--ultra site-title--ultra--primary">Torneos</h2>
+            @Html.TextBox("SearchString", null, new { @class = "btn btn--primaryapnea btn--lrg u-rounded" })
+            <input type="submit" value="Buscar" class="btn btn--primaryapnea btn--lrg u-rounded" />
+        </header>
+
+        <div class="">
+            <div class="site-athleteswidget__info site-athleteswidget__info--negative">
+
+                <p class="site-athleteswidget__subtitle"></p>
+                <table class="site-rankingwidget__table">
+                    <thead>
+                        <tr>
+                            <th>Torneo</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@Html.ActionLink(@item.MName.ToUpper(), "ResultadosDeUnTorneo", "masters", new { @meetid = item.MeetId }, null)</td>
+
+                    <td>@item.Start.ToString("dd/MMM/yyyy")</td>
+                </tr>
+}
+
+                    </tbody>
+                </table>
+                <br />
+                
+            </div>
+        </div>
+        
+}
+    </div>
+    <div class="espaciadogrande"></div>
+</section>

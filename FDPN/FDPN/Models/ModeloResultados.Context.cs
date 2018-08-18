@@ -25,7 +25,9 @@ namespace FDPN.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Alertas> Alertas { get; set; }
         public virtual DbSet<Athlete> Athlete { get; set; }
+        public virtual DbSet<AthleteMasters> AthleteMasters { get; set; }
         public virtual DbSet<Atletas> Atletas { get; set; }
         public virtual DbSet<BASETIMES> BASETIMES { get; set; }
         public virtual DbSet<Calendario> Calendario { get; set; }
@@ -43,6 +45,7 @@ namespace FDPN.Models
         public virtual DbSet<Jugadores> Jugadores { get; set; }
         public virtual DbSet<MarcasMinimas> MarcasMinimas { get; set; }
         public virtual DbSet<MEET> MEET { get; set; }
+        public virtual DbSet<MEETMasters> MEETMasters { get; set; }
         public virtual DbSet<Modals> Modals { get; set; }
         public virtual DbSet<Noticias> Noticias { get; set; }
         public virtual DbSet<Pais> Pais { get; set; }
@@ -50,12 +53,17 @@ namespace FDPN.Models
         public virtual DbSet<Pruebas> Pruebas { get; set; }
         public virtual DbSet<Resultados> Resultados { get; set; }
         public virtual DbSet<RESULTS> RESULTS { get; set; }
+        public virtual DbSet<RESULTSMasters> RESULTSMasters { get; set; }
         public virtual DbSet<Sesion> Sesion { get; set; }
         public virtual DbSet<SessionItem> SessionItem { get; set; }
+        public virtual DbSet<SetupTorneo> SetupTorneo { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TEAM> TEAM { get; set; }
+        public virtual DbSet<TEAMMasters> TEAMMasters { get; set; }
+        public virtual DbSet<TipoTorneo> TipoTorneo { get; set; }
         public virtual DbSet<Torneo> Torneo { get; set; }
         public virtual DbSet<TorneoDestacado> TorneoDestacado { get; set; }
+        public virtual DbSet<TorneoDestacadoMasters> TorneoDestacadoMasters { get; set; }
         public virtual DbSet<Vivo> Vivo { get; set; }
         public virtual DbSet<Consulta> Consulta { get; set; }
         public virtual DbSet<Estilos> Estilos { get; set; }
@@ -63,6 +71,6 @@ namespace FDPN.Models
         public virtual DbSet<Query> Query { get; set; }
         public virtual DbSet<Session> Session { get; set; }
         public virtual DbSet<Sessitem> Sessitem { get; set; }
-        public virtual DbSet<Alertas> Alertas { get; set; }
+        public virtual DbSet<CategoriasMasters> CategoriasMasters { get; set; }
     }
 }

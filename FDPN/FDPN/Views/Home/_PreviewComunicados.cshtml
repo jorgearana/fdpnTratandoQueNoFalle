@@ -2,7 +2,7 @@
 
 @{
 
-    string path = Url.Content("~/Content/img/Fotos/");
+    string path = Url.Content("../Content/img/Fotos/");
 }
 
 
@@ -46,7 +46,7 @@
                             <div class="item-img-wrap ">
                                 @if (item.fotos.Count() > 0)
                                 {
-                                    <div class="ImagenNoticia" style="background-image: url(@Url.Content(path +  item.fotos[0].Nombrefoto))"></div>
+                                    <div class="ImagenNoticia" style="background-image: url(@Url.Content(path +  item.fotos[0].Nombrefoto.ToString()))"></div>
                                 }
                                 else
                                 {

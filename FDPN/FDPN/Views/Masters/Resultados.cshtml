@@ -1,0 +1,73 @@
+﻿@model PagedList.IPagedList<FDPN.Models.MEETMasters>
+
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Resultados";
+}
+
+
+
+<section class="site-contentpage site-news site-homepage__pushup">
+    <header class="site-homepage__section__header">
+        <h2 class="site-title site-title--ultra site-title--ultra">Resultados</h2>
+        <p class="u-type--medium u-type--delta u-spc-bottom--med">Listado de torneos disponibles</p>
+        @using (Html.BeginForm())
+        {
+            <p class="u-type--medium u-type--delta u-spc-bottom--med">Buscar en los torneos</p>
+            @Html.TextBox("SearchString", null, new { @class = "btn btn--primaryapnea btn--lrg u-rounded" })
+            <input type="submit" value="Buscar" class="btn btn--primaryapnea btn--lrg u-rounded" />
+        }
+    </header>
+    <div class="wrapper site-athleteswidget__info">
+
+
+
+        <table class="tablaNormal">
+            <tr>
+                <th>
+                    @Html.ActionLink("Torneo", "Resultados", new { sortOrder = ViewBag.NameSortParm })
+                </th>
+
+                <th>
+                    @Html.ActionLink("Fecha", "Resultados", new { sortOrder = ViewBag.DateSortParm })
+                </th>
+                <th>
+                    Tipo de Piscina
+                </th>
+
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(@item.MName, "ResultadosDeUnTorneo", "masters", new { @meetid = item.MeetId }, null)
+
+                    </td>
+                    <td>
+                        @item.Start.ToString("dd/MM/yyyy")
+                    </td>
+                    @if (item.Course == "L")
+                    {
+                        <td>Larga</td>
+                    }
+                    else
+                    {
+                        <td>Corta</td>
+                    }
+
+                </tr>
+            }
+
+        </table>
+        <br />
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Resultados",
+         new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+
+    </div>
+</section>
+
+

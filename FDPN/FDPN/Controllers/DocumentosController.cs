@@ -38,6 +38,34 @@ namespace FDPN.Controllers
 
             return View(listado);
         }
+        public ActionResult MarcasMinimas(string searchString)
+        {
+            var query = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "MarcasMinimas" ).OrderBy(x => x.Noticias.Fecha).AsQueryable();
+
+            if (searchString != null)
+            {
+                query = query.Where(x => x.Noticias.Titulo.Contains(searchString));
+            }
+
+            List<Fotos> listado = query.ToList();
+
+            return View(listado);
+        }
+        public ActionResult Marcasclasificatorias(string searchString)
+        {
+            var query = db.Fotos.Where(x =>  x.Noticias.CategoriaNoticia.TipoNoticia == "MarcasClasificatorias").OrderBy(x => x.Noticias.Fecha).AsQueryable();
+
+            if (searchString != null)
+            {
+                query = query.Where(x => x.Noticias.Titulo.Contains(searchString));
+            }
+
+            List<Fotos> listado = query.ToList();
+
+            return View(listado);
+        }
+
+        
         public ActionResult Comunicados(string searchString)
         {
             var query = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "Comunicado").OrderBy(x => x.Noticias.Fecha).AsQueryable();
@@ -84,7 +112,7 @@ namespace FDPN.Controllers
 
             return View(VM);
         }
-        public ActionResult Normas(string searchString)
+        public ActionResult Criterios(string searchString)
         {
             var query = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "Criterio").OrderBy(x => x.Noticias.Fecha).AsQueryable();
 
@@ -139,9 +167,10 @@ namespace FDPN.Controllers
                 x.Corta.Contains(searchString) ||
                 x.Larga.Contains(searchString));
             }
-            query = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Resultado").OrderByDescending(x => x.NoticiaId).Take(20);
+            query = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Resultado").OrderByDescending(x => x.Fecha).Take(100);
 
-            var VM = query.GroupBy(x => x.Fecha.Year).ToList();
+           var VM = query.OrderByDescending(x=>x.Fecha).GroupBy(x => x.Fecha.Year).OrderByDescending(x=>x.Key).ToList();
+           
             return View(VM);
         }
 

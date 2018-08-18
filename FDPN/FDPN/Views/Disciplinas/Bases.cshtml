@@ -1,0 +1,51 @@
+﻿@model FDPN.ViewModels.Documento.BasesViewModel
+
+@{
+   
+    //Layout = "~/Views/Shared/_LayoutDocumentos.cshtml";
+    string path = Url.Content("../Content/img/Fotos/");
+}
+
+
+    <h2 class="u-type--delta u-type--upper u-spc-bottom--sml"><strong> Listado de bases de torneos</strong></h2>
+
+
+    <p class="u-type--gamma">
+
+        <table class="tablaNormal">
+            <thead>
+                <tr>
+                    <th>
+                        Descipción
+                    </th>
+                    <th>
+                        Disciplina
+                    </th>
+                    <th>
+                        Documento
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.fotos)
+                {
+                    <tr>
+                        <td>
+
+                            @item.Noticias.Titulo
+                        </td>
+                        <td>
+
+                            @item.Noticias.Disciplina.TipoDisciplina
+                        </td>
+                        <td>
+                            <a href=@Url.Action(path + item.Nombrefoto) target="_blank">
+                                <i class="fa fa-download" aria-hidden="true"></i> Ver documento
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </p>
+

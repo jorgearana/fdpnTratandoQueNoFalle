@@ -9,6 +9,7 @@ namespace FDPN.ViewModels.Resultados
     public class ResultadosDeUnaPruebaViewModel
     {
         public List<RESULTS> Resultadosfinales{ get; set; }
+        public List<RESULTS> Resultadospreliminares { get; set; }
         public MEET torneo { get; set; }
         public Pruebas prueba { get; set; }
         public string minima { get; set; }

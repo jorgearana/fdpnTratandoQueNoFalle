@@ -14,7 +14,7 @@
             <p class="u-type--medium u-type--delta u-spc-bottom--med">prueba @Model.prueba.distancia @Model.prueba.estilo de @Model.minima  a @Model.maxima  años</p>
         </header>
         <div class="site-homepage__section__content">
-            <h2 class="u-type--gamma u-spc-bottom--med">Resultados</h2>
+            <h2 class="u-type--gamma u-spc-bottom--med">Resultados Finales</h2>
             <div class="table">
                 <table class="table__data">
                     <thead>
@@ -42,6 +42,59 @@
                                             <div class="col-xs-2">@item.PLACE</div>
                                             <div class="col-xs-2"><div class=@("medalla"+(item.PLACE)) aria-hidden="true"></div></div>
                                             
+                                        </div>
+
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>@item.PLACE</td>
+                                }
+                                <td>@item.SCORE</td>
+                                <td>@item.DISTANCE</td>
+                                <td>@item.STROKE</td>
+                                <td>@Html.ActionLink(@item.Athlete1.First + " " + @item.Athlete1.Last, "Nadador", "Resultados", new { id = item.AthleteId }, null)</td>
+                                <td>@item.Athlete1.Sex</td>
+                                <td>@item.Athlete1.Age</td>
+
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr />
+        <div class="site-homepage__section__content">
+            <h2 class="u-type--gamma u-spc-bottom--med">Resultados de pruebas preliminares</h2>
+            <div class="table">
+                <table class="table__data">
+                    <thead>
+                        <tr>
+
+                            <th>Puesto</th>
+                            <th>Tiempo</th>
+                            <th>Distancia</th>
+                            <th>Estilo</th>
+                            <th>Deportista</th>
+                            <th>Sexo</th>
+                            <th>Edad</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Resultadospreliminares)
+                        {
+                            <tr>
+
+                                @if (item.PLACE < 4)
+                                {
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-xs-2">@item.PLACE</div>
+                                           
+
                                         </div>
 
                                     </td>

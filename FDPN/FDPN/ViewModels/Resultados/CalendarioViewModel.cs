@@ -11,7 +11,8 @@ namespace FDPN.ViewModels.Resultados
         public List<Models.Calendario> calendario { get; set; }
         public List<Disciplina> disciplinas { get; set; }
         public string disciplina { get; set; }
-
         
+
+
     }
 }

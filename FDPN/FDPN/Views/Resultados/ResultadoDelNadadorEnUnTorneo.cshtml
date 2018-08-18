@@ -51,18 +51,18 @@
         </div>
     </div>
     <div class="site-homepage__section__header u-animation--fadeInSection">
-        @Html.ActionLink("Listado de nadadores", "Nadadores", "Resultados", null, new {@class= "btn btn--med btn--primaryapnea u-rounded" })
+        @Html.ActionLink("Listado de nadadores", "Nadadores", "masters", null, new {@class= "btn btn--med btn--primaryapnea u-rounded" })
       
     </div>
     <div class="espaciado"></div>
     <div class="site-homepage__split u-group u-animation--fadeInSection">
         <section class="site-homepage__split__item u-bg--pooldiver u-bg--blueoverlay">
 
-            @Html.Action("_nadadordestacado", "Home")
+            @Html.Action("_mastersdestacado", "masters")
 
         </section>
         <section class="site-homepage__split__item u-bg--surface u-bg--blueoverlaydark">
-            @Html.Action("_indexranking", "Home")
+            @Html.Action("_indexranking", "masters")
         </section>
     </div>
 </section>

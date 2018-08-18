@@ -24,9 +24,9 @@ namespace jQuery_File_Upload.MVC5.Controllers
         String DeleteType = "GET";
         public FileUploadController()
         {
-           filesHelper = new FilesHelper(DeleteURL, DeleteType, StorageRoot, UrlBase, tempPath, serverMapPath);
+            filesHelper = new FilesHelper(DeleteURL, DeleteType, StorageRoot, UrlBase, tempPath, serverMapPath);
         }
-      
+
         public ActionResult Index()
         {
             return View();
@@ -38,7 +38,7 @@ namespace jQuery_File_Upload.MVC5.Controllers
             {
                 Files = ListOfFiles.files
             };
-          
+
             return View(model);
         }
 
@@ -51,7 +51,7 @@ namespace jQuery_File_Upload.MVC5.Controllers
         public JsonResult Upload()
         {
             var resultList = new List<ViewDataUploadFilesResult>();
-           
+
             var CurrentContext = HttpContext;
 
             filesHelper.UploadAndShowResults(CurrentContext, resultList);
@@ -75,8 +75,8 @@ namespace jQuery_File_Upload.MVC5.Controllers
         }
         public JsonResult GetFileList()
         {
-            var list=filesHelper.GetFileList();
-            return Json(list,JsonRequestBehavior.AllowGet);
+            var list = filesHelper.GetFileList();
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
         public JsonResult DeleteFile(string file)
@@ -87,6 +87,6 @@ namespace jQuery_File_Upload.MVC5.Controllers
             Session["Fotos"] = nombrefotos;
             return Json("OK", JsonRequestBehavior.AllowGet);
         }
-       
+
     }
 }

@@ -173,13 +173,15 @@ D:\jorge\GITRepo\FDPN\FDPN\obj\Debug\FDPN.csprojResolveAssemblyReference.cache
 D:\jorge\GITRepo\FDPN\FDPN\obj\Debug\FDPN.csproj.CoreCompileInputs.cache
 D:\jorge\GITRepo\FDPN\FDPN\obj\Debug\FDPN.dll
 D:\jorge\GITRepo\FDPN\FDPN\obj\Debug\FDPN.pdb
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\EntityFramework.dll
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\EntityFramework.xml
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\ApplicationInsights.config
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\FDPN.dll.config
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\FDPN.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\FDPN.pdb
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Antlr3.Runtime.dll
-D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\EntityFramework.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\EntityFramework.SqlServer.dll
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\itextsharp.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Microsoft.AI.Agent.Intercept.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Microsoft.AI.DependencyCollector.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -191,6 +193,8 @@ D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Microsoft.Web.Infrastructure.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\MoreLinq.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Newtonsoft.Json.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\PagedList.dll
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Rotativa.Core.dll
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Rotativa.MVC.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\System.ValueTuple.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\System.Web.Helpers.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\System.Web.Mvc.dll
@@ -200,7 +204,6 @@ D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\System.Web.WebPages.Deployment.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\System.Web.WebPages.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\System.Web.WebPages.Razor.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\WebGrease.dll
-D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\EntityFramework.xml
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\EntityFramework.SqlServer.xml
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\MoreLinq.xml
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\PagedList.xml
@@ -226,10 +229,7 @@ D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\es\System.Web.Razor.resources.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\es\System.Web.WebPages.resources.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\es\System.Web.WebPages.Deployment.resources.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\es\System.Web.WebPages.Razor.resources.dll
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.csprojResolveAssemblyReference.cache
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.csproj.CoreCompileInputs.cache
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.pdb
-D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.csprojResolveAssemblyReference.cache
-D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\itextsharp.dll
-D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Rotativa.Core.dll
-D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Rotativa.MVC.dll

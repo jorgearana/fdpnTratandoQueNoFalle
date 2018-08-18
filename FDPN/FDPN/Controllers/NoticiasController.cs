@@ -17,8 +17,6 @@ namespace FDPN.Controllers
         // GET: Noticias
         public ActionResult Noticias(string searchString)
         {
-            
-          
             List<previewNoticiasViewModel> VM = new List<previewNoticiasViewModel>();
 
             var query = db.Noticias.Where(x => x.CategoriaId == 1).AsQueryable();

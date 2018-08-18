@@ -1,6 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DB_9B1F4C_MVCcompetenciasModelStoreContainer" CdmEntityContainer="DB_9B1F4C_MVCcompetenciasEntities">
+    <EntitySetMapping Name="Alertas">
+      <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.Alertas">
+        <MappingFragment StoreEntitySet="Alertas">
+          <ScalarProperty Name="NoticiaId" ColumnName="NoticiaId" />
+          <ScalarProperty Name="Alerta" ColumnName="Alerta" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="AlertaId" ColumnName="AlertaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Athlete">
       <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.Athlete">
         <MappingFragment StoreEntitySet="Athlete">
@@ -12,6 +22,20 @@
           <ScalarProperty Name="Last" ColumnName="Last" />
           <ScalarProperty Name="First" ColumnName="First" />
           <ScalarProperty Name="Athlete1" ColumnName="Athlete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AthleteMasters">
+      <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.AthleteMasters">
+        <MappingFragment StoreEntitySet="AthleteMasters">
+          <ScalarProperty Name="AthleteId" ColumnName="AthleteId" />
+          <ScalarProperty Name="ID_NO" ColumnName="ID_NO" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Birth" ColumnName="Birth" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Last" ColumnName="Last" />
+          <ScalarProperty Name="First" ColumnName="First" />
+          <ScalarProperty Name="Athlete" ColumnName="Athlete" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -439,7 +463,7 @@
     <EntitySetMapping Name="MarcasMinimas">
       <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.MarcasMinimas">
         <MappingFragment StoreEntitySet="MarcasMinimas">
-          <ScalarProperty Name="Meetid" ColumnName="Meetid" />
+          <ScalarProperty Name="TipoId" ColumnName="TipoId" />
           <ScalarProperty Name="TimeStdId" ColumnName="TimeStdId" />
           <ScalarProperty Name="div_abbr" ColumnName="div_abbr" />
           <ScalarProperty Name="tag_course" ColumnName="tag_course" />
@@ -463,6 +487,18 @@
           <ScalarProperty Name="Start" ColumnName="Start" />
           <ScalarProperty Name="MName" ColumnName="MName" />
           <ScalarProperty Name="Meet1" ColumnName="Meet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEETMasters">
+      <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.MEETMasters">
+        <MappingFragment StoreEntitySet="MEETMasters">
+          <ScalarProperty Name="MeetId" ColumnName="MeetId" />
+          <ScalarProperty Name="Course" ColumnName="Course" />
+          <ScalarProperty Name="End" ColumnName="End" />
+          <ScalarProperty Name="Start" ColumnName="Start" />
+          <ScalarProperty Name="MName" ColumnName="MName" />
+          <ScalarProperty Name="Meet" ColumnName="Meet" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -569,6 +605,36 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="RESULTSMasters">
+      <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.RESULTSMasters">
+        <MappingFragment StoreEntitySet="RESULTSMasters">
+          <ScalarProperty Name="Tiempobase" ColumnName="Tiempobase" />
+          <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+          <ScalarProperty Name="PruebaId" ColumnName="PruebaId" />
+          <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+          <ScalarProperty Name="MeetId" ColumnName="MeetId" />
+          <ScalarProperty Name="AthleteId" ColumnName="AthleteId" />
+          <ScalarProperty Name="PFina" ColumnName="PFina" />
+          <ScalarProperty Name="DIVISION" ColumnName="DIVISION" />
+          <ScalarProperty Name="COURSE" ColumnName="COURSE" />
+          <ScalarProperty Name="PLACE" ColumnName="PLACE" />
+          <ScalarProperty Name="POINTS" ColumnName="POINTS" />
+          <ScalarProperty Name="LO_HI" ColumnName="LO_HI" />
+          <ScalarProperty Name="MTEV" ColumnName="MTEV" />
+          <ScalarProperty Name="STROKE" ColumnName="STROKE" />
+          <ScalarProperty Name="DISTANCE" ColumnName="DISTANCE" />
+          <ScalarProperty Name="AGE" ColumnName="AGE" />
+          <ScalarProperty Name="NT" ColumnName="NT" />
+          <ScalarProperty Name="EX" ColumnName="EX" />
+          <ScalarProperty Name="F_P" ColumnName="F_P" />
+          <ScalarProperty Name="SCORE" ColumnName="SCORE" />
+          <ScalarProperty Name="TEAM" ColumnName="TEAM" />
+          <ScalarProperty Name="I_R" ColumnName="I_R" />
+          <ScalarProperty Name="ATHLETE" ColumnName="ATHLETE" />
+          <ScalarProperty Name="MEET" ColumnName="MEET" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Sesion">
       <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.Sesion">
         <MappingFragment StoreEntitySet="Sesion">
@@ -612,6 +678,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="SetupTorneo">
+      <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.SetupTorneo">
+        <MappingFragment StoreEntitySet="SetupTorneo">
+          <ScalarProperty Name="TipoId" ColumnName="TipoId" />
+          <ScalarProperty Name="Meetid" ColumnName="Meetid" />
+          <ScalarProperty Name="SetupId" ColumnName="SetupId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
@@ -633,10 +708,28 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TEAMMasters">
+      <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.TEAMMasters">
+        <MappingFragment StoreEntitySet="TEAMMasters">
+          <ScalarProperty Name="TName" ColumnName="TName" />
+          <ScalarProperty Name="TCode" ColumnName="TCode" />
+          <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+          <ScalarProperty Name="Team" ColumnName="Team" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoTorneo">
+      <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.TipoTorneo">
+        <MappingFragment StoreEntitySet="TipoTorneo">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="TipoId" ColumnName="TipoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Torneo">
       <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.Torneo">
         <MappingFragment StoreEntitySet="Torneo">
-          <ScalarProperty Name="MeetId" ColumnName="MeetId" />
+          <ScalarProperty Name="Meetid" ColumnName="Meetid" />
           <ScalarProperty Name="DisabledSeedWithAgeGroup_IfTimedFinalSuperSeed" ColumnName="DisabledSeedWithAgeGroup_IfTimedFinalSuperSeed" />
           <ScalarProperty Name="TimeAdj_Method" ColumnName="TimeAdj_Method" />
           <ScalarProperty Name="RelayOnly_Surcharge" ColumnName="RelayOnly_Surcharge" />
@@ -861,6 +954,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TorneoDestacadoMasters">
+      <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.TorneoDestacadoMasters">
+        <MappingFragment StoreEntitySet="TorneoDestacadoMasters">
+          <ScalarProperty Name="Meet" ColumnName="Meet" />
+          <ScalarProperty Name="DestacadoId" ColumnName="DestacadoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Vivo">
       <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.Vivo">
         <MappingFragment StoreEntitySet="Vivo">
@@ -959,12 +1060,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Alertas">
-      <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.Alertas">
-        <MappingFragment StoreEntitySet="Alertas">
-          <ScalarProperty Name="Alerta" ColumnName="Alerta" />
-          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-          <ScalarProperty Name="AlertaId" ColumnName="AlertaId" />
+    <EntitySetMapping Name="CategoriasMasters">
+      <EntityTypeMapping TypeName="DB_9B1F4C_MVCcompetenciasModel.CategoriasMasters">
+        <MappingFragment StoreEntitySet="CategoriasMasters">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="EdadMaxima" ColumnName="EdadMaxima" />
+          <ScalarProperty Name="EdadMinima" ColumnName="EdadMinima" />
+          <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

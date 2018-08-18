@@ -1,0 +1,47 @@
+﻿@model FDPN.Models.Disciplina
+
+@{
+    string nombredisciplina = Model.TipoDisciplina;
+    string path = "~/Content/img//Imgsmall/";
+    string icon = Model.clase + ".jpg";
+    ViewBag.Title = "disciplinas";
+}
+
+<div class="site-homepage" style="margin-top:60px" ;>
+
+    <center>
+        <h2 class="site-title site-title--ultra site-title--ultra--primary">DISCIPLINA : @nombredisciplina  <img class="iconDisciplina" src="@Url.Content(path +icon)" /></h2>
+    </center>
+    <div class="espaciadogrande"></div>
+    <section class="site-contentpage site-homepage__pushup">
+
+        @Html.Action("Bases", "disciplinas", new { disciplina = Model.DisciplinaId })
+
+        <div class="espaciado"></div>
+
+        @Html.Action("Reglamentos", "disciplinas", new { disciplina = Model.DisciplinaId })
+
+        <div class="espaciado"></div>
+
+        @Html.Action("Resultados", "disciplinas", new { disciplina = Model.DisciplinaId })
+
+        <div class="espaciado"></div>
+
+
+    </section>
+
+    <section class="site-homepage__section site-worldrecords u-animation--fadeInSection">
+        @Html.Action("_PreviewNoticias", "disciplinas", new { disciplina = Model.DisciplinaId })
+        <div class="espaciado"></div>
+    </section>
+
+    @Html.Action("_PreviewCalendario", "disciplinas", new { disciplina = Model.DisciplinaId })
+
+
+
+
+    @Html.Action("_PreviewEventos", "disciplinas", new { disciplina = Model.DisciplinaId })
+
+
+
+</div>

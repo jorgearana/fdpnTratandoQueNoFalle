@@ -25,8 +25,8 @@ namespace FDPN.Models
         public string tag_course { get; set; }
         public string div_abbr { get; set; }
         public int TimeStdId { get; set; }
-        public int Meetid { get; set; }
+        public Nullable<int> TipoId { get; set; }
     
-        public virtual Torneo Torneo { get; set; }
+        public virtual TipoTorneo TipoTorneo { get; set; }
     }
 }

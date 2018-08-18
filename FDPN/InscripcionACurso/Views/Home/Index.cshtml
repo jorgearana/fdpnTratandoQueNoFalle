@@ -1,0 +1,130 @@
+﻿@model List<InscripcionACurso.ViewModels.IndexViewModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row default-style">
+    @if (Model.Count > 0)
+    {
+        <div id="left-block" class="col-md-6 col-sm-12 left-block">
+            <div class="left-content">
+                <h1>Federación Deportiva Peruana de Natación</h1>
+                <img src="~/Content/images/Logo_fdpn.png" style="height:100px;" />
+
+                <h2>@Model[0].curso.Nombre</h2>
+                <h3>Cierre de inscripciones: @Model[0].curso.Fin.ToString("dd MMMM yyyy") </h3>
+                <h3>Solo faltan:</h3>
+                <div class="timing">
+                    <div id="count-down" data-date="@Model[0].curso.Fin.ToString("yyyy-MM-dd HH:mm:ss")">
+
+                    </div>
+                </div>
+                <!-- /.timing -->
+            </div>
+            <!-- /.left-content -->
+        </div>
+        <!-- /.left-block -->
+
+        <div id="right-block" class="col-md-6 col-sm-12 right-block">
+            <div class="right-content">
+                <h2>¡Te invitamos a participar!</h2>
+                @if (Model[0].cantidadinscritos > 5)
+                {
+
+                    <p class="para">Cantidad de inscritos :@Model[0].cantidadinscritos de un maximo de @Model[0].curso.CantidadMaxima cupos permitidos</p>
+                }
+
+                <p class="para">Este curso se dictará en <span>@Model[0].curso.Ciudad</span><br> en @Model[0].curso.Direccion.<br> Empezará el día <span>@Model[0].curso.Inicio.ToString("dd/MMMM/yyyy")</span></p>
+                @for (int i = 1; i < Model.Count; i++)
+                {
+                    <span class="label">Otros cursos que te pueden interesar:</span>
+                    <p class="para">@Model[i].curso.Nombre  el día @Model[i].curso.Inicio  de la disciplina : @Model[i].curso.Disciplina.TipoDisciplina</p>
+
+                }
+                <hr />
+                @if (Model[0].cantidadinscritos < Model[0].curso.CantidadMaxima)
+                {
+
+                    <div class="row">
+                        <div class="col-sm-offset-2 col-sm-8">
+                            <span class="label">Inscríbete aquí:</span>
+                            <form class="newsletter-signup" role="form">
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        @Html.ActionLink("Inscribirte", "Create", "inscripcion", new { meetid = Model[0].curso.CursoId }, new { @class = "btn btn-default btn-submit" })
+                                    </span>
+                                </div><!-- /input-group -->
+                                <p class="newsletter-success"></p>
+                                <p class="newsletter-error"></p>
+                                <div class="alert alert-success alert-dismissible" role="alert">
+
+                                </div>
+                                <div class="alert alert-warning alert-dismissible" role="alert">
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                }
+                else
+                {<div class="row">
+                        <div class="col-sm-offset-2 col-sm-8">
+                            <p class="para">  <span>Ya no se permiten inscripciones para este evento</span></p>
+
+                        </div>
+                    </div>
+                }
+
+
+
+                <p class="followus">Síguenos en</p>
+                <ul class="social-icon">
+                    <li><a href="http://fdpn.org/" data-toggle="tooltip" title="¡Visita nuestra página!"><i class="fa fa-box-open"></i></a></li>
+                    <li><a href="https://www.facebook.com/FederacionNatacion/" data-toggle="tooltip" title="¡Síguenos en Facebook!"><i class="fab fa-facebook-f"></i></a></li>
+                </ul>
+            </div>
+            <!-- /.contact-blcok -->
+        </div>
+        <!-- ./left-content -->
+    }
+    else
+    {
+        <div id="left-block" class="col-md-6 col-sm-12 left-block">
+            <div class="left-content">
+                <h1>Federación Deportiva Peruana de Natación</h1>
+                <img src="~/Content/images/Logo_fdpn.png" style="height:100px;" />
+
+                <h2>En este momento no tenemos eventos pendientes</h2>
+                <h3>Pronto colocaremos novedades aquí </h3>
+
+                <!-- /.timing -->
+            </div>
+            <!-- /.left-content -->
+        </div>
+        <!-- /.left-block -->
+
+        <div id="right-block" class="col-md-6 col-sm-12 right-block">
+            <div class="right-content">
+                <h2>La Federación Deportiva Peruana de Natación promueve la práctica y competencia de los deportes acuáticos</h2>
+                <p class="para">Visita nuestra página para que puedas ver noticias y resultados de todos los eventos desde el año 2000 en adelante.</p>
+                <p class="para">En nuestro facebook verás contenido interesante sobre nuestras disciplinas deportivas.</p>
+
+                <hr />
+                @if (Model[0].cantidadinscritos < Model[0].curso.CantidadMaxima)
+                {
+                    <span class="label">Inscríbete aquí:</span>
+                }
+
+
+                <p class="followus">Síguenos en</p>
+                <ul class="social-icon">
+                    <li><a href="http://fdpn.org/" data-toggle="tooltip" title="¡Visita nuestra página!"><i class="fa fa-box-open"></i></a></li>
+                    <li><a href="https://www.facebook.com/FederacionNatacion/" data-toggle="tooltip" title="¡Síguenos en Facebook!"><i class="fab fa-facebook-f"></i></a></li>
+                </ul>
+            </div>
+            <!-- /.contact-blcok -->
+        </div>
+        <!-- ./left-content -->
+    }
+</div>

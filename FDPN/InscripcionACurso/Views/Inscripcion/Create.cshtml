@@ -1,0 +1,109 @@
+﻿@model InscripcionACurso.ViewModels.Inscripcion.InscripcionViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+
+
+<div class="row default-style">
+    <div id="left-block" class="col-md-6 col-sm-12 left-block">
+        <div class="left-content">
+            <h1>Federación Deportiva Peruana de Natación</h1>
+            <img src="~/Content/images/Logo_fdpn.png" style="height:100px;" />
+            <h3>Inscripción</h3>
+            <h2>Información de contacto</h2>
+            <div class="row">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <dl class="dl-horizontal">
+                        <dt><span><i class="fa fa-home"></i></span> Dirección</dt>
+                        <dd>
+                            Jr. Nazca <br>
+                            Cuadra 6 s/n<br>
+                            Jesús María<br>
+                            Lima
+                        </dd>
+                        <dt><span><i class="fa fa-mobile"></i></span> Teléfono</dt>
+                        <dd>424 3538</dd>
+                        <dt><span><i class="fa fa-share"></i></span> Email</dt>
+                        <dd>fdpn@fdpn.com.pe</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <!-- /.left-content -->
+    </div>
+    <!-- /.left-block -->
+    @using (Html.BeginForm("create", "inscripcion", FormMethod.Post, new { id = "formulario" }))
+    {
+        @Html.AntiForgeryToken()
+        <div id="right-block" class="col-md-6 col-sm-12 right-block">
+            <div class="right-content">
+                <h2>Ingrese sus datos</h2>
+                <p>En caso sea necesario se le contactará mediante los datos ingresados.</p>
+                <br>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        @Html.HiddenFor(model => model.curso.CursoId)
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group  col-sm-6">
+                            @Html.EditorFor(model => model.CursoParticipante.Nombres, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.CursoParticipante.Nombres, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group  col-sm-6">
+                            @Html.EditorFor(model => model.CursoParticipante.Paterno, new { htmlAttributes = new { @class = "form-control", placeholder = "Apellido paterno", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.CursoParticipante.Paterno, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group  col-sm-6">
+                            @Html.EditorFor(model => model.CursoParticipante.Materno, new { htmlAttributes = new { @class = "form-control", placeholder = "Apellido materno", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.CursoParticipante.Materno, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group  col-sm-6">
+                            @Html.EditorFor(model => model.CursoParticipante.DNI, new { htmlAttributes = new { @class = "form-control", placeholder = "DNI", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.CursoParticipante.DNI, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group  col-sm-6">
+                            @Html.EditorFor(model => model.CursoParticipante.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.CursoParticipante.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group  col-sm-6">
+                            @Html.EditorFor(model => model.CursoParticipante.Celular, new { htmlAttributes = new { @class = "form-control", placeholder = "Celular", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.CursoParticipante.Celular, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group  col-sm-6">
+                            <p>Ingrese su fecha de nacimiento.</p>
+                            <label class="mensaje">@Model.Mensaje</label>
+                        </div>
+                        <div class="form-group  col-sm-6">
+                            @Html.EditorFor(model => model.CursoParticipante.Nacimiento, new { htmlAttributes = new { @class = "form-control datefield", placeholder = "Fecha de nacimiento" } })
+                            @Html.ValidationMessageFor(model => model.CursoParticipante.Nacimiento, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <div class="form-group  col-sm-6">
+                            <input type="submit" value="Inscribir" class="btn btn-primary" />
+                            @Html.ActionLink("Ir al inicio", "Index", "Home", null, new { @class = "btn btn-info" })
+                        </div>
+                        <div style="visibility:hidden;">
+                            @Model.CursoParticipante.Nacimiento
+
+                        </div>
+                        @Html.HiddenFor(model => model.hacetiempo)
+                    </div>
+                    <p class="followus">Síguenos en</p>
+                    <ul class="social-icon">
+                        <li><a href="http://fdpn.org/" data-toggle="tooltip" title="¡Visita nuestra página!"><i class="fa fa-box-open"></i></a></li>
+                        <li><a href="https://www.facebook.com/FederacionNatacion/" data-toggle="tooltip" title="¡Síguenos en Facebook!"><i class="fab fa-facebook-f"></i></a></li>
+                    </ul>
+                </div>
+                <!-- /.right-content -->
+            </div>
+            <!-- ./right-block -->
+        </div>
+    }
+</div>
+

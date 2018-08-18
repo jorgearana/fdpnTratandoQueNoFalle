@@ -37,6 +37,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <includesetaclproviderondestination>False</includesetaclproviderondestination>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
@@ -170,9 +171,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdministradorController.cs" />
     <Compile Include="Controllers\CalendariosController.cs" />
+    <Compile Include="Controllers\DisciplinasController.cs" />
     <Compile Include="Controllers\DocumentosController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IncripcionController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MastersController.cs" />
     <Compile Include="Controllers\NosotrosController.cs" />
     <Compile Include="Controllers\NoticiasController.cs" />
     <Compile Include="Controllers\ResultadosController.cs" />
@@ -197,6 +202,9 @@
     <Compile Include="Models\Athlete.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AthleteMasters.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Atletas.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
@@ -214,6 +222,9 @@
     </Compile>
     <Compile Include="Models\Categorias.cs">
       <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CategoriasMasters.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Club.cs">
       <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
@@ -267,7 +278,14 @@
     <Content Include="Content\bootstrap\bootstrap.min.css" />
     <Content Include="Content\bootstrap\ionicons.css" />
     <Content Include="Content\bootstrap\main.min.css" />
+    <Content Include="Content\img\covermask2.png" />
     <Content Include="Content\img\EnVivo.jpg" />
+    <Content Include="Content\img\fondoJaked - copia.jpg" />
+    <Content Include="Content\img\fondoJaked.jpg" />
+    <Content Include="Content\img\fondoJakedcelu.jpg" />
+    <Content Include="Content\img\fondoJakedchico.jpg" />
+    <Content Include="Content\img\fondos\academia159-001.jpg" />
+    <Content Include="Content\img\fondos\academia159-002.jpg" />
     <Content Include="Content\img\fondos\academiaadultos.jpg" />
     <Content Include="Content\img\fondos\academiaaquabebe.jpg" />
     <Content Include="Content\img\fondos\academiaclavados.jpg" />
@@ -276,12 +294,12 @@
     <Content Include="Content\img\fondos\academiapatera.jpg" />
     <Content Include="Content\img\fondos\academiapolo.jpg" />
     <Content Include="Content\img\fondos\academiasincro.jpg" />
+    <Content Include="Content\img\fondos\academiaTrujillo.jpg" />
     <Content Include="Content\img\fondos\logoConsanat.jpg" />
     <Content Include="Content\img\fondos\logoFina.jpg" />
     <Content Include="Content\img\fondos\logoIPD.jpg" />
     <Content Include="Content\img\fondos\logoUana.jpg" />
     <Content Include="Content\img\fondos\piscinalibre.jpg" />
-    <Content Include="Content\img\Fotos\Sin título.png" />
     <Content Include="Content\img\Imgsmall\favicon.ico" />
     <Content Include="Content\img\Imgsmall\medal1.png" />
     <Content Include="Content\img\Imgsmall\medal2.png" />
@@ -290,6 +308,12 @@
     <Content Include="Content\img\Imgsmall\premio2.png" />
     <Content Include="Content\img\Imgsmall\premio3.png" />
     <Content Include="Content\img\logo-JJBB-2xb.png" />
+    <Content Include="Content\img\logocolor.png" />
+    <Content Include="Content\img\logometal.png" />
+    <Content Include="Content\img\vertical1.jpg" />
+    <Content Include="Content\img\vertical2.jpg" />
+    <Content Include="Content\img\vertical3.jpg" />
+    <Content Include="Content\img\vertical4.jpg" />
     <Content Include="Content\pdf\Calendario Masters.pdf" />
     <Content Include="Content\pdf\Calendario Natacion.pdf" />
     <Content Include="Content\pdf\Calendario Polo.pdf" />
@@ -321,6 +345,9 @@
       <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MEET.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MEETMasters.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Modals.cs">
@@ -390,6 +417,9 @@
     <Compile Include="Models\RESULTS.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RESULTSMasters.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Rol.cs">
       <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
     </Compile>
@@ -405,19 +435,31 @@
     <Compile Include="Models\Sessitem.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SetupTorneo.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TEAM.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TEAMMasters.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TipoAfiliado.cs">
       <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TipoTorneo.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Torneo.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TorneoDestacado.cs">
+      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TorneoDestacadoMasters.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Traspasos.cs">
@@ -441,11 +483,22 @@
     <Compile Include="ViewModels\Administrador\EditarViewModel.cs" />
     <Compile Include="ViewModels\Administrador\IndexViewModel.cs" />
     <Compile Include="ViewModels\Administrador\IngresoDatosViewModel.cs" />
+    <Compile Include="ViewModels\Administrador\ResumenAnnoViewModel.cs" />
     <Compile Include="ViewModels\Calendario\NuevoCalendarioViewModel.cs" />
+    <Compile Include="ViewModels\Disciplinas\DisciplinaViewModel.cs" />
     <Compile Include="ViewModels\Documento\BasesViewModel.cs" />
     <Compile Include="ViewModels\Home\AlertasViewModel.cs" />
     <Compile Include="ViewModels\Home\NadadorDestacadoViewModels.cs" />
     <Compile Include="ViewModels\Home\previewNoticiasViewModel.cs" />
+    <Compile Include="ViewModels\Masters\DetalleNadadorMastersViewModel.cs" />
+    <Compile Include="ViewModels\Masters\NadadoresMastersOrdenadosSOLOLISTAViewModel.cs" />
+    <Compile Include="ViewModels\Masters\NadadoresMastersOrdenadosViewModel.cs" />
+    <Compile Include="ViewModels\Masters\NadadorMastersDestacadoViewModels.cs" />
+    <Compile Include="ViewModels\Masters\RendimientoDeUnaPruebaMastersViewModel.cs" />
+    <Compile Include="ViewModels\Masters\resultadodelnadadorMastersenuntorneoViewModel.cs" />
+    <Compile Include="ViewModels\Masters\ResultadoDeUnTorneoMastersViewModel.cs" />
+    <Compile Include="ViewModels\Masters\ResultadosDeUnaPruebaMastersViewModel.cs" />
+    <Compile Include="ViewModels\Masters\TopRankingMastersViewModel.cs" />
     <Compile Include="ViewModels\Noticia\DetalleNoticiaViewModel.cs" />
     <Compile Include="ViewModels\Resultados\CalendarioViewModel.cs" />
     <Compile Include="ViewModels\Resultados\DetalleNadadorViewModel.cs" />
@@ -514,6 +567,37 @@
     <Content Include="Views\Calendarios\VersionImprimible.cshtml" />
     <Content Include="Views\Home\_PreviewAlertas.cshtml" />
     <Content Include="Views\Administrador\Borrar.cshtml" />
+    <Content Include="Views\Documentos\MarcasMinimas.cshtml" />
+    <Content Include="Views\Disciplinas\Index.cshtml" />
+    <Content Include="Views\Disciplinas\Noticias.cshtml" />
+    <Content Include="Views\Disciplinas\Noticia.cshtml" />
+    <Content Include="Views\Shared\_LayoutSinBrand.cshtml" />
+    <Content Include="Views\Disciplinas\_PreviewCalendario.cshtml" />
+    <Content Include="Views\Disciplinas\_PreviewNoticias.cshtml" />
+    <Content Include="Views\Disciplinas\_PreviewComunicados.cshtml" />
+    <Content Include="Views\Disciplinas\_PreviewEventos.cshtml" />
+    <Content Include="Views\Disciplinas\Bases.cshtml" />
+    <Content Include="Views\Disciplinas\Reglamentos.cshtml" />
+    <Content Include="Views\Documentos\Marcasclasificatorias.cshtml" />
+    <Content Include="Views\Disciplinas\Resultados.cshtml" />
+    <Content Include="Views\Administrador\ResultadosEnVivo.cshtml" />
+    <Content Include="Views\Administrador\IngresoEnVivo.cshtml" />
+    <Content Include="Views\Masters\_indexranking.cshtml" />
+    <Content Include="Views\Masters\_mastersdestacado.cshtml" />
+    <Content Include="Views\Masters\_RelacionDeTorneos.cshtml" />
+    <Content Include="Views\Masters\ResultadoPorClubes.cshtml" />
+    <Content Include="Views\Masters\ResultadoPorPruebas.cshtml" />
+    <Content Include="Views\Masters\index.cshtml" />
+    <Content Include="Views\Masters\_Nadadores.cshtml" />
+    <Content Include="Views\Login\callback.cshtml" />
+    <Content Include="Views\Masters\Resultados.cshtml" />
+    <Content Include="Views\Masters\ResultadosDeUnTorneo.cshtml" />
+    <Content Include="Views\Masters\Nadadores.cshtml" />
+    <Content Include="Views\Masters\Nadador.cshtml" />
+    <Content Include="Views\Masters\RendimientoDelNadadorEnUnaPrueba.cshtml" />
+    <Content Include="Views\Masters\ResultadoDelNadadorEnUnTorneo.cshtml" />
+    <Content Include="Views\Home\_Banner.cshtml" />
+    <Content Include="Views\Home\_PreviewJaked.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Apnea.css" />
@@ -582,14 +666,6 @@
     <Content Include="Content\img\fondos\swoosh-positive.svg" />
     <Content Include="Content\img\fondos\uana.jpg" />
     <Content Include="Content\img\fondoTrujillo.jpg" />
-    <Content Include="Content\img\Fotos\0001723x102449.jpg" />
-    <Content Include="Content\img\Fotos\210.jpg" />
-    <Content Include="Content\img\Fotos\carnet50.jpg" />
-    <Content Include="Content\img\Fotos\FOTODIRECTIVA33.jpg" />
-    <Content Include="Content\img\Fotos\thumbs\0001723x10244980x80.jpg" />
-    <Content Include="Content\img\Fotos\thumbs\21080x80.jpg" />
-    <Content Include="Content\img\Fotos\thumbs\carnet5080x80.jpg" />
-    <Content Include="Content\img\Fotos\thumbs\FOTODIRECTIVA3380x80.jpg" />
     <Content Include="Content\img\Imgsmall\aguas.jpg" />
     <Content Include="Content\img\Imgsmall\clavados.jpg" />
     <Content Include="Content\img\Imgsmall\facebook_logos_PNG19761.png" />
@@ -770,7 +846,7 @@
     <Content Include="Views\Documentos\Bases.cshtml" />
     <Content Include="Views\Documentos\Comunicados.cshtml" />
     <Content Include="Views\Documentos\Documentos.cshtml" />
-    <Content Include="Views\Documentos\Normas.cshtml" />
+    <Content Include="Views\Documentos\Criterios.cshtml" />
     <Content Include="Views\Documentos\Records.cshtml" />
     <Content Include="Views\Documentos\Reglamentos.cshtml" />
     <Content Include="Views\Documentos\Subvenciones.cshtml" />
@@ -818,8 +894,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\img\Fotos\thumbs\" />
     <Folder Include="Content\Uploads\" />
     <Folder Include="Models\Metadata\" />
+    <Folder Include="Views\FileUpload\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

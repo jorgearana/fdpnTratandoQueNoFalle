@@ -14,18 +14,6 @@ namespace FDPN.Models
     
     public partial class Torneo
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Torneo()
-        {
-            this.Entradas = new HashSet<Entradas>();
-            this.Equipos = new HashSet<Equipos>();
-            this.Eventos = new HashSet<Eventos>();
-            this.MarcasMinimas = new HashSet<MarcasMinimas>();
-            this.Sesion = new HashSet<Sesion>();
-            this.SessionItem = new HashSet<SessionItem>();
-            this.MultiEdad = new HashSet<MultiEdad>();
-        }
-    
         public string Meet_name1 { get; set; }
         public string Meet_header1 { get; set; }
         public string Meet_header2 { get; set; }
@@ -239,21 +227,6 @@ namespace FDPN.Models
         public Nullable<decimal> RelayOnly_Surcharge { get; set; }
         public string TimeAdj_Method { get; set; }
         public bool DisabledSeedWithAgeGroup_IfTimedFinalSuperSeed { get; set; }
-        public int MeetId { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Entradas> Entradas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Equipos> Equipos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Eventos> Eventos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MarcasMinimas> MarcasMinimas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sesion> Sesion { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SessionItem> SessionItem { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MultiEdad> MultiEdad { get; set; }
+        public int Meetid { get; set; }
     }
 }

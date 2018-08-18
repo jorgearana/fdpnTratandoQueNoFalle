@@ -17,16 +17,18 @@ $(document).ready(function () {
         }
     });
 
+    $(".dropdown-toggle").dropdown();
+
     $('.carrusel').slick({
         lazyLoad: 'ondemand',
         infinite: true,
         slidesToShow: 3,
-        slidesToScroll: 1,
+        slidesToScroll: 3,
         dots: true,
         speed: 300,
         adaptiveHeight: true,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 4000,
 
         responsive: [
             {

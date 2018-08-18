@@ -1,0 +1,65 @@
+﻿@model InscripcionACurso.ViewModels.Inscripcion.ConfirmacionViewModel
+
+<style>
+    h1, h2, h3 {
+        font-family: 'Oswald', sans-serif;
+        text-transform: capitalize;
+        color: #ffd57a;
+    }
+    h4 {
+        font-family: 'Oswald', sans-serif;
+        text-transform: capitalize;
+        color: #ffd57a;
+    }
+    li {
+        text-align:left;
+    }
+    .left-block {
+        background: #417378;
+        text-align: center;
+        margin-top: 300px;
+    }
+</style>
+
+<div class="col-md-6 col-sm-12 left-block" >
+    <div class="left-content">
+        <h1>Federación Deportiva Peruana de Natación</h1>
+        <img src='http://inscripcionacursos.jorgearananeyra.com/Content/images/Logo_fdpn.png' style="height:80px;" border='0'>
+        <h3>Confirmación de inscripción</h3>
+        <h2>Hola @Model.participante.Nombres @Model.participante.Paterno  @Model.participante.Materno</h2>
+        <h3>Te has inscrito en el evento</h3>
+        <h3>@Model.curso.Nombre</h3>
+        <div class="row">
+            <div class="col-sm-offset-3 col-sm-9">
+                <ul style="color:white;">
+                    <li > DNI:  @Model.participante.DNI </li>
+
+                    <li> Fecha de Nacimiento:  @Model.participante.Nacimiento  </li>
+
+                    <li> Celular : @Model.participante.Celular </li>
+
+                    <li> Email : @Model.participante.Email </li>
+                </ul>
+            </div>
+        </div>
+        <br />
+        <br />
+    </div>
+    <!-- /.left-content -->
+</div>
+
+<div class="col-md-6 col-sm-12">
+    <div class="right-content">
+        <h4>El evento empezará el día @Model.curso.Inicio.ToString("dd MMMM yyyy") en @Model.curso.Direccion en la ciudad de @Model.curso.Ciudad </h4>
+        <p>En caso sea necesario se le contactará mediante los datos ingresados.</p>
+        <br>
+        <p>
+            Gracias por seguir a la FDPN
+        </p>
+        <hr>
+        <p>En caso sus datos estén errados, envíe un correo a inscripciones@fdpn.org con los datos correctos. </p>
+        <br><p><strong>Nota.- No responda este correo</strong></p>
+        
+    </div>
+</div>
+

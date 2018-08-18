@@ -18,7 +18,7 @@ namespace FDPN.Models
         public string DNI { get; set; }
         public int ClubSolicitante { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
-        public Nullable<bool> Liberado { get; set; }
+        public bool Liberado { get; set; }
     
         public virtual Afiliado Afiliado { get; set; }
         public virtual Club Club { get; set; }

@@ -1,0 +1,50 @@
+﻿@model FDPN.ViewModels.Masters.NadadoresMastersOrdenadosSOLOLISTAViewModel
+
+
+<section class="site-homepage__section site-athletes">
+    <div class="wrapper site-homepage__pushup">
+        @using (Html.BeginForm("nadadores", "masters", FormMethod.Get))
+        {
+            <header class="site-homepage__section__header">
+                <h2 class="site-title site-title--ultra site-title--ultra--primary">Nadadores</h2>
+                <p class="u-type--medium u-type--delta u-spc-bottom--med">Buscar por nombre o apellido</p>
+                @Html.TextBox("SearchString", null, new { @class = "btn btn--primaryapnea btn--lrg u-rounded" })
+                <input type="submit" value="Buscar" class="btn btn--primaryapnea btn--lrg u-rounded" />
+            </header>
+            <div class="">
+                <div class="site-athleteswidget__info site-athleteswidget__info--negative">
+
+                    <p class="site-athleteswidget__subtitle"></p>
+                    <table class="site-rankingwidget__table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Edad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.nadadores)
+                            {
+                                <tr>
+
+                                    <td>
+                                        @Html.ActionLink(@item.First.ToUpper(), "nadador", "masters", new { id = item.AthleteId }, null)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink(@item.Last.ToUpper(), "nadador", "masters", new { id = item.AthleteId }, null)
+                                    </td>
+
+                                    <td>@item.Age años</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        }
+    </div>
+    <div class="espaciadogrande"></div>
+</section>

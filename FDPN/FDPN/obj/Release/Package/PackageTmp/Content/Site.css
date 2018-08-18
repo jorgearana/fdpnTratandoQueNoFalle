@@ -25,6 +25,7 @@ textarea {
 .inputYoutube {
     max-width: 580px;
     border-radius:5px;
+    color:black;
 }
 
 .espaciado {
@@ -666,6 +667,15 @@ aside {
     border-radius:50%;
 }
 
+.iconDisciplina {
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    border-radius: 50%;
+}
+
 .calendarioficha {
     /*background-color: #97a2f8;*/
     border-radius: 5px;
@@ -711,6 +721,19 @@ aside {
     width: 100%;
 }
 
+
+.card-Derecha {
+    display: inline-block;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.15);
+    position: relative;
+    transition: all .2s ease-in-out;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 20px;
+    text-align: left;
+    width: 100%;
+}
+
     .card:hover {
         /*box-shadow: 0 5px 22px 0 rgba(0,0,0,.25);*/
         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
@@ -748,166 +771,235 @@ aside {
     width: 100%;
 }
 
-.BannerDelgadoFoto {
-    position: relative;
-    width: 100%;
+.BannerJaked {
+    box-sizing: border-box;
     text-align: center;
-    overflow: hidden;
-    padding: 0 100px;
-    /* z-index: 9999999999; */
-    
+    background: #182671 url("/Content/img/fondoJakedchico.jpg") no-repeat top;
+    width: 100%;
 }
+@media screen and (min-width: 1600px) {
+    .BannerJaked {
+        box-sizing: border-box;
+        text-align: center;
+        background: #182671 url("/Content/img/fondoJaked.jpg") no-repeat top;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .BannerJaked {
+        box-sizing: border-box;
+        text-align: center;
+        background: #182671 url("/Content/img/fondoJakedcelu.jpg") no-repeat top;
+        width: 100%;
+    }
+}
+    .BannerDelgadoFoto {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        overflow: hidden;
+        padding: 0 100px;
+        /* z-index: 9999999999; */
+    }
 
-.TextoBannerDelgado {
-    padding-top:10px;
-    position: relative;
-    /*margin-right: 2%;
+    .TextoBannerDelgado {
+        padding-top: 10px;
+        position: relative;
+        /*margin-right: 2%;
     margin-left: 2%;
     margin-bottom: 20px;*/
-    margin:2% 2% 20px;
-    /*float: left;*/
-}
+        margin: 2% 2% 20px;
+        /*float: left;*/
+    }
 
-.marco {
-    /*margin-right: 10px;
+    .marco {
+        /*margin-right: 10px;
     margin-left: 10px;
     margin-top: 10px;
     margin-bottom: 10px;*/
-    margin:10px;
-}
+        margin: 10px;
+    }
 
-.cuerpoconmargen {
-    padding: 0 72px 72px;
-}
+    .cuerpoconmargen {
+        padding: 0 72px 72px;
+    }
 
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%; /*16:9*/
-    padding-top: 30px;
-    height: 0;
-    overflow: hidden;
-}
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /*16:9*/
+        padding-top: 30px;
+        height: 0;
+        overflow: hidden;
+    }
 
-    .video-container iframe,
-    .video-container object,
-    .video-container embed {
+        .video-container iframe,
+        .video-container object,
+        .video-container embed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+    .hasTooltip span {
+        display: none;
+        color: #000;
+        text-decoration: none;
+        padding: 3px;
+    }
+
+    .hasTooltip:hover span {
+        display: block;
         position: absolute;
-        top: 0;
-        left: 0;
+        background-color: #FFF;
+        border: 1px solid #CCC;
+        margin: 2px 10px;
+    }
+
+    .selected {
+        background-color: #a2aec7;
+    }
+
+    .menubarraback {
+        background: rgba(0,0,0,.4);
+        /*position: absolute;*/
+    }
+
+    .margenes {
+        margin-top: 24px;
+        margin-bottom: 24px;
+        padding: 24px
+    }
+
+    .contenedor {
         width: 100%;
-        height: 100%;
     }
-.hasTooltip span {
-    display: none;
-    color: #000;
-    text-decoration: none;
-    padding: 3px;
+
+    .navbar-default {
+        background-color: rgba(47, 164, 231, 0);
+        border-color: rgba(25, 149, 220, 0);
+    }
+
+    .dropdown-menu {
+        background-color: rgba(0, 22, 113, 0.37);
+    }
+
+        .dropdown-menu > li > a {
+            color: #f4f7fa;
+        }
+
+    .navbar-default {
+        background-image: linear-gradient(#000a53, #001773 60%, #001267);
+    }
+
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+        font-family: 'Roboto Condensed', sans-serif;
+    }
+
+    .btn-default {
+        color: #f5f5f5;
+    }
+
+    .data-label-text {
+        font-size: 22px !important;
+    }
+
+    .copyright {
+        background: #aeaeae;
+        border-top: 1px solid #f00000;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .premio1 {
+        background-image: url('img/Imgsmall/premio1.png');
+        background-size: cover;
+        width: 100px;
+        height: 100px;
+    }
+
+    .premio2 {
+        background-image: url('img/Imgsmall/premio2.png');
+        background-size: cover;
+        width: 100px;
+        height: 100px;
+    }
+
+    .premio3 {
+        background-image: url('img/Imgsmall/premio3.png');
+        background-size: cover;
+        width: 100px;
+        height: 100px;
+    }
+
+    .medalla1 {
+        background-image: url('img/Imgsmall/medal1.png');
+        background-size: cover;
+        width: 30px;
+        height: 30px;
+    }
+
+    .medalla2 {
+        background-image: url('img/Imgsmall/medal2.png');
+        background-size: cover;
+        width: 30px;
+        height: 30px;
+    }
+
+    .medalla3 {
+        background-image: url('img/Imgsmall/medal3.png');
+        background-size: 100%;
+        width: 30px;
+        height: 30px;
+    }
+
+    .FechaOrdenada {
+        display: none;
+    }
+
+    .campanaroja {
+        color: red;
+    }
+
+    .ContenendorSecciones {
+        display: table; /* Make the container element behave like a table */
+        width: 100%; /* Set full-width to expand the whole page */
+    }
+
+    .seccion {
+        display: table-cell; /* Make elements inside the container behave like table cells */
+    }
+
+    @media only screen and (max-width: 600px) {
+        .seccion {
+            display: block;
+            width: 100%;
+        }
+    }
+
+    .destacado {
+        color: red !important;
+        text-shadow: 2px 2px white !important;
+        font-weight: bold !important;
+    }
+
+#Jaked {
+    background: url('img/logometal.png') no-repeat;
+    height: 100px;
+    width: 300px;
 }
 
-.hasTooltip:hover span {
+    #Jaked:hover {
+        background: url('img/logocolor.png') no-repeat;
+        height: 100px;
+        width: 300px;
+
+    }
+
+.center {
     display: block;
-    position: absolute;
-    background-color: #FFF;
-    border: 1px solid #CCC;
-    margin: 2px 10px;
-}
-
-.selected {
-    background-color: #a2aec7;
-}
-
-.menubarraback {
-    background: rgba(0,0,0,.4);
-    /*position: absolute;*/
-}
-
-.margenes {
-    margin-top: 24px;
-    margin-bottom :24px;
-    padding: 24px
-
-}
-
-.contenedor{
-    width:100%;
-}
-
-.navbar-default {
-    background-color: rgba(47, 164, 231, 0);
-    border-color: rgba(25, 149, 220, 0);
-}
-
-.dropdown-menu {
-    background-color: rgba(0, 22, 113, 0.37);
-}
-
-    .dropdown-menu > li > a {
-        color: #f4f7fa;
-    }
-
-.navbar-default {
-    background-image: linear-gradient(#000a53, #001773 60%, #001267);
-}
-
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: 'Roboto Condensed', sans-serif;
-}
-
-.btn-default {
-    color: #f5f5f5;
-}
-.data-label-text {
-    font-size: 22px !important;
-}
-
-.copyright {
-    background: #aeaeae;
-    border-top: 1px solid #f00000;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-.premio1 {
-    background-image: url('img/Imgsmall/premio1.png');
-    background-size: cover;
-    width: 100px;
-    height: 100px;
-}
-
-.premio2 {
-    background-image: url('img/Imgsmall/premio2.png');
-    background-size: cover;
-    width: 100px;
-    height: 100px;
-}
-
-.premio3 {
-    background-image: url('img/Imgsmall/premio3.png');
-    background-size: cover;
-    width: 100px;
-    height: 100px;
-}
-
-.medalla1 {
-    background-image: url('img/Imgsmall/medal1.png');
-    background-size: cover;
-    width: 30px;
-    height: 30px;
-}
-
-.medalla2 {
-    background-image: url('img/Imgsmall/medal2.png');
-    background-size: cover;
-    width: 30px;
-    height: 30px;
-}
-
-.medalla3 {
-    background-image: url('img/Imgsmall/medal3.png');
-    background-size: 100%;
-    width: 30px;
-    height: 30px;
-}
-
-.FechaOrdenada {
-    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }

@@ -63,6 +63,5 @@ namespace FDPN.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Atletas> Atletas { get; set; }
-        public virtual Torneo Torneo { get; set; }
     }
 }

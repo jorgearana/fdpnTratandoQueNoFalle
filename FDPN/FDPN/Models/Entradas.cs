@@ -122,6 +122,5 @@ namespace FDPN.Models
     
         public virtual Atletas Atletas { get; set; }
         public virtual Eventos Eventos { get; set; }
-        public virtual Torneo Torneo { get; set; }
     }
 }

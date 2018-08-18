@@ -1,0 +1,41 @@
+﻿@model InscripcionACurso.ViewModels.Inscripcion.ConfirmacionViewModel
+<div style="padding:30px;">
+    <div class="col-md-6 col-sm-12 left-block" style="color:#ffd57a; background: #417378; padding:30px; ">
+        <div class="left-content">
+            <h1><img src='http://inscripcionacursos.jorgearananeyra.com/Content/images/Logo_fdpn.png' style="height:50px;" border='0'>Federación Deportiva Peruana de Natación</h1>
+
+            <h3>Confirmación de inscripción</h3>
+            <h2>Hola @Model.participante.Nombres @Model.participante.Paterno  @Model.participante.Materno</h2>
+            <h3>Te has inscrito en el evento <strong>@Model.curso.Nombre</strong></h3>
+            <p>Los datos que ingresaste son:</p>
+            <ul>
+                <li> DNI:  @Model.participante.DNI </li>
+
+                <li> Fecha de Nacimiento:  @Model.participante.Nacimiento.ToString("dd MMMM yyyy")  </li>
+
+                <li> Celular : @Model.participante.Celular </li>
+
+                <li> Email : @Model.participante.Email.ToString() </li>
+            </ul>
+            <br />
+            <br />
+        </div>
+        <!-- /.left-content -->
+    </div>
+
+    <div class="col-md-6 col-sm-12" style="padding:30px;">
+        <div class="right-content">
+            <h4>El evento empezará el día @Model.curso.Inicio.ToString("dd MMMM yyyy") en @Model.curso.Direccion en la ciudad de @Model.curso.Ciudad </h4>
+            <p>En caso sea necesario se le contactará mediante los datos ingresados.</p>
+            <br>
+            <p>
+                Gracias por seguir a la FDPN
+            </p>
+            <hr>
+            <p>En caso sus datos estén errados, envíe un correo a inscripciones@fdpn.org con los datos correctos. </p>
+            <br><p><strong>Nota.- No responda este correo</strong></p>
+
+        </div>
+    </div>
+
+</div>

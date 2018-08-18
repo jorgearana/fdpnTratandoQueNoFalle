@@ -17,8 +17,8 @@
     }
     <br />
     <p class="u-type--gamma">
-       
-        <table class="tablaNormal">
+
+        <table class="datatablaReves">
             <thead>
                 <tr>
                     <th>
@@ -31,20 +31,20 @@
             </thead>
             <tbody>
                 @foreach (var item in Model)
-                {
-                   
-                    <tr>
-                        <td>
+            {
 
-                            @item.Noticias.Titulo
-                        </td>
-                        <td>
-                            <a href=@Url.Action(path + item.Nombrefoto) target="_blank">
-                                <i class="fa fa-download" aria-hidden="true"></i> Ver documento
-                            </a>
-                        </td>
-                    </tr>
-                }
+                <tr>
+                    <td>
+                        <div class="FechaOrdenada">@item.NoticiaId</div>
+                        @item.Noticias.Titulo
+                    </td>
+                    <td>
+                        <a href=@Url.Action(path + item.Nombrefoto) target="_blank">
+                            <i class="fa fa-download" aria-hidden="true"></i> Ver documento
+                        </a>
+                    </td>
+                </tr>
+        }
             </tbody>
         </table>
     </p>
