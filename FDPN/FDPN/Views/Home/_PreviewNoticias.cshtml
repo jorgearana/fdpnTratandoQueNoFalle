@@ -3,6 +3,7 @@
 @{
 
     string path = Url.Content("../Content/img/Fotos/");
+    string pathiconos = "../Content/img/Imgsmall/";
 }
 
 
@@ -63,9 +64,9 @@
                                     <h3 class="cardsubtitulo">@item.noticia.Titulo</h3>
 
                                     <p>
-                                        @item.noticia.Corta
-                                    </p>
-                                    <span class="noticiaspan">Publicado el @item.noticia.Fecha.ToString("dd/MMM/yyyy")</span>
+                                         @item.noticia.Corta
+                                    </p> 
+                                    <span class="noticiaspan center"> Publicado el @item.noticia.Fecha.ToString("dd/MMM/yyyy")</span>
                                 </div><!--blog desc-->
 
                             </div><!--blog post col end-->

@@ -28,6 +28,8 @@ namespace InscripcionACurso.Models
         public string DNI { get; set; }
         public string Email { get; set; }
         public string Celular { get; set; }
+        public string Nacionalidad { get; set; }
+        public string Actividad { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CursoInscripcion> CursoInscripcion { get; set; }

@@ -356,24 +356,45 @@ namespace FDPN.Controllers
 
         public PartialViewResult _indexranking()
         {
-            string sexo = "F";
-            string piscina = "L";
+            string sexo;
+            string piscina;
             Random rnd = new Random();
-            int prueba = rnd.Next(1, 17);
-            int i = rnd.Next(0, 2);
+            int prueba = 0;
+            int i = 0;
 
-            if (i == 1)
-            {
-                sexo = "M";
-            }
-            i = rnd.Next(0, 2);
-            if (i == 1)
-            {
-                piscina = "S";
-            }
-            int edadminima=0; //= db.RESULTSMasters.OrderBy(x => x.AGE).Select(x => x.AGE).FirstOrDefault();
+            
+            int edadminima = 0; 
             int edadmaxima = db.RESULTSMasters.OrderByDescending(x => x.AGE).Select(x => x.AGE).FirstOrDefault();
-            int maximoCase = (edadmaxima - 24) / 5;
+            int maximoCase =  (edadmaxima - 24) / 5;
+
+            List<RESULTSMasters> todosLosResultados = db.RESULTSMasters.ToList();
+            List<RESULTSMasters> MenosResultados = new List<RESULTSMasters>();
+            do
+            {
+                 sexo = "F";
+                 piscina = "L";
+               
+                 prueba = rnd.Next(1, 17);
+                 i = rnd.Next(0, 2);
+
+                if (i == 1)
+                {
+                    sexo = "M";
+                }
+                i = rnd.Next(0, 2);
+                if (i == 1)
+                {
+                    piscina = "S";
+                }
+
+                MenosResultados = todosLosResultados
+                        .Where(x => x.PruebaId == prueba && x.NT == 0 && x.SCORE != "" && x.ATHLETE != 0 && x.AthleteMasters.Sex == sexo && x.COURSE == piscina && x.PLACE != 0)
+                        .OrderBy(x => x.SCORE)
+                        .ToList();
+
+            }
+            while (MenosResultados.Count() < 1);
+
 
             TopRankingMastersViewModel VM = new TopRankingMastersViewModel();
             
@@ -440,9 +461,8 @@ namespace FDPN.Controllers
                     }
 
 
-                    VM.resultado = db.RESULTSMasters
-                    .Where(x => x.PruebaId == prueba && x.NT == 0 && x.SCORE != "" && x.ATHLETE != 0 && x.AthleteMasters.Sex == sexo && x.COURSE == piscina && x.PLACE != 0
-                    && x.AGE <= edadmaxima && x.AGE >= edadminima)
+                    VM.resultado = MenosResultados
+                    .Where(x =>  x.AGE <= edadmaxima && x.AGE >= edadminima)
                     .OrderBy(x => x.SCORE)
                     .DistinctBy(x => x.AthleteId)
                     .Take(10).ToList();

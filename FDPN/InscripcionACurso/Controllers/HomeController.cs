@@ -18,7 +18,7 @@ namespace InscripcionACurso.Controllers
         {
             DateTime hoy = convertidor.ToPeru(DateTime.UtcNow);
             List<IndexViewModel> VM = new List<IndexViewModel>();
-            List<Curso> cursos = db.Curso.Where(x => x.Inicio >= hoy).OrderByDescending(x => x.Inicio).ThenByDescending(x => x.CursoId).ToList();
+            List<Curso> cursos = db.Curso.Where(x => x.Inicio >= hoy).OrderBy(x => x.Fin).ThenByDescending(x => x.Inicio).ToList();
             List<CursoInscripcion> Inscritos = db.CursoInscripcion.ToList();
             foreach(Curso curso in cursos)
             {
@@ -48,5 +48,7 @@ namespace InscripcionACurso.Controllers
 
             return View();
         }
+
+       
     }
 }

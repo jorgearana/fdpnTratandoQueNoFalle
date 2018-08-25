@@ -14,22 +14,17 @@
         <div class="left-content">
             <h1>Federación Deportiva Peruana de Natación</h1>
             <img src="~/Content/images/Logo_fdpn.png" style="height:100px;" />
-            <h3>Inscripción</h3>
-            <h2>Información de contacto</h2>
+            <h3>Inscripción en </h3>
+            <h2> @Model.curso.Nombre</h2>
             <div class="row">
-                <div class="col-sm-offset-3 col-sm-9">
+                <div class="col-sm-offset-1 col-sm-11">
                     <dl class="dl-horizontal">
-                        <dt><span><i class="fa fa-home"></i></span> Dirección</dt>
-                        <dd>
-                            Jr. Nazca <br>
-                            Cuadra 6 s/n<br>
-                            Jesús María<br>
-                            Lima
-                        </dd>
-                        <dt><span><i class="fa fa-mobile"></i></span> Teléfono</dt>
-                        <dd>424 3538</dd>
-                        <dt><span><i class="fa fa-share"></i></span> Email</dt>
-                        <dd>fdpn@fdpn.com.pe</dd>
+                        <dt><i class="fas fa-book"></i>Cierre de inscripciones</dt>
+                        <dd> @Model.curso.Fin.ToString("dd MMMM yyyy")</dd>
+                        <dt><i class="fas fa-calendar-alt"></i>Fecha de incio</dt>
+                        <dd>@Model.curso.Inicio.ToString("dd MMMM yyyy")</dd>
+                        <dt><i class="fas fa-home"></i>Dirección</dt>
+                        <dd>@Model.curso.Direccion @Model.curso.Ciudad</dd>
                     </dl>
                 </div>
             </div>
@@ -39,6 +34,7 @@
     <!-- /.left-block -->
     @using (Html.BeginForm("create", "inscripcion", FormMethod.Post, new { id = "formulario" }))
     {
+        @Html.HiddenFor(x=>x.curso.CursoId)
         @Html.AntiForgeryToken()
         <div id="right-block" class="col-md-6 col-sm-12 right-block">
             <div class="right-content">
@@ -74,16 +70,25 @@
                             @Html.EditorFor(model => model.CursoParticipante.Celular, new { htmlAttributes = new { @class = "form-control", placeholder = "Celular", required = "required" } })
                             @Html.ValidationMessageFor(model => model.CursoParticipante.Celular, "", new { @class = "text-danger" })
                         </div>
+                        <div class="form-group  col-sm-12">
+                            @Html.EditorFor(model => model.CursoParticipante.Actividad, new { htmlAttributes = new { @class = "form-control", placeholder = "Haznos conocer tu experiencia deportiva - máximo 10,000 caracteres.", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.CursoParticipante.Actividad, "", new { @class = "text-danger" })
+                        </div>
+
+
                         <div class="form-group  col-sm-6">
                             <p>Ingrese su fecha de nacimiento.</p>
                             <label class="mensaje">@Model.Mensaje</label>
                         </div>
                         <div class="form-group  col-sm-6">
-                            @Html.EditorFor(model => model.CursoParticipante.Nacimiento, new { htmlAttributes = new { @class = "form-control datefield", placeholder = "Fecha de nacimiento" } })
+                            @Html.EditorFor(model => model.CursoParticipante.Nacimiento, new { htmlAttributes = new { @class = "form-control datefield" } })
                             @Html.ValidationMessageFor(model => model.CursoParticipante.Nacimiento, "", new { @class = "text-danger" })
 
                         </div>
-
+                        <div class="form-group  col-sm-6">
+                            @Html.EditorFor(model => model.CursoParticipante.Nacionalidad, new { htmlAttributes = new { @class = "form-control", placeholder = "Nacionallidad", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.CursoParticipante.Nacionalidad, "", new { @class = "text-danger" })
+                        </div>
                         <div class="form-group  col-sm-6">
                             <input type="submit" value="Inscribir" class="btn btn-primary" />
                             @Html.ActionLink("Ir al inicio", "Index", "Home", null, new { @class = "btn btn-info" })

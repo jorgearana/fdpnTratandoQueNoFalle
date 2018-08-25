@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FDPN", "FDPN\FDPN.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InscripcionACurso", "InscripcionACurso\InscripcionACurso.csproj", "{104191BA-5E25-4520-90EC-DDAC031F8E9D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InscripcionNatacion", "..\..\InscripcionesNatacion\InscripcionNatacion\InscripcionNatacion\InscripcionNatacion.csproj", "{10642C27-2F89-46EF-993D-35CAAE58A5B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportarInicial", "..\..\InscripcionesNatacion\InscripcionNatacion\ImportarInicial\ImportarInicial.csproj", "{6A51D281-7590-4EDB-97FB-155FACF45514}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{104191BA-5E25-4520-90EC-DDAC031F8E9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{104191BA-5E25-4520-90EC-DDAC031F8E9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{104191BA-5E25-4520-90EC-DDAC031F8E9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10642C27-2F89-46EF-993D-35CAAE58A5B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10642C27-2F89-46EF-993D-35CAAE58A5B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10642C27-2F89-46EF-993D-35CAAE58A5B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10642C27-2F89-46EF-993D-35CAAE58A5B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A51D281-7590-4EDB-97FB-155FACF45514}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A51D281-7590-4EDB-97FB-155FACF45514}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A51D281-7590-4EDB-97FB-155FACF45514}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A51D281-7590-4EDB-97FB-155FACF45514}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
