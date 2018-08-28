@@ -2,6 +2,7 @@
 
 @{
     string path = "~/Content/img/fondos/";
+    string pathiconos = "../Content/img/Imgsmall/";
 }
 
 <div class="site-homepage__pushup">
@@ -55,7 +56,7 @@
                                 <div>
                                     <div class="cbp_tmicon @item.Disciplina.clase">
                                         <p class="cardsubtitulo-blanca">
-                                            <img class="iconCalendario" src="@Url.Action(path + @item.Disciplina.clase + ".jpg")" />
+                                            <img class="iconCalendario" src="@Url.Action(pathiconos + @item.Disciplina.clase + ".jpg")" />
                                             @item.Inicio.ToString("dd MMM yyyy") - @item.Fin.ToString("dd MMM yyyy")
                                         </p>
                                     </div>

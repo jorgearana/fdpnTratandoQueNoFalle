@@ -23,7 +23,7 @@ namespace FDPN.Controllers
             //    //destacados = new List<Models.RESULTS>(),
             //    //calendario= new List<Models.Calendario>(),
             //};
-
+            //return RedirectToAction("Mantenimiento");
             ViewBag.title = "Home";
             return View();
         }
@@ -304,6 +304,10 @@ namespace FDPN.Controllers
             return PartialView("_Modal", modal);
         }
 
-        
+        public ActionResult Mantenimiento()
+        {
+            return View();
+
+        }
     }
 }

@@ -16,9 +16,11 @@ namespace InscripcionACurso.Controllers
 
         public ActionResult Index()
         {
+            
+
             DateTime hoy = convertidor.ToPeru(DateTime.UtcNow);
             List<IndexViewModel> VM = new List<IndexViewModel>();
-            List<Curso> cursos = db.Curso.Where(x => x.Inicio >= hoy).OrderBy(x => x.Fin).ThenByDescending(x => x.Inicio).ToList();
+            List<Curso> cursos = db.Curso.Where(x => x.Fin >= hoy).OrderBy(x => x.Fin).ThenByDescending(x => x.Inicio).ToList();
             List<CursoInscripcion> Inscritos = db.CursoInscripcion.ToList();
             foreach(Curso curso in cursos)
             {
@@ -27,7 +29,11 @@ namespace InscripcionACurso.Controllers
                     curso = curso,
                     cantidadinscritos = Inscritos.Where(x=>x.CursoId == curso.CursoId).Count(),
                 };
-                VM.Add(CursoYParticipante);
+                if(CursoYParticipante.cantidadinscritos < CursoYParticipante.curso.CantidadMaxima)
+                {
+                    VM.Add(CursoYParticipante);
+                }
+               
             }
            
            
@@ -46,6 +52,11 @@ namespace InscripcionACurso.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult Mantenimiento()
+        {
             return View();
         }
 

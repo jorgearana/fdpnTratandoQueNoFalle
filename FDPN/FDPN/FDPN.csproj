@@ -279,6 +279,7 @@
     <Content Include="Content\bootstrap\ionicons.css" />
     <Content Include="Content\bootstrap\main.min.css" />
     <Content Include="Content\img\covermask2.png" />
+    <Content Include="Content\img\En Mantenimiento.png" />
     <Content Include="Content\img\EnVivo.jpg" />
     <Content Include="Content\img\fondoJaked - copia.jpg" />
     <Content Include="Content\img\fondoJaked.jpg" />
@@ -598,6 +599,7 @@
     <Content Include="Views\Masters\ResultadoDelNadadorEnUnTorneo.cshtml" />
     <Content Include="Views\Home\_Banner.cshtml" />
     <Content Include="Views\Home\_PreviewJaked.cshtml" />
+    <Content Include="Views\Home\Mantenimiento.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Apnea.css" />

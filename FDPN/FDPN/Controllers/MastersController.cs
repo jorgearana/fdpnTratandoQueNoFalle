@@ -367,7 +367,7 @@ namespace FDPN.Controllers
             int edadmaxima = db.RESULTSMasters.OrderByDescending(x => x.AGE).Select(x => x.AGE).FirstOrDefault();
             int maximoCase =  (edadmaxima - 24) / 5;
 
-            List<RESULTSMasters> todosLosResultados = db.RESULTSMasters.ToList();
+            //List<RESULTSMasters> todosLosResultados =.ToList();
             List<RESULTSMasters> MenosResultados = new List<RESULTSMasters>();
             do
             {
@@ -387,7 +387,7 @@ namespace FDPN.Controllers
                     piscina = "S";
                 }
 
-                MenosResultados = todosLosResultados
+                MenosResultados = db.RESULTSMasters
                         .Where(x => x.PruebaId == prueba && x.NT == 0 && x.SCORE != "" && x.ATHLETE != 0 && x.AthleteMasters.Sex == sexo && x.COURSE == piscina && x.PLACE != 0)
                         .OrderBy(x => x.SCORE)
                         .ToList();
