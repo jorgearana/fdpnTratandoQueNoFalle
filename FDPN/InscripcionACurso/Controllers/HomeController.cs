@@ -18,7 +18,7 @@ namespace InscripcionACurso.Controllers
         {
             
 
-            DateTime hoy = convertidor.ToPeru(DateTime.UtcNow);
+            DateTime hoy = convertidor.ToPeru(DateTime.UtcNow).AddDays(1);
             List<IndexViewModel> VM = new List<IndexViewModel>();
             List<Curso> cursos = db.Curso.Where(x => x.Fin >= hoy).OrderBy(x => x.Fin).ThenByDescending(x => x.Inicio).ToList();
             List<CursoInscripcion> Inscritos = db.CursoInscripcion.ToList();

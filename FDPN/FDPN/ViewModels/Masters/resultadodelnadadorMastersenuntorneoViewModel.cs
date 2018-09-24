@@ -10,7 +10,7 @@ namespace FDPN.ViewModels.Masters
     {
         public MEETMasters torneo { get; set; }
         public AthleteMasters atleta { get; set; }
-        public List<RESULTS> resultados { get; set; }
+        public List<RESULTSMasters> resultados { get; set; }
         public Afiliado afiliado { get; set; }
 
     }

@@ -229,7 +229,8 @@ D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\es\System.Web.Razor.resources.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\es\System.Web.WebPages.resources.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\es\System.Web.WebPages.Deployment.resources.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\es\System.Web.WebPages.Razor.resources.dll
-D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.csprojResolveAssemblyReference.cache
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.csproj.CoreCompileInputs.cache
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.pdb
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.csprojAssemblyReference.cache
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.csproj.CopyComplete

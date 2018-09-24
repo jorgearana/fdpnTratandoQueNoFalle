@@ -224,10 +224,11 @@ D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\es\System.Web.Razor.resources.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\es\System.Web.WebPages.resources.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\es\System.Web.WebPages.Deployment.resources.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\es\System.Web.WebPages.Razor.resources.dll
-D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Release\FDPN.csprojResolveAssemblyReference.cache
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Release\FDPN.csproj.CoreCompileInputs.cache
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Release\FDPN.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Release\FDPN.pdb
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\itextsharp.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Rotativa.Core.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Rotativa.MVC.dll
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Release\FDPN.csprojAssemblyReference.cache
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Release\FDPN.csproj.CopyComplete

@@ -233,7 +233,7 @@
       <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Consulta.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Disciplina.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
@@ -440,7 +440,7 @@
       <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TEAM.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
@@ -600,6 +600,7 @@
     <Content Include="Views\Home\_Banner.cshtml" />
     <Content Include="Views\Home\_PreviewJaked.cshtml" />
     <Content Include="Views\Home\Mantenimiento.cshtml" />
+    <Content Include="Views\Masters\_Records.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Apnea.css" />

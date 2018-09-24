@@ -100,7 +100,7 @@
                 <h1>Federación Deportiva Peruana de Natación</h1>
                 <img src="~/Content/images/Logo_fdpn.png" style="height:100px;" />
 
-                <h2>En este momento no tenemos eventos pendientes</h2>
+                <h2>En este momento no tenemos eventos pendientes, o ya se han completado los cupos disponibles en los eventos pendientes.</h2>
                 <h3>Pronto colocaremos novedades aquí </h3>
 
                 <!-- /.timing -->
@@ -116,7 +116,7 @@
                 <p class="para">En nuestro facebook verás contenido interesante sobre nuestras disciplinas deportivas.</p>
 
                 <hr />
-                @if (Model[0].cantidadinscritos < Model[0].curso.CantidadMaxima)
+                @if (Model.Count()>0 && Model[0].cantidadinscritos < Model[0].curso.CantidadMaxima)
                 {
                     <span class="label">Inscríbete aquí:</span>
                 }

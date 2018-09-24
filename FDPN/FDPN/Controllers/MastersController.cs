@@ -484,6 +484,20 @@ namespace FDPN.Controllers
             return PartialView(query.Take(20).ToList());
         }
 
+        public PartialViewResult _Records(string searchString)
+        {
+            var query = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "Record" && x.Noticias.DisciplinaId == 6).OrderBy(x => x.Noticias.Titulo).AsQueryable();
+
+            if (searchString != null)
+            {
+                query = query.Where(x => x.Noticias.Titulo.Contains(searchString));
+            }
+
+            List<Fotos> listado = query.ToList();
+
+            return PartialView(listado);
+        }
+
         public ActionResult ResultadosDeUnTorneo(int meetid)
         {
             List<RESULTSMasters > resultados = db.RESULTSMasters.Where(x => x.MeetId == meetid && x.PLACE != 0 && x.ATHLETE != 0 && x.TEAM != 0).ToList();
@@ -613,7 +627,7 @@ namespace FDPN.Controllers
             {
                 torneo = db.MEETMasters.Find(meetid),
                 atleta = db.AthleteMasters.Find(athleteid),
-                resultados = db.RESULTS.Where(x => x.NT != 2 && x.NT != 5 && x.SCORE != "" & x.AthleteId == athleteid && x.MeetId == meetid)
+                resultados = db.RESULTSMasters.Where(x => x.AthleteId == athleteid && x.MeetId== meetid   && (x.I_R == "L" || x.PLACE != 0))
                 .OrderBy(x => x.PLACE).ToList()
             };
             VM.afiliado = BuscarAfiliado(VM.atleta.ID_NO);

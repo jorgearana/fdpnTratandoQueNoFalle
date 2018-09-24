@@ -14,13 +14,10 @@ namespace FDPN.Models
     
     public partial class Consulta
     {
-        public int Athlete { get; set; }
-        public string First { get; set; }
-        public string Last { get; set; }
-        public string Sex { get; set; }
-        public Nullable<System.DateTime> Birth { get; set; }
-        public short Age { get; set; }
-        public string ID_NO { get; set; }
-        public int AthleteId { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

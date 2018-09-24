@@ -8,7 +8,7 @@
 
             <h2 class="site-title site-title--ultra site-title--ultra--primary">Resultados del torneo</h2>
             <h2 class="site-title">@Model.resultadoFinales[0].MEET1.MName</h2>
-          
+
         </header>
         <div class="site-homepage__section site-aboutwidget u-bg--poolpeople u-bg--blueoverlay">
             <div class="is-ontop u-animation--fadeInSection">
@@ -21,12 +21,12 @@
                     <footer class="site-homepage__section__footer">
                         @using (Html.BeginForm("ResultadoPorClubes", "Resultados", FormMethod.Post))
                         {
-                        @Html.HiddenFor(model => model.meetid)
-                        @Html.DropDownListFor(model => model.clubid, new SelectList(Model.EquiposParticipantes, "TeamId", "TName"), "Seleccione un club", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
-                        <div class="espaciado"></div>
-                        <div class="u-type--center">
-                            <input type="submit" value="Ver resultados" name="subscribe" class="btn btn--negative btn--lrg u-rounded">
-                        </div>
+                            @Html.HiddenFor(model => model.meetid)
+                            @Html.DropDownListFor(model => model.clubid, new SelectList(Model.EquiposParticipantes, "TeamId", "TName"), "Seleccione un club", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+                            <div class="espaciado"></div>
+                            <div class="u-type--center">
+                                <input type="submit" value="Ver resultados" name="subscribe" class="btn btn--negative btn--lrg u-rounded">
+                            </div>
                         }
 
                     </footer>
@@ -43,23 +43,24 @@
 
                         @using (Html.BeginForm("ResultadoPorPruebas", "Resultados", FormMethod.Post))
                         {
-                        @Html.HiddenFor(model => model.meetid)
-                        @Html.DropDownListFor(model => model.pruebaid, new SelectList(Model.pruebas, "Key", "Value.NombrePrueba"), "Escoja una prueba", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
-                        <div class="espaciado"></div>
-                        <div class="u-type--center">
-                            <input type="submit" value="Ver resultados" name="subscribe" class="btn btn--negative btn--lrg u-rounded">
-                        </div>
+                            @Html.HiddenFor(model => model.meetid)
+                            @Html.DropDownListFor(model => model.pruebaid, new SelectList(Model.pruebas, "Key", "Value.NombrePrueba"), "Escoja una prueba", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+                            <div class="espaciado"></div>
+                            <div class="u-type--center">
+                                <input type="submit" value="Ver resultados" name="subscribe" class="btn btn--negative btn--lrg u-rounded">
+                            </div>
                         }
 
                     </footer>
                 </section>
                 <header class="site-homepage__section__header">
                     @using (Html.BeginForm("Resultados", "Resultados", FormMethod.Post))
-                    {
-                        <h6 class="u-type--medium u-type--delta u-spc-bottom--med">buscar otro torneo </h6>
-                        @Html.TextBox("searchString", null, new { @class = " input input--text input--med input--med--padded" })
-                        <input type="submit" value="Buscar" class="btn btn--primaryapnea btn--lrg u-rounded" />
-                    }
+    {
+                <h6 class="u-type--medium u-type--delta u-spc-bottom--med">buscar otro torneo </h6>
+                <div class="espaciado"/>
+                @Html.TextBox("searchString", null, new { @class = " input input--text input--med input--med--padded" })
+                <input type="submit" value="Buscar" class="btn btn--primaryapnea btn--lrg u-rounded" />
+}
                 </header>
             </div>
         </div>

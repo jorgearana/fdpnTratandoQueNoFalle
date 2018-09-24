@@ -15,8 +15,8 @@
             </div>
             <p class="u-type--medium u-type--delta u-spc-bottom--med">@Model.torneo.MName - @Model.torneo.Start.ToString("dd/MMM/yyyy")</p>
 
-</header>
-      
+        </header>
+
         <div id="js-table" class="site-contentpage js-table table">
             <table class="table__data">
                 <thead>
@@ -39,7 +39,16 @@
                             <td>@item.PLACE</td>
                             <td>@item.SCORE</td>
                             <td>@item.PFina</td>
-                            <td>@item.F_P</td>
+
+                            @if (item.I_R == "L")
+                            {
+                                <td>@item.F_P en una posta  </td>
+                            }
+                            else
+                            {
+                                <td>@item.F_P  </td>
+                            }
+
                         </tr>
                     }
                 </tbody>
@@ -51,18 +60,16 @@
         </div>
     </div>
     <div class="site-homepage__section__header u-animation--fadeInSection">
-        @Html.ActionLink("Listado de nadadores", "Nadadores", "masters", null, new {@class= "btn btn--med btn--primaryapnea u-rounded" })
-      
+        @Html.ActionLink("Listado de nadadores", "Nadadores", "masters", null, new { @class = "btn btn--med btn--primaryapnea u-rounded" })
+
     </div>
     <div class="espaciado"></div>
     <div class="site-homepage__split u-group u-animation--fadeInSection">
         <section class="site-homepage__split__item u-bg--pooldiver u-bg--blueoverlay">
-
-            @Html.Action("_mastersdestacado", "masters")
-
+            @Html.Action("_nadadordestacado", "home")
         </section>
         <section class="site-homepage__split__item u-bg--surface u-bg--blueoverlaydark">
-            @Html.Action("_indexranking", "masters")
+            @Html.Action("_indexranking", "home")
         </section>
     </div>
 </section>
