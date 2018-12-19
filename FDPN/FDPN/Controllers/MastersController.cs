@@ -798,5 +798,22 @@ namespace FDPN.Controllers
             }
             return PartialView("_PreviewNoticias", VM);
         }
+
+        public PartialViewResult _BasesMasters(string searchString)
+        {
+            var query = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "Base" && x.Noticias.DisciplinaId == 6).OrderBy(x => x.Noticias.Fecha).AsQueryable();
+
+            if (searchString != null)
+            {
+                query = query.Where(x => x.Noticias.Titulo.Contains(searchString));
+            }
+
+            List<Fotos> listado = query.Take(10).ToList();
+
+            return PartialView(listado);
+        }
+
+       
+
     }
 }

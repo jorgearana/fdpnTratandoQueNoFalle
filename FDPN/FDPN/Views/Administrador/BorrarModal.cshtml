@@ -1,0 +1,70 @@
+﻿@model FDPN.Models.Modals
+
+@{
+
+    ViewBag.Title = "Borrar Modal";
+    Layout = "~/Views/Shared/_LayoutWYSWYG.cshtml";
+}
+
+<h2>Borrar Modal</h2>
+
+<h4>¿Está seguro de borrar esta ventana modal?</h4>
+
+
+@using (Html.BeginForm())
+{
+    <h3>¿Está seguro de borrar este modal?</h3>
+    <div class="row">
+        <div class="col-lg-6">
+            @Html.HiddenFor(model => model.Modalid)
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Titulo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Titulo)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Cuerpo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Cuerpo)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Enlace)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Enlace)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Activo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Activo)
+                </dd>
+
+            </dl>
+
+
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Borrar modal" class="btn btn-danger" /> |
+                @Html.ActionLink("Regresar al listado", "Index", null, new { @class = "btn btn-primary" })
+            </div>
+
+        </div>
+        <div class="col-lg-6">
+            <img src=@Url.Content( "~/Content/img/Fotos/" + Model.Image ) />
+        </div>
+
+    </div>
+}

@@ -311,6 +311,10 @@
     <Content Include="Content\img\logo-JJBB-2xb.png" />
     <Content Include="Content\img\logocolor.png" />
     <Content Include="Content\img\logometal.png" />
+    <Content Include="Content\img\pulpito nadando.gif" />
+    <Content Include="Content\img\sort_asc.png" />
+    <Content Include="Content\img\sort_both.png" />
+    <Content Include="Content\img\sort_desc.png" />
     <Content Include="Content\img\vertical1.jpg" />
     <Content Include="Content\img\vertical2.jpg" />
     <Content Include="Content\img\vertical3.jpg" />
@@ -332,6 +336,8 @@
     <Content Include="Content\pdf\calendario artistico.pdf" />
     <Content Include="Content\pdf\calendario clavados.pdf" />
     <Content Include="App_Browsers\qt.browser" />
+    <Content Include="Content\img\Fotos\FINAL.pdf" />
+    <Content Include="Content\img\Fotos\LISTO1.pdf" />
     <None Include="Models\ModeloAfiliaciones.Context.cs.NO" />
     <Compile Include="Models\Hoja1_.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
@@ -601,6 +607,8 @@
     <Content Include="Views\Home\_PreviewJaked.cshtml" />
     <Content Include="Views\Home\Mantenimiento.cshtml" />
     <Content Include="Views\Masters\_Records.cshtml" />
+    <Content Include="Views\Masters\_BasesMasters.cshtml" />
+    <Content Include="Views\Administrador\BorrarModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Apnea.css" />
@@ -824,7 +832,9 @@
     <Content Include="Scripts\script-custom-editor.js" />
     <Content Include="Scripts\Sitio.js" />
     <Content Include="Scripts\sni0wes.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

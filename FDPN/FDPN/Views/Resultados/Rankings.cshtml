@@ -131,21 +131,27 @@
             <tbody>
                @for (int i = 3; i < Model.resultados.Count(); i++)
                {
-                    <tr>
-                        <td>@(i+1)</td>
-                        <td>
-                            @Html.ActionLink(Model.resultados[i].Athlete1.First, "Nadador", "Resultados", new { id = Model.resultados[i].AthleteId }, new { @class = "ranking1detalle" })
-                            @Html.ActionLink(Model.resultados[i].Athlete1.Last, "Nadador", "Resultados", new { @id = Model.resultados[i].AthleteId }, new { @class = "ranking1detalle" })
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>
+                        @Html.ActionLink(Model.resultados[i].Athlete1.First, "Nadador", "Resultados", new { id = Model.resultados[i].AthleteId }, new { @class = "ranking1detalle" })
+                        @Html.ActionLink(Model.resultados[i].Athlete1.Last, "Nadador", "Resultados", new { @id = Model.resultados[i].AthleteId }, new { @class = "ranking1detalle" })
 
-                        </td>
-                        <td>@Model.resultados[i].SCORE
-                        
-                        </td>
-                        @if (Model.resultados[i].I_R == "L")
-                        {  <td>Posta</td> }
-                        else {  <td></td> }
-                        <td class="weak">@Model.resultados[i].MEET1.Start.ToString("dd/MMM/yyyy")</td>
-                    </tr>
+                    </td>
+                    <td>
+                        @Model.resultados[i].SCORE
+
+                </td>
+                @if (Model.resultados[i].I_R == "L")
+                {
+                    <td>Posta</td> }
+                else
+                {
+                    <td></td>}
+                <td class="weak">@Model.resultados[i].MEET1.Start.ToString("dd/MMM/yyyy")</td>
+                <td>@Model.resultados[i].Athlete1.Birth</td>
+                <td>@Model.resultados[i].Athlete1.Age</td>
+                </tr>
                 }
             </tbody>
         </table>
