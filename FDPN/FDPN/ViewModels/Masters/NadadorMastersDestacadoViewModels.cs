@@ -9,6 +9,6 @@ namespace FDPN.ViewModels.Masters
     public class NadadorMastersDestacadoViewModels
     {
         public RESULTSMasters resultados { get; set; }
-        public Afiliado afiliado { get; set; }
+        public Inscripciones Inscripciones { get; set; }
     }
 }

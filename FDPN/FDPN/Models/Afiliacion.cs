@@ -22,8 +22,8 @@ namespace FDPN.Models
         public int ClubId { get; set; }
         public int ProcesadoId { get; set; }
     
-        public virtual Afiliado Afiliado { get; set; }
         public virtual Club Club { get; set; }
+        public virtual Inscripciones Inscripciones { get; set; }
         public virtual Procesado Procesado { get; set; }
         public virtual Usuario Usuario { get; set; }
         public virtual Vouchers Vouchers { get; set; }

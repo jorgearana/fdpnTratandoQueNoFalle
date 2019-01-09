@@ -199,6 +199,9 @@
     <Compile Include="Models\Antiguo.cs">
       <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Asociaciones.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Athlete.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
@@ -235,8 +238,14 @@
     <Compile Include="Models\Consulta.cs">
       <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Directivos.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Disciplina.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Disciplinas.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Encuentros.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
@@ -301,6 +310,9 @@
     <Content Include="Content\img\fondos\logoIPD.jpg" />
     <Content Include="Content\img\fondos\logoUana.jpg" />
     <Content Include="Content\img\fondos\piscinalibre.jpg" />
+    <Content Include="Content\img\Fotos\FINAL %281%29-001.jpg" />
+    <Content Include="Content\img\Fotos\LISTO1 %281%29-001.jpg" />
+    <Content Include="Content\img\Fotos\Academiatrujillo.jpeg" />
     <Content Include="Content\img\Imgsmall\favicon.ico" />
     <Content Include="Content\img\Imgsmall\medal1.png" />
     <Content Include="Content\img\Imgsmall\medal2.png" />
@@ -336,14 +348,15 @@
     <Content Include="Content\pdf\calendario artistico.pdf" />
     <Content Include="Content\pdf\calendario clavados.pdf" />
     <Content Include="App_Browsers\qt.browser" />
-    <Content Include="Content\img\Fotos\FINAL.pdf" />
-    <Content Include="Content\img\Fotos\LISTO1.pdf" />
     <None Include="Models\ModeloAfiliaciones.Context.cs.NO" />
     <Compile Include="Models\Hoja1_.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hoja2_.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Inscripciones.cs">
+      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Jugadores.cs">
       <DependentUpon>ModeloResultados.tt</DependentUpon>

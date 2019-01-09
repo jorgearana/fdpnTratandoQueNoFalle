@@ -100,7 +100,7 @@ namespace FDPN.Controllers
                 searchString = "",
                 ContadorDePuestos = new Dictionary<int, Puestos>(),
             };
-            VM.afiliado = BuscarAfiliado(VM.nadador.ID_NO);
+            VM.Inscripciones = BuscarAfiliado(VM.nadador.ID_NO);
 
             List<Pruebas> pruebas = db.Pruebas.Where(x => x.PruebaId < 18).ToList();
             DateTime hoy = DateTime.Now;
@@ -393,7 +393,7 @@ namespace FDPN.Controllers
                 resultados = db.RESULTS.Where(x => x.NT != 2 && x.NT != 5 && x.SCORE != "" & x.AthleteId == athleteid && x.MeetId == meetid)
                 .OrderBy(x => x.PLACE).ToList()
             };
-            VM.afiliado = BuscarAfiliado(VM.atleta.ID_NO);
+            VM.Inscripciones = BuscarAfiliado(VM.atleta.ID_NO);
             return View(VM);
         }
 
@@ -407,7 +407,7 @@ namespace FDPN.Controllers
                 ResultadosLarga = resultados.Where(x => x.COURSE == "L").ToList(),
                 ResultadosCorta = resultados.Where(x => x.COURSE == "S").ToList(),
             };
-            VM.afiliado = BuscarAfiliado(VM.atleta.ID_NO);
+            VM.Inscripciones = BuscarAfiliado(VM.atleta.ID_NO);
             return View(VM);
         }
 
@@ -666,19 +666,19 @@ namespace FDPN.Controllers
             return View(VM);
         }
 
-        public Afiliado BuscarAfiliado(string DNI)
+        public Inscripciones BuscarAfiliado(string DNI)
         {
-            Afiliado afiliado = af.Afiliado.Where(x => x.DNI == DNI).FirstOrDefault();
-            if (afiliado == null)
+            Inscripciones Inscripciones = af.Inscripciones.Where(x => x.DNI == DNI).FirstOrDefault();
+            if (Inscripciones == null)
             {
-                afiliado = new Afiliado
+                Inscripciones = new Inscripciones
                 {
                     Club = af.Club.Find(4128),
                     RutaFoto = "Sinfoto",
                     DNI = "",
                 };
             }
-            return afiliado;
+            return Inscripciones;
         }
 
 

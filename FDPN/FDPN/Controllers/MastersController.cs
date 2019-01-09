@@ -116,18 +116,17 @@ namespace FDPN.Controllers
                 // resultados = tiempos.Where(x => x.AthleteId == athleteID).OrderBy(x => x.PLACE).ThenByDescending(x => x.PFina).ToList(),
                 //afiliado = af.Afiliado.Where(x => x.DNI == dni).FirstOrDefault(),
                 resultados = resultadomejor,
-                afiliado = af.Afiliado.Where(x => x.DNI == dni).FirstOrDefault(),
+                Inscripciones = af.Inscripciones.Where(x => x.DNI == dni).FirstOrDefault(),
             };
 
-            if (VM.afiliado == null)
+            if (VM.Inscripciones == null)
             {
-                VM.afiliado = new Afiliado
+                VM.Inscripciones = new Inscripciones
                 {
                     RutaFoto = "sinfoto",
-                    Nombre = resultadomejor.AthleteMasters.First,
-                    Apellido_Paterno = resultadomejor.AthleteMasters.Last,
-
                 };
+                VM.Inscripciones.Afiliado.Nombre = resultadomejor.AthleteMasters.First;
+                VM.Inscripciones.Afiliado.Apellido_Paterno = resultadomejor.AthleteMasters.Last;
             }
 
             return PartialView("_mastersdestacado", VM);
@@ -238,7 +237,7 @@ namespace FDPN.Controllers
                 searchString = "",
                 ContadorDePuestos = new Dictionary<int, ViewModels.Masters.Puestos>(),
             };
-            VM.afiliado = BuscarAfiliado(VM.nadador.ID_NO);
+            VM.Inscripciones = BuscarAfiliado(VM.nadador.ID_NO);
 
             List<Pruebas> pruebas = db.Pruebas.Where(x => x.PruebaId < 18).ToList();
             DateTime hoy = DateTime.Now;
@@ -616,7 +615,7 @@ namespace FDPN.Controllers
                 ResultadosLarga = resultados.Where(x => x.COURSE == "L").ToList(),
                 ResultadosCorta = resultados.Where(x => x.COURSE == "S").ToList(),
             };
-            VM.afiliado = BuscarAfiliado(VM.atleta.ID_NO);
+            VM.Inscripciones = BuscarAfiliado(VM.atleta.ID_NO);
             return View(VM);
         }
 
@@ -630,7 +629,7 @@ namespace FDPN.Controllers
                 resultados = db.RESULTSMasters.Where(x => x.AthleteId == athleteid && x.MeetId== meetid   && (x.I_R == "L" || x.PLACE != 0))
                 .OrderBy(x => x.PLACE).ToList()
             };
-            VM.afiliado = BuscarAfiliado(VM.atleta.ID_NO);
+            VM.Inscripciones = BuscarAfiliado(VM.atleta.ID_NO);
             return View(VM);
         }
 
@@ -768,19 +767,19 @@ namespace FDPN.Controllers
         }
 
 
-        public Afiliado BuscarAfiliado(string DNI)
+        public Inscripciones BuscarAfiliado(string DNI)
         {
-            Afiliado afiliado = af.Afiliado.Where(x => x.DNI == DNI).FirstOrDefault();
-            if (afiliado == null)
+            Inscripciones Inscripciones = af.Inscripciones.Where(x => x.DNI == DNI).FirstOrDefault();
+            if (Inscripciones == null)
             {
-                afiliado = new Afiliado
+                Inscripciones = new Inscripciones
                 {
                     Club = af.Club.Find(4128),
                     RutaFoto = "Sinfoto",
                     DNI = "",
                 };
             }
-            return afiliado;
+            return Inscripciones;
         }
 
         public PartialViewResult _previewnoticias ()

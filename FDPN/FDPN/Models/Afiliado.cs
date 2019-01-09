@@ -17,11 +17,8 @@ namespace FDPN.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Afiliado()
         {
-            this.Afiliacion = new HashSet<Afiliacion>();
             this.CambiosDNI = new HashSet<CambiosDNI>();
-            this.HistorialTraspasos = new HashSet<HistorialTraspasos>();
             this.Multas = new HashSet<Multas>();
-            this.TraspasosEnEspera = new HashSet<TraspasosEnEspera>();
         }
     
         public int DeportistaId { get; set; }
@@ -30,32 +27,13 @@ namespace FDPN.Models
         public string Apellido_Materno { get; set; }
         public string DNI { get; set; }
         public string Tipo_de_documento { get; set; }
-        public int ClubID { get; set; }
-        public int TipoAfiliadoID { get; set; }
-        public int EstadoID { get; set; }
-        public int ProcesadoID { get; set; }
         public System.DateTime Fecha_de_nacimiento { get; set; }
         public string Sexo { get; set; }
-        public int AntiguoId { get; set; }
-        public string RutaFoto { get; set; }
-        public string Disciplina { get; set; }
-        public Nullable<int> Borrado { get; set; }
-        public string FotoDNI { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Afiliacion> Afiliacion { get; set; }
-        public virtual Antiguo Antiguo { get; set; }
-        public virtual Club Club { get; set; }
-        public virtual Estado Estado { get; set; }
-        public virtual Procesado Procesado { get; set; }
-        public virtual TipoAfiliado TipoAfiliado { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CambiosDNI> CambiosDNI { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HistorialTraspasos> HistorialTraspasos { get; set; }
+        public virtual Inscripciones Inscripciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Multas> Multas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TraspasosEnEspera> TraspasosEnEspera { get; set; }
     }
 }

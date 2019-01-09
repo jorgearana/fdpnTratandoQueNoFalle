@@ -14,10 +14,10 @@
 
             <div class="site-athleteswidget__athlete">
                 <div class="site-athleteswidget__photo site-athleteswidget__photo--negative">
-                    <img src=@Url.Content(path +"/"+ Model.afiliado.RutaFoto + ".jpg")>
+                    <img src=@Url.Content(path +"/"+ Model.Inscripciones.RutaFoto + ".jpg")>
                 </div>
                 <div class="site-athleteswidget__info site-athleteswidget__info--negative">
-                    <h3 class="site-athleteswidget__name">@Model.afiliado.Nombre <strong>@Model.afiliado.Apellido_Paterno</strong></h3>
+                    <h3 class="site-athleteswidget__name">@Model.Inscripciones.Afiliado.Nombre <strong>@Model.Inscripciones.Afiliado.Apellido_Paterno</strong></h3>
                     <p class="site-athleteswidget__subtitle">@Model.resultados.Athlete1.Age años</p>
                     <p class="site-athleteswidget__subtitle">@Model.resultados.MEET1.MName</p>
                     <table class="site-rankingwidget__table">

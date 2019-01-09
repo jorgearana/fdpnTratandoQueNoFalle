@@ -7,7 +7,15 @@
         <header class="site-homepage__section__header">
 
             <h2 class="site-title site-title--ultra site-title--ultra--primary">Resultados del torneo</h2>
-            <h2 class="site-title">@Model.resultadoFinales[0].MEET1.MName</h2>
+            @if (Model.resultadoFinales.Count() > 0)
+            {
+                <h2 class="site-title">@Model.resultadoFinales[0].MEET1.MName</h2>
+            }
+            else
+            {
+                <h2 class="site-title">No se encontraron resultados</h2>
+            }
+
 
         </header>
         <div class="site-homepage__section site-aboutwidget u-bg--poolpeople u-bg--blueoverlay">

@@ -12,16 +12,16 @@ namespace FDPN.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TipoAfiliado
+    public partial class Disciplinas
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TipoAfiliado()
+        public Disciplinas()
         {
             this.Inscripciones = new HashSet<Inscripciones>();
         }
     
-        public int AfiliadoId { get; set; }
-        public string Detalle { get; set; }
+        public int DisciplinaId { get; set; }
+        public string Nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Inscripciones> Inscripciones { get; set; }

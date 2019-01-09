@@ -21,8 +21,8 @@ namespace FDPN.Models
         public int VieneDe { get; set; }
         public System.DateTime FechaTraspaso { get; set; }
     
-        public virtual Afiliado Afiliado { get; set; }
         public virtual Club Club { get; set; }
+        public virtual Inscripciones Inscripciones { get; set; }
         public virtual Usuario Usuario { get; set; }
     }
 }

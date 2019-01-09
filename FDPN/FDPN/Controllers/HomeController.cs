@@ -50,16 +50,11 @@ namespace FDPN.Controllers
 
         public ActionResult _TopBar(string titulo)
         {
-
             string banner = "";
             if (titulo == "Home")
             {
-
-
-
                 Random rnd = new Random();
                 int i = rnd.Next(1, 10);
-
                 switch (i)
                 {
                     case 1:
@@ -96,10 +91,7 @@ namespace FDPN.Controllers
                 ViewBag.Title = "Home";
                 banner= banner+ " site-header js-siteHeader";
             }
-
-
             ViewBag.clase = banner;
-
             return PartialView();
         }
 
@@ -205,12 +197,12 @@ namespace FDPN.Controllers
                 // resultados = tiempos.Where(x => x.AthleteId == athleteID).OrderBy(x => x.PLACE).ThenByDescending(x => x.PFina).ToList(),
                 //afiliado = af.Afiliado.Where(x => x.DNI == dni).FirstOrDefault(),
                 resultados = resultadomejor,
-                afiliado = af.Afiliado.Where(x => x.DNI == dni).FirstOrDefault(),
+                Inscripciones = af.Inscripciones.Where(x => x.DNI == dni).FirstOrDefault(),
             };
 
-            if (VM.afiliado == null)
+            if (VM.Inscripciones == null)
             {
-                VM.afiliado = new Afiliado
+                VM.Inscripciones = new Inscripciones
                 {
                     RutaFoto = "sinfoto"
                 };

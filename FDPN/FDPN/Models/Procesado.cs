@@ -18,7 +18,6 @@ namespace FDPN.Models
         public Procesado()
         {
             this.Afiliacion = new HashSet<Afiliacion>();
-            this.Afiliado = new HashSet<Afiliado>();
         }
     
         public int ProcesadoId { get; set; }
@@ -26,7 +25,5 @@ namespace FDPN.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Afiliacion> Afiliacion { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Afiliado> Afiliado { get; set; }
     }
 }

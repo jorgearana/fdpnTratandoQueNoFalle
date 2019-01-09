@@ -11,7 +11,7 @@
             <h2 class="site-title site-title--ultra site-title--ultra--primary">Resultados en un torneo</h2>
             <p class="u-type--medium u-type--delta u-spc-bottom--med">@Model.atleta.First @Model.atleta.Last en el torneo</p>
             <div class="site-athleteswidget__photo">
-                <img src=@Url.Content(path + "/" + Model.afiliado.RutaFoto + ".jpg")>
+                <img src=@Url.Content(path + "/" + Model.Inscripciones.RutaFoto + ".jpg")>
             </div>
             <p class="u-type--medium u-type--delta u-spc-bottom--med">@Model.torneo.MName - @Model.torneo.Start.ToString("dd/MMM/yyyy")</p>
 

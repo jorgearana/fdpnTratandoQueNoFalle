@@ -28,14 +28,18 @@ namespace FDPN.Models
         public virtual DbSet<Afiliacion> Afiliacion { get; set; }
         public virtual DbSet<Afiliado> Afiliado { get; set; }
         public virtual DbSet<Antiguo> Antiguo { get; set; }
+        public virtual DbSet<Asociaciones> Asociaciones { get; set; }
         public virtual DbSet<CambiosDNI> CambiosDNI { get; set; }
         public virtual DbSet<Categorias> Categorias { get; set; }
         public virtual DbSet<Club> Club { get; set; }
+        public virtual DbSet<Directivos> Directivos { get; set; }
+        public virtual DbSet<Disciplinas> Disciplinas { get; set; }
         public virtual DbSet<Entrenadores> Entrenadores { get; set; }
         public virtual DbSet<Estado> Estado { get; set; }
         public virtual DbSet<HistorialdeAfiliaciones> HistorialdeAfiliaciones { get; set; }
         public virtual DbSet<HistorialEntrenador> HistorialEntrenador { get; set; }
         public virtual DbSet<HistorialTraspasos> HistorialTraspasos { get; set; }
+        public virtual DbSet<Inscripciones> Inscripciones { get; set; }
         public virtual DbSet<Multas> Multas { get; set; }
         public virtual DbSet<Procesado> Procesado { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }

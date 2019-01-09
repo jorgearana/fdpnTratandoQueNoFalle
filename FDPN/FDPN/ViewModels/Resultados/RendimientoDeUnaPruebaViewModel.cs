@@ -12,7 +12,7 @@ namespace FDPN.ViewModels.Resultados
         public List<RESULTS>  ResultadosCorta{ get; set; }
         public List<RESULTS> ResultadosLarga { get; set; }
         public Pruebas prueba { get; set; }
-        public Afiliado afiliado { get; set; }
+        public Inscripciones Inscripciones { get; set; }
 
     }
 }

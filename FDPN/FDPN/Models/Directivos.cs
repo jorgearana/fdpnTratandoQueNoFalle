@@ -12,15 +12,17 @@ namespace FDPN.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TraspasosEnEspera
+    public partial class Directivos
     {
-        public int eEsperaId { get; set; }
-        public string DNI { get; set; }
-        public int ClubSolicitante { get; set; }
-        public Nullable<System.DateTime> Fecha { get; set; }
-        public bool Liberado { get; set; }
+        public int DirectivoId { get; set; }
+        public string Nombre { get; set; }
+        public string Apellidos { get; set; }
+        public int ClubId { get; set; }
+        public string Email { get; set; }
+        public string Celular { get; set; }
+        public string Cargo { get; set; }
+        public System.DateTime FinVigencia { get; set; }
     
         public virtual Club Club { get; set; }
-        public virtual Inscripciones Inscripciones { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace FDPN.ViewModels.Masters
     {
 
         public AthleteMasters nadador { get; set; }
-        public Afiliado afiliado { get; set; }
+        public Inscripciones Inscripciones { get; set; }
         public List<RESULTSMasters> UltimasParticipaciones { get; set; }
         public List<RESULTSMasters> MejoresResultados { get; set; }
         public Dictionary<Pruebas, ListaTiempos> Mejorestiempos { get; set; }

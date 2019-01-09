@@ -11,7 +11,7 @@ namespace FDPN.ViewModels.Resultados
 
 
         public Athlete nadador { get; set; }
-        public Afiliado afiliado { get; set; }
+        public Inscripciones Inscripciones { get; set; }
         public List<RESULTS> UltimasParticipaciones { get; set; }
         public List<RESULTS> MejoresResultados { get; set; }
         public Dictionary<Pruebas, ListaTiempos> Mejorestiempos { get; set; }

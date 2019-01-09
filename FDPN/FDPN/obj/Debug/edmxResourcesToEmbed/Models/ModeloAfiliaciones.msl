@@ -17,17 +17,8 @@
     <EntitySetMapping Name="Afiliado">
       <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Afiliado">
         <MappingFragment StoreEntitySet="Afiliado">
-          <ScalarProperty Name="FotoDNI" ColumnName="FotoDNI" />
-          <ScalarProperty Name="Borrado" ColumnName="Borrado" />
-          <ScalarProperty Name="Disciplina" ColumnName="Disciplina" />
-          <ScalarProperty Name="RutaFoto" ColumnName="RutaFoto" />
-          <ScalarProperty Name="AntiguoId" ColumnName="AntiguoId" />
           <ScalarProperty Name="Sexo" ColumnName="Sexo" />
           <ScalarProperty Name="Fecha_de_nacimiento" ColumnName="Fecha de nacimiento" />
-          <ScalarProperty Name="ProcesadoID" ColumnName="ProcesadoID" />
-          <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
-          <ScalarProperty Name="TipoAfiliadoID" ColumnName="TipoAfiliadoID" />
-          <ScalarProperty Name="ClubID" ColumnName="ClubID" />
           <ScalarProperty Name="Tipo_de_documento" ColumnName="Tipo de documento" />
           <ScalarProperty Name="DNI" ColumnName="DNI" />
           <ScalarProperty Name="Apellido_Materno" ColumnName="Apellido Materno" />
@@ -42,6 +33,14 @@
         <MappingFragment StoreEntitySet="Antiguo">
           <ScalarProperty Name="Detalle" ColumnName="Detalle" />
           <ScalarProperty Name="AntiguoId" ColumnName="AntiguoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asociaciones">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Asociaciones">
+        <MappingFragment StoreEntitySet="Asociaciones">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="AsociacionId" ColumnName="AsociacionId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -68,18 +67,38 @@
     <EntitySetMapping Name="Club">
       <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Club">
         <MappingFragment StoreEntitySet="Club">
-          <ScalarProperty Name="InscripcionDeportistas" ColumnName="InscripcionDeportistas" />
-          <ScalarProperty Name="DatosConsejoDirectivo" ColumnName="DatosConsejoDirectivo" />
-          <ScalarProperty Name="DatosPersonaJuridica" ColumnName="DatosPersonaJuridica" />
-          <ScalarProperty Name="AcuerdoAfiliacion" ColumnName="AcuerdoAfiliacion" />
-          <ScalarProperty Name="ConsejoDirectivo" ColumnName="ConsejoDirectivo" />
-          <ScalarProperty Name="Testimonio" ColumnName="Testimonio" />
-          <ScalarProperty Name="Afiliado" ColumnName="Afiliado" />
+          <ScalarProperty Name="Resolucion" ColumnName="Resolucion" />
+          <ScalarProperty Name="FinVigenciaRenade" ColumnName="FinVigenciaRenade" />
+          <ScalarProperty Name="FinVigenciaPoderes" ColumnName="FinVigenciaPoderes" />
+          <ScalarProperty Name="FechaPagoAfiliacion" ColumnName="FechaPagoAfiliacion" />
+          <ScalarProperty Name="AsociacionId" ColumnName="AsociacionId" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />
           <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
           <ScalarProperty Name="Iniciales" ColumnName="Iniciales" />
           <ScalarProperty Name="NombreClub" ColumnName="NombreClub" />
           <ScalarProperty Name="ClubID" ColumnName="ClubID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Directivos">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Directivos">
+        <MappingFragment StoreEntitySet="Directivos">
+          <ScalarProperty Name="FinVigencia" ColumnName="FinVigencia" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+          <ScalarProperty Name="Celular" ColumnName="Celular" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ClubId" ColumnName="ClubId" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="DirectivoId" ColumnName="DirectivoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Disciplinas">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Disciplinas">
+        <MappingFragment StoreEntitySet="Disciplinas">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="DisciplinaId" ColumnName="DisciplinaId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -117,7 +136,7 @@
       <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.HistorialdeAfiliaciones">
         <MappingFragment StoreEntitySet="HistorialdeAfiliaciones">
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-          <ScalarProperty Name="afiliadoId" ColumnName="afiliadoId" />
+          <ScalarProperty Name="InscripcionId" ColumnName="InscripcionId" />
           <ScalarProperty Name="afiliacionId" ColumnName="afiliacionId" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -141,6 +160,22 @@
           <ScalarProperty Name="ClubId" ColumnName="ClubId" />
           <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
           <ScalarProperty Name="HistorialId" ColumnName="HistorialId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inscripciones">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Inscripciones">
+        <MappingFragment StoreEntitySet="Inscripciones">
+          <ScalarProperty Name="DisciplinaId" ColumnName="DisciplinaId" />
+          <ScalarProperty Name="FotoDNI" ColumnName="FotoDNI" />
+          <ScalarProperty Name="Borrado" ColumnName="Borrado" />
+          <ScalarProperty Name="RutaFoto" ColumnName="RutaFoto" />
+          <ScalarProperty Name="AntiguoId" ColumnName="AntiguoId" />
+          <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
+          <ScalarProperty Name="TipoAfiliadoID" ColumnName="TipoAfiliadoID" />
+          <ScalarProperty Name="ClubID" ColumnName="ClubID" />
+          <ScalarProperty Name="DNI" ColumnName="DNI" />
+          <ScalarProperty Name="InscripcionId" ColumnName="InscripcionId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

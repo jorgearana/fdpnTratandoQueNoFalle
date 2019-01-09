@@ -15,7 +15,7 @@ namespace FDPN.Models
     public partial class HistorialdeAfiliaciones
     {
         public int afiliacionId { get; set; }
-        public int afiliadoId { get; set; }
+        public int InscripcionId { get; set; }
         public System.DateTime Fecha { get; set; }
     }
 }

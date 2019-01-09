@@ -12,6 +12,6 @@ namespace FDPN.ViewModels.Masters
         public List<RESULTSMasters> ResultadosCorta { get; set; }
         public List<RESULTSMasters> ResultadosLarga { get; set; }
         public Pruebas prueba { get; set; }
-        public Afiliado afiliado { get; set; }
+        public Inscripciones Inscripciones { get; set; }
     }
 }

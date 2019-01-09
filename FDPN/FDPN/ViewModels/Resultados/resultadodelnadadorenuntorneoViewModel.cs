@@ -11,7 +11,7 @@ namespace FDPN.ViewModels.Resultados
         public MEET torneo  { get; set; }
         public  Athlete atleta { get; set; }
         public List<RESULTS> resultados { get; set; }
-        public Afiliado afiliado { get; set; }
+        public Inscripciones Inscripciones { get; set; }
 
     }
 }

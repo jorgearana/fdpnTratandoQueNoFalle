@@ -4,14 +4,18 @@
     <EntitySet Name="Afiliacion" EntityType="DB_9B1F4C_afiliacionesModel.Afiliacion" />
     <EntitySet Name="Afiliado" EntityType="DB_9B1F4C_afiliacionesModel.Afiliado" />
     <EntitySet Name="Antiguo" EntityType="DB_9B1F4C_afiliacionesModel.Antiguo" />
+    <EntitySet Name="Asociaciones" EntityType="DB_9B1F4C_afiliacionesModel.Asociaciones" />
     <EntitySet Name="CambiosDNI" EntityType="DB_9B1F4C_afiliacionesModel.CambiosDNI" />
     <EntitySet Name="Categorias" EntityType="DB_9B1F4C_afiliacionesModel.Categorias" />
     <EntitySet Name="Club" EntityType="DB_9B1F4C_afiliacionesModel.Club" />
+    <EntitySet Name="Directivos" EntityType="DB_9B1F4C_afiliacionesModel.Directivos" />
+    <EntitySet Name="Disciplinas" EntityType="DB_9B1F4C_afiliacionesModel.Disciplinas" />
     <EntitySet Name="Entrenadores" EntityType="DB_9B1F4C_afiliacionesModel.Entrenadores" />
     <EntitySet Name="Estado" EntityType="DB_9B1F4C_afiliacionesModel.Estado" />
     <EntitySet Name="HistorialdeAfiliaciones" EntityType="DB_9B1F4C_afiliacionesModel.HistorialdeAfiliaciones" />
     <EntitySet Name="HistorialEntrenador" EntityType="DB_9B1F4C_afiliacionesModel.HistorialEntrenador" />
     <EntitySet Name="HistorialTraspasos" EntityType="DB_9B1F4C_afiliacionesModel.HistorialTraspasos" />
+    <EntitySet Name="Inscripciones" EntityType="DB_9B1F4C_afiliacionesModel.Inscripciones" />
     <EntitySet Name="Multas" EntityType="DB_9B1F4C_afiliacionesModel.Multas" />
     <EntitySet Name="Procesado" EntityType="DB_9B1F4C_afiliacionesModel.Procesado" />
     <EntitySet Name="Rol" EntityType="DB_9B1F4C_afiliacionesModel.Rol" />
@@ -22,12 +26,12 @@
     <EntitySet Name="Vouchers" EntityType="DB_9B1F4C_afiliacionesModel.Vouchers" />
     <EntitySet Name="Consulta" EntityType="DB_9B1F4C_afiliacionesModel.Consulta" />
     <EntitySet Name="sysdiagrams" EntityType="DB_9B1F4C_afiliacionesModel.sysdiagrams" />
-    <AssociationSet Name="FK_Afiliacion_Afiliado1" Association="DB_9B1F4C_afiliacionesModel.FK_Afiliacion_Afiliado1">
-      <End Role="Afiliado" EntitySet="Afiliado" />
-      <End Role="Afiliacion" EntitySet="Afiliacion" />
-    </AssociationSet>
     <AssociationSet Name="FK_Afiliacion_Club" Association="DB_9B1F4C_afiliacionesModel.FK_Afiliacion_Club">
       <End Role="Club" EntitySet="Club" />
+      <End Role="Afiliacion" EntitySet="Afiliacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Afiliacion_Inscripciones" Association="DB_9B1F4C_afiliacionesModel.FK_Afiliacion_Inscripciones">
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
       <End Role="Afiliacion" EntitySet="Afiliacion" />
     </AssociationSet>
     <AssociationSet Name="FK_Afiliacion_Procesado" Association="DB_9B1F4C_afiliacionesModel.FK_Afiliacion_Procesado">
@@ -42,45 +46,33 @@
       <End Role="Vouchers" EntitySet="Vouchers" />
       <End Role="Afiliacion" EntitySet="Afiliacion" />
     </AssociationSet>
-    <AssociationSet Name="FK_Afiliado_Antiguo" Association="DB_9B1F4C_afiliacionesModel.FK_Afiliado_Antiguo">
-      <End Role="Antiguo" EntitySet="Antiguo" />
-      <End Role="Afiliado" EntitySet="Afiliado" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Afiliado_Club" Association="DB_9B1F4C_afiliacionesModel.FK_Afiliado_Club">
-      <End Role="Club" EntitySet="Club" />
-      <End Role="Afiliado" EntitySet="Afiliado" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Afiliado_Estado" Association="DB_9B1F4C_afiliacionesModel.FK_Afiliado_Estado">
-      <End Role="Estado" EntitySet="Estado" />
-      <End Role="Afiliado" EntitySet="Afiliado" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Afiliado_Procesado" Association="DB_9B1F4C_afiliacionesModel.FK_Afiliado_Procesado">
-      <End Role="Procesado" EntitySet="Procesado" />
-      <End Role="Afiliado" EntitySet="Afiliado" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Afiliado_TipoAfiliado" Association="DB_9B1F4C_afiliacionesModel.FK_Afiliado_TipoAfiliado">
-      <End Role="TipoAfiliado" EntitySet="TipoAfiliado" />
-      <End Role="Afiliado" EntitySet="Afiliado" />
-    </AssociationSet>
     <AssociationSet Name="FK_CambiosDNI_Afiliado" Association="DB_9B1F4C_afiliacionesModel.FK_CambiosDNI_Afiliado">
       <End Role="Afiliado" EntitySet="Afiliado" />
       <End Role="CambiosDNI" EntitySet="CambiosDNI" />
     </AssociationSet>
-    <AssociationSet Name="FK_HistorialTraspasos_Afiliado1" Association="DB_9B1F4C_afiliacionesModel.FK_HistorialTraspasos_Afiliado1">
+    <AssociationSet Name="FK_Inscripciones_Afiliado" Association="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Afiliado">
       <End Role="Afiliado" EntitySet="Afiliado" />
-      <End Role="HistorialTraspasos" EntitySet="HistorialTraspasos" />
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
     </AssociationSet>
     <AssociationSet Name="FK_Multas_Afiliado" Association="DB_9B1F4C_afiliacionesModel.FK_Multas_Afiliado">
       <End Role="Afiliado" EntitySet="Afiliado" />
       <End Role="Multas" EntitySet="Multas" />
     </AssociationSet>
-    <AssociationSet Name="FK_TraspasosEnEspera_Afiliado" Association="DB_9B1F4C_afiliacionesModel.FK_TraspasosEnEspera_Afiliado">
-      <End Role="Afiliado" EntitySet="Afiliado" />
-      <End Role="TraspasosEnEspera" EntitySet="TraspasosEnEspera" />
-    </AssociationSet>
     <AssociationSet Name="FK_Entrenadores_Antiguo" Association="DB_9B1F4C_afiliacionesModel.FK_Entrenadores_Antiguo">
       <End Role="Antiguo" EntitySet="Antiguo" />
       <End Role="Entrenadores" EntitySet="Entrenadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inscripciones_Antiguo" Association="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Antiguo">
+      <End Role="Antiguo" EntitySet="Antiguo" />
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Club_Asociaciones" Association="DB_9B1F4C_afiliacionesModel.FK_Club_Asociaciones">
+      <End Role="Asociaciones" EntitySet="Asociaciones" />
+      <End Role="Club" EntitySet="Club" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Directivos_Club" Association="DB_9B1F4C_afiliacionesModel.FK_Directivos_Club">
+      <End Role="Club" EntitySet="Club" />
+      <End Role="Directivos" EntitySet="Directivos" />
     </AssociationSet>
     <AssociationSet Name="FK_Entrenadores_Club" Association="DB_9B1F4C_afiliacionesModel.FK_Entrenadores_Club">
       <End Role="Club" EntitySet="Club" />
@@ -93,6 +85,10 @@
     <AssociationSet Name="FK_HistorialTraspasos_Club" Association="DB_9B1F4C_afiliacionesModel.FK_HistorialTraspasos_Club">
       <End Role="Club" EntitySet="Club" />
       <End Role="HistorialTraspasos" EntitySet="HistorialTraspasos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inscripciones_Club" Association="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Club">
+      <End Role="Club" EntitySet="Club" />
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
     </AssociationSet>
     <AssociationSet Name="FK_Traspasos_Club" Association="DB_9B1F4C_afiliacionesModel.FK_Traspasos_Club">
       <End Role="Club" EntitySet="Club" />
@@ -110,6 +106,10 @@
       <End Role="Club" EntitySet="Club" />
       <End Role="Vouchers" EntitySet="Vouchers" />
     </AssociationSet>
+    <AssociationSet Name="FK_Inscripciones_Disciplinas" Association="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Disciplinas">
+      <End Role="Disciplinas" EntitySet="Disciplinas" />
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
+    </AssociationSet>
     <AssociationSet Name="FK_Entrenadores_Estado" Association="DB_9B1F4C_afiliacionesModel.FK_Entrenadores_Estado">
       <End Role="Estado" EntitySet="Estado" />
       <End Role="Entrenadores" EntitySet="Entrenadores" />
@@ -122,9 +122,25 @@
       <End Role="Entrenadores" EntitySet="Entrenadores" />
       <End Role="HistorialEntrenador" EntitySet="HistorialEntrenador" />
     </AssociationSet>
+    <AssociationSet Name="FK_Inscripciones_Estado" Association="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Estado">
+      <End Role="Estado" EntitySet="Estado" />
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HistorialTraspasos_Inscripciones" Association="DB_9B1F4C_afiliacionesModel.FK_HistorialTraspasos_Inscripciones">
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
+      <End Role="HistorialTraspasos" EntitySet="HistorialTraspasos" />
+    </AssociationSet>
     <AssociationSet Name="FK_HistorialTraspasos_Usuario" Association="DB_9B1F4C_afiliacionesModel.FK_HistorialTraspasos_Usuario">
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="HistorialTraspasos" EntitySet="HistorialTraspasos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inscripciones_TipoAfiliado" Association="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_TipoAfiliado">
+      <End Role="TipoAfiliado" EntitySet="TipoAfiliado" />
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TraspasosEnEspera_Inscripciones" Association="DB_9B1F4C_afiliacionesModel.FK_TraspasosEnEspera_Inscripciones">
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
+      <End Role="TraspasosEnEspera" EntitySet="TraspasosEnEspera" />
     </AssociationSet>
     <AssociationSet Name="FK_Multas_Usuario" Association="DB_9B1F4C_afiliacionesModel.FK_Multas_Usuario">
       <End Role="Usuario" EntitySet="Usuario" />
@@ -154,8 +170,8 @@
     <Property Name="VoucherId" Type="Int32" Nullable="false" />
     <Property Name="ClubId" Type="Int32" Nullable="false" />
     <Property Name="ProcesadoId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Afiliado" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliacion_Afiliado1" FromRole="Afiliacion" ToRole="Afiliado" />
     <NavigationProperty Name="Club" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliacion_Club" FromRole="Afiliacion" ToRole="Club" />
+    <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliacion_Inscripciones" FromRole="Afiliacion" ToRole="Inscripciones" />
     <NavigationProperty Name="Procesado" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliacion_Procesado" FromRole="Afiliacion" ToRole="Procesado" />
     <NavigationProperty Name="Usuario" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliacion_Usuario" FromRole="Afiliacion" ToRole="Usuario" />
     <NavigationProperty Name="Vouchers" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliacion_Vouchers" FromRole="Afiliacion" ToRole="Vouchers" />
@@ -170,27 +186,11 @@
     <Property Name="Apellido_Materno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="DNI" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="Tipo_de_documento" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
-    <Property Name="ClubID" Type="Int32" Nullable="false" />
-    <Property Name="TipoAfiliadoID" Type="Int32" Nullable="false" />
-    <Property Name="EstadoID" Type="Int32" Nullable="false" />
-    <Property Name="ProcesadoID" Type="Int32" Nullable="false" />
     <Property Name="Fecha_de_nacimiento" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Sexo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="AntiguoId" Type="Int32" Nullable="false" />
-    <Property Name="RutaFoto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Disciplina" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Borrado" Type="Int32" />
-    <Property Name="FotoDNI" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Afiliacion" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliacion_Afiliado1" FromRole="Afiliado" ToRole="Afiliacion" />
-    <NavigationProperty Name="Antiguo" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliado_Antiguo" FromRole="Afiliado" ToRole="Antiguo" />
-    <NavigationProperty Name="Club" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliado_Club" FromRole="Afiliado" ToRole="Club" />
-    <NavigationProperty Name="Estado" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliado_Estado" FromRole="Afiliado" ToRole="Estado" />
-    <NavigationProperty Name="Procesado" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliado_Procesado" FromRole="Afiliado" ToRole="Procesado" />
-    <NavigationProperty Name="TipoAfiliado" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliado_TipoAfiliado" FromRole="Afiliado" ToRole="TipoAfiliado" />
     <NavigationProperty Name="CambiosDNI" Relationship="DB_9B1F4C_afiliacionesModel.FK_CambiosDNI_Afiliado" FromRole="Afiliado" ToRole="CambiosDNI" />
-    <NavigationProperty Name="HistorialTraspasos" Relationship="DB_9B1F4C_afiliacionesModel.FK_HistorialTraspasos_Afiliado1" FromRole="Afiliado" ToRole="HistorialTraspasos" />
+    <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Afiliado" FromRole="Afiliado" ToRole="Inscripciones" />
     <NavigationProperty Name="Multas" Relationship="DB_9B1F4C_afiliacionesModel.FK_Multas_Afiliado" FromRole="Afiliado" ToRole="Multas" />
-    <NavigationProperty Name="TraspasosEnEspera" Relationship="DB_9B1F4C_afiliacionesModel.FK_TraspasosEnEspera_Afiliado" FromRole="Afiliado" ToRole="TraspasosEnEspera" />
   </EntityType>
   <EntityType Name="Antiguo">
     <Key>
@@ -198,8 +198,16 @@
     </Key>
     <Property Name="AntiguoId" Type="Int32" Nullable="false" />
     <Property Name="Detalle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Afiliado" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliado_Antiguo" FromRole="Antiguo" ToRole="Afiliado" />
     <NavigationProperty Name="Entrenadores" Relationship="DB_9B1F4C_afiliacionesModel.FK_Entrenadores_Antiguo" FromRole="Antiguo" ToRole="Entrenadores" />
+    <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Antiguo" FromRole="Antiguo" ToRole="Inscripciones" />
+  </EntityType>
+  <EntityType Name="Asociaciones">
+    <Key>
+      <PropertyRef Name="AsociacionId" />
+    </Key>
+    <Property Name="AsociacionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Club" Relationship="DB_9B1F4C_afiliacionesModel.FK_Club_Asociaciones" FromRole="Asociaciones" ToRole="Club" />
   </EntityType>
   <EntityType Name="CambiosDNI">
     <Key>
@@ -229,22 +237,44 @@
     <Property Name="Iniciales" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
     <Property Name="NombreUsuario" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="Activo" Type="Int32" Nullable="false" />
-    <Property Name="Afiliado" Type="Boolean" />
-    <Property Name="Testimonio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ConsejoDirectivo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="AcuerdoAfiliacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DatosPersonaJuridica" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="DatosConsejoDirectivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="InscripcionDeportistas" Type="Boolean" />
+    <Property Name="AsociacionId" Type="Int32" />
+    <Property Name="FechaPagoAfiliacion" Type="DateTime" Precision="0" />
+    <Property Name="FinVigenciaPoderes" Type="DateTime" Precision="0" />
+    <Property Name="FinVigenciaRenade" Type="DateTime" Precision="0" />
+    <Property Name="Resolucion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Afiliacion" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliacion_Club" FromRole="Club" ToRole="Afiliacion" />
-    <NavigationProperty Name="Afiliado1" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliado_Club" FromRole="Club" ToRole="Afiliado" />
+    <NavigationProperty Name="Asociaciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_Club_Asociaciones" FromRole="Club" ToRole="Asociaciones" />
+    <NavigationProperty Name="Directivos" Relationship="DB_9B1F4C_afiliacionesModel.FK_Directivos_Club" FromRole="Club" ToRole="Directivos" />
     <NavigationProperty Name="Entrenadores" Relationship="DB_9B1F4C_afiliacionesModel.FK_Entrenadores_Club" FromRole="Club" ToRole="Entrenadores" />
     <NavigationProperty Name="HistorialEntrenador" Relationship="DB_9B1F4C_afiliacionesModel.FK_HistorialEntrenador_Club" FromRole="Club" ToRole="HistorialEntrenador" />
     <NavigationProperty Name="HistorialTraspasos" Relationship="DB_9B1F4C_afiliacionesModel.FK_HistorialTraspasos_Club" FromRole="Club" ToRole="HistorialTraspasos" />
+    <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Club" FromRole="Club" ToRole="Inscripciones" />
     <NavigationProperty Name="Traspasos" Relationship="DB_9B1F4C_afiliacionesModel.FK_Traspasos_Club" FromRole="Club" ToRole="Traspasos" />
     <NavigationProperty Name="TraspasosEnEspera" Relationship="DB_9B1F4C_afiliacionesModel.FK_TraspasosEnEspera_Club" FromRole="Club" ToRole="TraspasosEnEspera" />
     <NavigationProperty Name="Usuario" Relationship="DB_9B1F4C_afiliacionesModel.FK_Usuario_Club" FromRole="Club" ToRole="Usuario" />
     <NavigationProperty Name="Vouchers" Relationship="DB_9B1F4C_afiliacionesModel.FK_Vouchers_Club" FromRole="Club" ToRole="Vouchers" />
+  </EntityType>
+  <EntityType Name="Directivos">
+    <Key>
+      <PropertyRef Name="DirectivoId" />
+    </Key>
+    <Property Name="DirectivoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ClubId" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Celular" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Cargo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FinVigencia" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Club" Relationship="DB_9B1F4C_afiliacionesModel.FK_Directivos_Club" FromRole="Directivos" ToRole="Club" />
+  </EntityType>
+  <EntityType Name="Disciplinas">
+    <Key>
+      <PropertyRef Name="DisciplinaId" />
+    </Key>
+    <Property Name="DisciplinaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Disciplinas" FromRole="Disciplinas" ToRole="Inscripciones" />
   </EntityType>
   <EntityType Name="Entrenadores">
     <Key>
@@ -278,15 +308,15 @@
     </Key>
     <Property Name="EstadoID" Type="Int32" Nullable="false" />
     <Property Name="Detalle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Afiliado" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliado_Estado" FromRole="Estado" ToRole="Afiliado" />
     <NavigationProperty Name="Entrenadores" Relationship="DB_9B1F4C_afiliacionesModel.FK_Entrenadores_Estado" FromRole="Estado" ToRole="Entrenadores" />
+    <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Estado" FromRole="Estado" ToRole="Inscripciones" />
   </EntityType>
   <EntityType Name="HistorialdeAfiliaciones">
     <Key>
       <PropertyRef Name="afiliacionId" />
     </Key>
     <Property Name="afiliacionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="afiliadoId" Type="Int32" Nullable="false" />
+    <Property Name="InscripcionId" Type="Int32" Nullable="false" />
     <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
   </EntityType>
   <EntityType Name="HistorialEntrenador">
@@ -310,9 +340,33 @@
     <Property Name="DNI" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="VieneDe" Type="Int32" Nullable="false" />
     <Property Name="FechaTraspaso" Type="DateTime" Nullable="false" Precision="0" />
-    <NavigationProperty Name="Afiliado" Relationship="DB_9B1F4C_afiliacionesModel.FK_HistorialTraspasos_Afiliado1" FromRole="HistorialTraspasos" ToRole="Afiliado" />
     <NavigationProperty Name="Club" Relationship="DB_9B1F4C_afiliacionesModel.FK_HistorialTraspasos_Club" FromRole="HistorialTraspasos" ToRole="Club" />
+    <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_HistorialTraspasos_Inscripciones" FromRole="HistorialTraspasos" ToRole="Inscripciones" />
     <NavigationProperty Name="Usuario" Relationship="DB_9B1F4C_afiliacionesModel.FK_HistorialTraspasos_Usuario" FromRole="HistorialTraspasos" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Inscripciones">
+    <Key>
+      <PropertyRef Name="DNI" />
+    </Key>
+    <Property Name="InscripcionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DNI" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ClubID" Type="Int32" Nullable="false" />
+    <Property Name="TipoAfiliadoID" Type="Int32" Nullable="false" />
+    <Property Name="EstadoID" Type="Int32" Nullable="false" />
+    <Property Name="AntiguoId" Type="Int32" Nullable="false" />
+    <Property Name="RutaFoto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Borrado" Type="Int32" />
+    <Property Name="FotoDNI" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DisciplinaId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Afiliacion" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliacion_Inscripciones" FromRole="Inscripciones" ToRole="Afiliacion" />
+    <NavigationProperty Name="Afiliado" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Afiliado" FromRole="Inscripciones" ToRole="Afiliado" />
+    <NavigationProperty Name="Antiguo" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Antiguo" FromRole="Inscripciones" ToRole="Antiguo" />
+    <NavigationProperty Name="Club" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Club" FromRole="Inscripciones" ToRole="Club" />
+    <NavigationProperty Name="Disciplinas" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Disciplinas" FromRole="Inscripciones" ToRole="Disciplinas" />
+    <NavigationProperty Name="Estado" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Estado" FromRole="Inscripciones" ToRole="Estado" />
+    <NavigationProperty Name="HistorialTraspasos" Relationship="DB_9B1F4C_afiliacionesModel.FK_HistorialTraspasos_Inscripciones" FromRole="Inscripciones" ToRole="HistorialTraspasos" />
+    <NavigationProperty Name="TipoAfiliado" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_TipoAfiliado" FromRole="Inscripciones" ToRole="TipoAfiliado" />
+    <NavigationProperty Name="TraspasosEnEspera" Relationship="DB_9B1F4C_afiliacionesModel.FK_TraspasosEnEspera_Inscripciones" FromRole="Inscripciones" ToRole="TraspasosEnEspera" />
   </EntityType>
   <EntityType Name="Multas">
     <Key>
@@ -343,7 +397,6 @@
     <Property Name="ProcesadoId" Type="Int32" Nullable="false" />
     <Property Name="Detalle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Afiliacion" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliacion_Procesado" FromRole="Procesado" ToRole="Afiliacion" />
-    <NavigationProperty Name="Afiliado" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliado_Procesado" FromRole="Procesado" ToRole="Afiliado" />
   </EntityType>
   <EntityType Name="Rol">
     <Key>
@@ -360,7 +413,7 @@
     </Key>
     <Property Name="AfiliadoId" Type="Int32" Nullable="false" />
     <Property Name="Detalle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Afiliado" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliado_TipoAfiliado" FromRole="TipoAfiliado" ToRole="Afiliado" />
+    <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_TipoAfiliado" FromRole="TipoAfiliado" ToRole="Inscripciones" />
   </EntityType>
   <EntityType Name="Traspasos">
     <Key>
@@ -386,8 +439,8 @@
     <Property Name="ClubSolicitante" Type="Int32" Nullable="false" />
     <Property Name="Fecha" Type="DateTime" Precision="0" />
     <Property Name="Liberado" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Afiliado" Relationship="DB_9B1F4C_afiliacionesModel.FK_TraspasosEnEspera_Afiliado" FromRole="TraspasosEnEspera" ToRole="Afiliado" />
     <NavigationProperty Name="Club" Relationship="DB_9B1F4C_afiliacionesModel.FK_TraspasosEnEspera_Club" FromRole="TraspasosEnEspera" ToRole="Club" />
+    <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_TraspasosEnEspera_Inscripciones" FromRole="TraspasosEnEspera" ToRole="Inscripciones" />
   </EntityType>
   <EntityType Name="Usuario">
     <Key>
@@ -449,22 +502,10 @@
     </Key>
     <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
-  <Association Name="FK_Afiliacion_Afiliado1">
-    <End Type="DB_9B1F4C_afiliacionesModel.Afiliado" Role="Afiliado" Multiplicity="1" />
-    <End Type="DB_9B1F4C_afiliacionesModel.Afiliacion" Role="Afiliacion" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Afiliado">
-        <PropertyRef Name="DNI" />
-      </Principal>
-      <Dependent Role="Afiliacion">
-        <PropertyRef Name="DNI" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Afiliacion_Club">
     <End Type="DB_9B1F4C_afiliacionesModel.Club" Role="Club" Multiplicity="1" />
     <End Type="DB_9B1F4C_afiliacionesModel.Afiliacion" Role="Afiliacion" Multiplicity="*" />
@@ -474,6 +515,18 @@
       </Principal>
       <Dependent Role="Afiliacion">
         <PropertyRef Name="ClubId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Afiliacion_Inscripciones">
+    <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.Afiliacion" Role="Afiliacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inscripciones">
+        <PropertyRef Name="DNI" />
+      </Principal>
+      <Dependent Role="Afiliacion">
+        <PropertyRef Name="DNI" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -513,66 +566,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Afiliado_Antiguo">
-    <End Type="DB_9B1F4C_afiliacionesModel.Antiguo" Role="Antiguo" Multiplicity="1" />
-    <End Type="DB_9B1F4C_afiliacionesModel.Afiliado" Role="Afiliado" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Antiguo">
-        <PropertyRef Name="AntiguoId" />
-      </Principal>
-      <Dependent Role="Afiliado">
-        <PropertyRef Name="AntiguoId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Afiliado_Club">
-    <End Type="DB_9B1F4C_afiliacionesModel.Club" Role="Club" Multiplicity="1" />
-    <End Type="DB_9B1F4C_afiliacionesModel.Afiliado" Role="Afiliado" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Club">
-        <PropertyRef Name="ClubID" />
-      </Principal>
-      <Dependent Role="Afiliado">
-        <PropertyRef Name="ClubID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Afiliado_Estado">
-    <End Type="DB_9B1F4C_afiliacionesModel.Estado" Role="Estado" Multiplicity="1" />
-    <End Type="DB_9B1F4C_afiliacionesModel.Afiliado" Role="Afiliado" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Estado">
-        <PropertyRef Name="EstadoID" />
-      </Principal>
-      <Dependent Role="Afiliado">
-        <PropertyRef Name="EstadoID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Afiliado_Procesado">
-    <End Type="DB_9B1F4C_afiliacionesModel.Procesado" Role="Procesado" Multiplicity="1" />
-    <End Type="DB_9B1F4C_afiliacionesModel.Afiliado" Role="Afiliado" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Procesado">
-        <PropertyRef Name="ProcesadoId" />
-      </Principal>
-      <Dependent Role="Afiliado">
-        <PropertyRef Name="ProcesadoID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Afiliado_TipoAfiliado">
-    <End Type="DB_9B1F4C_afiliacionesModel.TipoAfiliado" Role="TipoAfiliado" Multiplicity="1" />
-    <End Type="DB_9B1F4C_afiliacionesModel.Afiliado" Role="Afiliado" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TipoAfiliado">
-        <PropertyRef Name="AfiliadoId" />
-      </Principal>
-      <Dependent Role="Afiliado">
-        <PropertyRef Name="TipoAfiliadoID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_CambiosDNI_Afiliado">
     <End Type="DB_9B1F4C_afiliacionesModel.Afiliado" Role="Afiliado" Multiplicity="1" />
     <End Type="DB_9B1F4C_afiliacionesModel.CambiosDNI" Role="CambiosDNI" Multiplicity="*" />
@@ -585,14 +578,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_HistorialTraspasos_Afiliado1">
+  <Association Name="FK_Inscripciones_Afiliado">
     <End Type="DB_9B1F4C_afiliacionesModel.Afiliado" Role="Afiliado" Multiplicity="1" />
-    <End Type="DB_9B1F4C_afiliacionesModel.HistorialTraspasos" Role="HistorialTraspasos" Multiplicity="*" />
+    <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Afiliado">
         <PropertyRef Name="DNI" />
       </Principal>
-      <Dependent Role="HistorialTraspasos">
+      <Dependent Role="Inscripciones">
         <PropertyRef Name="DNI" />
       </Dependent>
     </ReferentialConstraint>
@@ -609,18 +602,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_TraspasosEnEspera_Afiliado">
-    <End Type="DB_9B1F4C_afiliacionesModel.Afiliado" Role="Afiliado" Multiplicity="1" />
-    <End Type="DB_9B1F4C_afiliacionesModel.TraspasosEnEspera" Role="TraspasosEnEspera" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Afiliado">
-        <PropertyRef Name="DNI" />
-      </Principal>
-      <Dependent Role="TraspasosEnEspera">
-        <PropertyRef Name="DNI" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Entrenadores_Antiguo">
     <End Type="DB_9B1F4C_afiliacionesModel.Antiguo" Role="Antiguo" Multiplicity="1" />
     <End Type="DB_9B1F4C_afiliacionesModel.Entrenadores" Role="Entrenadores" Multiplicity="*" />
@@ -630,6 +611,42 @@
       </Principal>
       <Dependent Role="Entrenadores">
         <PropertyRef Name="AntiguoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inscripciones_Antiguo">
+    <End Type="DB_9B1F4C_afiliacionesModel.Antiguo" Role="Antiguo" Multiplicity="1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Antiguo">
+        <PropertyRef Name="AntiguoId" />
+      </Principal>
+      <Dependent Role="Inscripciones">
+        <PropertyRef Name="AntiguoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Club_Asociaciones">
+    <End Type="DB_9B1F4C_afiliacionesModel.Asociaciones" Role="Asociaciones" Multiplicity="0..1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.Club" Role="Club" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asociaciones">
+        <PropertyRef Name="AsociacionId" />
+      </Principal>
+      <Dependent Role="Club">
+        <PropertyRef Name="AsociacionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Directivos_Club">
+    <End Type="DB_9B1F4C_afiliacionesModel.Club" Role="Club" Multiplicity="1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.Directivos" Role="Directivos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Club">
+        <PropertyRef Name="ClubID" />
+      </Principal>
+      <Dependent Role="Directivos">
+        <PropertyRef Name="ClubId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -666,6 +683,18 @@
       </Principal>
       <Dependent Role="HistorialTraspasos">
         <PropertyRef Name="ClubId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inscripciones_Club">
+    <End Type="DB_9B1F4C_afiliacionesModel.Club" Role="Club" Multiplicity="1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Club">
+        <PropertyRef Name="ClubID" />
+      </Principal>
+      <Dependent Role="Inscripciones">
+        <PropertyRef Name="ClubID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -717,6 +746,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Inscripciones_Disciplinas">
+    <End Type="DB_9B1F4C_afiliacionesModel.Disciplinas" Role="Disciplinas" Multiplicity="1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Disciplinas">
+        <PropertyRef Name="DisciplinaId" />
+      </Principal>
+      <Dependent Role="Inscripciones">
+        <PropertyRef Name="DisciplinaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Entrenadores_Estado">
     <End Type="DB_9B1F4C_afiliacionesModel.Estado" Role="Estado" Multiplicity="1" />
     <End Type="DB_9B1F4C_afiliacionesModel.Entrenadores" Role="Entrenadores" Multiplicity="*" />
@@ -753,6 +794,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Inscripciones_Estado">
+    <End Type="DB_9B1F4C_afiliacionesModel.Estado" Role="Estado" Multiplicity="1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="EstadoID" />
+      </Principal>
+      <Dependent Role="Inscripciones">
+        <PropertyRef Name="EstadoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HistorialTraspasos_Inscripciones">
+    <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.HistorialTraspasos" Role="HistorialTraspasos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inscripciones">
+        <PropertyRef Name="DNI" />
+      </Principal>
+      <Dependent Role="HistorialTraspasos">
+        <PropertyRef Name="DNI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_HistorialTraspasos_Usuario">
     <End Type="DB_9B1F4C_afiliacionesModel.Usuario" Role="Usuario" Multiplicity="1" />
     <End Type="DB_9B1F4C_afiliacionesModel.HistorialTraspasos" Role="HistorialTraspasos" Multiplicity="*" />
@@ -762,6 +827,30 @@
       </Principal>
       <Dependent Role="HistorialTraspasos">
         <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inscripciones_TipoAfiliado">
+    <End Type="DB_9B1F4C_afiliacionesModel.TipoAfiliado" Role="TipoAfiliado" Multiplicity="1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoAfiliado">
+        <PropertyRef Name="AfiliadoId" />
+      </Principal>
+      <Dependent Role="Inscripciones">
+        <PropertyRef Name="TipoAfiliadoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TraspasosEnEspera_Inscripciones">
+    <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.TraspasosEnEspera" Role="TraspasosEnEspera" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inscripciones">
+        <PropertyRef Name="DNI" />
+      </Principal>
+      <Dependent Role="TraspasosEnEspera">
+        <PropertyRef Name="DNI" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
