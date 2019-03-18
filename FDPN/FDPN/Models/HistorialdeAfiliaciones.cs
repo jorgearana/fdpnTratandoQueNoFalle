@@ -17,5 +17,7 @@ namespace FDPN.Models
         public int afiliacionId { get; set; }
         public int InscripcionId { get; set; }
         public System.DateTime Fecha { get; set; }
+    
+        public virtual Inscripciones Inscripciones { get; set; }
     }
 }

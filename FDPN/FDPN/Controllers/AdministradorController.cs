@@ -12,10 +12,8 @@ using FDPN.Views.Administrador;
 
 namespace FDPN.Controllers
 {
-    public class AdministradorController : Controller
+    public class AdministradorController : BASEController
     {
-        DB_9B1F4C_MVCcompetenciasEntities db = new DB_9B1F4C_MVCcompetenciasEntities();
-        DB_9B1F4C_afiliacionesEntities1 af = new DB_9B1F4C_afiliacionesEntities1();
 
         FilesHelper filesHelper;
         String tempPath = "~/img/Fotos/";
@@ -296,13 +294,13 @@ namespace FDPN.Controllers
             if (ModelState.IsValid)
             {
 
-                Usuario logUsuario = af.Usuario.Where(x => x.Usuario1 == usuario.Usuario1 && x.Password == usuario.Password).FirstOrDefault();
+                Usuario logUsuario = db.Usuario.Where(x => x.Usuario1 == usuario.Usuario1 && x.Password == usuario.Password).FirstOrDefault();
 
                 if (logUsuario != null)
                 {
 
-                    Rol rol = af.Rol.Where(x => x.RolId == logUsuario.RolId).FirstOrDefault();
-                    Club club = af.Club.Where(x => x.ClubID == usuario.ClubId).FirstOrDefault();
+                    Rol rol = db.Rol.Where(x => x.RolId == logUsuario.RolId).FirstOrDefault();
+                    Club club = db.Club.Where(x => x.ClubID == usuario.ClubId).FirstOrDefault();
 
                     Session.Add("Usuario", logUsuario);
                     Session.Add("Club", logUsuario.Club);
@@ -489,6 +487,21 @@ namespace FDPN.Controllers
                 db.Vivo.Add(vivo);
                 db.SaveChanges();
             }
+            return RedirectToAction("ResultadosEnVivo");
+        }
+
+        public ActionResult BorrarVivo(int id)
+        {
+            Vivo vivo = db.Vivo.Find(id);
+            return View(vivo);
+        }
+
+        [HttpPost]
+        public ActionResult BorrarVivo(Vivo vivo)
+        {
+            Vivo borrar = db.Vivo.Find(vivo.VivoId);
+            db.Vivo.Remove(borrar);
+            db.SaveChanges();
             return RedirectToAction("ResultadosEnVivo");
         }
     }

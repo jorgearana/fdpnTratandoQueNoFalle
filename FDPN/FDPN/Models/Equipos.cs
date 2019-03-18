@@ -17,7 +17,7 @@ namespace FDPN.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Equipos()
         {
-            this.Atletas = new HashSet<Atletas>();
+            this.atletas = new HashSet<atletas>();
         }
     
         public int Team_no { get; set; }
@@ -62,6 +62,7 @@ namespace FDPN.Models
         public int MeetId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Atletas> Atletas { get; set; }
+        public virtual ICollection<atletas> atletas { get; set; }
+        public virtual Torneo Torneo { get; set; }
     }
 }

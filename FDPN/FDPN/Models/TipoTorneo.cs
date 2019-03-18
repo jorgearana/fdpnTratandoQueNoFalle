@@ -17,15 +17,12 @@ namespace FDPN.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TipoTorneo()
         {
-            this.MarcasMinimas = new HashSet<MarcasMinimas>();
             this.SetupTorneo = new HashSet<SetupTorneo>();
         }
     
         public int TipoId { get; set; }
         public string Nombre { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MarcasMinimas> MarcasMinimas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SetupTorneo> SetupTorneo { get; set; }
     }

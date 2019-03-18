@@ -10,11 +10,9 @@ using System.Web.Mvc;
 
 namespace FDPN.Controllers
 {
-    public class NoticiasController : Controller
+    public class NoticiasController : BASEController
     {
-          DB_9B1F4C_MVCcompetenciasEntities db = new   DB_9B1F4C_MVCcompetenciasEntities();
-
-        // GET: Noticias
+             // GET: Noticias
         public ActionResult Noticias(string searchString)
         {
             List<previewNoticiasViewModel> VM = new List<previewNoticiasViewModel>();

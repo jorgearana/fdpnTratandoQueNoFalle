@@ -1,4 +1,5 @@
-﻿using FDPN.Helpers;
+﻿using FDPN.Controllers;
+using FDPN.Helpers;
 using FDPN.Views.Administrador;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Web.Mvc;
 
 namespace jQuery_File_Upload.MVC5.Controllers
 {
-    public class FileUploadController : Controller
+    public class FileUploadController : BASEController
     {
         FilesHelper filesHelper;
         String tempPath = "~/Content/img/Fotos/";

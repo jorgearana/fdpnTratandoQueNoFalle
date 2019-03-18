@@ -8,10 +8,9 @@ using FDPN.ViewModels.Documento;
 
 namespace FDPN.Controllers
 {
-    public class DocumentosController : Controller
+    public class DocumentosController : BASEController
     {
-          DB_9B1F4C_MVCcompetenciasEntities db = new   DB_9B1F4C_MVCcompetenciasEntities();
-        // GET: Documentos
+             // GET: Documentos
         public ActionResult Subvenciones(string searchString)
         {
             var query = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "Subvencion").OrderBy(x => x.Noticias.Fecha).AsQueryable();

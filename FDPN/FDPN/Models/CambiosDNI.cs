@@ -18,7 +18,5 @@ namespace FDPN.Models
         public string DNI { get; set; }
         public System.DateTime fecha { get; set; }
         public string DNIAntiguo { get; set; }
-    
-        public virtual Afiliado Afiliado { get; set; }
     }
 }

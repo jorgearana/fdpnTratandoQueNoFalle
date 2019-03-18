@@ -20,9 +20,8 @@ namespace FDPN.Models
         public string Heats_infinal { get; set; }
         public Nullable<short> Num_Heatsinfinal { get; set; }
         public int MeetId { get; set; }
-        public int MultiAge { get; set; }
-        public int EventId { get; set; }
+        public int MultiAgeId { get; set; }
     
-        public virtual Eventos Eventos { get; set; }
+        public virtual Torneo Torneo { get; set; }
     }
 }

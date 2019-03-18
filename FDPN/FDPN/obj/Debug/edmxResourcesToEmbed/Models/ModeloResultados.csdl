@@ -152,6 +152,38 @@
       <End Role="SetupTorneo" EntitySet="SetupTorneo" />
     </AssociationSet>
     <EntitySet Name="CategoriasMasters" EntityType="DB_9B1F4C_MVCcompetenciasModel.CategoriasMasters" />
+    <AssociationSet Name="FK_Entradas_Torneo" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Entradas_Torneo">
+      <End Role="Torneo" EntitySet="Torneo" />
+      <End Role="Entradas" EntitySet="Entradas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipos_Torneo" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Equipos_Torneo">
+      <End Role="Torneo" EntitySet="Torneo" />
+      <End Role="Equipos" EntitySet="Equipos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Eventos_Torneo" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Eventos_Torneo">
+      <End Role="Torneo" EntitySet="Torneo" />
+      <End Role="Eventos" EntitySet="Eventos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MultiEdad_Torneo" Association="DB_9B1F4C_MVCcompetenciasModel.FK_MultiEdad_Torneo">
+      <End Role="Torneo" EntitySet="Torneo" />
+      <End Role="MultiEdad" EntitySet="MultiEdad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RESULTS_Pruebas" Association="DB_9B1F4C_MVCcompetenciasModel.FK_RESULTS_Pruebas">
+      <End Role="Pruebas" EntitySet="Pruebas" />
+      <End Role="RESULTS" EntitySet="RESULTS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sesion_Torneo" Association="DB_9B1F4C_MVCcompetenciasModel.FK_Sesion_Torneo">
+      <End Role="Torneo" EntitySet="Torneo" />
+      <End Role="Sesion" EntitySet="Sesion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SessionItem_Torneo" Association="DB_9B1F4C_MVCcompetenciasModel.FK_SessionItem_Torneo">
+      <End Role="Torneo" EntitySet="Torneo" />
+      <End Role="SessionItem" EntitySet="SessionItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SetupTorneo_Torneo" Association="DB_9B1F4C_MVCcompetenciasModel.FK_SetupTorneo_Torneo">
+      <End Role="Torneo" EntitySet="Torneo" />
+      <End Role="SetupTorneo" EntitySet="SetupTorneo" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Alertas">
     <Key>
@@ -424,6 +456,7 @@
     <Property Name="EventId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Atletas" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Entradas_Atletas" FromRole="Entradas" ToRole="Atletas" />
     <NavigationProperty Name="Eventos" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Entradas_Eventos" FromRole="Entradas" ToRole="Eventos" />
+    <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Entradas_Torneo" FromRole="Entradas" ToRole="Torneo" />
   </EntityType>
   <EntityType Name="Equipos">
     <Key>
@@ -470,6 +503,7 @@
     <Property Name="TeamId" Type="Int32" Nullable="false" />
     <Property Name="MeetId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Atletas" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Atletas_Equipos" FromRole="Equipos" ToRole="Atletas" />
+    <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Equipos_Torneo" FromRole="Equipos" ToRole="Torneo" />
   </EntityType>
   <EntityType Name="Eventos">
     <Key>
@@ -553,6 +587,7 @@
     <NavigationProperty Name="Entradas" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Entradas_Eventos" FromRole="Eventos" ToRole="Entradas" />
     <NavigationProperty Name="MultiEdad" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_MultiEdad_Eventos" FromRole="Eventos" ToRole="MultiEdad" />
     <NavigationProperty Name="SessionItem" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_SessionItem_Eventos" FromRole="Eventos" ToRole="SessionItem" />
+    <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Eventos_Torneo" FromRole="Eventos" ToRole="Torneo" />
   </EntityType>
   <EntityType Name="Fotos">
     <Key>
@@ -620,6 +655,7 @@
   <EntityType Name="MarcasMinimas">
     <Key>
       <PropertyRef Name="TimeStdId" />
+      <PropertyRef Name="MeetId" />
     </Key>
     <Property Name="tag_ptr" Type="Int32" />
     <Property Name="tag_gender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
@@ -634,6 +670,7 @@
     <Property Name="TimeStdId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TipoId" Type="Int32" />
     <NavigationProperty Name="TipoTorneo" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_MarcasMinimas_TipoTorneo" FromRole="MarcasMinimas" ToRole="TipoTorneo" />
+    <Property Name="MeetId" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="MEET">
     <Key>
@@ -720,6 +757,10 @@
     <Property Name="PruebaId" Type="Int32" Nullable="false" />
     <Property Name="distancia" Type="Int32" Nullable="false" />
     <Property Name="estilo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="FactorF" Type="Double" />
+    <Property Name="FactorM" Type="Double" />
+    <Property Name="EstiloMeet" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="RESULTS" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_RESULTS_Pruebas" FromRole="Pruebas" ToRole="RESULTS" />
   </EntityType>
   <EntityType Name="Resultados">
     <Key>
@@ -768,6 +809,7 @@
     <NavigationProperty Name="Athlete1" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_RESULTS_Athlete" FromRole="RESULTS" ToRole="Athlete" />
     <NavigationProperty Name="MEET1" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_RESULTS_MEET" FromRole="RESULTS" ToRole="MEET" />
     <NavigationProperty Name="TEAM1" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_RESULTS_TEAM" FromRole="RESULTS" ToRole="TEAM" />
+    <NavigationProperty Name="Pruebas" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_RESULTS_Pruebas" FromRole="RESULTS" ToRole="Pruebas" />
   </EntityType>
   <EntityType Name="RESULTSMasters">
     <Key>
@@ -822,6 +864,7 @@
     <Property Name="MeetId" Type="Int32" Nullable="false" />
     <Property Name="SessionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="SessionItem" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_SessionItem_Sesion" FromRole="Sesion" ToRole="SessionItem" />
+    <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Sesion_Torneo" FromRole="Sesion" ToRole="Torneo" />
   </EntityType>
   <EntityType Name="SessionItem">
     <Key>
@@ -844,15 +887,19 @@
     <Property Name="SesionId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Eventos" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_SessionItem_Eventos" FromRole="SessionItem" ToRole="Eventos" />
     <NavigationProperty Name="Sesion" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_SessionItem_Sesion" FromRole="SessionItem" ToRole="Sesion" />
+    <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_SessionItem_Torneo" FromRole="SessionItem" ToRole="Torneo" />
   </EntityType>
   <EntityType Name="SetupTorneo">
     <Key>
       <PropertyRef Name="SetupId" />
     </Key>
     <Property Name="SetupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Meetid" Type="Int32" Nullable="false" />
+    <Property Name="Meetid" Type="Int32" />
     <Property Name="TipoId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="TipoTorneo" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_SetupTorneo_TipoTorneo" FromRole="SetupTorneo" ToRole="TipoTorneo" />
+    <Property Name="pruebasXsesion" Type="Int32" Nullable="false" />
+    <Property Name="pruebasXtorneo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_SetupTorneo_Torneo" FromRole="SetupTorneo" ToRole="Torneo" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -1111,6 +1158,14 @@
     <Property Name="TimeAdj_Method" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
     <Property Name="DisabledSeedWithAgeGroup_IfTimedFinalSuperSeed" Type="Boolean" Nullable="false" />
     <Property Name="Meetid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MarcaMaxima" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Entradas" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Entradas_Torneo" FromRole="Torneo" ToRole="Entradas" />
+    <NavigationProperty Name="Equipos" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Equipos_Torneo" FromRole="Torneo" ToRole="Equipos" />
+    <NavigationProperty Name="Eventos" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Eventos_Torneo" FromRole="Torneo" ToRole="Eventos" />
+    <NavigationProperty Name="MultiEdad" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_MultiEdad_Torneo" FromRole="Torneo" ToRole="MultiEdad" />
+    <NavigationProperty Name="Sesion" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_Sesion_Torneo" FromRole="Torneo" ToRole="Sesion" />
+    <NavigationProperty Name="SessionItem" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_SessionItem_Torneo" FromRole="Torneo" ToRole="SessionItem" />
+    <NavigationProperty Name="SetupTorneo" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_SetupTorneo_Torneo" FromRole="Torneo" ToRole="SetupTorneo" />
   </EntityType>
   <EntityType Name="TorneoDestacado">
     <Key>
@@ -1144,6 +1199,9 @@
       <PropertyRef Name="Age" />
       <PropertyRef Name="ID_NO" />
       <PropertyRef Name="AthleteId" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="principal_id" />
+      <PropertyRef Name="diagram_id" />
     </Key>
     <Property Name="Athlete" Type="Int32" Nullable="false" />
     <Property Name="First" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
@@ -1153,6 +1211,11 @@
     <Property Name="Age" Type="Int16" Nullable="false" />
     <Property Name="ID_NO" Type="String" Nullable="false" MaxLength="17" FixedLength="false" Unicode="true" />
     <Property Name="AthleteId" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="Estilos">
     <Key>
@@ -1169,6 +1232,7 @@
       <PropertyRef Name="MeetId" />
       <PropertyRef Name="MultiAge" />
       <PropertyRef Name="EventId" />
+      <PropertyRef Name="MultiAgeId" />
     </Key>
     <Property Name="event_ptr" Type="Int32" />
     <Property Name="low_age" Type="Int16" />
@@ -1179,6 +1243,8 @@
     <Property Name="MultiAge" Type="Int32" Nullable="false" />
     <Property Name="EventId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Eventos" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_MultiEdad_Eventos" FromRole="MultiEdad" ToRole="Eventos" />
+    <Property Name="MultiAgeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_MVCcompetenciasModel.FK_MultiEdad_Torneo" FromRole="MultiEdad" ToRole="Torneo" />
   </EntityType>
   <EntityType Name="Query">
     <Key>
@@ -1555,4 +1621,100 @@
     <Property Name="EdadMaxima" Type="Int32" Nullable="false" />
     <Property Name="Nombre" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
   </EntityType>
+  <Association Name="FK_Entradas_Torneo">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Torneo" Role="Torneo" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Entradas" Role="Entradas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Torneo">
+        <PropertyRef Name="Meetid" />
+      </Principal>
+      <Dependent Role="Entradas">
+        <PropertyRef Name="MeetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Equipos_Torneo">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Torneo" Role="Torneo" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Equipos" Role="Equipos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Torneo">
+        <PropertyRef Name="Meetid" />
+      </Principal>
+      <Dependent Role="Equipos">
+        <PropertyRef Name="MeetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Eventos_Torneo">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Torneo" Role="Torneo" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Eventos" Role="Eventos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Torneo">
+        <PropertyRef Name="Meetid" />
+      </Principal>
+      <Dependent Role="Eventos">
+        <PropertyRef Name="MeetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MultiEdad_Torneo">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Torneo" Role="Torneo" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.MultiEdad" Role="MultiEdad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Torneo">
+        <PropertyRef Name="Meetid" />
+      </Principal>
+      <Dependent Role="MultiEdad">
+        <PropertyRef Name="MeetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RESULTS_Pruebas">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Pruebas" Role="Pruebas" Multiplicity="0..1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.RESULTS" Role="RESULTS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pruebas">
+        <PropertyRef Name="PruebaId" />
+      </Principal>
+      <Dependent Role="RESULTS">
+        <PropertyRef Name="PruebaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sesion_Torneo">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Torneo" Role="Torneo" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Sesion" Role="Sesion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Torneo">
+        <PropertyRef Name="Meetid" />
+      </Principal>
+      <Dependent Role="Sesion">
+        <PropertyRef Name="MeetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SessionItem_Torneo">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Torneo" Role="Torneo" Multiplicity="1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.SessionItem" Role="SessionItem" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Torneo">
+        <PropertyRef Name="Meetid" />
+      </Principal>
+      <Dependent Role="SessionItem">
+        <PropertyRef Name="Meetid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SetupTorneo_Torneo">
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.Torneo" Role="Torneo" Multiplicity="0..1" />
+    <End Type="DB_9B1F4C_MVCcompetenciasModel.SetupTorneo" Role="SetupTorneo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Torneo">
+        <PropertyRef Name="Meetid" />
+      </Principal>
+      <Dependent Role="SetupTorneo">
+        <PropertyRef Name="Meetid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

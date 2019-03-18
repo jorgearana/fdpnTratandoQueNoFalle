@@ -170,6 +170,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdministradorController.cs" />
+    <Compile Include="Controllers\BASEController.cs" />
     <Compile Include="Controllers\CalendariosController.cs" />
     <Compile Include="Controllers\DisciplinasController.cs" />
     <Compile Include="Controllers\DocumentosController.cs" />
@@ -187,102 +188,6 @@
     <Compile Include="Helpers\ConvertirAPeru.cs" />
     <Compile Include="Helpers\FilesHelper.cs" />
     <Compile Include="Helpers\ImageHandler.cs" />
-    <Compile Include="Models\Afiliacion.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Afiliado.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Alertas.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Antiguo.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Asociaciones.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Athlete.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AthleteMasters.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Atletas.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BASETIMES.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Calendario.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CambiosDNI.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CategoriaNoticia.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Categorias.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CategoriasMasters.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Club.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Comentarios.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Consulta.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Directivos.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Disciplina.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Disciplinas.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Encuentros.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entradas.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entrenadores.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Equipos.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Estado.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Estilos.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Eventos.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Fotos.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Goleadores.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HistorialdeAfiliaciones.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HistorialEntrenador.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HistorialTraspasos.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
-    </Compile>
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\bootstrap\bootstrap.min.css" />
     <Content Include="Content\bootstrap\ionicons.css" />
@@ -348,154 +253,296 @@
     <Content Include="Content\pdf\calendario artistico.pdf" />
     <Content Include="Content\pdf\calendario clavados.pdf" />
     <Content Include="App_Browsers\qt.browser" />
-    <None Include="Models\ModeloAfiliaciones.Context.cs.NO" />
-    <Compile Include="Models\Hoja1_.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    <Compile Include="Models\Afiliacion.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Hoja2_.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    <Compile Include="Models\Afiliado.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Alertas.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Antiguo.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Asociaciones.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetRoles.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaims.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogins.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserRoles.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUsers.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Athlete.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AthleteMasters.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\atletas.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BASETIMES.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Calendario.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CambiosDNI.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CategoriaNoticia.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Categorias.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CategoriasMasters.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Club.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Comentario.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Comentarios.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConFechas.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Configuracion.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Contactos.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Curso.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CursoInscripcion.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CursoParticipante.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Directivos.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Disciplina.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Disciplinas.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Empresa.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entradas.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entrenadores.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Equipos.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Estado.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Estilos.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Eventos.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fotos.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HistorialdeAfiliaciones.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HistorialEntrenador.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HistorialTraspasos.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Inscripciones.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Jugadores.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    <Compile Include="Models\Landing.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MarcasMinimas.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MEET.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MEETMasters.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Modals.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModeloAfiliaciones.Context1.cs">
+    <Compile Include="Models\ModellAfiliaciones.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloAfiliaciones.Context.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModeloAfiliaciones.cs" />
-    <Compile Include="Models\ModeloAfiliaciones.Designer.cs">
-      <DependentUpon>ModeloAfiliaciones.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ModeloAfiliaciones1.cs">
+    <Compile Include="Models\ModellAfiliaciones.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModeloAfiliaciones1.Designer.cs">
+    <Compile Include="Models\ModellAfiliaciones.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloAfiliaciones.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ModeloResultados.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloResultados.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ModeloResultados.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ModeloResultados.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloResultados.edmx</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Multas.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MultiEdad.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Noticias.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Pais.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    <Compile Include="Models\PoloEquipos.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PosicionFinal.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+    <Compile Include="Models\PoloFechas.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoloGoleadores.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoloGrupos.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoloJugadores.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoloPartidos.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoloPosicion.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoloPosicionFinal.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoloResultados.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoloRondas.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoloTorneo.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Procesado.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Pruebas.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Query.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Resultados.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RESULTS.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RESULTSMasters.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rol.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sesion.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Session.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SessionItem.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Sessitem.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SetupTorneo.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Suscritos.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TatoInformeAsistencias.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TatoInformeEntrenador.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TatoRealizacion.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TatoSeleccionado.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TatoSeriesEjemplo.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblmarca.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Suscritos.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TEAM.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TEAMMasters.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoAfiliado.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoTorneo.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Torneo.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TorneoDestacado.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TorneoDestacadoMasters.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Traspasos.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TraspasosEnEspera.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Vivo.cs">
-      <DependentUpon>ModeloResultados.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Vouchers.cs">
-      <DependentUpon>ModeloAfiliaciones.tt</DependentUpon>
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Administrador\BorrarViewModel.cs" />
@@ -540,15 +587,15 @@
     <Content Include="Content\slick\slick.js" />
     <Content Include="Content\slick\slick.min.js" />
     <Content Include="fdpn.ico" />
-    <Content Include="Models\ModeloResultados.Context.tt">
+    <Content Include="Models\ModellAfiliaciones.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModeloResultados.edmx</DependentUpon>
-      <LastGenOutput>ModeloResultados.Context.cs</LastGenOutput>
+      <DependentUpon>ModellAfiliaciones.edmx</DependentUpon>
+      <LastGenOutput>ModellAfiliaciones.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ModeloResultados.tt">
+    <Content Include="Models\ModellAfiliaciones.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModeloResultados.edmx</DependentUpon>
-      <LastGenOutput>ModeloResultados.cs</LastGenOutput>
+      <DependentUpon>ModellAfiliaciones.edmx</DependentUpon>
+      <LastGenOutput>ModellAfiliaciones.cs</LastGenOutput>
     </Content>
     <Content Include="Rotativa\msvcp120.dll" />
     <Content Include="Rotativa\msvcr120.dll" />
@@ -622,6 +669,7 @@
     <Content Include="Views\Masters\_Records.cshtml" />
     <Content Include="Views\Masters\_BasesMasters.cshtml" />
     <Content Include="Views\Administrador\BorrarModal.cshtml" />
+    <Content Include="Views\Administrador\BorrarVivo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Apnea.css" />
@@ -785,14 +833,6 @@
     <Content Include="Files\somefiles\WhatsApp Image 2017-10-01 at 8.07.56 PM.jpeg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\ModeloAfiliaciones.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModeloAfiliaciones.Context1.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\ModeloAfiliaciones.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModeloAfiliaciones1.cs</LastGenOutput>
-    </Content>
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -811,19 +851,12 @@
     <Content Include="Content\Summernote\font\summernote.eot" />
     <Content Include="Content\Summernote\font\summernote.ttf" />
     <Content Include="Content\Summernote\font\summernote.woff" />
-    <EntityDeploy Include="Models\ModeloAfiliaciones.edmx">
+    <EntityDeploy Include="Models\ModellAfiliaciones.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModeloAfiliaciones1.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModellAfiliaciones.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ModeloAfiliaciones.edmx.diagram">
-      <DependentUpon>ModeloAfiliaciones.edmx</DependentUpon>
-    </Content>
-    <EntityDeploy Include="Models\ModeloResultados.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModeloResultados.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\ModeloResultados.edmx.diagram">
-      <DependentUpon>ModeloResultados.edmx</DependentUpon>
+    <Content Include="Models\ModellAfiliaciones.edmx.diagram">
+      <DependentUpon>ModellAfiliaciones.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -923,6 +956,7 @@
     <Folder Include="Content\img\Fotos\thumbs\" />
     <Folder Include="Content\Uploads\" />
     <Folder Include="Models\Metadata\" />
+    <Folder Include="Views\BASE\" />
     <Folder Include="Views\FileUpload\" />
   </ItemGroup>
   <ItemGroup>

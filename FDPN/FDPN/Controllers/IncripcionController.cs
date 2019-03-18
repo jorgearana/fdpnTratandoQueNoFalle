@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace FDPN.Controllers
 {
-    public class IncripcionController : Controller
+    public class IncripcionController : BASEController
     {
         // GET: Incripcion
         public ActionResult Index()

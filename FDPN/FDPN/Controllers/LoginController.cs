@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace FDPN.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : BASEController
     {
         // GET: Login
         public ActionResult callback()

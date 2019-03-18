@@ -15,8 +15,6 @@ namespace FDPN.Models
     public partial class Multas
     {
         public int MultaId { get; set; }
-        public string DNI { get; set; }
-        public int TorneoId { get; set; }
         public int Eventos1 { get; set; }
         public int Eventos2 { get; set; }
         public int Eventos3 { get; set; }
@@ -29,8 +27,10 @@ namespace FDPN.Models
         public Nullable<int> UsuarioId { get; set; }
         public Nullable<bool> Subsanada { get; set; }
         public string Torneo { get; set; }
+        public System.DateTime FechaTorneo { get; set; }
+        public Nullable<int> InscripcionId { get; set; }
     
-        public virtual Afiliado Afiliado { get; set; }
+        public virtual Inscripciones Inscripciones { get; set; }
         public virtual Usuario Usuario { get; set; }
     }
 }

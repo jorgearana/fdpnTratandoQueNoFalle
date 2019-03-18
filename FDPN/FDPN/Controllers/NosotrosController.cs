@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace FDPN.Controllers
 {
-    public class NosotrosController : Controller
+    public class NosotrosController : BASEController
     {
         // GET: Nosotros
         public ActionResult fdpn()

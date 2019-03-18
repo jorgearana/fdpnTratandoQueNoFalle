@@ -12,12 +12,9 @@ using PagedList;
 
 namespace FDPN.Controllers
 {
-    public class MastersController : Controller
+    public class MastersController : BASEController
     {
-        DB_9B1F4C_MVCcompetenciasEntities db = new DB_9B1F4C_MVCcompetenciasEntities();
-        DB_9B1F4C_afiliacionesEntities1 af = new DB_9B1F4C_afiliacionesEntities1();
-
-        public ActionResult index()
+          public ActionResult index()
         {
             return View();
         }
@@ -116,7 +113,7 @@ namespace FDPN.Controllers
                 // resultados = tiempos.Where(x => x.AthleteId == athleteID).OrderBy(x => x.PLACE).ThenByDescending(x => x.PFina).ToList(),
                 //afiliado = af.Afiliado.Where(x => x.DNI == dni).FirstOrDefault(),
                 resultados = resultadomejor,
-                Inscripciones = af.Inscripciones.Where(x => x.DNI == dni).FirstOrDefault(),
+                Inscripciones = db.Inscripciones.Where(x => x.DNI == dni).FirstOrDefault(),
             };
 
             if (VM.Inscripciones == null)
@@ -769,12 +766,12 @@ namespace FDPN.Controllers
 
         public Inscripciones BuscarAfiliado(string DNI)
         {
-            Inscripciones Inscripciones = af.Inscripciones.Where(x => x.DNI == DNI).FirstOrDefault();
+            Inscripciones Inscripciones = db.Inscripciones.Where(x => x.DNI == DNI).FirstOrDefault();
             if (Inscripciones == null)
             {
                 Inscripciones = new Inscripciones
                 {
-                    Club = af.Club.Find(4128),
+                    Club = db.Club.Find(4128),
                     RutaFoto = "Sinfoto",
                     DNI = "",
                 };

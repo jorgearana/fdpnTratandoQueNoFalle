@@ -27,10 +27,7 @@ namespace FDPN.Models
         public Nullable<short> AltHeats_StartCount { get; set; }
         public int SessitemId { get; set; }
         public int Meetid { get; set; }
-        public int EventId { get; set; }
-        public int SesionId { get; set; }
     
-        public virtual Eventos Eventos { get; set; }
-        public virtual Sesion Sesion { get; set; }
+        public virtual Torneo Torneo { get; set; }
     }
 }

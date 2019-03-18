@@ -20,6 +20,7 @@ namespace FDPN.Models
         public string DNI { get; set; }
         public int VieneDe { get; set; }
         public System.DateTime FechaTraspaso { get; set; }
+        public Nullable<int> InscripcionId { get; set; }
     
         public virtual Club Club { get; set; }
         public virtual Inscripciones Inscripciones { get; set; }

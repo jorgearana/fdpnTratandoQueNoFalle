@@ -22,8 +22,10 @@ namespace FDPN.Models
         public int Numero_de_traspasos { get; set; }
         public double Monto { get; set; }
         public int Traspasos_restantes { get; set; }
+        public Nullable<int> IsncripcionId { get; set; }
     
         public virtual Club Club { get; set; }
+        public virtual Inscripciones Inscripciones { get; set; }
         public virtual Usuario Usuario { get; set; }
     }
 }

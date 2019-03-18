@@ -17,8 +17,7 @@ namespace FDPN.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Afiliado()
         {
-            this.CambiosDNI = new HashSet<CambiosDNI>();
-            this.Multas = new HashSet<Multas>();
+            this.Inscripciones = new HashSet<Inscripciones>();
         }
     
         public int DeportistaId { get; set; }
@@ -31,9 +30,6 @@ namespace FDPN.Models
         public string Sexo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CambiosDNI> CambiosDNI { get; set; }
-        public virtual Inscripciones Inscripciones { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Multas> Multas { get; set; }
+        public virtual ICollection<Inscripciones> Inscripciones { get; set; }
     }
 }

@@ -14,12 +14,6 @@ namespace FDPN.Models
     
     public partial class Sesion
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Sesion()
-        {
-            this.SessionItem = new HashSet<SessionItem>();
-        }
-    
         public Nullable<short> Sess_no { get; set; }
         public string Sess_ltr { get; set; }
         public int Sess_ptr { get; set; }
@@ -37,7 +31,6 @@ namespace FDPN.Models
         public int MeetId { get; set; }
         public int SessionId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SessionItem> SessionItem { get; set; }
+        public virtual Torneo Torneo { get; set; }
     }
 }

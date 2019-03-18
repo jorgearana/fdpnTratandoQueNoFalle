@@ -15,12 +15,12 @@ namespace FDPN.Models
     public partial class Afiliacion
     {
         public int AfiliacionID { get; set; }
-        public string DNI { get; set; }
         public int UsuarioId { get; set; }
         public System.DateTime FechaAfiliacion { get; set; }
         public int VoucherId { get; set; }
         public int ClubId { get; set; }
         public int ProcesadoId { get; set; }
+        public Nullable<int> InscripcionId { get; set; }
     
         public virtual Club Club { get; set; }
         public virtual Inscripciones Inscripciones { get; set; }

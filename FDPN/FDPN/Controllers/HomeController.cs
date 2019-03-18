@@ -10,11 +10,8 @@ using FDPN.ViewModels.Home;
 
 namespace FDPN.Controllers
 {
-    public class HomeController : Controller
-    {
-        DB_9B1F4C_MVCcompetenciasEntities db = new DB_9B1F4C_MVCcompetenciasEntities();
-        DB_9B1F4C_afiliacionesEntities1 af = new DB_9B1F4C_afiliacionesEntities1();
-
+    public class HomeController : BASEController
+    {      
         public ActionResult Index()
         {
             //IndexViewModels VM = new IndexViewModels
@@ -178,6 +175,17 @@ namespace FDPN.Controllers
                 iniciomes = iniciomes.AddMonths(-1);
                 resultadomejor = db.RESULTS.Where(x => x.Athlete1.Sex == sexo && x.MEET1.Start > iniciomes && x.COURSE != "Y" && x.Athlete1.Age >= edadminima && x.Athlete1.Age <= edadmaxima).OrderByDescending(x => x.PFina).FirstOrDefault();
             }
+
+            if (resultadomejor == null )
+            {
+                resultadomejor = db.RESULTS.Where(x => x.Athlete1.Sex == sexo && x.MEET == torneoAMostrar.Meet1).OrderByDescending(x => x.PFina).FirstOrDefault();
+            }
+
+            if (resultadomejor == null)
+            {
+                string nada = "nada";
+            }
+
             //int ponderado = tiempos.Count() / 5;
             //tiempos = tiempos.Take(ponderado).ToList();
 
@@ -192,12 +200,13 @@ namespace FDPN.Controllers
 
 
             string dni = resultadomejor.Athlete1.ID_NO ?? "";
+            dni = dni.Replace(" ", "");
             NadadorDestacadoViewModels VM = new NadadorDestacadoViewModels
             {
                 // resultados = tiempos.Where(x => x.AthleteId == athleteID).OrderBy(x => x.PLACE).ThenByDescending(x => x.PFina).ToList(),
                 //afiliado = af.Afiliado.Where(x => x.DNI == dni).FirstOrDefault(),
                 resultados = resultadomejor,
-                Inscripciones = af.Inscripciones.Where(x => x.DNI == dni).FirstOrDefault(),
+                Inscripciones = db.Inscripciones.Where(x => x.DNI == dni).FirstOrDefault(),
             };
 
             if (VM.Inscripciones == null)

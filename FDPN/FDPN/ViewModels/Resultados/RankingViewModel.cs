@@ -39,7 +39,7 @@ namespace FDPN.ViewModels.Resultados
             };
             edadminima = new List<int> { 0, 9, 10, 11, 12, 13, 14, 15, 16, 17 };
             edadmaxima = new List<int> { 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 109 };
-            Periodo = new List<string> { "Todo", "Últimos 12 meses" };
+            Periodo = new List<string> { "Todo", "Últimos 6 meses", "Últimos 12 meses" };
             distancias = new List<int> { 50, 100, 200, 400, 800, 1500 };
             Estilos = new List<string> { "Libre", "Espalda", "Mariposa", "Pecho", "Combinado" };
 

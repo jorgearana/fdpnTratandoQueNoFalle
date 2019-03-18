@@ -83,10 +83,10 @@
                     <thead>
                         <tr>
                             <th>
-                                Noticia
+                                Publicado
                             </th>
                             <th>
-                                Publicado
+                                Noticia
                             </th>
                             <th>
                                 <i class="fa fa-download" aria-hidden="true"></i> Acción
@@ -99,11 +99,10 @@
 
                         <tr>
                             <td>
-
-                                @item.Titulo
+                                @item.Fecha.ToString("yyyy/MM/dd")
                             </td>
                             <td>
-                                @item.Fecha.ToString("dd/MMM/yyyy")
+                                @item.Titulo
                             </td>
                             <td>
                                 <div class="btn-group">

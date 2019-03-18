@@ -35,10 +35,12 @@ namespace FDPN.Models
         public string NombreUsuario { get; set; }
         public int Activo { get; set; }
         public Nullable<int> AsociacionId { get; set; }
-        public Nullable<System.DateTime> FechaPagoAfiliacion { get; set; }
-        public Nullable<System.DateTime> FinVigenciaPoderes { get; set; }
-        public Nullable<System.DateTime> FinVigenciaRenade { get; set; }
+        public System.DateTime FechaPagoAfiliacion { get; set; }
+        public System.DateTime FinVigenciaPoderes { get; set; }
+        public System.DateTime FinVigenciaRenade { get; set; }
         public string Resolucion { get; set; }
+        public string VoucherPagoAfiliacionAnual { get; set; }
+        public bool Academia { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Afiliacion> Afiliacion { get; set; }

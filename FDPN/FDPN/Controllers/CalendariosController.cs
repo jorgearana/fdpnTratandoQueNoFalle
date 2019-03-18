@@ -13,10 +13,9 @@ using FDPN.Helpers;
 
 namespace FDPN.Controllers
 {
-    public class CalendariosController : Controller
+    public class CalendariosController : BASEController
     {
-        private   DB_9B1F4C_MVCcompetenciasEntities db = new   DB_9B1F4C_MVCcompetenciasEntities();
-
+       
         // GET: Calendarios
         public ActionResult Index()
         {

@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Rendimiento en una prueba";
-    string path = "http://afiliaciones.jorgearananeyra.com/Content/Images";
+    string path = "http://afiliaciones.fdpn.org/Content/Images";
 }
 
 
@@ -13,7 +13,7 @@
             <p class="u-type--medium u-type--delta u-spc-bottom--med">@Model.atleta.First @Model.atleta.Last</p>
             <h2 class="site-title">Prueba: @Model.prueba.distancia  @Model.prueba.estilo Piscina Larga</h2>
             <div class="site-athleteswidget__photo">
-                <img src=@Url.Content(path + "/" + Model.afiliado.RutaFoto + ".jpg")>
+                <img src=@Url.Content(path + "/" + Model.Inscripciones.RutaFoto + ".jpg")>
             </div>
         </header>
 

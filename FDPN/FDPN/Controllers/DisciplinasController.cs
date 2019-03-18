@@ -11,11 +11,9 @@ using FDPN.ViewModels.Documento;
 
 namespace FDPN.Controllers
 {
-    public class DisciplinasController : Controller
+    public class DisciplinasController : BASEController
     {
-        DB_9B1F4C_MVCcompetenciasEntities db = new DB_9B1F4C_MVCcompetenciasEntities();
-        // GET: Disciplinas
-
+       
         public ActionResult Index(int disciplina)
         {
             Disciplina dis = db.Disciplina.Find(disciplina);

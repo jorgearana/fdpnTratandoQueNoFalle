@@ -12,14 +12,8 @@ namespace FDPN.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Atletas
+    public partial class atletas
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Atletas()
-        {
-            this.Entradas = new HashSet<Entradas>();
-        }
-    
         public int Ath_no { get; set; }
         public string Last_name { get; set; }
         public string First_name { get; set; }
@@ -58,12 +52,11 @@ namespace FDPN.Models
         public string Disab_SDMSID { get; set; }
         public string Disab_Exeptioncodes { get; set; }
         public bool Masters_RegVerified { get; set; }
-        public Nullable<int> TeamId { get; set; }
         public int AtletaId { get; set; }
         public int Meetid { get; set; }
+        public int TeamId { get; set; }
     
         public virtual Equipos Equipos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Entradas> Entradas { get; set; }
+        public virtual Torneo Torneo { get; set; }
     }
 }

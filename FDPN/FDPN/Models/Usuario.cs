@@ -21,6 +21,7 @@ namespace FDPN.Models
             this.Entrenadores = new HashSet<Entrenadores>();
             this.HistorialTraspasos = new HashSet<HistorialTraspasos>();
             this.Multas = new HashSet<Multas>();
+            this.Noticias = new HashSet<Noticias>();
             this.Traspasos = new HashSet<Traspasos>();
             this.Vouchers = new HashSet<Vouchers>();
         }
@@ -41,6 +42,8 @@ namespace FDPN.Models
         public virtual ICollection<HistorialTraspasos> HistorialTraspasos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Multas> Multas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Noticias> Noticias { get; set; }
         public virtual Rol Rol { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Traspasos> Traspasos { get; set; }

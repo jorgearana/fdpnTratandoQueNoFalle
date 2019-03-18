@@ -19,13 +19,64 @@
     <EntitySet Name="Multas" EntityType="DB_9B1F4C_afiliacionesModel.Multas" />
     <EntitySet Name="Procesado" EntityType="DB_9B1F4C_afiliacionesModel.Procesado" />
     <EntitySet Name="Rol" EntityType="DB_9B1F4C_afiliacionesModel.Rol" />
+    <EntitySet Name="TatoInformeAsistencias" EntityType="DB_9B1F4C_afiliacionesModel.TatoInformeAsistencias" />
+    <EntitySet Name="TatoInformeEntrenador" EntityType="DB_9B1F4C_afiliacionesModel.TatoInformeEntrenador" />
+    <EntitySet Name="TatoRealizacion" EntityType="DB_9B1F4C_afiliacionesModel.TatoRealizacion" />
+    <EntitySet Name="TatoSeleccionado" EntityType="DB_9B1F4C_afiliacionesModel.TatoSeleccionado" />
+    <EntitySet Name="TatoSeriesEjemplo" EntityType="DB_9B1F4C_afiliacionesModel.TatoSeriesEjemplo" />
     <EntitySet Name="TipoAfiliado" EntityType="DB_9B1F4C_afiliacionesModel.TipoAfiliado" />
     <EntitySet Name="Traspasos" EntityType="DB_9B1F4C_afiliacionesModel.Traspasos" />
     <EntitySet Name="TraspasosEnEspera" EntityType="DB_9B1F4C_afiliacionesModel.TraspasosEnEspera" />
     <EntitySet Name="Usuario" EntityType="DB_9B1F4C_afiliacionesModel.Usuario" />
     <EntitySet Name="Vouchers" EntityType="DB_9B1F4C_afiliacionesModel.Vouchers" />
+    <EntitySet Name="Alertas" EntityType="DB_9B1F4C_afiliacionesModel.Alertas" />
+    <EntitySet Name="Athlete" EntityType="DB_9B1F4C_afiliacionesModel.Athlete" />
+    <EntitySet Name="AthleteMasters" EntityType="DB_9B1F4C_afiliacionesModel.AthleteMasters" />
+    <EntitySet Name="BASETIMES" EntityType="DB_9B1F4C_afiliacionesModel.BASETIMES" />
+    <EntitySet Name="Calendario" EntityType="DB_9B1F4C_afiliacionesModel.Calendario" />
+    <EntitySet Name="CategoriaNoticia" EntityType="DB_9B1F4C_afiliacionesModel.CategoriaNoticia" />
+    <EntitySet Name="CategoriasMasters" EntityType="DB_9B1F4C_afiliacionesModel.CategoriasMasters" />
+    <EntitySet Name="Comentarios" EntityType="DB_9B1F4C_afiliacionesModel.Comentarios" />
+    <EntitySet Name="Configuracion" EntityType="DB_9B1F4C_afiliacionesModel.Configuracion" />
     <EntitySet Name="Consulta" EntityType="DB_9B1F4C_afiliacionesModel.Consulta" />
+    <EntitySet Name="Curso" EntityType="DB_9B1F4C_afiliacionesModel.Curso" />
+    <EntitySet Name="CursoInscripcion" EntityType="DB_9B1F4C_afiliacionesModel.CursoInscripcion" />
+    <EntitySet Name="CursoParticipante" EntityType="DB_9B1F4C_afiliacionesModel.CursoParticipante" />
+    <EntitySet Name="Disciplina" EntityType="DB_9B1F4C_afiliacionesModel.Disciplina" />
+    <EntitySet Name="Entradas" EntityType="DB_9B1F4C_afiliacionesModel.Entradas" />
+    <EntitySet Name="Equipos" EntityType="DB_9B1F4C_afiliacionesModel.Equipos" />
+    <EntitySet Name="Estilos" EntityType="DB_9B1F4C_afiliacionesModel.Estilos" />
+    <EntitySet Name="Eventos" EntityType="DB_9B1F4C_afiliacionesModel.Eventos" />
+    <EntitySet Name="Fotos" EntityType="DB_9B1F4C_afiliacionesModel.Fotos" />
+    <EntitySet Name="MarcasMinimas" EntityType="DB_9B1F4C_afiliacionesModel.MarcasMinimas" />
+    <EntitySet Name="MEET" EntityType="DB_9B1F4C_afiliacionesModel.MEET" />
+    <EntitySet Name="Modals" EntityType="DB_9B1F4C_afiliacionesModel.Modals" />
+    <EntitySet Name="MultiEdad" EntityType="DB_9B1F4C_afiliacionesModel.MultiEdad" />
+    <EntitySet Name="Noticias" EntityType="DB_9B1F4C_afiliacionesModel.Noticias" />
+    <EntitySet Name="PoloEquipos" EntityType="DB_9B1F4C_afiliacionesModel.PoloEquipos" />
+    <EntitySet Name="PoloFechas" EntityType="DB_9B1F4C_afiliacionesModel.PoloFechas" />
+    <EntitySet Name="PoloGoleadores" EntityType="DB_9B1F4C_afiliacionesModel.PoloGoleadores" />
+    <EntitySet Name="PoloGrupos" EntityType="DB_9B1F4C_afiliacionesModel.PoloGrupos" />
+    <EntitySet Name="PoloJugadores" EntityType="DB_9B1F4C_afiliacionesModel.PoloJugadores" />
+    <EntitySet Name="PoloPartidos" EntityType="DB_9B1F4C_afiliacionesModel.PoloPartidos" />
+    <EntitySet Name="PoloPosicion" EntityType="DB_9B1F4C_afiliacionesModel.PoloPosicion" />
+    <EntitySet Name="PoloPosicionFinal" EntityType="DB_9B1F4C_afiliacionesModel.PoloPosicionFinal" />
+    <EntitySet Name="PoloResultados" EntityType="DB_9B1F4C_afiliacionesModel.PoloResultados" />
+    <EntitySet Name="PoloRondas" EntityType="DB_9B1F4C_afiliacionesModel.PoloRondas" />
+    <EntitySet Name="PoloTorneo" EntityType="DB_9B1F4C_afiliacionesModel.PoloTorneo" />
+    <EntitySet Name="Pruebas" EntityType="DB_9B1F4C_afiliacionesModel.Pruebas" />
+    <EntitySet Name="Query" EntityType="DB_9B1F4C_afiliacionesModel.Query" />
+    <EntitySet Name="RESULTS" EntityType="DB_9B1F4C_afiliacionesModel.RESULTS" />
+    <EntitySet Name="Sesion" EntityType="DB_9B1F4C_afiliacionesModel.Sesion" />
+    <EntitySet Name="SessionItem" EntityType="DB_9B1F4C_afiliacionesModel.SessionItem" />
+    <EntitySet Name="SetupTorneo" EntityType="DB_9B1F4C_afiliacionesModel.SetupTorneo" />
     <EntitySet Name="sysdiagrams" EntityType="DB_9B1F4C_afiliacionesModel.sysdiagrams" />
+    <EntitySet Name="TEAM" EntityType="DB_9B1F4C_afiliacionesModel.TEAM" />
+    <EntitySet Name="TipoTorneo" EntityType="DB_9B1F4C_afiliacionesModel.TipoTorneo" />
+    <EntitySet Name="Torneo" EntityType="DB_9B1F4C_afiliacionesModel.Torneo" />
+    <EntitySet Name="TorneoDestacado" EntityType="DB_9B1F4C_afiliacionesModel.TorneoDestacado" />
+    <EntitySet Name="TorneoDestacadoMasters" EntityType="DB_9B1F4C_afiliacionesModel.TorneoDestacadoMasters" />
+    <EntitySet Name="Vivo" EntityType="DB_9B1F4C_afiliacionesModel.Vivo" />
     <AssociationSet Name="FK_Afiliacion_Club" Association="DB_9B1F4C_afiliacionesModel.FK_Afiliacion_Club">
       <End Role="Club" EntitySet="Club" />
       <End Role="Afiliacion" EntitySet="Afiliacion" />
@@ -46,17 +97,9 @@
       <End Role="Vouchers" EntitySet="Vouchers" />
       <End Role="Afiliacion" EntitySet="Afiliacion" />
     </AssociationSet>
-    <AssociationSet Name="FK_CambiosDNI_Afiliado" Association="DB_9B1F4C_afiliacionesModel.FK_CambiosDNI_Afiliado">
-      <End Role="Afiliado" EntitySet="Afiliado" />
-      <End Role="CambiosDNI" EntitySet="CambiosDNI" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Inscripciones_Afiliado" Association="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Afiliado">
+    <AssociationSet Name="FK_Inscripciones_Afiliado1" Association="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Afiliado1">
       <End Role="Afiliado" EntitySet="Afiliado" />
       <End Role="Inscripciones" EntitySet="Inscripciones" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Multas_Afiliado" Association="DB_9B1F4C_afiliacionesModel.FK_Multas_Afiliado">
-      <End Role="Afiliado" EntitySet="Afiliado" />
-      <End Role="Multas" EntitySet="Multas" />
     </AssociationSet>
     <AssociationSet Name="FK_Entrenadores_Antiguo" Association="DB_9B1F4C_afiliacionesModel.FK_Entrenadores_Antiguo">
       <End Role="Antiguo" EntitySet="Antiguo" />
@@ -122,9 +165,17 @@
       <End Role="Entrenadores" EntitySet="Entrenadores" />
       <End Role="HistorialEntrenador" EntitySet="HistorialEntrenador" />
     </AssociationSet>
+    <AssociationSet Name="FK_TatoInformeEntrenador_Entrenadores" Association="DB_9B1F4C_afiliacionesModel.FK_TatoInformeEntrenador_Entrenadores">
+      <End Role="Entrenadores" EntitySet="Entrenadores" />
+      <End Role="TatoInformeEntrenador" EntitySet="TatoInformeEntrenador" />
+    </AssociationSet>
     <AssociationSet Name="FK_Inscripciones_Estado" Association="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Estado">
       <End Role="Estado" EntitySet="Estado" />
       <End Role="Inscripciones" EntitySet="Inscripciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HistorialdeAfiliaciones_Inscripciones" Association="DB_9B1F4C_afiliacionesModel.FK_HistorialdeAfiliaciones_Inscripciones">
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
+      <End Role="HistorialdeAfiliaciones" EntitySet="HistorialdeAfiliaciones" />
     </AssociationSet>
     <AssociationSet Name="FK_HistorialTraspasos_Inscripciones" Association="DB_9B1F4C_afiliacionesModel.FK_HistorialTraspasos_Inscripciones">
       <End Role="Inscripciones" EntitySet="Inscripciones" />
@@ -138,6 +189,26 @@
       <End Role="TipoAfiliado" EntitySet="TipoAfiliado" />
       <End Role="Inscripciones" EntitySet="Inscripciones" />
     </AssociationSet>
+    <AssociationSet Name="FK_Multas_Inscripciones" Association="DB_9B1F4C_afiliacionesModel.FK_Multas_Inscripciones">
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
+      <End Role="Multas" EntitySet="Multas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TatoInformeAsistencias_Inscripciones" Association="DB_9B1F4C_afiliacionesModel.FK_TatoInformeAsistencias_Inscripciones">
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
+      <End Role="TatoInformeAsistencias" EntitySet="TatoInformeAsistencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TatoInformeEntrenador_Inscripciones" Association="DB_9B1F4C_afiliacionesModel.FK_TatoInformeEntrenador_Inscripciones">
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
+      <End Role="TatoInformeEntrenador" EntitySet="TatoInformeEntrenador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TatoSeleccionado_Inscripciones" Association="DB_9B1F4C_afiliacionesModel.FK_TatoSeleccionado_Inscripciones">
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
+      <End Role="TatoSeleccionado" EntitySet="TatoSeleccionado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Traspasos_Inscripciones" Association="DB_9B1F4C_afiliacionesModel.FK_Traspasos_Inscripciones">
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
+      <End Role="Traspasos" EntitySet="Traspasos" />
+    </AssociationSet>
     <AssociationSet Name="FK_TraspasosEnEspera_Inscripciones" Association="DB_9B1F4C_afiliacionesModel.FK_TraspasosEnEspera_Inscripciones">
       <End Role="Inscripciones" EntitySet="Inscripciones" />
       <End Role="TraspasosEnEspera" EntitySet="TraspasosEnEspera" />
@@ -149,6 +220,14 @@
     <AssociationSet Name="FK_Usuario_Rol" Association="DB_9B1F4C_afiliacionesModel.FK_Usuario_Rol">
       <End Role="Rol" EntitySet="Rol" />
       <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TatoInformeEntrenador_TatoRealizacion" Association="DB_9B1F4C_afiliacionesModel.FK_TatoInformeEntrenador_TatoRealizacion">
+      <End Role="TatoRealizacion" EntitySet="TatoRealizacion" />
+      <End Role="TatoInformeEntrenador" EntitySet="TatoInformeEntrenador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TatoInformeEntrenador_TatoSeriesEjemplo" Association="DB_9B1F4C_afiliacionesModel.FK_TatoInformeEntrenador_TatoSeriesEjemplo">
+      <End Role="TatoSeriesEjemplo" EntitySet="TatoSeriesEjemplo" />
+      <End Role="TatoInformeEntrenador" EntitySet="TatoInformeEntrenador" />
     </AssociationSet>
     <AssociationSet Name="FK_Traspasos_Usuario" Association="DB_9B1F4C_afiliacionesModel.FK_Traspasos_Usuario">
       <End Role="Usuario" EntitySet="Usuario" />
@@ -164,12 +243,12 @@
       <PropertyRef Name="AfiliacionID" />
     </Key>
     <Property Name="AfiliacionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="DNI" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="UsuarioId" Type="Int32" Nullable="false" />
     <Property Name="FechaAfiliacion" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="VoucherId" Type="Int32" Nullable="false" />
     <Property Name="ClubId" Type="Int32" Nullable="false" />
     <Property Name="ProcesadoId" Type="Int32" Nullable="false" />
+    <Property Name="InscripcionId" Type="Int32" />
     <NavigationProperty Name="Club" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliacion_Club" FromRole="Afiliacion" ToRole="Club" />
     <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliacion_Inscripciones" FromRole="Afiliacion" ToRole="Inscripciones" />
     <NavigationProperty Name="Procesado" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliacion_Procesado" FromRole="Afiliacion" ToRole="Procesado" />
@@ -188,9 +267,7 @@
     <Property Name="Tipo_de_documento" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
     <Property Name="Fecha_de_nacimiento" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Sexo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="CambiosDNI" Relationship="DB_9B1F4C_afiliacionesModel.FK_CambiosDNI_Afiliado" FromRole="Afiliado" ToRole="CambiosDNI" />
-    <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Afiliado" FromRole="Afiliado" ToRole="Inscripciones" />
-    <NavigationProperty Name="Multas" Relationship="DB_9B1F4C_afiliacionesModel.FK_Multas_Afiliado" FromRole="Afiliado" ToRole="Multas" />
+    <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Afiliado1" FromRole="Afiliado" ToRole="Inscripciones" />
   </EntityType>
   <EntityType Name="Antiguo">
     <Key>
@@ -217,7 +294,6 @@
     <Property Name="DNI" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="DNIAntiguo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Afiliado" Relationship="DB_9B1F4C_afiliacionesModel.FK_CambiosDNI_Afiliado" FromRole="CambiosDNI" ToRole="Afiliado" />
   </EntityType>
   <EntityType Name="Categorias">
     <Key>
@@ -238,10 +314,12 @@
     <Property Name="NombreUsuario" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="Activo" Type="Int32" Nullable="false" />
     <Property Name="AsociacionId" Type="Int32" />
-    <Property Name="FechaPagoAfiliacion" Type="DateTime" Precision="0" />
-    <Property Name="FinVigenciaPoderes" Type="DateTime" Precision="0" />
-    <Property Name="FinVigenciaRenade" Type="DateTime" Precision="0" />
+    <Property Name="FechaPagoAfiliacion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FinVigenciaPoderes" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FinVigenciaRenade" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Resolucion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VoucherPagoAfiliacionAnual" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Academia" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Afiliacion" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliacion_Club" FromRole="Club" ToRole="Afiliacion" />
     <NavigationProperty Name="Asociaciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_Club_Asociaciones" FromRole="Club" ToRole="Asociaciones" />
     <NavigationProperty Name="Directivos" Relationship="DB_9B1F4C_afiliacionesModel.FK_Directivos_Club" FromRole="Club" ToRole="Directivos" />
@@ -301,6 +379,7 @@
     <NavigationProperty Name="Estado" Relationship="DB_9B1F4C_afiliacionesModel.FK_Entrenadores_Estado" FromRole="Entrenadores" ToRole="Estado" />
     <NavigationProperty Name="Usuario" Relationship="DB_9B1F4C_afiliacionesModel.FK_Entrenadores_Usuario" FromRole="Entrenadores" ToRole="Usuario" />
     <NavigationProperty Name="HistorialEntrenador" Relationship="DB_9B1F4C_afiliacionesModel.FK_HistorialEntrenador_Entrenadores" FromRole="Entrenadores" ToRole="HistorialEntrenador" />
+    <NavigationProperty Name="TatoInformeEntrenador" Relationship="DB_9B1F4C_afiliacionesModel.FK_TatoInformeEntrenador_Entrenadores" FromRole="Entrenadores" ToRole="TatoInformeEntrenador" />
   </EntityType>
   <EntityType Name="Estado">
     <Key>
@@ -318,6 +397,7 @@
     <Property Name="afiliacionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="InscripcionId" Type="Int32" Nullable="false" />
     <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_HistorialdeAfiliaciones_Inscripciones" FromRole="HistorialdeAfiliaciones" ToRole="Inscripciones" />
   </EntityType>
   <EntityType Name="HistorialEntrenador">
     <Key>
@@ -340,13 +420,14 @@
     <Property Name="DNI" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="VieneDe" Type="Int32" Nullable="false" />
     <Property Name="FechaTraspaso" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="InscripcionId" Type="Int32" />
     <NavigationProperty Name="Club" Relationship="DB_9B1F4C_afiliacionesModel.FK_HistorialTraspasos_Club" FromRole="HistorialTraspasos" ToRole="Club" />
     <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_HistorialTraspasos_Inscripciones" FromRole="HistorialTraspasos" ToRole="Inscripciones" />
     <NavigationProperty Name="Usuario" Relationship="DB_9B1F4C_afiliacionesModel.FK_HistorialTraspasos_Usuario" FromRole="HistorialTraspasos" ToRole="Usuario" />
   </EntityType>
   <EntityType Name="Inscripciones">
     <Key>
-      <PropertyRef Name="DNI" />
+      <PropertyRef Name="InscripcionId" />
     </Key>
     <Property Name="InscripcionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="DNI" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
@@ -354,18 +435,25 @@
     <Property Name="TipoAfiliadoID" Type="Int32" Nullable="false" />
     <Property Name="EstadoID" Type="Int32" Nullable="false" />
     <Property Name="AntiguoId" Type="Int32" Nullable="false" />
-    <Property Name="RutaFoto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RutaFotoAntigua" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Borrado" Type="Int32" />
     <Property Name="FotoDNI" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="DisciplinaId" Type="Int32" Nullable="false" />
+    <Property Name="RutaFoto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Afiliacion" Relationship="DB_9B1F4C_afiliacionesModel.FK_Afiliacion_Inscripciones" FromRole="Inscripciones" ToRole="Afiliacion" />
-    <NavigationProperty Name="Afiliado" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Afiliado" FromRole="Inscripciones" ToRole="Afiliado" />
+    <NavigationProperty Name="Afiliado" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Afiliado1" FromRole="Inscripciones" ToRole="Afiliado" />
     <NavigationProperty Name="Antiguo" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Antiguo" FromRole="Inscripciones" ToRole="Antiguo" />
     <NavigationProperty Name="Club" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Club" FromRole="Inscripciones" ToRole="Club" />
     <NavigationProperty Name="Disciplinas" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Disciplinas" FromRole="Inscripciones" ToRole="Disciplinas" />
     <NavigationProperty Name="Estado" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_Estado" FromRole="Inscripciones" ToRole="Estado" />
+    <NavigationProperty Name="HistorialdeAfiliaciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_HistorialdeAfiliaciones_Inscripciones" FromRole="Inscripciones" ToRole="HistorialdeAfiliaciones" />
     <NavigationProperty Name="HistorialTraspasos" Relationship="DB_9B1F4C_afiliacionesModel.FK_HistorialTraspasos_Inscripciones" FromRole="Inscripciones" ToRole="HistorialTraspasos" />
     <NavigationProperty Name="TipoAfiliado" Relationship="DB_9B1F4C_afiliacionesModel.FK_Inscripciones_TipoAfiliado" FromRole="Inscripciones" ToRole="TipoAfiliado" />
+    <NavigationProperty Name="Multas" Relationship="DB_9B1F4C_afiliacionesModel.FK_Multas_Inscripciones" FromRole="Inscripciones" ToRole="Multas" />
+    <NavigationProperty Name="TatoInformeAsistencias" Relationship="DB_9B1F4C_afiliacionesModel.FK_TatoInformeAsistencias_Inscripciones" FromRole="Inscripciones" ToRole="TatoInformeAsistencias" />
+    <NavigationProperty Name="TatoInformeEntrenador" Relationship="DB_9B1F4C_afiliacionesModel.FK_TatoInformeEntrenador_Inscripciones" FromRole="Inscripciones" ToRole="TatoInformeEntrenador" />
+    <NavigationProperty Name="TatoSeleccionado" Relationship="DB_9B1F4C_afiliacionesModel.FK_TatoSeleccionado_Inscripciones" FromRole="Inscripciones" ToRole="TatoSeleccionado" />
+    <NavigationProperty Name="Traspasos" Relationship="DB_9B1F4C_afiliacionesModel.FK_Traspasos_Inscripciones" FromRole="Inscripciones" ToRole="Traspasos" />
     <NavigationProperty Name="TraspasosEnEspera" Relationship="DB_9B1F4C_afiliacionesModel.FK_TraspasosEnEspera_Inscripciones" FromRole="Inscripciones" ToRole="TraspasosEnEspera" />
   </EntityType>
   <EntityType Name="Multas">
@@ -373,8 +461,6 @@
       <PropertyRef Name="MultaId" />
     </Key>
     <Property Name="MultaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="DNI" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="TorneoId" Type="Int32" Nullable="false" />
     <Property Name="Eventos1" Type="Int32" Nullable="false" />
     <Property Name="Eventos2" Type="Int32" Nullable="false" />
     <Property Name="Eventos3" Type="Int32" Nullable="false" />
@@ -386,8 +472,10 @@
     <Property Name="DcsoMedico" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="UsuarioId" Type="Int32" />
     <Property Name="Subsanada" Type="Boolean" />
-    <Property Name="Torneo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Afiliado" Relationship="DB_9B1F4C_afiliacionesModel.FK_Multas_Afiliado" FromRole="Multas" ToRole="Afiliado" />
+    <Property Name="Torneo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaTorneo" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="InscripcionId" Type="Int32" />
+    <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_Multas_Inscripciones" FromRole="Multas" ToRole="Inscripciones" />
     <NavigationProperty Name="Usuario" Relationship="DB_9B1F4C_afiliacionesModel.FK_Multas_Usuario" FromRole="Multas" ToRole="Usuario" />
   </EntityType>
   <EntityType Name="Procesado">
@@ -406,6 +494,76 @@
     <Property Name="Rol1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="Detalle" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Usuario" Relationship="DB_9B1F4C_afiliacionesModel.FK_Usuario_Rol" FromRole="Rol" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="TatoInformeAsistencias">
+    <Key>
+      <PropertyRef Name="InformeId" />
+    </Key>
+    <Property Name="InformeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SesionesPlanificadas" Type="Int32" Nullable="false" />
+    <Property Name="SesionesRealizadas" Type="Int32" Nullable="false" />
+    <Property Name="VolumenPlanificado" Type="Int32" Nullable="false" />
+    <Property Name="VolumenRealizado" Type="Int32" Nullable="false" />
+    <Property Name="GimnasioPlanificado" Type="Int32" Nullable="false" />
+    <Property Name="GimnasioRealizado" Type="Int32" Nullable="false" />
+    <Property Name="InscripcionId" Type="Int32" Nullable="false" />
+    <Property Name="Observaciones" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="EntrenadorId" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ClubId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_TatoInformeAsistencias_Inscripciones" FromRole="TatoInformeAsistencias" ToRole="Inscripciones" />
+  </EntityType>
+  <EntityType Name="TatoInformeEntrenador">
+    <Key>
+      <PropertyRef Name="InformeId" />
+    </Key>
+    <Property Name="InformeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EntrenadorId" Type="Int32" Nullable="false" />
+    <Property Name="InscripcionId" Type="Int32" Nullable="false" />
+    <Property Name="SerieId" Type="Int32" Nullable="false" />
+    <Property Name="MejorMarca" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Pruebaid" Type="Int32" Nullable="false" />
+    <Property Name="MarcaEntrenamiento" Type="Double" Nullable="false" />
+    <Property Name="Sensacion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RealizacionId" Type="Int32" Nullable="false" />
+    <Property Name="Zona" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Entrenadores" Relationship="DB_9B1F4C_afiliacionesModel.FK_TatoInformeEntrenador_Entrenadores" FromRole="TatoInformeEntrenador" ToRole="Entrenadores" />
+    <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_TatoInformeEntrenador_Inscripciones" FromRole="TatoInformeEntrenador" ToRole="Inscripciones" />
+    <NavigationProperty Name="TatoRealizacion" Relationship="DB_9B1F4C_afiliacionesModel.FK_TatoInformeEntrenador_TatoRealizacion" FromRole="TatoInformeEntrenador" ToRole="TatoRealizacion" />
+    <NavigationProperty Name="TatoSeriesEjemplo" Relationship="DB_9B1F4C_afiliacionesModel.FK_TatoInformeEntrenador_TatoSeriesEjemplo" FromRole="TatoInformeEntrenador" ToRole="TatoSeriesEjemplo" />
+  </EntityType>
+  <EntityType Name="TatoRealizacion">
+    <Key>
+      <PropertyRef Name="RealizacionId" />
+    </Key>
+    <Property Name="RealizacionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TatoInformeEntrenador" Relationship="DB_9B1F4C_afiliacionesModel.FK_TatoInformeEntrenador_TatoRealizacion" FromRole="TatoRealizacion" ToRole="TatoInformeEntrenador" />
+  </EntityType>
+  <EntityType Name="TatoSeleccionado">
+    <Key>
+      <PropertyRef Name="SeleccionadoId" />
+    </Key>
+    <Property Name="SeleccionadoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InscripcionId" Type="Int32" Nullable="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_TatoSeleccionado_Inscripciones" FromRole="TatoSeleccionado" ToRole="Inscripciones" />
+  </EntityType>
+  <EntityType Name="TatoSeriesEjemplo">
+    <Key>
+      <PropertyRef Name="SerieId" />
+    </Key>
+    <Property Name="SerieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Zona" Type="Int32" Nullable="false" />
+    <Property Name="Series" Type="Int32" Nullable="false" />
+    <Property Name="Repeticiones" Type="Int32" Nullable="false" />
+    <Property Name="Parcial" Type="Int32" Nullable="false" />
+    <Property Name="Tolerancia" Type="Double" Nullable="false" />
+    <Property Name="Micropausa" Type="Double" Nullable="false" />
+    <Property Name="Piscina" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="TatoInformeEntrenador" Relationship="DB_9B1F4C_afiliacionesModel.FK_TatoInformeEntrenador_TatoSeriesEjemplo" FromRole="TatoSeriesEjemplo" ToRole="TatoInformeEntrenador" />
   </EntityType>
   <EntityType Name="TipoAfiliado">
     <Key>
@@ -427,7 +585,9 @@
     <Property Name="Numero_de_traspasos" Type="Int32" Nullable="false" />
     <Property Name="Monto" Type="Double" Nullable="false" />
     <Property Name="Traspasos_restantes" Type="Int32" Nullable="false" />
+    <Property Name="IsncripcionId" Type="Int32" />
     <NavigationProperty Name="Club" Relationship="DB_9B1F4C_afiliacionesModel.FK_Traspasos_Club" FromRole="Traspasos" ToRole="Club" />
+    <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_Traspasos_Inscripciones" FromRole="Traspasos" ToRole="Inscripciones" />
     <NavigationProperty Name="Usuario" Relationship="DB_9B1F4C_afiliacionesModel.FK_Traspasos_Usuario" FromRole="Traspasos" ToRole="Usuario" />
   </EntityType>
   <EntityType Name="TraspasosEnEspera">
@@ -439,6 +599,7 @@
     <Property Name="ClubSolicitante" Type="Int32" Nullable="false" />
     <Property Name="Fecha" Type="DateTime" Precision="0" />
     <Property Name="Liberado" Type="Boolean" Nullable="false" />
+    <Property Name="IsncripcionId" Type="Int32" />
     <NavigationProperty Name="Club" Relationship="DB_9B1F4C_afiliacionesModel.FK_TraspasosEnEspera_Club" FromRole="TraspasosEnEspera" ToRole="Club" />
     <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_afiliacionesModel.FK_TraspasosEnEspera_Inscripciones" FromRole="TraspasosEnEspera" ToRole="Inscripciones" />
   </EntityType>
@@ -482,6 +643,132 @@
     <NavigationProperty Name="Club" Relationship="DB_9B1F4C_afiliacionesModel.FK_Vouchers_Club" FromRole="Vouchers" ToRole="Club" />
     <NavigationProperty Name="Usuario" Relationship="DB_9B1F4C_afiliacionesModel.FK_Vouchers_Usuario" FromRole="Vouchers" ToRole="Usuario" />
   </EntityType>
+  <EntityType Name="Alertas">
+    <Key>
+      <PropertyRef Name="AlertaId" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Alerta" />
+    </Key>
+    <Property Name="AlertaId" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Alerta" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="NoticiaId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Athlete">
+    <Key>
+      <PropertyRef Name="Athlete1" />
+      <PropertyRef Name="First" />
+      <PropertyRef Name="Last" />
+      <PropertyRef Name="Sex" />
+      <PropertyRef Name="Age" />
+      <PropertyRef Name="ID_NO" />
+      <PropertyRef Name="AthleteId" />
+    </Key>
+    <Property Name="Athlete1" Type="Int32" Nullable="false" />
+    <Property Name="First" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Last" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Birth" Type="DateTime" Precision="0" />
+    <Property Name="Age" Type="Int16" Nullable="false" />
+    <Property Name="ID_NO" Type="String" Nullable="false" MaxLength="17" FixedLength="false" Unicode="true" />
+    <Property Name="AthleteId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AthleteMasters">
+    <Key>
+      <PropertyRef Name="Athlete" />
+      <PropertyRef Name="First" />
+      <PropertyRef Name="Last" />
+      <PropertyRef Name="Sex" />
+      <PropertyRef Name="Age" />
+      <PropertyRef Name="ID_NO" />
+      <PropertyRef Name="AthleteId" />
+    </Key>
+    <Property Name="Athlete" Type="Int32" Nullable="false" />
+    <Property Name="First" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Last" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Birth" Type="DateTime" Precision="0" />
+    <Property Name="Age" Type="Int16" Nullable="false" />
+    <Property Name="ID_NO" Type="String" Nullable="false" MaxLength="17" FixedLength="false" Unicode="true" />
+    <Property Name="AthleteId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BASETIMES">
+    <Key>
+      <PropertyRef Name="tiempoId" />
+    </Key>
+    <Property Name="YEAR" Type="Double" />
+    <Property Name="COURSE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="GENDER" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="RELAY__COUNT" Type="Double" />
+    <Property Name="DISTANCE" Type="Double" />
+    <Property Name="STROKE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="BASETIME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SEGUNDOS" Type="Double" />
+    <Property Name="tiempoId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Calendario">
+    <Key>
+      <PropertyRef Name="Inicio" />
+      <PropertyRef Name="Fin" />
+      <PropertyRef Name="Evento" />
+      <PropertyRef Name="Sede" />
+      <PropertyRef Name="EventoId" />
+      <PropertyRef Name="DisciplinaId" />
+    </Key>
+    <Property Name="Inicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Fin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Evento" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Sede" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Carácter" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Observación" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Organizador" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="EventoId" Type="Int32" Nullable="false" />
+    <Property Name="DisciplinaId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategoriaNoticia">
+    <Key>
+      <PropertyRef Name="CategoriaId" />
+      <PropertyRef Name="TipoNoticia" />
+    </Key>
+    <Property Name="CategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="TipoNoticia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CategoriasMasters">
+    <Key>
+      <PropertyRef Name="CategoriaId" />
+      <PropertyRef Name="EdadMinima" />
+      <PropertyRef Name="EdadMaxima" />
+      <PropertyRef Name="Nombre" />
+    </Key>
+    <Property Name="CategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="EdadMinima" Type="Int32" Nullable="false" />
+    <Property Name="EdadMaxima" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Comentarios">
+    <Key>
+      <PropertyRef Name="ComentarioId" />
+      <PropertyRef Name="Comentario" />
+      <PropertyRef Name="UsuarioId" />
+      <PropertyRef Name="NoticiaId" />
+      <PropertyRef Name="Estado" />
+      <PropertyRef Name="Fecha" />
+    </Key>
+    <Property Name="ComentarioId" Type="Int32" Nullable="false" />
+    <Property Name="Comentario" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+    <Property Name="NoticiaId" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="Configuracion">
+    <Key>
+      <PropertyRef Name="Mantenimiento" />
+      <PropertyRef Name="SetupId" />
+    </Key>
+    <Property Name="Mantenimiento" Type="Boolean" Nullable="false" />
+    <Property Name="SetupId" Type="Int32" Nullable="false" />
+  </EntityType>
   <EntityType Name="Consulta">
     <Key>
       <PropertyRef Name="name" />
@@ -494,6 +781,743 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
+  <EntityType Name="Curso">
+    <Key>
+      <PropertyRef Name="CursoId" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Ciudad" />
+      <PropertyRef Name="Direccion" />
+      <PropertyRef Name="Inicio" />
+      <PropertyRef Name="Fin" />
+      <PropertyRef Name="CantidadMaxima" />
+    </Key>
+    <Property Name="CursoId" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Ciudad" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Inicio" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Fin" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DisciplinaId" Type="Int32" />
+    <Property Name="Hora" Type="Time" Precision="7" />
+    <Property Name="CantidadMaxima" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CursoInscripcion">
+    <Key>
+      <PropertyRef Name="InscripcionId" />
+      <PropertyRef Name="ParticipanteId" />
+      <PropertyRef Name="CursoId" />
+    </Key>
+    <Property Name="InscripcionId" Type="Int32" Nullable="false" />
+    <Property Name="ParticipanteId" Type="Int32" Nullable="false" />
+    <Property Name="CursoId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CursoParticipante">
+    <Key>
+      <PropertyRef Name="ParticipanteId" />
+      <PropertyRef Name="Nombres" />
+      <PropertyRef Name="Paterno" />
+      <PropertyRef Name="Nacimiento" />
+      <PropertyRef Name="DNI" />
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="Nacionalidad" />
+      <PropertyRef Name="Actividad" />
+    </Key>
+    <Property Name="ParticipanteId" Type="Int32" Nullable="false" />
+    <Property Name="Nombres" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Paterno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Materno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Nacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DNI" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Celular" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Nacionalidad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Actividad" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Disciplina">
+    <Key>
+      <PropertyRef Name="DisciplinaId" />
+      <PropertyRef Name="TipoDisciplina" />
+    </Key>
+    <Property Name="DisciplinaId" Type="Int32" Nullable="false" />
+    <Property Name="TipoDisciplina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="clase" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Entradas">
+    <Key>
+      <PropertyRef Name="Scr_stat" />
+      <PropertyRef Name="Alt_stat" />
+      <PropertyRef Name="early_seed" />
+      <PropertyRef Name="super_prefinalist" />
+      <PropertyRef Name="super_finfinalist" />
+      <PropertyRef Name="pre_contacted" />
+      <PropertyRef Name="EntryId" />
+      <PropertyRef Name="MeetId" />
+    </Key>
+    <Property Name="Event_ptr" Type="Int32" />
+    <Property Name="Ath_no" Type="Int32" />
+    <Property Name="ActSeed_course" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="ActualSeed_time" Type="Single" />
+    <Property Name="ConvSeed_course" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="ConvSeed_time" Type="Single" />
+    <Property Name="Scr_stat" Type="Boolean" Nullable="false" />
+    <Property Name="Spec_stat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Dec_stat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Alt_stat" Type="Boolean" Nullable="false" />
+    <Property Name="Bonus_event" Type="Boolean" />
+    <Property Name="Div_no" Type="Int32" />
+    <Property Name="Ev_score" Type="Single" />
+    <Property Name="JDEv_score" Type="Single" />
+    <Property Name="Seed_place" Type="Int16" />
+    <Property Name="event_age" Type="Int16" />
+    <Property Name="Pre_heat" Type="Int16" />
+    <Property Name="Pre_lane" Type="Int16" />
+    <Property Name="Pre_stat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Pre_Time" Type="Single" />
+    <Property Name="Pre_course" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Pre_heatplace" Type="Int16" />
+    <Property Name="Pre_place" Type="Int16" />
+    <Property Name="Pre_jdplace" Type="Int16" />
+    <Property Name="Pre_exh" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Pre_points" Type="Int16" />
+    <Property Name="Pre_back1" Type="Single" />
+    <Property Name="Pre_back2" Type="Single" />
+    <Property Name="Pre_back3" Type="Single" />
+    <Property Name="Pre_watch1" Type="Single" />
+    <Property Name="Pre_pad" Type="Single" />
+    <Property Name="Pre_reactiontime1" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Pre_dqcode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Pre_dqcodeSecond" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Pre_TimeType" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Fin_heat" Type="Int16" />
+    <Property Name="Fin_lane" Type="Int16" />
+    <Property Name="Fin_stat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Fin_Time" Type="Single" />
+    <Property Name="Fin_course" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Fin_heatplace" Type="Int16" />
+    <Property Name="Fin_jdheatplace" Type="Int16" />
+    <Property Name="Fin_place" Type="Int16" />
+    <Property Name="Fin_jdplace" Type="Int16" />
+    <Property Name="Fin_exh" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Fin_points" Type="Int16" />
+    <Property Name="Fin_back1" Type="Single" />
+    <Property Name="Fin_back2" Type="Single" />
+    <Property Name="Fin_back3" Type="Single" />
+    <Property Name="Fin_watch1" Type="Single" />
+    <Property Name="Fin_pad" Type="Single" />
+    <Property Name="Fin_reactiontime1" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Fin_dqcode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Fin_dqcodeSecond" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Fin_ptsplace" Type="Int16" />
+    <Property Name="fin_heatltr" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="fin_TimeType" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Sem_heat" Type="Int16" />
+    <Property Name="Sem_lane" Type="Int16" />
+    <Property Name="Sem_stat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Sem_Time" Type="Single" />
+    <Property Name="Sem_course" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Sem_heatplace" Type="Int16" />
+    <Property Name="Sem_place" Type="Int16" />
+    <Property Name="Sem_jdplace" Type="Int16" />
+    <Property Name="Sem_exh" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Sem_points" Type="Int16" />
+    <Property Name="Sem_back1" Type="Single" />
+    <Property Name="Sem_back2" Type="Single" />
+    <Property Name="Sem_back3" Type="Single" />
+    <Property Name="Sem_watch1" Type="Single" />
+    <Property Name="Sem_pad" Type="Single" />
+    <Property Name="Sem_reactiontime1" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Sem_dqcode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Sem_dqcodeSecond" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Sem_TimeType" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="dq_type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Fin_group" Type="Int16" />
+    <Property Name="Fin_dolphin1" Type="Single" />
+    <Property Name="Fin_dolphin2" Type="Single" />
+    <Property Name="Fin_dolphin3" Type="Single" />
+    <Property Name="Pre_dolphin1" Type="Single" />
+    <Property Name="Pre_dolphin2" Type="Single" />
+    <Property Name="Pre_dolphin3" Type="Single" />
+    <Property Name="Sem_dolphin1" Type="Single" />
+    <Property Name="Sem_dolphin2" Type="Single" />
+    <Property Name="Sem_dolphin3" Type="Single" />
+    <Property Name="early_seed" Type="Boolean" Nullable="false" />
+    <Property Name="super_prefinalist" Type="Boolean" Nullable="false" />
+    <Property Name="super_finfinalist" Type="Boolean" Nullable="false" />
+    <Property Name="fin_adjuststat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="pre_adjuststat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="sem_adjuststat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="fin_divingdd" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="pre_divingdd" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="sem_divingdd" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="entry_method" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="fin_dqofficial" Type="Int32" />
+    <Property Name="pre_dqofficial" Type="Int32" />
+    <Property Name="sem_dqofficial" Type="Int32" />
+    <Property Name="pre_contacted" Type="Boolean" Nullable="false" />
+    <Property Name="EntryId" Type="Int32" Nullable="false" />
+    <Property Name="MeetId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Equipos">
+    <Key>
+      <PropertyRef Name="Team_no" />
+      <PropertyRef Name="Team_NoPoints" />
+      <PropertyRef Name="Team_Selected" />
+      <PropertyRef Name="NoTeam_surcharge" />
+      <PropertyRef Name="NoFacility_surcharge" />
+      <PropertyRef Name="NoAthlete_surcharge" />
+      <PropertyRef Name="NoRelayOnly_surcharge" />
+      <PropertyRef Name="TeamId" />
+      <PropertyRef Name="MeetId" />
+    </Key>
+    <Property Name="Team_no" Type="Int32" Nullable="false" />
+    <Property Name="Team_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_short" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="Team_abbr" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Team_stat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Team_lsc" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Team_div" Type="Int16" />
+    <Property Name="Team_region" Type="Int16" />
+    <Property Name="Team_head" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_asst" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_addr1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_addr2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_city" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_prov" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_statenew" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Team_zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Team_cntry" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Team_daytele" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Team_evetele" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Team_faxtele" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Team_email" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="Team_c3" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_c4" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_c5" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_c6" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_c7" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_c8" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_c9" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_c10" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Team_altabbr" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Team_NoPoints" Type="Boolean" Nullable="false" />
+    <Property Name="Team_Selected" Type="Boolean" Nullable="false" />
+    <Property Name="Team_altname" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="NoTeam_surcharge" Type="Boolean" Nullable="false" />
+    <Property Name="NoFacility_surcharge" Type="Boolean" Nullable="false" />
+    <Property Name="NoAthlete_surcharge" Type="Boolean" Nullable="false" />
+    <Property Name="Team_cell" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="NoRelayOnly_surcharge" Type="Boolean" Nullable="false" />
+    <Property Name="TeamId" Type="Int32" Nullable="false" />
+    <Property Name="MeetId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estilos">
+    <Key>
+      <PropertyRef Name="EstiloId" />
+      <PropertyRef Name="Estilo" />
+      <PropertyRef Name="tag_stroke" />
+    </Key>
+    <Property Name="EstiloId" Type="Int32" Nullable="false" />
+    <Property Name="Estilo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag_stroke" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Eventos">
+    <Key>
+      <PropertyRef Name="Event_ptr" />
+      <PropertyRef Name="Multi_age" />
+      <PropertyRef Name="Auto_seed" />
+      <PropertyRef Name="Twoperlane_req" />
+      <PropertyRef Name="Score_event" />
+      <PropertyRef Name="Is_locked" />
+      <PropertyRef Name="Suppress_stroke" />
+      <PropertyRef Name="Custom_ABCFinal" />
+      <PropertyRef Name="Multiage_SuperFinal" />
+      <PropertyRef Name="Finals_LanesVary" />
+      <PropertyRef Name="ABC_Style" />
+      <PropertyRef Name="PrelimsAs_ExtendedFinal" />
+      <PropertyRef Name="TimedFinal_LanesVary" />
+      <PropertyRef Name="ScoreTimedFinal_asABC" />
+      <PropertyRef Name="Pads_BothEnds" />
+      <PropertyRef Name="Multiage_SuperSeed" />
+      <PropertyRef Name="Suppress_distance" />
+      <PropertyRef Name="Fin_AwardsPrinted" />
+      <PropertyRef Name="Pre_AwardsPrinted" />
+      <PropertyRef Name="Sem_AwardsPrinted" />
+      <PropertyRef Name="SuperFinal_ElimOldAgeGrp" />
+      <PropertyRef Name="SeedMultiAge_OldToYoung" />
+      <PropertyRef Name="Multi_ageScnd" />
+      <PropertyRef Name="Pads_BothEndsFinals" />
+      <PropertyRef Name="EventId" />
+      <PropertyRef Name="MeetId" />
+    </Key>
+    <Property Name="Event_no" Type="Int16" />
+    <Property Name="Event_ltr" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Event_ptr" Type="Int32" Nullable="false" />
+    <Property Name="Ind_rel" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Event_sex" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Event_gender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Event_dist" Type="Single" />
+    <Property Name="Event_stroke" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Low_age" Type="Int16" />
+    <Property Name="High_Age" Type="Int16" />
+    <Property Name="Multi_age" Type="Boolean" Nullable="false" />
+    <Property Name="Event_stat" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Event_rounds" Type="Int16" />
+    <Property Name="Num_prelanes" Type="Int16" />
+    <Property Name="Num_finlanes" Type="Int16" />
+    <Property Name="Heats_infinal" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Heats_insemi" Type="Int16" />
+    <Property Name="Std_lanes" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Auto_seed" Type="Boolean" Nullable="false" />
+    <Property Name="Twoperlane_req" Type="Boolean" Nullable="false" />
+    <Property Name="Preheat_order" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Finheat_order" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Score_event" Type="Boolean" Nullable="false" />
+    <Property Name="Div_no" Type="Int16" />
+    <Property Name="Relay_size" Type="Int16" />
+    <Property Name="Comm_1" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="Comm_2" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="Comm_3" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="Comm_4" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="Entry_fee" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Is_locked" Type="Boolean" Nullable="false" />
+    <Property Name="Locked_by" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Event_Type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Locked_list" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="Event_note" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Suppress_stroke" Type="Boolean" Nullable="false" />
+    <Property Name="Custom_ABCFinal" Type="Boolean" Nullable="false" />
+    <Property Name="Num_dives" Type="Int16" />
+    <Property Name="Num_HeatsInFinal" Type="Int16" />
+    <Property Name="Multiage_SuperFinal" Type="Boolean" Nullable="false" />
+    <Property Name="Finals_LanesVary" Type="Boolean" Nullable="false" />
+    <Property Name="Finals_LanesVaryOrder" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+    <Property Name="ABCfinal_order" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="ABC_Style" Type="Boolean" Nullable="false" />
+    <Property Name="PrelimsAs_ExtendedFinal" Type="Boolean" Nullable="false" />
+    <Property Name="Num_LanesInBestHeatsTimedFinal" Type="Int16" />
+    <Property Name="Num_BestHeatsTimedFinal" Type="Int16" />
+    <Property Name="TimedFinal_LanesVary" Type="Boolean" Nullable="false" />
+    <Property Name="ScoreTimedFinal_asABC" Type="Boolean" Nullable="false" />
+    <Property Name="Num_HeatsInTimedFinalToScore" Type="Int16" />
+    <Property Name="Pads_BothEnds" Type="Boolean" Nullable="false" />
+    <Property Name="Multiage_SuperSeed" Type="Boolean" Nullable="false" />
+    <Property Name="Suppress_distance" Type="Boolean" Nullable="false" />
+    <Property Name="Fin_AwardsPrinted" Type="Boolean" Nullable="false" />
+    <Property Name="Pre_AwardsPrinted" Type="Boolean" Nullable="false" />
+    <Property Name="Sem_AwardsPrinted" Type="Boolean" Nullable="false" />
+    <Property Name="FastTimeStd_Abbr" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="SlowTimeStd_Abbr" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="SuperFinal_ElimOldAgeGrp" Type="Boolean" Nullable="false" />
+    <Property Name="SeedMultiAge_OldToYoung" Type="Boolean" Nullable="false" />
+    <Property Name="Multi_ageScnd" Type="Boolean" Nullable="false" />
+    <Property Name="Num_RelayLegs" Type="Int16" />
+    <Property Name="Pads_BothEndsFinals" Type="Boolean" Nullable="false" />
+    <Property Name="Checkin_starttime" Type="Int32" />
+    <Property Name="Checkin_endtime" Type="Int32" />
+    <Property Name="Checkin_startdate" Type="DateTime" Precision="0" />
+    <Property Name="Checkin_enddate" Type="DateTime" Precision="0" />
+    <Property Name="Num_semlanes" Type="Int16" />
+    <Property Name="EvtMaxAgeFor_CFinal" Type="Int16" />
+    <Property Name="EvtMaxAgeNumHeats_CFinal" Type="Int16" />
+    <Property Name="fin_actualstarttime" Type="Int32" />
+    <Property Name="sem_actualstarttime" Type="Int32" />
+    <Property Name="pre_actualstarttime" Type="Int32" />
+    <Property Name="EventId" Type="Int32" Nullable="false" />
+    <Property Name="MeetId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Fotos">
+    <Key>
+      <PropertyRef Name="FotoId" />
+    </Key>
+    <Property Name="FotoId" Type="Int32" Nullable="false" />
+    <Property Name="Nombrefoto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NoticiaId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="MarcasMinimas">
+    <Key>
+      <PropertyRef Name="TimeStdId" />
+      <PropertyRef Name="MeetId" />
+    </Key>
+    <Property Name="tag_ptr" Type="Int32" />
+    <Property Name="tag_gender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="tag_indrel" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="tag_dist" Type="Int32" />
+    <Property Name="tag_stroke" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="low_age" Type="Int16" />
+    <Property Name="high_Age" Type="Int16" />
+    <Property Name="tag_time" Type="Single" />
+    <Property Name="tag_course" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="div_abbr" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="TimeStdId" Type="Int32" Nullable="false" />
+    <Property Name="MeetId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MEET">
+    <Key>
+      <PropertyRef Name="Meet1" />
+      <PropertyRef Name="MName" />
+      <PropertyRef Name="Start" />
+      <PropertyRef Name="End" />
+      <PropertyRef Name="Course" />
+      <PropertyRef Name="MeetId" />
+    </Key>
+    <Property Name="Meet1" Type="Int32" Nullable="false" />
+    <Property Name="MName" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="true" />
+    <Property Name="Start" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="End" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Course" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="MeetId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Modals">
+    <Key>
+      <PropertyRef Name="Modalid" />
+      <PropertyRef Name="Activo" />
+    </Key>
+    <Property Name="Modalid" Type="Int32" Nullable="false" />
+    <Property Name="Titulo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Cuerpo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Enlace" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MultiEdad">
+    <Key>
+      <PropertyRef Name="MeetId" />
+      <PropertyRef Name="MultiAgeId" />
+    </Key>
+    <Property Name="event_ptr" Type="Int32" />
+    <Property Name="low_age" Type="Int16" />
+    <Property Name="high_age" Type="Int16" />
+    <Property Name="Heats_infinal" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Num_Heatsinfinal" Type="Int16" />
+    <Property Name="MeetId" Type="Int32" Nullable="false" />
+    <Property Name="MultiAgeId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Noticias">
+    <Key>
+      <PropertyRef Name="NoticiaId" />
+      <PropertyRef Name="Titulo" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="DisciplinaId" />
+      <PropertyRef Name="UsuarioId" />
+      <PropertyRef Name="CategoriaId" />
+      <PropertyRef Name="Palabrasclaves" />
+    </Key>
+    <Property Name="NoticiaId" Type="Int32" Nullable="false" />
+    <Property Name="Titulo" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Corta" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Larga" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DisciplinaId" Type="Int32" Nullable="false" />
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="CategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="Palabrasclaves" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Visible" Type="Boolean" />
+    <Property Name="Youtube" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PoloEquipos">
+    <Key>
+      <PropertyRef Name="EquipoId" />
+      <PropertyRef Name="Nombre" />
+    </Key>
+    <Property Name="EquipoId" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sexo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="TorneoId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PoloFechas">
+    <Key>
+      <PropertyRef Name="FechaId" />
+      <PropertyRef Name="Dia" />
+    </Key>
+    <Property Name="FechaId" Type="Int32" Nullable="false" />
+    <Property Name="Dia" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TorneoId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PoloGoleadores">
+    <Key>
+      <PropertyRef Name="GoleadorId" />
+      <PropertyRef Name="JugadorId" />
+      <PropertyRef Name="Goles" />
+    </Key>
+    <Property Name="GoleadorId" Type="Int32" Nullable="false" />
+    <Property Name="JugadorId" Type="Int32" Nullable="false" />
+    <Property Name="Goles" Type="Int32" Nullable="false" />
+    <Property Name="TorneoId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PoloGrupos">
+    <Key>
+      <PropertyRef Name="GrupoId" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Sexoid" />
+    </Key>
+    <Property Name="GrupoId" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sexoid" Type="Int32" Nullable="false" />
+    <Property Name="TorneoId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PoloJugadores">
+    <Key>
+      <PropertyRef Name="JugadorId" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Apellido" />
+      <PropertyRef Name="EquipoId" />
+      <PropertyRef Name="Sexo" />
+      <PropertyRef Name="Edad" />
+    </Key>
+    <Property Name="JugadorId" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EquipoId" Type="Int32" Nullable="false" />
+    <Property Name="Sexo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="Edad" Type="Int32" Nullable="false" />
+    <Property Name="TorneoId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PoloPartidos">
+    <Key>
+      <PropertyRef Name="PartidoId" />
+      <PropertyRef Name="FechaId" />
+      <PropertyRef Name="GrupoId" />
+      <PropertyRef Name="Hora" />
+      <PropertyRef Name="SexoId" />
+      <PropertyRef Name="RondaId" />
+      <PropertyRef Name="Equipo1" />
+      <PropertyRef Name="Equipo2" />
+    </Key>
+    <Property Name="PartidoId" Type="Int32" Nullable="false" />
+    <Property Name="FechaId" Type="Int32" Nullable="false" />
+    <Property Name="GrupoId" Type="Int32" Nullable="false" />
+    <Property Name="Hora" Type="Double" Nullable="false" />
+    <Property Name="SexoId" Type="Int32" Nullable="false" />
+    <Property Name="RondaId" Type="Int32" Nullable="false" />
+    <Property Name="Equipo1" Type="Int32" Nullable="false" />
+    <Property Name="Equipo2" Type="Int32" Nullable="false" />
+    <Property Name="TorneoId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PoloPosicion">
+    <Key>
+      <PropertyRef Name="PosicionId" />
+      <PropertyRef Name="PJ" />
+      <PropertyRef Name="PG" />
+      <PropertyRef Name="PE" />
+      <PropertyRef Name="PP" />
+      <PropertyRef Name="GF" />
+      <PropertyRef Name="GC" />
+      <PropertyRef Name="DG" />
+      <PropertyRef Name="PUNTOS" />
+      <PropertyRef Name="EquipoId" />
+      <PropertyRef Name="GrupoId" />
+    </Key>
+    <Property Name="PosicionId" Type="Int32" Nullable="false" />
+    <Property Name="PJ" Type="Int32" Nullable="false" />
+    <Property Name="PG" Type="Int32" Nullable="false" />
+    <Property Name="PE" Type="Int32" Nullable="false" />
+    <Property Name="PP" Type="Int32" Nullable="false" />
+    <Property Name="GF" Type="Int32" Nullable="false" />
+    <Property Name="GC" Type="Int32" Nullable="false" />
+    <Property Name="DG" Type="Int32" Nullable="false" />
+    <Property Name="PUNTOS" Type="Int32" Nullable="false" />
+    <Property Name="EquipoId" Type="Int32" Nullable="false" />
+    <Property Name="GrupoId" Type="Int32" Nullable="false" />
+    <Property Name="TorneoId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PoloPosicionFinal">
+    <Key>
+      <PropertyRef Name="PosicionId" />
+      <PropertyRef Name="Pasiid" />
+      <PropertyRef Name="Posicion" />
+    </Key>
+    <Property Name="PosicionId" Type="Int32" Nullable="false" />
+    <Property Name="Pasiid" Type="Int32" Nullable="false" />
+    <Property Name="Posicion" Type="Int32" Nullable="false" />
+    <Property Name="TorneoId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PoloResultados">
+    <Key>
+      <PropertyRef Name="ResultadoId" />
+      <PropertyRef Name="A1" />
+      <PropertyRef Name="A2" />
+      <PropertyRef Name="A3" />
+      <PropertyRef Name="A4" />
+      <PropertyRef Name="T1" />
+      <PropertyRef Name="T2" />
+      <PropertyRef Name="B1" />
+      <PropertyRef Name="B2" />
+      <PropertyRef Name="B3" />
+      <PropertyRef Name="B4" />
+      <PropertyRef Name="PartidaId" />
+    </Key>
+    <Property Name="ResultadoId" Type="Int32" Nullable="false" />
+    <Property Name="A1" Type="Int32" Nullable="false" />
+    <Property Name="A2" Type="Int32" Nullable="false" />
+    <Property Name="A3" Type="Int32" Nullable="false" />
+    <Property Name="A4" Type="Int32" Nullable="false" />
+    <Property Name="T1" Type="Int32" Nullable="false" />
+    <Property Name="T2" Type="Int32" Nullable="false" />
+    <Property Name="B1" Type="Int32" Nullable="false" />
+    <Property Name="B2" Type="Int32" Nullable="false" />
+    <Property Name="B3" Type="Int32" Nullable="false" />
+    <Property Name="B4" Type="Int32" Nullable="false" />
+    <Property Name="PartidaId" Type="Int32" Nullable="false" />
+    <Property Name="TorneoId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PoloRondas">
+    <Key>
+      <PropertyRef Name="RondaId" />
+      <PropertyRef Name="Nombre" />
+    </Key>
+    <Property Name="RondaId" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TorneoId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PoloTorneo">
+    <Key>
+      <PropertyRef Name="TorneoId" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="FechaInicio" />
+      <PropertyRef Name="FechaCierre" />
+      <PropertyRef Name="EdadMaxima" />
+      <PropertyRef Name="EdadMinima" />
+    </Key>
+    <Property Name="TorneoId" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FechaCierre" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EdadMaxima" Type="Int32" Nullable="false" />
+    <Property Name="EdadMinima" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pruebas">
+    <Key>
+      <PropertyRef Name="PruebaId" />
+      <PropertyRef Name="distancia" />
+      <PropertyRef Name="estilo" />
+    </Key>
+    <Property Name="PruebaId" Type="Int32" Nullable="false" />
+    <Property Name="distancia" Type="Int32" Nullable="false" />
+    <Property Name="estilo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="FactorF" Type="Double" />
+    <Property Name="FactorM" Type="Double" />
+    <Property Name="EstiloMeet" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Query">
+    <Key>
+      <PropertyRef Name="Athlete" />
+      <PropertyRef Name="First" />
+      <PropertyRef Name="Last" />
+      <PropertyRef Name="Sex" />
+      <PropertyRef Name="Age" />
+      <PropertyRef Name="ID_NO" />
+      <PropertyRef Name="AthleteId" />
+    </Key>
+    <Property Name="Athlete" Type="Int32" Nullable="false" />
+    <Property Name="First" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Last" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Birth" Type="DateTime" Precision="3" />
+    <Property Name="Age" Type="Int16" Nullable="false" />
+    <Property Name="ID_NO" Type="String" Nullable="false" MaxLength="17" FixedLength="false" Unicode="true" />
+    <Property Name="AthleteId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RESULTS">
+    <Key>
+      <PropertyRef Name="MEET" />
+      <PropertyRef Name="ATHLETE" />
+      <PropertyRef Name="I_R" />
+      <PropertyRef Name="TEAM" />
+      <PropertyRef Name="SCORE" />
+      <PropertyRef Name="F_P" />
+      <PropertyRef Name="NT" />
+      <PropertyRef Name="AGE" />
+      <PropertyRef Name="DISTANCE" />
+      <PropertyRef Name="STROKE" />
+      <PropertyRef Name="MTEV" />
+      <PropertyRef Name="LO_HI" />
+      <PropertyRef Name="POINTS" />
+      <PropertyRef Name="PLACE" />
+      <PropertyRef Name="COURSE" />
+      <PropertyRef Name="ResultId" />
+    </Key>
+    <Property Name="MEET" Type="Int32" Nullable="false" />
+    <Property Name="ATHLETE" Type="Int32" Nullable="false" />
+    <Property Name="I_R" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="TEAM" Type="Int32" Nullable="false" />
+    <Property Name="SCORE" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="F_P" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="EX" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="NT" Type="Byte" Nullable="false" />
+    <Property Name="AGE" Type="Int16" Nullable="false" />
+    <Property Name="DISTANCE" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="STROKE" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="MTEV" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="LO_HI" Type="Int16" Nullable="false" />
+    <Property Name="POINTS" Type="Int16" Nullable="false" />
+    <Property Name="PLACE" Type="Int16" Nullable="false" />
+    <Property Name="COURSE" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="DIVISION" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="PFina" Type="Int32" />
+    <Property Name="AthleteId" Type="Int32" />
+    <Property Name="MeetId" Type="Int32" />
+    <Property Name="TeamId" Type="Int32" />
+    <Property Name="PruebaId" Type="Int32" />
+    <Property Name="ResultId" Type="Int32" Nullable="false" />
+    <Property Name="Tiempobase" Type="Double" />
+  </EntityType>
+  <EntityType Name="Sesion">
+    <Key>
+      <PropertyRef Name="Sess_ptr" />
+      <PropertyRef Name="MeetId" />
+      <PropertyRef Name="SessionId" />
+    </Key>
+    <Property Name="Sess_no" Type="Int16" />
+    <Property Name="Sess_ltr" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Sess_ptr" Type="Int32" Nullable="false" />
+    <Property Name="Sess_day" Type="Int16" />
+    <Property Name="Sess_starttime" Type="Int32" />
+    <Property Name="Sess_entrymax" Type="Int16" />
+    <Property Name="Sess_name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Sess_interval" Type="Int16" />
+    <Property Name="Sess_course" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Sess_entrymaxind" Type="Int16" />
+    <Property Name="Sess_entrymaxrel" Type="Int16" />
+    <Property Name="Sess_backinterval" Type="Int16" />
+    <Property Name="Sess_divinginterval" Type="Int16" />
+    <Property Name="Sess_chaseinterval" Type="Int16" />
+    <Property Name="MeetId" Type="Int32" Nullable="false" />
+    <Property Name="SessionId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SessionItem">
+    <Key>
+      <PropertyRef Name="Alt_With" />
+      <PropertyRef Name="SessitemId" />
+      <PropertyRef Name="Meetid" />
+    </Key>
+    <Property Name="Sess_order" Type="Int32" />
+    <Property Name="Sess_ptr" Type="Int32" />
+    <Property Name="Event_ptr" Type="Int32" />
+    <Property Name="Sess_rnd" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Rept_type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Delay_seconds" Type="Int32" />
+    <Property Name="Alt_With" Type="Boolean" Nullable="false" />
+    <Property Name="Timed_finalheats" Type="Int16" />
+    <Property Name="EventTo_AlternateWith" Type="Int32" />
+    <Property Name="Delay_desc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AltHeats_StartCount" Type="Int16" />
+    <Property Name="SessitemId" Type="Int32" Nullable="false" />
+    <Property Name="Meetid" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SetupTorneo">
+    <Key>
+      <PropertyRef Name="SetupId" />
+      <PropertyRef Name="TipoId" />
+      <PropertyRef Name="pruebasXsesion" />
+      <PropertyRef Name="pruebasXtorneo" />
+    </Key>
+    <Property Name="SetupId" Type="Int32" Nullable="false" />
+    <Property Name="TipoId" Type="Int32" Nullable="false" />
+    <Property Name="pruebasXsesion" Type="Int32" Nullable="false" />
+    <Property Name="pruebasXtorneo" Type="Int32" Nullable="false" />
+    <Property Name="Meetid" Type="Int32" />
+  </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="name" />
@@ -505,6 +1529,379 @@
     <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TEAM">
+    <Key>
+      <PropertyRef Name="Team1" />
+      <PropertyRef Name="TeamId" />
+      <PropertyRef Name="TCode" />
+    </Key>
+    <Property Name="Team1" Type="Int32" Nullable="false" />
+    <Property Name="TeamId" Type="Int32" Nullable="false" />
+    <Property Name="TCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="TName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TipoTorneo">
+    <Key>
+      <PropertyRef Name="TipoId" />
+      <PropertyRef Name="Nombre" />
+    </Key>
+    <Property Name="TipoId" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Torneo">
+    <Key>
+      <PropertyRef Name="Enter_ages" />
+      <PropertyRef Name="Enter_birthdate" />
+      <PropertyRef Name="Enter_schoolyr" />
+      <PropertyRef Name="A_Relaysonly" />
+      <PropertyRef Name="Use_hometown" />
+      <PropertyRef Name="Show_countrycode" />
+      <PropertyRef Name="Scores_afterevt" />
+      <PropertyRef Name="Lastname_first" />
+      <PropertyRef Name="Punct_names" />
+      <PropertyRef Name="Punct_teams" />
+      <PropertyRef Name="win_mm" />
+      <PropertyRef Name="timedfinal_circleseed" />
+      <PropertyRef Name="foreign_infinal" />
+      <PropertyRef Name="exh_infinal" />
+      <PropertyRef Name="nonconform_last" />
+      <PropertyRef Name="seed_exhlast" />
+      <PropertyRef Name="dual_evenodd" />
+      <PropertyRef Name="strict_evenodd" />
+      <PropertyRef Name="masters_bytimeonly" />
+      <PropertyRef Name="show_initial" />
+      <PropertyRef Name="ucase_names" />
+      <PropertyRef Name="ucase_teams" />
+      <PropertyRef Name="entryqual_faster" />
+      <PropertyRef Name="anyone_onrelay" />
+      <PropertyRef Name="military_time" />
+      <PropertyRef Name="check_times" />
+      <PropertyRef Name="enterkey_astab" />
+      <PropertyRef Name="double_endedsplits" />
+      <PropertyRef Name="use_compnumbers" />
+      <PropertyRef Name="diffpts_malefemale" />
+      <PropertyRef Name="diffpts_eachdivision" />
+      <PropertyRef Name="scoreonly_ifexceedqualtime" />
+      <PropertyRef Name="score_fastestheatonly" />
+      <PropertyRef Name="entrylimits_warn" />
+      <PropertyRef Name="pointsbasedon_seedtime" />
+      <PropertyRef Name="pointsfor_overachievers" />
+      <PropertyRef Name="pointsfor_underachievers" />
+      <PropertyRef Name="foreign_getteampoints" />
+      <PropertyRef Name="include_swimupsinteamscore" />
+      <PropertyRef Name="enter_citizenof" />
+      <PropertyRef Name="flag_overachievers" />
+      <PropertyRef Name="flag_underachievers" />
+      <PropertyRef Name="scbd_cycle" />
+      <PropertyRef Name="report_headersonly" />
+      <PropertyRef Name="autoinc_compno" />
+      <PropertyRef Name="pentscoring_usedqtime" />
+      <PropertyRef Name="directly_toprinter" />
+      <PropertyRef Name="lastname_asinitial" />
+      <PropertyRef Name="under_eventname" />
+      <PropertyRef Name="suppress_Arelay" />
+      <PropertyRef Name="Punct_recholders" />
+      <PropertyRef Name="ucase_recholders" />
+      <PropertyRef Name="suppress_lsc" />
+      <PropertyRef Name="showathlete_status" />
+      <PropertyRef Name="useeventsex_teamscore" />
+      <PropertyRef Name="suppress_smallx" />
+      <PropertyRef Name="score_Arelayonly" />
+      <PropertyRef Name="thirteenandover_assenior" />
+      <PropertyRef Name="suppress_jd" />
+      <PropertyRef Name="include_sanction" />
+      <PropertyRef Name="countrelay_alt" />
+      <PropertyRef Name="UseNonConforming_PoolFactor" />
+      <PropertyRef Name="Enter_AthStat" />
+      <PropertyRef Name="Show_secondclub" />
+      <PropertyRef Name="firstinitial_fulllastname" />
+      <PropertyRef Name="turnon_autobackup" />
+      <PropertyRef Name="PointsAwarded_ForExh" />
+      <PropertyRef Name="Use_AltTeamAbbr" />
+      <PropertyRef Name="IsCanadian_Masters" />
+      <PropertyRef Name="timedfinalnonconform_last" />
+      <PropertyRef Name="AllowSameEvent_DupRelayNames" />
+      <PropertyRef Name="strict_evenoddfastestheatonly" />
+      <PropertyRef Name="dualseeding_altunusedlane" />
+      <PropertyRef Name="Display_ActualEntryTime" />
+      <PropertyRef Name="RelayNames_LinkByLSC" />
+      <PropertyRef Name="Read_Only" />
+      <PropertyRef Name="Flighted_BasedOnResultsTime" />
+      <PropertyRef Name="ShowYear_InPlaceOfAge" />
+      <PropertyRef Name="Suppress_TimeStdAbbr" />
+      <PropertyRef Name="Custom_QualTimes" />
+      <PropertyRef Name="Suppress_SplitsForDQs" />
+      <PropertyRef Name="Suppress_SplitsForDQsRelay" />
+      <PropertyRef Name="SuppressTimes_NotMeetQualTime" />
+      <PropertyRef Name="Show_AgeandBirthYear" />
+      <PropertyRef Name="BCSSA_DivbyTimeStd" />
+      <PropertyRef Name="Show_HyTekDecimals" />
+      <PropertyRef Name="Suppress_ResultsAdvQ" />
+      <PropertyRef Name="RelaysAs_4x100Style" />
+      <PropertyRef Name="flighted_inclDQ" />
+      <PropertyRef Name="RelaysAlternate_TwoFastestFirst" />
+      <PropertyRef Name="ShowFirstName_OverPreferred" />
+      <PropertyRef Name="ExcludeNTEntries_WhenImporting" />
+      <PropertyRef Name="Enter_birthcentury" />
+      <PropertyRef Name="Using_twopools" />
+      <PropertyRef Name="Flag_FastestRecordOnly" />
+      <PropertyRef Name="DisplayNTfor_TimesUnder5Sec" />
+      <PropertyRef Name="SortTeamCombos_ByTeamName" />
+      <PropertyRef Name="FastestHeat_SomeLanesDoNotScore" />
+      <PropertyRef Name="RankDisabled_ByPoints" />
+      <PropertyRef Name="DisabledDoNot_AdvanceToFinals" />
+      <PropertyRef Name="DisabledIgnoreQualTime_ForScoring" />
+      <PropertyRef Name="CountTimeTrial_Events" />
+      <PropertyRef Name="QualNonConformCourse_UseMinStd" />
+      <PropertyRef Name="MixedRelays_DividedPoints" />
+      <PropertyRef Name="DisabledSeedWithAgeGroup_IfTimedFinalSuperSeed" />
+      <PropertyRef Name="Meetid" />
+      <PropertyRef Name="MarcaMaxima" />
+    </Key>
+    <Property Name="Meet_name1" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_header1" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_header2" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_location" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_start" Type="DateTime" Precision="0" />
+    <Property Name="Meet_end" Type="DateTime" Precision="0" />
+    <Property Name="Meet_idformat" Type="Int16" />
+    <Property Name="Meet_class" Type="Int16" />
+    <Property Name="Meet_meettype" Type="Int16" />
+    <Property Name="Meet_course" Type="Int16" />
+    <Property Name="Enter_ages" Type="Boolean" Nullable="false" />
+    <Property Name="Enter_birthdate" Type="Boolean" Nullable="false" />
+    <Property Name="Calc_date" Type="DateTime" Precision="0" />
+    <Property Name="Enter_schoolyr" Type="Boolean" Nullable="false" />
+    <Property Name="A_Relaysonly" Type="Boolean" Nullable="false" />
+    <Property Name="Use_hometown" Type="Boolean" Nullable="false" />
+    <Property Name="Show_countrycode" Type="Boolean" Nullable="false" />
+    <Property Name="Scores_afterevt" Type="Boolean" Nullable="false" />
+    <Property Name="Lastname_first" Type="Boolean" Nullable="false" />
+    <Property Name="Punct_names" Type="Boolean" Nullable="false" />
+    <Property Name="Punct_teams" Type="Boolean" Nullable="false" />
+    <Property Name="win_mm" Type="Boolean" Nullable="false" />
+    <Property Name="meet_numlanes" Type="Int16" />
+    <Property Name="prelimheats_circle" Type="Int16" />
+    <Property Name="timedfinal_circleseed" Type="Boolean" Nullable="false" />
+    <Property Name="foreign_infinal" Type="Boolean" Nullable="false" />
+    <Property Name="exh_infinal" Type="Boolean" Nullable="false" />
+    <Property Name="nonconform_last" Type="Boolean" Nullable="false" />
+    <Property Name="course_order" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="seed_exhlast" Type="Boolean" Nullable="false" />
+    <Property Name="dual_evenodd" Type="Boolean" Nullable="false" />
+    <Property Name="strict_evenodd" Type="Boolean" Nullable="false" />
+    <Property Name="team_evenlanes" Type="Int32" />
+    <Property Name="team_oddlanes" Type="Int32" />
+    <Property Name="masters_bytimeonly" Type="Boolean" Nullable="false" />
+    <Property Name="masters_agegrpsskip" Type="Int16" />
+    <Property Name="timer_port" Type="Int16" />
+    <Property Name="scbd_port" Type="Int16" />
+    <Property Name="timer_vendor" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="scbd_vendor" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="show_initial" Type="Boolean" Nullable="false" />
+    <Property Name="ucase_names" Type="Boolean" Nullable="false" />
+    <Property Name="ucase_teams" Type="Boolean" Nullable="false" />
+    <Property Name="open_senior_none" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="entryqual_faster" Type="Boolean" Nullable="false" />
+    <Property Name="Facility_Surcharge" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="anyone_onrelay" Type="Boolean" Nullable="false" />
+    <Property Name="language_choice" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="military_time" Type="Boolean" Nullable="false" />
+    <Property Name="check_times" Type="Boolean" Nullable="false" />
+    <Property Name="enterkey_astab" Type="Boolean" Nullable="false" />
+    <Property Name="double_endedsplits" Type="Boolean" Nullable="false" />
+    <Property Name="use_compnumbers" Type="Boolean" Nullable="false" />
+    <Property Name="flighted_minentries" Type="Int16" />
+    <Property Name="diffpts_malefemale" Type="Boolean" Nullable="false" />
+    <Property Name="diffpts_eachdivision" Type="Boolean" Nullable="false" />
+    <Property Name="scoreonly_ifexceedqualtime" Type="Boolean" Nullable="false" />
+    <Property Name="score_fastestheatonly" Type="Boolean" Nullable="false" />
+    <Property Name="entrylimits_warn" Type="Boolean" Nullable="false" />
+    <Property Name="pointsbasedon_seedtime" Type="Boolean" Nullable="false" />
+    <Property Name="pointsfor_overachievers" Type="Boolean" Nullable="false" />
+    <Property Name="pointsfor_underachievers" Type="Boolean" Nullable="false" />
+    <Property Name="indmaxscorers_perteam" Type="Int16" />
+    <Property Name="relmaxscorers_perteam" Type="Int16" />
+    <Property Name="indtopmany_awards" Type="Int16" />
+    <Property Name="reltopmany_awards" Type="Int16" />
+    <Property Name="entrymax_total" Type="Int16" />
+    <Property Name="indmax_perath" Type="Int16" />
+    <Property Name="relmax_perath" Type="Int16" />
+    <Property Name="foreign_getteampoints" Type="Boolean" Nullable="false" />
+    <Property Name="include_swimupsinteamscore" Type="Boolean" Nullable="false" />
+    <Property Name="enter_citizenof" Type="Boolean" Nullable="false" />
+    <Property Name="meet_meetstyle" Type="Int16" />
+    <Property Name="flag_overachievers" Type="Boolean" Nullable="false" />
+    <Property Name="flag_underachievers" Type="Boolean" Nullable="false" />
+    <Property Name="scbd_punctuation" Type="Int16" />
+    <Property Name="scbd_names" Type="Int16" />
+    <Property Name="scbd_relaynames" Type="Int16" />
+    <Property Name="scbd_cycle" Type="Boolean" Nullable="false" />
+    <Property Name="scbd_cycleseconds" Type="Int16" />
+    <Property Name="copies_toprinter" Type="Int16" />
+    <Property Name="report_headersonly" Type="Boolean" Nullable="false" />
+    <Property Name="autoinc_compno" Type="Boolean" Nullable="false" />
+    <Property Name="pentscoring_usedqtime" Type="Boolean" Nullable="false" />
+    <Property Name="swimmer_surcharge" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="directly_toprinter" Type="Boolean" Nullable="false" />
+    <Property Name="lastname_asinitial" Type="Boolean" Nullable="false" />
+    <Property Name="under_eventname" Type="Boolean" Nullable="false" />
+    <Property Name="suppress_Arelay" Type="Boolean" Nullable="false" />
+    <Property Name="Punct_recholders" Type="Boolean" Nullable="false" />
+    <Property Name="ucase_recholders" Type="Boolean" Nullable="false" />
+    <Property Name="suppress_lsc" Type="Boolean" Nullable="false" />
+    <Property Name="showathlete_status" Type="Boolean" Nullable="false" />
+    <Property Name="open_lowage" Type="Int16" />
+    <Property Name="useeventsex_teamscore" Type="Boolean" Nullable="false" />
+    <Property Name="suppress_smallx" Type="Boolean" Nullable="false" />
+    <Property Name="score_Arelayonly" Type="Boolean" Nullable="false" />
+    <Property Name="thirteenandover_assenior" Type="Boolean" Nullable="false" />
+    <Property Name="suppress_jd" Type="Boolean" Nullable="false" />
+    <Property Name="abcfinal_order" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="maxagefor_cfinal" Type="Int16" />
+    <Property Name="Sanction_number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="include_sanction" Type="Boolean" Nullable="false" />
+    <Property Name="special_points" Type="Int16" />
+    <Property Name="countrelay_alt" Type="Boolean" Nullable="false" />
+    <Property Name="UseNonConforming_PoolFactor" Type="Boolean" Nullable="false" />
+    <Property Name="NonConforming_PoolFactor" Type="Single" />
+    <Property Name="apnews_team" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="PointsAwarded_ForDQ" Type="Single" />
+    <Property Name="PointsAwarded_ForScratch" Type="Single" />
+    <Property Name="PointsAwarded_ForNT" Type="Single" />
+    <Property Name="Enter_AthStat" Type="Boolean" Nullable="false" />
+    <Property Name="Show_secondclub" Type="Boolean" Nullable="false" />
+    <Property Name="firstinitial_fulllastname" Type="Boolean" Nullable="false" />
+    <Property Name="turnon_autobackup" Type="Boolean" Nullable="false" />
+    <Property Name="autobackup_interval" Type="Int16" />
+    <Property Name="PointsAwarded_ForExh" Type="Boolean" Nullable="false" />
+    <Property Name="Use_AltTeamAbbr" Type="Boolean" Nullable="false" />
+    <Property Name="IsCanadian_Masters" Type="Boolean" Nullable="false" />
+    <Property Name="entry_msg" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="timedfinalnonconform_last" Type="Boolean" Nullable="false" />
+    <Property Name="referee_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="referee_homphone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="referee_offphone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_altitude" Type="Int32" />
+    <Property Name="Import_Dir" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Export_Dir" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Backup_Dir" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="RestoreFrom_Dir" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="RestoreTo_Dir" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="FlatHtml_Dir" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="APNews_Dir" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="AllowSameEvent_DupRelayNames" Type="Boolean" Nullable="false" />
+    <Property Name="dualteam_lane1" Type="Int32" />
+    <Property Name="dualteam_lane2" Type="Int32" />
+    <Property Name="dualteam_lane3" Type="Int32" />
+    <Property Name="dualteam_lane4" Type="Int32" />
+    <Property Name="dualteam_lane5" Type="Int32" />
+    <Property Name="dualteam_lane6" Type="Int32" />
+    <Property Name="dualteam_lane7" Type="Int32" />
+    <Property Name="dualteam_lane8" Type="Int32" />
+    <Property Name="dualteam_lane9" Type="Int32" />
+    <Property Name="dualteam_lane10" Type="Int32" />
+    <Property Name="strict_evenoddfastestheatonly" Type="Boolean" Nullable="false" />
+    <Property Name="dualseeding_altunusedlane" Type="Boolean" Nullable="false" />
+    <Property Name="team_surcharge" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Display_ActualEntryTime" Type="Boolean" Nullable="false" />
+    <Property Name="indmaxadvance_perteam" Type="Int16" />
+    <Property Name="relmaxadvance_perteam" Type="Int16" />
+    <Property Name="RelayNames_LinkByLSC" Type="Boolean" Nullable="false" />
+    <Property Name="Read_Only" Type="Boolean" Nullable="false" />
+    <Property Name="Flighted_BasedOnResultsTime" Type="Boolean" Nullable="false" />
+    <Property Name="ShowYear_InPlaceOfAge" Type="Boolean" Nullable="false" />
+    <Property Name="PenaltyPts_ForNS" Type="Single" />
+    <Property Name="EntryEligibility_date" Type="DateTime" Precision="0" />
+    <Property Name="Suppress_TimeStdAbbr" Type="Boolean" Nullable="false" />
+    <Property Name="masters_indlowage" Type="Int16" />
+    <Property Name="masters_rellowage" Type="Int16" />
+    <Property Name="Custom_QualTimes" Type="Boolean" Nullable="false" />
+    <Property Name="Suppress_SplitsForDQs" Type="Boolean" Nullable="false" />
+    <Property Name="Suppress_SplitsForDQsRelay" Type="Boolean" Nullable="false" />
+    <Property Name="DQCodes_Type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="SuppressTimes_NotMeetQualTime" Type="Boolean" Nullable="false" />
+    <Property Name="Show_AgeandBirthYear" Type="Boolean" Nullable="false" />
+    <Property Name="Meet_state" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_country" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_lsc" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="BCSSA_DivbyTimeStd" Type="Boolean" Nullable="false" />
+    <Property Name="Show_HyTekDecimals" Type="Boolean" Nullable="false" />
+    <Property Name="Suppress_ResultsAdvQ" Type="Boolean" Nullable="false" />
+    <Property Name="RelaysAs_4x100Style" Type="Boolean" Nullable="false" />
+    <Property Name="flighted_flightcount" Type="Int16" />
+    <Property Name="flighted_inclDQ" Type="Boolean" Nullable="false" />
+    <Property Name="RelaysAlternate_TwoFastestFirst" Type="Boolean" Nullable="false" />
+    <Property Name="dualteam_lane11" Type="Int32" />
+    <Property Name="dualteam_lane12" Type="Int32" />
+    <Property Name="entry_deadline" Type="DateTime" Precision="0" />
+    <Property Name="Meet_addr1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_addr2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_city" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_hostlsc" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Meet_USMastersMeetID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ShowFirstName_OverPreferred" Type="Boolean" Nullable="false" />
+    <Property Name="ExcludeNTEntries_WhenImporting" Type="Boolean" Nullable="false" />
+    <Property Name="Enter_birthcentury" Type="Boolean" Nullable="false" />
+    <Property Name="Using_twopools" Type="Boolean" Nullable="false" />
+    <Property Name="Pool1_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Pool2_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="indtopmany_awardsSr" Type="Int16" />
+    <Property Name="reltopmany_awardsSr" Type="Int16" />
+    <Property Name="maxforeign_infinal" Type="Int16" />
+    <Property Name="Flag_FastestRecordOnly" Type="Boolean" Nullable="false" />
+    <Property Name="athlete_earlysurcharge" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="athlete_latesurcharge" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="athlete_earlysurchargedate" Type="DateTime" Precision="0" />
+    <Property Name="athlete_latesurchargedate" Type="DateTime" Precision="0" />
+    <Property Name="entry_OpenDate" Type="DateTime" Precision="0" />
+    <Property Name="DisplayNTfor_TimesUnder5Sec" Type="Boolean" Nullable="false" />
+    <Property Name="SortTeamCombos_ByTeamName" Type="Boolean" Nullable="false" />
+    <Property Name="FastestHeat_SomeLanesDoNotScore" Type="Boolean" Nullable="false" />
+    <Property Name="RankDisabled_ByPoints" Type="Boolean" Nullable="false" />
+    <Property Name="special_parapoints" Type="Int16" />
+    <Property Name="DisabledDoNot_AdvanceToFinals" Type="Boolean" Nullable="false" />
+    <Property Name="prelimheats_circledist" Type="Int16" />
+    <Property Name="DisabledIgnoreQualTime_ForScoring" Type="Boolean" Nullable="false" />
+    <Property Name="CountTimeTrial_Events" Type="Boolean" Nullable="false" />
+    <Property Name="QualNonConformCourse_UseMinStd" Type="Boolean" Nullable="false" />
+    <Property Name="Last_updated" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="MixedRelays_DividedPoints" Type="Boolean" Nullable="false" />
+    <Property Name="RelayOnly_Surcharge" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TimeAdj_Method" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="DisabledSeedWithAgeGroup_IfTimedFinalSuperSeed" Type="Boolean" Nullable="false" />
+    <Property Name="Meetid" Type="Int32" Nullable="false" />
+    <Property Name="MarcaMaxima" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TorneoDestacado">
+    <Key>
+      <PropertyRef Name="DestacadoId" />
+      <PropertyRef Name="Meet" />
+    </Key>
+    <Property Name="DestacadoId" Type="Int32" Nullable="false" />
+    <Property Name="Meet" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TorneoDestacadoMasters">
+    <Key>
+      <PropertyRef Name="DestacadoId" />
+      <PropertyRef Name="Meet" />
+    </Key>
+    <Property Name="DestacadoId" Type="Int32" Nullable="false" />
+    <Property Name="Meet" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vivo">
+    <Key>
+      <PropertyRef Name="VivoId" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Directorio" />
+    </Key>
+    <Property Name="VivoId" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Directorio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_Afiliacion_Club">
     <End Type="DB_9B1F4C_afiliacionesModel.Club" Role="Club" Multiplicity="1" />
@@ -519,14 +1916,14 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Afiliacion_Inscripciones">
-    <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="0..1" />
     <End Type="DB_9B1F4C_afiliacionesModel.Afiliacion" Role="Afiliacion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Inscripciones">
-        <PropertyRef Name="DNI" />
+        <PropertyRef Name="InscripcionId" />
       </Principal>
       <Dependent Role="Afiliacion">
-        <PropertyRef Name="DNI" />
+        <PropertyRef Name="InscripcionId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -566,38 +1963,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_CambiosDNI_Afiliado">
+  <Association Name="FK_Inscripciones_Afiliado1">
     <End Type="DB_9B1F4C_afiliacionesModel.Afiliado" Role="Afiliado" Multiplicity="1" />
-    <End Type="DB_9B1F4C_afiliacionesModel.CambiosDNI" Role="CambiosDNI" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Afiliado">
-        <PropertyRef Name="DNI" />
-      </Principal>
-      <Dependent Role="CambiosDNI">
-        <PropertyRef Name="DNI" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Inscripciones_Afiliado">
-    <End Type="DB_9B1F4C_afiliacionesModel.Afiliado" Role="Afiliado" Multiplicity="1" />
-    <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="0..1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Afiliado">
         <PropertyRef Name="DNI" />
       </Principal>
       <Dependent Role="Inscripciones">
-        <PropertyRef Name="DNI" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Multas_Afiliado">
-    <End Type="DB_9B1F4C_afiliacionesModel.Afiliado" Role="Afiliado" Multiplicity="1" />
-    <End Type="DB_9B1F4C_afiliacionesModel.Multas" Role="Multas" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Afiliado">
-        <PropertyRef Name="DNI" />
-      </Principal>
-      <Dependent Role="Multas">
         <PropertyRef Name="DNI" />
       </Dependent>
     </ReferentialConstraint>
@@ -794,6 +2167,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TatoInformeEntrenador_Entrenadores">
+    <End Type="DB_9B1F4C_afiliacionesModel.Entrenadores" Role="Entrenadores" Multiplicity="1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.TatoInformeEntrenador" Role="TatoInformeEntrenador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entrenadores">
+        <PropertyRef Name="EntrenadorId" />
+      </Principal>
+      <Dependent Role="TatoInformeEntrenador">
+        <PropertyRef Name="EntrenadorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Inscripciones_Estado">
     <End Type="DB_9B1F4C_afiliacionesModel.Estado" Role="Estado" Multiplicity="1" />
     <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="*" />
@@ -806,15 +2191,27 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_HistorialTraspasos_Inscripciones">
+  <Association Name="FK_HistorialdeAfiliaciones_Inscripciones">
     <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.HistorialdeAfiliaciones" Role="HistorialdeAfiliaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inscripciones">
+        <PropertyRef Name="InscripcionId" />
+      </Principal>
+      <Dependent Role="HistorialdeAfiliaciones">
+        <PropertyRef Name="InscripcionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HistorialTraspasos_Inscripciones">
+    <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="0..1" />
     <End Type="DB_9B1F4C_afiliacionesModel.HistorialTraspasos" Role="HistorialTraspasos" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Inscripciones">
-        <PropertyRef Name="DNI" />
+        <PropertyRef Name="InscripcionId" />
       </Principal>
       <Dependent Role="HistorialTraspasos">
-        <PropertyRef Name="DNI" />
+        <PropertyRef Name="InscripcionId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -842,15 +2239,75 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_TraspasosEnEspera_Inscripciones">
+  <Association Name="FK_Multas_Inscripciones">
+    <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="0..1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.Multas" Role="Multas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inscripciones">
+        <PropertyRef Name="InscripcionId" />
+      </Principal>
+      <Dependent Role="Multas">
+        <PropertyRef Name="InscripcionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TatoInformeAsistencias_Inscripciones">
     <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.TatoInformeAsistencias" Role="TatoInformeAsistencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inscripciones">
+        <PropertyRef Name="InscripcionId" />
+      </Principal>
+      <Dependent Role="TatoInformeAsistencias">
+        <PropertyRef Name="InscripcionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TatoInformeEntrenador_Inscripciones">
+    <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.TatoInformeEntrenador" Role="TatoInformeEntrenador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inscripciones">
+        <PropertyRef Name="InscripcionId" />
+      </Principal>
+      <Dependent Role="TatoInformeEntrenador">
+        <PropertyRef Name="InscripcionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TatoSeleccionado_Inscripciones">
+    <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.TatoSeleccionado" Role="TatoSeleccionado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inscripciones">
+        <PropertyRef Name="InscripcionId" />
+      </Principal>
+      <Dependent Role="TatoSeleccionado">
+        <PropertyRef Name="InscripcionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Traspasos_Inscripciones">
+    <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="0..1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.Traspasos" Role="Traspasos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inscripciones">
+        <PropertyRef Name="InscripcionId" />
+      </Principal>
+      <Dependent Role="Traspasos">
+        <PropertyRef Name="IsncripcionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TraspasosEnEspera_Inscripciones">
+    <End Type="DB_9B1F4C_afiliacionesModel.Inscripciones" Role="Inscripciones" Multiplicity="0..1" />
     <End Type="DB_9B1F4C_afiliacionesModel.TraspasosEnEspera" Role="TraspasosEnEspera" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Inscripciones">
-        <PropertyRef Name="DNI" />
+        <PropertyRef Name="InscripcionId" />
       </Principal>
       <Dependent Role="TraspasosEnEspera">
-        <PropertyRef Name="DNI" />
+        <PropertyRef Name="IsncripcionId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -875,6 +2332,30 @@
       </Principal>
       <Dependent Role="Usuario">
         <PropertyRef Name="RolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TatoInformeEntrenador_TatoRealizacion">
+    <End Type="DB_9B1F4C_afiliacionesModel.TatoRealizacion" Role="TatoRealizacion" Multiplicity="1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.TatoInformeEntrenador" Role="TatoInformeEntrenador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TatoRealizacion">
+        <PropertyRef Name="RealizacionId" />
+      </Principal>
+      <Dependent Role="TatoInformeEntrenador">
+        <PropertyRef Name="RealizacionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TatoInformeEntrenador_TatoSeriesEjemplo">
+    <End Type="DB_9B1F4C_afiliacionesModel.TatoSeriesEjemplo" Role="TatoSeriesEjemplo" Multiplicity="1" />
+    <End Type="DB_9B1F4C_afiliacionesModel.TatoInformeEntrenador" Role="TatoInformeEntrenador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TatoSeriesEjemplo">
+        <PropertyRef Name="SerieId" />
+      </Principal>
+      <Dependent Role="TatoInformeEntrenador">
+        <PropertyRef Name="SerieId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -12,11 +12,8 @@ using System.Text.RegularExpressions;
 
 namespace FDPN.Controllers
 {
-    public class ResultadosController : Controller
-    {
-          DB_9B1F4C_MVCcompetenciasEntities db = new   DB_9B1F4C_MVCcompetenciasEntities();
-        DB_9B1F4C_afiliacionesEntities1 af = new DB_9B1F4C_afiliacionesEntities1();
-        // GET: Resultados
+    public class ResultadosController : BASEController
+    {   // GET: Resultados
 
         public ActionResult Nadadores(string sortOrder, string currentFilter, string searchString, string letra, int? page)
         {
@@ -301,11 +298,17 @@ namespace FDPN.Controllers
             resultado = resultado.Where(x => x.STROKE == stroke && x.DISTANCE == distance);
 
             DateTime hoy = DateTime.Now;
+            if (periodo == "Últimos 6 meses")
+            {
+                hoy = hoy.AddMonths(-6).AddDays(-7);
+                resultado = resultado.Where(x => x.MEET1.Start > hoy);
+            }
             if (periodo == "Últimos 12 meses")
             {
                 hoy = hoy.AddYears(-1).AddDays(-7);
                 resultado = resultado.Where(x => x.MEET1.Start > hoy);
             }
+
             if (periodo != "" && periodo!= null)
             {
                 if (periodo.Substring(0, 3) == "Año")
@@ -368,7 +371,7 @@ namespace FDPN.Controllers
 
                     break;
                 case 2:
-                    haceunanno.AddMonths(6);
+                   haceunanno = haceunanno.AddMonths(6);
                     Query = Query.Where(x => x.MEET1.Start > haceunanno);
 
                     break;
@@ -668,12 +671,12 @@ namespace FDPN.Controllers
 
         public Inscripciones BuscarAfiliado(string DNI)
         {
-            Inscripciones Inscripciones = af.Inscripciones.Where(x => x.DNI == DNI).FirstOrDefault();
+            Inscripciones Inscripciones = db.Inscripciones.Where(x => x.DNI == DNI).FirstOrDefault();
             if (Inscripciones == null)
             {
                 Inscripciones = new Inscripciones
                 {
-                    Club = af.Club.Find(4128),
+                    Club = db.Club.Find(4128),
                     RutaFoto = "Sinfoto",
                     DNI = "",
                 };

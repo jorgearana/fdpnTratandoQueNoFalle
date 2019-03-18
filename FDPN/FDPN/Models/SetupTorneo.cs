@@ -15,9 +15,12 @@ namespace FDPN.Models
     public partial class SetupTorneo
     {
         public int SetupId { get; set; }
-        public int Meetid { get; set; }
         public int TipoId { get; set; }
+        public int pruebasXsesion { get; set; }
+        public int pruebasXtorneo { get; set; }
+        public Nullable<int> Meetid { get; set; }
     
         public virtual TipoTorneo TipoTorneo { get; set; }
+        public virtual Torneo Torneo { get; set; }
     }
 }

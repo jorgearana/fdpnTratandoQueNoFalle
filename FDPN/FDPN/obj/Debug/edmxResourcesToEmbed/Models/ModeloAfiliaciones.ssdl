@@ -5,12 +5,12 @@
       <PropertyRef Name="AfiliacionID" />
     </Key>
     <Property Name="AfiliacionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DNI" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="UsuarioId" Type="int" Nullable="false" />
     <Property Name="FechaAfiliacion" Type="date" Nullable="false" />
     <Property Name="VoucherId" Type="int" Nullable="false" />
     <Property Name="ClubId" Type="int" Nullable="false" />
     <Property Name="ProcesadoId" Type="int" Nullable="false" />
+    <Property Name="InscripcionId" Type="int" />
   </EntityType>
   <EntityType Name="Afiliado">
     <Key>
@@ -24,6 +24,19 @@
     <Property Name="Tipo de documento" Type="varchar" MaxLength="5" Nullable="false" />
     <Property Name="Fecha de nacimiento" Type="date" Nullable="false" />
     <Property Name="Sexo" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Alertas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Alertas">
+    <Key>
+      <PropertyRef Name="AlertaId" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Alerta" />
+    </Key>
+    <Property Name="AlertaId" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="Alerta" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="NoticiaId" Type="int" />
   </EntityType>
   <EntityType Name="Antiguo">
     <Key>
@@ -39,6 +52,85 @@
     <Property Name="AsociacionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="nchar" MaxLength="10" Nullable="false" />
   </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Athlete' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Athlete">
+    <Key>
+      <PropertyRef Name="Athlete" />
+      <PropertyRef Name="First" />
+      <PropertyRef Name="Last" />
+      <PropertyRef Name="Sex" />
+      <PropertyRef Name="Age" />
+      <PropertyRef Name="ID_NO" />
+      <PropertyRef Name="AthleteId" />
+    </Key>
+    <Property Name="Athlete" Type="int" Nullable="false" />
+    <Property Name="First" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Last" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="Birth" Type="smalldatetime" />
+    <Property Name="Age" Type="smallint" Nullable="false" />
+    <Property Name="ID_NO" Type="nvarchar" MaxLength="17" Nullable="false" />
+    <Property Name="AthleteId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.AthleteMasters' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="AthleteMasters">
+    <Key>
+      <PropertyRef Name="Athlete" />
+      <PropertyRef Name="First" />
+      <PropertyRef Name="Last" />
+      <PropertyRef Name="Sex" />
+      <PropertyRef Name="Age" />
+      <PropertyRef Name="ID_NO" />
+      <PropertyRef Name="AthleteId" />
+    </Key>
+    <Property Name="Athlete" Type="int" Nullable="false" />
+    <Property Name="First" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Last" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="Birth" Type="smalldatetime" />
+    <Property Name="Age" Type="smallint" Nullable="false" />
+    <Property Name="ID_NO" Type="nvarchar" MaxLength="17" Nullable="false" />
+    <Property Name="AthleteId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.BASETIMES' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="BASETIMES">
+    <Key>
+      <PropertyRef Name="tiempoId" />
+    </Key>
+    <Property Name="YEAR" Type="float" />
+    <Property Name="COURSE" Type="nvarchar" MaxLength="255" />
+    <Property Name="GENDER" Type="nvarchar" MaxLength="255" />
+    <Property Name="RELAY- COUNT" Type="float" />
+    <Property Name="DISTANCE" Type="float" />
+    <Property Name="STROKE" Type="nvarchar" MaxLength="255" />
+    <Property Name="BASETIME" Type="nvarchar" MaxLength="255" />
+    <Property Name="SEGUNDOS" Type="float" />
+    <Property Name="tiempoId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Calendario' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Calendario">
+    <Key>
+      <PropertyRef Name="Inicio" />
+      <PropertyRef Name="Fin" />
+      <PropertyRef Name="Evento" />
+      <PropertyRef Name="Sede" />
+      <PropertyRef Name="EventoId" />
+      <PropertyRef Name="DisciplinaId" />
+    </Key>
+    <Property Name="Inicio" Type="datetime" Nullable="false" />
+    <Property Name="Fin" Type="datetime" Nullable="false" />
+    <Property Name="Evento" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Sede" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Carácter" Type="nvarchar" MaxLength="255" />
+    <Property Name="Observación" Type="nvarchar" MaxLength="255" />
+    <Property Name="Organizador" Type="nvarchar" MaxLength="255" />
+    <Property Name="EventoId" Type="int" Nullable="false" />
+    <Property Name="DisciplinaId" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="CambiosDNI">
     <Key>
       <PropertyRef Name="CambioId" />
@@ -48,6 +140,16 @@
     <Property Name="fecha" Type="date" Nullable="false" />
     <Property Name="DNIAntiguo" Type="varchar" MaxLength="20" Nullable="false" />
   </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.CategoriaNoticia' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="CategoriaNoticia">
+    <Key>
+      <PropertyRef Name="CategoriaId" />
+      <PropertyRef Name="TipoNoticia" />
+    </Key>
+    <Property Name="CategoriaId" Type="int" Nullable="false" />
+    <Property Name="TipoNoticia" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="Categorias">
     <Key>
       <PropertyRef Name="CategoriaId" />
@@ -56,6 +158,20 @@
     <Property Name="NombreCategoria" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Edad maxima" Type="int" Nullable="false" />
     <Property Name="Edad minima" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.CategoriasMasters' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="CategoriasMasters">
+    <Key>
+      <PropertyRef Name="CategoriaId" />
+      <PropertyRef Name="EdadMinima" />
+      <PropertyRef Name="EdadMaxima" />
+      <PropertyRef Name="Nombre" />
+    </Key>
+    <Property Name="CategoriaId" Type="int" Nullable="false" />
+    <Property Name="EdadMinima" Type="int" Nullable="false" />
+    <Property Name="EdadMaxima" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nchar" MaxLength="10" Nullable="false" />
   </EntityType>
   <EntityType Name="Club">
     <Key>
@@ -67,10 +183,40 @@
     <Property Name="NombreUsuario" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="Activo" Type="int" Nullable="false" />
     <Property Name="AsociacionId" Type="int" />
-    <Property Name="FechaPagoAfiliacion" Type="date" />
-    <Property Name="FinVigenciaPoderes" Type="date" />
-    <Property Name="FinVigenciaRenade" Type="date" />
+    <Property Name="FechaPagoAfiliacion" Type="date" Nullable="false" />
+    <Property Name="FinVigenciaPoderes" Type="date" Nullable="false" />
+    <Property Name="FinVigenciaRenade" Type="date" Nullable="false" />
     <Property Name="Resolucion" Type="nvarchar" MaxLength="50" />
+    <Property Name="VoucherPagoAfiliacionAnual" Type="nvarchar" MaxLength="50" />
+    <Property Name="Academia" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Comentarios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Comentarios">
+    <Key>
+      <PropertyRef Name="ComentarioId" />
+      <PropertyRef Name="Comentario" />
+      <PropertyRef Name="UsuarioId" />
+      <PropertyRef Name="NoticiaId" />
+      <PropertyRef Name="Estado" />
+      <PropertyRef Name="Fecha" />
+    </Key>
+    <Property Name="ComentarioId" Type="int" Nullable="false" />
+    <Property Name="Comentario" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UsuarioId" Type="int" Nullable="false" />
+    <Property Name="NoticiaId" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Configuracion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Configuracion">
+    <Key>
+      <PropertyRef Name="Mantenimiento" />
+      <PropertyRef Name="SetupId" />
+    </Key>
+    <Property Name="Mantenimiento" Type="bit" Nullable="false" />
+    <Property Name="SetupId" Type="int" Nullable="false" />
   </EntityType>
   <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Consulta' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -86,6 +232,64 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Consulta' no tien
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="image" />
   </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Curso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Curso">
+    <Key>
+      <PropertyRef Name="CursoId" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Ciudad" />
+      <PropertyRef Name="Direccion" />
+      <PropertyRef Name="Inicio" />
+      <PropertyRef Name="Fin" />
+      <PropertyRef Name="CantidadMaxima" />
+    </Key>
+    <Property Name="CursoId" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Ciudad" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Inicio" Type="date" Nullable="false" />
+    <Property Name="Fin" Type="date" Nullable="false" />
+    <Property Name="DisciplinaId" Type="int" />
+    <Property Name="Hora" Type="time" Precision="7" />
+    <Property Name="CantidadMaxima" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.CursoInscripcion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="CursoInscripcion">
+    <Key>
+      <PropertyRef Name="InscripcionId" />
+      <PropertyRef Name="ParticipanteId" />
+      <PropertyRef Name="CursoId" />
+    </Key>
+    <Property Name="InscripcionId" Type="int" Nullable="false" />
+    <Property Name="ParticipanteId" Type="int" Nullable="false" />
+    <Property Name="CursoId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.CursoParticipante' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="CursoParticipante">
+    <Key>
+      <PropertyRef Name="ParticipanteId" />
+      <PropertyRef Name="Nombres" />
+      <PropertyRef Name="Paterno" />
+      <PropertyRef Name="Nacimiento" />
+      <PropertyRef Name="DNI" />
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="Nacionalidad" />
+      <PropertyRef Name="Actividad" />
+    </Key>
+    <Property Name="ParticipanteId" Type="int" Nullable="false" />
+    <Property Name="Nombres" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Paterno" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Materno" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nacimiento" Type="date" Nullable="false" />
+    <Property Name="DNI" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Celular" Type="nchar" MaxLength="10" />
+    <Property Name="Nacionalidad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Actividad" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
   <EntityType Name="Directivos">
     <Key>
       <PropertyRef Name="DirectivoId" />
@@ -99,12 +303,140 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Consulta' no tien
     <Property Name="Cargo" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="FinVigencia" Type="date" Nullable="false" />
   </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Disciplina' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Disciplina">
+    <Key>
+      <PropertyRef Name="DisciplinaId" />
+      <PropertyRef Name="TipoDisciplina" />
+    </Key>
+    <Property Name="DisciplinaId" Type="int" Nullable="false" />
+    <Property Name="TipoDisciplina" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="clase" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="Disciplinas">
     <Key>
       <PropertyRef Name="DisciplinaId" />
     </Key>
     <Property Name="DisciplinaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Entradas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Entradas">
+    <Key>
+      <PropertyRef Name="Scr_stat" />
+      <PropertyRef Name="Alt_stat" />
+      <PropertyRef Name="early_seed" />
+      <PropertyRef Name="super_prefinalist" />
+      <PropertyRef Name="super_finfinalist" />
+      <PropertyRef Name="pre_contacted" />
+      <PropertyRef Name="EntryId" />
+      <PropertyRef Name="MeetId" />
+    </Key>
+    <Property Name="Event_ptr" Type="int" />
+    <Property Name="Ath_no" Type="int" />
+    <Property Name="ActSeed_course" Type="nvarchar" MaxLength="1" />
+    <Property Name="ActualSeed_time" Type="real" />
+    <Property Name="ConvSeed_course" Type="nvarchar" MaxLength="1" />
+    <Property Name="ConvSeed_time" Type="real" />
+    <Property Name="Scr_stat" Type="bit" Nullable="false" />
+    <Property Name="Spec_stat" Type="nvarchar" MaxLength="1" />
+    <Property Name="Dec_stat" Type="nvarchar" MaxLength="1" />
+    <Property Name="Alt_stat" Type="bit" Nullable="false" />
+    <Property Name="Bonus_event" Type="bit" />
+    <Property Name="Div_no" Type="int" />
+    <Property Name="Ev_score" Type="real" />
+    <Property Name="JDEv_score" Type="real" />
+    <Property Name="Seed_place" Type="smallint" />
+    <Property Name="event_age" Type="smallint" />
+    <Property Name="Pre_heat" Type="smallint" />
+    <Property Name="Pre_lane" Type="smallint" />
+    <Property Name="Pre_stat" Type="nvarchar" MaxLength="1" />
+    <Property Name="Pre_Time" Type="real" />
+    <Property Name="Pre_course" Type="nvarchar" MaxLength="1" />
+    <Property Name="Pre_heatplace" Type="smallint" />
+    <Property Name="Pre_place" Type="smallint" />
+    <Property Name="Pre_jdplace" Type="smallint" />
+    <Property Name="Pre_exh" Type="nvarchar" MaxLength="1" />
+    <Property Name="Pre_points" Type="smallint" />
+    <Property Name="Pre_back1" Type="real" />
+    <Property Name="Pre_back2" Type="real" />
+    <Property Name="Pre_back3" Type="real" />
+    <Property Name="Pre_watch1" Type="real" />
+    <Property Name="Pre_pad" Type="real" />
+    <Property Name="Pre_reactiontime1" Type="nvarchar" MaxLength="5" />
+    <Property Name="Pre_dqcode" Type="nvarchar" MaxLength="2" />
+    <Property Name="Pre_dqcodeSecond" Type="nvarchar" MaxLength="2" />
+    <Property Name="Pre_TimeType" Type="nvarchar" MaxLength="1" />
+    <Property Name="Fin_heat" Type="smallint" />
+    <Property Name="Fin_lane" Type="smallint" />
+    <Property Name="Fin_stat" Type="nvarchar" MaxLength="1" />
+    <Property Name="Fin_Time" Type="real" />
+    <Property Name="Fin_course" Type="nvarchar" MaxLength="1" />
+    <Property Name="Fin_heatplace" Type="smallint" />
+    <Property Name="Fin_jdheatplace" Type="smallint" />
+    <Property Name="Fin_place" Type="smallint" />
+    <Property Name="Fin_jdplace" Type="smallint" />
+    <Property Name="Fin_exh" Type="nvarchar" MaxLength="1" />
+    <Property Name="Fin_points" Type="smallint" />
+    <Property Name="Fin_back1" Type="real" />
+    <Property Name="Fin_back2" Type="real" />
+    <Property Name="Fin_back3" Type="real" />
+    <Property Name="Fin_watch1" Type="real" />
+    <Property Name="Fin_pad" Type="real" />
+    <Property Name="Fin_reactiontime1" Type="nvarchar" MaxLength="5" />
+    <Property Name="Fin_dqcode" Type="nvarchar" MaxLength="2" />
+    <Property Name="Fin_dqcodeSecond" Type="nvarchar" MaxLength="2" />
+    <Property Name="Fin_ptsplace" Type="smallint" />
+    <Property Name="fin_heatltr" Type="nvarchar" MaxLength="1" />
+    <Property Name="fin_TimeType" Type="nvarchar" MaxLength="1" />
+    <Property Name="Sem_heat" Type="smallint" />
+    <Property Name="Sem_lane" Type="smallint" />
+    <Property Name="Sem_stat" Type="nvarchar" MaxLength="1" />
+    <Property Name="Sem_Time" Type="real" />
+    <Property Name="Sem_course" Type="nvarchar" MaxLength="1" />
+    <Property Name="Sem_heatplace" Type="smallint" />
+    <Property Name="Sem_place" Type="smallint" />
+    <Property Name="Sem_jdplace" Type="smallint" />
+    <Property Name="Sem_exh" Type="nvarchar" MaxLength="1" />
+    <Property Name="Sem_points" Type="smallint" />
+    <Property Name="Sem_back1" Type="real" />
+    <Property Name="Sem_back2" Type="real" />
+    <Property Name="Sem_back3" Type="real" />
+    <Property Name="Sem_watch1" Type="real" />
+    <Property Name="Sem_pad" Type="real" />
+    <Property Name="Sem_reactiontime1" Type="nvarchar" MaxLength="5" />
+    <Property Name="Sem_dqcode" Type="nvarchar" MaxLength="2" />
+    <Property Name="Sem_dqcodeSecond" Type="nvarchar" MaxLength="2" />
+    <Property Name="Sem_TimeType" Type="nvarchar" MaxLength="1" />
+    <Property Name="dq_type" Type="nvarchar" MaxLength="1" />
+    <Property Name="Fin_group" Type="smallint" />
+    <Property Name="Fin_dolphin1" Type="real" />
+    <Property Name="Fin_dolphin2" Type="real" />
+    <Property Name="Fin_dolphin3" Type="real" />
+    <Property Name="Pre_dolphin1" Type="real" />
+    <Property Name="Pre_dolphin2" Type="real" />
+    <Property Name="Pre_dolphin3" Type="real" />
+    <Property Name="Sem_dolphin1" Type="real" />
+    <Property Name="Sem_dolphin2" Type="real" />
+    <Property Name="Sem_dolphin3" Type="real" />
+    <Property Name="early_seed" Type="bit" Nullable="false" />
+    <Property Name="super_prefinalist" Type="bit" Nullable="false" />
+    <Property Name="super_finfinalist" Type="bit" Nullable="false" />
+    <Property Name="fin_adjuststat" Type="nvarchar" MaxLength="1" />
+    <Property Name="pre_adjuststat" Type="nvarchar" MaxLength="1" />
+    <Property Name="sem_adjuststat" Type="nvarchar" MaxLength="1" />
+    <Property Name="fin_divingdd" Type="nvarchar" MaxLength="4" />
+    <Property Name="pre_divingdd" Type="nvarchar" MaxLength="4" />
+    <Property Name="sem_divingdd" Type="nvarchar" MaxLength="4" />
+    <Property Name="entry_method" Type="nvarchar" MaxLength="1" />
+    <Property Name="fin_dqofficial" Type="int" />
+    <Property Name="pre_dqofficial" Type="int" />
+    <Property Name="sem_dqofficial" Type="int" />
+    <Property Name="pre_contacted" Type="bit" Nullable="false" />
+    <Property Name="EntryId" Type="int" Nullable="false" />
+    <Property Name="MeetId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Entrenadores">
     <Key>
@@ -127,12 +459,196 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Consulta' no tien
     <Property Name="Email2" Type="varchar" MaxLength="150" />
     <Property Name="UsuarioId" Type="int" Nullable="false" />
   </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Equipos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Equipos">
+    <Key>
+      <PropertyRef Name="Team_no" />
+      <PropertyRef Name="Team_NoPoints" />
+      <PropertyRef Name="Team_Selected" />
+      <PropertyRef Name="NoTeam_surcharge" />
+      <PropertyRef Name="NoFacility_surcharge" />
+      <PropertyRef Name="NoAthlete_surcharge" />
+      <PropertyRef Name="NoRelayOnly_surcharge" />
+      <PropertyRef Name="TeamId" />
+      <PropertyRef Name="MeetId" />
+    </Key>
+    <Property Name="Team_no" Type="int" Nullable="false" />
+    <Property Name="Team_name" Type="nvarchar" MaxLength="30" />
+    <Property Name="Team_short" Type="nvarchar" MaxLength="16" />
+    <Property Name="Team_abbr" Type="nvarchar" MaxLength="5" />
+    <Property Name="Team_stat" Type="nvarchar" MaxLength="1" />
+    <Property Name="Team_lsc" Type="nvarchar" MaxLength="3" />
+    <Property Name="Team_div" Type="smallint" />
+    <Property Name="Team_region" Type="smallint" />
+    <Property Name="Team_head" Type="nvarchar" MaxLength="30" />
+    <Property Name="Team_asst" Type="nvarchar" MaxLength="30" />
+    <Property Name="Team_addr1" Type="nvarchar" MaxLength="30" />
+    <Property Name="Team_addr2" Type="nvarchar" MaxLength="30" />
+    <Property Name="Team_city" Type="nvarchar" MaxLength="30" />
+    <Property Name="Team_prov" Type="nvarchar" MaxLength="30" />
+    <Property Name="Team_statenew" Type="nvarchar" MaxLength="3" />
+    <Property Name="Team_zip" Type="nvarchar" MaxLength="10" />
+    <Property Name="Team_cntry" Type="nvarchar" MaxLength="3" />
+    <Property Name="Team_daytele" Type="nvarchar" MaxLength="20" />
+    <Property Name="Team_evetele" Type="nvarchar" MaxLength="20" />
+    <Property Name="Team_faxtele" Type="nvarchar" MaxLength="20" />
+    <Property Name="Team_email" Type="nvarchar" MaxLength="36" />
+    <Property Name="Team_c3" Type="nvarchar" MaxLength="30" />
+    <Property Name="Team_c4" Type="nvarchar" MaxLength="30" />
+    <Property Name="Team_c5" Type="nvarchar" MaxLength="30" />
+    <Property Name="Team_c6" Type="nvarchar" MaxLength="30" />
+    <Property Name="Team_c7" Type="nvarchar" MaxLength="30" />
+    <Property Name="Team_c8" Type="nvarchar" MaxLength="30" />
+    <Property Name="Team_c9" Type="nvarchar" MaxLength="30" />
+    <Property Name="Team_c10" Type="nvarchar" MaxLength="30" />
+    <Property Name="Team_altabbr" Type="nvarchar" MaxLength="5" />
+    <Property Name="Team_NoPoints" Type="bit" Nullable="false" />
+    <Property Name="Team_Selected" Type="bit" Nullable="false" />
+    <Property Name="Team_altname" Type="nvarchar" MaxLength="16" />
+    <Property Name="NoTeam_surcharge" Type="bit" Nullable="false" />
+    <Property Name="NoFacility_surcharge" Type="bit" Nullable="false" />
+    <Property Name="NoAthlete_surcharge" Type="bit" Nullable="false" />
+    <Property Name="Team_cell" Type="nvarchar" MaxLength="20" />
+    <Property Name="NoRelayOnly_surcharge" Type="bit" Nullable="false" />
+    <Property Name="TeamId" Type="int" Nullable="false" />
+    <Property Name="MeetId" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Estado">
     <Key>
       <PropertyRef Name="EstadoID" />
     </Key>
     <Property Name="EstadoID" Type="int" Nullable="false" />
     <Property Name="Detalle" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Estilos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Estilos">
+    <Key>
+      <PropertyRef Name="EstiloId" />
+      <PropertyRef Name="Estilo" />
+      <PropertyRef Name="tag_stroke" />
+    </Key>
+    <Property Name="EstiloId" Type="int" Nullable="false" />
+    <Property Name="Estilo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="tag_stroke" Type="nchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Eventos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Eventos">
+    <Key>
+      <PropertyRef Name="Event_ptr" />
+      <PropertyRef Name="Multi_age" />
+      <PropertyRef Name="Auto_seed" />
+      <PropertyRef Name="Twoperlane_req" />
+      <PropertyRef Name="Score_event" />
+      <PropertyRef Name="Is_locked" />
+      <PropertyRef Name="Suppress_stroke" />
+      <PropertyRef Name="Custom_ABCFinal" />
+      <PropertyRef Name="Multiage_SuperFinal" />
+      <PropertyRef Name="Finals_LanesVary" />
+      <PropertyRef Name="ABC_Style" />
+      <PropertyRef Name="PrelimsAs_ExtendedFinal" />
+      <PropertyRef Name="TimedFinal_LanesVary" />
+      <PropertyRef Name="ScoreTimedFinal_asABC" />
+      <PropertyRef Name="Pads_BothEnds" />
+      <PropertyRef Name="Multiage_SuperSeed" />
+      <PropertyRef Name="Suppress_distance" />
+      <PropertyRef Name="Fin_AwardsPrinted" />
+      <PropertyRef Name="Pre_AwardsPrinted" />
+      <PropertyRef Name="Sem_AwardsPrinted" />
+      <PropertyRef Name="SuperFinal_ElimOldAgeGrp" />
+      <PropertyRef Name="SeedMultiAge_OldToYoung" />
+      <PropertyRef Name="Multi_ageScnd" />
+      <PropertyRef Name="Pads_BothEndsFinals" />
+      <PropertyRef Name="EventId" />
+      <PropertyRef Name="MeetId" />
+    </Key>
+    <Property Name="Event_no" Type="smallint" />
+    <Property Name="Event_ltr" Type="nvarchar" MaxLength="1" />
+    <Property Name="Event_ptr" Type="int" Nullable="false" />
+    <Property Name="Ind_rel" Type="nvarchar" MaxLength="1" />
+    <Property Name="Event_sex" Type="nvarchar" MaxLength="1" />
+    <Property Name="Event_gender" Type="nvarchar" MaxLength="1" />
+    <Property Name="Event_dist" Type="real" />
+    <Property Name="Event_stroke" Type="nvarchar" MaxLength="1" />
+    <Property Name="Low_age" Type="smallint" />
+    <Property Name="High_Age" Type="smallint" />
+    <Property Name="Multi_age" Type="bit" Nullable="false" />
+    <Property Name="Event_stat" Type="nvarchar" MaxLength="1" />
+    <Property Name="Event_rounds" Type="smallint" />
+    <Property Name="Num_prelanes" Type="smallint" />
+    <Property Name="Num_finlanes" Type="smallint" />
+    <Property Name="Heats_infinal" Type="nvarchar" MaxLength="1" />
+    <Property Name="Heats_insemi" Type="smallint" />
+    <Property Name="Std_lanes" Type="nvarchar" MaxLength="1" />
+    <Property Name="Auto_seed" Type="bit" Nullable="false" />
+    <Property Name="Twoperlane_req" Type="bit" Nullable="false" />
+    <Property Name="Preheat_order" Type="nvarchar" MaxLength="1" />
+    <Property Name="Finheat_order" Type="nvarchar" MaxLength="1" />
+    <Property Name="Score_event" Type="bit" Nullable="false" />
+    <Property Name="Div_no" Type="smallint" />
+    <Property Name="Relay_size" Type="smallint" />
+    <Property Name="Comm_1" Type="nvarchar" MaxLength="36" />
+    <Property Name="Comm_2" Type="nvarchar" MaxLength="36" />
+    <Property Name="Comm_3" Type="nvarchar" MaxLength="36" />
+    <Property Name="Comm_4" Type="nvarchar" MaxLength="36" />
+    <Property Name="Entry_fee" Type="money" />
+    <Property Name="Is_locked" Type="bit" Nullable="false" />
+    <Property Name="Locked_by" Type="nvarchar" MaxLength="20" />
+    <Property Name="Event_Type" Type="nvarchar" MaxLength="1" />
+    <Property Name="Locked_list" Type="nvarchar" MaxLength="12" />
+    <Property Name="Event_note" Type="nvarchar" MaxLength="20" />
+    <Property Name="Suppress_stroke" Type="bit" Nullable="false" />
+    <Property Name="Custom_ABCFinal" Type="bit" Nullable="false" />
+    <Property Name="Num_dives" Type="smallint" />
+    <Property Name="Num_HeatsInFinal" Type="smallint" />
+    <Property Name="Multiage_SuperFinal" Type="bit" Nullable="false" />
+    <Property Name="Finals_LanesVary" Type="bit" Nullable="false" />
+    <Property Name="Finals_LanesVaryOrder" Type="nvarchar" MaxLength="18" />
+    <Property Name="ABCfinal_order" Type="nvarchar" MaxLength="6" />
+    <Property Name="ABC_Style" Type="bit" Nullable="false" />
+    <Property Name="PrelimsAs_ExtendedFinal" Type="bit" Nullable="false" />
+    <Property Name="Num_LanesInBestHeatsTimedFinal" Type="smallint" />
+    <Property Name="Num_BestHeatsTimedFinal" Type="smallint" />
+    <Property Name="TimedFinal_LanesVary" Type="bit" Nullable="false" />
+    <Property Name="ScoreTimedFinal_asABC" Type="bit" Nullable="false" />
+    <Property Name="Num_HeatsInTimedFinalToScore" Type="smallint" />
+    <Property Name="Pads_BothEnds" Type="bit" Nullable="false" />
+    <Property Name="Multiage_SuperSeed" Type="bit" Nullable="false" />
+    <Property Name="Suppress_distance" Type="bit" Nullable="false" />
+    <Property Name="Fin_AwardsPrinted" Type="bit" Nullable="false" />
+    <Property Name="Pre_AwardsPrinted" Type="bit" Nullable="false" />
+    <Property Name="Sem_AwardsPrinted" Type="bit" Nullable="false" />
+    <Property Name="FastTimeStd_Abbr" Type="nvarchar" MaxLength="4" />
+    <Property Name="SlowTimeStd_Abbr" Type="nvarchar" MaxLength="4" />
+    <Property Name="SuperFinal_ElimOldAgeGrp" Type="bit" Nullable="false" />
+    <Property Name="SeedMultiAge_OldToYoung" Type="bit" Nullable="false" />
+    <Property Name="Multi_ageScnd" Type="bit" Nullable="false" />
+    <Property Name="Num_RelayLegs" Type="smallint" />
+    <Property Name="Pads_BothEndsFinals" Type="bit" Nullable="false" />
+    <Property Name="Checkin_starttime" Type="int" />
+    <Property Name="Checkin_endtime" Type="int" />
+    <Property Name="Checkin_startdate" Type="smalldatetime" />
+    <Property Name="Checkin_enddate" Type="smalldatetime" />
+    <Property Name="Num_semlanes" Type="smallint" />
+    <Property Name="EvtMaxAgeFor_CFinal" Type="smallint" />
+    <Property Name="EvtMaxAgeNumHeats_CFinal" Type="smallint" />
+    <Property Name="fin_actualstarttime" Type="int" />
+    <Property Name="sem_actualstarttime" Type="int" />
+    <Property Name="pre_actualstarttime" Type="int" />
+    <Property Name="EventId" Type="int" Nullable="false" />
+    <Property Name="MeetId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Fotos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Fotos">
+    <Key>
+      <PropertyRef Name="FotoId" />
+    </Key>
+    <Property Name="FotoId" Type="int" Nullable="false" />
+    <Property Name="Nombrefoto" Type="nvarchar" MaxLength="100" />
+    <Property Name="NoticiaId" Type="int" />
   </EntityType>
   <EntityType Name="HistorialdeAfiliaciones">
     <Key>
@@ -161,10 +677,11 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Consulta' no tien
     <Property Name="DNI" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="VieneDe" Type="int" Nullable="false" />
     <Property Name="FechaTraspaso" Type="date" Nullable="false" />
+    <Property Name="InscripcionId" Type="int" />
   </EntityType>
   <EntityType Name="Inscripciones">
     <Key>
-      <PropertyRef Name="DNI" />
+      <PropertyRef Name="InscripcionId" />
     </Key>
     <Property Name="InscripcionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DNI" Type="varchar" MaxLength="20" Nullable="false" />
@@ -172,18 +689,69 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Consulta' no tien
     <Property Name="TipoAfiliadoID" Type="int" Nullable="false" />
     <Property Name="EstadoID" Type="int" Nullable="false" />
     <Property Name="AntiguoId" Type="int" Nullable="false" />
-    <Property Name="RutaFoto" Type="varchar" MaxLength="100" />
+    <Property Name="RutaFotoAntigua" Type="varchar" MaxLength="100" />
     <Property Name="Borrado" Type="int" />
     <Property Name="FotoDNI" Type="varchar" MaxLength="25" />
     <Property Name="DisciplinaId" Type="int" Nullable="false" />
+    <Property Name="RutaFoto" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.MarcasMinimas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="MarcasMinimas">
+    <Key>
+      <PropertyRef Name="TimeStdId" />
+      <PropertyRef Name="MeetId" />
+    </Key>
+    <Property Name="tag_ptr" Type="int" />
+    <Property Name="tag_gender" Type="nvarchar" MaxLength="1" />
+    <Property Name="tag_indrel" Type="nvarchar" MaxLength="1" />
+    <Property Name="tag_dist" Type="int" />
+    <Property Name="tag_stroke" Type="nvarchar" MaxLength="1" />
+    <Property Name="low_age" Type="smallint" />
+    <Property Name="high_Age" Type="smallint" />
+    <Property Name="tag_time" Type="real" />
+    <Property Name="tag_course" Type="nvarchar" MaxLength="1" />
+    <Property Name="div_abbr" Type="nvarchar" MaxLength="3" />
+    <Property Name="TimeStdId" Type="int" Nullable="false" />
+    <Property Name="MeetId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.MEET' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="MEET">
+    <Key>
+      <PropertyRef Name="Meet" />
+      <PropertyRef Name="MName" />
+      <PropertyRef Name="Start" />
+      <PropertyRef Name="End" />
+      <PropertyRef Name="Course" />
+      <PropertyRef Name="MeetId" />
+    </Key>
+    <Property Name="Meet" Type="int" Nullable="false" />
+    <Property Name="MName" Type="nvarchar" MaxLength="45" Nullable="false" />
+    <Property Name="Start" Type="smalldatetime" Nullable="false" />
+    <Property Name="End" Type="smalldatetime" Nullable="false" />
+    <Property Name="Course" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="MeetId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Modals' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Modals">
+    <Key>
+      <PropertyRef Name="Modalid" />
+      <PropertyRef Name="Activo" />
+    </Key>
+    <Property Name="Modalid" Type="int" Nullable="false" />
+    <Property Name="Titulo" Type="nvarchar" MaxLength="500" />
+    <Property Name="Cuerpo" Type="nvarchar(max)" />
+    <Property Name="Image" Type="nvarchar" MaxLength="200" />
+    <Property Name="Enlace" Type="nvarchar" MaxLength="200" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Multas">
     <Key>
       <PropertyRef Name="MultaId" />
     </Key>
     <Property Name="MultaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DNI" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="TorneoId" Type="int" Nullable="false" />
     <Property Name="Eventos1" Type="int" Nullable="false" />
     <Property Name="Eventos2" Type="int" Nullable="false" />
     <Property Name="Eventos3" Type="int" Nullable="false" />
@@ -195,7 +763,242 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Consulta' no tien
     <Property Name="DcsoMedico" Type="nvarchar" MaxLength="50" />
     <Property Name="UsuarioId" Type="int" />
     <Property Name="Subsanada" Type="bit" />
-    <Property Name="Torneo" Type="varchar" MaxLength="100" />
+    <Property Name="Torneo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FechaTorneo" Type="date" Nullable="false" />
+    <Property Name="InscripcionId" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.MultiEdad' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="MultiEdad">
+    <Key>
+      <PropertyRef Name="MeetId" />
+      <PropertyRef Name="MultiAgeId" />
+    </Key>
+    <Property Name="event_ptr" Type="int" />
+    <Property Name="low_age" Type="smallint" />
+    <Property Name="high_age" Type="smallint" />
+    <Property Name="Heats_infinal" Type="nvarchar" MaxLength="1" />
+    <Property Name="Num_Heatsinfinal" Type="smallint" />
+    <Property Name="MeetId" Type="int" Nullable="false" />
+    <Property Name="MultiAgeId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Noticias' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Noticias">
+    <Key>
+      <PropertyRef Name="NoticiaId" />
+      <PropertyRef Name="Titulo" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="DisciplinaId" />
+      <PropertyRef Name="UsuarioId" />
+      <PropertyRef Name="CategoriaId" />
+      <PropertyRef Name="Palabrasclaves" />
+    </Key>
+    <Property Name="NoticiaId" Type="int" Nullable="false" />
+    <Property Name="Titulo" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Corta" Type="varchar" MaxLength="500" />
+    <Property Name="Larga" Type="nvarchar(max)" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="DisciplinaId" Type="int" Nullable="false" />
+    <Property Name="UsuarioId" Type="int" Nullable="false" />
+    <Property Name="FechaModificacion" Type="date" />
+    <Property Name="CategoriaId" Type="int" Nullable="false" />
+    <Property Name="Palabrasclaves" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Visible" Type="bit" />
+    <Property Name="Youtube" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.PoloEquipos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="PoloEquipos">
+    <Key>
+      <PropertyRef Name="EquipoId" />
+      <PropertyRef Name="Nombre" />
+    </Key>
+    <Property Name="EquipoId" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sexo" Type="nchar" MaxLength="10" />
+    <Property Name="TorneoId" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.PoloFechas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="PoloFechas">
+    <Key>
+      <PropertyRef Name="FechaId" />
+      <PropertyRef Name="Dia" />
+    </Key>
+    <Property Name="FechaId" Type="int" Nullable="false" />
+    <Property Name="Dia" Type="date" Nullable="false" />
+    <Property Name="TorneoId" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.PoloGoleadores' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="PoloGoleadores">
+    <Key>
+      <PropertyRef Name="GoleadorId" />
+      <PropertyRef Name="JugadorId" />
+      <PropertyRef Name="Goles" />
+    </Key>
+    <Property Name="GoleadorId" Type="int" Nullable="false" />
+    <Property Name="JugadorId" Type="int" Nullable="false" />
+    <Property Name="Goles" Type="int" Nullable="false" />
+    <Property Name="TorneoId" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.PoloGrupos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="PoloGrupos">
+    <Key>
+      <PropertyRef Name="GrupoId" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Sexoid" />
+    </Key>
+    <Property Name="GrupoId" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sexoid" Type="int" Nullable="false" />
+    <Property Name="TorneoId" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.PoloJugadores' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="PoloJugadores">
+    <Key>
+      <PropertyRef Name="JugadorId" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Apellido" />
+      <PropertyRef Name="EquipoId" />
+      <PropertyRef Name="Sexo" />
+      <PropertyRef Name="Edad" />
+    </Key>
+    <Property Name="JugadorId" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EquipoId" Type="int" Nullable="false" />
+    <Property Name="Sexo" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="Edad" Type="int" Nullable="false" />
+    <Property Name="TorneoId" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.PoloPartidos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="PoloPartidos">
+    <Key>
+      <PropertyRef Name="PartidoId" />
+      <PropertyRef Name="FechaId" />
+      <PropertyRef Name="GrupoId" />
+      <PropertyRef Name="Hora" />
+      <PropertyRef Name="SexoId" />
+      <PropertyRef Name="RondaId" />
+      <PropertyRef Name="Equipo1" />
+      <PropertyRef Name="Equipo2" />
+    </Key>
+    <Property Name="PartidoId" Type="int" Nullable="false" />
+    <Property Name="FechaId" Type="int" Nullable="false" />
+    <Property Name="GrupoId" Type="int" Nullable="false" />
+    <Property Name="Hora" Type="float" Nullable="false" />
+    <Property Name="SexoId" Type="int" Nullable="false" />
+    <Property Name="RondaId" Type="int" Nullable="false" />
+    <Property Name="Equipo1" Type="int" Nullable="false" />
+    <Property Name="Equipo2" Type="int" Nullable="false" />
+    <Property Name="TorneoId" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.PoloPosicion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="PoloPosicion">
+    <Key>
+      <PropertyRef Name="PosicionId" />
+      <PropertyRef Name="PJ" />
+      <PropertyRef Name="PG" />
+      <PropertyRef Name="PE" />
+      <PropertyRef Name="PP" />
+      <PropertyRef Name="GF" />
+      <PropertyRef Name="GC" />
+      <PropertyRef Name="DG" />
+      <PropertyRef Name="PUNTOS" />
+      <PropertyRef Name="EquipoId" />
+      <PropertyRef Name="GrupoId" />
+    </Key>
+    <Property Name="PosicionId" Type="int" Nullable="false" />
+    <Property Name="PJ" Type="int" Nullable="false" />
+    <Property Name="PG" Type="int" Nullable="false" />
+    <Property Name="PE" Type="int" Nullable="false" />
+    <Property Name="PP" Type="int" Nullable="false" />
+    <Property Name="GF" Type="int" Nullable="false" />
+    <Property Name="GC" Type="int" Nullable="false" />
+    <Property Name="DG" Type="int" Nullable="false" />
+    <Property Name="PUNTOS" Type="int" Nullable="false" />
+    <Property Name="EquipoId" Type="int" Nullable="false" />
+    <Property Name="GrupoId" Type="int" Nullable="false" />
+    <Property Name="TorneoId" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.PoloPosicionFinal' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="PoloPosicionFinal">
+    <Key>
+      <PropertyRef Name="PosicionId" />
+      <PropertyRef Name="Pasiid" />
+      <PropertyRef Name="Posicion" />
+    </Key>
+    <Property Name="PosicionId" Type="int" Nullable="false" />
+    <Property Name="Pasiid" Type="int" Nullable="false" />
+    <Property Name="Posicion" Type="int" Nullable="false" />
+    <Property Name="TorneoId" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.PoloResultados' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="PoloResultados">
+    <Key>
+      <PropertyRef Name="ResultadoId" />
+      <PropertyRef Name="A1" />
+      <PropertyRef Name="A2" />
+      <PropertyRef Name="A3" />
+      <PropertyRef Name="A4" />
+      <PropertyRef Name="T1" />
+      <PropertyRef Name="T2" />
+      <PropertyRef Name="B1" />
+      <PropertyRef Name="B2" />
+      <PropertyRef Name="B3" />
+      <PropertyRef Name="B4" />
+      <PropertyRef Name="PartidaId" />
+    </Key>
+    <Property Name="ResultadoId" Type="int" Nullable="false" />
+    <Property Name="A1" Type="int" Nullable="false" />
+    <Property Name="A2" Type="int" Nullable="false" />
+    <Property Name="A3" Type="int" Nullable="false" />
+    <Property Name="A4" Type="int" Nullable="false" />
+    <Property Name="T1" Type="int" Nullable="false" />
+    <Property Name="T2" Type="int" Nullable="false" />
+    <Property Name="B1" Type="int" Nullable="false" />
+    <Property Name="B2" Type="int" Nullable="false" />
+    <Property Name="B3" Type="int" Nullable="false" />
+    <Property Name="B4" Type="int" Nullable="false" />
+    <Property Name="PartidaId" Type="int" Nullable="false" />
+    <Property Name="TorneoId" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.PoloRondas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="PoloRondas">
+    <Key>
+      <PropertyRef Name="RondaId" />
+      <PropertyRef Name="Nombre" />
+    </Key>
+    <Property Name="RondaId" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TorneoId" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.PoloTorneo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="PoloTorneo">
+    <Key>
+      <PropertyRef Name="TorneoId" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="FechaInicio" />
+      <PropertyRef Name="FechaCierre" />
+      <PropertyRef Name="EdadMaxima" />
+      <PropertyRef Name="EdadMinima" />
+    </Key>
+    <Property Name="TorneoId" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="FechaInicio" Type="date" Nullable="false" />
+    <Property Name="FechaCierre" Type="date" Nullable="false" />
+    <Property Name="EdadMaxima" Type="int" Nullable="false" />
+    <Property Name="EdadMinima" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Procesado">
     <Key>
@@ -204,6 +1007,110 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Consulta' no tien
     <Property Name="ProcesadoId" Type="int" Nullable="false" />
     <Property Name="Detalle" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Pruebas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Pruebas">
+    <Key>
+      <PropertyRef Name="PruebaId" />
+      <PropertyRef Name="distancia" />
+      <PropertyRef Name="estilo" />
+    </Key>
+    <Property Name="PruebaId" Type="int" Nullable="false" />
+    <Property Name="distancia" Type="int" Nullable="false" />
+    <Property Name="estilo" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="FactorF" Type="float" />
+    <Property Name="FactorM" Type="float" />
+    <Property Name="EstiloMeet" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Query' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Query">
+    <Key>
+      <PropertyRef Name="Athlete" />
+      <PropertyRef Name="First" />
+      <PropertyRef Name="Last" />
+      <PropertyRef Name="Sex" />
+      <PropertyRef Name="Age" />
+      <PropertyRef Name="ID_NO" />
+      <PropertyRef Name="AthleteId" />
+    </Key>
+    <Property Name="Athlete" Type="int" Nullable="false" />
+    <Property Name="First" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Last" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="Birth" Type="datetime2" Precision="3" />
+    <Property Name="Age" Type="smallint" Nullable="false" />
+    <Property Name="ID_NO" Type="nvarchar" MaxLength="17" Nullable="false" />
+    <Property Name="AthleteId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Records' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Records">
+          <Property Name="tag_ptr" Type="int" />
+          <Property Name="tag_gender" Type="nvarchar" MaxLength="1" />
+          <Property Name="tag_indrel" Type="nvarchar" MaxLength="1" />
+          <Property Name="tag_dist" Type="int" />
+          <Property Name="tag_stroke" Type="nvarchar" MaxLength="1" />
+          <Property Name="low_age" Type="smallint" />
+          <Property Name="high_Age" Type="smallint" />
+          <Property Name="Record_month" Type="smallint" />
+          <Property Name="Record_day" Type="smallint" />
+          <Property Name="Record_year" Type="smallint" />
+          <Property Name="Record_Holder" Type="nvarchar" MaxLength="30" />
+          <Property Name="Record_Holderteam" Type="nvarchar" MaxLength="16" />
+          <Property Name="Relay_Names" Type="nvarchar" MaxLength="50" />
+          <Property Name="Record_Time" Type="real" />
+          <Property Name="Record_course" Type="nvarchar" MaxLength="1" />
+          <Property Name="div_abbr" Type="nvarchar" MaxLength="3" />
+          <Property Name="Record_teamabbr" Type="nvarchar" MaxLength="5" />
+          <Property Name="Record_teamlsc" Type="nvarchar" MaxLength="2" />
+        </EntityType>-->
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.RESULTS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="RESULTS">
+    <Key>
+      <PropertyRef Name="MEET" />
+      <PropertyRef Name="ATHLETE" />
+      <PropertyRef Name="I_R" />
+      <PropertyRef Name="TEAM" />
+      <PropertyRef Name="SCORE" />
+      <PropertyRef Name="F_P" />
+      <PropertyRef Name="NT" />
+      <PropertyRef Name="AGE" />
+      <PropertyRef Name="DISTANCE" />
+      <PropertyRef Name="STROKE" />
+      <PropertyRef Name="MTEV" />
+      <PropertyRef Name="LO_HI" />
+      <PropertyRef Name="POINTS" />
+      <PropertyRef Name="PLACE" />
+      <PropertyRef Name="COURSE" />
+      <PropertyRef Name="ResultId" />
+    </Key>
+    <Property Name="MEET" Type="int" Nullable="false" />
+    <Property Name="ATHLETE" Type="int" Nullable="false" />
+    <Property Name="I_R" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="TEAM" Type="int" Nullable="false" />
+    <Property Name="SCORE" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="F_P" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="EX" Type="nvarchar" MaxLength="1" />
+    <Property Name="NT" Type="tinyint" Nullable="false" />
+    <Property Name="AGE" Type="smallint" Nullable="false" />
+    <Property Name="DISTANCE" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="STROKE" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="MTEV" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="LO_HI" Type="smallint" Nullable="false" />
+    <Property Name="POINTS" Type="smallint" Nullable="false" />
+    <Property Name="PLACE" Type="smallint" Nullable="false" />
+    <Property Name="COURSE" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="DIVISION" Type="nvarchar" MaxLength="3" />
+    <Property Name="PFina" Type="int" />
+    <Property Name="AthleteId" Type="int" />
+    <Property Name="MeetId" Type="int" />
+    <Property Name="TeamId" Type="int" />
+    <Property Name="PruebaId" Type="int" />
+    <Property Name="ResultId" Type="int" Nullable="false" />
+    <Property Name="Tiempobase" Type="float" />
+  </EntityType>
   <EntityType Name="Rol">
     <Key>
       <PropertyRef Name="RolId" />
@@ -211,6 +1118,68 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Consulta' no tien
     <Property Name="RolId" Type="int" Nullable="false" />
     <Property Name="Rol" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="Detalle" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Sesion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Sesion">
+    <Key>
+      <PropertyRef Name="Sess_ptr" />
+      <PropertyRef Name="MeetId" />
+      <PropertyRef Name="SessionId" />
+    </Key>
+    <Property Name="Sess_no" Type="smallint" />
+    <Property Name="Sess_ltr" Type="nvarchar" MaxLength="1" />
+    <Property Name="Sess_ptr" Type="int" Nullable="false" />
+    <Property Name="Sess_day" Type="smallint" />
+    <Property Name="Sess_starttime" Type="int" />
+    <Property Name="Sess_entrymax" Type="smallint" />
+    <Property Name="Sess_name" Type="nvarchar" MaxLength="60" />
+    <Property Name="Sess_interval" Type="smallint" />
+    <Property Name="Sess_course" Type="nvarchar" MaxLength="1" />
+    <Property Name="Sess_entrymaxind" Type="smallint" />
+    <Property Name="Sess_entrymaxrel" Type="smallint" />
+    <Property Name="Sess_backinterval" Type="smallint" />
+    <Property Name="Sess_divinginterval" Type="smallint" />
+    <Property Name="Sess_chaseinterval" Type="smallint" />
+    <Property Name="MeetId" Type="int" Nullable="false" />
+    <Property Name="SessionId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.SessionItem' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="SessionItem">
+    <Key>
+      <PropertyRef Name="Alt_With" />
+      <PropertyRef Name="SessitemId" />
+      <PropertyRef Name="Meetid" />
+    </Key>
+    <Property Name="Sess_order" Type="int" />
+    <Property Name="Sess_ptr" Type="int" />
+    <Property Name="Event_ptr" Type="int" />
+    <Property Name="Sess_rnd" Type="nvarchar" MaxLength="1" />
+    <Property Name="Rept_type" Type="nvarchar" MaxLength="1" />
+    <Property Name="Delay_seconds" Type="int" />
+    <Property Name="Alt_With" Type="bit" Nullable="false" />
+    <Property Name="Timed_finalheats" Type="smallint" />
+    <Property Name="EventTo_AlternateWith" Type="int" />
+    <Property Name="Delay_desc" Type="nvarchar" MaxLength="50" />
+    <Property Name="AltHeats_StartCount" Type="smallint" />
+    <Property Name="SessitemId" Type="int" Nullable="false" />
+    <Property Name="Meetid" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.SetupTorneo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="SetupTorneo">
+    <Key>
+      <PropertyRef Name="SetupId" />
+      <PropertyRef Name="TipoId" />
+      <PropertyRef Name="pruebasXsesion" />
+      <PropertyRef Name="pruebasXtorneo" />
+    </Key>
+    <Property Name="SetupId" Type="int" Nullable="false" />
+    <Property Name="TipoId" Type="int" Nullable="false" />
+    <Property Name="pruebasXsesion" Type="int" Nullable="false" />
+    <Property Name="pruebasXtorneo" Type="int" Nullable="false" />
+    <Property Name="Meetid" Type="int" />
   </EntityType>
   <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -226,12 +1195,445 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
+  <EntityType Name="TatoInformeAsistencias">
+    <Key>
+      <PropertyRef Name="InformeId" />
+    </Key>
+    <Property Name="InformeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SesionesPlanificadas" Type="int" Nullable="false" />
+    <Property Name="SesionesRealizadas" Type="int" Nullable="false" />
+    <Property Name="VolumenPlanificado" Type="int" Nullable="false" />
+    <Property Name="VolumenRealizado" Type="int" Nullable="false" />
+    <Property Name="GimnasioPlanificado" Type="int" Nullable="false" />
+    <Property Name="GimnasioRealizado" Type="int" Nullable="false" />
+    <Property Name="InscripcionId" Type="int" Nullable="false" />
+    <Property Name="Observaciones" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="EntrenadorId" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="ClubId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TatoInformeEntrenador">
+    <Key>
+      <PropertyRef Name="InformeId" />
+    </Key>
+    <Property Name="InformeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EntrenadorId" Type="int" Nullable="false" />
+    <Property Name="InscripcionId" Type="int" Nullable="false" />
+    <Property Name="SerieId" Type="int" Nullable="false" />
+    <Property Name="MejorMarca" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="Pruebaid" Type="int" Nullable="false" />
+    <Property Name="MarcaEntrenamiento" Type="float" Nullable="false" />
+    <Property Name="Sensacion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RealizacionId" Type="int" Nullable="false" />
+    <Property Name="Zona" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TatoRealizacion">
+    <Key>
+      <PropertyRef Name="RealizacionId" />
+    </Key>
+    <Property Name="RealizacionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TatoSeleccionado">
+    <Key>
+      <PropertyRef Name="SeleccionadoId" />
+    </Key>
+    <Property Name="SeleccionadoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InscripcionId" Type="int" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TatoSeriesEjemplo">
+    <Key>
+      <PropertyRef Name="SerieId" />
+    </Key>
+    <Property Name="SerieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Zona" Type="int" Nullable="false" />
+    <Property Name="Series" Type="int" Nullable="false" />
+    <Property Name="Repeticiones" Type="int" Nullable="false" />
+    <Property Name="Parcial" Type="int" Nullable="false" />
+    <Property Name="Tolerancia" Type="float" Nullable="false" />
+    <Property Name="Micropausa" Type="float" Nullable="false" />
+    <Property Name="Piscina" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.TEAM' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="TEAM">
+    <Key>
+      <PropertyRef Name="Team" />
+      <PropertyRef Name="TeamId" />
+      <PropertyRef Name="TCode" />
+    </Key>
+    <Property Name="Team" Type="int" Nullable="false" />
+    <Property Name="TeamId" Type="int" Nullable="false" />
+    <Property Name="TCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="TName" Type="nvarchar" MaxLength="30" />
+  </EntityType>
   <EntityType Name="TipoAfiliado">
     <Key>
       <PropertyRef Name="AfiliadoId" />
     </Key>
     <Property Name="AfiliadoId" Type="int" Nullable="false" />
     <Property Name="Detalle" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.TipoTorneo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="TipoTorneo">
+    <Key>
+      <PropertyRef Name="TipoId" />
+      <PropertyRef Name="Nombre" />
+    </Key>
+    <Property Name="TipoId" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Torneo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Torneo">
+    <Key>
+      <PropertyRef Name="Enter_ages" />
+      <PropertyRef Name="Enter_birthdate" />
+      <PropertyRef Name="Enter_schoolyr" />
+      <PropertyRef Name="A_Relaysonly" />
+      <PropertyRef Name="Use_hometown" />
+      <PropertyRef Name="Show_countrycode" />
+      <PropertyRef Name="Scores_afterevt" />
+      <PropertyRef Name="Lastname_first" />
+      <PropertyRef Name="Punct_names" />
+      <PropertyRef Name="Punct_teams" />
+      <PropertyRef Name="win_mm" />
+      <PropertyRef Name="timedfinal_circleseed" />
+      <PropertyRef Name="foreign_infinal" />
+      <PropertyRef Name="exh_infinal" />
+      <PropertyRef Name="nonconform_last" />
+      <PropertyRef Name="seed_exhlast" />
+      <PropertyRef Name="dual_evenodd" />
+      <PropertyRef Name="strict_evenodd" />
+      <PropertyRef Name="masters_bytimeonly" />
+      <PropertyRef Name="show_initial" />
+      <PropertyRef Name="ucase_names" />
+      <PropertyRef Name="ucase_teams" />
+      <PropertyRef Name="entryqual_faster" />
+      <PropertyRef Name="anyone_onrelay" />
+      <PropertyRef Name="military_time" />
+      <PropertyRef Name="check_times" />
+      <PropertyRef Name="enterkey_astab" />
+      <PropertyRef Name="double_endedsplits" />
+      <PropertyRef Name="use_compnumbers" />
+      <PropertyRef Name="diffpts_malefemale" />
+      <PropertyRef Name="diffpts_eachdivision" />
+      <PropertyRef Name="scoreonly_ifexceedqualtime" />
+      <PropertyRef Name="score_fastestheatonly" />
+      <PropertyRef Name="entrylimits_warn" />
+      <PropertyRef Name="pointsbasedon_seedtime" />
+      <PropertyRef Name="pointsfor_overachievers" />
+      <PropertyRef Name="pointsfor_underachievers" />
+      <PropertyRef Name="foreign_getteampoints" />
+      <PropertyRef Name="include_swimupsinteamscore" />
+      <PropertyRef Name="enter_citizenof" />
+      <PropertyRef Name="flag_overachievers" />
+      <PropertyRef Name="flag_underachievers" />
+      <PropertyRef Name="scbd_cycle" />
+      <PropertyRef Name="report_headersonly" />
+      <PropertyRef Name="autoinc_compno" />
+      <PropertyRef Name="pentscoring_usedqtime" />
+      <PropertyRef Name="directly_toprinter" />
+      <PropertyRef Name="lastname_asinitial" />
+      <PropertyRef Name="under_eventname" />
+      <PropertyRef Name="suppress_Arelay" />
+      <PropertyRef Name="Punct_recholders" />
+      <PropertyRef Name="ucase_recholders" />
+      <PropertyRef Name="suppress_lsc" />
+      <PropertyRef Name="showathlete_status" />
+      <PropertyRef Name="useeventsex_teamscore" />
+      <PropertyRef Name="suppress_smallx" />
+      <PropertyRef Name="score_Arelayonly" />
+      <PropertyRef Name="thirteenandover_assenior" />
+      <PropertyRef Name="suppress_jd" />
+      <PropertyRef Name="include_sanction" />
+      <PropertyRef Name="countrelay_alt" />
+      <PropertyRef Name="UseNonConforming_PoolFactor" />
+      <PropertyRef Name="Enter_AthStat" />
+      <PropertyRef Name="Show_secondclub" />
+      <PropertyRef Name="firstinitial_fulllastname" />
+      <PropertyRef Name="turnon_autobackup" />
+      <PropertyRef Name="PointsAwarded_ForExh" />
+      <PropertyRef Name="Use_AltTeamAbbr" />
+      <PropertyRef Name="IsCanadian_Masters" />
+      <PropertyRef Name="timedfinalnonconform_last" />
+      <PropertyRef Name="AllowSameEvent_DupRelayNames" />
+      <PropertyRef Name="strict_evenoddfastestheatonly" />
+      <PropertyRef Name="dualseeding_altunusedlane" />
+      <PropertyRef Name="Display_ActualEntryTime" />
+      <PropertyRef Name="RelayNames_LinkByLSC" />
+      <PropertyRef Name="Read_Only" />
+      <PropertyRef Name="Flighted_BasedOnResultsTime" />
+      <PropertyRef Name="ShowYear_InPlaceOfAge" />
+      <PropertyRef Name="Suppress_TimeStdAbbr" />
+      <PropertyRef Name="Custom_QualTimes" />
+      <PropertyRef Name="Suppress_SplitsForDQs" />
+      <PropertyRef Name="Suppress_SplitsForDQsRelay" />
+      <PropertyRef Name="SuppressTimes_NotMeetQualTime" />
+      <PropertyRef Name="Show_AgeandBirthYear" />
+      <PropertyRef Name="BCSSA_DivbyTimeStd" />
+      <PropertyRef Name="Show_HyTekDecimals" />
+      <PropertyRef Name="Suppress_ResultsAdvQ" />
+      <PropertyRef Name="RelaysAs_4x100Style" />
+      <PropertyRef Name="flighted_inclDQ" />
+      <PropertyRef Name="RelaysAlternate_TwoFastestFirst" />
+      <PropertyRef Name="ShowFirstName_OverPreferred" />
+      <PropertyRef Name="ExcludeNTEntries_WhenImporting" />
+      <PropertyRef Name="Enter_birthcentury" />
+      <PropertyRef Name="Using_twopools" />
+      <PropertyRef Name="Flag_FastestRecordOnly" />
+      <PropertyRef Name="DisplayNTfor_TimesUnder5Sec" />
+      <PropertyRef Name="SortTeamCombos_ByTeamName" />
+      <PropertyRef Name="FastestHeat_SomeLanesDoNotScore" />
+      <PropertyRef Name="RankDisabled_ByPoints" />
+      <PropertyRef Name="DisabledDoNot_AdvanceToFinals" />
+      <PropertyRef Name="DisabledIgnoreQualTime_ForScoring" />
+      <PropertyRef Name="CountTimeTrial_Events" />
+      <PropertyRef Name="QualNonConformCourse_UseMinStd" />
+      <PropertyRef Name="MixedRelays_DividedPoints" />
+      <PropertyRef Name="DisabledSeedWithAgeGroup_IfTimedFinalSuperSeed" />
+      <PropertyRef Name="Meetid" />
+      <PropertyRef Name="MarcaMaxima" />
+    </Key>
+    <Property Name="Meet_name1" Type="nvarchar" MaxLength="45" />
+    <Property Name="Meet_header1" Type="nvarchar" MaxLength="75" />
+    <Property Name="Meet_header2" Type="nvarchar" MaxLength="75" />
+    <Property Name="Meet_location" Type="nvarchar" MaxLength="45" />
+    <Property Name="Meet_start" Type="smalldatetime" />
+    <Property Name="Meet_end" Type="smalldatetime" />
+    <Property Name="Meet_idformat" Type="smallint" />
+    <Property Name="Meet_class" Type="smallint" />
+    <Property Name="Meet_meettype" Type="smallint" />
+    <Property Name="Meet_course" Type="smallint" />
+    <Property Name="Enter_ages" Type="bit" Nullable="false" />
+    <Property Name="Enter_birthdate" Type="bit" Nullable="false" />
+    <Property Name="Calc_date" Type="smalldatetime" />
+    <Property Name="Enter_schoolyr" Type="bit" Nullable="false" />
+    <Property Name="A_Relaysonly" Type="bit" Nullable="false" />
+    <Property Name="Use_hometown" Type="bit" Nullable="false" />
+    <Property Name="Show_countrycode" Type="bit" Nullable="false" />
+    <Property Name="Scores_afterevt" Type="bit" Nullable="false" />
+    <Property Name="Lastname_first" Type="bit" Nullable="false" />
+    <Property Name="Punct_names" Type="bit" Nullable="false" />
+    <Property Name="Punct_teams" Type="bit" Nullable="false" />
+    <Property Name="win_mm" Type="bit" Nullable="false" />
+    <Property Name="meet_numlanes" Type="smallint" />
+    <Property Name="prelimheats_circle" Type="smallint" />
+    <Property Name="timedfinal_circleseed" Type="bit" Nullable="false" />
+    <Property Name="foreign_infinal" Type="bit" Nullable="false" />
+    <Property Name="exh_infinal" Type="bit" Nullable="false" />
+    <Property Name="nonconform_last" Type="bit" Nullable="false" />
+    <Property Name="course_order" Type="nvarchar" MaxLength="255" />
+    <Property Name="seed_exhlast" Type="bit" Nullable="false" />
+    <Property Name="dual_evenodd" Type="bit" Nullable="false" />
+    <Property Name="strict_evenodd" Type="bit" Nullable="false" />
+    <Property Name="team_evenlanes" Type="int" />
+    <Property Name="team_oddlanes" Type="int" />
+    <Property Name="masters_bytimeonly" Type="bit" Nullable="false" />
+    <Property Name="masters_agegrpsskip" Type="smallint" />
+    <Property Name="timer_port" Type="smallint" />
+    <Property Name="scbd_port" Type="smallint" />
+    <Property Name="timer_vendor" Type="nvarchar" MaxLength="4" />
+    <Property Name="scbd_vendor" Type="nvarchar" MaxLength="4" />
+    <Property Name="show_initial" Type="bit" Nullable="false" />
+    <Property Name="ucase_names" Type="bit" Nullable="false" />
+    <Property Name="ucase_teams" Type="bit" Nullable="false" />
+    <Property Name="open_senior_none" Type="nvarchar" MaxLength="1" />
+    <Property Name="entryqual_faster" Type="bit" Nullable="false" />
+    <Property Name="Facility_Surcharge" Type="money" />
+    <Property Name="anyone_onrelay" Type="bit" Nullable="false" />
+    <Property Name="language_choice" Type="nvarchar" MaxLength="20" />
+    <Property Name="military_time" Type="bit" Nullable="false" />
+    <Property Name="check_times" Type="bit" Nullable="false" />
+    <Property Name="enterkey_astab" Type="bit" Nullable="false" />
+    <Property Name="double_endedsplits" Type="bit" Nullable="false" />
+    <Property Name="use_compnumbers" Type="bit" Nullable="false" />
+    <Property Name="flighted_minentries" Type="smallint" />
+    <Property Name="diffpts_malefemale" Type="bit" Nullable="false" />
+    <Property Name="diffpts_eachdivision" Type="bit" Nullable="false" />
+    <Property Name="scoreonly_ifexceedqualtime" Type="bit" Nullable="false" />
+    <Property Name="score_fastestheatonly" Type="bit" Nullable="false" />
+    <Property Name="entrylimits_warn" Type="bit" Nullable="false" />
+    <Property Name="pointsbasedon_seedtime" Type="bit" Nullable="false" />
+    <Property Name="pointsfor_overachievers" Type="bit" Nullable="false" />
+    <Property Name="pointsfor_underachievers" Type="bit" Nullable="false" />
+    <Property Name="indmaxscorers_perteam" Type="smallint" />
+    <Property Name="relmaxscorers_perteam" Type="smallint" />
+    <Property Name="indtopmany_awards" Type="smallint" />
+    <Property Name="reltopmany_awards" Type="smallint" />
+    <Property Name="entrymax_total" Type="smallint" />
+    <Property Name="indmax_perath" Type="smallint" />
+    <Property Name="relmax_perath" Type="smallint" />
+    <Property Name="foreign_getteampoints" Type="bit" Nullable="false" />
+    <Property Name="include_swimupsinteamscore" Type="bit" Nullable="false" />
+    <Property Name="enter_citizenof" Type="bit" Nullable="false" />
+    <Property Name="meet_meetstyle" Type="smallint" />
+    <Property Name="flag_overachievers" Type="bit" Nullable="false" />
+    <Property Name="flag_underachievers" Type="bit" Nullable="false" />
+    <Property Name="scbd_punctuation" Type="smallint" />
+    <Property Name="scbd_names" Type="smallint" />
+    <Property Name="scbd_relaynames" Type="smallint" />
+    <Property Name="scbd_cycle" Type="bit" Nullable="false" />
+    <Property Name="scbd_cycleseconds" Type="smallint" />
+    <Property Name="copies_toprinter" Type="smallint" />
+    <Property Name="report_headersonly" Type="bit" Nullable="false" />
+    <Property Name="autoinc_compno" Type="bit" Nullable="false" />
+    <Property Name="pentscoring_usedqtime" Type="bit" Nullable="false" />
+    <Property Name="swimmer_surcharge" Type="money" />
+    <Property Name="directly_toprinter" Type="bit" Nullable="false" />
+    <Property Name="lastname_asinitial" Type="bit" Nullable="false" />
+    <Property Name="under_eventname" Type="bit" Nullable="false" />
+    <Property Name="suppress_Arelay" Type="bit" Nullable="false" />
+    <Property Name="Punct_recholders" Type="bit" Nullable="false" />
+    <Property Name="ucase_recholders" Type="bit" Nullable="false" />
+    <Property Name="suppress_lsc" Type="bit" Nullable="false" />
+    <Property Name="showathlete_status" Type="bit" Nullable="false" />
+    <Property Name="open_lowage" Type="smallint" />
+    <Property Name="useeventsex_teamscore" Type="bit" Nullable="false" />
+    <Property Name="suppress_smallx" Type="bit" Nullable="false" />
+    <Property Name="score_Arelayonly" Type="bit" Nullable="false" />
+    <Property Name="thirteenandover_assenior" Type="bit" Nullable="false" />
+    <Property Name="suppress_jd" Type="bit" Nullable="false" />
+    <Property Name="abcfinal_order" Type="nvarchar" MaxLength="3" />
+    <Property Name="maxagefor_cfinal" Type="smallint" />
+    <Property Name="Sanction_number" Type="nvarchar" MaxLength="20" />
+    <Property Name="include_sanction" Type="bit" Nullable="false" />
+    <Property Name="special_points" Type="smallint" />
+    <Property Name="countrelay_alt" Type="bit" Nullable="false" />
+    <Property Name="UseNonConforming_PoolFactor" Type="bit" Nullable="false" />
+    <Property Name="NonConforming_PoolFactor" Type="real" />
+    <Property Name="apnews_team" Type="nvarchar" MaxLength="1" />
+    <Property Name="PointsAwarded_ForDQ" Type="real" />
+    <Property Name="PointsAwarded_ForScratch" Type="real" />
+    <Property Name="PointsAwarded_ForNT" Type="real" />
+    <Property Name="Enter_AthStat" Type="bit" Nullable="false" />
+    <Property Name="Show_secondclub" Type="bit" Nullable="false" />
+    <Property Name="firstinitial_fulllastname" Type="bit" Nullable="false" />
+    <Property Name="turnon_autobackup" Type="bit" Nullable="false" />
+    <Property Name="autobackup_interval" Type="smallint" />
+    <Property Name="PointsAwarded_ForExh" Type="bit" Nullable="false" />
+    <Property Name="Use_AltTeamAbbr" Type="bit" Nullable="false" />
+    <Property Name="IsCanadian_Masters" Type="bit" Nullable="false" />
+    <Property Name="entry_msg" Type="nvarchar" MaxLength="80" />
+    <Property Name="timedfinalnonconform_last" Type="bit" Nullable="false" />
+    <Property Name="referee_name" Type="nvarchar" MaxLength="30" />
+    <Property Name="referee_homphone" Type="nvarchar" MaxLength="20" />
+    <Property Name="referee_offphone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Meet_altitude" Type="int" />
+    <Property Name="Import_Dir" Type="nvarchar" MaxLength="80" />
+    <Property Name="Export_Dir" Type="nvarchar" MaxLength="80" />
+    <Property Name="Backup_Dir" Type="nvarchar" MaxLength="80" />
+    <Property Name="RestoreFrom_Dir" Type="nvarchar" MaxLength="80" />
+    <Property Name="RestoreTo_Dir" Type="nvarchar" MaxLength="80" />
+    <Property Name="FlatHtml_Dir" Type="nvarchar" MaxLength="80" />
+    <Property Name="APNews_Dir" Type="nvarchar" MaxLength="80" />
+    <Property Name="AllowSameEvent_DupRelayNames" Type="bit" Nullable="false" />
+    <Property Name="dualteam_lane1" Type="int" />
+    <Property Name="dualteam_lane2" Type="int" />
+    <Property Name="dualteam_lane3" Type="int" />
+    <Property Name="dualteam_lane4" Type="int" />
+    <Property Name="dualteam_lane5" Type="int" />
+    <Property Name="dualteam_lane6" Type="int" />
+    <Property Name="dualteam_lane7" Type="int" />
+    <Property Name="dualteam_lane8" Type="int" />
+    <Property Name="dualteam_lane9" Type="int" />
+    <Property Name="dualteam_lane10" Type="int" />
+    <Property Name="strict_evenoddfastestheatonly" Type="bit" Nullable="false" />
+    <Property Name="dualseeding_altunusedlane" Type="bit" Nullable="false" />
+    <Property Name="team_surcharge" Type="money" />
+    <Property Name="Display_ActualEntryTime" Type="bit" Nullable="false" />
+    <Property Name="indmaxadvance_perteam" Type="smallint" />
+    <Property Name="relmaxadvance_perteam" Type="smallint" />
+    <Property Name="RelayNames_LinkByLSC" Type="bit" Nullable="false" />
+    <Property Name="Read_Only" Type="bit" Nullable="false" />
+    <Property Name="Flighted_BasedOnResultsTime" Type="bit" Nullable="false" />
+    <Property Name="ShowYear_InPlaceOfAge" Type="bit" Nullable="false" />
+    <Property Name="PenaltyPts_ForNS" Type="real" />
+    <Property Name="EntryEligibility_date" Type="smalldatetime" />
+    <Property Name="Suppress_TimeStdAbbr" Type="bit" Nullable="false" />
+    <Property Name="masters_indlowage" Type="smallint" />
+    <Property Name="masters_rellowage" Type="smallint" />
+    <Property Name="Custom_QualTimes" Type="bit" Nullable="false" />
+    <Property Name="Suppress_SplitsForDQs" Type="bit" Nullable="false" />
+    <Property Name="Suppress_SplitsForDQsRelay" Type="bit" Nullable="false" />
+    <Property Name="DQCodes_Type" Type="nvarchar" MaxLength="1" />
+    <Property Name="SuppressTimes_NotMeetQualTime" Type="bit" Nullable="false" />
+    <Property Name="Show_AgeandBirthYear" Type="bit" Nullable="false" />
+    <Property Name="Meet_state" Type="nvarchar" MaxLength="3" />
+    <Property Name="Meet_country" Type="nvarchar" MaxLength="3" />
+    <Property Name="Meet_lsc" Type="nvarchar" MaxLength="3" />
+    <Property Name="BCSSA_DivbyTimeStd" Type="bit" Nullable="false" />
+    <Property Name="Show_HyTekDecimals" Type="bit" Nullable="false" />
+    <Property Name="Suppress_ResultsAdvQ" Type="bit" Nullable="false" />
+    <Property Name="RelaysAs_4x100Style" Type="bit" Nullable="false" />
+    <Property Name="flighted_flightcount" Type="smallint" />
+    <Property Name="flighted_inclDQ" Type="bit" Nullable="false" />
+    <Property Name="RelaysAlternate_TwoFastestFirst" Type="bit" Nullable="false" />
+    <Property Name="dualteam_lane11" Type="int" />
+    <Property Name="dualteam_lane12" Type="int" />
+    <Property Name="entry_deadline" Type="smalldatetime" />
+    <Property Name="Meet_addr1" Type="nvarchar" MaxLength="30" />
+    <Property Name="Meet_addr2" Type="nvarchar" MaxLength="30" />
+    <Property Name="Meet_city" Type="nvarchar" MaxLength="30" />
+    <Property Name="Meet_zip" Type="nvarchar" MaxLength="10" />
+    <Property Name="Meet_hostlsc" Type="nvarchar" MaxLength="3" />
+    <Property Name="Meet_USMastersMeetID" Type="nvarchar" MaxLength="20" />
+    <Property Name="ShowFirstName_OverPreferred" Type="bit" Nullable="false" />
+    <Property Name="ExcludeNTEntries_WhenImporting" Type="bit" Nullable="false" />
+    <Property Name="Enter_birthcentury" Type="bit" Nullable="false" />
+    <Property Name="Using_twopools" Type="bit" Nullable="false" />
+    <Property Name="Pool1_name" Type="nvarchar" MaxLength="30" />
+    <Property Name="Pool2_name" Type="nvarchar" MaxLength="30" />
+    <Property Name="indtopmany_awardsSr" Type="smallint" />
+    <Property Name="reltopmany_awardsSr" Type="smallint" />
+    <Property Name="maxforeign_infinal" Type="smallint" />
+    <Property Name="Flag_FastestRecordOnly" Type="bit" Nullable="false" />
+    <Property Name="athlete_earlysurcharge" Type="money" />
+    <Property Name="athlete_latesurcharge" Type="money" />
+    <Property Name="athlete_earlysurchargedate" Type="smalldatetime" />
+    <Property Name="athlete_latesurchargedate" Type="smalldatetime" />
+    <Property Name="entry_OpenDate" Type="smalldatetime" />
+    <Property Name="DisplayNTfor_TimesUnder5Sec" Type="bit" Nullable="false" />
+    <Property Name="SortTeamCombos_ByTeamName" Type="bit" Nullable="false" />
+    <Property Name="FastestHeat_SomeLanesDoNotScore" Type="bit" Nullable="false" />
+    <Property Name="RankDisabled_ByPoints" Type="bit" Nullable="false" />
+    <Property Name="special_parapoints" Type="smallint" />
+    <Property Name="DisabledDoNot_AdvanceToFinals" Type="bit" Nullable="false" />
+    <Property Name="prelimheats_circledist" Type="smallint" />
+    <Property Name="DisabledIgnoreQualTime_ForScoring" Type="bit" Nullable="false" />
+    <Property Name="CountTimeTrial_Events" Type="bit" Nullable="false" />
+    <Property Name="QualNonConformCourse_UseMinStd" Type="bit" Nullable="false" />
+    <Property Name="Last_updated" Type="nvarchar" MaxLength="40" />
+    <Property Name="MixedRelays_DividedPoints" Type="bit" Nullable="false" />
+    <Property Name="RelayOnly_Surcharge" Type="money" />
+    <Property Name="TimeAdj_Method" Type="nvarchar" MaxLength="1" />
+    <Property Name="DisabledSeedWithAgeGroup_IfTimedFinalSuperSeed" Type="bit" Nullable="false" />
+    <Property Name="Meetid" Type="int" Nullable="false" />
+    <Property Name="MarcaMaxima" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.TorneoDestacado' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="TorneoDestacado">
+    <Key>
+      <PropertyRef Name="DestacadoId" />
+      <PropertyRef Name="Meet" />
+    </Key>
+    <Property Name="DestacadoId" Type="int" Nullable="false" />
+    <Property Name="Meet" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.TorneoDestacadoMasters' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="TorneoDestacadoMasters">
+    <Key>
+      <PropertyRef Name="DestacadoId" />
+      <PropertyRef Name="Meet" />
+    </Key>
+    <Property Name="DestacadoId" Type="int" Nullable="false" />
+    <Property Name="Meet" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Traspasos">
     <Key>
@@ -245,6 +1647,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
     <Property Name="Numero de traspasos" Type="int" Nullable="false" />
     <Property Name="Monto" Type="float" Nullable="false" />
     <Property Name="Traspasos restantes" Type="int" Nullable="false" />
+    <Property Name="IsncripcionId" Type="int" />
   </EntityType>
   <EntityType Name="TraspasosEnEspera">
     <Key>
@@ -255,6 +1658,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
     <Property Name="ClubSolicitante" Type="int" Nullable="false" />
     <Property Name="Fecha" Type="date" />
     <Property Name="Liberado" Type="bit" Nullable="false" />
+    <Property Name="IsncripcionId" Type="int" />
   </EntityType>
   <EntityType Name="Usuario">
     <Key>
@@ -266,6 +1670,20 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
     <Property Name="RolId" Type="int" Nullable="false" />
     <Property Name="ClubId" Type="int" Nullable="false" />
     <Property Name="RememberMe" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.Vivo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Vivo">
+    <Key>
+      <PropertyRef Name="VivoId" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Fecha" />
+      <PropertyRef Name="Directorio" />
+    </Key>
+    <Property Name="VivoId" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="120" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="Directorio" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Vouchers">
     <Key>
@@ -298,14 +1716,14 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Afiliacion_Inscripciones">
-    <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="1" />
+    <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="0..1" />
     <End Role="Afiliacion" Type="Self.Afiliacion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Inscripciones">
-        <PropertyRef Name="DNI" />
+        <PropertyRef Name="InscripcionId" />
       </Principal>
       <Dependent Role="Afiliacion">
-        <PropertyRef Name="DNI" />
+        <PropertyRef Name="InscripcionId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -342,18 +1760,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
       </Principal>
       <Dependent Role="Afiliacion">
         <PropertyRef Name="VoucherId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CambiosDNI_Afiliado">
-    <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="1" />
-    <End Role="CambiosDNI" Type="Self.CambiosDNI" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Afiliado">
-        <PropertyRef Name="DNI" />
-      </Principal>
-      <Dependent Role="CambiosDNI">
-        <PropertyRef Name="DNI" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -429,6 +1835,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_HistorialdeAfiliaciones_Inscripciones">
+    <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="1" />
+    <End Role="HistorialdeAfiliaciones" Type="Self.HistorialdeAfiliaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inscripciones">
+        <PropertyRef Name="InscripcionId" />
+      </Principal>
+      <Dependent Role="HistorialdeAfiliaciones">
+        <PropertyRef Name="InscripcionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_HistorialEntrenador_Club">
     <End Role="Club" Type="Self.Club" Multiplicity="1" />
     <End Role="HistorialEntrenador" Type="Self.HistorialEntrenador" Multiplicity="*" />
@@ -466,14 +1884,14 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_HistorialTraspasos_Inscripciones">
-    <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="1" />
+    <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="0..1" />
     <End Role="HistorialTraspasos" Type="Self.HistorialTraspasos" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Inscripciones">
-        <PropertyRef Name="DNI" />
+        <PropertyRef Name="InscripcionId" />
       </Principal>
       <Dependent Role="HistorialTraspasos">
-        <PropertyRef Name="DNI" />
+        <PropertyRef Name="InscripcionId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -489,9 +1907,9 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Inscripciones_Afiliado">
+  <Association Name="FK_Inscripciones_Afiliado1">
     <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="1" />
-    <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="0..1" />
+    <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Afiliado">
         <PropertyRef Name="DNI" />
@@ -561,15 +1979,15 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Multas_Afiliado">
-    <End Role="Afiliado" Type="Self.Afiliado" Multiplicity="1" />
+  <Association Name="FK_Multas_Inscripciones">
+    <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="0..1" />
     <End Role="Multas" Type="Self.Multas" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Afiliado">
-        <PropertyRef Name="DNI" />
+      <Principal Role="Inscripciones">
+        <PropertyRef Name="InscripcionId" />
       </Principal>
       <Dependent Role="Multas">
-        <PropertyRef Name="DNI" />
+        <PropertyRef Name="InscripcionId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -585,6 +2003,78 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TatoInformeAsistencias_Inscripciones">
+    <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="1" />
+    <End Role="TatoInformeAsistencias" Type="Self.TatoInformeAsistencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inscripciones">
+        <PropertyRef Name="InscripcionId" />
+      </Principal>
+      <Dependent Role="TatoInformeAsistencias">
+        <PropertyRef Name="InscripcionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TatoInformeEntrenador_Entrenadores">
+    <End Role="Entrenadores" Type="Self.Entrenadores" Multiplicity="1" />
+    <End Role="TatoInformeEntrenador" Type="Self.TatoInformeEntrenador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entrenadores">
+        <PropertyRef Name="EntrenadorId" />
+      </Principal>
+      <Dependent Role="TatoInformeEntrenador">
+        <PropertyRef Name="EntrenadorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TatoInformeEntrenador_Inscripciones">
+    <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="1" />
+    <End Role="TatoInformeEntrenador" Type="Self.TatoInformeEntrenador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inscripciones">
+        <PropertyRef Name="InscripcionId" />
+      </Principal>
+      <Dependent Role="TatoInformeEntrenador">
+        <PropertyRef Name="InscripcionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TatoInformeEntrenador_TatoRealizacion">
+    <End Role="TatoRealizacion" Type="Self.TatoRealizacion" Multiplicity="1" />
+    <End Role="TatoInformeEntrenador" Type="Self.TatoInformeEntrenador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TatoRealizacion">
+        <PropertyRef Name="RealizacionId" />
+      </Principal>
+      <Dependent Role="TatoInformeEntrenador">
+        <PropertyRef Name="RealizacionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TatoInformeEntrenador_TatoSeriesEjemplo">
+    <End Role="TatoSeriesEjemplo" Type="Self.TatoSeriesEjemplo" Multiplicity="1" />
+    <End Role="TatoInformeEntrenador" Type="Self.TatoInformeEntrenador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TatoSeriesEjemplo">
+        <PropertyRef Name="SerieId" />
+      </Principal>
+      <Dependent Role="TatoInformeEntrenador">
+        <PropertyRef Name="SerieId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TatoSeleccionado_Inscripciones">
+    <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="1" />
+    <End Role="TatoSeleccionado" Type="Self.TatoSeleccionado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inscripciones">
+        <PropertyRef Name="InscripcionId" />
+      </Principal>
+      <Dependent Role="TatoSeleccionado">
+        <PropertyRef Name="InscripcionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Traspasos_Club">
     <End Role="Club" Type="Self.Club" Multiplicity="1" />
     <End Role="Traspasos" Type="Self.Traspasos" Multiplicity="*" />
@@ -594,6 +2084,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
       </Principal>
       <Dependent Role="Traspasos">
         <PropertyRef Name="ClubId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Traspasos_Inscripciones">
+    <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="0..1" />
+    <End Role="Traspasos" Type="Self.Traspasos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inscripciones">
+        <PropertyRef Name="InscripcionId" />
+      </Principal>
+      <Dependent Role="Traspasos">
+        <PropertyRef Name="IsncripcionId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -622,14 +2124,14 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_TraspasosEnEspera_Inscripciones">
-    <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="1" />
+    <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="0..1" />
     <End Role="TraspasosEnEspera" Type="Self.TraspasosEnEspera" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Inscripciones">
-        <PropertyRef Name="DNI" />
+        <PropertyRef Name="InscripcionId" />
       </Principal>
       <Dependent Role="TraspasosEnEspera">
-        <PropertyRef Name="DNI" />
+        <PropertyRef Name="IsncripcionId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -700,11 +2202,104 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
     <EntitySet Name="Multas" EntityType="Self.Multas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Procesado" EntityType="Self.Procesado" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TatoInformeAsistencias" EntityType="Self.TatoInformeAsistencias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TatoInformeEntrenador" EntityType="Self.TatoInformeEntrenador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TatoRealizacion" EntityType="Self.TatoRealizacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TatoSeleccionado" EntityType="Self.TatoSeleccionado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TatoSeriesEjemplo" EntityType="Self.TatoSeriesEjemplo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoAfiliado" EntityType="Self.TipoAfiliado" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Traspasos" EntityType="Self.Traspasos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TraspasosEnEspera" EntityType="Self.TraspasosEnEspera" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Vouchers" EntityType="Self.Vouchers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Alertas" EntityType="Self.Alertas" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Alertas].[AlertaId] AS [AlertaId], 
+    [Alertas].[Fecha] AS [Fecha], 
+    [Alertas].[Alerta] AS [Alerta], 
+    [Alertas].[NoticiaId] AS [NoticiaId]
+    FROM [dbo].[Alertas] AS [Alertas]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Athlete" EntityType="Self.Athlete" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Athlete].[Athlete] AS [Athlete], 
+    [Athlete].[First] AS [First], 
+    [Athlete].[Last] AS [Last], 
+    [Athlete].[Sex] AS [Sex], 
+    [Athlete].[Birth] AS [Birth], 
+    [Athlete].[Age] AS [Age], 
+    [Athlete].[ID_NO] AS [ID_NO], 
+    [Athlete].[AthleteId] AS [AthleteId]
+    FROM [dbo].[Athlete] AS [Athlete]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AthleteMasters" EntityType="Self.AthleteMasters" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AthleteMasters].[Athlete] AS [Athlete], 
+    [AthleteMasters].[First] AS [First], 
+    [AthleteMasters].[Last] AS [Last], 
+    [AthleteMasters].[Sex] AS [Sex], 
+    [AthleteMasters].[Birth] AS [Birth], 
+    [AthleteMasters].[Age] AS [Age], 
+    [AthleteMasters].[ID_NO] AS [ID_NO], 
+    [AthleteMasters].[AthleteId] AS [AthleteId]
+    FROM [dbo].[AthleteMasters] AS [AthleteMasters]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="BASETIMES" EntityType="Self.BASETIMES" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [BASETIMES].[YEAR] AS [YEAR], 
+    [BASETIMES].[COURSE] AS [COURSE], 
+    [BASETIMES].[GENDER] AS [GENDER], 
+    [BASETIMES].[RELAY- COUNT] AS [RELAY- COUNT], 
+    [BASETIMES].[DISTANCE] AS [DISTANCE], 
+    [BASETIMES].[STROKE] AS [STROKE], 
+    [BASETIMES].[BASETIME] AS [BASETIME], 
+    [BASETIMES].[SEGUNDOS] AS [SEGUNDOS], 
+    [BASETIMES].[tiempoId] AS [tiempoId]
+    FROM [dbo].[BASETIMES] AS [BASETIMES]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Calendario" EntityType="Self.Calendario" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Calendario].[Inicio] AS [Inicio], 
+    [Calendario].[Fin] AS [Fin], 
+    [Calendario].[Evento] AS [Evento], 
+    [Calendario].[Sede] AS [Sede], 
+    [Calendario].[Carácter] AS [Carácter], 
+    [Calendario].[Observación] AS [Observación], 
+    [Calendario].[Organizador] AS [Organizador], 
+    [Calendario].[EventoId] AS [EventoId], 
+    [Calendario].[DisciplinaId] AS [DisciplinaId]
+    FROM [dbo].[Calendario] AS [Calendario]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CategoriaNoticia" EntityType="Self.CategoriaNoticia" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CategoriaNoticia].[CategoriaId] AS [CategoriaId], 
+    [CategoriaNoticia].[TipoNoticia] AS [TipoNoticia]
+    FROM [dbo].[CategoriaNoticia] AS [CategoriaNoticia]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CategoriasMasters" EntityType="Self.CategoriasMasters" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CategoriasMasters].[CategoriaId] AS [CategoriaId], 
+    [CategoriasMasters].[EdadMinima] AS [EdadMinima], 
+    [CategoriasMasters].[EdadMaxima] AS [EdadMaxima], 
+    [CategoriasMasters].[Nombre] AS [Nombre]
+    FROM [dbo].[CategoriasMasters] AS [CategoriasMasters]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Comentarios" EntityType="Self.Comentarios" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Comentarios].[ComentarioId] AS [ComentarioId], 
+    [Comentarios].[Comentario] AS [Comentario], 
+    [Comentarios].[UsuarioId] AS [UsuarioId], 
+    [Comentarios].[NoticiaId] AS [NoticiaId], 
+    [Comentarios].[Estado] AS [Estado], 
+    [Comentarios].[Fecha] AS [Fecha]
+    FROM [dbo].[Comentarios] AS [Comentarios]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Configuracion" EntityType="Self.Configuracion" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Configuracion].[Mantenimiento] AS [Mantenimiento], 
+    [Configuracion].[SetupId] AS [SetupId]
+    FROM [dbo].[Configuracion] AS [Configuracion]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="Consulta" EntityType="Self.Consulta" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Consulta].[name] AS [name], 
@@ -714,6 +2309,563 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
     [Consulta].[definition] AS [definition]
     FROM [dbo].[Consulta] AS [Consulta]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="Curso" EntityType="Self.Curso" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Curso].[CursoId] AS [CursoId], 
+    [Curso].[Nombre] AS [Nombre], 
+    [Curso].[Ciudad] AS [Ciudad], 
+    [Curso].[Direccion] AS [Direccion], 
+    [Curso].[Inicio] AS [Inicio], 
+    [Curso].[Fin] AS [Fin], 
+    [Curso].[DisciplinaId] AS [DisciplinaId], 
+    [Curso].[Hora] AS [Hora], 
+    [Curso].[CantidadMaxima] AS [CantidadMaxima]
+    FROM [dbo].[Curso] AS [Curso]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CursoInscripcion" EntityType="Self.CursoInscripcion" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CursoInscripcion].[InscripcionId] AS [InscripcionId], 
+    [CursoInscripcion].[ParticipanteId] AS [ParticipanteId], 
+    [CursoInscripcion].[CursoId] AS [CursoId]
+    FROM [dbo].[CursoInscripcion] AS [CursoInscripcion]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CursoParticipante" EntityType="Self.CursoParticipante" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CursoParticipante].[ParticipanteId] AS [ParticipanteId], 
+    [CursoParticipante].[Nombres] AS [Nombres], 
+    [CursoParticipante].[Paterno] AS [Paterno], 
+    [CursoParticipante].[Materno] AS [Materno], 
+    [CursoParticipante].[Nacimiento] AS [Nacimiento], 
+    [CursoParticipante].[DNI] AS [DNI], 
+    [CursoParticipante].[Email] AS [Email], 
+    [CursoParticipante].[Celular] AS [Celular], 
+    [CursoParticipante].[Nacionalidad] AS [Nacionalidad], 
+    [CursoParticipante].[Actividad] AS [Actividad]
+    FROM [dbo].[CursoParticipante] AS [CursoParticipante]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Disciplina" EntityType="Self.Disciplina" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Disciplina].[DisciplinaId] AS [DisciplinaId], 
+    [Disciplina].[TipoDisciplina] AS [TipoDisciplina], 
+    [Disciplina].[clase] AS [clase]
+    FROM [dbo].[Disciplina] AS [Disciplina]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Entradas" EntityType="Self.Entradas" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Entradas].[Event_ptr] AS [Event_ptr], 
+    [Entradas].[Ath_no] AS [Ath_no], 
+    [Entradas].[ActSeed_course] AS [ActSeed_course], 
+    [Entradas].[ActualSeed_time] AS [ActualSeed_time], 
+    [Entradas].[ConvSeed_course] AS [ConvSeed_course], 
+    [Entradas].[ConvSeed_time] AS [ConvSeed_time], 
+    [Entradas].[Scr_stat] AS [Scr_stat], 
+    [Entradas].[Spec_stat] AS [Spec_stat], 
+    [Entradas].[Dec_stat] AS [Dec_stat], 
+    [Entradas].[Alt_stat] AS [Alt_stat], 
+    [Entradas].[Bonus_event] AS [Bonus_event], 
+    [Entradas].[Div_no] AS [Div_no], 
+    [Entradas].[Ev_score] AS [Ev_score], 
+    [Entradas].[JDEv_score] AS [JDEv_score], 
+    [Entradas].[Seed_place] AS [Seed_place], 
+    [Entradas].[event_age] AS [event_age], 
+    [Entradas].[Pre_heat] AS [Pre_heat], 
+    [Entradas].[Pre_lane] AS [Pre_lane], 
+    [Entradas].[Pre_stat] AS [Pre_stat], 
+    [Entradas].[Pre_Time] AS [Pre_Time], 
+    [Entradas].[Pre_course] AS [Pre_course], 
+    [Entradas].[Pre_heatplace] AS [Pre_heatplace], 
+    [Entradas].[Pre_place] AS [Pre_place], 
+    [Entradas].[Pre_jdplace] AS [Pre_jdplace], 
+    [Entradas].[Pre_exh] AS [Pre_exh], 
+    [Entradas].[Pre_points] AS [Pre_points], 
+    [Entradas].[Pre_back1] AS [Pre_back1], 
+    [Entradas].[Pre_back2] AS [Pre_back2], 
+    [Entradas].[Pre_back3] AS [Pre_back3], 
+    [Entradas].[Pre_watch1] AS [Pre_watch1], 
+    [Entradas].[Pre_pad] AS [Pre_pad], 
+    [Entradas].[Pre_reactiontime1] AS [Pre_reactiontime1], 
+    [Entradas].[Pre_dqcode] AS [Pre_dqcode], 
+    [Entradas].[Pre_dqcodeSecond] AS [Pre_dqcodeSecond], 
+    [Entradas].[Pre_TimeType] AS [Pre_TimeType], 
+    [Entradas].[Fin_heat] AS [Fin_heat], 
+    [Entradas].[Fin_lane] AS [Fin_lane], 
+    [Entradas].[Fin_stat] AS [Fin_stat], 
+    [Entradas].[Fin_Time] AS [Fin_Time], 
+    [Entradas].[Fin_course] AS [Fin_course], 
+    [Entradas].[Fin_heatplace] AS [Fin_heatplace], 
+    [Entradas].[Fin_jdheatplace] AS [Fin_jdheatplace], 
+    [Entradas].[Fin_place] AS [Fin_place], 
+    [Entradas].[Fin_jdplace] AS [Fin_jdplace], 
+    [Entradas].[Fin_exh] AS [Fin_exh], 
+    [Entradas].[Fin_points] AS [Fin_points], 
+    [Entradas].[Fin_back1] AS [Fin_back1], 
+    [Entradas].[Fin_back2] AS [Fin_back2], 
+    [Entradas].[Fin_back3] AS [Fin_back3], 
+    [Entradas].[Fin_watch1] AS [Fin_watch1], 
+    [Entradas].[Fin_pad] AS [Fin_pad], 
+    [Entradas].[Fin_reactiontime1] AS [Fin_reactiontime1], 
+    [Entradas].[Fin_dqcode] AS [Fin_dqcode], 
+    [Entradas].[Fin_dqcodeSecond] AS [Fin_dqcodeSecond], 
+    [Entradas].[Fin_ptsplace] AS [Fin_ptsplace], 
+    [Entradas].[fin_heatltr] AS [fin_heatltr], 
+    [Entradas].[fin_TimeType] AS [fin_TimeType], 
+    [Entradas].[Sem_heat] AS [Sem_heat], 
+    [Entradas].[Sem_lane] AS [Sem_lane], 
+    [Entradas].[Sem_stat] AS [Sem_stat], 
+    [Entradas].[Sem_Time] AS [Sem_Time], 
+    [Entradas].[Sem_course] AS [Sem_course], 
+    [Entradas].[Sem_heatplace] AS [Sem_heatplace], 
+    [Entradas].[Sem_place] AS [Sem_place], 
+    [Entradas].[Sem_jdplace] AS [Sem_jdplace], 
+    [Entradas].[Sem_exh] AS [Sem_exh], 
+    [Entradas].[Sem_points] AS [Sem_points], 
+    [Entradas].[Sem_back1] AS [Sem_back1], 
+    [Entradas].[Sem_back2] AS [Sem_back2], 
+    [Entradas].[Sem_back3] AS [Sem_back3], 
+    [Entradas].[Sem_watch1] AS [Sem_watch1], 
+    [Entradas].[Sem_pad] AS [Sem_pad], 
+    [Entradas].[Sem_reactiontime1] AS [Sem_reactiontime1], 
+    [Entradas].[Sem_dqcode] AS [Sem_dqcode], 
+    [Entradas].[Sem_dqcodeSecond] AS [Sem_dqcodeSecond], 
+    [Entradas].[Sem_TimeType] AS [Sem_TimeType], 
+    [Entradas].[dq_type] AS [dq_type], 
+    [Entradas].[Fin_group] AS [Fin_group], 
+    [Entradas].[Fin_dolphin1] AS [Fin_dolphin1], 
+    [Entradas].[Fin_dolphin2] AS [Fin_dolphin2], 
+    [Entradas].[Fin_dolphin3] AS [Fin_dolphin3], 
+    [Entradas].[Pre_dolphin1] AS [Pre_dolphin1], 
+    [Entradas].[Pre_dolphin2] AS [Pre_dolphin2], 
+    [Entradas].[Pre_dolphin3] AS [Pre_dolphin3], 
+    [Entradas].[Sem_dolphin1] AS [Sem_dolphin1], 
+    [Entradas].[Sem_dolphin2] AS [Sem_dolphin2], 
+    [Entradas].[Sem_dolphin3] AS [Sem_dolphin3], 
+    [Entradas].[early_seed] AS [early_seed], 
+    [Entradas].[super_prefinalist] AS [super_prefinalist], 
+    [Entradas].[super_finfinalist] AS [super_finfinalist], 
+    [Entradas].[fin_adjuststat] AS [fin_adjuststat], 
+    [Entradas].[pre_adjuststat] AS [pre_adjuststat], 
+    [Entradas].[sem_adjuststat] AS [sem_adjuststat], 
+    [Entradas].[fin_divingdd] AS [fin_divingdd], 
+    [Entradas].[pre_divingdd] AS [pre_divingdd], 
+    [Entradas].[sem_divingdd] AS [sem_divingdd], 
+    [Entradas].[entry_method] AS [entry_method], 
+    [Entradas].[fin_dqofficial] AS [fin_dqofficial], 
+    [Entradas].[pre_dqofficial] AS [pre_dqofficial], 
+    [Entradas].[sem_dqofficial] AS [sem_dqofficial], 
+    [Entradas].[pre_contacted] AS [pre_contacted], 
+    [Entradas].[EntryId] AS [EntryId], 
+    [Entradas].[MeetId] AS [MeetId]
+    FROM [dbo].[Entradas] AS [Entradas]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Equipos" EntityType="Self.Equipos" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Equipos].[Team_no] AS [Team_no], 
+    [Equipos].[Team_name] AS [Team_name], 
+    [Equipos].[Team_short] AS [Team_short], 
+    [Equipos].[Team_abbr] AS [Team_abbr], 
+    [Equipos].[Team_stat] AS [Team_stat], 
+    [Equipos].[Team_lsc] AS [Team_lsc], 
+    [Equipos].[Team_div] AS [Team_div], 
+    [Equipos].[Team_region] AS [Team_region], 
+    [Equipos].[Team_head] AS [Team_head], 
+    [Equipos].[Team_asst] AS [Team_asst], 
+    [Equipos].[Team_addr1] AS [Team_addr1], 
+    [Equipos].[Team_addr2] AS [Team_addr2], 
+    [Equipos].[Team_city] AS [Team_city], 
+    [Equipos].[Team_prov] AS [Team_prov], 
+    [Equipos].[Team_statenew] AS [Team_statenew], 
+    [Equipos].[Team_zip] AS [Team_zip], 
+    [Equipos].[Team_cntry] AS [Team_cntry], 
+    [Equipos].[Team_daytele] AS [Team_daytele], 
+    [Equipos].[Team_evetele] AS [Team_evetele], 
+    [Equipos].[Team_faxtele] AS [Team_faxtele], 
+    [Equipos].[Team_email] AS [Team_email], 
+    [Equipos].[Team_c3] AS [Team_c3], 
+    [Equipos].[Team_c4] AS [Team_c4], 
+    [Equipos].[Team_c5] AS [Team_c5], 
+    [Equipos].[Team_c6] AS [Team_c6], 
+    [Equipos].[Team_c7] AS [Team_c7], 
+    [Equipos].[Team_c8] AS [Team_c8], 
+    [Equipos].[Team_c9] AS [Team_c9], 
+    [Equipos].[Team_c10] AS [Team_c10], 
+    [Equipos].[Team_altabbr] AS [Team_altabbr], 
+    [Equipos].[Team_NoPoints] AS [Team_NoPoints], 
+    [Equipos].[Team_Selected] AS [Team_Selected], 
+    [Equipos].[Team_altname] AS [Team_altname], 
+    [Equipos].[NoTeam_surcharge] AS [NoTeam_surcharge], 
+    [Equipos].[NoFacility_surcharge] AS [NoFacility_surcharge], 
+    [Equipos].[NoAthlete_surcharge] AS [NoAthlete_surcharge], 
+    [Equipos].[Team_cell] AS [Team_cell], 
+    [Equipos].[NoRelayOnly_surcharge] AS [NoRelayOnly_surcharge], 
+    [Equipos].[TeamId] AS [TeamId], 
+    [Equipos].[MeetId] AS [MeetId]
+    FROM [dbo].[Equipos] AS [Equipos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Estilos" EntityType="Self.Estilos" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Estilos].[EstiloId] AS [EstiloId], 
+    [Estilos].[Estilo] AS [Estilo], 
+    [Estilos].[tag_stroke] AS [tag_stroke]
+    FROM [dbo].[Estilos] AS [Estilos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Eventos" EntityType="Self.Eventos" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Eventos].[Event_no] AS [Event_no], 
+    [Eventos].[Event_ltr] AS [Event_ltr], 
+    [Eventos].[Event_ptr] AS [Event_ptr], 
+    [Eventos].[Ind_rel] AS [Ind_rel], 
+    [Eventos].[Event_sex] AS [Event_sex], 
+    [Eventos].[Event_gender] AS [Event_gender], 
+    [Eventos].[Event_dist] AS [Event_dist], 
+    [Eventos].[Event_stroke] AS [Event_stroke], 
+    [Eventos].[Low_age] AS [Low_age], 
+    [Eventos].[High_Age] AS [High_Age], 
+    [Eventos].[Multi_age] AS [Multi_age], 
+    [Eventos].[Event_stat] AS [Event_stat], 
+    [Eventos].[Event_rounds] AS [Event_rounds], 
+    [Eventos].[Num_prelanes] AS [Num_prelanes], 
+    [Eventos].[Num_finlanes] AS [Num_finlanes], 
+    [Eventos].[Heats_infinal] AS [Heats_infinal], 
+    [Eventos].[Heats_insemi] AS [Heats_insemi], 
+    [Eventos].[Std_lanes] AS [Std_lanes], 
+    [Eventos].[Auto_seed] AS [Auto_seed], 
+    [Eventos].[Twoperlane_req] AS [Twoperlane_req], 
+    [Eventos].[Preheat_order] AS [Preheat_order], 
+    [Eventos].[Finheat_order] AS [Finheat_order], 
+    [Eventos].[Score_event] AS [Score_event], 
+    [Eventos].[Div_no] AS [Div_no], 
+    [Eventos].[Relay_size] AS [Relay_size], 
+    [Eventos].[Comm_1] AS [Comm_1], 
+    [Eventos].[Comm_2] AS [Comm_2], 
+    [Eventos].[Comm_3] AS [Comm_3], 
+    [Eventos].[Comm_4] AS [Comm_4], 
+    [Eventos].[Entry_fee] AS [Entry_fee], 
+    [Eventos].[Is_locked] AS [Is_locked], 
+    [Eventos].[Locked_by] AS [Locked_by], 
+    [Eventos].[Event_Type] AS [Event_Type], 
+    [Eventos].[Locked_list] AS [Locked_list], 
+    [Eventos].[Event_note] AS [Event_note], 
+    [Eventos].[Suppress_stroke] AS [Suppress_stroke], 
+    [Eventos].[Custom_ABCFinal] AS [Custom_ABCFinal], 
+    [Eventos].[Num_dives] AS [Num_dives], 
+    [Eventos].[Num_HeatsInFinal] AS [Num_HeatsInFinal], 
+    [Eventos].[Multiage_SuperFinal] AS [Multiage_SuperFinal], 
+    [Eventos].[Finals_LanesVary] AS [Finals_LanesVary], 
+    [Eventos].[Finals_LanesVaryOrder] AS [Finals_LanesVaryOrder], 
+    [Eventos].[ABCfinal_order] AS [ABCfinal_order], 
+    [Eventos].[ABC_Style] AS [ABC_Style], 
+    [Eventos].[PrelimsAs_ExtendedFinal] AS [PrelimsAs_ExtendedFinal], 
+    [Eventos].[Num_LanesInBestHeatsTimedFinal] AS [Num_LanesInBestHeatsTimedFinal], 
+    [Eventos].[Num_BestHeatsTimedFinal] AS [Num_BestHeatsTimedFinal], 
+    [Eventos].[TimedFinal_LanesVary] AS [TimedFinal_LanesVary], 
+    [Eventos].[ScoreTimedFinal_asABC] AS [ScoreTimedFinal_asABC], 
+    [Eventos].[Num_HeatsInTimedFinalToScore] AS [Num_HeatsInTimedFinalToScore], 
+    [Eventos].[Pads_BothEnds] AS [Pads_BothEnds], 
+    [Eventos].[Multiage_SuperSeed] AS [Multiage_SuperSeed], 
+    [Eventos].[Suppress_distance] AS [Suppress_distance], 
+    [Eventos].[Fin_AwardsPrinted] AS [Fin_AwardsPrinted], 
+    [Eventos].[Pre_AwardsPrinted] AS [Pre_AwardsPrinted], 
+    [Eventos].[Sem_AwardsPrinted] AS [Sem_AwardsPrinted], 
+    [Eventos].[FastTimeStd_Abbr] AS [FastTimeStd_Abbr], 
+    [Eventos].[SlowTimeStd_Abbr] AS [SlowTimeStd_Abbr], 
+    [Eventos].[SuperFinal_ElimOldAgeGrp] AS [SuperFinal_ElimOldAgeGrp], 
+    [Eventos].[SeedMultiAge_OldToYoung] AS [SeedMultiAge_OldToYoung], 
+    [Eventos].[Multi_ageScnd] AS [Multi_ageScnd], 
+    [Eventos].[Num_RelayLegs] AS [Num_RelayLegs], 
+    [Eventos].[Pads_BothEndsFinals] AS [Pads_BothEndsFinals], 
+    [Eventos].[Checkin_starttime] AS [Checkin_starttime], 
+    [Eventos].[Checkin_endtime] AS [Checkin_endtime], 
+    [Eventos].[Checkin_startdate] AS [Checkin_startdate], 
+    [Eventos].[Checkin_enddate] AS [Checkin_enddate], 
+    [Eventos].[Num_semlanes] AS [Num_semlanes], 
+    [Eventos].[EvtMaxAgeFor_CFinal] AS [EvtMaxAgeFor_CFinal], 
+    [Eventos].[EvtMaxAgeNumHeats_CFinal] AS [EvtMaxAgeNumHeats_CFinal], 
+    [Eventos].[fin_actualstarttime] AS [fin_actualstarttime], 
+    [Eventos].[sem_actualstarttime] AS [sem_actualstarttime], 
+    [Eventos].[pre_actualstarttime] AS [pre_actualstarttime], 
+    [Eventos].[EventId] AS [EventId], 
+    [Eventos].[MeetId] AS [MeetId]
+    FROM [dbo].[Eventos] AS [Eventos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Fotos" EntityType="Self.Fotos" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Fotos].[FotoId] AS [FotoId], 
+    [Fotos].[Nombrefoto] AS [Nombrefoto], 
+    [Fotos].[NoticiaId] AS [NoticiaId]
+    FROM [dbo].[Fotos] AS [Fotos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="MarcasMinimas" EntityType="Self.MarcasMinimas" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [MarcasMinimas].[tag_ptr] AS [tag_ptr], 
+    [MarcasMinimas].[tag_gender] AS [tag_gender], 
+    [MarcasMinimas].[tag_indrel] AS [tag_indrel], 
+    [MarcasMinimas].[tag_dist] AS [tag_dist], 
+    [MarcasMinimas].[tag_stroke] AS [tag_stroke], 
+    [MarcasMinimas].[low_age] AS [low_age], 
+    [MarcasMinimas].[high_Age] AS [high_Age], 
+    [MarcasMinimas].[tag_time] AS [tag_time], 
+    [MarcasMinimas].[tag_course] AS [tag_course], 
+    [MarcasMinimas].[div_abbr] AS [div_abbr], 
+    [MarcasMinimas].[TimeStdId] AS [TimeStdId], 
+    [MarcasMinimas].[MeetId] AS [MeetId]
+    FROM [dbo].[MarcasMinimas] AS [MarcasMinimas]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="MEET" EntityType="Self.MEET" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [MEET].[Meet] AS [Meet], 
+    [MEET].[MName] AS [MName], 
+    [MEET].[Start] AS [Start], 
+    [MEET].[End] AS [End], 
+    [MEET].[Course] AS [Course], 
+    [MEET].[MeetId] AS [MeetId]
+    FROM [dbo].[MEET] AS [MEET]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Modals" EntityType="Self.Modals" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Modals].[Modalid] AS [Modalid], 
+    [Modals].[Titulo] AS [Titulo], 
+    [Modals].[Cuerpo] AS [Cuerpo], 
+    [Modals].[Image] AS [Image], 
+    [Modals].[Enlace] AS [Enlace], 
+    [Modals].[Activo] AS [Activo]
+    FROM [dbo].[Modals] AS [Modals]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="MultiEdad" EntityType="Self.MultiEdad" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [MultiEdad].[event_ptr] AS [event_ptr], 
+    [MultiEdad].[low_age] AS [low_age], 
+    [MultiEdad].[high_age] AS [high_age], 
+    [MultiEdad].[Heats_infinal] AS [Heats_infinal], 
+    [MultiEdad].[Num_Heatsinfinal] AS [Num_Heatsinfinal], 
+    [MultiEdad].[MeetId] AS [MeetId], 
+    [MultiEdad].[MultiAgeId] AS [MultiAgeId]
+    FROM [dbo].[MultiEdad] AS [MultiEdad]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Noticias" EntityType="Self.Noticias" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Noticias].[NoticiaId] AS [NoticiaId], 
+    [Noticias].[Titulo] AS [Titulo], 
+    [Noticias].[Corta] AS [Corta], 
+    [Noticias].[Larga] AS [Larga], 
+    [Noticias].[Fecha] AS [Fecha], 
+    [Noticias].[DisciplinaId] AS [DisciplinaId], 
+    [Noticias].[UsuarioId] AS [UsuarioId], 
+    [Noticias].[FechaModificacion] AS [FechaModificacion], 
+    [Noticias].[CategoriaId] AS [CategoriaId], 
+    [Noticias].[Palabrasclaves] AS [Palabrasclaves], 
+    [Noticias].[Visible] AS [Visible], 
+    [Noticias].[Youtube] AS [Youtube]
+    FROM [dbo].[Noticias] AS [Noticias]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PoloEquipos" EntityType="Self.PoloEquipos" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PoloEquipos].[EquipoId] AS [EquipoId], 
+    [PoloEquipos].[Nombre] AS [Nombre], 
+    [PoloEquipos].[Sexo] AS [Sexo], 
+    [PoloEquipos].[TorneoId] AS [TorneoId]
+    FROM [dbo].[PoloEquipos] AS [PoloEquipos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PoloFechas" EntityType="Self.PoloFechas" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PoloFechas].[FechaId] AS [FechaId], 
+    [PoloFechas].[Dia] AS [Dia], 
+    [PoloFechas].[TorneoId] AS [TorneoId]
+    FROM [dbo].[PoloFechas] AS [PoloFechas]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PoloGoleadores" EntityType="Self.PoloGoleadores" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PoloGoleadores].[GoleadorId] AS [GoleadorId], 
+    [PoloGoleadores].[JugadorId] AS [JugadorId], 
+    [PoloGoleadores].[Goles] AS [Goles], 
+    [PoloGoleadores].[TorneoId] AS [TorneoId]
+    FROM [dbo].[PoloGoleadores] AS [PoloGoleadores]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PoloGrupos" EntityType="Self.PoloGrupos" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PoloGrupos].[GrupoId] AS [GrupoId], 
+    [PoloGrupos].[Nombre] AS [Nombre], 
+    [PoloGrupos].[Sexoid] AS [Sexoid], 
+    [PoloGrupos].[TorneoId] AS [TorneoId]
+    FROM [dbo].[PoloGrupos] AS [PoloGrupos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PoloJugadores" EntityType="Self.PoloJugadores" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PoloJugadores].[JugadorId] AS [JugadorId], 
+    [PoloJugadores].[Nombre] AS [Nombre], 
+    [PoloJugadores].[Apellido] AS [Apellido], 
+    [PoloJugadores].[EquipoId] AS [EquipoId], 
+    [PoloJugadores].[Sexo] AS [Sexo], 
+    [PoloJugadores].[Edad] AS [Edad], 
+    [PoloJugadores].[TorneoId] AS [TorneoId]
+    FROM [dbo].[PoloJugadores] AS [PoloJugadores]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PoloPartidos" EntityType="Self.PoloPartidos" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PoloPartidos].[PartidoId] AS [PartidoId], 
+    [PoloPartidos].[FechaId] AS [FechaId], 
+    [PoloPartidos].[GrupoId] AS [GrupoId], 
+    [PoloPartidos].[Hora] AS [Hora], 
+    [PoloPartidos].[SexoId] AS [SexoId], 
+    [PoloPartidos].[RondaId] AS [RondaId], 
+    [PoloPartidos].[Equipo1] AS [Equipo1], 
+    [PoloPartidos].[Equipo2] AS [Equipo2], 
+    [PoloPartidos].[TorneoId] AS [TorneoId]
+    FROM [dbo].[PoloPartidos] AS [PoloPartidos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PoloPosicion" EntityType="Self.PoloPosicion" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PoloPosicion].[PosicionId] AS [PosicionId], 
+    [PoloPosicion].[PJ] AS [PJ], 
+    [PoloPosicion].[PG] AS [PG], 
+    [PoloPosicion].[PE] AS [PE], 
+    [PoloPosicion].[PP] AS [PP], 
+    [PoloPosicion].[GF] AS [GF], 
+    [PoloPosicion].[GC] AS [GC], 
+    [PoloPosicion].[DG] AS [DG], 
+    [PoloPosicion].[PUNTOS] AS [PUNTOS], 
+    [PoloPosicion].[EquipoId] AS [EquipoId], 
+    [PoloPosicion].[GrupoId] AS [GrupoId], 
+    [PoloPosicion].[TorneoId] AS [TorneoId]
+    FROM [dbo].[PoloPosicion] AS [PoloPosicion]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PoloPosicionFinal" EntityType="Self.PoloPosicionFinal" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PoloPosicionFinal].[PosicionId] AS [PosicionId], 
+    [PoloPosicionFinal].[Pasiid] AS [Pasiid], 
+    [PoloPosicionFinal].[Posicion] AS [Posicion], 
+    [PoloPosicionFinal].[TorneoId] AS [TorneoId]
+    FROM [dbo].[PoloPosicionFinal] AS [PoloPosicionFinal]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PoloResultados" EntityType="Self.PoloResultados" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PoloResultados].[ResultadoId] AS [ResultadoId], 
+    [PoloResultados].[A1] AS [A1], 
+    [PoloResultados].[A2] AS [A2], 
+    [PoloResultados].[A3] AS [A3], 
+    [PoloResultados].[A4] AS [A4], 
+    [PoloResultados].[T1] AS [T1], 
+    [PoloResultados].[T2] AS [T2], 
+    [PoloResultados].[B1] AS [B1], 
+    [PoloResultados].[B2] AS [B2], 
+    [PoloResultados].[B3] AS [B3], 
+    [PoloResultados].[B4] AS [B4], 
+    [PoloResultados].[PartidaId] AS [PartidaId], 
+    [PoloResultados].[TorneoId] AS [TorneoId]
+    FROM [dbo].[PoloResultados] AS [PoloResultados]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PoloRondas" EntityType="Self.PoloRondas" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PoloRondas].[RondaId] AS [RondaId], 
+    [PoloRondas].[Nombre] AS [Nombre], 
+    [PoloRondas].[TorneoId] AS [TorneoId]
+    FROM [dbo].[PoloRondas] AS [PoloRondas]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PoloTorneo" EntityType="Self.PoloTorneo" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PoloTorneo].[TorneoId] AS [TorneoId], 
+    [PoloTorneo].[Nombre] AS [Nombre], 
+    [PoloTorneo].[FechaInicio] AS [FechaInicio], 
+    [PoloTorneo].[FechaCierre] AS [FechaCierre], 
+    [PoloTorneo].[EdadMaxima] AS [EdadMaxima], 
+    [PoloTorneo].[EdadMinima] AS [EdadMinima]
+    FROM [dbo].[PoloTorneo] AS [PoloTorneo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Pruebas" EntityType="Self.Pruebas" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Pruebas].[PruebaId] AS [PruebaId], 
+    [Pruebas].[distancia] AS [distancia], 
+    [Pruebas].[estilo] AS [estilo], 
+    [Pruebas].[FactorF] AS [FactorF], 
+    [Pruebas].[FactorM] AS [FactorM], 
+    [Pruebas].[EstiloMeet] AS [EstiloMeet]
+    FROM [dbo].[Pruebas] AS [Pruebas]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Query" EntityType="Self.Query" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Query].[Athlete] AS [Athlete], 
+    [Query].[First] AS [First], 
+    [Query].[Last] AS [Last], 
+    [Query].[Sex] AS [Sex], 
+    [Query].[Birth] AS [Birth], 
+    [Query].[Age] AS [Age], 
+    [Query].[ID_NO] AS [ID_NO], 
+    [Query].[AthleteId] AS [AthleteId]
+    FROM [dbo].[Query] AS [Query]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RESULTS" EntityType="Self.RESULTS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RESULTS].[MEET] AS [MEET], 
+    [RESULTS].[ATHLETE] AS [ATHLETE], 
+    [RESULTS].[I_R] AS [I_R], 
+    [RESULTS].[TEAM] AS [TEAM], 
+    [RESULTS].[SCORE] AS [SCORE], 
+    [RESULTS].[F_P] AS [F_P], 
+    [RESULTS].[EX] AS [EX], 
+    [RESULTS].[NT] AS [NT], 
+    [RESULTS].[AGE] AS [AGE], 
+    [RESULTS].[DISTANCE] AS [DISTANCE], 
+    [RESULTS].[STROKE] AS [STROKE], 
+    [RESULTS].[MTEV] AS [MTEV], 
+    [RESULTS].[LO_HI] AS [LO_HI], 
+    [RESULTS].[POINTS] AS [POINTS], 
+    [RESULTS].[PLACE] AS [PLACE], 
+    [RESULTS].[COURSE] AS [COURSE], 
+    [RESULTS].[DIVISION] AS [DIVISION], 
+    [RESULTS].[PFina] AS [PFina], 
+    [RESULTS].[AthleteId] AS [AthleteId], 
+    [RESULTS].[MeetId] AS [MeetId], 
+    [RESULTS].[TeamId] AS [TeamId], 
+    [RESULTS].[PruebaId] AS [PruebaId], 
+    [RESULTS].[ResultId] AS [ResultId], 
+    [RESULTS].[Tiempobase] AS [Tiempobase]
+    FROM [dbo].[RESULTS] AS [RESULTS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Sesion" EntityType="Self.Sesion" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Sesion].[Sess_no] AS [Sess_no], 
+    [Sesion].[Sess_ltr] AS [Sess_ltr], 
+    [Sesion].[Sess_ptr] AS [Sess_ptr], 
+    [Sesion].[Sess_day] AS [Sess_day], 
+    [Sesion].[Sess_starttime] AS [Sess_starttime], 
+    [Sesion].[Sess_entrymax] AS [Sess_entrymax], 
+    [Sesion].[Sess_name] AS [Sess_name], 
+    [Sesion].[Sess_interval] AS [Sess_interval], 
+    [Sesion].[Sess_course] AS [Sess_course], 
+    [Sesion].[Sess_entrymaxind] AS [Sess_entrymaxind], 
+    [Sesion].[Sess_entrymaxrel] AS [Sess_entrymaxrel], 
+    [Sesion].[Sess_backinterval] AS [Sess_backinterval], 
+    [Sesion].[Sess_divinginterval] AS [Sess_divinginterval], 
+    [Sesion].[Sess_chaseinterval] AS [Sess_chaseinterval], 
+    [Sesion].[MeetId] AS [MeetId], 
+    [Sesion].[SessionId] AS [SessionId]
+    FROM [dbo].[Sesion] AS [Sesion]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SessionItem" EntityType="Self.SessionItem" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SessionItem].[Sess_order] AS [Sess_order], 
+    [SessionItem].[Sess_ptr] AS [Sess_ptr], 
+    [SessionItem].[Event_ptr] AS [Event_ptr], 
+    [SessionItem].[Sess_rnd] AS [Sess_rnd], 
+    [SessionItem].[Rept_type] AS [Rept_type], 
+    [SessionItem].[Delay_seconds] AS [Delay_seconds], 
+    [SessionItem].[Alt_With] AS [Alt_With], 
+    [SessionItem].[Timed_finalheats] AS [Timed_finalheats], 
+    [SessionItem].[EventTo_AlternateWith] AS [EventTo_AlternateWith], 
+    [SessionItem].[Delay_desc] AS [Delay_desc], 
+    [SessionItem].[AltHeats_StartCount] AS [AltHeats_StartCount], 
+    [SessionItem].[SessitemId] AS [SessitemId], 
+    [SessionItem].[Meetid] AS [Meetid]
+    FROM [dbo].[SessionItem] AS [SessionItem]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SetupTorneo" EntityType="Self.SetupTorneo" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SetupTorneo].[SetupId] AS [SetupId], 
+    [SetupTorneo].[TipoId] AS [TipoId], 
+    [SetupTorneo].[pruebasXsesion] AS [pruebasXsesion], 
+    [SetupTorneo].[pruebasXtorneo] AS [pruebasXtorneo], 
+    [SetupTorneo].[Meetid] AS [Meetid]
+    FROM [dbo].[SetupTorneo] AS [SetupTorneo]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [sysdiagrams].[name] AS [name], 
@@ -722,6 +2874,259 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
     [sysdiagrams].[version] AS [version], 
     [sysdiagrams].[definition] AS [definition]
     FROM [dbo].[sysdiagrams] AS [sysdiagrams]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TEAM" EntityType="Self.TEAM" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TEAM].[Team] AS [Team], 
+    [TEAM].[TeamId] AS [TeamId], 
+    [TEAM].[TCode] AS [TCode], 
+    [TEAM].[TName] AS [TName]
+    FROM [dbo].[TEAM] AS [TEAM]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TipoTorneo" EntityType="Self.TipoTorneo" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TipoTorneo].[TipoId] AS [TipoId], 
+    [TipoTorneo].[Nombre] AS [Nombre]
+    FROM [dbo].[TipoTorneo] AS [TipoTorneo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Torneo" EntityType="Self.Torneo" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Torneo].[Meet_name1] AS [Meet_name1], 
+    [Torneo].[Meet_header1] AS [Meet_header1], 
+    [Torneo].[Meet_header2] AS [Meet_header2], 
+    [Torneo].[Meet_location] AS [Meet_location], 
+    [Torneo].[Meet_start] AS [Meet_start], 
+    [Torneo].[Meet_end] AS [Meet_end], 
+    [Torneo].[Meet_idformat] AS [Meet_idformat], 
+    [Torneo].[Meet_class] AS [Meet_class], 
+    [Torneo].[Meet_meettype] AS [Meet_meettype], 
+    [Torneo].[Meet_course] AS [Meet_course], 
+    [Torneo].[Enter_ages] AS [Enter_ages], 
+    [Torneo].[Enter_birthdate] AS [Enter_birthdate], 
+    [Torneo].[Calc_date] AS [Calc_date], 
+    [Torneo].[Enter_schoolyr] AS [Enter_schoolyr], 
+    [Torneo].[A_Relaysonly] AS [A_Relaysonly], 
+    [Torneo].[Use_hometown] AS [Use_hometown], 
+    [Torneo].[Show_countrycode] AS [Show_countrycode], 
+    [Torneo].[Scores_afterevt] AS [Scores_afterevt], 
+    [Torneo].[Lastname_first] AS [Lastname_first], 
+    [Torneo].[Punct_names] AS [Punct_names], 
+    [Torneo].[Punct_teams] AS [Punct_teams], 
+    [Torneo].[win_mm] AS [win_mm], 
+    [Torneo].[meet_numlanes] AS [meet_numlanes], 
+    [Torneo].[prelimheats_circle] AS [prelimheats_circle], 
+    [Torneo].[timedfinal_circleseed] AS [timedfinal_circleseed], 
+    [Torneo].[foreign_infinal] AS [foreign_infinal], 
+    [Torneo].[exh_infinal] AS [exh_infinal], 
+    [Torneo].[nonconform_last] AS [nonconform_last], 
+    [Torneo].[course_order] AS [course_order], 
+    [Torneo].[seed_exhlast] AS [seed_exhlast], 
+    [Torneo].[dual_evenodd] AS [dual_evenodd], 
+    [Torneo].[strict_evenodd] AS [strict_evenodd], 
+    [Torneo].[team_evenlanes] AS [team_evenlanes], 
+    [Torneo].[team_oddlanes] AS [team_oddlanes], 
+    [Torneo].[masters_bytimeonly] AS [masters_bytimeonly], 
+    [Torneo].[masters_agegrpsskip] AS [masters_agegrpsskip], 
+    [Torneo].[timer_port] AS [timer_port], 
+    [Torneo].[scbd_port] AS [scbd_port], 
+    [Torneo].[timer_vendor] AS [timer_vendor], 
+    [Torneo].[scbd_vendor] AS [scbd_vendor], 
+    [Torneo].[show_initial] AS [show_initial], 
+    [Torneo].[ucase_names] AS [ucase_names], 
+    [Torneo].[ucase_teams] AS [ucase_teams], 
+    [Torneo].[open_senior_none] AS [open_senior_none], 
+    [Torneo].[entryqual_faster] AS [entryqual_faster], 
+    [Torneo].[Facility_Surcharge] AS [Facility_Surcharge], 
+    [Torneo].[anyone_onrelay] AS [anyone_onrelay], 
+    [Torneo].[language_choice] AS [language_choice], 
+    [Torneo].[military_time] AS [military_time], 
+    [Torneo].[check_times] AS [check_times], 
+    [Torneo].[enterkey_astab] AS [enterkey_astab], 
+    [Torneo].[double_endedsplits] AS [double_endedsplits], 
+    [Torneo].[use_compnumbers] AS [use_compnumbers], 
+    [Torneo].[flighted_minentries] AS [flighted_minentries], 
+    [Torneo].[diffpts_malefemale] AS [diffpts_malefemale], 
+    [Torneo].[diffpts_eachdivision] AS [diffpts_eachdivision], 
+    [Torneo].[scoreonly_ifexceedqualtime] AS [scoreonly_ifexceedqualtime], 
+    [Torneo].[score_fastestheatonly] AS [score_fastestheatonly], 
+    [Torneo].[entrylimits_warn] AS [entrylimits_warn], 
+    [Torneo].[pointsbasedon_seedtime] AS [pointsbasedon_seedtime], 
+    [Torneo].[pointsfor_overachievers] AS [pointsfor_overachievers], 
+    [Torneo].[pointsfor_underachievers] AS [pointsfor_underachievers], 
+    [Torneo].[indmaxscorers_perteam] AS [indmaxscorers_perteam], 
+    [Torneo].[relmaxscorers_perteam] AS [relmaxscorers_perteam], 
+    [Torneo].[indtopmany_awards] AS [indtopmany_awards], 
+    [Torneo].[reltopmany_awards] AS [reltopmany_awards], 
+    [Torneo].[entrymax_total] AS [entrymax_total], 
+    [Torneo].[indmax_perath] AS [indmax_perath], 
+    [Torneo].[relmax_perath] AS [relmax_perath], 
+    [Torneo].[foreign_getteampoints] AS [foreign_getteampoints], 
+    [Torneo].[include_swimupsinteamscore] AS [include_swimupsinteamscore], 
+    [Torneo].[enter_citizenof] AS [enter_citizenof], 
+    [Torneo].[meet_meetstyle] AS [meet_meetstyle], 
+    [Torneo].[flag_overachievers] AS [flag_overachievers], 
+    [Torneo].[flag_underachievers] AS [flag_underachievers], 
+    [Torneo].[scbd_punctuation] AS [scbd_punctuation], 
+    [Torneo].[scbd_names] AS [scbd_names], 
+    [Torneo].[scbd_relaynames] AS [scbd_relaynames], 
+    [Torneo].[scbd_cycle] AS [scbd_cycle], 
+    [Torneo].[scbd_cycleseconds] AS [scbd_cycleseconds], 
+    [Torneo].[copies_toprinter] AS [copies_toprinter], 
+    [Torneo].[report_headersonly] AS [report_headersonly], 
+    [Torneo].[autoinc_compno] AS [autoinc_compno], 
+    [Torneo].[pentscoring_usedqtime] AS [pentscoring_usedqtime], 
+    [Torneo].[swimmer_surcharge] AS [swimmer_surcharge], 
+    [Torneo].[directly_toprinter] AS [directly_toprinter], 
+    [Torneo].[lastname_asinitial] AS [lastname_asinitial], 
+    [Torneo].[under_eventname] AS [under_eventname], 
+    [Torneo].[suppress_Arelay] AS [suppress_Arelay], 
+    [Torneo].[Punct_recholders] AS [Punct_recholders], 
+    [Torneo].[ucase_recholders] AS [ucase_recholders], 
+    [Torneo].[suppress_lsc] AS [suppress_lsc], 
+    [Torneo].[showathlete_status] AS [showathlete_status], 
+    [Torneo].[open_lowage] AS [open_lowage], 
+    [Torneo].[useeventsex_teamscore] AS [useeventsex_teamscore], 
+    [Torneo].[suppress_smallx] AS [suppress_smallx], 
+    [Torneo].[score_Arelayonly] AS [score_Arelayonly], 
+    [Torneo].[thirteenandover_assenior] AS [thirteenandover_assenior], 
+    [Torneo].[suppress_jd] AS [suppress_jd], 
+    [Torneo].[abcfinal_order] AS [abcfinal_order], 
+    [Torneo].[maxagefor_cfinal] AS [maxagefor_cfinal], 
+    [Torneo].[Sanction_number] AS [Sanction_number], 
+    [Torneo].[include_sanction] AS [include_sanction], 
+    [Torneo].[special_points] AS [special_points], 
+    [Torneo].[countrelay_alt] AS [countrelay_alt], 
+    [Torneo].[UseNonConforming_PoolFactor] AS [UseNonConforming_PoolFactor], 
+    [Torneo].[NonConforming_PoolFactor] AS [NonConforming_PoolFactor], 
+    [Torneo].[apnews_team] AS [apnews_team], 
+    [Torneo].[PointsAwarded_ForDQ] AS [PointsAwarded_ForDQ], 
+    [Torneo].[PointsAwarded_ForScratch] AS [PointsAwarded_ForScratch], 
+    [Torneo].[PointsAwarded_ForNT] AS [PointsAwarded_ForNT], 
+    [Torneo].[Enter_AthStat] AS [Enter_AthStat], 
+    [Torneo].[Show_secondclub] AS [Show_secondclub], 
+    [Torneo].[firstinitial_fulllastname] AS [firstinitial_fulllastname], 
+    [Torneo].[turnon_autobackup] AS [turnon_autobackup], 
+    [Torneo].[autobackup_interval] AS [autobackup_interval], 
+    [Torneo].[PointsAwarded_ForExh] AS [PointsAwarded_ForExh], 
+    [Torneo].[Use_AltTeamAbbr] AS [Use_AltTeamAbbr], 
+    [Torneo].[IsCanadian_Masters] AS [IsCanadian_Masters], 
+    [Torneo].[entry_msg] AS [entry_msg], 
+    [Torneo].[timedfinalnonconform_last] AS [timedfinalnonconform_last], 
+    [Torneo].[referee_name] AS [referee_name], 
+    [Torneo].[referee_homphone] AS [referee_homphone], 
+    [Torneo].[referee_offphone] AS [referee_offphone], 
+    [Torneo].[Meet_altitude] AS [Meet_altitude], 
+    [Torneo].[Import_Dir] AS [Import_Dir], 
+    [Torneo].[Export_Dir] AS [Export_Dir], 
+    [Torneo].[Backup_Dir] AS [Backup_Dir], 
+    [Torneo].[RestoreFrom_Dir] AS [RestoreFrom_Dir], 
+    [Torneo].[RestoreTo_Dir] AS [RestoreTo_Dir], 
+    [Torneo].[FlatHtml_Dir] AS [FlatHtml_Dir], 
+    [Torneo].[APNews_Dir] AS [APNews_Dir], 
+    [Torneo].[AllowSameEvent_DupRelayNames] AS [AllowSameEvent_DupRelayNames], 
+    [Torneo].[dualteam_lane1] AS [dualteam_lane1], 
+    [Torneo].[dualteam_lane2] AS [dualteam_lane2], 
+    [Torneo].[dualteam_lane3] AS [dualteam_lane3], 
+    [Torneo].[dualteam_lane4] AS [dualteam_lane4], 
+    [Torneo].[dualteam_lane5] AS [dualteam_lane5], 
+    [Torneo].[dualteam_lane6] AS [dualteam_lane6], 
+    [Torneo].[dualteam_lane7] AS [dualteam_lane7], 
+    [Torneo].[dualteam_lane8] AS [dualteam_lane8], 
+    [Torneo].[dualteam_lane9] AS [dualteam_lane9], 
+    [Torneo].[dualteam_lane10] AS [dualteam_lane10], 
+    [Torneo].[strict_evenoddfastestheatonly] AS [strict_evenoddfastestheatonly], 
+    [Torneo].[dualseeding_altunusedlane] AS [dualseeding_altunusedlane], 
+    [Torneo].[team_surcharge] AS [team_surcharge], 
+    [Torneo].[Display_ActualEntryTime] AS [Display_ActualEntryTime], 
+    [Torneo].[indmaxadvance_perteam] AS [indmaxadvance_perteam], 
+    [Torneo].[relmaxadvance_perteam] AS [relmaxadvance_perteam], 
+    [Torneo].[RelayNames_LinkByLSC] AS [RelayNames_LinkByLSC], 
+    [Torneo].[Read_Only] AS [Read_Only], 
+    [Torneo].[Flighted_BasedOnResultsTime] AS [Flighted_BasedOnResultsTime], 
+    [Torneo].[ShowYear_InPlaceOfAge] AS [ShowYear_InPlaceOfAge], 
+    [Torneo].[PenaltyPts_ForNS] AS [PenaltyPts_ForNS], 
+    [Torneo].[EntryEligibility_date] AS [EntryEligibility_date], 
+    [Torneo].[Suppress_TimeStdAbbr] AS [Suppress_TimeStdAbbr], 
+    [Torneo].[masters_indlowage] AS [masters_indlowage], 
+    [Torneo].[masters_rellowage] AS [masters_rellowage], 
+    [Torneo].[Custom_QualTimes] AS [Custom_QualTimes], 
+    [Torneo].[Suppress_SplitsForDQs] AS [Suppress_SplitsForDQs], 
+    [Torneo].[Suppress_SplitsForDQsRelay] AS [Suppress_SplitsForDQsRelay], 
+    [Torneo].[DQCodes_Type] AS [DQCodes_Type], 
+    [Torneo].[SuppressTimes_NotMeetQualTime] AS [SuppressTimes_NotMeetQualTime], 
+    [Torneo].[Show_AgeandBirthYear] AS [Show_AgeandBirthYear], 
+    [Torneo].[Meet_state] AS [Meet_state], 
+    [Torneo].[Meet_country] AS [Meet_country], 
+    [Torneo].[Meet_lsc] AS [Meet_lsc], 
+    [Torneo].[BCSSA_DivbyTimeStd] AS [BCSSA_DivbyTimeStd], 
+    [Torneo].[Show_HyTekDecimals] AS [Show_HyTekDecimals], 
+    [Torneo].[Suppress_ResultsAdvQ] AS [Suppress_ResultsAdvQ], 
+    [Torneo].[RelaysAs_4x100Style] AS [RelaysAs_4x100Style], 
+    [Torneo].[flighted_flightcount] AS [flighted_flightcount], 
+    [Torneo].[flighted_inclDQ] AS [flighted_inclDQ], 
+    [Torneo].[RelaysAlternate_TwoFastestFirst] AS [RelaysAlternate_TwoFastestFirst], 
+    [Torneo].[dualteam_lane11] AS [dualteam_lane11], 
+    [Torneo].[dualteam_lane12] AS [dualteam_lane12], 
+    [Torneo].[entry_deadline] AS [entry_deadline], 
+    [Torneo].[Meet_addr1] AS [Meet_addr1], 
+    [Torneo].[Meet_addr2] AS [Meet_addr2], 
+    [Torneo].[Meet_city] AS [Meet_city], 
+    [Torneo].[Meet_zip] AS [Meet_zip], 
+    [Torneo].[Meet_hostlsc] AS [Meet_hostlsc], 
+    [Torneo].[Meet_USMastersMeetID] AS [Meet_USMastersMeetID], 
+    [Torneo].[ShowFirstName_OverPreferred] AS [ShowFirstName_OverPreferred], 
+    [Torneo].[ExcludeNTEntries_WhenImporting] AS [ExcludeNTEntries_WhenImporting], 
+    [Torneo].[Enter_birthcentury] AS [Enter_birthcentury], 
+    [Torneo].[Using_twopools] AS [Using_twopools], 
+    [Torneo].[Pool1_name] AS [Pool1_name], 
+    [Torneo].[Pool2_name] AS [Pool2_name], 
+    [Torneo].[indtopmany_awardsSr] AS [indtopmany_awardsSr], 
+    [Torneo].[reltopmany_awardsSr] AS [reltopmany_awardsSr], 
+    [Torneo].[maxforeign_infinal] AS [maxforeign_infinal], 
+    [Torneo].[Flag_FastestRecordOnly] AS [Flag_FastestRecordOnly], 
+    [Torneo].[athlete_earlysurcharge] AS [athlete_earlysurcharge], 
+    [Torneo].[athlete_latesurcharge] AS [athlete_latesurcharge], 
+    [Torneo].[athlete_earlysurchargedate] AS [athlete_earlysurchargedate], 
+    [Torneo].[athlete_latesurchargedate] AS [athlete_latesurchargedate], 
+    [Torneo].[entry_OpenDate] AS [entry_OpenDate], 
+    [Torneo].[DisplayNTfor_TimesUnder5Sec] AS [DisplayNTfor_TimesUnder5Sec], 
+    [Torneo].[SortTeamCombos_ByTeamName] AS [SortTeamCombos_ByTeamName], 
+    [Torneo].[FastestHeat_SomeLanesDoNotScore] AS [FastestHeat_SomeLanesDoNotScore], 
+    [Torneo].[RankDisabled_ByPoints] AS [RankDisabled_ByPoints], 
+    [Torneo].[special_parapoints] AS [special_parapoints], 
+    [Torneo].[DisabledDoNot_AdvanceToFinals] AS [DisabledDoNot_AdvanceToFinals], 
+    [Torneo].[prelimheats_circledist] AS [prelimheats_circledist], 
+    [Torneo].[DisabledIgnoreQualTime_ForScoring] AS [DisabledIgnoreQualTime_ForScoring], 
+    [Torneo].[CountTimeTrial_Events] AS [CountTimeTrial_Events], 
+    [Torneo].[QualNonConformCourse_UseMinStd] AS [QualNonConformCourse_UseMinStd], 
+    [Torneo].[Last_updated] AS [Last_updated], 
+    [Torneo].[MixedRelays_DividedPoints] AS [MixedRelays_DividedPoints], 
+    [Torneo].[RelayOnly_Surcharge] AS [RelayOnly_Surcharge], 
+    [Torneo].[TimeAdj_Method] AS [TimeAdj_Method], 
+    [Torneo].[DisabledSeedWithAgeGroup_IfTimedFinalSuperSeed] AS [DisabledSeedWithAgeGroup_IfTimedFinalSuperSeed], 
+    [Torneo].[Meetid] AS [Meetid], 
+    [Torneo].[MarcaMaxima] AS [MarcaMaxima]
+    FROM [dbo].[Torneo] AS [Torneo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TorneoDestacado" EntityType="Self.TorneoDestacado" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TorneoDestacado].[DestacadoId] AS [DestacadoId], 
+    [TorneoDestacado].[Meet] AS [Meet]
+    FROM [dbo].[TorneoDestacado] AS [TorneoDestacado]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TorneoDestacadoMasters" EntityType="Self.TorneoDestacadoMasters" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TorneoDestacadoMasters].[DestacadoId] AS [DestacadoId], 
+    [TorneoDestacadoMasters].[Meet] AS [Meet]
+    FROM [dbo].[TorneoDestacadoMasters] AS [TorneoDestacadoMasters]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Vivo" EntityType="Self.Vivo" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Vivo].[VivoId] AS [VivoId], 
+    [Vivo].[Nombre] AS [Nombre], 
+    [Vivo].[Fecha] AS [Fecha], 
+    [Vivo].[Directorio] AS [Directorio]
+    FROM [dbo].[Vivo] AS [Vivo]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_Afiliacion_Club" Association="Self.FK_Afiliacion_Club">
       <End Role="Club" EntitySet="Club" />
@@ -742,10 +3147,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
     <AssociationSet Name="FK_Afiliacion_Vouchers" Association="Self.FK_Afiliacion_Vouchers">
       <End Role="Vouchers" EntitySet="Vouchers" />
       <End Role="Afiliacion" EntitySet="Afiliacion" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CambiosDNI_Afiliado" Association="Self.FK_CambiosDNI_Afiliado">
-      <End Role="Afiliado" EntitySet="Afiliado" />
-      <End Role="CambiosDNI" EntitySet="CambiosDNI" />
     </AssociationSet>
     <AssociationSet Name="FK_Club_Asociaciones" Association="Self.FK_Club_Asociaciones">
       <End Role="Asociaciones" EntitySet="Asociaciones" />
@@ -771,6 +3172,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Entrenadores" EntitySet="Entrenadores" />
     </AssociationSet>
+    <AssociationSet Name="FK_HistorialdeAfiliaciones_Inscripciones" Association="Self.FK_HistorialdeAfiliaciones_Inscripciones">
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
+      <End Role="HistorialdeAfiliaciones" EntitySet="HistorialdeAfiliaciones" />
+    </AssociationSet>
     <AssociationSet Name="FK_HistorialEntrenador_Club" Association="Self.FK_HistorialEntrenador_Club">
       <End Role="Club" EntitySet="Club" />
       <End Role="HistorialEntrenador" EntitySet="HistorialEntrenador" />
@@ -791,7 +3196,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="HistorialTraspasos" EntitySet="HistorialTraspasos" />
     </AssociationSet>
-    <AssociationSet Name="FK_Inscripciones_Afiliado" Association="Self.FK_Inscripciones_Afiliado">
+    <AssociationSet Name="FK_Inscripciones_Afiliado1" Association="Self.FK_Inscripciones_Afiliado1">
       <End Role="Afiliado" EntitySet="Afiliado" />
       <End Role="Inscripciones" EntitySet="Inscripciones" />
     </AssociationSet>
@@ -815,16 +3220,44 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_afiliaciones.dbo.sysdiagrams' no t
       <End Role="TipoAfiliado" EntitySet="TipoAfiliado" />
       <End Role="Inscripciones" EntitySet="Inscripciones" />
     </AssociationSet>
-    <AssociationSet Name="FK_Multas_Afiliado" Association="Self.FK_Multas_Afiliado">
-      <End Role="Afiliado" EntitySet="Afiliado" />
+    <AssociationSet Name="FK_Multas_Inscripciones" Association="Self.FK_Multas_Inscripciones">
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
       <End Role="Multas" EntitySet="Multas" />
     </AssociationSet>
     <AssociationSet Name="FK_Multas_Usuario" Association="Self.FK_Multas_Usuario">
       <End Role="Usuario" EntitySet="Usuario" />
       <End Role="Multas" EntitySet="Multas" />
     </AssociationSet>
+    <AssociationSet Name="FK_TatoInformeAsistencias_Inscripciones" Association="Self.FK_TatoInformeAsistencias_Inscripciones">
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
+      <End Role="TatoInformeAsistencias" EntitySet="TatoInformeAsistencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TatoInformeEntrenador_Entrenadores" Association="Self.FK_TatoInformeEntrenador_Entrenadores">
+      <End Role="Entrenadores" EntitySet="Entrenadores" />
+      <End Role="TatoInformeEntrenador" EntitySet="TatoInformeEntrenador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TatoInformeEntrenador_Inscripciones" Association="Self.FK_TatoInformeEntrenador_Inscripciones">
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
+      <End Role="TatoInformeEntrenador" EntitySet="TatoInformeEntrenador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TatoInformeEntrenador_TatoRealizacion" Association="Self.FK_TatoInformeEntrenador_TatoRealizacion">
+      <End Role="TatoRealizacion" EntitySet="TatoRealizacion" />
+      <End Role="TatoInformeEntrenador" EntitySet="TatoInformeEntrenador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TatoInformeEntrenador_TatoSeriesEjemplo" Association="Self.FK_TatoInformeEntrenador_TatoSeriesEjemplo">
+      <End Role="TatoSeriesEjemplo" EntitySet="TatoSeriesEjemplo" />
+      <End Role="TatoInformeEntrenador" EntitySet="TatoInformeEntrenador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TatoSeleccionado_Inscripciones" Association="Self.FK_TatoSeleccionado_Inscripciones">
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
+      <End Role="TatoSeleccionado" EntitySet="TatoSeleccionado" />
+    </AssociationSet>
     <AssociationSet Name="FK_Traspasos_Club" Association="Self.FK_Traspasos_Club">
       <End Role="Club" EntitySet="Club" />
+      <End Role="Traspasos" EntitySet="Traspasos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Traspasos_Inscripciones" Association="Self.FK_Traspasos_Inscripciones">
+      <End Role="Inscripciones" EntitySet="Inscripciones" />
       <End Role="Traspasos" EntitySet="Traspasos" />
     </AssociationSet>
     <AssociationSet Name="FK_Traspasos_Usuario" Association="Self.FK_Traspasos_Usuario">

@@ -4,12 +4,12 @@
     <EntitySetMapping Name="Afiliacion">
       <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Afiliacion">
         <MappingFragment StoreEntitySet="Afiliacion">
+          <ScalarProperty Name="InscripcionId" ColumnName="InscripcionId" />
           <ScalarProperty Name="ProcesadoId" ColumnName="ProcesadoId" />
           <ScalarProperty Name="ClubId" ColumnName="ClubId" />
           <ScalarProperty Name="VoucherId" ColumnName="VoucherId" />
           <ScalarProperty Name="FechaAfiliacion" ColumnName="FechaAfiliacion" />
           <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
-          <ScalarProperty Name="DNI" ColumnName="DNI" />
           <ScalarProperty Name="AfiliacionID" ColumnName="AfiliacionID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -67,6 +67,8 @@
     <EntitySetMapping Name="Club">
       <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Club">
         <MappingFragment StoreEntitySet="Club">
+          <ScalarProperty Name="Academia" ColumnName="Academia" />
+          <ScalarProperty Name="VoucherPagoAfiliacionAnual" ColumnName="VoucherPagoAfiliacionAnual" />
           <ScalarProperty Name="Resolucion" ColumnName="Resolucion" />
           <ScalarProperty Name="FinVigenciaRenade" ColumnName="FinVigenciaRenade" />
           <ScalarProperty Name="FinVigenciaPoderes" ColumnName="FinVigenciaPoderes" />
@@ -154,6 +156,7 @@
     <EntitySetMapping Name="HistorialTraspasos">
       <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.HistorialTraspasos">
         <MappingFragment StoreEntitySet="HistorialTraspasos">
+          <ScalarProperty Name="InscripcionId" ColumnName="InscripcionId" />
           <ScalarProperty Name="FechaTraspaso" ColumnName="FechaTraspaso" />
           <ScalarProperty Name="VieneDe" ColumnName="VieneDe" />
           <ScalarProperty Name="DNI" ColumnName="DNI" />
@@ -166,10 +169,11 @@
     <EntitySetMapping Name="Inscripciones">
       <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Inscripciones">
         <MappingFragment StoreEntitySet="Inscripciones">
+          <ScalarProperty Name="RutaFoto" ColumnName="RutaFoto" />
           <ScalarProperty Name="DisciplinaId" ColumnName="DisciplinaId" />
           <ScalarProperty Name="FotoDNI" ColumnName="FotoDNI" />
           <ScalarProperty Name="Borrado" ColumnName="Borrado" />
-          <ScalarProperty Name="RutaFoto" ColumnName="RutaFoto" />
+          <ScalarProperty Name="RutaFotoAntigua" ColumnName="RutaFotoAntigua" />
           <ScalarProperty Name="AntiguoId" ColumnName="AntiguoId" />
           <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
           <ScalarProperty Name="TipoAfiliadoID" ColumnName="TipoAfiliadoID" />
@@ -182,6 +186,8 @@
     <EntitySetMapping Name="Multas">
       <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Multas">
         <MappingFragment StoreEntitySet="Multas">
+          <ScalarProperty Name="InscripcionId" ColumnName="InscripcionId" />
+          <ScalarProperty Name="FechaTorneo" ColumnName="FechaTorneo" />
           <ScalarProperty Name="Torneo" ColumnName="Torneo" />
           <ScalarProperty Name="Subsanada" ColumnName="Subsanada" />
           <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
@@ -194,8 +200,6 @@
           <ScalarProperty Name="Eventos3" ColumnName="Eventos3" />
           <ScalarProperty Name="Eventos2" ColumnName="Eventos2" />
           <ScalarProperty Name="Eventos1" ColumnName="Eventos1" />
-          <ScalarProperty Name="TorneoId" ColumnName="TorneoId" />
-          <ScalarProperty Name="DNI" ColumnName="DNI" />
           <ScalarProperty Name="MultaId" ColumnName="MultaId" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -217,6 +221,73 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TatoInformeAsistencias">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.TatoInformeAsistencias">
+        <MappingFragment StoreEntitySet="TatoInformeAsistencias">
+          <ScalarProperty Name="ClubId" ColumnName="ClubId" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="EntrenadorId" ColumnName="EntrenadorId" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="InscripcionId" ColumnName="InscripcionId" />
+          <ScalarProperty Name="GimnasioRealizado" ColumnName="GimnasioRealizado" />
+          <ScalarProperty Name="GimnasioPlanificado" ColumnName="GimnasioPlanificado" />
+          <ScalarProperty Name="VolumenRealizado" ColumnName="VolumenRealizado" />
+          <ScalarProperty Name="VolumenPlanificado" ColumnName="VolumenPlanificado" />
+          <ScalarProperty Name="SesionesRealizadas" ColumnName="SesionesRealizadas" />
+          <ScalarProperty Name="SesionesPlanificadas" ColumnName="SesionesPlanificadas" />
+          <ScalarProperty Name="InformeId" ColumnName="InformeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TatoInformeEntrenador">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.TatoInformeEntrenador">
+        <MappingFragment StoreEntitySet="TatoInformeEntrenador">
+          <ScalarProperty Name="Zona" ColumnName="Zona" />
+          <ScalarProperty Name="RealizacionId" ColumnName="RealizacionId" />
+          <ScalarProperty Name="Sensacion" ColumnName="Sensacion" />
+          <ScalarProperty Name="MarcaEntrenamiento" ColumnName="MarcaEntrenamiento" />
+          <ScalarProperty Name="Pruebaid" ColumnName="Pruebaid" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="MejorMarca" ColumnName="MejorMarca" />
+          <ScalarProperty Name="SerieId" ColumnName="SerieId" />
+          <ScalarProperty Name="InscripcionId" ColumnName="InscripcionId" />
+          <ScalarProperty Name="EntrenadorId" ColumnName="EntrenadorId" />
+          <ScalarProperty Name="InformeId" ColumnName="InformeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TatoRealizacion">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.TatoRealizacion">
+        <MappingFragment StoreEntitySet="TatoRealizacion">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="RealizacionId" ColumnName="RealizacionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TatoSeleccionado">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.TatoSeleccionado">
+        <MappingFragment StoreEntitySet="TatoSeleccionado">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="InscripcionId" ColumnName="InscripcionId" />
+          <ScalarProperty Name="SeleccionadoId" ColumnName="SeleccionadoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TatoSeriesEjemplo">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.TatoSeriesEjemplo">
+        <MappingFragment StoreEntitySet="TatoSeriesEjemplo">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Piscina" ColumnName="Piscina" />
+          <ScalarProperty Name="Micropausa" ColumnName="Micropausa" />
+          <ScalarProperty Name="Tolerancia" ColumnName="Tolerancia" />
+          <ScalarProperty Name="Parcial" ColumnName="Parcial" />
+          <ScalarProperty Name="Repeticiones" ColumnName="Repeticiones" />
+          <ScalarProperty Name="Series" ColumnName="Series" />
+          <ScalarProperty Name="Zona" ColumnName="Zona" />
+          <ScalarProperty Name="SerieId" ColumnName="SerieId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TipoAfiliado">
       <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.TipoAfiliado">
         <MappingFragment StoreEntitySet="TipoAfiliado">
@@ -228,6 +299,7 @@
     <EntitySetMapping Name="Traspasos">
       <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Traspasos">
         <MappingFragment StoreEntitySet="Traspasos">
+          <ScalarProperty Name="IsncripcionId" ColumnName="IsncripcionId" />
           <ScalarProperty Name="Traspasos_restantes" ColumnName="Traspasos restantes" />
           <ScalarProperty Name="Monto" ColumnName="Monto" />
           <ScalarProperty Name="Numero_de_traspasos" ColumnName="Numero de traspasos" />
@@ -242,6 +314,7 @@
     <EntitySetMapping Name="TraspasosEnEspera">
       <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.TraspasosEnEspera">
         <MappingFragment StoreEntitySet="TraspasosEnEspera">
+          <ScalarProperty Name="IsncripcionId" ColumnName="IsncripcionId" />
           <ScalarProperty Name="Liberado" ColumnName="Liberado" />
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
           <ScalarProperty Name="ClubSolicitante" ColumnName="ClubSolicitante" />
@@ -281,6 +354,112 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Alertas">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Alertas">
+        <MappingFragment StoreEntitySet="Alertas">
+          <ScalarProperty Name="NoticiaId" ColumnName="NoticiaId" />
+          <ScalarProperty Name="Alerta" ColumnName="Alerta" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="AlertaId" ColumnName="AlertaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Athlete">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Athlete">
+        <MappingFragment StoreEntitySet="Athlete">
+          <ScalarProperty Name="AthleteId" ColumnName="AthleteId" />
+          <ScalarProperty Name="ID_NO" ColumnName="ID_NO" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Birth" ColumnName="Birth" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Last" ColumnName="Last" />
+          <ScalarProperty Name="First" ColumnName="First" />
+          <ScalarProperty Name="Athlete1" ColumnName="Athlete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AthleteMasters">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.AthleteMasters">
+        <MappingFragment StoreEntitySet="AthleteMasters">
+          <ScalarProperty Name="AthleteId" ColumnName="AthleteId" />
+          <ScalarProperty Name="ID_NO" ColumnName="ID_NO" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Birth" ColumnName="Birth" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Last" ColumnName="Last" />
+          <ScalarProperty Name="First" ColumnName="First" />
+          <ScalarProperty Name="Athlete" ColumnName="Athlete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BASETIMES">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.BASETIMES">
+        <MappingFragment StoreEntitySet="BASETIMES">
+          <ScalarProperty Name="tiempoId" ColumnName="tiempoId" />
+          <ScalarProperty Name="SEGUNDOS" ColumnName="SEGUNDOS" />
+          <ScalarProperty Name="BASETIME" ColumnName="BASETIME" />
+          <ScalarProperty Name="STROKE" ColumnName="STROKE" />
+          <ScalarProperty Name="DISTANCE" ColumnName="DISTANCE" />
+          <ScalarProperty Name="RELAY__COUNT" ColumnName="RELAY- COUNT" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="COURSE" ColumnName="COURSE" />
+          <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Calendario">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Calendario">
+        <MappingFragment StoreEntitySet="Calendario">
+          <ScalarProperty Name="DisciplinaId" ColumnName="DisciplinaId" />
+          <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+          <ScalarProperty Name="Organizador" ColumnName="Organizador" />
+          <ScalarProperty Name="Observación" ColumnName="Observación" />
+          <ScalarProperty Name="Carácter" ColumnName="Carácter" />
+          <ScalarProperty Name="Sede" ColumnName="Sede" />
+          <ScalarProperty Name="Evento" ColumnName="Evento" />
+          <ScalarProperty Name="Fin" ColumnName="Fin" />
+          <ScalarProperty Name="Inicio" ColumnName="Inicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoriaNoticia">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.CategoriaNoticia">
+        <MappingFragment StoreEntitySet="CategoriaNoticia">
+          <ScalarProperty Name="TipoNoticia" ColumnName="TipoNoticia" />
+          <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoriasMasters">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.CategoriasMasters">
+        <MappingFragment StoreEntitySet="CategoriasMasters">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="EdadMaxima" ColumnName="EdadMaxima" />
+          <ScalarProperty Name="EdadMinima" ColumnName="EdadMinima" />
+          <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comentarios">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Comentarios">
+        <MappingFragment StoreEntitySet="Comentarios">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="NoticiaId" ColumnName="NoticiaId" />
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="ComentarioId" ColumnName="ComentarioId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Configuracion">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Configuracion">
+        <MappingFragment StoreEntitySet="Configuracion">
+          <ScalarProperty Name="SetupId" ColumnName="SetupId" />
+          <ScalarProperty Name="Mantenimiento" ColumnName="Mantenimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Consulta">
       <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Consulta">
         <MappingFragment StoreEntitySet="Consulta">
@@ -292,6 +471,625 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Curso">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Curso">
+        <MappingFragment StoreEntitySet="Curso">
+          <ScalarProperty Name="CantidadMaxima" ColumnName="CantidadMaxima" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="DisciplinaId" ColumnName="DisciplinaId" />
+          <ScalarProperty Name="Fin" ColumnName="Fin" />
+          <ScalarProperty Name="Inicio" ColumnName="Inicio" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CursoInscripcion">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.CursoInscripcion">
+        <MappingFragment StoreEntitySet="CursoInscripcion">
+          <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+          <ScalarProperty Name="ParticipanteId" ColumnName="ParticipanteId" />
+          <ScalarProperty Name="InscripcionId" ColumnName="InscripcionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CursoParticipante">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.CursoParticipante">
+        <MappingFragment StoreEntitySet="CursoParticipante">
+          <ScalarProperty Name="Actividad" ColumnName="Actividad" />
+          <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
+          <ScalarProperty Name="Celular" ColumnName="Celular" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DNI" ColumnName="DNI" />
+          <ScalarProperty Name="Nacimiento" ColumnName="Nacimiento" />
+          <ScalarProperty Name="Materno" ColumnName="Materno" />
+          <ScalarProperty Name="Paterno" ColumnName="Paterno" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="ParticipanteId" ColumnName="ParticipanteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Disciplina">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Disciplina">
+        <MappingFragment StoreEntitySet="Disciplina">
+          <ScalarProperty Name="clase" ColumnName="clase" />
+          <ScalarProperty Name="TipoDisciplina" ColumnName="TipoDisciplina" />
+          <ScalarProperty Name="DisciplinaId" ColumnName="DisciplinaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Entradas">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Entradas">
+        <MappingFragment StoreEntitySet="Entradas">
+          <ScalarProperty Name="MeetId" ColumnName="MeetId" />
+          <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+          <ScalarProperty Name="pre_contacted" ColumnName="pre_contacted" />
+          <ScalarProperty Name="sem_dqofficial" ColumnName="sem_dqofficial" />
+          <ScalarProperty Name="pre_dqofficial" ColumnName="pre_dqofficial" />
+          <ScalarProperty Name="fin_dqofficial" ColumnName="fin_dqofficial" />
+          <ScalarProperty Name="entry_method" ColumnName="entry_method" />
+          <ScalarProperty Name="sem_divingdd" ColumnName="sem_divingdd" />
+          <ScalarProperty Name="pre_divingdd" ColumnName="pre_divingdd" />
+          <ScalarProperty Name="fin_divingdd" ColumnName="fin_divingdd" />
+          <ScalarProperty Name="sem_adjuststat" ColumnName="sem_adjuststat" />
+          <ScalarProperty Name="pre_adjuststat" ColumnName="pre_adjuststat" />
+          <ScalarProperty Name="fin_adjuststat" ColumnName="fin_adjuststat" />
+          <ScalarProperty Name="super_finfinalist" ColumnName="super_finfinalist" />
+          <ScalarProperty Name="super_prefinalist" ColumnName="super_prefinalist" />
+          <ScalarProperty Name="early_seed" ColumnName="early_seed" />
+          <ScalarProperty Name="Sem_dolphin3" ColumnName="Sem_dolphin3" />
+          <ScalarProperty Name="Sem_dolphin2" ColumnName="Sem_dolphin2" />
+          <ScalarProperty Name="Sem_dolphin1" ColumnName="Sem_dolphin1" />
+          <ScalarProperty Name="Pre_dolphin3" ColumnName="Pre_dolphin3" />
+          <ScalarProperty Name="Pre_dolphin2" ColumnName="Pre_dolphin2" />
+          <ScalarProperty Name="Pre_dolphin1" ColumnName="Pre_dolphin1" />
+          <ScalarProperty Name="Fin_dolphin3" ColumnName="Fin_dolphin3" />
+          <ScalarProperty Name="Fin_dolphin2" ColumnName="Fin_dolphin2" />
+          <ScalarProperty Name="Fin_dolphin1" ColumnName="Fin_dolphin1" />
+          <ScalarProperty Name="Fin_group" ColumnName="Fin_group" />
+          <ScalarProperty Name="dq_type" ColumnName="dq_type" />
+          <ScalarProperty Name="Sem_TimeType" ColumnName="Sem_TimeType" />
+          <ScalarProperty Name="Sem_dqcodeSecond" ColumnName="Sem_dqcodeSecond" />
+          <ScalarProperty Name="Sem_dqcode" ColumnName="Sem_dqcode" />
+          <ScalarProperty Name="Sem_reactiontime1" ColumnName="Sem_reactiontime1" />
+          <ScalarProperty Name="Sem_pad" ColumnName="Sem_pad" />
+          <ScalarProperty Name="Sem_watch1" ColumnName="Sem_watch1" />
+          <ScalarProperty Name="Sem_back3" ColumnName="Sem_back3" />
+          <ScalarProperty Name="Sem_back2" ColumnName="Sem_back2" />
+          <ScalarProperty Name="Sem_back1" ColumnName="Sem_back1" />
+          <ScalarProperty Name="Sem_points" ColumnName="Sem_points" />
+          <ScalarProperty Name="Sem_exh" ColumnName="Sem_exh" />
+          <ScalarProperty Name="Sem_jdplace" ColumnName="Sem_jdplace" />
+          <ScalarProperty Name="Sem_place" ColumnName="Sem_place" />
+          <ScalarProperty Name="Sem_heatplace" ColumnName="Sem_heatplace" />
+          <ScalarProperty Name="Sem_course" ColumnName="Sem_course" />
+          <ScalarProperty Name="Sem_Time" ColumnName="Sem_Time" />
+          <ScalarProperty Name="Sem_stat" ColumnName="Sem_stat" />
+          <ScalarProperty Name="Sem_lane" ColumnName="Sem_lane" />
+          <ScalarProperty Name="Sem_heat" ColumnName="Sem_heat" />
+          <ScalarProperty Name="fin_TimeType" ColumnName="fin_TimeType" />
+          <ScalarProperty Name="fin_heatltr" ColumnName="fin_heatltr" />
+          <ScalarProperty Name="Fin_ptsplace" ColumnName="Fin_ptsplace" />
+          <ScalarProperty Name="Fin_dqcodeSecond" ColumnName="Fin_dqcodeSecond" />
+          <ScalarProperty Name="Fin_dqcode" ColumnName="Fin_dqcode" />
+          <ScalarProperty Name="Fin_reactiontime1" ColumnName="Fin_reactiontime1" />
+          <ScalarProperty Name="Fin_pad" ColumnName="Fin_pad" />
+          <ScalarProperty Name="Fin_watch1" ColumnName="Fin_watch1" />
+          <ScalarProperty Name="Fin_back3" ColumnName="Fin_back3" />
+          <ScalarProperty Name="Fin_back2" ColumnName="Fin_back2" />
+          <ScalarProperty Name="Fin_back1" ColumnName="Fin_back1" />
+          <ScalarProperty Name="Fin_points" ColumnName="Fin_points" />
+          <ScalarProperty Name="Fin_exh" ColumnName="Fin_exh" />
+          <ScalarProperty Name="Fin_jdplace" ColumnName="Fin_jdplace" />
+          <ScalarProperty Name="Fin_place" ColumnName="Fin_place" />
+          <ScalarProperty Name="Fin_jdheatplace" ColumnName="Fin_jdheatplace" />
+          <ScalarProperty Name="Fin_heatplace" ColumnName="Fin_heatplace" />
+          <ScalarProperty Name="Fin_course" ColumnName="Fin_course" />
+          <ScalarProperty Name="Fin_Time" ColumnName="Fin_Time" />
+          <ScalarProperty Name="Fin_stat" ColumnName="Fin_stat" />
+          <ScalarProperty Name="Fin_lane" ColumnName="Fin_lane" />
+          <ScalarProperty Name="Fin_heat" ColumnName="Fin_heat" />
+          <ScalarProperty Name="Pre_TimeType" ColumnName="Pre_TimeType" />
+          <ScalarProperty Name="Pre_dqcodeSecond" ColumnName="Pre_dqcodeSecond" />
+          <ScalarProperty Name="Pre_dqcode" ColumnName="Pre_dqcode" />
+          <ScalarProperty Name="Pre_reactiontime1" ColumnName="Pre_reactiontime1" />
+          <ScalarProperty Name="Pre_pad" ColumnName="Pre_pad" />
+          <ScalarProperty Name="Pre_watch1" ColumnName="Pre_watch1" />
+          <ScalarProperty Name="Pre_back3" ColumnName="Pre_back3" />
+          <ScalarProperty Name="Pre_back2" ColumnName="Pre_back2" />
+          <ScalarProperty Name="Pre_back1" ColumnName="Pre_back1" />
+          <ScalarProperty Name="Pre_points" ColumnName="Pre_points" />
+          <ScalarProperty Name="Pre_exh" ColumnName="Pre_exh" />
+          <ScalarProperty Name="Pre_jdplace" ColumnName="Pre_jdplace" />
+          <ScalarProperty Name="Pre_place" ColumnName="Pre_place" />
+          <ScalarProperty Name="Pre_heatplace" ColumnName="Pre_heatplace" />
+          <ScalarProperty Name="Pre_course" ColumnName="Pre_course" />
+          <ScalarProperty Name="Pre_Time" ColumnName="Pre_Time" />
+          <ScalarProperty Name="Pre_stat" ColumnName="Pre_stat" />
+          <ScalarProperty Name="Pre_lane" ColumnName="Pre_lane" />
+          <ScalarProperty Name="Pre_heat" ColumnName="Pre_heat" />
+          <ScalarProperty Name="event_age" ColumnName="event_age" />
+          <ScalarProperty Name="Seed_place" ColumnName="Seed_place" />
+          <ScalarProperty Name="JDEv_score" ColumnName="JDEv_score" />
+          <ScalarProperty Name="Ev_score" ColumnName="Ev_score" />
+          <ScalarProperty Name="Div_no" ColumnName="Div_no" />
+          <ScalarProperty Name="Bonus_event" ColumnName="Bonus_event" />
+          <ScalarProperty Name="Alt_stat" ColumnName="Alt_stat" />
+          <ScalarProperty Name="Dec_stat" ColumnName="Dec_stat" />
+          <ScalarProperty Name="Spec_stat" ColumnName="Spec_stat" />
+          <ScalarProperty Name="Scr_stat" ColumnName="Scr_stat" />
+          <ScalarProperty Name="ConvSeed_time" ColumnName="ConvSeed_time" />
+          <ScalarProperty Name="ConvSeed_course" ColumnName="ConvSeed_course" />
+          <ScalarProperty Name="ActualSeed_time" ColumnName="ActualSeed_time" />
+          <ScalarProperty Name="ActSeed_course" ColumnName="ActSeed_course" />
+          <ScalarProperty Name="Ath_no" ColumnName="Ath_no" />
+          <ScalarProperty Name="Event_ptr" ColumnName="Event_ptr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Equipos">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Equipos">
+        <MappingFragment StoreEntitySet="Equipos">
+          <ScalarProperty Name="MeetId" ColumnName="MeetId" />
+          <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+          <ScalarProperty Name="NoRelayOnly_surcharge" ColumnName="NoRelayOnly_surcharge" />
+          <ScalarProperty Name="Team_cell" ColumnName="Team_cell" />
+          <ScalarProperty Name="NoAthlete_surcharge" ColumnName="NoAthlete_surcharge" />
+          <ScalarProperty Name="NoFacility_surcharge" ColumnName="NoFacility_surcharge" />
+          <ScalarProperty Name="NoTeam_surcharge" ColumnName="NoTeam_surcharge" />
+          <ScalarProperty Name="Team_altname" ColumnName="Team_altname" />
+          <ScalarProperty Name="Team_Selected" ColumnName="Team_Selected" />
+          <ScalarProperty Name="Team_NoPoints" ColumnName="Team_NoPoints" />
+          <ScalarProperty Name="Team_altabbr" ColumnName="Team_altabbr" />
+          <ScalarProperty Name="Team_c10" ColumnName="Team_c10" />
+          <ScalarProperty Name="Team_c9" ColumnName="Team_c9" />
+          <ScalarProperty Name="Team_c8" ColumnName="Team_c8" />
+          <ScalarProperty Name="Team_c7" ColumnName="Team_c7" />
+          <ScalarProperty Name="Team_c6" ColumnName="Team_c6" />
+          <ScalarProperty Name="Team_c5" ColumnName="Team_c5" />
+          <ScalarProperty Name="Team_c4" ColumnName="Team_c4" />
+          <ScalarProperty Name="Team_c3" ColumnName="Team_c3" />
+          <ScalarProperty Name="Team_email" ColumnName="Team_email" />
+          <ScalarProperty Name="Team_faxtele" ColumnName="Team_faxtele" />
+          <ScalarProperty Name="Team_evetele" ColumnName="Team_evetele" />
+          <ScalarProperty Name="Team_daytele" ColumnName="Team_daytele" />
+          <ScalarProperty Name="Team_cntry" ColumnName="Team_cntry" />
+          <ScalarProperty Name="Team_zip" ColumnName="Team_zip" />
+          <ScalarProperty Name="Team_statenew" ColumnName="Team_statenew" />
+          <ScalarProperty Name="Team_prov" ColumnName="Team_prov" />
+          <ScalarProperty Name="Team_city" ColumnName="Team_city" />
+          <ScalarProperty Name="Team_addr2" ColumnName="Team_addr2" />
+          <ScalarProperty Name="Team_addr1" ColumnName="Team_addr1" />
+          <ScalarProperty Name="Team_asst" ColumnName="Team_asst" />
+          <ScalarProperty Name="Team_head" ColumnName="Team_head" />
+          <ScalarProperty Name="Team_region" ColumnName="Team_region" />
+          <ScalarProperty Name="Team_div" ColumnName="Team_div" />
+          <ScalarProperty Name="Team_lsc" ColumnName="Team_lsc" />
+          <ScalarProperty Name="Team_stat" ColumnName="Team_stat" />
+          <ScalarProperty Name="Team_abbr" ColumnName="Team_abbr" />
+          <ScalarProperty Name="Team_short" ColumnName="Team_short" />
+          <ScalarProperty Name="Team_name" ColumnName="Team_name" />
+          <ScalarProperty Name="Team_no" ColumnName="Team_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estilos">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Estilos">
+        <MappingFragment StoreEntitySet="Estilos">
+          <ScalarProperty Name="tag_stroke" ColumnName="tag_stroke" />
+          <ScalarProperty Name="Estilo" ColumnName="Estilo" />
+          <ScalarProperty Name="EstiloId" ColumnName="EstiloId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Eventos">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Eventos">
+        <MappingFragment StoreEntitySet="Eventos">
+          <ScalarProperty Name="MeetId" ColumnName="MeetId" />
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="pre_actualstarttime" ColumnName="pre_actualstarttime" />
+          <ScalarProperty Name="sem_actualstarttime" ColumnName="sem_actualstarttime" />
+          <ScalarProperty Name="fin_actualstarttime" ColumnName="fin_actualstarttime" />
+          <ScalarProperty Name="EvtMaxAgeNumHeats_CFinal" ColumnName="EvtMaxAgeNumHeats_CFinal" />
+          <ScalarProperty Name="EvtMaxAgeFor_CFinal" ColumnName="EvtMaxAgeFor_CFinal" />
+          <ScalarProperty Name="Num_semlanes" ColumnName="Num_semlanes" />
+          <ScalarProperty Name="Checkin_enddate" ColumnName="Checkin_enddate" />
+          <ScalarProperty Name="Checkin_startdate" ColumnName="Checkin_startdate" />
+          <ScalarProperty Name="Checkin_endtime" ColumnName="Checkin_endtime" />
+          <ScalarProperty Name="Checkin_starttime" ColumnName="Checkin_starttime" />
+          <ScalarProperty Name="Pads_BothEndsFinals" ColumnName="Pads_BothEndsFinals" />
+          <ScalarProperty Name="Num_RelayLegs" ColumnName="Num_RelayLegs" />
+          <ScalarProperty Name="Multi_ageScnd" ColumnName="Multi_ageScnd" />
+          <ScalarProperty Name="SeedMultiAge_OldToYoung" ColumnName="SeedMultiAge_OldToYoung" />
+          <ScalarProperty Name="SuperFinal_ElimOldAgeGrp" ColumnName="SuperFinal_ElimOldAgeGrp" />
+          <ScalarProperty Name="SlowTimeStd_Abbr" ColumnName="SlowTimeStd_Abbr" />
+          <ScalarProperty Name="FastTimeStd_Abbr" ColumnName="FastTimeStd_Abbr" />
+          <ScalarProperty Name="Sem_AwardsPrinted" ColumnName="Sem_AwardsPrinted" />
+          <ScalarProperty Name="Pre_AwardsPrinted" ColumnName="Pre_AwardsPrinted" />
+          <ScalarProperty Name="Fin_AwardsPrinted" ColumnName="Fin_AwardsPrinted" />
+          <ScalarProperty Name="Suppress_distance" ColumnName="Suppress_distance" />
+          <ScalarProperty Name="Multiage_SuperSeed" ColumnName="Multiage_SuperSeed" />
+          <ScalarProperty Name="Pads_BothEnds" ColumnName="Pads_BothEnds" />
+          <ScalarProperty Name="Num_HeatsInTimedFinalToScore" ColumnName="Num_HeatsInTimedFinalToScore" />
+          <ScalarProperty Name="ScoreTimedFinal_asABC" ColumnName="ScoreTimedFinal_asABC" />
+          <ScalarProperty Name="TimedFinal_LanesVary" ColumnName="TimedFinal_LanesVary" />
+          <ScalarProperty Name="Num_BestHeatsTimedFinal" ColumnName="Num_BestHeatsTimedFinal" />
+          <ScalarProperty Name="Num_LanesInBestHeatsTimedFinal" ColumnName="Num_LanesInBestHeatsTimedFinal" />
+          <ScalarProperty Name="PrelimsAs_ExtendedFinal" ColumnName="PrelimsAs_ExtendedFinal" />
+          <ScalarProperty Name="ABC_Style" ColumnName="ABC_Style" />
+          <ScalarProperty Name="ABCfinal_order" ColumnName="ABCfinal_order" />
+          <ScalarProperty Name="Finals_LanesVaryOrder" ColumnName="Finals_LanesVaryOrder" />
+          <ScalarProperty Name="Finals_LanesVary" ColumnName="Finals_LanesVary" />
+          <ScalarProperty Name="Multiage_SuperFinal" ColumnName="Multiage_SuperFinal" />
+          <ScalarProperty Name="Num_HeatsInFinal" ColumnName="Num_HeatsInFinal" />
+          <ScalarProperty Name="Num_dives" ColumnName="Num_dives" />
+          <ScalarProperty Name="Custom_ABCFinal" ColumnName="Custom_ABCFinal" />
+          <ScalarProperty Name="Suppress_stroke" ColumnName="Suppress_stroke" />
+          <ScalarProperty Name="Event_note" ColumnName="Event_note" />
+          <ScalarProperty Name="Locked_list" ColumnName="Locked_list" />
+          <ScalarProperty Name="Event_Type" ColumnName="Event_Type" />
+          <ScalarProperty Name="Locked_by" ColumnName="Locked_by" />
+          <ScalarProperty Name="Is_locked" ColumnName="Is_locked" />
+          <ScalarProperty Name="Entry_fee" ColumnName="Entry_fee" />
+          <ScalarProperty Name="Comm_4" ColumnName="Comm_4" />
+          <ScalarProperty Name="Comm_3" ColumnName="Comm_3" />
+          <ScalarProperty Name="Comm_2" ColumnName="Comm_2" />
+          <ScalarProperty Name="Comm_1" ColumnName="Comm_1" />
+          <ScalarProperty Name="Relay_size" ColumnName="Relay_size" />
+          <ScalarProperty Name="Div_no" ColumnName="Div_no" />
+          <ScalarProperty Name="Score_event" ColumnName="Score_event" />
+          <ScalarProperty Name="Finheat_order" ColumnName="Finheat_order" />
+          <ScalarProperty Name="Preheat_order" ColumnName="Preheat_order" />
+          <ScalarProperty Name="Twoperlane_req" ColumnName="Twoperlane_req" />
+          <ScalarProperty Name="Auto_seed" ColumnName="Auto_seed" />
+          <ScalarProperty Name="Std_lanes" ColumnName="Std_lanes" />
+          <ScalarProperty Name="Heats_insemi" ColumnName="Heats_insemi" />
+          <ScalarProperty Name="Heats_infinal" ColumnName="Heats_infinal" />
+          <ScalarProperty Name="Num_finlanes" ColumnName="Num_finlanes" />
+          <ScalarProperty Name="Num_prelanes" ColumnName="Num_prelanes" />
+          <ScalarProperty Name="Event_rounds" ColumnName="Event_rounds" />
+          <ScalarProperty Name="Event_stat" ColumnName="Event_stat" />
+          <ScalarProperty Name="Multi_age" ColumnName="Multi_age" />
+          <ScalarProperty Name="High_Age" ColumnName="High_Age" />
+          <ScalarProperty Name="Low_age" ColumnName="Low_age" />
+          <ScalarProperty Name="Event_stroke" ColumnName="Event_stroke" />
+          <ScalarProperty Name="Event_dist" ColumnName="Event_dist" />
+          <ScalarProperty Name="Event_gender" ColumnName="Event_gender" />
+          <ScalarProperty Name="Event_sex" ColumnName="Event_sex" />
+          <ScalarProperty Name="Ind_rel" ColumnName="Ind_rel" />
+          <ScalarProperty Name="Event_ptr" ColumnName="Event_ptr" />
+          <ScalarProperty Name="Event_ltr" ColumnName="Event_ltr" />
+          <ScalarProperty Name="Event_no" ColumnName="Event_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fotos">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Fotos">
+        <MappingFragment StoreEntitySet="Fotos">
+          <ScalarProperty Name="NoticiaId" ColumnName="NoticiaId" />
+          <ScalarProperty Name="Nombrefoto" ColumnName="Nombrefoto" />
+          <ScalarProperty Name="FotoId" ColumnName="FotoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MarcasMinimas">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.MarcasMinimas">
+        <MappingFragment StoreEntitySet="MarcasMinimas">
+          <ScalarProperty Name="MeetId" ColumnName="MeetId" />
+          <ScalarProperty Name="TimeStdId" ColumnName="TimeStdId" />
+          <ScalarProperty Name="div_abbr" ColumnName="div_abbr" />
+          <ScalarProperty Name="tag_course" ColumnName="tag_course" />
+          <ScalarProperty Name="tag_time" ColumnName="tag_time" />
+          <ScalarProperty Name="high_Age" ColumnName="high_Age" />
+          <ScalarProperty Name="low_age" ColumnName="low_age" />
+          <ScalarProperty Name="tag_stroke" ColumnName="tag_stroke" />
+          <ScalarProperty Name="tag_dist" ColumnName="tag_dist" />
+          <ScalarProperty Name="tag_indrel" ColumnName="tag_indrel" />
+          <ScalarProperty Name="tag_gender" ColumnName="tag_gender" />
+          <ScalarProperty Name="tag_ptr" ColumnName="tag_ptr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEET">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.MEET">
+        <MappingFragment StoreEntitySet="MEET">
+          <ScalarProperty Name="MeetId" ColumnName="MeetId" />
+          <ScalarProperty Name="Course" ColumnName="Course" />
+          <ScalarProperty Name="End" ColumnName="End" />
+          <ScalarProperty Name="Start" ColumnName="Start" />
+          <ScalarProperty Name="MName" ColumnName="MName" />
+          <ScalarProperty Name="Meet1" ColumnName="Meet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modals">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Modals">
+        <MappingFragment StoreEntitySet="Modals">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Enlace" ColumnName="Enlace" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Cuerpo" ColumnName="Cuerpo" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Modalid" ColumnName="Modalid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MultiEdad">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.MultiEdad">
+        <MappingFragment StoreEntitySet="MultiEdad">
+          <ScalarProperty Name="MultiAgeId" ColumnName="MultiAgeId" />
+          <ScalarProperty Name="MeetId" ColumnName="MeetId" />
+          <ScalarProperty Name="Num_Heatsinfinal" ColumnName="Num_Heatsinfinal" />
+          <ScalarProperty Name="Heats_infinal" ColumnName="Heats_infinal" />
+          <ScalarProperty Name="high_age" ColumnName="high_age" />
+          <ScalarProperty Name="low_age" ColumnName="low_age" />
+          <ScalarProperty Name="event_ptr" ColumnName="event_ptr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Noticias">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Noticias">
+        <MappingFragment StoreEntitySet="Noticias">
+          <ScalarProperty Name="Youtube" ColumnName="Youtube" />
+          <ScalarProperty Name="Visible" ColumnName="Visible" />
+          <ScalarProperty Name="Palabrasclaves" ColumnName="Palabrasclaves" />
+          <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="DisciplinaId" ColumnName="DisciplinaId" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Larga" ColumnName="Larga" />
+          <ScalarProperty Name="Corta" ColumnName="Corta" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="NoticiaId" ColumnName="NoticiaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PoloEquipos">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.PoloEquipos">
+        <MappingFragment StoreEntitySet="PoloEquipos">
+          <ScalarProperty Name="TorneoId" ColumnName="TorneoId" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="EquipoId" ColumnName="EquipoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PoloFechas">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.PoloFechas">
+        <MappingFragment StoreEntitySet="PoloFechas">
+          <ScalarProperty Name="TorneoId" ColumnName="TorneoId" />
+          <ScalarProperty Name="Dia" ColumnName="Dia" />
+          <ScalarProperty Name="FechaId" ColumnName="FechaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PoloGoleadores">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.PoloGoleadores">
+        <MappingFragment StoreEntitySet="PoloGoleadores">
+          <ScalarProperty Name="TorneoId" ColumnName="TorneoId" />
+          <ScalarProperty Name="Goles" ColumnName="Goles" />
+          <ScalarProperty Name="JugadorId" ColumnName="JugadorId" />
+          <ScalarProperty Name="GoleadorId" ColumnName="GoleadorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PoloGrupos">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.PoloGrupos">
+        <MappingFragment StoreEntitySet="PoloGrupos">
+          <ScalarProperty Name="TorneoId" ColumnName="TorneoId" />
+          <ScalarProperty Name="Sexoid" ColumnName="Sexoid" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="GrupoId" ColumnName="GrupoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PoloJugadores">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.PoloJugadores">
+        <MappingFragment StoreEntitySet="PoloJugadores">
+          <ScalarProperty Name="TorneoId" ColumnName="TorneoId" />
+          <ScalarProperty Name="Edad" ColumnName="Edad" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="EquipoId" ColumnName="EquipoId" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="JugadorId" ColumnName="JugadorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PoloPartidos">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.PoloPartidos">
+        <MappingFragment StoreEntitySet="PoloPartidos">
+          <ScalarProperty Name="TorneoId" ColumnName="TorneoId" />
+          <ScalarProperty Name="Equipo2" ColumnName="Equipo2" />
+          <ScalarProperty Name="Equipo1" ColumnName="Equipo1" />
+          <ScalarProperty Name="RondaId" ColumnName="RondaId" />
+          <ScalarProperty Name="SexoId" ColumnName="SexoId" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="GrupoId" ColumnName="GrupoId" />
+          <ScalarProperty Name="FechaId" ColumnName="FechaId" />
+          <ScalarProperty Name="PartidoId" ColumnName="PartidoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PoloPosicion">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.PoloPosicion">
+        <MappingFragment StoreEntitySet="PoloPosicion">
+          <ScalarProperty Name="TorneoId" ColumnName="TorneoId" />
+          <ScalarProperty Name="GrupoId" ColumnName="GrupoId" />
+          <ScalarProperty Name="EquipoId" ColumnName="EquipoId" />
+          <ScalarProperty Name="PUNTOS" ColumnName="PUNTOS" />
+          <ScalarProperty Name="DG" ColumnName="DG" />
+          <ScalarProperty Name="GC" ColumnName="GC" />
+          <ScalarProperty Name="GF" ColumnName="GF" />
+          <ScalarProperty Name="PP" ColumnName="PP" />
+          <ScalarProperty Name="PE" ColumnName="PE" />
+          <ScalarProperty Name="PG" ColumnName="PG" />
+          <ScalarProperty Name="PJ" ColumnName="PJ" />
+          <ScalarProperty Name="PosicionId" ColumnName="PosicionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PoloPosicionFinal">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.PoloPosicionFinal">
+        <MappingFragment StoreEntitySet="PoloPosicionFinal">
+          <ScalarProperty Name="TorneoId" ColumnName="TorneoId" />
+          <ScalarProperty Name="Posicion" ColumnName="Posicion" />
+          <ScalarProperty Name="Pasiid" ColumnName="Pasiid" />
+          <ScalarProperty Name="PosicionId" ColumnName="PosicionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PoloResultados">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.PoloResultados">
+        <MappingFragment StoreEntitySet="PoloResultados">
+          <ScalarProperty Name="TorneoId" ColumnName="TorneoId" />
+          <ScalarProperty Name="PartidaId" ColumnName="PartidaId" />
+          <ScalarProperty Name="B4" ColumnName="B4" />
+          <ScalarProperty Name="B3" ColumnName="B3" />
+          <ScalarProperty Name="B2" ColumnName="B2" />
+          <ScalarProperty Name="B1" ColumnName="B1" />
+          <ScalarProperty Name="T2" ColumnName="T2" />
+          <ScalarProperty Name="T1" ColumnName="T1" />
+          <ScalarProperty Name="A4" ColumnName="A4" />
+          <ScalarProperty Name="A3" ColumnName="A3" />
+          <ScalarProperty Name="A2" ColumnName="A2" />
+          <ScalarProperty Name="A1" ColumnName="A1" />
+          <ScalarProperty Name="ResultadoId" ColumnName="ResultadoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PoloRondas">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.PoloRondas">
+        <MappingFragment StoreEntitySet="PoloRondas">
+          <ScalarProperty Name="TorneoId" ColumnName="TorneoId" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="RondaId" ColumnName="RondaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PoloTorneo">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.PoloTorneo">
+        <MappingFragment StoreEntitySet="PoloTorneo">
+          <ScalarProperty Name="EdadMinima" ColumnName="EdadMinima" />
+          <ScalarProperty Name="EdadMaxima" ColumnName="EdadMaxima" />
+          <ScalarProperty Name="FechaCierre" ColumnName="FechaCierre" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="TorneoId" ColumnName="TorneoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pruebas">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Pruebas">
+        <MappingFragment StoreEntitySet="Pruebas">
+          <ScalarProperty Name="EstiloMeet" ColumnName="EstiloMeet" />
+          <ScalarProperty Name="FactorM" ColumnName="FactorM" />
+          <ScalarProperty Name="FactorF" ColumnName="FactorF" />
+          <ScalarProperty Name="estilo" ColumnName="estilo" />
+          <ScalarProperty Name="distancia" ColumnName="distancia" />
+          <ScalarProperty Name="PruebaId" ColumnName="PruebaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Query">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Query">
+        <MappingFragment StoreEntitySet="Query">
+          <ScalarProperty Name="AthleteId" ColumnName="AthleteId" />
+          <ScalarProperty Name="ID_NO" ColumnName="ID_NO" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Birth" ColumnName="Birth" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Last" ColumnName="Last" />
+          <ScalarProperty Name="First" ColumnName="First" />
+          <ScalarProperty Name="Athlete" ColumnName="Athlete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RESULTS">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.RESULTS">
+        <MappingFragment StoreEntitySet="RESULTS">
+          <ScalarProperty Name="Tiempobase" ColumnName="Tiempobase" />
+          <ScalarProperty Name="ResultId" ColumnName="ResultId" />
+          <ScalarProperty Name="PruebaId" ColumnName="PruebaId" />
+          <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+          <ScalarProperty Name="MeetId" ColumnName="MeetId" />
+          <ScalarProperty Name="AthleteId" ColumnName="AthleteId" />
+          <ScalarProperty Name="PFina" ColumnName="PFina" />
+          <ScalarProperty Name="DIVISION" ColumnName="DIVISION" />
+          <ScalarProperty Name="COURSE" ColumnName="COURSE" />
+          <ScalarProperty Name="PLACE" ColumnName="PLACE" />
+          <ScalarProperty Name="POINTS" ColumnName="POINTS" />
+          <ScalarProperty Name="LO_HI" ColumnName="LO_HI" />
+          <ScalarProperty Name="MTEV" ColumnName="MTEV" />
+          <ScalarProperty Name="STROKE" ColumnName="STROKE" />
+          <ScalarProperty Name="DISTANCE" ColumnName="DISTANCE" />
+          <ScalarProperty Name="AGE" ColumnName="AGE" />
+          <ScalarProperty Name="NT" ColumnName="NT" />
+          <ScalarProperty Name="EX" ColumnName="EX" />
+          <ScalarProperty Name="F_P" ColumnName="F_P" />
+          <ScalarProperty Name="SCORE" ColumnName="SCORE" />
+          <ScalarProperty Name="TEAM" ColumnName="TEAM" />
+          <ScalarProperty Name="I_R" ColumnName="I_R" />
+          <ScalarProperty Name="ATHLETE" ColumnName="ATHLETE" />
+          <ScalarProperty Name="MEET" ColumnName="MEET" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sesion">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Sesion">
+        <MappingFragment StoreEntitySet="Sesion">
+          <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+          <ScalarProperty Name="MeetId" ColumnName="MeetId" />
+          <ScalarProperty Name="Sess_chaseinterval" ColumnName="Sess_chaseinterval" />
+          <ScalarProperty Name="Sess_divinginterval" ColumnName="Sess_divinginterval" />
+          <ScalarProperty Name="Sess_backinterval" ColumnName="Sess_backinterval" />
+          <ScalarProperty Name="Sess_entrymaxrel" ColumnName="Sess_entrymaxrel" />
+          <ScalarProperty Name="Sess_entrymaxind" ColumnName="Sess_entrymaxind" />
+          <ScalarProperty Name="Sess_course" ColumnName="Sess_course" />
+          <ScalarProperty Name="Sess_interval" ColumnName="Sess_interval" />
+          <ScalarProperty Name="Sess_name" ColumnName="Sess_name" />
+          <ScalarProperty Name="Sess_entrymax" ColumnName="Sess_entrymax" />
+          <ScalarProperty Name="Sess_starttime" ColumnName="Sess_starttime" />
+          <ScalarProperty Name="Sess_day" ColumnName="Sess_day" />
+          <ScalarProperty Name="Sess_ptr" ColumnName="Sess_ptr" />
+          <ScalarProperty Name="Sess_ltr" ColumnName="Sess_ltr" />
+          <ScalarProperty Name="Sess_no" ColumnName="Sess_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SessionItem">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.SessionItem">
+        <MappingFragment StoreEntitySet="SessionItem">
+          <ScalarProperty Name="Meetid" ColumnName="Meetid" />
+          <ScalarProperty Name="SessitemId" ColumnName="SessitemId" />
+          <ScalarProperty Name="AltHeats_StartCount" ColumnName="AltHeats_StartCount" />
+          <ScalarProperty Name="Delay_desc" ColumnName="Delay_desc" />
+          <ScalarProperty Name="EventTo_AlternateWith" ColumnName="EventTo_AlternateWith" />
+          <ScalarProperty Name="Timed_finalheats" ColumnName="Timed_finalheats" />
+          <ScalarProperty Name="Alt_With" ColumnName="Alt_With" />
+          <ScalarProperty Name="Delay_seconds" ColumnName="Delay_seconds" />
+          <ScalarProperty Name="Rept_type" ColumnName="Rept_type" />
+          <ScalarProperty Name="Sess_rnd" ColumnName="Sess_rnd" />
+          <ScalarProperty Name="Event_ptr" ColumnName="Event_ptr" />
+          <ScalarProperty Name="Sess_ptr" ColumnName="Sess_ptr" />
+          <ScalarProperty Name="Sess_order" ColumnName="Sess_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SetupTorneo">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.SetupTorneo">
+        <MappingFragment StoreEntitySet="SetupTorneo">
+          <ScalarProperty Name="Meetid" ColumnName="Meetid" />
+          <ScalarProperty Name="pruebasXtorneo" ColumnName="pruebasXtorneo" />
+          <ScalarProperty Name="pruebasXsesion" ColumnName="pruebasXsesion" />
+          <ScalarProperty Name="TipoId" ColumnName="TipoId" />
+          <ScalarProperty Name="SetupId" ColumnName="SetupId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
@@ -300,6 +1098,271 @@
           <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
           <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEAM">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.TEAM">
+        <MappingFragment StoreEntitySet="TEAM">
+          <ScalarProperty Name="TName" ColumnName="TName" />
+          <ScalarProperty Name="TCode" ColumnName="TCode" />
+          <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+          <ScalarProperty Name="Team1" ColumnName="Team" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoTorneo">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.TipoTorneo">
+        <MappingFragment StoreEntitySet="TipoTorneo">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="TipoId" ColumnName="TipoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Torneo">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Torneo">
+        <MappingFragment StoreEntitySet="Torneo">
+          <ScalarProperty Name="MarcaMaxima" ColumnName="MarcaMaxima" />
+          <ScalarProperty Name="Meetid" ColumnName="Meetid" />
+          <ScalarProperty Name="DisabledSeedWithAgeGroup_IfTimedFinalSuperSeed" ColumnName="DisabledSeedWithAgeGroup_IfTimedFinalSuperSeed" />
+          <ScalarProperty Name="TimeAdj_Method" ColumnName="TimeAdj_Method" />
+          <ScalarProperty Name="RelayOnly_Surcharge" ColumnName="RelayOnly_Surcharge" />
+          <ScalarProperty Name="MixedRelays_DividedPoints" ColumnName="MixedRelays_DividedPoints" />
+          <ScalarProperty Name="Last_updated" ColumnName="Last_updated" />
+          <ScalarProperty Name="QualNonConformCourse_UseMinStd" ColumnName="QualNonConformCourse_UseMinStd" />
+          <ScalarProperty Name="CountTimeTrial_Events" ColumnName="CountTimeTrial_Events" />
+          <ScalarProperty Name="DisabledIgnoreQualTime_ForScoring" ColumnName="DisabledIgnoreQualTime_ForScoring" />
+          <ScalarProperty Name="prelimheats_circledist" ColumnName="prelimheats_circledist" />
+          <ScalarProperty Name="DisabledDoNot_AdvanceToFinals" ColumnName="DisabledDoNot_AdvanceToFinals" />
+          <ScalarProperty Name="special_parapoints" ColumnName="special_parapoints" />
+          <ScalarProperty Name="RankDisabled_ByPoints" ColumnName="RankDisabled_ByPoints" />
+          <ScalarProperty Name="FastestHeat_SomeLanesDoNotScore" ColumnName="FastestHeat_SomeLanesDoNotScore" />
+          <ScalarProperty Name="SortTeamCombos_ByTeamName" ColumnName="SortTeamCombos_ByTeamName" />
+          <ScalarProperty Name="DisplayNTfor_TimesUnder5Sec" ColumnName="DisplayNTfor_TimesUnder5Sec" />
+          <ScalarProperty Name="entry_OpenDate" ColumnName="entry_OpenDate" />
+          <ScalarProperty Name="athlete_latesurchargedate" ColumnName="athlete_latesurchargedate" />
+          <ScalarProperty Name="athlete_earlysurchargedate" ColumnName="athlete_earlysurchargedate" />
+          <ScalarProperty Name="athlete_latesurcharge" ColumnName="athlete_latesurcharge" />
+          <ScalarProperty Name="athlete_earlysurcharge" ColumnName="athlete_earlysurcharge" />
+          <ScalarProperty Name="Flag_FastestRecordOnly" ColumnName="Flag_FastestRecordOnly" />
+          <ScalarProperty Name="maxforeign_infinal" ColumnName="maxforeign_infinal" />
+          <ScalarProperty Name="reltopmany_awardsSr" ColumnName="reltopmany_awardsSr" />
+          <ScalarProperty Name="indtopmany_awardsSr" ColumnName="indtopmany_awardsSr" />
+          <ScalarProperty Name="Pool2_name" ColumnName="Pool2_name" />
+          <ScalarProperty Name="Pool1_name" ColumnName="Pool1_name" />
+          <ScalarProperty Name="Using_twopools" ColumnName="Using_twopools" />
+          <ScalarProperty Name="Enter_birthcentury" ColumnName="Enter_birthcentury" />
+          <ScalarProperty Name="ExcludeNTEntries_WhenImporting" ColumnName="ExcludeNTEntries_WhenImporting" />
+          <ScalarProperty Name="ShowFirstName_OverPreferred" ColumnName="ShowFirstName_OverPreferred" />
+          <ScalarProperty Name="Meet_USMastersMeetID" ColumnName="Meet_USMastersMeetID" />
+          <ScalarProperty Name="Meet_hostlsc" ColumnName="Meet_hostlsc" />
+          <ScalarProperty Name="Meet_zip" ColumnName="Meet_zip" />
+          <ScalarProperty Name="Meet_city" ColumnName="Meet_city" />
+          <ScalarProperty Name="Meet_addr2" ColumnName="Meet_addr2" />
+          <ScalarProperty Name="Meet_addr1" ColumnName="Meet_addr1" />
+          <ScalarProperty Name="entry_deadline" ColumnName="entry_deadline" />
+          <ScalarProperty Name="dualteam_lane12" ColumnName="dualteam_lane12" />
+          <ScalarProperty Name="dualteam_lane11" ColumnName="dualteam_lane11" />
+          <ScalarProperty Name="RelaysAlternate_TwoFastestFirst" ColumnName="RelaysAlternate_TwoFastestFirst" />
+          <ScalarProperty Name="flighted_inclDQ" ColumnName="flighted_inclDQ" />
+          <ScalarProperty Name="flighted_flightcount" ColumnName="flighted_flightcount" />
+          <ScalarProperty Name="RelaysAs_4x100Style" ColumnName="RelaysAs_4x100Style" />
+          <ScalarProperty Name="Suppress_ResultsAdvQ" ColumnName="Suppress_ResultsAdvQ" />
+          <ScalarProperty Name="Show_HyTekDecimals" ColumnName="Show_HyTekDecimals" />
+          <ScalarProperty Name="BCSSA_DivbyTimeStd" ColumnName="BCSSA_DivbyTimeStd" />
+          <ScalarProperty Name="Meet_lsc" ColumnName="Meet_lsc" />
+          <ScalarProperty Name="Meet_country" ColumnName="Meet_country" />
+          <ScalarProperty Name="Meet_state" ColumnName="Meet_state" />
+          <ScalarProperty Name="Show_AgeandBirthYear" ColumnName="Show_AgeandBirthYear" />
+          <ScalarProperty Name="SuppressTimes_NotMeetQualTime" ColumnName="SuppressTimes_NotMeetQualTime" />
+          <ScalarProperty Name="DQCodes_Type" ColumnName="DQCodes_Type" />
+          <ScalarProperty Name="Suppress_SplitsForDQsRelay" ColumnName="Suppress_SplitsForDQsRelay" />
+          <ScalarProperty Name="Suppress_SplitsForDQs" ColumnName="Suppress_SplitsForDQs" />
+          <ScalarProperty Name="Custom_QualTimes" ColumnName="Custom_QualTimes" />
+          <ScalarProperty Name="masters_rellowage" ColumnName="masters_rellowage" />
+          <ScalarProperty Name="masters_indlowage" ColumnName="masters_indlowage" />
+          <ScalarProperty Name="Suppress_TimeStdAbbr" ColumnName="Suppress_TimeStdAbbr" />
+          <ScalarProperty Name="EntryEligibility_date" ColumnName="EntryEligibility_date" />
+          <ScalarProperty Name="PenaltyPts_ForNS" ColumnName="PenaltyPts_ForNS" />
+          <ScalarProperty Name="ShowYear_InPlaceOfAge" ColumnName="ShowYear_InPlaceOfAge" />
+          <ScalarProperty Name="Flighted_BasedOnResultsTime" ColumnName="Flighted_BasedOnResultsTime" />
+          <ScalarProperty Name="Read_Only" ColumnName="Read_Only" />
+          <ScalarProperty Name="RelayNames_LinkByLSC" ColumnName="RelayNames_LinkByLSC" />
+          <ScalarProperty Name="relmaxadvance_perteam" ColumnName="relmaxadvance_perteam" />
+          <ScalarProperty Name="indmaxadvance_perteam" ColumnName="indmaxadvance_perteam" />
+          <ScalarProperty Name="Display_ActualEntryTime" ColumnName="Display_ActualEntryTime" />
+          <ScalarProperty Name="team_surcharge" ColumnName="team_surcharge" />
+          <ScalarProperty Name="dualseeding_altunusedlane" ColumnName="dualseeding_altunusedlane" />
+          <ScalarProperty Name="strict_evenoddfastestheatonly" ColumnName="strict_evenoddfastestheatonly" />
+          <ScalarProperty Name="dualteam_lane10" ColumnName="dualteam_lane10" />
+          <ScalarProperty Name="dualteam_lane9" ColumnName="dualteam_lane9" />
+          <ScalarProperty Name="dualteam_lane8" ColumnName="dualteam_lane8" />
+          <ScalarProperty Name="dualteam_lane7" ColumnName="dualteam_lane7" />
+          <ScalarProperty Name="dualteam_lane6" ColumnName="dualteam_lane6" />
+          <ScalarProperty Name="dualteam_lane5" ColumnName="dualteam_lane5" />
+          <ScalarProperty Name="dualteam_lane4" ColumnName="dualteam_lane4" />
+          <ScalarProperty Name="dualteam_lane3" ColumnName="dualteam_lane3" />
+          <ScalarProperty Name="dualteam_lane2" ColumnName="dualteam_lane2" />
+          <ScalarProperty Name="dualteam_lane1" ColumnName="dualteam_lane1" />
+          <ScalarProperty Name="AllowSameEvent_DupRelayNames" ColumnName="AllowSameEvent_DupRelayNames" />
+          <ScalarProperty Name="APNews_Dir" ColumnName="APNews_Dir" />
+          <ScalarProperty Name="FlatHtml_Dir" ColumnName="FlatHtml_Dir" />
+          <ScalarProperty Name="RestoreTo_Dir" ColumnName="RestoreTo_Dir" />
+          <ScalarProperty Name="RestoreFrom_Dir" ColumnName="RestoreFrom_Dir" />
+          <ScalarProperty Name="Backup_Dir" ColumnName="Backup_Dir" />
+          <ScalarProperty Name="Export_Dir" ColumnName="Export_Dir" />
+          <ScalarProperty Name="Import_Dir" ColumnName="Import_Dir" />
+          <ScalarProperty Name="Meet_altitude" ColumnName="Meet_altitude" />
+          <ScalarProperty Name="referee_offphone" ColumnName="referee_offphone" />
+          <ScalarProperty Name="referee_homphone" ColumnName="referee_homphone" />
+          <ScalarProperty Name="referee_name" ColumnName="referee_name" />
+          <ScalarProperty Name="timedfinalnonconform_last" ColumnName="timedfinalnonconform_last" />
+          <ScalarProperty Name="entry_msg" ColumnName="entry_msg" />
+          <ScalarProperty Name="IsCanadian_Masters" ColumnName="IsCanadian_Masters" />
+          <ScalarProperty Name="Use_AltTeamAbbr" ColumnName="Use_AltTeamAbbr" />
+          <ScalarProperty Name="PointsAwarded_ForExh" ColumnName="PointsAwarded_ForExh" />
+          <ScalarProperty Name="autobackup_interval" ColumnName="autobackup_interval" />
+          <ScalarProperty Name="turnon_autobackup" ColumnName="turnon_autobackup" />
+          <ScalarProperty Name="firstinitial_fulllastname" ColumnName="firstinitial_fulllastname" />
+          <ScalarProperty Name="Show_secondclub" ColumnName="Show_secondclub" />
+          <ScalarProperty Name="Enter_AthStat" ColumnName="Enter_AthStat" />
+          <ScalarProperty Name="PointsAwarded_ForNT" ColumnName="PointsAwarded_ForNT" />
+          <ScalarProperty Name="PointsAwarded_ForScratch" ColumnName="PointsAwarded_ForScratch" />
+          <ScalarProperty Name="PointsAwarded_ForDQ" ColumnName="PointsAwarded_ForDQ" />
+          <ScalarProperty Name="apnews_team" ColumnName="apnews_team" />
+          <ScalarProperty Name="NonConforming_PoolFactor" ColumnName="NonConforming_PoolFactor" />
+          <ScalarProperty Name="UseNonConforming_PoolFactor" ColumnName="UseNonConforming_PoolFactor" />
+          <ScalarProperty Name="countrelay_alt" ColumnName="countrelay_alt" />
+          <ScalarProperty Name="special_points" ColumnName="special_points" />
+          <ScalarProperty Name="include_sanction" ColumnName="include_sanction" />
+          <ScalarProperty Name="Sanction_number" ColumnName="Sanction_number" />
+          <ScalarProperty Name="maxagefor_cfinal" ColumnName="maxagefor_cfinal" />
+          <ScalarProperty Name="abcfinal_order" ColumnName="abcfinal_order" />
+          <ScalarProperty Name="suppress_jd" ColumnName="suppress_jd" />
+          <ScalarProperty Name="thirteenandover_assenior" ColumnName="thirteenandover_assenior" />
+          <ScalarProperty Name="score_Arelayonly" ColumnName="score_Arelayonly" />
+          <ScalarProperty Name="suppress_smallx" ColumnName="suppress_smallx" />
+          <ScalarProperty Name="useeventsex_teamscore" ColumnName="useeventsex_teamscore" />
+          <ScalarProperty Name="open_lowage" ColumnName="open_lowage" />
+          <ScalarProperty Name="showathlete_status" ColumnName="showathlete_status" />
+          <ScalarProperty Name="suppress_lsc" ColumnName="suppress_lsc" />
+          <ScalarProperty Name="ucase_recholders" ColumnName="ucase_recholders" />
+          <ScalarProperty Name="Punct_recholders" ColumnName="Punct_recholders" />
+          <ScalarProperty Name="suppress_Arelay" ColumnName="suppress_Arelay" />
+          <ScalarProperty Name="under_eventname" ColumnName="under_eventname" />
+          <ScalarProperty Name="lastname_asinitial" ColumnName="lastname_asinitial" />
+          <ScalarProperty Name="directly_toprinter" ColumnName="directly_toprinter" />
+          <ScalarProperty Name="swimmer_surcharge" ColumnName="swimmer_surcharge" />
+          <ScalarProperty Name="pentscoring_usedqtime" ColumnName="pentscoring_usedqtime" />
+          <ScalarProperty Name="autoinc_compno" ColumnName="autoinc_compno" />
+          <ScalarProperty Name="report_headersonly" ColumnName="report_headersonly" />
+          <ScalarProperty Name="copies_toprinter" ColumnName="copies_toprinter" />
+          <ScalarProperty Name="scbd_cycleseconds" ColumnName="scbd_cycleseconds" />
+          <ScalarProperty Name="scbd_cycle" ColumnName="scbd_cycle" />
+          <ScalarProperty Name="scbd_relaynames" ColumnName="scbd_relaynames" />
+          <ScalarProperty Name="scbd_names" ColumnName="scbd_names" />
+          <ScalarProperty Name="scbd_punctuation" ColumnName="scbd_punctuation" />
+          <ScalarProperty Name="flag_underachievers" ColumnName="flag_underachievers" />
+          <ScalarProperty Name="flag_overachievers" ColumnName="flag_overachievers" />
+          <ScalarProperty Name="meet_meetstyle" ColumnName="meet_meetstyle" />
+          <ScalarProperty Name="enter_citizenof" ColumnName="enter_citizenof" />
+          <ScalarProperty Name="include_swimupsinteamscore" ColumnName="include_swimupsinteamscore" />
+          <ScalarProperty Name="foreign_getteampoints" ColumnName="foreign_getteampoints" />
+          <ScalarProperty Name="relmax_perath" ColumnName="relmax_perath" />
+          <ScalarProperty Name="indmax_perath" ColumnName="indmax_perath" />
+          <ScalarProperty Name="entrymax_total" ColumnName="entrymax_total" />
+          <ScalarProperty Name="reltopmany_awards" ColumnName="reltopmany_awards" />
+          <ScalarProperty Name="indtopmany_awards" ColumnName="indtopmany_awards" />
+          <ScalarProperty Name="relmaxscorers_perteam" ColumnName="relmaxscorers_perteam" />
+          <ScalarProperty Name="indmaxscorers_perteam" ColumnName="indmaxscorers_perteam" />
+          <ScalarProperty Name="pointsfor_underachievers" ColumnName="pointsfor_underachievers" />
+          <ScalarProperty Name="pointsfor_overachievers" ColumnName="pointsfor_overachievers" />
+          <ScalarProperty Name="pointsbasedon_seedtime" ColumnName="pointsbasedon_seedtime" />
+          <ScalarProperty Name="entrylimits_warn" ColumnName="entrylimits_warn" />
+          <ScalarProperty Name="score_fastestheatonly" ColumnName="score_fastestheatonly" />
+          <ScalarProperty Name="scoreonly_ifexceedqualtime" ColumnName="scoreonly_ifexceedqualtime" />
+          <ScalarProperty Name="diffpts_eachdivision" ColumnName="diffpts_eachdivision" />
+          <ScalarProperty Name="diffpts_malefemale" ColumnName="diffpts_malefemale" />
+          <ScalarProperty Name="flighted_minentries" ColumnName="flighted_minentries" />
+          <ScalarProperty Name="use_compnumbers" ColumnName="use_compnumbers" />
+          <ScalarProperty Name="double_endedsplits" ColumnName="double_endedsplits" />
+          <ScalarProperty Name="enterkey_astab" ColumnName="enterkey_astab" />
+          <ScalarProperty Name="check_times" ColumnName="check_times" />
+          <ScalarProperty Name="military_time" ColumnName="military_time" />
+          <ScalarProperty Name="language_choice" ColumnName="language_choice" />
+          <ScalarProperty Name="anyone_onrelay" ColumnName="anyone_onrelay" />
+          <ScalarProperty Name="Facility_Surcharge" ColumnName="Facility_Surcharge" />
+          <ScalarProperty Name="entryqual_faster" ColumnName="entryqual_faster" />
+          <ScalarProperty Name="open_senior_none" ColumnName="open_senior_none" />
+          <ScalarProperty Name="ucase_teams" ColumnName="ucase_teams" />
+          <ScalarProperty Name="ucase_names" ColumnName="ucase_names" />
+          <ScalarProperty Name="show_initial" ColumnName="show_initial" />
+          <ScalarProperty Name="scbd_vendor" ColumnName="scbd_vendor" />
+          <ScalarProperty Name="timer_vendor" ColumnName="timer_vendor" />
+          <ScalarProperty Name="scbd_port" ColumnName="scbd_port" />
+          <ScalarProperty Name="timer_port" ColumnName="timer_port" />
+          <ScalarProperty Name="masters_agegrpsskip" ColumnName="masters_agegrpsskip" />
+          <ScalarProperty Name="masters_bytimeonly" ColumnName="masters_bytimeonly" />
+          <ScalarProperty Name="team_oddlanes" ColumnName="team_oddlanes" />
+          <ScalarProperty Name="team_evenlanes" ColumnName="team_evenlanes" />
+          <ScalarProperty Name="strict_evenodd" ColumnName="strict_evenodd" />
+          <ScalarProperty Name="dual_evenodd" ColumnName="dual_evenodd" />
+          <ScalarProperty Name="seed_exhlast" ColumnName="seed_exhlast" />
+          <ScalarProperty Name="course_order" ColumnName="course_order" />
+          <ScalarProperty Name="nonconform_last" ColumnName="nonconform_last" />
+          <ScalarProperty Name="exh_infinal" ColumnName="exh_infinal" />
+          <ScalarProperty Name="foreign_infinal" ColumnName="foreign_infinal" />
+          <ScalarProperty Name="timedfinal_circleseed" ColumnName="timedfinal_circleseed" />
+          <ScalarProperty Name="prelimheats_circle" ColumnName="prelimheats_circle" />
+          <ScalarProperty Name="meet_numlanes" ColumnName="meet_numlanes" />
+          <ScalarProperty Name="win_mm" ColumnName="win_mm" />
+          <ScalarProperty Name="Punct_teams" ColumnName="Punct_teams" />
+          <ScalarProperty Name="Punct_names" ColumnName="Punct_names" />
+          <ScalarProperty Name="Lastname_first" ColumnName="Lastname_first" />
+          <ScalarProperty Name="Scores_afterevt" ColumnName="Scores_afterevt" />
+          <ScalarProperty Name="Show_countrycode" ColumnName="Show_countrycode" />
+          <ScalarProperty Name="Use_hometown" ColumnName="Use_hometown" />
+          <ScalarProperty Name="A_Relaysonly" ColumnName="A_Relaysonly" />
+          <ScalarProperty Name="Enter_schoolyr" ColumnName="Enter_schoolyr" />
+          <ScalarProperty Name="Calc_date" ColumnName="Calc_date" />
+          <ScalarProperty Name="Enter_birthdate" ColumnName="Enter_birthdate" />
+          <ScalarProperty Name="Enter_ages" ColumnName="Enter_ages" />
+          <ScalarProperty Name="Meet_course" ColumnName="Meet_course" />
+          <ScalarProperty Name="Meet_meettype" ColumnName="Meet_meettype" />
+          <ScalarProperty Name="Meet_class" ColumnName="Meet_class" />
+          <ScalarProperty Name="Meet_idformat" ColumnName="Meet_idformat" />
+          <ScalarProperty Name="Meet_end" ColumnName="Meet_end" />
+          <ScalarProperty Name="Meet_start" ColumnName="Meet_start" />
+          <ScalarProperty Name="Meet_location" ColumnName="Meet_location" />
+          <ScalarProperty Name="Meet_header2" ColumnName="Meet_header2" />
+          <ScalarProperty Name="Meet_header1" ColumnName="Meet_header1" />
+          <ScalarProperty Name="Meet_name1" ColumnName="Meet_name1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TorneoDestacado">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.TorneoDestacado">
+        <MappingFragment StoreEntitySet="TorneoDestacado">
+          <ScalarProperty Name="Meet" ColumnName="Meet" />
+          <ScalarProperty Name="DestacadoId" ColumnName="DestacadoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TorneoDestacadoMasters">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.TorneoDestacadoMasters">
+        <MappingFragment StoreEntitySet="TorneoDestacadoMasters">
+          <ScalarProperty Name="Meet" ColumnName="Meet" />
+          <ScalarProperty Name="DestacadoId" ColumnName="DestacadoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vivo">
+      <EntityTypeMapping TypeName="DB_9B1F4C_afiliacionesModel.Vivo">
+        <MappingFragment StoreEntitySet="Vivo">
+          <ScalarProperty Name="Directorio" ColumnName="Directorio" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="VivoId" ColumnName="VivoId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -19,6 +19,7 @@ namespace FDPN.Models
         public int ClubSolicitante { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
         public bool Liberado { get; set; }
+        public Nullable<int> IsncripcionId { get; set; }
     
         public virtual Club Club { get; set; }
         public virtual Inscripciones Inscripciones { get; set; }

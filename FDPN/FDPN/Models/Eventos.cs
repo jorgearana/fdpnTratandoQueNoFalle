@@ -14,14 +14,6 @@ namespace FDPN.Models
     
     public partial class Eventos
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Eventos()
-        {
-            this.Entradas = new HashSet<Entradas>();
-            this.MultiEdad = new HashSet<MultiEdad>();
-            this.SessionItem = new HashSet<SessionItem>();
-        }
-    
         public Nullable<short> Event_no { get; set; }
         public string Event_ltr { get; set; }
         public int Event_ptr { get; set; }
@@ -98,11 +90,6 @@ namespace FDPN.Models
         public int EventId { get; set; }
         public int MeetId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Entradas> Entradas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MultiEdad> MultiEdad { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SessionItem> SessionItem { get; set; }
+        public virtual Torneo Torneo { get; set; }
     }
 }

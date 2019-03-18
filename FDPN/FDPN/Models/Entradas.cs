@@ -117,10 +117,7 @@ namespace FDPN.Models
         public bool pre_contacted { get; set; }
         public int EntryId { get; set; }
         public int MeetId { get; set; }
-        public int AtletaId { get; set; }
-        public int EventId { get; set; }
     
-        public virtual Atletas Atletas { get; set; }
-        public virtual Eventos Eventos { get; set; }
+        public virtual Torneo Torneo { get; set; }
     }
 }

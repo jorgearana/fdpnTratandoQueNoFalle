@@ -1,0 +1,49 @@
+﻿@model FDPN.Models.Vivo
+
+@{
+    ViewBag.Title = "Borrar Vivo";
+    Layout = "~/Views/Shared/_LayoutWYSWYG.cshtml";
+}
+
+<h2>Borrar Resultado en Vivo</h2>
+
+
+<div>
+    <h3>¿Está seguro de hacer esto?</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Directorio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Directorio)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(x=>x.VivoId)
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-primary" /> 
+            @Html.ActionLink("Ir al listado", "ResultadosEnVivo")
+        </div>
+    }
+</div>
