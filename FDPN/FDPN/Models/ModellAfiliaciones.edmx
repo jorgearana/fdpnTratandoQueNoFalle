@@ -829,14 +829,11 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Empresa' no tiene 
           <Property Name="Course" Type="nvarchar" MaxLength="2" Nullable="false" />
           <Property Name="MeetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Modals' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Modals">
           <Key>
             <PropertyRef Name="Modalid" />
-            <PropertyRef Name="Activo" />
           </Key>
-          <Property Name="Modalid" Type="int" Nullable="false" />
+          <Property Name="Modalid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Titulo" Type="nvarchar" MaxLength="500" />
           <Property Name="Cuerpo" Type="nvarchar(max)" />
           <Property Name="Image" Type="nvarchar" MaxLength="200" />
@@ -2639,6 +2636,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySet Name="MarcasMinimas" EntityType="Self.MarcasMinimas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MEET" EntityType="Self.MEET" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MEETMasters" EntityType="Self.MEETMasters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modals" EntityType="Self.Modals" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Multas" EntityType="Self.Multas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MultiEdad" EntityType="Self.MultiEdad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Noticias" EntityType="Self.Noticias" Schema="dbo" store:Type="Tables" />
@@ -2825,16 +2823,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
     [Empresa].[Web] AS [Web], 
     [Empresa].[Notas] AS [Notas]
     FROM [dbo].[Empresa] AS [Empresa]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Modals" EntityType="Self.Modals" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Modals].[Modalid] AS [Modalid], 
-    [Modals].[Titulo] AS [Titulo], 
-    [Modals].[Cuerpo] AS [Cuerpo], 
-    [Modals].[Image] AS [Image], 
-    [Modals].[Enlace] AS [Enlace], 
-    [Modals].[Activo] AS [Activo]
-    FROM [dbo].[Modals] AS [Modals]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Query" EntityType="Self.Query" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -3253,6 +3241,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySet Name="MarcasMinimas" EntityType="DB_9B1F4C_comentariosModel.MarcasMinimas" />
           <EntitySet Name="MEET" EntityType="DB_9B1F4C_comentariosModel.MEET" />
           <EntitySet Name="MEETMasters" EntityType="DB_9B1F4C_comentariosModel.MEETMasters" />
+          <EntitySet Name="Modals" EntityType="DB_9B1F4C_comentariosModel.Modals" />
           <EntitySet Name="Multas" EntityType="DB_9B1F4C_comentariosModel.Multas" />
           <EntitySet Name="MultiEdad" EntityType="DB_9B1F4C_comentariosModel.MultiEdad" />
           <EntitySet Name="Noticias" EntityType="DB_9B1F4C_comentariosModel.Noticias" />
@@ -3305,7 +3294,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySet Name="CursoInscripcion" EntityType="DB_9B1F4C_comentariosModel.CursoInscripcion" />
           <EntitySet Name="CursoParticipante" EntityType="DB_9B1F4C_comentariosModel.CursoParticipante" />
           <EntitySet Name="Empresa" EntityType="DB_9B1F4C_comentariosModel.Empresa" />
-          <EntitySet Name="Modals" EntityType="DB_9B1F4C_comentariosModel.Modals" />
           <EntitySet Name="Query" EntityType="DB_9B1F4C_comentariosModel.Query" />
           <EntitySet Name="Suscritos" EntityType="DB_9B1F4C_comentariosModel.Suscritos" />
           <EntitySet Name="tb_Suscritos" EntityType="DB_9B1F4C_comentariosModel.tb_Suscritos" />
@@ -4294,6 +4282,17 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <Property Name="MeetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="RESULTSMasters" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTSMasters_MEETMasters" FromRole="MEETMasters" ToRole="RESULTSMasters" />
         </EntityType>
+        <EntityType Name="Modals">
+          <Key>
+            <PropertyRef Name="Modalid" />
+          </Key>
+          <Property Name="Modalid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Cuerpo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Enlace" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+        </EntityType>
         <EntityType Name="Multas">
           <Key>
             <PropertyRef Name="MultaId" />
@@ -5281,18 +5280,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <Property Name="Ubicacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Web" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Notas" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Modals">
-          <Key>
-            <PropertyRef Name="Modalid" />
-            <PropertyRef Name="Activo" />
-          </Key>
-          <Property Name="Modalid" Type="Int32" Nullable="false" />
-          <Property Name="Titulo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Cuerpo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Enlace" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Activo" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Query">
           <Key>
@@ -6961,6 +6948,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Modals">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Modals">
+              <MappingFragment StoreEntitySet="Modals">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Enlace" ColumnName="Enlace" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Cuerpo" ColumnName="Cuerpo" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Modalid" ColumnName="Modalid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Multas">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Multas">
               <MappingFragment StoreEntitySet="Multas">
@@ -7866,18 +7865,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
                 <ScalarProperty Name="Direccion" ColumnName="Direccion" />
                 <ScalarProperty Name="Empresa1" ColumnName="Empresa" />
                 <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Modals">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Modals">
-              <MappingFragment StoreEntitySet="Modals">
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-                <ScalarProperty Name="Enlace" ColumnName="Enlace" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Cuerpo" ColumnName="Cuerpo" />
-                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
-                <ScalarProperty Name="Modalid" ColumnName="Modalid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

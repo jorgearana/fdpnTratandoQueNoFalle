@@ -57,6 +57,7 @@ namespace FDPN.Models
         public virtual DbSet<MarcasMinimas> MarcasMinimas { get; set; }
         public virtual DbSet<MEET> MEET { get; set; }
         public virtual DbSet<MEETMasters> MEETMasters { get; set; }
+        public virtual DbSet<Modals> Modals { get; set; }
         public virtual DbSet<Multas> Multas { get; set; }
         public virtual DbSet<MultiEdad> MultiEdad { get; set; }
         public virtual DbSet<Noticias> Noticias { get; set; }
@@ -109,7 +110,6 @@ namespace FDPN.Models
         public virtual DbSet<CursoInscripcion> CursoInscripcion { get; set; }
         public virtual DbSet<CursoParticipante> CursoParticipante { get; set; }
         public virtual DbSet<Empresa> Empresa { get; set; }
-        public virtual DbSet<Modals> Modals { get; set; }
         public virtual DbSet<Query> Query { get; set; }
         public virtual DbSet<Suscritos> Suscritos { get; set; }
         public virtual DbSet<tb_Suscritos> tb_Suscritos { get; set; }

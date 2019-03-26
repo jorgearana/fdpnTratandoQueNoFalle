@@ -394,7 +394,6 @@ namespace FDPN.Controllers
                     {
                         ventanamodal.Activo = false;
                     }
-
                     modal.Image = nombrefotos[0];
                     db.Modals.Add(modal);
 
