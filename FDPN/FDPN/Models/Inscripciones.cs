@@ -45,7 +45,7 @@ namespace FDPN.Models
         public virtual Afiliado Afiliado { get; set; }
         public virtual Antiguo Antiguo { get; set; }
         public virtual Club Club { get; set; }
-        public virtual Disciplinas Disciplinas { get; set; }
+        public virtual Disciplina Disciplina { get; set; }
         public virtual Estado Estado { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HistorialdeAfiliaciones> HistorialdeAfiliaciones { get; set; }

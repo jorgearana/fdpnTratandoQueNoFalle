@@ -18,6 +18,7 @@ namespace FDPN.Models
         public Disciplina()
         {
             this.Calendario = new HashSet<Calendario>();
+            this.Inscripciones = new HashSet<Inscripciones>();
             this.Noticias = new HashSet<Noticias>();
         }
     
@@ -27,6 +28,8 @@ namespace FDPN.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Calendario> Calendario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Inscripciones> Inscripciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Noticias> Noticias { get; set; }
     }

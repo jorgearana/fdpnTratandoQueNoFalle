@@ -441,13 +441,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.CursoParticipante'
           <Property Name="TipoDisciplina" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="clase" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Disciplinas">
-          <Key>
-            <PropertyRef Name="DisciplinaId" />
-          </Key>
-          <Property Name="DisciplinaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="20" Nullable="false" />
-        </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Empresa' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Empresa">
@@ -734,13 +727,11 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Empresa' no tiene 
           <Property Name="EventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MeetId" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Fotos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Fotos">
           <Key>
             <PropertyRef Name="FotoId" />
           </Key>
-          <Property Name="FotoId" Type="int" Nullable="false" />
+          <Property Name="FotoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombrefoto" Type="nvarchar" MaxLength="100" />
           <Property Name="NoticiaId" Type="int" />
         </EntityType>
@@ -1628,16 +1619,11 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <Property Name="ClubId" Type="int" Nullable="false" />
           <Property Name="RememberMe" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Vivo">
           <Key>
             <PropertyRef Name="VivoId" />
-            <PropertyRef Name="Nombre" />
-            <PropertyRef Name="Fecha" />
-            <PropertyRef Name="Directorio" />
           </Key>
-          <Property Name="VivoId" Type="int" Nullable="false" />
+          <Property Name="VivoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="120" Nullable="false" />
           <Property Name="Fecha" Type="date" Nullable="false" />
           <Property Name="Directorio" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -1996,11 +1982,11 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Inscripciones_Disciplinas">
-          <End Role="Disciplinas" Type="Self.Disciplinas" Multiplicity="1" />
+        <Association Name="FK_Inscripciones_Disciplina">
+          <End Role="Disciplina" Type="Self.Disciplina" Multiplicity="1" />
           <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Disciplinas">
+            <Principal Role="Disciplina">
               <PropertyRef Name="DisciplinaId" />
             </Principal>
             <Dependent Role="Inscripciones">
@@ -2101,18 +2087,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
             </Principal>
             <Dependent Role="Noticias">
               <PropertyRef Name="DisciplinaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Noticias_Usuario">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
-          <End Role="Noticias" Type="Self.Noticias" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="UsuarioID" />
-            </Principal>
-            <Dependent Role="Noticias">
-              <PropertyRef Name="UsuarioId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2650,13 +2624,13 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
           <EntitySet Name="Comentario" EntityType="Self.Comentario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Directivos" EntityType="Self.Directivos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Disciplina" EntityType="Self.Disciplina" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Disciplinas" EntityType="Self.Disciplinas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Entradas" EntityType="Self.Entradas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Entrenadores" EntityType="Self.Entrenadores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Equipos" EntityType="Self.Equipos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Estilos" EntityType="Self.Estilos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Eventos" EntityType="Self.Eventos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fotos" EntityType="Self.Fotos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HistorialdeAfiliaciones" EntityType="Self.HistorialdeAfiliaciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HistorialEntrenador" EntityType="Self.HistorialEntrenador" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HistorialTraspasos" EntityType="Self.HistorialTraspasos" Schema="dbo" store:Type="Tables" />
@@ -2701,6 +2675,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
           <EntitySet Name="Traspasos" EntityType="Self.Traspasos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TraspasosEnEspera" EntityType="Self.TraspasosEnEspera" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vivo" EntityType="Self.Vivo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vouchers" EntityType="Self.Vouchers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -2851,13 +2826,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
     [Empresa].[Notas] AS [Notas]
     FROM [dbo].[Empresa] AS [Empresa]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="Fotos" EntityType="Self.Fotos" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Fotos].[FotoId] AS [FotoId], 
-    [Fotos].[Nombrefoto] AS [Nombrefoto], 
-    [Fotos].[NoticiaId] AS [NoticiaId]
-    FROM [dbo].[Fotos] AS [Fotos]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="Modals" EntityType="Self.Modals" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Modals].[Modalid] AS [Modalid], 
@@ -2926,14 +2894,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
     [TorneoDestacadoMasters].[DestacadoId] AS [DestacadoId], 
     [TorneoDestacadoMasters].[Meet] AS [Meet]
     FROM [dbo].[TorneoDestacadoMasters] AS [TorneoDestacadoMasters]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Vivo" EntityType="Self.Vivo" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Vivo].[VivoId] AS [VivoId], 
-    [Vivo].[Nombre] AS [Nombre], 
-    [Vivo].[Fecha] AS [Fecha], 
-    [Vivo].[Directorio] AS [Directorio]
-    FROM [dbo].[Vivo] AS [Vivo]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Afiliacion_Club" Association="Self.FK_Afiliacion_Club">
             <End Role="Club" EntitySet="Club" />
@@ -3047,8 +3007,8 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
             <End Role="Club" EntitySet="Club" />
             <End Role="Inscripciones" EntitySet="Inscripciones" />
           </AssociationSet>
-          <AssociationSet Name="FK_Inscripciones_Disciplinas" Association="Self.FK_Inscripciones_Disciplinas">
-            <End Role="Disciplinas" EntitySet="Disciplinas" />
+          <AssociationSet Name="FK_Inscripciones_Disciplina" Association="Self.FK_Inscripciones_Disciplina">
+            <End Role="Disciplina" EntitySet="Disciplina" />
             <End Role="Inscripciones" EntitySet="Inscripciones" />
           </AssociationSet>
           <AssociationSet Name="FK_Inscripciones_Estado" Association="Self.FK_Inscripciones_Estado">
@@ -3081,10 +3041,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
           </AssociationSet>
           <AssociationSet Name="FK_Noticias_Disciplina" Association="Self.FK_Noticias_Disciplina">
             <End Role="Disciplina" EntitySet="Disciplina" />
-            <End Role="Noticias" EntitySet="Noticias" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Noticias_Usuario" Association="Self.FK_Noticias_Usuario">
-            <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Noticias" EntitySet="Noticias" />
           </AssociationSet>
           <AssociationSet Name="FK_PoloFechas_PoloTorneo" Association="Self.FK_PoloFechas_PoloTorneo">
@@ -3282,13 +3238,13 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
           <EntitySet Name="Comentario" EntityType="DB_9B1F4C_comentariosModel.Comentario" />
           <EntitySet Name="Directivos" EntityType="DB_9B1F4C_comentariosModel.Directivos" />
           <EntitySet Name="Disciplina" EntityType="DB_9B1F4C_comentariosModel.Disciplina" />
-          <EntitySet Name="Disciplinas" EntityType="DB_9B1F4C_comentariosModel.Disciplinas" />
           <EntitySet Name="Entradas" EntityType="DB_9B1F4C_comentariosModel.Entradas" />
           <EntitySet Name="Entrenadores" EntityType="DB_9B1F4C_comentariosModel.Entrenadores" />
           <EntitySet Name="Equipos" EntityType="DB_9B1F4C_comentariosModel.Equipos" />
           <EntitySet Name="Estado" EntityType="DB_9B1F4C_comentariosModel.Estado" />
           <EntitySet Name="Estilos" EntityType="DB_9B1F4C_comentariosModel.Estilos" />
           <EntitySet Name="Eventos" EntityType="DB_9B1F4C_comentariosModel.Eventos" />
+          <EntitySet Name="Fotos" EntityType="DB_9B1F4C_comentariosModel.Fotos" />
           <EntitySet Name="HistorialdeAfiliaciones" EntityType="DB_9B1F4C_comentariosModel.HistorialdeAfiliaciones" />
           <EntitySet Name="HistorialEntrenador" EntityType="DB_9B1F4C_comentariosModel.HistorialEntrenador" />
           <EntitySet Name="HistorialTraspasos" EntityType="DB_9B1F4C_comentariosModel.HistorialTraspasos" />
@@ -3333,6 +3289,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
           <EntitySet Name="Traspasos" EntityType="DB_9B1F4C_comentariosModel.Traspasos" />
           <EntitySet Name="TraspasosEnEspera" EntityType="DB_9B1F4C_comentariosModel.TraspasosEnEspera" />
           <EntitySet Name="Usuario" EntityType="DB_9B1F4C_comentariosModel.Usuario" />
+          <EntitySet Name="Vivo" EntityType="DB_9B1F4C_comentariosModel.Vivo" />
           <EntitySet Name="Vouchers" EntityType="DB_9B1F4C_comentariosModel.Vouchers" />
           <EntitySet Name="AspNetRoles" EntityType="DB_9B1F4C_comentariosModel.AspNetRoles" />
           <EntitySet Name="AspNetUserClaims" EntityType="DB_9B1F4C_comentariosModel.AspNetUserClaims" />
@@ -3348,7 +3305,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
           <EntitySet Name="CursoInscripcion" EntityType="DB_9B1F4C_comentariosModel.CursoInscripcion" />
           <EntitySet Name="CursoParticipante" EntityType="DB_9B1F4C_comentariosModel.CursoParticipante" />
           <EntitySet Name="Empresa" EntityType="DB_9B1F4C_comentariosModel.Empresa" />
-          <EntitySet Name="Fotos" EntityType="DB_9B1F4C_comentariosModel.Fotos" />
           <EntitySet Name="Modals" EntityType="DB_9B1F4C_comentariosModel.Modals" />
           <EntitySet Name="Query" EntityType="DB_9B1F4C_comentariosModel.Query" />
           <EntitySet Name="Suscritos" EntityType="DB_9B1F4C_comentariosModel.Suscritos" />
@@ -3356,7 +3312,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
           <EntitySet Name="tblmarca" EntityType="DB_9B1F4C_comentariosModel.tblmarca" />
           <EntitySet Name="TorneoDestacado" EntityType="DB_9B1F4C_comentariosModel.TorneoDestacado" />
           <EntitySet Name="TorneoDestacadoMasters" EntityType="DB_9B1F4C_comentariosModel.TorneoDestacadoMasters" />
-          <EntitySet Name="Vivo" EntityType="DB_9B1F4C_comentariosModel.Vivo" />
           <AssociationSet Name="FK_Afiliacion_Club" Association="DB_9B1F4C_comentariosModel.FK_Afiliacion_Club">
             <End Role="Club" EntitySet="Club" />
             <End Role="Afiliacion" EntitySet="Afiliacion" />
@@ -3457,13 +3412,13 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
             <End Role="Club" EntitySet="Club" />
             <End Role="Vouchers" EntitySet="Vouchers" />
           </AssociationSet>
+          <AssociationSet Name="FK_Inscripciones_Disciplina" Association="DB_9B1F4C_comentariosModel.FK_Inscripciones_Disciplina">
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="Inscripciones" EntitySet="Inscripciones" />
+          </AssociationSet>
           <AssociationSet Name="FK_Noticias_Disciplina" Association="DB_9B1F4C_comentariosModel.FK_Noticias_Disciplina">
             <End Role="Disciplina" EntitySet="Disciplina" />
             <End Role="Noticias" EntitySet="Noticias" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Inscripciones_Disciplinas" Association="DB_9B1F4C_comentariosModel.FK_Inscripciones_Disciplinas">
-            <End Role="Disciplinas" EntitySet="Disciplinas" />
-            <End Role="Inscripciones" EntitySet="Inscripciones" />
           </AssociationSet>
           <AssociationSet Name="FK_Entradas_Torneo" Association="DB_9B1F4C_comentariosModel.FK_Entradas_Torneo">
             <End Role="Torneo" EntitySet="Torneo" />
@@ -3496,6 +3451,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
           <AssociationSet Name="FK_Eventos_Torneo" Association="DB_9B1F4C_comentariosModel.FK_Eventos_Torneo">
             <End Role="Torneo" EntitySet="Torneo" />
             <End Role="Eventos" EntitySet="Eventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fotos_Noticias" Association="DB_9B1F4C_comentariosModel.FK_Fotos_Noticias">
+            <End Role="Noticias" EntitySet="Noticias" />
+            <End Role="Fotos" EntitySet="Fotos" />
           </AssociationSet>
           <AssociationSet Name="FK_HistorialdeAfiliaciones_Inscripciones" Association="DB_9B1F4C_comentariosModel.FK_HistorialdeAfiliaciones_Inscripciones">
             <End Role="Inscripciones" EntitySet="Inscripciones" />
@@ -3556,14 +3515,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
           <AssociationSet Name="FK_MultiEdad_Torneo" Association="DB_9B1F4C_comentariosModel.FK_MultiEdad_Torneo">
             <End Role="Torneo" EntitySet="Torneo" />
             <End Role="MultiEdad" EntitySet="MultiEdad" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Fotos_Noticias" Association="DB_9B1F4C_comentariosModel.FK_Fotos_Noticias">
-            <End Role="Noticias" EntitySet="Noticias" />
-            <End Role="Fotos" EntitySet="Fotos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Noticias_Usuario" Association="DB_9B1F4C_comentariosModel.FK_Noticias_Usuario">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Noticias" EntitySet="Noticias" />
           </AssociationSet>
           <AssociationSet Name="FK_PoloJugadores_PoloEquipos" Association="DB_9B1F4C_comentariosModel.FK_PoloJugadores_PoloEquipos">
             <End Role="PoloEquipos" EntitySet="PoloEquipos" />
@@ -3932,15 +3883,8 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
           <Property Name="TipoDisciplina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="clase" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Calendario" Relationship="DB_9B1F4C_comentariosModel.FK_Calendario_Disciplina" FromRole="Disciplina" ToRole="Calendario" />
+          <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_comentariosModel.FK_Inscripciones_Disciplina" FromRole="Disciplina" ToRole="Inscripciones" />
           <NavigationProperty Name="Noticias" Relationship="DB_9B1F4C_comentariosModel.FK_Noticias_Disciplina" FromRole="Disciplina" ToRole="Noticias" />
-        </EntityType>
-        <EntityType Name="Disciplinas">
-          <Key>
-            <PropertyRef Name="DisciplinaId" />
-          </Key>
-          <Property Name="DisciplinaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_comentariosModel.FK_Inscripciones_Disciplinas" FromRole="Disciplinas" ToRole="Inscripciones" />
         </EntityType>
         <EntityType Name="Entradas">
           <Key>
@@ -4223,6 +4167,15 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
           <Property Name="MeetId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_comentariosModel.FK_Eventos_Torneo" FromRole="Eventos" ToRole="Torneo" />
         </EntityType>
+        <EntityType Name="Fotos">
+          <Key>
+            <PropertyRef Name="FotoId" />
+          </Key>
+          <Property Name="FotoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombrefoto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NoticiaId" Type="Int32" />
+          <NavigationProperty Name="Noticias" Relationship="DB_9B1F4C_comentariosModel.FK_Fotos_Noticias" FromRole="Fotos" ToRole="Noticias" />
+        </EntityType>
         <EntityType Name="HistorialdeAfiliaciones">
           <Key>
             <PropertyRef Name="afiliacionId" />
@@ -4277,7 +4230,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
           <NavigationProperty Name="Afiliado" Relationship="DB_9B1F4C_comentariosModel.FK_Inscripciones_Afiliado1" FromRole="Inscripciones" ToRole="Afiliado" />
           <NavigationProperty Name="Antiguo" Relationship="DB_9B1F4C_comentariosModel.FK_Inscripciones_Antiguo" FromRole="Inscripciones" ToRole="Antiguo" />
           <NavigationProperty Name="Club" Relationship="DB_9B1F4C_comentariosModel.FK_Inscripciones_Club" FromRole="Inscripciones" ToRole="Club" />
-          <NavigationProperty Name="Disciplinas" Relationship="DB_9B1F4C_comentariosModel.FK_Inscripciones_Disciplinas" FromRole="Inscripciones" ToRole="Disciplinas" />
+          <NavigationProperty Name="Disciplina" Relationship="DB_9B1F4C_comentariosModel.FK_Inscripciones_Disciplina" FromRole="Inscripciones" ToRole="Disciplina" />
           <NavigationProperty Name="Estado" Relationship="DB_9B1F4C_comentariosModel.FK_Inscripciones_Estado" FromRole="Inscripciones" ToRole="Estado" />
           <NavigationProperty Name="HistorialdeAfiliaciones" Relationship="DB_9B1F4C_comentariosModel.FK_HistorialdeAfiliaciones_Inscripciones" FromRole="Inscripciones" ToRole="HistorialdeAfiliaciones" />
           <NavigationProperty Name="HistorialTraspasos" Relationship="DB_9B1F4C_comentariosModel.FK_HistorialTraspasos_Inscripciones" FromRole="Inscripciones" ToRole="HistorialTraspasos" />
@@ -4396,7 +4349,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
           <NavigationProperty Name="CategoriaNoticia" Relationship="DB_9B1F4C_comentariosModel.FK_Noticias_CategoriaNoticia" FromRole="Noticias" ToRole="CategoriaNoticia" />
           <NavigationProperty Name="Disciplina" Relationship="DB_9B1F4C_comentariosModel.FK_Noticias_Disciplina" FromRole="Noticias" ToRole="Disciplina" />
           <NavigationProperty Name="Fotos" Relationship="DB_9B1F4C_comentariosModel.FK_Fotos_Noticias" FromRole="Noticias" ToRole="Fotos" />
-          <NavigationProperty Name="Usuario" Relationship="DB_9B1F4C_comentariosModel.FK_Noticias_Usuario" FromRole="Noticias" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="PoloEquipos">
           <Key>
@@ -5093,10 +5045,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
           <NavigationProperty Name="Entrenadores" Relationship="DB_9B1F4C_comentariosModel.FK_Entrenadores_Usuario" FromRole="Usuario" ToRole="Entrenadores" />
           <NavigationProperty Name="HistorialTraspasos" Relationship="DB_9B1F4C_comentariosModel.FK_HistorialTraspasos_Usuario" FromRole="Usuario" ToRole="HistorialTraspasos" />
           <NavigationProperty Name="Multas" Relationship="DB_9B1F4C_comentariosModel.FK_Multas_Usuario" FromRole="Usuario" ToRole="Multas" />
-          <NavigationProperty Name="Noticias" Relationship="DB_9B1F4C_comentariosModel.FK_Noticias_Usuario" FromRole="Usuario" ToRole="Noticias" />
           <NavigationProperty Name="Rol" Relationship="DB_9B1F4C_comentariosModel.FK_Usuario_Rol" FromRole="Usuario" ToRole="Rol" />
           <NavigationProperty Name="Traspasos" Relationship="DB_9B1F4C_comentariosModel.FK_Traspasos_Usuario" FromRole="Usuario" ToRole="Traspasos" />
           <NavigationProperty Name="Vouchers" Relationship="DB_9B1F4C_comentariosModel.FK_Vouchers_Usuario" FromRole="Usuario" ToRole="Vouchers" />
+        </EntityType>
+        <EntityType Name="Vivo">
+          <Key>
+            <PropertyRef Name="VivoId" />
+          </Key>
+          <Property Name="VivoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Directorio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Vouchers">
           <Key>
@@ -5322,15 +5282,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
           <Property Name="Web" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Notas" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Fotos">
-          <Key>
-            <PropertyRef Name="FotoId" />
-          </Key>
-          <Property Name="FotoId" Type="Int32" Nullable="false" />
-          <Property Name="Nombrefoto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="NoticiaId" Type="Int32" />
-          <NavigationProperty Name="Noticias" Relationship="DB_9B1F4C_comentariosModel.FK_Fotos_Noticias" FromRole="Fotos" ToRole="Noticias" />
-        </EntityType>
         <EntityType Name="Modals">
           <Key>
             <PropertyRef Name="Modalid" />
@@ -5418,18 +5369,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
           </Key>
           <Property Name="DestacadoId" Type="Int32" Nullable="false" />
           <Property Name="Meet" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Vivo">
-          <Key>
-            <PropertyRef Name="VivoId" />
-            <PropertyRef Name="Nombre" />
-            <PropertyRef Name="Fecha" />
-            <PropertyRef Name="Directorio" />
-          </Key>
-          <Property Name="VivoId" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="true" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Directorio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Afiliacion_Club">
           <End Type="DB_9B1F4C_comentariosModel.Club" Role="Club" Multiplicity="1" />
@@ -5731,6 +5670,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Inscripciones_Disciplina">
+          <End Type="DB_9B1F4C_comentariosModel.Disciplina" Role="Disciplina" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.Inscripciones" Role="Inscripciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplina">
+              <PropertyRef Name="DisciplinaId" />
+            </Principal>
+            <Dependent Role="Inscripciones">
+              <PropertyRef Name="DisciplinaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Noticias_Disciplina">
           <End Type="DB_9B1F4C_comentariosModel.Disciplina" Role="Disciplina" Multiplicity="1" />
           <End Type="DB_9B1F4C_comentariosModel.Noticias" Role="Noticias" Multiplicity="*" />
@@ -5739,18 +5690,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
               <PropertyRef Name="DisciplinaId" />
             </Principal>
             <Dependent Role="Noticias">
-              <PropertyRef Name="DisciplinaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Inscripciones_Disciplinas">
-          <End Type="DB_9B1F4C_comentariosModel.Disciplinas" Role="Disciplinas" Multiplicity="1" />
-          <End Type="DB_9B1F4C_comentariosModel.Inscripciones" Role="Inscripciones" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Disciplinas">
-              <PropertyRef Name="DisciplinaId" />
-            </Principal>
-            <Dependent Role="Inscripciones">
               <PropertyRef Name="DisciplinaId" />
             </Dependent>
           </ReferentialConstraint>
@@ -5848,6 +5787,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
             </Principal>
             <Dependent Role="Eventos">
               <PropertyRef Name="MeetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fotos_Noticias">
+          <End Type="DB_9B1F4C_comentariosModel.Noticias" Role="Noticias" Multiplicity="0..1" />
+          <End Type="DB_9B1F4C_comentariosModel.Fotos" Role="Fotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Noticias">
+              <PropertyRef Name="NoticiaId" />
+            </Principal>
+            <Dependent Role="Fotos">
+              <PropertyRef Name="NoticiaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6028,30 +5979,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
             </Principal>
             <Dependent Role="MultiEdad">
               <PropertyRef Name="MeetId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Fotos_Noticias">
-          <End Type="DB_9B1F4C_comentariosModel.Noticias" Role="Noticias" Multiplicity="0..1" />
-          <End Type="DB_9B1F4C_comentariosModel.Fotos" Role="Fotos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Noticias">
-              <PropertyRef Name="NoticiaId" />
-            </Principal>
-            <Dependent Role="Fotos">
-              <PropertyRef Name="NoticiaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Noticias_Usuario">
-          <End Type="DB_9B1F4C_comentariosModel.Usuario" Role="Usuario" Multiplicity="1" />
-          <End Type="DB_9B1F4C_comentariosModel.Noticias" Role="Noticias" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="UsuarioID" />
-            </Principal>
-            <Dependent Role="Noticias">
-              <PropertyRef Name="UsuarioId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6648,14 +6575,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Disciplinas">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Disciplinas">
-              <MappingFragment StoreEntitySet="Disciplinas">
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="DisciplinaId" ColumnName="DisciplinaId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Entradas">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Entradas">
               <MappingFragment StoreEntitySet="Entradas">
@@ -6928,6 +6847,15 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
                 <ScalarProperty Name="Event_ptr" ColumnName="Event_ptr" />
                 <ScalarProperty Name="Event_ltr" ColumnName="Event_ltr" />
                 <ScalarProperty Name="Event_no" ColumnName="Event_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fotos">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Fotos">
+              <MappingFragment StoreEntitySet="Fotos">
+                <ScalarProperty Name="NoticiaId" ColumnName="NoticiaId" />
+                <ScalarProperty Name="Nombrefoto" ColumnName="Nombrefoto" />
+                <ScalarProperty Name="FotoId" ColumnName="FotoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -7735,6 +7663,16 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Vivo">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Vivo">
+              <MappingFragment StoreEntitySet="Vivo">
+                <ScalarProperty Name="Directorio" ColumnName="Directorio" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="VivoId" ColumnName="VivoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Vouchers">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Vouchers">
               <MappingFragment StoreEntitySet="Vouchers">
@@ -7931,15 +7869,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Fotos">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Fotos">
-              <MappingFragment StoreEntitySet="Fotos">
-                <ScalarProperty Name="NoticiaId" ColumnName="NoticiaId" />
-                <ScalarProperty Name="Nombrefoto" ColumnName="Nombrefoto" />
-                <ScalarProperty Name="FotoId" ColumnName="FotoId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Modals">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Modals">
               <MappingFragment StoreEntitySet="Modals">
@@ -8020,16 +7949,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Vivo' no tiene def
               <MappingFragment StoreEntitySet="TorneoDestacadoMasters">
                 <ScalarProperty Name="Meet" ColumnName="Meet" />
                 <ScalarProperty Name="DestacadoId" ColumnName="DestacadoId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Vivo">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Vivo">
-              <MappingFragment StoreEntitySet="Vivo">
-                <ScalarProperty Name="Directorio" ColumnName="Directorio" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="VivoId" ColumnName="VivoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

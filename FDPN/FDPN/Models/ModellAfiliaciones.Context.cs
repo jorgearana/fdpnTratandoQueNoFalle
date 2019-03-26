@@ -42,13 +42,13 @@ namespace FDPN.Models
         public virtual DbSet<Comentario> Comentario { get; set; }
         public virtual DbSet<Directivos> Directivos { get; set; }
         public virtual DbSet<Disciplina> Disciplina { get; set; }
-        public virtual DbSet<Disciplinas> Disciplinas { get; set; }
         public virtual DbSet<Entradas> Entradas { get; set; }
         public virtual DbSet<Entrenadores> Entrenadores { get; set; }
         public virtual DbSet<Equipos> Equipos { get; set; }
         public virtual DbSet<Estado> Estado { get; set; }
         public virtual DbSet<Estilos> Estilos { get; set; }
         public virtual DbSet<Eventos> Eventos { get; set; }
+        public virtual DbSet<Fotos> Fotos { get; set; }
         public virtual DbSet<HistorialdeAfiliaciones> HistorialdeAfiliaciones { get; set; }
         public virtual DbSet<HistorialEntrenador> HistorialEntrenador { get; set; }
         public virtual DbSet<HistorialTraspasos> HistorialTraspasos { get; set; }
@@ -93,6 +93,7 @@ namespace FDPN.Models
         public virtual DbSet<Traspasos> Traspasos { get; set; }
         public virtual DbSet<TraspasosEnEspera> TraspasosEnEspera { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<Vivo> Vivo { get; set; }
         public virtual DbSet<Vouchers> Vouchers { get; set; }
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
@@ -108,7 +109,6 @@ namespace FDPN.Models
         public virtual DbSet<CursoInscripcion> CursoInscripcion { get; set; }
         public virtual DbSet<CursoParticipante> CursoParticipante { get; set; }
         public virtual DbSet<Empresa> Empresa { get; set; }
-        public virtual DbSet<Fotos> Fotos { get; set; }
         public virtual DbSet<Modals> Modals { get; set; }
         public virtual DbSet<Query> Query { get; set; }
         public virtual DbSet<Suscritos> Suscritos { get; set; }
@@ -116,6 +116,5 @@ namespace FDPN.Models
         public virtual DbSet<tblmarca> tblmarca { get; set; }
         public virtual DbSet<TorneoDestacado> TorneoDestacado { get; set; }
         public virtual DbSet<TorneoDestacadoMasters> TorneoDestacadoMasters { get; set; }
-        public virtual DbSet<Vivo> Vivo { get; set; }
     }
 }

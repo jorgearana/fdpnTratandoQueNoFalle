@@ -40,6 +40,5 @@ namespace FDPN.Models
         public virtual Disciplina Disciplina { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Fotos> Fotos { get; set; }
-        public virtual Usuario Usuario { get; set; }
     }
 }
