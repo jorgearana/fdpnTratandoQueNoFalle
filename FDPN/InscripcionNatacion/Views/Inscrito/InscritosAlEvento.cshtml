@@ -1,0 +1,63 @@
+﻿
+@model  List<InscripcionNatacion.ViewModels.Inscrito.NadadorPruebaViewModel>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="ibox ">
+
+        <div class="ibox-content">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    LISTADO DE INSCRITOS EN ESTA PRUEBA
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover display " cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                        Deportista
+                                    </th>
+                                    <th>
+                                        Edad
+                                    </th>
+                                    <th>
+                                        Club
+                                    </th>
+                                    <th>
+                                        Tiempo
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+
+
+
+                                <tr>
+                                    <td>
+                                        @item.atleta.First_name.ToUpper() @item.atleta.Last_name.ToUpper()
+                                    </td>
+                                    <td>
+                                        @item.edad
+                                    </td>
+                                    <td>
+                                        @item.equipo.Team_abbr.ToUpper()
+                                    </td>
+                                    <td>
+                                        @item.tiempo
+                                    </td>
+
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

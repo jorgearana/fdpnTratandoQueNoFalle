@@ -1,0 +1,42 @@
+﻿@model InscripcionNatacion.ViewModels.Entrenador.EntrenadoresInscritosViewModel
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="ibox ">
+
+        <div class="ibox-content">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    ENTRENADORES INSCRITOS AL EVENTO
+                </div>
+                <div class="panel-body">
+
+                    <table class="table table-hover display " cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Entrenador</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.entrenadores)
+                            {
+                                <tr>
+                                    <td>@item.Entrenadores.Nombre @item.Entrenadores.Paterno</td>
+                                    <td>
+                                        <button class="btn btn-success retirarentrenador" data-entrenadorid="@item.EntrenadorId"
+                                                data-meetid="@Model.torneo.Meetid">
+                                            X
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

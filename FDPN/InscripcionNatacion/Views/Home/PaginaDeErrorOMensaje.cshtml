@@ -1,0 +1,53 @@
+﻿@model InscripcionNatacion.ViewModels.Home.ErrorViewModel
+@{
+                /**/
+
+                ViewBag.Title = "Pagina De Error O Mensaje";
+}
+
+<div class="wrapper wrapper-content">
+
+
+
+    <div class="wrapper wrapper-content  animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="widget">
+                    <div class="widget-header clearfix">
+                        <div class="well well-lg">
+                            <h3>
+                                <i class="icon ion-android-storage"></i>
+                                <span>@Model.Medio</span>
+                            </h3>
+                            <div class="btn-group widget-header-toolbar visible-lg">
+                                <a href="#" title="Expand/Collapse" class="btn btn-link btn-toggle-expand"><i class="icon ion-ios7-arrow-up"></i></a>
+                                <a href="#" title="Remove" class="btn btn-link btn-remove"><i class="icon ion-ios7-close-empty"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-content">
+                        <div class="container">
+                            <div class="jumbotron">
+                                <h1>@Model.Principal</h1>
+
+                                <p>@Model.Pie</p>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <!-- END COLUMN FILTER -->
+
+                    @Html.ActionLink("Ir a torneos", "torneos", "Home", null, new { @class = "btn btn-warning" })
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+

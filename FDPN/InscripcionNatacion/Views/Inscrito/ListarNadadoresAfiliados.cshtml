@@ -1,0 +1,123 @@
+﻿@model List<InscripcionNatacion.ViewModels.Inscrito.ListarNadadoresParaSeleccionarlos>
+
+@{
+    ViewBag.Title = "ListarNadadores";
+    FDPN.Models.SetupTorneo setup = ViewBag.setup;
+}
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Torneo seleccionado:<strong>@setup.Torneo.Meet_name1</strong></h5>
+                </div>
+                <div class="ibox-content">
+
+                    <div class="table-responsive">
+                        <table id="dataTables1" class="table table-hover display  datatabla " cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        DNI
+                                    </th>
+                                    <th>
+                                        Nombre
+                                    </th>
+                                    <th>
+                                        Apellidos
+                                    </th>
+
+                                    <th>
+                                        Fecha de nacimiento
+                                    </th>
+                                    <th>
+                                        Sexo
+                                    </th>
+
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    string clase = "";
+
+                                    if (item.YaEstaInscrito)
+                                    {
+                                        clase = "nocumplemarca";
+                                    }
+                                    if (item.TieneMulta)
+                                    {
+                                        clase = "tienemulta";
+                                    }
+
+
+                                    <tr class="@clase">
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.afiliado.DNI)
+                                            @if (item.YaEstaInscrito)
+                                            {
+                                                <i class="fa fa-hand-peace-o fa-2x" style="color:red"></i>
+                                            }
+                                            @if (item.TieneMulta)
+                                            {
+                                                <i class="fa fa-hand-paper-o fa-2x" style="color:black"></i>
+                                            }
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.afiliado.Afiliado.Nombre)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.afiliado.Afiliado.Apellido_Paterno)
+                                        </td>
+
+                                        <td>
+                                            <span class="fechaordenada">@item.afiliado.Afiliado.Fecha_de_nacimiento.ToString("yyyy/MM/dd")</span> @item.afiliado.Afiliado.Fecha_de_nacimiento.ToShortDateString()
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.afiliado.Afiliado.Sexo)
+                                        </td>
+
+                                        <td>
+                                            <div class="dropdown">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Quiero
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        @if (setup.TipoTorneo.Nombre == "Div 2" && !item.TieneMulta)
+                                                        {
+                                                            @Html.ActionLink("Inscribir deportista", "ListarPruebasParaElNadadorDIVISION2", "inscrito", new { MeetId = setup.Torneo.Meetid, afiliadoId = @item.afiliado.InscripcionId }, new { @class = "btn btn-warning" })
+                                                        }
+                                                        else if (!item.TieneMulta)
+                                                        {
+                                                            @Html.ActionLink("Inscribir deportista", "ListarPruebasParaElNadador", "inscrito", new { MeetId = setup.Torneo.Meetid, afiliadoId = @item.afiliado.InscripcionId }, new { @class = "btn btn-warning" })
+                                                        }
+                                                        <li>
+                                                            <button class="Postas btn btn-danger" data-afiliado=@item.afiliado.InscripcionId data-meet="@setup.Torneo.Meetid">Inscribir solo para postas</button>
+                                                        </li>
+                                                        @if (item.YaEstaInscrito)
+                                                        {
+                                                            @Html.ActionLink("Retirar del torneo", "RetirarDelTorneo", "inscrito", new { MeetId = setup.Torneo.Meetid, afiliadoId = @item.afiliado.InscripcionId }, new { @class = "btn btn-danger" })
+
+                                                        }
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+
+
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

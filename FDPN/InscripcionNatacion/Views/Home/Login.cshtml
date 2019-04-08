@@ -1,0 +1,67 @@
+﻿@using FDPN.Models
+@model InscripcionNatacion.ViewModels.Home.LoginViewModel
+
+@{
+             
+                Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Content/css/Login.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+
+            <h1>
+                <img src="~/Content/img/Logo_fdpn.png" style="height:50px;" />
+                Inscripción a torneos
+            </h1>
+
+            @*<form class="form">*@
+            @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { id = "formulario" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.TextBoxFor(a => a.Nombre, new { @class = "form-control", @Placeholder = "Usuario", @Type = "text", @Value = "" })
+                @*<input type="text" placeholder="Username">*@
+                @*<input type="password" placeholder="Password">*@
+                @Html.PasswordFor(a => a.Password, new { @class = "form-control", @Type = "Password", @Placeholder = "Contraseña" })
+                <button type="submit" id="login-button">Login</button>
+            }
+            @*</form>*@
+        </div>
+
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script src="~/Scripts/js/jquery-3.1.1.min.js"></script>
+    <script>
+        $("#login-button").click(function (event) {
+            event.preventDefault();
+
+            $('form').fadeOut(500);
+            $('.wrapper').addClass('form-success');
+
+            var form = $('#formulario');
+
+            form.submit();
+        });
+    </script>
+</body>
+</html>

@@ -9,9 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InscripcionACurso", "Inscri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AfiliacionesNatacion", "..\..\afiliaciones\AfiliacionesNatacion\AfiliacionesNatacion.csproj", "{D2BA58E6-72FB-4DBE-B792-307E077FAC7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InscripcionNatacion", "InscripcionesNatacion\InscripcionNatacion\InscripcionNatacion\InscripcionNatacion.csproj", "{10642C27-2F89-46EF-993D-35CAAE58A5B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InscripcionNatacion", "InscripcionNatacion\InscripcionNatacion.csproj", "{10642C27-2F89-46EF-993D-35CAAE58A5B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportarInicial", "InscripcionesNatacion\InscripcionNatacion\ImportarInicial\ImportarInicial.csproj", "{6A51D281-7590-4EDB-97FB-155FACF45514}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportarInicial", "ImportarInicial\ImportarInicial.csproj", "{6A51D281-7590-4EDB-97FB-155FACF45514}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

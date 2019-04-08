@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inscribir entrenadores en torneos</title>
+    <link rel="shortcut icon" href="~/Content/img/favicon.ico" />
+
+    <link href="~/Content/DragAndDrops/css/normalize.css" rel="stylesheet" />
+    <link href="~/Content/DragAndDrops/fonts/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/DragAndDrops/css/demo.css" rel="stylesheet" />
+    <link href="~/Content/DragAndDrops/css/page-scale.css" rel="stylesheet" />
+    <script src="~/Content/DragAndDrops/js/modernizr.custom.js"></script>
+
+</head>
+<body class="skin-2">
+    <div class="container">
+    
+        <div class="content">
+            <header class="codrops-header">
+                <h1>Drag and Drop Interaction Ideas <span>Inspiration for drag and drop interactions for the modern UI</span></h1>
+               
+            </header>
+            <div id="grid" class="grid clearfix">
+                <div class="grid__item"><i class="fa fa-fw fa-star-o"></i></div>
+                <div class="grid__item"><i class="fa fa-fw fa-star-o"></i></div>
+                <div class="grid__item"><i class="fa fa-fw fa-star-o"></i></div>
+                <div class="grid__item"><i class="fa fa-fw fa-star-o"></i></div>
+                <div class="grid__item"><i class="fa fa-fw fa-star-o"></i></div>
+                <div class="grid__item"><i class="fa fa-fw fa-star-o"></i></div>
+                <div class="grid__item"><i class="fa fa-fw fa-star-o"></i></div>
+                <div class="grid__item"><i class="fa fa-fw fa-star-o"></i></div>
+                <div class="grid__item"><i class="fa fa-fw fa-star-o"></i></div>
+                <div class="grid__item"><i class="fa fa-fw fa-star-o"></i></div>
+                <div class="grid__item"><i class="fa fa-fw fa-star-o"></i></div>
+                <div class="grid__item"><i class="fa fa-fw fa-star-o"></i></div>
+            </div>
+           
+        </div><!-- /content -->
+    </div><!-- /container -->
+    <div id="drop-area" class="drop-area">
+        <div>
+            <div class="drop-area__item"><div><div class="dummy"></div></div></div>
+            <div class="drop-area__item"><div><div class="dummy"></div></div></div>
+            <div class="drop-area__item"><div><div class="dummy"></div></div></div>
+            <div class="drop-area__item"><div><div class="dummy"></div></div></div>
+        </div>
+    </div>
+    <div class="drop-overlay"></div>
+    <script src="~/Content/DragAndDrops/js/draggabilly.pkgd.min.js"></script>
+    <script src="~/Content/DragAndDrops/js/dragdrop.js"></script>
+
+
+    <script>(function() {
+				var body = document.body,
+					dropArea = document.getElementById( 'drop-area' ),
+					droppableArr = [], dropAreaTimeout;
+
+				// initialize droppables
+				[].slice.call( document.querySelectorAll( '#drop-area .drop-area__item' )).forEach( function( el ) {
+					droppableArr.push( new Droppable( el, {
+						onDrop : function( instance, draggableEl ) {
+							// show checkmark inside the droppabe element
+							classie.add( instance.el, 'drop-feedback' );
+							clearTimeout( instance.checkmarkTimeout );
+							instance.checkmarkTimeout = setTimeout( function() {
+								classie.remove( instance.el, 'drop-feedback' );
+							}, 800 );
+							// ...
+						}
+					} ) );
+				} );
+
+				// initialize draggable(s)
+				[].slice.call(document.querySelectorAll( '#grid .grid__item' )).forEach( function( el ) {
+					new Draggable( el, droppableArr, {
+						draggabilly : { containment: document.body },
+						helper : true,
+						onStart : function() {
+							// add class 'drag-active' to body
+							classie.add( body, 'drag-active' );
+							// clear timeout: dropAreaTimeout (toggle drop area)
+							clearTimeout( dropAreaTimeout );
+							// show dropArea
+							classie.add( dropArea, 'show' );
+						},
+						onEnd : function( wasDropped ) {
+							var afterDropFn = function() {
+								// hide dropArea
+								classie.remove( dropArea, 'show' );
+								// remove class 'drag-active' from body
+								classie.remove( body, 'drag-active' );
+							};
+
+							if( !wasDropped ) {
+								afterDropFn();
+							}
+							else {
+								// after some time hide drop area and remove class 'drag-active' from body
+								clearTimeout( dropAreaTimeout );
+								dropAreaTimeout = setTimeout( afterDropFn, 400 );
+							}
+						}
+					} );
+				} );
+			})();</script>
+</body>
+</html>

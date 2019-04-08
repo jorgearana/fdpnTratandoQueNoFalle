@@ -1,0 +1,48 @@
+﻿@model List<InscripcionNatacion.ViewModels.Exportar.ResumenViewModel>
+@{
+    Layout = "~/Views/Shared/_LayoutAntigua.cshtml";
+    ViewBag.Title = "Exportar Resumen";
+    string path = Url.Content("http://afiliaciones.jorgearananeyra.com/Content/Images/");
+    string foto = "";
+    string torneo = ViewBag.torneo;
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2>@torneo</h2>
+
+    </div>
+</div>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {                           
+                    <div class="row">
+                       
+                            <div class="text-center">
+                                <img alt="image" class="FotoNadador img-fluid" src=@Url.Content(path + item.afiliado.RutaFoto + ".jpg")>
+                                <h5><strong> @item.afiliado.Nombre </strong></h5>
+                                <h5><strong>@item.afiliado.Apellido_Paterno</strong></h5>
+                                @*<div class="m-t-xs font-bold">@item.afiliado.Fecha_de_nacimiento.ToString("dd/MMMM/yyyy")</div>*@
+                            </div>
+                        
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Prueba</th>
+                                        <th>Tiempo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var detalle in item.detalle)
+                                    {
+                                        <tr>
+                                            <td>#@detalle.entrada.Event_ptr @detalle.evento.Event_dist @detalle.estilo.Estilo @detalle.evento.Event_gender</td>
+                                            <td>@detalle.entrada.ConvSeed_time</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                    </div>
+        }
+    </div>

@@ -1,0 +1,216 @@
+﻿@model InscripcionNatacion.ViewModels.Torneo.ListadoDeTorneosViewModel
+
+@{
+    ViewBag.Title = "Detalle";
+}
+
+
+
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h2> Evento : <strong> @Model.torneo.Meet_name1</strong></h2>
+                    </div>
+                    <div class="ibox-content">
+
+                        <div class="row">
+                            @*Piscina*@
+                            <div class="col-lg-12">
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading">
+                                        Piscina
+                                    </div>
+                                    <div class="panel-body">
+                                        <h3 class="badge-warning">@Html.DisplayFor(model => model.torneo.Meet_location)</h3>
+
+                                        <dl class="dl-horizontal">
+
+                                            <dt>
+                                                Tipo de piscina
+                                            </dt>
+                                            @if (Model.torneo.Meet_course == 1)
+    {
+                                        <dd>
+                                            Piscina Larga
+                                        </dd>
+}
+else
+{
+                                        <dd>
+                                            Piscina Corta
+                                        </dd>
+}
+
+                                            <dt>
+                                                Número de pistas
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.torneo.meet_numlanes)
+                                            </dd>
+
+                                            <dt>
+                                                Orden de marcas
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.torneo.course_order)
+                                            </dd>
+
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            @*Fechas*@
+                            <div class="col-lg-12">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Fechas a considerar
+                                    </div>
+                                    <div class="panel-body">
+                                        <dl class="dl-horizontal">
+
+
+                                            <dt>
+                                                Inicio de competencia
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.torneo.Meet_start).ToString().Substring(0, 10)
+                                            </dd>
+
+                                            <dt>
+                                                Último día de competencia
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.torneo.Meet_end).ToString().Substring(0, 10)
+                                            </dd>
+                                            <dt>
+                                                Último día de inscripción
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.torneo.entry_deadline).ToString().Substring(0, 10)
+                                            </dd>
+                                            <dt>
+                                                Fecha de inicio de inscripciones
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.torneo.entry_OpenDate).ToString().Substring(0, 10)
+                                            </dd>
+                                        </dl>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        Dirección
+                                    </div>
+                                    <div class="panel-body">
+                                        <dl class="dl-horizontal">
+
+                                            <dt>
+                                                Departamento
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.torneo.Meet_state)
+                                            </dd>
+
+                                            <dt>
+                                                Dirección
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.torneo.Meet_addr1)
+                                            </dd>
+
+                                            <dt>
+                                                Distrito
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.torneo.Meet_addr2)
+                                            </dd>
+
+                                            <dt>
+                                                Ciudad
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.torneo.Meet_city)
+                                            </dd>
+
+                                            <dt>
+                                                Código Zip
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.torneo.Meet_zip)
+                                            </dd>
+
+
+
+
+
+
+                                        </dl>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="ibox ">
+                <div class="ibox-title">
+
+                    <h5>Sesiones del torneo</h5>
+                </div>
+                <div class="ibox-content">
+                    @foreach (var item in Model.sesiones)
+                    {
+
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <span class="label label-success float-right">Día:@item.Sess_day</span>
+                                <h3>Inicio: <strong>@(@item.Sess_starttime / 3600).00 horas</strong></h3>
+                            </div>
+                            <div class="panel-body">
+                                <h3 class="no-margins">@item.Sess_name</h3>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+
+            @Html.ActionLink("Regresar al listado", "torneos", "Home", null, new { @class = "btn btn-warning pull-right" })
+
+        </div>
+    </div>
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <p>
+
+        </p>
+    </div>
+
+
+</div>

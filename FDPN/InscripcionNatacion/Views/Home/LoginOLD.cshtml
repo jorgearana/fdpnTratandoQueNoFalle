@@ -1,0 +1,79 @@
+﻿@using FDPN.Models
+@model InscripcionNatacion.ViewModels.Home.LoginViewModel
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Inscripciones | Login</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/animate.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+
+
+</head>
+
+<body class="gray-bg">
+
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <div>
+
+                <h1 class="logo-name">FDPN</h1>
+
+            </div>
+            <h3>INSCRIPCIONES</h3>
+            <p>
+               Aplicación de inscripción de deportistas afiliados a torneos oficiales de la FDPN
+            </p>
+            <p>Ingrese con sus credenciales.</p>
+            @using (Html.BeginForm("Login", "Home", FormMethod.Post,
+                               new { enctype = "multipart/form-data" }))
+            {
+      
+            <div class="form-group">
+                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", placeholder = "Username" })
+               
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(model => model.Password, new { @type = "password", @class = "form-control", placeholder = "Password" })
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+
+           
+      
+            }
+            <p class="m-t" style="color:darkcyan"> <small><a href="www.jorgearananeyra.com">Diseño y desarrollo para FDPN</a></small> </p>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="~/Scripts/js/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/js/popper.min.js"></script>
+    <script src="~/Scripts/js/bootstrap.js"></script>
+    <script>
+        $(document).ready(function () {
+        setTimeout(function () {
+            toastr.options = {
+                closeButton: true,
+                progressBar: true,
+                showMethod: 'slideDown',
+                timeOut: 6000
+            };
+            toastr.success('Cualquier consulta puede hacerla al mail inscripciones@fdpn.org', 'Bienvenido');
+
+            }, 1300);
+        });
+    </script>
+</body>
+</html>

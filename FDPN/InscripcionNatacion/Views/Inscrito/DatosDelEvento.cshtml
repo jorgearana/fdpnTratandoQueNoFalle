@@ -1,0 +1,62 @@
+﻿@model InscripcionNatacion.ViewModels.Torneo.DatosEventoViewModel
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="ibox ">
+
+        <div class="ibox-content">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    DATOS DE LA PRUEBA
+                </div>
+             
+                <div class="panel-body">
+                    <table class="table table-hover display " cellspacing="0" width="100%">
+                        <tr>
+                            <th>
+                                Evento:
+                            </th>
+                            <th>
+                                @Html.DisplayFor(model => model.Evento.Event_ptr)
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                Edades:
+                            </th>
+                            <th>
+                                @Model.Evento.Low_age - @Model.Evento.High_Age
+                            </th>
+                        </tr>
+
+                    </table>
+                   
+                    <table class="table table-hover display " cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Edad Mínima</th>
+                                <th>Edad Máxima</th>
+                                <th>Piscina</th>
+                                <th>Marca Mínima</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model.Marcas)
+                            {
+                                <tr>
+                                    <td>@item.EdadMinima</td>
+                                    <td>@item.EdadMaxima</td>
+                                    <td>@item.Curso</td>
+                                    <td>@item.MM</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

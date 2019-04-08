@@ -1,0 +1,93 @@
+﻿@model InscripcionNatacion.ViewModels.Entrenador.EscogerEntrenadorViewModel
+@{
+    ViewBag.Title = "Entrenadores en evento";
+}
+
+
+
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h2>Inscribir entrenadores en este torneo</h2>
+                    <span>@Model.torneo.Meet_name1</span>
+                    <div style="visibility:hidden" id="ID">@Model.torneo.Meetid</div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="ibox ">
+                            <span>Nota.- Para ingresar un nuevo entrenador se debe de ingresar a la web de afiliaciones, agregar entrenador y afiliarlo.</span>
+                            <div class="ibox-content">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        ENTRENADORES DEL CLUB
+                                    </div>
+                                    <div class="panel-body">
+
+                                        <table class="table table-hover display " cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Entrenador</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model.entrenadores)
+                                                {
+                                                    <tr>
+                                                        <td>@item.Nombre  @item.Paterno</td>
+                                                        <th>
+                                                            <button class="btn btn-success agregarentrenador" data-entrenadorid="@item.EntrenadorId"
+                                                                    data-meetid="@Model.torneo.Meetid">
+                                                                Inscribir
+                                                            </button>
+                                                        </th>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-7">
+                        <div id="EntrenadoresYaInscritos">
+                            @Html.Action("EntrenadoresInscritos", Model.torneo.Meetid)
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+    </div>
+   
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h2>Inscribir delegados en este torneo</h2>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div id="FormularioDelegados">
+                            @Html.Action("FormularioDelegados")
+                        </div>
+                        </div>
+
+                        <div class="col-sm-7">
+                            <div id="DelegadosYaInscritos">
+                                @Html.Action("ListadoDeDelegados", Model.torneo.Meetid)
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

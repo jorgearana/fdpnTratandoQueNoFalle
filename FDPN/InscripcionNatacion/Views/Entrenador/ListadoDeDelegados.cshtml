@@ -1,0 +1,41 @@
+﻿@model  List<FDPN.Models.Delegados>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="ibox ">
+        <div class="ibox-content">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    DELEGADOS INSCRITOS  <div style="visibility:hidden" id="meetid">@ViewBag.meetid</div>
+                </div>
+                <div class="panel-body">
+
+
+                    <table class="table table-hover display " cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Delegado</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Nombre  @item.Apellido</td>
+                                    <th>
+                                        <button class="btn btn-success retirardelegado" data-delegadoid="@item.DelegadoId">
+                                            Retirar
+                                        </button>
+                                    </th>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

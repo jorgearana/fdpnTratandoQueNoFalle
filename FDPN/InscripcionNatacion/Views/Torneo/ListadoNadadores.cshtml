@@ -1,0 +1,58 @@
+﻿@model InscripcionNatacion.ViewModels.Torneo.ListadoNadadoresConTiempoViewModel
+
+@{
+    ViewBag.Title = "ListadoNadadores";
+    string path = Url.Content("http://afiliaciones.jorgearananeyra.com/Content/Images/");
+}
+
+
+<h3> @Model.Prueba</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            Foto
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+           Apellido_Paterno
+        </th>
+      
+        <th>
+           Fecha_de_nacimiento
+        </th>
+        <th>
+           Sexo
+        </th>
+        <th>
+            Marca
+        </th>
+    </tr>
+
+@foreach (var item in Model.Listado) {
+    <tr>
+        <td class="media activity-item">
+            <img src=@Url.Content(path + item.afiliado.RutaFoto + ".jpg") title="@item.afiliado.Nombre @item.afiliado.Apellido_Paterno @item.afiliado.Apellido_Materno" class="media-object avatar">
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.afiliado.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.afiliado.Apellido_Paterno)
+        </td>
+       
+        <td>
+            @item.afiliado.Fecha_de_nacimiento.ToShortDateString()
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.afiliado.Sexo)
+        </td>
+        <td>
+            @item.resultado.SCORE
+        </td>
+    </tr>
+}
+
+</table>
