@@ -78,6 +78,32 @@ namespace FDPN.Controllers
 
             return View(listado);
         }
+        public ActionResult habiles(string searchString)
+        {
+            var query = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "Hábiles").OrderBy(x => x.Noticias.Fecha).AsQueryable();
+
+            if (searchString != null)
+            {
+                query = query.Where(x => x.Noticias.Titulo.Contains(searchString));
+            }
+
+            List<Fotos> listado = query.ToList();
+
+            return View(listado);
+        }
+        public ActionResult Convocatorias(string searchString)
+        {
+            var query = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "Convocatorias").OrderBy(x => x.Noticias.Fecha).AsQueryable();
+
+            if (searchString != null)
+            {
+                query = query.Where(x => x.Noticias.Titulo.Contains(searchString));
+            }
+
+            List<Fotos> listado = query.ToList();
+
+            return View(listado);
+        }
 
         [HttpGet]
         public ActionResult Bases()

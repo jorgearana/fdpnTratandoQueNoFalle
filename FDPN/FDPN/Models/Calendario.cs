@@ -23,6 +23,7 @@ namespace FDPN.Models
         public string Organizador { get; set; }
         public int EventoId { get; set; }
         public int DisciplinaId { get; set; }
+        public bool Internacional { get; set; }
     
         public virtual Disciplina Disciplina { get; set; }
     }

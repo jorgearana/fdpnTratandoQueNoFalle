@@ -17,6 +17,7 @@ namespace FDPN.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Entrenadores()
         {
+            this.EntrenadorInscrito = new HashSet<EntrenadorInscrito>();
             this.HistorialEntrenador = new HashSet<HistorialEntrenador>();
             this.TatoInformeEntrenador = new HashSet<TatoInformeEntrenador>();
         }
@@ -42,6 +43,8 @@ namespace FDPN.Models
         public virtual Club Club { get; set; }
         public virtual Estado Estado { get; set; }
         public virtual Usuario Usuario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EntrenadorInscrito> EntrenadorInscrito { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HistorialEntrenador> HistorialEntrenador { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

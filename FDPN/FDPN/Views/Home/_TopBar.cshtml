@@ -1,11 +1,13 @@
-﻿
-@{
-    string clase = ViewBag.clase;
+﻿@model FDPN.Models.Banners
 
+@{
+
+    string path = Url.Content("~/Content/Img/Fotos/" + Model.Foto);
+    string clase = ViewBag.clase;
 }
 
 <div class="layout layout--fullWidth">
-    <header role="banner" class="@clase">
+    <header role="banner" style="background-image:url(@path);" class="@clase"  >
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -39,7 +41,9 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bases y reglamentos <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-
+                                <li>
+                                    @Html.ActionLink("Bases de torneos", "bases", "documentos")
+                                </li>
                                 <li>
                                     @Html.ActionLink("Reglamentos", "Reglamentos", "documentos")
                                 </li>
@@ -50,13 +54,17 @@
                                     @Html.ActionLink("Criterios de selección", "Criterios", "documentos")
                                 </li>
                                 <li>
-                                    @Html.ActionLink("Marcas mínimas 2018", "MarcasMinimas", "documentos")
+                                    @Html.ActionLink("Marcas mínimas", "MarcasMinimas", "documentos")
                                 </li>
                                 <li>
                                     @Html.ActionLink("Marcas clasificatorias a eventos internacionales", "Marcasclasificatorias", "documentos")
                                 </li>
                                 <li>
-                                    @Html.ActionLink("Bases de torneos", "bases", "documentos")
+                                    @Html.ActionLink("Convocatorias", "Convocatorias", "documentos")
+                                </li>
+
+                                <li class="nav-item">
+                                    @Html.ActionLink("Clubes hábiles", "habiles", "documentos")
                                 </li>
                             </ul>
                         </li>
@@ -182,54 +190,7 @@
                                     <a href="~/Content/img/Fotos/Academiatrujillo.jpeg" target="_blank">Academia en Trujillo</a>
                                 </li>
 
-                                @*<li class="nav-item">
-            <a href="~/Content/img/fondos/academiaadultos.jpg" target="_blank">
-                Academia para adultos
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="~/Content/img/fondos/academiaaquabebe.jpg" target="_blank">
-                Academia Aqua bebé
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="~/Content/img/fondos/academianinos.jpg" target="_blank">
-                Academia para niños
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="~/Content/img/fondos/academiapatera.jpg" target="_blank">
-                Academia en patera
-            </a>
-        </li>
-        <li role="separator" class="divider"></li>
-        <li class="nav-item">
-            <a href="~/Content/img/fondos/academiaTrujillo.jpg" target="_blank">
-                Academia en Trujillo
-            </a>
-        </li>
-        <li role="separator" class="divider"></li>
-        <li class="nav-item">
-            <a href="~/Content/img/fondos/academiasincro.jpg" target="_blank">
-                Academia de natación artística
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="~/Content/img/fondos/academiapolo.jpg" target="_blank">
-                Academia de polo acuático
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="~/Content/img/fondos/academiaclavados.jpg" target="_blank">
-                Academia de clavados
-            </a>
-        </li>
-        <li role="separator" class="divider"></li>
-        <li class="nav-item">
-            <a href="~/Content/img/fondos/piscinalibre.jpg" target="_blank">
-                Piscina Libre
-            </a>
-        </li>*@
+                               
                             </ul>
                         </li>
                         @Html.Action("_PreviewAlertas")
@@ -242,10 +203,12 @@
             </div><!-- /.container-fluid -->
         </nav>
 
-        @if (clase!= ""&& clase != null)
-            {
-                @Html.Partial("_Banner")
-            }
+        @if (clase != "" && clase != null)
+        {
+        <div style="background-color:#260b94; opacity:0.5;" class="ColorBanner">
+            @Html.Partial("_Banner")
+        </div>
+        }
 
     </header>
 </div>

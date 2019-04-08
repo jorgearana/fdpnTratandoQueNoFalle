@@ -33,6 +33,7 @@ namespace FDPN.Models
         public virtual DbSet<Athlete> Athlete { get; set; }
         public virtual DbSet<AthleteMasters> AthleteMasters { get; set; }
         public virtual DbSet<atletas> atletas { get; set; }
+        public virtual DbSet<Banners> Banners { get; set; }
         public virtual DbSet<BASETIMES> BASETIMES { get; set; }
         public virtual DbSet<Calendario> Calendario { get; set; }
         public virtual DbSet<CambiosDNI> CambiosDNI { get; set; }
@@ -44,6 +45,7 @@ namespace FDPN.Models
         public virtual DbSet<Disciplina> Disciplina { get; set; }
         public virtual DbSet<Entradas> Entradas { get; set; }
         public virtual DbSet<Entrenadores> Entrenadores { get; set; }
+        public virtual DbSet<EntrenadorInscrito> EntrenadorInscrito { get; set; }
         public virtual DbSet<Equipos> Equipos { get; set; }
         public virtual DbSet<Estado> Estado { get; set; }
         public virtual DbSet<Estilos> Estilos { get; set; }
@@ -116,5 +118,6 @@ namespace FDPN.Models
         public virtual DbSet<tblmarca> tblmarca { get; set; }
         public virtual DbSet<TorneoDestacado> TorneoDestacado { get; set; }
         public virtual DbSet<TorneoDestacadoMasters> TorneoDestacadoMasters { get; set; }
+        public virtual DbSet<Delegados> Delegados { get; set; }
     }
 }

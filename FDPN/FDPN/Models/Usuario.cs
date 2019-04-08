@@ -23,6 +23,7 @@ namespace FDPN.Models
             this.Multas = new HashSet<Multas>();
             this.Traspasos = new HashSet<Traspasos>();
             this.Vouchers = new HashSet<Vouchers>();
+            this.Delegados = new HashSet<Delegados>();
         }
     
         public int UsuarioID { get; set; }
@@ -46,5 +47,7 @@ namespace FDPN.Models
         public virtual ICollection<Traspasos> Traspasos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vouchers> Vouchers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Delegados> Delegados { get; set; }
     }
 }

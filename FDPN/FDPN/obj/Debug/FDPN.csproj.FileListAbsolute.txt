@@ -234,3 +234,8 @@ D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.csproj.CoreCompileInput
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.csproj.CopyComplete
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.pdb
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\System.Diagnostics.DiagnosticSource.dll
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Microsoft.AI.PerfCounterCollector.xml
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\System.Diagnostics.DiagnosticSource.xml

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<FDPN.Models.Banners>
+
+@{
+    ViewBag.Title = "Index";
+    string path = Url.Content("../Content/img/Fotos/");
+    Layout = "~/Views/Shared/_LayoutWYSWYG.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BannerId)
+        </th>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Foto)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BannerId)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "edit", new { id = item.BannerId }, new { @class = "btn btn-primary" })
+        </td>
+        <td>
+            <img src="@Url.Action(path + item.Foto)" class="ImagenPreview" style="width:50%;" />
+        </td>
+    </tr>
+    }
+
+</table>

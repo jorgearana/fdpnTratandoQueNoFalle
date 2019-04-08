@@ -59,74 +59,74 @@ $(document).ready(function () {
             // instead of a settings object
         ]
     });
-   
-        $('.datatabla').DataTable({            
-            "pageLength": 25,
-            "language": {
-                "lengthMenu": "Mostrando _MENU_ registros por página",
-                "zeroRecords": "No encontramos datos",
-                "info": "Mostrando página _PAGE_ de _PAGES_",
-                "infoEmpty": "Sin datos disponibles",
-                "infoFiltered": "(filtrado de  _MAX_ registros totales)",
-                "oPaginate": {
-                    "sFirst": "Primera página",
-                    "sLast": "Última página",
-                    "sNext": "Siguiente página",
-                    "sPrevious": "Página anterior"
-                }
-            },
-        });
-        $('.datatablacorta').DataTable({
-            "order": [[0, "desc"]],
-            "pageLength": 10,
-            "language": {
-                "lengthMenu": "Mostrando _MENU_ registros por página",
-                "zeroRecords": "No encontramos datos",
-                "info": "Mostrando página _PAGE_ de _PAGES_",
-                "infoEmpty": "Sin datos disponibles",
-                "infoFiltered": "(filtrado de  _MAX_ registros totales)",
-                "oPaginate": {
-                    "sFirst": "Primera página",
-                    "sLast": "Última página",
-                    "sNext": "Siguiente página",
-                    "sPrevious": "Página anterior"
-                }
-            },
-        });
-        
-        $('.datatablaReves').DataTable({
-            "order": [[0, "desc"]],
-            "pageLength": 20,
-            "language": {
-                "lengthMenu": "Mostrando _MENU_ registros por página",
-                "zeroRecords": "No encontramos datos",
-                "info": "Mostrando página _PAGE_ de _PAGES_",
-                "infoEmpty": "Sin datos disponibles",
-                "infoFiltered": "(filtrado de  _MAX_ registros totales)",
-                "oPaginate": {
-                    "sFirst": "Primera página",
-                    "sLast": "Última página",
-                    "sNext": "Siguiente página",
-                    "sPrevious": "Página anterior"
-                }
-            },
-        });
-        $('.datatablaLarga').DataTable({
-            "pageLength": 100,
-            "language": {
-                "lengthMenu": "Mostrando _MENU_ registros por página",
-                "zeroRecords": "No encontramos datos",
-                "info": "Mostrando página _PAGE_ de _PAGES_",
-                "infoEmpty": "Sin datos disponibles",
-                "infoFiltered": "(filtrado de  _MAX_ registros totales)",
-                "oPaginate": {
-                    "sFirst": "Primera página",
-                    "sLast": "Última página",
-                    "sNext": "Siguiente página",
-                    "sPrevious": "Página anterior"
-                }
-            },
-        });
+
+    $('.datatabla').DataTable({
+        "pageLength": 25,
+        "language": {
+            "lengthMenu": "Mostrando _MENU_ registros por página",
+            "zeroRecords": "No encontramos datos",
+            "info": "Mostrando página _PAGE_ de _PAGES_",
+            "infoEmpty": "Sin datos disponibles",
+            "infoFiltered": "(filtrado de  _MAX_ registros totales)",
+            "oPaginate": {
+                "sFirst": "Primera página",
+                "sLast": "Última página",
+                "sNext": "Siguiente página",
+                "sPrevious": "Página anterior"
+            }
+        },
+    });
+    $('.datatablacorta').DataTable({
+        "order": [[0, "desc"]],
+        "pageLength": 10,
+        "language": {
+            "lengthMenu": "Mostrando _MENU_ registros por página",
+            "zeroRecords": "No encontramos datos",
+            "info": "Mostrando página _PAGE_ de _PAGES_",
+            "infoEmpty": "Sin datos disponibles",
+            "infoFiltered": "(filtrado de  _MAX_ registros totales)",
+            "oPaginate": {
+                "sFirst": "Primera página",
+                "sLast": "Última página",
+                "sNext": "Siguiente página",
+                "sPrevious": "Página anterior"
+            }
+        },
+    });
+
+    $('.datatablaReves').DataTable({
+        "order": [[0, "desc"]],
+        "pageLength": 20,
+        "language": {
+            "lengthMenu": "Mostrando _MENU_ registros por página",
+            "zeroRecords": "No encontramos datos",
+            "info": "Mostrando página _PAGE_ de _PAGES_",
+            "infoEmpty": "Sin datos disponibles",
+            "infoFiltered": "(filtrado de  _MAX_ registros totales)",
+            "oPaginate": {
+                "sFirst": "Primera página",
+                "sLast": "Última página",
+                "sNext": "Siguiente página",
+                "sPrevious": "Página anterior"
+            }
+        },
+    });
+    $('.datatablaLarga').DataTable({
+        "pageLength": 100,
+        "language": {
+            "lengthMenu": "Mostrando _MENU_ registros por página",
+            "zeroRecords": "No encontramos datos",
+            "info": "Mostrando página _PAGE_ de _PAGES_",
+            "infoEmpty": "Sin datos disponibles",
+            "infoFiltered": "(filtrado de  _MAX_ registros totales)",
+            "oPaginate": {
+                "sFirst": "Primera página",
+                "sLast": "Última página",
+                "sNext": "Siguiente página",
+                "sPrevious": "Página anterior"
+            }
+        },
+    });
 
 
     $(function () {
@@ -144,17 +144,16 @@ $(document).ready(function () {
 $('#tablaDeshabilitada tbody').on('click', 'tr', function () {
     $(this).toggleClass('selected');
 });
-    
+
 
 
 
 $("#periodoid")
     .change(function () {
         var valordrop = $("#periodoid").val();
-        
+
         var tabla = $('#tablaDeshabilitada');
-        if (valordrop === "3")
-        {           
+        if (valordrop === "3") {
             tabla.css('visibility', 'visible');
         }
         else {
@@ -174,7 +173,7 @@ $('#buscarRankingFINA').on('click', function (e) {
     var selectedRows = filas.data();
     if (filas.length > 0) {
         // build array of records
-      
+
         var Ids = new Array();
 
         SLen = filas.length;
@@ -183,11 +182,11 @@ $('#buscarRankingFINA').on('click', function (e) {
             Ids.push(celda);
             var nada = "nada";
         }
-       
-        
+
+
     }
     if (filas.length === 0) {
-         Ids = new Array();
+        Ids = new Array();
         Ids.push(0);
     }
     var periodoid = $("#periodoid").val();
@@ -199,7 +198,7 @@ $('#buscarRankingFINA').on('click', function (e) {
         type: 'POST',
         //dataType: 'JsonSendAfiliar',
         data: { torneosid: Ids, periodoid: periodoid, edadminima, edadmaxima },
-        async: false,
+                async: false,
         success: function (result) {
             $('#rankingPuntoFINA').html(result);
         },

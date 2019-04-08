@@ -1,0 +1,37 @@
+﻿@model FDPN.Models.Banners
+
+@{
+    ViewBag.Title = "Details";
+    string path = Url.Content("../Content/img/Fotos/");
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Banners</h4>
+    <hr />
+    <div class="row">
+        <div class="col-lg-4">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Foto)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Foto)
+                </dd>
+
+            </dl>
+        </div>
+        <div class="col-lg-8">
+
+            <img src="@Url.Action(path + Model.Foto)" class="ImagenPreview" style="width:100%;" />
+
+        </div>
+    </div>
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BannerId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -47,49 +47,53 @@ namespace FDPN.Controllers
 
         public ActionResult _TopBar(string titulo)
         {
-            string banner = "";
+            Banners banners = new Banners();
+            ViewBag.clase = "";
             if (titulo == "Home")
             {
                 Random rnd = new Random();
                 int i = rnd.Next(1, 10);
-                switch (i)
-                {
-                    case 1:
-                        banner = "site-header--prensa2";
-                        break;
-                    case 2:
-                        banner = "site-header--prensa3";
-                        break;
-                    case 3:
-                        banner = "site-header--prensa4";
-                        break;
-                    case 4:
-                        banner = "site-header--default";
-                        break;
-                    case 5:
-                        banner = "site-header--prensa";
-                        break;
-                    case 6:
-                        banner = "site-header--documentos";
-                        break;
-                    case 7:
-                        banner = "site-header--resultados";
-                        break;
-                    case 8:
-                        banner = "site-header--rankings";
-                        break;
-                    case 9:
-                        banner = "site-header--calendar";
-                        break;
-                    case 10:
-                        banner = "site-header--news";
-                        break;
-                }
+                
+                 banners = db.Banners.Find(i);
+                //switch (i)
+                //{
+                //    case 1:
+                //        banner = "site-header--prensa2";
+                //        break;
+                //    case 2:
+                //        banner = "site-header--prensa3";
+                //        break;
+                //    case 3:
+                //        banner = "site-header--prensa4";
+                //        break;
+                //    case 4:
+                //        banner = "site-header--default";
+                //        break;
+                //    case 5:
+                //        banner = "site-header--prensa";
+                //        break;
+                //    case 6:
+                //        banner = "site-header--documentos";
+                //        break;
+                //    case 7:
+                //        banner = "site-header--resultados";
+                //        break;
+                //    case 8:
+                //        banner = "site-header--rankings";
+                //        break;
+                //    case 9:
+                //        banner = "site-header--calendar";
+                //        break;
+                //    case 10:
+                //        banner = "site-header--news";
+                //        break;
+                //}
                 ViewBag.Title = "Home";
-                banner= banner+ " site-header js-siteHeader";
+                ViewBag.clase = "site-header js-siteHeader";
+                //banner= banner+ " site-header js-siteHeader";
             }
-            ViewBag.clase = banner;
-            return PartialView();
+          
+            return PartialView(banners);
         }
 
         public ActionResult _Banner()

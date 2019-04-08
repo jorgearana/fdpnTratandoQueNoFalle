@@ -39,12 +39,14 @@ textarea {
 @media(min-width:48em) {
     .banner {
         background-position: center center;
-        min-height: 660px;
-        max-height: 260px;
-        -webkit-mask-position: center center;
-        mask-position: center center;
+        /*min-height: 660px;
+        max-height: 260px;*/
+        /* Full height */
+        height: 100%;
+        /* Center and scale the image nicely */
+        background-repeat: no-repeat;
+        background-size: cover;      
         -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat
     }
 }
 
@@ -1010,4 +1012,13 @@ aside {
 .center {
     display: block;
     margin: 0 auto;
+}
+
+.ColorBanner {
+    min-height:700px;
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-repeat: no-repeat;
+    background-size: cover;
 }

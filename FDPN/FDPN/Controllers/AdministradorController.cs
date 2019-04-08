@@ -52,6 +52,8 @@ namespace FDPN.Controllers
                 Marcasminimas = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Marcasminimas").OrderByDescending(x => x.NoticiaId).ToList(),
                 Marcasclasificatorias = query.Where(x => x.CategoriaNoticia.TipoNoticia == "MarcasClasificatorias").OrderByDescending(x => x.NoticiaId).ToList(),
                 Convocatorias = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Convocatorias").OrderByDescending(x => x.NoticiaId).ToList(),
+                Habiles = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Hábiles").OrderByDescending(x => x.NoticiaId).ToList(),
+                
                 ventanaModal = db.Modals.OrderBy(x => x.Titulo).ToList(),
             };
             return View(VM);
@@ -482,7 +484,8 @@ namespace FDPN.Controllers
         public ActionResult IngresoEnVivo(Vivo vivo)
         {
             if (ModelState.IsValid)
-            {
+            { string path = Server.MapPath("~/Resultados/");
+                Directory.CreateDirectory(path + vivo.Directorio);
                 db.Vivo.Add(vivo);
                 db.SaveChanges();
             }

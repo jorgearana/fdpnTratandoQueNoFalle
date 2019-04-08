@@ -1290,62 +1290,14 @@ table th {
 .site-header {
     position: relative;
     overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
     /*padding-top: 54px*/
 }
 
-@media(min-width:48em) {
-    .site-header--default {
-        background: url('img/15.jpg') no-repeat 
-            /*background: url(../www/images/covers/aida-cover-default.jpg) no-repeat*/
-    }
-    .site-header--prensa {
-        background: url('img/11.jpg') no-repeat
-    }
-    .site-header--prensa2 {
-        background: url('img/13.jpg') no-repeat
-    }
-    .site-header--prensa3 {
-        background: url('img/16.jpg') no-repeat
-    }
-    .site-header--prensa4 {
-        background: url('img/17.jpg') no-repeat
-    }
-}
-
-@media(min-width:48em) {
-    .site-header--documentos {
-        background: url('img/9.jpg') no-repeat;
-    }
-}
-
-@media(min-width:48em) {
-    .site-header--resultados {
-        background: url('img/18.jpg') no-repeat
-    }
-}
-
-@media(min-width:48em) {
-    .site-header--rankings {
-        background: url('img/9.jpg') no-repeat
-    }
-}
-
-@media(min-width:48em) {
-    .site-header--calendar {
-        background: url('img/2.jpg') no-repeat;
-    }
-}
-
-@media(min-width:48em) {
-    .site-header--news {
-        background: url('img/3.jpg') no-repeat
-    }
-}
-
-
 @media(max-width:47.9375em) {
     .site-header {
-        background: url('img/10.jpg') no-repeat;
+        background: url('img/Fotos/11.jpg') no-repeat;
         max-height: 360px;
     }
 }
@@ -1372,7 +1324,7 @@ table th {
 }
 
 .site-header__content {
-    position: relative
+    position: relative; min-height:700px;
 }
 
 .site-header__branding {

@@ -232,3 +232,8 @@ D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Rotativa.Core.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Rotativa.MVC.dll
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Release\FDPN.csprojAssemblyReference.cache
 D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Release\FDPN.csproj.CopyComplete
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\System.Diagnostics.DiagnosticSource.dll
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Microsoft.AI.PerfCounterCollector.xml
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+D:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\System.Diagnostics.DiagnosticSource.xml

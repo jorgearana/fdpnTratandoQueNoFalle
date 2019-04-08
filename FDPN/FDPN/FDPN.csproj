@@ -56,6 +56,30 @@
     <Reference Include="itextsharp, Version=5.0.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.0.5\lib\itextsharp.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.10.0-beta3\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.10.0-beta3\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.10.0-beta3\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.9.0-beta2\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.10.0-beta3\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.10.0-beta3\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.4\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MoreLinq, Version=2.8.21218.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
       <HintPath>..\packages\morelinq.2.8.0\lib\net40\MoreLinq.dll</HintPath>
@@ -76,11 +100,16 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.0\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
-    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -143,33 +172,13 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ApplicationInsights">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.Agent.Intercept">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.DependencyCollector">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.PerfCounterCollector">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.WindowsServer">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.Web">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdministradorController.cs" />
+    <Compile Include="Controllers\BannersController.cs" />
     <Compile Include="Controllers\BASEController.cs" />
     <Compile Include="Controllers\CalendariosController.cs" />
     <Compile Include="Controllers\DisciplinasController.cs" />
@@ -215,6 +224,27 @@
     <Content Include="Content\img\fondos\logoIPD.jpg" />
     <Content Include="Content\img\fondos\logoUana.jpg" />
     <Content Include="Content\img\fondos\piscinalibre.jpg" />
+    <Content Include="Content\img\Fotos\1.JPG" />
+    <Content Include="Content\img\Fotos\10.jpg" />
+    <Content Include="Content\img\Fotos\11.jpg" />
+    <Content Include="Content\img\Fotos\12.jpg" />
+    <Content Include="Content\img\Fotos\13.jpg" />
+    <Content Include="Content\img\Fotos\14.jpg" />
+    <Content Include="Content\img\Fotos\15.jpg" />
+    <Content Include="Content\img\Fotos\16.jpg" />
+    <Content Include="Content\img\Fotos\17.jpg" />
+    <Content Include="Content\img\Fotos\18.jpg" />
+    <Content Include="Content\img\Fotos\1er curso natacion artistica en arequipa.png" />
+    <Content Include="Content\img\Fotos\1ercursonatacionartisticaenarequipa.png" />
+    <Content Include="Content\img\Fotos\2.JPG" />
+    <Content Include="Content\img\Fotos\3.JPG" />
+    <Content Include="Content\img\Fotos\4.JPG" />
+    <Content Include="Content\img\Fotos\5.JPG" />
+    <Content Include="Content\img\Fotos\6.JPG" />
+    <Content Include="Content\img\Fotos\6768666-1080p-wallpapers.jpg" />
+    <Content Include="Content\img\Fotos\7.jpg" />
+    <Content Include="Content\img\Fotos\8.jpg" />
+    <Content Include="Content\img\Fotos\9.jpg" />
     <Content Include="Content\img\Fotos\FINAL %281%29-001.jpg" />
     <Content Include="Content\img\Fotos\LISTO1 %281%29-001.jpg" />
     <Content Include="Content\img\Fotos\Academiatrujillo.jpeg" />
@@ -292,6 +322,9 @@
     <Compile Include="Models\atletas.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Banners.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\BASETIMES.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
@@ -337,6 +370,9 @@
     <Compile Include="Models\CursoParticipante.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Delegados.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Directivos.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
@@ -350,6 +386,9 @@
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entrenadores.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntrenadorInscrito.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Equipos.cs">
@@ -705,24 +744,6 @@
     <Content Include="Content\Fonawesome\css\font-awesome.css" />
     <Content Include="Content\Fonawesome\css\font-awesome.min.css" />
     <Content Include="Content\Fonawesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="Content\img\1.JPG" />
-    <Content Include="Content\img\10.jpg" />
-    <Content Include="Content\img\11.jpg" />
-    <Content Include="Content\img\12.jpg" />
-    <Content Include="Content\img\13.jpg" />
-    <Content Include="Content\img\14.jpg" />
-    <Content Include="Content\img\15.jpg" />
-    <Content Include="Content\img\16.jpg" />
-    <Content Include="Content\img\17.jpg" />
-    <Content Include="Content\img\18.jpg" />
-    <Content Include="Content\img\2.JPG" />
-    <Content Include="Content\img\3.JPG" />
-    <Content Include="Content\img\4.JPG" />
-    <Content Include="Content\img\5.JPG" />
-    <Content Include="Content\img\6.JPG" />
-    <Content Include="Content\img\7.jpg" />
-    <Content Include="Content\img\8.jpg" />
-    <Content Include="Content\img\9.jpg" />
     <Content Include="Content\img\covermask.png" />
     <Content Include="Content\img\fondoconferencia.jpg" />
     <Content Include="Content\img\fondolargo.jpg" />
@@ -950,6 +971,13 @@
     <Content Include="Views\Shared\_LayoutWYSWYG.cshtml" />
     <Content Include="Views\Shared\_menu.cshtml" />
     <Content Include="Views\Shared\_tablaResultados.cshtml" />
+    <Content Include="Views\Banners\Index.cshtml" />
+    <Content Include="Views\Banners\Details.cshtml" />
+    <Content Include="Views\Banners\Create.cshtml" />
+    <Content Include="Views\Banners\Delete.cshtml" />
+    <Content Include="Views\Banners\Edit.cshtml" />
+    <Content Include="Views\Documentos\habiles.cshtml" />
+    <Content Include="Views\Documentos\Convocatorias.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -958,6 +986,7 @@
     <Folder Include="Models\Metadata\" />
     <Folder Include="Views\BASE\" />
     <Folder Include="Views\FileUpload\" />
+    <Folder Include="Views\Tecnico\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1002,7 +1031,15 @@
       <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.10.0-beta3\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.10.0-beta3\build\Microsoft.ApplicationInsights.DependencyCollector.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.10.0-beta3\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.10.0-beta3\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.10.0-beta3\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.10.0-beta3\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.10.0-beta3\build\Microsoft.ApplicationInsights.WindowsServer.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.2.10.0-beta3\build\Microsoft.ApplicationInsights.WindowsServer.targets'))" />
   </Target>
+  <Import Project="..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.10.0-beta3\build\Microsoft.ApplicationInsights.DependencyCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.10.0-beta3\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.10.0-beta3\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.10.0-beta3\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.10.0-beta3\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.10.0-beta3\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.2.10.0-beta3\build\Microsoft.ApplicationInsights.WindowsServer.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.10.0-beta3\build\Microsoft.ApplicationInsights.WindowsServer.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

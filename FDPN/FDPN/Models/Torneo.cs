@@ -19,12 +19,15 @@ namespace FDPN.Models
         {
             this.atletas = new HashSet<atletas>();
             this.Entradas = new HashSet<Entradas>();
+            this.EntrenadorInscrito = new HashSet<EntrenadorInscrito>();
             this.Equipos = new HashSet<Equipos>();
             this.Eventos = new HashSet<Eventos>();
             this.MarcasMinimas = new HashSet<MarcasMinimas>();
             this.MultiEdad = new HashSet<MultiEdad>();
             this.Sesion = new HashSet<Sesion>();
+            this.SessionItem = new HashSet<SessionItem>();
             this.SetupTorneo = new HashSet<SetupTorneo>();
+            this.Delegados = new HashSet<Delegados>();
         }
     
         public string Meet_name1 { get; set; }
@@ -248,6 +251,8 @@ namespace FDPN.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Entradas> Entradas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EntrenadorInscrito> EntrenadorInscrito { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Equipos> Equipos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Eventos> Eventos { get; set; }
@@ -257,8 +262,11 @@ namespace FDPN.Models
         public virtual ICollection<MultiEdad> MultiEdad { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sesion> Sesion { get; set; }
-        public virtual SessionItem SessionItem { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SessionItem> SessionItem { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SetupTorneo> SetupTorneo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Delegados> Delegados { get; set; }
     }
 }
