@@ -51,11 +51,17 @@ namespace InscripcionNatacion.Controllers
                 Rol  rol = db.Rol.Where(x => x.RolId == usuario.RolId).FirstOrDefault();
                 Session["Usuario"] = usuario;
                 Session["Rol"] = rol;
-                
-                return RedirectToAction("torneos", "home");
+                return RedirectToAction("Modal");
+                //return RedirectToAction("torneos", "home");
             }
             return View();
         }
+        [HttpGet]
+        public ActionResult Modal()
+        {
+            return View();
+        }
+        
 
         public ActionResult Torneos()
         {

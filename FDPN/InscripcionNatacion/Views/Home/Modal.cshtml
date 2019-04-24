@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Modal";
+    
+}
+
+
+<div class="modal fade left" id="IngresarEntrenadores" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="true" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-side modal-top-left modal-notify modal-info" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <p class="heading lead">Comunicado</p>
+
+            </div>
+
+            <!--Body-->
+            <div class="modal-body">
+                <img src="http://fdpn.org/Content/Img/Fotos/asd32.jpeg" alt="Federación deportiva peruana de natación" class="img-fluid">
+                <div class="text-center">
+                    <p>
+                        Ahora se debe de ingresar los datos de los delegados que representan al club en la competencia, así como los entrenadores afiliados que
+                        ingresarán al torneo.
+                    </p>
+                </div>
+            </div>
+
+            <!--Footer-->
+            <div class="modal-footer justify-content-center">
+                @*<a href="" type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">  <i class="far fa-gem ml-1"></i>Entendido</a>*@
+                @Html.ActionLink("Entendido", "Torneos", "Home", null, new { @class = "btn btn-outline-info waves-effect" })
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+
+
+@section scripts {
+
+    <script>
+
+        $(document).ready(function () {
+            $('#IngresarEntrenadores').modal('show');
+        });
+
+    </script>
+
+}

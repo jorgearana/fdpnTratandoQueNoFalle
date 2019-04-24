@@ -18,12 +18,12 @@ namespace FDPN.Models
         public Usuario()
         {
             this.Afiliacion = new HashSet<Afiliacion>();
+            this.Delegados = new HashSet<Delegados>();
             this.Entrenadores = new HashSet<Entrenadores>();
             this.HistorialTraspasos = new HashSet<HistorialTraspasos>();
             this.Multas = new HashSet<Multas>();
             this.Traspasos = new HashSet<Traspasos>();
             this.Vouchers = new HashSet<Vouchers>();
-            this.Delegados = new HashSet<Delegados>();
         }
     
         public int UsuarioID { get; set; }
@@ -37,6 +37,8 @@ namespace FDPN.Models
         public virtual ICollection<Afiliacion> Afiliacion { get; set; }
         public virtual Club Club { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Delegados> Delegados { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Entrenadores> Entrenadores { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HistorialTraspasos> HistorialTraspasos { get; set; }
@@ -47,7 +49,5 @@ namespace FDPN.Models
         public virtual ICollection<Traspasos> Traspasos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vouchers> Vouchers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Delegados> Delegados { get; set; }
     }
 }

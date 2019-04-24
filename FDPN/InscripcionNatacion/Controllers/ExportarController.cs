@@ -292,10 +292,12 @@ namespace InscripcionNatacion.Controllers
             string CompNo = AgrandarNumero(atleta.Comp_no ?? 0, 5);
             string DBO = AgrandarString((atleta.Birth_date ?? DateTime.Now).ToString("MMddyyyy"), 9);
             string Edad = AgrandarString(atleta.Ath_age.ToString(), 3);
-            string resto = "                             ";
+            string foreigner = AgrandarString("    0", 6);
+            string Nacionalidad = AgrandarString("      PER", 10);
+            string resto = "             ";
 
 
-            string resultado = "D1" + sex + Nro + Apellido + nombre + Nick + inicial + Reg_No + CompNo + DBO + Edad + resto;
+            string resultado = "D1" + sex + Nro + Apellido + nombre + Nick + inicial + Reg_No + CompNo + DBO + Edad +foreigner+Nacionalidad+ resto;
             resultado = AgrandarString(resultado, 128);
             resultado = EncontrarCheckSum(resultado);
             return resultado;

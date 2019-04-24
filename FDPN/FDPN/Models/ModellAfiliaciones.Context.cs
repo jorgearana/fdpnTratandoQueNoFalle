@@ -41,6 +41,7 @@ namespace FDPN.Models
         public virtual DbSet<Categorias> Categorias { get; set; }
         public virtual DbSet<Club> Club { get; set; }
         public virtual DbSet<Comentario> Comentario { get; set; }
+        public virtual DbSet<Delegados> Delegados { get; set; }
         public virtual DbSet<Directivos> Directivos { get; set; }
         public virtual DbSet<Disciplina> Disciplina { get; set; }
         public virtual DbSet<Entradas> Entradas { get; set; }
@@ -118,6 +119,5 @@ namespace FDPN.Models
         public virtual DbSet<tblmarca> tblmarca { get; set; }
         public virtual DbSet<TorneoDestacado> TorneoDestacado { get; set; }
         public virtual DbSet<TorneoDestacadoMasters> TorneoDestacadoMasters { get; set; }
-        public virtual DbSet<Delegados> Delegados { get; set; }
     }
 }

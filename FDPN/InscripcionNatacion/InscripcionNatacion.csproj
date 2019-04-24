@@ -260,6 +260,7 @@
     <Content Include="Content\font-awesome\css\font-awesome.css" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="Content\img\borrarla.png" />
     <Content Include="Content\img\Enconstruccion.jpg" />
     <Content Include="Content\img\favicon.ico" />
     <Content Include="Content\img\inscripcion natacion.png" />
@@ -573,6 +574,7 @@
     <Content Include="Views\Entrenador\EntrenadoresInscritos.cshtml" />
     <Content Include="Views\Entrenador\FormularioDelegados.cshtml" />
     <Content Include="Views\Entrenador\ListadoDeDelegados.cshtml" />
+    <Content Include="Views\Home\Modal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

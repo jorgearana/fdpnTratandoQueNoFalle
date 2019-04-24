@@ -88,7 +88,6 @@ namespace ImportarInicial
 
 
             Torneo torneo = mapper.Map<Meet, Torneo>(meet[0]);
-            torneo.MarcaMaxima = false;
             db.Torneo.Add(torneo);
             db.SaveChanges();
 

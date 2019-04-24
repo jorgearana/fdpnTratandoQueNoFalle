@@ -3321,6 +3321,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySet Name="Categorias" EntityType="DB_9B1F4C_comentariosModel.Categorias" />
           <EntitySet Name="Club" EntityType="DB_9B1F4C_comentariosModel.Club" />
           <EntitySet Name="Comentario" EntityType="DB_9B1F4C_comentariosModel.Comentario" />
+          <EntitySet Name="Delegados" EntityType="DB_9B1F4C_comentariosModel.Delegados" />
           <EntitySet Name="Directivos" EntityType="DB_9B1F4C_comentariosModel.Directivos" />
           <EntitySet Name="Disciplina" EntityType="DB_9B1F4C_comentariosModel.Disciplina" />
           <EntitySet Name="Entradas" EntityType="DB_9B1F4C_comentariosModel.Entradas" />
@@ -3497,6 +3498,14 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <AssociationSet Name="FK_Vouchers_Club" Association="DB_9B1F4C_comentariosModel.FK_Vouchers_Club">
             <End Role="Club" EntitySet="Club" />
             <End Role="Vouchers" EntitySet="Vouchers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delegados_Torneo" Association="DB_9B1F4C_comentariosModel.FK_Delegados_Torneo">
+            <End Role="Torneo" EntitySet="Torneo" />
+            <End Role="Delegados" EntitySet="Delegados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Delegados_Usuario" Association="DB_9B1F4C_comentariosModel.FK_Delegados_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Delegados" EntitySet="Delegados" />
           </AssociationSet>
           <AssociationSet Name="FK_Inscripciones_Disciplina" Association="DB_9B1F4C_comentariosModel.FK_Inscripciones_Disciplina">
             <End Role="Disciplina" EntitySet="Disciplina" />
@@ -3725,15 +3734,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <AssociationSet Name="FK_Vouchers_Usuario" Association="DB_9B1F4C_comentariosModel.FK_Vouchers_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Vouchers" EntitySet="Vouchers" />
-          </AssociationSet>
-          <EntitySet Name="Delegados" EntityType="DB_9B1F4C_comentariosModel.Delegados" />
-          <AssociationSet Name="FK_Delegados_Torneo" Association="DB_9B1F4C_comentariosModel.FK_Delegados_Torneo">
-            <End Role="Torneo" EntitySet="Torneo" />
-            <End Role="Delegados" EntitySet="Delegados" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Delegados_Usuario" Association="DB_9B1F4C_comentariosModel.FK_Delegados_Usuario">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Delegados" EntitySet="Delegados" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Afiliacion">
@@ -3972,6 +3972,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <Property Name="Asunto" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Mensaje" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="fecha" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Delegados">
+          <Key>
+            <PropertyRef Name="DelegadoId" />
+          </Key>
+          <Property Name="DelegadoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <Property Name="MeetId" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_comentariosModel.FK_Delegados_Torneo" FromRole="Delegados" ToRole="Torneo" />
+          <NavigationProperty Name="Usuario" Relationship="DB_9B1F4C_comentariosModel.FK_Delegados_Usuario" FromRole="Delegados" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Directivos">
           <Key>
@@ -5127,6 +5139,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <Property Name="Meetid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MarcaMaxima" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="atletas" Relationship="DB_9B1F4C_comentariosModel.FK_atletas_Torneo" FromRole="Torneo" ToRole="atletas" />
+          <NavigationProperty Name="Delegados" Relationship="DB_9B1F4C_comentariosModel.FK_Delegados_Torneo" FromRole="Torneo" ToRole="Delegados" />
           <NavigationProperty Name="Entradas" Relationship="DB_9B1F4C_comentariosModel.FK_Entradas_Torneo" FromRole="Torneo" ToRole="Entradas" />
           <NavigationProperty Name="EntrenadorInscrito" Relationship="DB_9B1F4C_comentariosModel.FK_EntrenadorInscrito_Torneo" FromRole="Torneo" ToRole="EntrenadorInscrito" />
           <NavigationProperty Name="Equipos" Relationship="DB_9B1F4C_comentariosModel.FK_Equipos_Torneo" FromRole="Torneo" ToRole="Equipos" />
@@ -5136,7 +5149,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <NavigationProperty Name="Sesion" Relationship="DB_9B1F4C_comentariosModel.FK_Sesion_Torneo" FromRole="Torneo" ToRole="Sesion" />
           <NavigationProperty Name="SessionItem" Relationship="DB_9B1F4C_comentariosModel.FK_SessionItem_Torneo" FromRole="Torneo" ToRole="SessionItem" />
           <NavigationProperty Name="SetupTorneo" Relationship="DB_9B1F4C_comentariosModel.FK_SetupTorneo_Torneo" FromRole="Torneo" ToRole="SetupTorneo" />
-          <NavigationProperty Name="Delegados" Relationship="DB_9B1F4C_comentariosModel.FK_Delegados_Torneo" FromRole="Torneo" ToRole="Delegados" />
         </EntityType>
         <EntityType Name="Traspasos">
           <Key>
@@ -5180,13 +5192,13 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <Property Name="RememberMe" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Afiliacion" Relationship="DB_9B1F4C_comentariosModel.FK_Afiliacion_Usuario" FromRole="Usuario" ToRole="Afiliacion" />
           <NavigationProperty Name="Club" Relationship="DB_9B1F4C_comentariosModel.FK_Usuario_Club" FromRole="Usuario" ToRole="Club" />
+          <NavigationProperty Name="Delegados" Relationship="DB_9B1F4C_comentariosModel.FK_Delegados_Usuario" FromRole="Usuario" ToRole="Delegados" />
           <NavigationProperty Name="Entrenadores" Relationship="DB_9B1F4C_comentariosModel.FK_Entrenadores_Usuario" FromRole="Usuario" ToRole="Entrenadores" />
           <NavigationProperty Name="HistorialTraspasos" Relationship="DB_9B1F4C_comentariosModel.FK_HistorialTraspasos_Usuario" FromRole="Usuario" ToRole="HistorialTraspasos" />
           <NavigationProperty Name="Multas" Relationship="DB_9B1F4C_comentariosModel.FK_Multas_Usuario" FromRole="Usuario" ToRole="Multas" />
           <NavigationProperty Name="Rol" Relationship="DB_9B1F4C_comentariosModel.FK_Usuario_Rol" FromRole="Usuario" ToRole="Rol" />
           <NavigationProperty Name="Traspasos" Relationship="DB_9B1F4C_comentariosModel.FK_Traspasos_Usuario" FromRole="Usuario" ToRole="Traspasos" />
           <NavigationProperty Name="Vouchers" Relationship="DB_9B1F4C_comentariosModel.FK_Vouchers_Usuario" FromRole="Usuario" ToRole="Vouchers" />
-          <NavigationProperty Name="Delegados" Relationship="DB_9B1F4C_comentariosModel.FK_Delegados_Usuario" FromRole="Usuario" ToRole="Delegados" />
         </EntityType>
         <EntityType Name="Vivo">
           <Key>
@@ -5794,6 +5806,30 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             </Principal>
             <Dependent Role="Vouchers">
               <PropertyRef Name="ClubId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Delegados_Torneo">
+          <End Type="DB_9B1F4C_comentariosModel.Torneo" Role="Torneo" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.Delegados" Role="Delegados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Torneo">
+              <PropertyRef Name="Meetid" />
+            </Principal>
+            <Dependent Role="Delegados">
+              <PropertyRef Name="MeetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Delegados_Usuario">
+          <End Type="DB_9B1F4C_comentariosModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.Delegados" Role="Delegados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioID" />
+            </Principal>
+            <Dependent Role="Delegados">
+              <PropertyRef Name="UsuarioId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6481,42 +6517,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Delegados">
-          <Key>
-            <PropertyRef Name="DelegadoId" />
-          </Key>
-          <Property Name="DelegadoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
-          <Property Name="MeetId" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Apellido" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_comentariosModel.FK_Delegados_Torneo" FromRole="Delegados" ToRole="Torneo" />
-          <NavigationProperty Name="Usuario" Relationship="DB_9B1F4C_comentariosModel.FK_Delegados_Usuario" FromRole="Delegados" ToRole="Usuario" />
-        </EntityType>
-        <Association Name="FK_Delegados_Torneo">
-          <End Type="DB_9B1F4C_comentariosModel.Torneo" Role="Torneo" Multiplicity="1" />
-          <End Type="DB_9B1F4C_comentariosModel.Delegados" Role="Delegados" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Torneo">
-              <PropertyRef Name="Meetid" />
-            </Principal>
-            <Dependent Role="Delegados">
-              <PropertyRef Name="MeetId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Delegados_Usuario">
-          <End Type="DB_9B1F4C_comentariosModel.Usuario" Role="Usuario" Multiplicity="1" />
-          <End Type="DB_9B1F4C_comentariosModel.Delegados" Role="Delegados" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="UsuarioID" />
-            </Principal>
-            <Dependent Role="Delegados">
-              <PropertyRef Name="UsuarioId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6746,6 +6746,17 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="ComentarioId" ColumnName="ComentarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Delegados">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Delegados">
+              <MappingFragment StoreEntitySet="Delegados">
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="MeetId" ColumnName="MeetId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="DelegadoId" ColumnName="DelegadoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -8157,17 +8168,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
               <MappingFragment StoreEntitySet="TorneoDestacadoMasters">
                 <ScalarProperty Name="Meet" ColumnName="Meet" />
                 <ScalarProperty Name="DestacadoId" ColumnName="DestacadoId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Delegados">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Delegados">
-              <MappingFragment StoreEntitySet="Delegados">
-                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="MeetId" ColumnName="MeetId" />
-                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
-                <ScalarProperty Name="DelegadoId" ColumnName="DelegadoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -18,6 +18,7 @@ namespace FDPN.Models
         public Torneo()
         {
             this.atletas = new HashSet<atletas>();
+            this.Delegados = new HashSet<Delegados>();
             this.Entradas = new HashSet<Entradas>();
             this.EntrenadorInscrito = new HashSet<EntrenadorInscrito>();
             this.Equipos = new HashSet<Equipos>();
@@ -27,7 +28,6 @@ namespace FDPN.Models
             this.Sesion = new HashSet<Sesion>();
             this.SessionItem = new HashSet<SessionItem>();
             this.SetupTorneo = new HashSet<SetupTorneo>();
-            this.Delegados = new HashSet<Delegados>();
         }
     
         public string Meet_name1 { get; set; }
@@ -249,6 +249,8 @@ namespace FDPN.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<atletas> atletas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Delegados> Delegados { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Entradas> Entradas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EntrenadorInscrito> EntrenadorInscrito { get; set; }
@@ -266,7 +268,5 @@ namespace FDPN.Models
         public virtual ICollection<SessionItem> SessionItem { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SetupTorneo> SetupTorneo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Delegados> Delegados { get; set; }
     }
 }

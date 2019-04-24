@@ -141,67 +141,53 @@ namespace FDPN.Controllers
         public ActionResult _nadadordestacado()
         {
             DateTime iniciomes = (new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)).AddMonths(-2);
+            RESULTS resultadomejor = new RESULTS();
             Random rnd = new Random();
-            //List< TorneoDestacado> torneodestacado = db.TorneoDestacado.OrderByDescending(x => x.DestacadoId).Take(3).ToList();
-
-            int categoria = rnd.Next(0, 3);
-            int edadminima = 0;
-            int edadmaxima = 109;
-            switch (categoria)
-            {
-                case 0:
-                    edadminima = 13;
-                    edadmaxima = 14;
-                    break;
-                case 1:
-                    edadminima = 15;
-                    edadmaxima = 17;
-                    break;
-
-            }
-            //int meet = torneodestacado[i].Meet;
-            string sexo = "M";
             List<TorneoDestacado> destacados = db.TorneoDestacado.OrderByDescending(x => x.Meet).Take(5).ToList();
             int i = rnd.Next(1, destacados.Count);
             int Meettorneo = destacados[i].Meet;
             MEET torneoAMostrar = db.MEET.Where(x => x.Meet1 == Meettorneo).FirstOrDefault();
-
-            i = rnd.Next(1, 3);
-            if (i == 2)
+            do
             {
-                sexo = "F";
-            }
-            RESULTS resultadomejor = db.RESULTS.Where(x => x.Athlete1.Sex == sexo && x.COURSE != "Y" && x.Athlete1.Age >= edadminima && x.Athlete1.Age <= edadmaxima && x.MEET == torneoAMostrar.Meet1).OrderByDescending(x => x.PFina).FirstOrDefault();
+               
+                //List< TorneoDestacado> torneodestacado = db.TorneoDestacado.OrderByDescending(x => x.DestacadoId).Take(3).ToList();
+
+                int categoria = rnd.Next(0, 3);
+                int edadminima = 0;
+                int edadmaxima = 109;
+                switch (categoria)
+                {
+                    case 0:
+                        edadminima = 13;
+                        edadmaxima = 14;
+                        break;
+                    case 1:
+                        edadminima = 15;
+                        edadmaxima = 17;
+                        break;
+
+                }
+                //int meet = torneodestacado[i].Meet;
+                string sexo = "M";
+               
+
+                i = rnd.Next(1, 3);
+                if (i == 2)
+                {
+                    sexo = "F";
+                }
+                resultadomejor = db.RESULTS.Where(x => x.Athlete1.Sex == sexo && x.COURSE != "Y" && x.Athlete1.Age >= edadminima && 
+                x.Athlete1.Age <= edadmaxima && x.MEET == torneoAMostrar.Meet1).OrderByDescending(x => x.PFina).FirstOrDefault();
 
 
-            if (resultadomejor == null || resultadomejor.PFina < 500)
-            {
-                iniciomes = iniciomes.AddMonths(-1);
-                resultadomejor = db.RESULTS.Where(x => x.Athlete1.Sex == sexo && x.MEET1.Start > iniciomes && x.COURSE != "Y" && x.Athlete1.Age >= edadminima && x.Athlete1.Age <= edadmaxima).OrderByDescending(x => x.PFina).FirstOrDefault();
-            }
+                if (resultadomejor == null || resultadomejor.PFina < 500)
+                {
+                    iniciomes = iniciomes.AddMonths(-1);
+                    resultadomejor = db.RESULTS.Where(x => x.Athlete1.Sex == sexo && x.MEET1.Start > iniciomes && x.COURSE != "Y" 
+                    && x.Athlete1.Age >= edadminima && x.Athlete1.Age <= edadmaxima).OrderByDescending(x => x.PFina).FirstOrDefault();
+                }
 
-            if (resultadomejor == null )
-            {
-                resultadomejor = db.RESULTS.Where(x => x.Athlete1.Sex == sexo && x.MEET == torneoAMostrar.Meet1).OrderByDescending(x => x.PFina).FirstOrDefault();
-            }
-
-            if (resultadomejor == null)
-            {
-                string nada = "nada";
-            }
-
-            //int ponderado = tiempos.Count() / 5;
-            //tiempos = tiempos.Take(ponderado).ToList();
-
-
-            //i = rnd.Next(1, tiempos.Count);
-            //int athleteID = tiempos[i].AthleteId ?? 0;
-
-            //string dni = tiempos[i].Athlete1.ID_NO ?? "";
-
-
-
-
+            } while (resultadomejor == null || resultadomejor.PFina <1 );
 
             string dni = resultadomejor.Athlete1.ID_NO ?? "";
             dni = dni.Replace(" ", "");
