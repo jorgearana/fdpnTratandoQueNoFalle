@@ -318,10 +318,11 @@ namespace InscripcionNatacion.Controllers
             string cuatro = "    ";
             string Fee = FormatearTiempo((double)evento.Entry_fee, 6);
 
-            string Seed1 = FormatearTiempo((entrada.ActualSeed_time), 8);
-            string CourseSeed1 = entrada.ActSeed_course;
             string Seed2 = FormatearTiempo((entrada.ConvSeed_time), 8);
             string CourseSeed2 = entrada.ConvSeed_course;
+            string Seed1 = FormatearTiempo((entrada.ActualSeed_time), 8);
+            string CourseSeed1 = entrada.ActSeed_course;
+           
             string resto = "    0.00    0.00  0NN               N                               ";
 
             string espacio = "  ";

@@ -98,6 +98,7 @@ namespace ImportarInicial
                 pruebasXsesion = Int32.Parse(TxtPruebasXSesion.Text),
                 pruebasXtorneo = Int32.Parse(TxtPruebasXSesion.Text),
                 pruebasXEquipo = Int32.Parse(txtPruebasXEquipo.Text),
+                SinMarca = Int32.Parse(txtPruebasSinMarca.Text),
                 Meetid = torneo.Meetid,
                 PorLigas= chkPorLigas.Checked,
             };

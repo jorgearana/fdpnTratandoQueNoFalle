@@ -34,18 +34,20 @@
             this.cboTipoTorneo = new MetroFramework.Controls.MetroComboBox();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.chkPorLigas = new MetroFramework.Controls.MetroCheckBox();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.txtPruebasXEquipo = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.txtPruebasXTorneo = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.TxtPruebasXSesion = new MetroFramework.Controls.MetroTextBox();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.btnBorrar = new MetroFramework.Controls.MetroButton();
             this.CboTorneos = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.lblResultado = new MetroFramework.Controls.MetroLabel();
-            this.TxtPruebasXSesion = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.txtPruebasXTorneo = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.txtPruebasXEquipo = new MetroFramework.Controls.MetroTextBox();
-            this.chkPorLigas = new MetroFramework.Controls.MetroCheckBox();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.txtPruebasSinMarca = new MetroFramework.Controls.MetroTextBox();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
@@ -109,6 +111,8 @@
             // metroTabPage1
             // 
             this.metroTabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.metroTabPage1.Controls.Add(this.metroLabel6);
+            this.metroTabPage1.Controls.Add(this.txtPruebasSinMarca);
             this.metroTabPage1.Controls.Add(this.chkPorLigas);
             this.metroTabPage1.Controls.Add(this.metroLabel5);
             this.metroTabPage1.Controls.Add(this.txtPruebasXEquipo);
@@ -132,149 +136,15 @@
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
-            // metroTabPage2
+            // chkPorLigas
             // 
-            this.metroTabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.metroTabPage2.Controls.Add(this.btnBorrar);
-            this.metroTabPage2.Controls.Add(this.CboTorneos);
-            this.metroTabPage2.Controls.Add(this.metroLabel2);
-            this.metroTabPage2.HorizontalScrollbarBarColor = true;
-            this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.HorizontalScrollbarSize = 10;
-            this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(601, 194);
-            this.metroTabPage2.TabIndex = 1;
-            this.metroTabPage2.Text = "Borrar torneo";
-            this.metroTabPage2.VerticalScrollbarBarColor = true;
-            this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.VerticalScrollbarSize = 10;
-            // 
-            // btnBorrar
-            // 
-            this.btnBorrar.Location = new System.Drawing.Point(263, 40);
-            this.btnBorrar.Name = "btnBorrar";
-            this.btnBorrar.Size = new System.Drawing.Size(170, 23);
-            this.btnBorrar.Style = MetroFramework.MetroColorStyle.Green;
-            this.btnBorrar.TabIndex = 7;
-            this.btnBorrar.Text = "Borrar torneo";
-            this.btnBorrar.UseSelectable = true;
-            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
-            // 
-            // CboTorneos
-            // 
-            this.CboTorneos.FormattingEnabled = true;
-            this.CboTorneos.ItemHeight = 23;
-            this.CboTorneos.Location = new System.Drawing.Point(22, 40);
-            this.CboTorneos.Name = "CboTorneos";
-            this.CboTorneos.Size = new System.Drawing.Size(145, 29);
-            this.CboTorneos.TabIndex = 8;
-            this.CboTorneos.UseSelectable = true;
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.BackColor = System.Drawing.Color.Black;
-            this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Small;
-            this.metroLabel2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.metroLabel2.Location = new System.Drawing.Point(22, 19);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(145, 15);
-            this.metroLabel2.TabIndex = 6;
-            this.metroLabel2.Text = "Seleccione el tipo de Torneo";
-            // 
-            // lblResultado
-            // 
-            this.lblResultado.AutoSize = true;
-            this.lblResultado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblResultado.Location = new System.Drawing.Point(379, 35);
-            this.lblResultado.Name = "lblResultado";
-            this.lblResultado.Size = new System.Drawing.Size(0, 0);
-            this.lblResultado.TabIndex = 7;
-            // 
-            // TxtPruebasXSesion
-            // 
-            // 
-            // 
-            // 
-            this.TxtPruebasXSesion.CustomButton.Image = null;
-            this.TxtPruebasXSesion.CustomButton.Location = new System.Drawing.Point(53, 1);
-            this.TxtPruebasXSesion.CustomButton.Name = "";
-            this.TxtPruebasXSesion.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.TxtPruebasXSesion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.TxtPruebasXSesion.CustomButton.TabIndex = 1;
-            this.TxtPruebasXSesion.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.TxtPruebasXSesion.CustomButton.UseSelectable = true;
-            this.TxtPruebasXSesion.CustomButton.Visible = false;
-            this.TxtPruebasXSesion.Lines = new string[0];
-            this.TxtPruebasXSesion.Location = new System.Drawing.Point(188, 27);
-            this.TxtPruebasXSesion.MaxLength = 32767;
-            this.TxtPruebasXSesion.Name = "TxtPruebasXSesion";
-            this.TxtPruebasXSesion.PasswordChar = '\0';
-            this.TxtPruebasXSesion.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.TxtPruebasXSesion.SelectedText = "";
-            this.TxtPruebasXSesion.SelectionLength = 0;
-            this.TxtPruebasXSesion.SelectionStart = 0;
-            this.TxtPruebasXSesion.ShortcutsEnabled = true;
-            this.TxtPruebasXSesion.Size = new System.Drawing.Size(75, 23);
-            this.TxtPruebasXSesion.TabIndex = 6;
-            this.TxtPruebasXSesion.UseSelectable = true;
-            this.TxtPruebasXSesion.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.TxtPruebasXSesion.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.BackColor = System.Drawing.Color.Black;
-            this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Small;
-            this.metroLabel3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.metroLabel3.Location = new System.Drawing.Point(21, 35);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(103, 15);
-            this.metroLabel3.TabIndex = 7;
-            this.metroLabel3.Text = "Pruebas por sesión";
-            // 
-            // metroLabel4
-            // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.BackColor = System.Drawing.Color.Black;
-            this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Small;
-            this.metroLabel4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.metroLabel4.Location = new System.Drawing.Point(21, 66);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(106, 15);
-            this.metroLabel4.TabIndex = 9;
-            this.metroLabel4.Text = "Pruebas por torneo";
-            // 
-            // txtPruebasXTorneo
-            // 
-            // 
-            // 
-            // 
-            this.txtPruebasXTorneo.CustomButton.Image = null;
-            this.txtPruebasXTorneo.CustomButton.Location = new System.Drawing.Point(53, 1);
-            this.txtPruebasXTorneo.CustomButton.Name = "";
-            this.txtPruebasXTorneo.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtPruebasXTorneo.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtPruebasXTorneo.CustomButton.TabIndex = 1;
-            this.txtPruebasXTorneo.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtPruebasXTorneo.CustomButton.UseSelectable = true;
-            this.txtPruebasXTorneo.CustomButton.Visible = false;
-            this.txtPruebasXTorneo.Lines = new string[0];
-            this.txtPruebasXTorneo.Location = new System.Drawing.Point(188, 58);
-            this.txtPruebasXTorneo.MaxLength = 32767;
-            this.txtPruebasXTorneo.Name = "txtPruebasXTorneo";
-            this.txtPruebasXTorneo.PasswordChar = '\0';
-            this.txtPruebasXTorneo.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtPruebasXTorneo.SelectedText = "";
-            this.txtPruebasXTorneo.SelectionLength = 0;
-            this.txtPruebasXTorneo.SelectionStart = 0;
-            this.txtPruebasXTorneo.ShortcutsEnabled = true;
-            this.txtPruebasXTorneo.Size = new System.Drawing.Size(75, 23);
-            this.txtPruebasXTorneo.TabIndex = 8;
-            this.txtPruebasXTorneo.UseSelectable = true;
-            this.txtPruebasXTorneo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtPruebasXTorneo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.chkPorLigas.AutoSize = true;
+            this.chkPorLigas.Location = new System.Drawing.Point(450, 87);
+            this.chkPorLigas.Name = "chkPorLigas";
+            this.chkPorLigas.Size = new System.Drawing.Size(108, 15);
+            this.chkPorLigas.TabIndex = 13;
+            this.chkPorLigas.Text = "Torneo por ligas";
+            this.chkPorLigas.UseSelectable = true;
             // 
             // metroLabel5
             // 
@@ -318,15 +188,191 @@
             this.txtPruebasXEquipo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtPruebasXEquipo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // chkPorLigas
+            // metroLabel4
             // 
-            this.chkPorLigas.AutoSize = true;
-            this.chkPorLigas.Location = new System.Drawing.Point(450, 87);
-            this.chkPorLigas.Name = "chkPorLigas";
-            this.chkPorLigas.Size = new System.Drawing.Size(108, 15);
-            this.chkPorLigas.TabIndex = 13;
-            this.chkPorLigas.Text = "Torneo por ligas";
-            this.chkPorLigas.UseSelectable = true;
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.BackColor = System.Drawing.Color.Black;
+            this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.metroLabel4.Location = new System.Drawing.Point(21, 66);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(106, 15);
+            this.metroLabel4.TabIndex = 9;
+            this.metroLabel4.Text = "Pruebas por torneo";
+            // 
+            // txtPruebasXTorneo
+            // 
+            // 
+            // 
+            // 
+            this.txtPruebasXTorneo.CustomButton.Image = null;
+            this.txtPruebasXTorneo.CustomButton.Location = new System.Drawing.Point(53, 1);
+            this.txtPruebasXTorneo.CustomButton.Name = "";
+            this.txtPruebasXTorneo.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtPruebasXTorneo.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtPruebasXTorneo.CustomButton.TabIndex = 1;
+            this.txtPruebasXTorneo.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtPruebasXTorneo.CustomButton.UseSelectable = true;
+            this.txtPruebasXTorneo.CustomButton.Visible = false;
+            this.txtPruebasXTorneo.Lines = new string[0];
+            this.txtPruebasXTorneo.Location = new System.Drawing.Point(188, 58);
+            this.txtPruebasXTorneo.MaxLength = 32767;
+            this.txtPruebasXTorneo.Name = "txtPruebasXTorneo";
+            this.txtPruebasXTorneo.PasswordChar = '\0';
+            this.txtPruebasXTorneo.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtPruebasXTorneo.SelectedText = "";
+            this.txtPruebasXTorneo.SelectionLength = 0;
+            this.txtPruebasXTorneo.SelectionStart = 0;
+            this.txtPruebasXTorneo.ShortcutsEnabled = true;
+            this.txtPruebasXTorneo.Size = new System.Drawing.Size(75, 23);
+            this.txtPruebasXTorneo.TabIndex = 8;
+            this.txtPruebasXTorneo.UseSelectable = true;
+            this.txtPruebasXTorneo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtPruebasXTorneo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.BackColor = System.Drawing.Color.Black;
+            this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.metroLabel3.Location = new System.Drawing.Point(21, 35);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(103, 15);
+            this.metroLabel3.TabIndex = 7;
+            this.metroLabel3.Text = "Pruebas por sesión";
+            // 
+            // TxtPruebasXSesion
+            // 
+            // 
+            // 
+            // 
+            this.TxtPruebasXSesion.CustomButton.Image = null;
+            this.TxtPruebasXSesion.CustomButton.Location = new System.Drawing.Point(53, 1);
+            this.TxtPruebasXSesion.CustomButton.Name = "";
+            this.TxtPruebasXSesion.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.TxtPruebasXSesion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.TxtPruebasXSesion.CustomButton.TabIndex = 1;
+            this.TxtPruebasXSesion.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.TxtPruebasXSesion.CustomButton.UseSelectable = true;
+            this.TxtPruebasXSesion.CustomButton.Visible = false;
+            this.TxtPruebasXSesion.Lines = new string[0];
+            this.TxtPruebasXSesion.Location = new System.Drawing.Point(188, 27);
+            this.TxtPruebasXSesion.MaxLength = 32767;
+            this.TxtPruebasXSesion.Name = "TxtPruebasXSesion";
+            this.TxtPruebasXSesion.PasswordChar = '\0';
+            this.TxtPruebasXSesion.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TxtPruebasXSesion.SelectedText = "";
+            this.TxtPruebasXSesion.SelectionLength = 0;
+            this.TxtPruebasXSesion.SelectionStart = 0;
+            this.TxtPruebasXSesion.ShortcutsEnabled = true;
+            this.TxtPruebasXSesion.Size = new System.Drawing.Size(75, 23);
+            this.TxtPruebasXSesion.TabIndex = 6;
+            this.TxtPruebasXSesion.UseSelectable = true;
+            this.TxtPruebasXSesion.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.TxtPruebasXSesion.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroTabPage2
+            // 
+            this.metroTabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.metroTabPage2.Controls.Add(this.btnBorrar);
+            this.metroTabPage2.Controls.Add(this.CboTorneos);
+            this.metroTabPage2.Controls.Add(this.metroLabel2);
+            this.metroTabPage2.HorizontalScrollbarBarColor = true;
+            this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage2.HorizontalScrollbarSize = 10;
+            this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage2.Name = "metroTabPage2";
+            this.metroTabPage2.Size = new System.Drawing.Size(601, 194);
+            this.metroTabPage2.TabIndex = 1;
+            this.metroTabPage2.Text = "Borrar torneo";
+            this.metroTabPage2.VerticalScrollbarBarColor = true;
+            this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage2.VerticalScrollbarSize = 10;
+            // 
+            // btnBorrar
+            // 
+            this.btnBorrar.Location = new System.Drawing.Point(401, 114);
+            this.btnBorrar.Name = "btnBorrar";
+            this.btnBorrar.Size = new System.Drawing.Size(170, 23);
+            this.btnBorrar.Style = MetroFramework.MetroColorStyle.Green;
+            this.btnBorrar.TabIndex = 7;
+            this.btnBorrar.Text = "Borrar torneo";
+            this.btnBorrar.UseSelectable = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
+            // 
+            // CboTorneos
+            // 
+            this.CboTorneos.FormattingEnabled = true;
+            this.CboTorneos.ItemHeight = 23;
+            this.CboTorneos.Location = new System.Drawing.Point(22, 40);
+            this.CboTorneos.Name = "CboTorneos";
+            this.CboTorneos.Size = new System.Drawing.Size(549, 29);
+            this.CboTorneos.TabIndex = 8;
+            this.CboTorneos.UseSelectable = true;
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.BackColor = System.Drawing.Color.Black;
+            this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.metroLabel2.Location = new System.Drawing.Point(22, 19);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(145, 15);
+            this.metroLabel2.TabIndex = 6;
+            this.metroLabel2.Text = "Seleccione el tipo de Torneo";
+            // 
+            // lblResultado
+            // 
+            this.lblResultado.AutoSize = true;
+            this.lblResultado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblResultado.Location = new System.Drawing.Point(379, 35);
+            this.lblResultado.Name = "lblResultado";
+            this.lblResultado.Size = new System.Drawing.Size(0, 0);
+            this.lblResultado.TabIndex = 7;
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.BackColor = System.Drawing.Color.Black;
+            this.metroLabel6.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel6.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.metroLabel6.Location = new System.Drawing.Point(21, 126);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(102, 15);
+            this.metroLabel6.TabIndex = 15;
+            this.metroLabel6.Text = "Pruebas sin marcar";
+            // 
+            // txtPruebasSinMarca
+            // 
+            // 
+            // 
+            // 
+            this.txtPruebasSinMarca.CustomButton.Image = null;
+            this.txtPruebasSinMarca.CustomButton.Location = new System.Drawing.Point(53, 1);
+            this.txtPruebasSinMarca.CustomButton.Name = "";
+            this.txtPruebasSinMarca.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtPruebasSinMarca.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtPruebasSinMarca.CustomButton.TabIndex = 1;
+            this.txtPruebasSinMarca.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtPruebasSinMarca.CustomButton.UseSelectable = true;
+            this.txtPruebasSinMarca.CustomButton.Visible = false;
+            this.txtPruebasSinMarca.Lines = new string[0];
+            this.txtPruebasSinMarca.Location = new System.Drawing.Point(188, 118);
+            this.txtPruebasSinMarca.MaxLength = 32767;
+            this.txtPruebasSinMarca.Name = "txtPruebasSinMarca";
+            this.txtPruebasSinMarca.PasswordChar = '\0';
+            this.txtPruebasSinMarca.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtPruebasSinMarca.SelectedText = "";
+            this.txtPruebasSinMarca.SelectionLength = 0;
+            this.txtPruebasSinMarca.SelectionStart = 0;
+            this.txtPruebasSinMarca.ShortcutsEnabled = true;
+            this.txtPruebasSinMarca.Size = new System.Drawing.Size(75, 23);
+            this.txtPruebasSinMarca.TabIndex = 14;
+            this.txtPruebasSinMarca.UseSelectable = true;
+            this.txtPruebasSinMarca.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtPruebasSinMarca.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // Form1
             // 
@@ -369,6 +415,8 @@
         private MetroFramework.Controls.MetroTextBox txtPruebasXEquipo;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroTextBox txtPruebasXTorneo;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroTextBox txtPruebasSinMarca;
     }
 }
 

@@ -21,6 +21,7 @@ namespace FDPN.Models
         public int Meetid { get; set; }
         public bool PorLigas { get; set; }
         public int pruebasXEquipo { get; set; }
+        public int SinMarca { get; set; }
     
         public virtual TipoTorneo TipoTorneo { get; set; }
         public virtual Torneo Torneo { get; set; }

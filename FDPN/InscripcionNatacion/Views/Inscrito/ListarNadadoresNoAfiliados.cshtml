@@ -93,14 +93,21 @@
                                                         @if (setup.TipoTorneo.Nombre == "DIv 2" && !item.TieneMulta)
                                                         {
                                                             @Html.ActionLink("Inscribir deportista", "ListarPruebasParaElNadadorDIVISION2", "inscrito", new { MeetId = setup.Torneo.Meetid, afiliadoId = @item.afiliado.InscripcionId }, new { @class = "btn btn-warning" })
+                                                            <li>
+                                                                <button class="Postas btn btn-danger" data-afiliado=@item.afiliado.InscripcionId data-meet="@setup.Torneo.Meetid">Inscribir solo para postas</button>
+                                                            </li>
                                                         }
                                                         else if (!item.TieneMulta && !item.TieneResultado)
                                                         {
                                                             @Html.ActionLink("Inscribir deportista", "ListarPruebasParaElNadadorSemillero", "inscrito", new { MeetId = setup.Torneo.Meetid, afiliadoId = @item.afiliado.InscripcionId }, new { @class = "btn btn-warning" })
                                                         }
-                                                        <li>
-                                                            <button  class="Postas btn btn-danger" data-afiliado=@item.afiliado.InscripcionId data-meet="@setup.Torneo.Meetid">Inscribir solo para postas</button>
-                                                        </li>
+                                                        else
+                                                        {
+                                                            <li>
+                                                                <button class="Postas btn btn-secondary">Tiene multa</button>
+                                                            </li>
+                                                        }
+
                                                         @if (item.YaEstaInscrito)
                                                         {
                                                             @Html.ActionLink("Retirar del torneo", "RetirarDelTorneo", "inscrito", new { MeetId = setup.Torneo.Meetid, afiliadoId = @item.afiliado.InscripcionId }, new { @class = "btn btn-danger" })

@@ -132,9 +132,14 @@ $(document).ready(function () { //Al inicio cuando se recarga la página de insc
         if (selectedRows.length > 0) {
             // build array of records           
             var Inscripciones = new Array();
-
             $.each(selectedRows, function (i, val) {
-                Inscripciones.push(val);
+                var celdasseleccionadas = new Array();
+                for (var j = 0; j < val.length ; j++) {
+                    if (j == 1 || j == 5 || j == 6) {
+                        celdasseleccionadas.push(val[j])
+                    }
+                }
+                Inscripciones.push(celdasseleccionadas);
             });
             var listado = JSON.stringify(Inscripciones);
 

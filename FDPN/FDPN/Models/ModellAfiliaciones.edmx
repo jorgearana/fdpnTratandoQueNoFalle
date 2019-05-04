@@ -1217,6 +1217,7 @@ advertencia 6013: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Records' no tiene 
           <Property Name="Meetid" Type="int" Nullable="false" />
           <Property Name="PorLigas" Type="bit" Nullable="false" />
           <Property Name="pruebasXEquipo" Type="int" Nullable="false" />
+          <Property Name="SinMarca" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Suscritos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -4800,6 +4801,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <Property Name="Meetid" Type="Int32" Nullable="false" />
           <Property Name="PorLigas" Type="Boolean" Nullable="false" />
           <Property Name="pruebasXEquipo" Type="Int32" Nullable="false" />
+          <Property Name="SinMarca" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TipoTorneo" Relationship="DB_9B1F4C_comentariosModel.FK__SetupTorn__TipoI__2AA05119" FromRole="SetupTorneo" ToRole="TipoTorneo" />
           <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_comentariosModel.FK_SetupTorneo_Torneo" FromRole="SetupTorneo" ToRole="Torneo" />
         </EntityType>
@@ -7510,6 +7512,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySetMapping Name="SetupTorneo">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.SetupTorneo">
               <MappingFragment StoreEntitySet="SetupTorneo">
+                <ScalarProperty Name="SinMarca" ColumnName="SinMarca" />
                 <ScalarProperty Name="pruebasXEquipo" ColumnName="pruebasXEquipo" />
                 <ScalarProperty Name="PorLigas" ColumnName="PorLigas" />
                 <ScalarProperty Name="Meetid" ColumnName="Meetid" />

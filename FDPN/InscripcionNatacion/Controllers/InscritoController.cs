@@ -231,7 +231,7 @@ namespace InscripcionNatacion.Controllers
                 PruebasTotales = pruebasXtorneo,
                 Piscina = "",
                 PruebasInscritasSinMarca = 0,
-                SinMarca = 0,
+                SinMarca = 1,
                 MeetId = MeetId,
 
             };
@@ -351,20 +351,20 @@ namespace InscripcionNatacion.Controllers
                     {
                         NadadorAInscribir.Cumple = VerSiCumpleConLaMarca(CursoABuscar, resultado, MM);
                     }
-                   
+
                     if (NadadorAInscribir.Cumple)
                     {
-                            NadadorAInscribir.tiempo = resultado.SCORE;
-                            NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
-                            NadadorAInscribir.torneo = resultado.MEET1.MName;
-                            if (resultado.MEET1.MName.Length > 20)
-                            {
-                                NadadorAInscribir.torneo = resultado.MEET1.MName.Substring(0, 20);
-                            }
-                            NadadorAInscribir.PiscinaDelTiempo = resultado.COURSE;
-                            pruebasConMarca += 1;
-                            break;   
-                    }  
+                        NadadorAInscribir.tiempo = resultado.SCORE;
+                        NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
+                        NadadorAInscribir.torneo = resultado.MEET1.MName;
+                        if (resultado.MEET1.MName.Length > 20)
+                        {
+                            NadadorAInscribir.torneo = resultado.MEET1.MName.Substring(0, 20);
+                        }
+                        NadadorAInscribir.PiscinaDelTiempo = resultado.COURSE;
+                        pruebasConMarca += 1;
+                        break;
+                    }
                 }
                 if(!NadadorAInscribir.Cumple)
                 {
@@ -477,11 +477,11 @@ namespace InscripcionNatacion.Controllers
 
             if (pruebasConMarca > 0)
             {
-                VM.SinMarca = 0;
+                VM.SinMarca =setup.SinMarca;
             }
             else
             {
-                VM.SinMarca =0;
+                VM.SinMarca =1;
             }
             ViewBag.setup = setup;
             return View(VM);
@@ -1552,7 +1552,6 @@ namespace InscripcionNatacion.Controllers
         [HttpGet]
         public JsonResult GrabarPruebasParaElNadador(string listado, string MeetString, string InscripcionId, string Piscina, string YaestaInscritoString)
         {
-
             int MeetId = Int32.Parse(MeetString);
             SetupTorneo setup = db.SetupTorneo.FirstOrDefault(x => x.Meetid == MeetId);
 
@@ -1571,114 +1570,7 @@ namespace InscripcionNatacion.Controllers
             try
             {
                int ath_No=  IngresarDeportista(id, MeetId, YaestaInscritoString);
-                //Si no está inscrito, procedo a inscribirlo, para ello primero veo si ya se inscribió su club
-                //if (!YaestaInscrito)
-                //{
-
-                //    Equipos equipo = db.Equipos.Where(x => x.Team_abbr == afiliado.Club.Iniciales && x.MeetId == MeetId).FirstOrDefault();
-
-                //    if (equipo == null)
-                //    {
-                //        Equipos ultimoequipo = db.Equipos.OrderByDescending(x => x.Team_no).FirstOrDefault();
-                //        equipo = new Equipos
-                //        {
-                //            Team_name = afiliado.Club.NombreClub,
-                //            Team_abbr = afiliado.Club.Iniciales,
-                //            Team_div = 0,
-                //            Team_region = 0,
-                //            Team_cntry = "PER",
-                //            Team_NoPoints = false,
-                //            Team_Selected = false,
-                //            NoTeam_surcharge = false,
-                //            NoFacility_surcharge = false,
-                //            NoAthlete_surcharge = false,
-                //            NoRelayOnly_surcharge = false,
-                //            MeetId = MeetId
-                //        };
-                //        if (equipo.Team_name.Length > 30)
-                //        {
-                //            equipo.Team_name = equipo.Team_name.Substring(0, 30);
-
-                //        }
-                //        if (ultimoequipo == null)
-                //        {
-                //            equipo.Team_no = 1;
-                //        }
-                //        else
-                //        {
-                //            equipo.Team_no = ultimoequipo.Team_no + 1;
-                //        }
-
-                //        db.Equipos.Add(equipo);
-                //        db.SaveChanges();
-                //    }
-
-                //    int annoActual = DateTime.Now.Year;
-                //    short edad = Convert.ToInt16(annoActual - afiliado.Afiliado.Fecha_de_nacimiento.Year - 1);
-                //    if (atleta == null)
-                //    {
-                //        atletas ultimocompetidor = db.atletas.OrderByDescending(x => x.Comp_no).FirstOrDefault();
-                //        try
-                //        {
-                //            atleta = new atletas();
-
-
-                //            atleta.Ath_no = 0;
-                //            if (afiliado.Afiliado.Apellido_Paterno.Length > 20)
-                //            {
-                //                atleta.Last_name = afiliado.Afiliado.Apellido_Paterno.Substring(0, 20);
-                //            }
-                //            else
-                //            {
-                //                atleta.Last_name = afiliado.Afiliado.Apellido_Paterno;
-                //            }
-
-                //            if (afiliado.Afiliado.Nombre.Length > 20)
-                //            {
-                //                atleta.First_name = afiliado.Afiliado.Nombre.Substring(0, 20);
-                //            }
-                //            else
-                //            {
-                //                atleta.First_name = afiliado.Afiliado.Nombre;
-                //            }
-
-                //            atleta.Ath_Sex = afiliado.Afiliado.Sexo;
-                //            atleta.Birth_date = afiliado.Afiliado.Fecha_de_nacimiento;
-                //            atleta.Team_no = equipo.Team_no;
-                //            atleta.Ath_age = edad;
-                //            atleta.Reg_no = afiliado.DNI;
-
-                //            atleta.Disab_SBcode = 0;
-                //            atleta.Disab_SMcode = 0;
-                //            atleta.Disab_Scode = 0;
-                //            atleta.Masters_RegVerified = false;
-                //            atleta.Meetid = MeetId;
-                //            atleta.TeamId = equipo.TeamId;
-
-                //            if (ultimocompetidor == null)
-                //            {
-                //                atleta.Ath_no = 1;
-                //                atleta.Comp_no = 1;
-                //            }
-                //            else
-                //            {
-                //                atleta.Ath_no = ultimocompetidor.Ath_no + 1;
-                //                atleta.Comp_no = ultimocompetidor.Comp_no + 1;
-                //            }
-                //            db.atletas.Add(atleta);
-                //            db.SaveChanges();
-                //        }
-                //        catch (Exception ex)
-                //        {
-                //            string mensaje = ex.Message;
-                //        }
-                //    }
-                //}
-                //else
-                //{
-                //    ActualizarNadador(afiliado, atleta);
-                //}
-
+              
 
                 List<Entradas> EntradasActuales = db.Entradas.Where(x => x.Ath_no == ath_No).ToList();
                 foreach (Entradas entrada in EntradasActuales)
@@ -1689,7 +1581,7 @@ namespace InscripcionNatacion.Controllers
 
                 foreach (var inscrito in InscripcionesEnTorneo)
                 {
-                    string course = inscrito[6];
+                    string course = inscrito[2];
                     if (course.Length < 1)
                     {
                         course = Piscina;
@@ -1697,10 +1589,10 @@ namespace InscripcionNatacion.Controllers
 
                     Entradas entrada = new Entradas
                     {
-                        Event_ptr = int.Parse(inscrito[1]),
+                        Event_ptr = int.Parse(inscrito[0]),
                         Ath_no = ath_No,
                         ActSeed_course = course,
-                        ActualSeed_time = ConvertirASegundos(inscrito[5]),
+                        ActualSeed_time = ConvertirASegundos(inscrito[1]),
                         ConvSeed_course = Piscina,
 
                         Scr_stat = false,
@@ -1712,13 +1604,13 @@ namespace InscripcionNatacion.Controllers
                     };
                     if (Piscina == course)
                     {
-                        entrada.ConvSeed_time = ConvertirASegundos(inscrito[5]);
+                        entrada.ConvSeed_time = ConvertirASegundos(inscrito[1]);
                     }
                     else
                     {
                         Eventos evento = eventos.Where(x => x.Event_ptr == entrada.Event_ptr).FirstOrDefault();
                         Pruebas prueba = pruebas.Where(x => x.EstiloMeet == evento.Event_stroke && x.distancia == evento.Event_dist).FirstOrDefault();
-                        entrada.ConvSeed_time = ConvertirMarca(ConvertirASegundos(inscrito[5]), prueba.FactorF, course);
+                        entrada.ConvSeed_time = ConvertirMarca(ConvertirASegundos(inscrito[1]), prueba.FactorF, course);
                     }
 
                     db.Entradas.Add(entrada);
