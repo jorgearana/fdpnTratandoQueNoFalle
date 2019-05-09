@@ -261,6 +261,7 @@
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont3e6e.svg" />
     <Content Include="Content\img\borrarla.png" />
+    <Content Include="Content\img\controlF5.jpg" />
     <Content Include="Content\img\Enconstruccion.jpg" />
     <Content Include="Content\img\favicon.ico" />
     <Content Include="Content\img\inscripcion natacion.png" />

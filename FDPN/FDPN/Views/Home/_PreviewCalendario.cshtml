@@ -26,20 +26,19 @@
         <a href="~/Content/pdf/calendario clavados.pdf"class = "btn btn-default  clavados" > Clavados</a>
         <a href="~/Content/pdf/Calendario Natacion.pdf"class = "btn btn-default  natacion">Natación</a>
         <a href="~/Content/pdf/Calendario todas.pdf" class = "btn btn-default">Consolidado</a>*@
-                @Html.ActionLink("Masters", "PrintCalendario", "Calendarios", new { disciplina = 6 }, new { @class = "btn btn-default  master", target = "_blank" })
+                @Html.ActionLink("Masters", "PrintCalendario", "Calendarios", new { disciplina = 6, target = "_blank" }, new { @class = "btn btn-default  master" })
 
-                @Html.ActionLink("Polo Acuático", "PrintCalendario", "Calendarios", new { disciplina = 2 }, new { @class = "btn btn-default  wp", target = "_blank" })
+                @Html.ActionLink("Polo Acuático", "PrintCalendario", "Calendarios", new { disciplina = 2, target = "_blank" }, new { @class = "btn btn-default  wp" })
 
-                @Html.ActionLink("Natación Artística", "PrintCalendario", "Calendarios", new { disciplina = 4 }, new { @class = "btn btn-default  sincro", target = "_blank" })
+                @Html.ActionLink("Natación Artística", "PrintCalendario", "Calendarios", new { disciplina = 3, target = "_blank" }, new { @class = "btn btn-default  sincro" })
 
-                @Html.ActionLink("Aguas Abiertas", "PrintCalendario", "Calendarios", new { disciplina = 3 }, new { @class = "btn btn-default  aguas", target = "_blank" })
+                @Html.ActionLink("Aguas Abiertas", "PrintCalendario", "Calendarios", new { disciplina = 5, target = "_blank" }, new { @class = "btn btn-default  aguas" })
 
-                @Html.ActionLink("Clavados", "PrintCalendario", "Calendarios", new { disciplina = 5 }, new { @class = "btn btn-default  clavados", target = "_blank" })
+                @Html.ActionLink("Clavados", "PrintCalendario", "Calendarios", new { disciplina = 4, target = "_blank" }, new { @class = "btn btn-default  clavados" })
 
-                @Html.ActionLink("Natación", "PrintCalendario", "Calendarios", new { disciplina = 1 }, new { @class = "btn btn-default  natacion", target = "_blank" })
+                @Html.ActionLink("Natación", "PrintCalendario", "Calendarios", new { disciplina = 1, target = "_blank" }, new { @class = "btn btn-default  natacion" })
 
-                @Html.ActionLink("Consolidado", "PrintCalendario", "Calendarios", new { disciplina = 7 }, new { @class = "btn btn-default todas", target = "_blank" })
-
+                @Html.ActionLink("Consolidado", "PrintCalendario", "Calendarios", new { disciplina = 7, target = "_blank" }, new { @class = "btn btn-default todas" })
 
             </center>
         </div>

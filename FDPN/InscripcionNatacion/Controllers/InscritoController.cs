@@ -1795,6 +1795,7 @@ namespace InscripcionNatacion.Controllers
                     equipo = new Equipos
                     {
                         Team_name = afiliado.Club.NombreClub,
+                        Team_short= afiliado.Club.NombreUsuario,
                         Team_abbr = afiliado.Club.Iniciales,
                         Team_div = 0,
                         Team_region = 0,
