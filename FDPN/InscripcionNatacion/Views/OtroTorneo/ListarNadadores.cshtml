@@ -1,0 +1,71 @@
+﻿@model List<InscripcionNatacion.ViewModels.OtraInscripcion.ListadoDeportistasParaSeleccionarlos>
+    @{ 
+
+        string clase = "";
+        string visible = "hidden";
+    }
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="ibox ">
+
+        <div class="ibox-content">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                   Listado de deportistas
+                </div>
+                <div class="panel-body  chat-wrapper">
+                    <div class="table-responsive flexbody">
+                        <div id="TRDeportista" style="visibility:hidden"></div>
+                        <div id="Deportista" style="visibility:hidden"></div>
+                        <table class="table" id="Tabladeportistas">
+                            <thead>
+                                <tr>
+                                    <th>Deportista</th>
+                                    <th>Sexo</th>
+                                    <th>Inscribir</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    if (item.YaEstaInscrito)
+                                    {
+                                        clase = "TieneInscripcion";
+                                        visible = "";
+                                    }
+                                    else
+                                    {
+                                        clase = "";
+                                        visible = "oculto";
+                                    }
+                                    <tr id="@item.OtroAtleta.AtletaId.ToString()deportista" class="@clase">
+
+                                        <td>
+                                            <i id="@item.OtroAtleta.AtletaId.ToString()check" class="material-icons @visible"> check </i>
+                                            @item.OtroAtleta.Inscripciones.Afiliado.Nombre @item.OtroAtleta.Inscripciones.Afiliado.Apellido_Paterno
+
+                                        </td>
+                                        <td>@item.OtroAtleta.Inscripciones.Afiliado.Sexo</td>
+                                        <td>
+                                            <button type="button"
+                                                    class="BtnInscribir btn btn-primary btn-sm"
+                                                    data-nada="nada"
+                                                    data-id="@item.OtroAtleta.InscripcionId"
+                                                    data-trid="@item.OtroAtleta.InscripcionId.ToString()deportista">
+                                                Inscribir
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

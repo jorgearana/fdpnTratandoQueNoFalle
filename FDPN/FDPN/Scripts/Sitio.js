@@ -207,7 +207,24 @@ $('#buscarRankingFINA').on('click', function (e) {
 });
 
 
+$("#descargarranking").click(function (e) {
 
+
+    var id = $.parseJSON($(this).attr('data-clubid'));
+    $.ajax({
+        type: 'POST',
+        url: "../../Director/Index",
+        async: false,
+        //dataType: 'text json',
+        data: { id: id },
+        success: function (data) {
+            //var response = JSON.parse(data);
+            var path = '/Director/Download?fileGuid=' + data.FileGuid + '&filename=' + data.FileName;
+            window.location = path;
+        }
+    });
+
+});
 
 //var table = $('#tablaActualizarCalendario').DataTable();
 

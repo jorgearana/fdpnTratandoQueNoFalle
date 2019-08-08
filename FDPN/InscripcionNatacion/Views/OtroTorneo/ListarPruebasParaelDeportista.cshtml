@@ -1,0 +1,60 @@
+﻿@model List<InscripcionNatacion.ViewModels.OtraInscripcion.EventoInscritoViewModel>
+
+
+@{
+    string clase = "";
+    string visible = "hidden";
+}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="ibox ">
+
+        <div class="ibox-content">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                  Seleccione la prueba
+                </div>
+
+                <div class="panel-body">
+                    <table class="table" id="modificable">
+                        <thead>
+                            <tr>
+                                <th>Número</th>
+                                <th>Evento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                if (item.Yainscrito)
+                                {
+                                    visible = "";
+                                }
+                                else
+                                {
+                                    visible = "oculto";
+                                }
+
+                                <tr data-evento="@item.evento.EventoId" class="@item.clase">
+                                    <td>@item.evento.EventoId</td>
+                                    <td>
+                                        <i id="@item.evento.EventoId.ToString()check" class="material-icons @visible"> check_circle </i>
+                                        @item.evento.EventNombre
+                                    </td>
+
+                                    @if (item.marca == null)
+                                    {
+                                        <td id="@item.evento.EventoId"></td>
+                                    }
+                                    else
+                                    {
+                                        <td id="@item.evento.EventoId">@item.marca</td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

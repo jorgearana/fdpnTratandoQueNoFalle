@@ -18,6 +18,7 @@ namespace FDPN.Models
         public Equipos()
         {
             this.atletas = new HashSet<atletas>();
+            this.InscripcionResponsable = new HashSet<InscripcionResponsable>();
         }
     
         public int Team_no { get; set; }
@@ -64,5 +65,7 @@ namespace FDPN.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<atletas> atletas { get; set; }
         public virtual Torneo Torneo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<InscripcionResponsable> InscripcionResponsable { get; set; }
     }
 }

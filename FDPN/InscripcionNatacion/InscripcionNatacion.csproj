@@ -205,6 +205,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InscritoController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OtroTorneoController.cs" />
     <Compile Include="Controllers\TorneoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -223,6 +224,7 @@
     <Compile Include="ViewModels\Home\LoginViewModel.cs" />
     <Compile Include="ViewModels\Home\TorneoViewModel.cs" />
     <Compile Include="ViewModels\Inscrito\EventosParaListadoProPruebaViewmodel.cs" />
+    <Compile Include="ViewModels\Inscrito\InscripcionResponsableViewModel.cs" />
     <Compile Include="ViewModels\Inscrito\InscritoViewModel.cs" />
     <Compile Include="ViewModels\Inscrito\ListadoDePruebasViewModel.cs" />
     <Compile Include="ViewModels\Inscrito\ListadoInscritoViewModel.cs" />
@@ -230,6 +232,11 @@
     <Compile Include="ViewModels\Inscrito\NadadorPruebaViewModel.cs" />
     <Compile Include="ViewModels\Inscrito\pruebasViewModel.cs" />
     <Compile Include="ViewModels\Inscrito\SesionViewModel.cs" />
+    <Compile Include="ViewModels\OtraInscripcion\DeportistaViewModel.cs" />
+    <Compile Include="ViewModels\OtraInscripcion\EventoInscritoViewModel.cs" />
+    <Compile Include="ViewModels\OtraInscripcion\ListadoDeportistasParaSeleccionarlos.cs" />
+    <Compile Include="ViewModels\OtraInscripcion\ListadoInscritoViewModel.cs" />
+    <Compile Include="ViewModels\OtraInscripcion\OtroTorneoViewModel.cs" />
     <Compile Include="ViewModels\Torneo\EventosViewModel.cs" />
     <Compile Include="ViewModels\Torneo\ListadoDeTorneosViewModel.cs" />
     <Compile Include="ViewModels\Torneo\ListadoNadadoresConTiempoViewModel.cs" />
@@ -357,6 +364,7 @@
     <Content Include="Content\plugins\touchspin\jquery.bootstrap-touchspin.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Sitio.js" />
+    <Content Include="Content\SitioDataTable.js" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -576,6 +584,11 @@
     <Content Include="Views\Entrenador\FormularioDelegados.cshtml" />
     <Content Include="Views\Entrenador\ListadoDeDelegados.cshtml" />
     <Content Include="Views\Home\Modal.cshtml" />
+    <Content Include="Views\OtroTorneo\HacerIncscripciones.cshtml" />
+    <Content Include="Views\OtroTorneo\ListarNadadores.cshtml" />
+    <Content Include="Views\OtroTorneo\ListarPruebasParaelDeportista.cshtml" />
+    <Content Include="Views\Inscrito\InscribirResponsable.cshtml" />
+    <Content Include="Views\OtroTorneo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

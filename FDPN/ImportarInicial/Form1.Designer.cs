@@ -34,6 +34,8 @@
             this.cboTipoTorneo = new MetroFramework.Controls.MetroComboBox();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.txtPruebasSinMarca = new MetroFramework.Controls.MetroTextBox();
             this.chkPorLigas = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.txtPruebasXEquipo = new MetroFramework.Controls.MetroTextBox();
@@ -46,8 +48,9 @@
             this.CboTorneos = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.lblResultado = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            this.txtPruebasSinMarca = new MetroFramework.Controls.MetroTextBox();
+            this.chkNoAfiliado = new MetroFramework.Controls.MetroCheckBox();
+            this.chkNoMarca = new MetroFramework.Controls.MetroCheckBox();
+            this.chkConMarcaMaxima = new MetroFramework.Controls.MetroCheckBox();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
@@ -76,7 +79,7 @@
             // 
             this.metroButton1.DialogResult = System.Windows.Forms.DialogResult.Ignore;
             this.metroButton1.ForeColor = System.Drawing.Color.Red;
-            this.metroButton1.Location = new System.Drawing.Point(401, 133);
+            this.metroButton1.Location = new System.Drawing.Point(408, 221);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(170, 23);
             this.metroButton1.Style = MetroFramework.MetroColorStyle.Green;
@@ -100,10 +103,10 @@
             this.metroTabControl1.Controls.Add(this.metroTabPage1);
             this.metroTabControl1.Controls.Add(this.metroTabPage2);
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.metroTabControl1.Location = new System.Drawing.Point(20, 85);
+            this.metroTabControl1.Location = new System.Drawing.Point(20, 63);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(609, 236);
+            this.metroTabControl1.Size = new System.Drawing.Size(634, 315);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Green;
             this.metroTabControl1.TabIndex = 6;
             this.metroTabControl1.UseSelectable = true;
@@ -111,6 +114,9 @@
             // metroTabPage1
             // 
             this.metroTabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.metroTabPage1.Controls.Add(this.chkConMarcaMaxima);
+            this.metroTabPage1.Controls.Add(this.chkNoMarca);
+            this.metroTabPage1.Controls.Add(this.chkNoAfiliado);
             this.metroTabPage1.Controls.Add(this.metroLabel6);
             this.metroTabPage1.Controls.Add(this.txtPruebasSinMarca);
             this.metroTabPage1.Controls.Add(this.chkPorLigas);
@@ -129,17 +135,59 @@
             this.metroTabPage1.HorizontalScrollbarSize = 10;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(601, 194);
+            this.metroTabPage1.Size = new System.Drawing.Size(626, 273);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "Agregar torneo";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
+            // metroLabel6
+            // 
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.BackColor = System.Drawing.Color.Black;
+            this.metroLabel6.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel6.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.metroLabel6.Location = new System.Drawing.Point(21, 126);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(102, 15);
+            this.metroLabel6.TabIndex = 15;
+            this.metroLabel6.Text = "Pruebas sin marcar";
+            // 
+            // txtPruebasSinMarca
+            // 
+            // 
+            // 
+            // 
+            this.txtPruebasSinMarca.CustomButton.Image = null;
+            this.txtPruebasSinMarca.CustomButton.Location = new System.Drawing.Point(53, 1);
+            this.txtPruebasSinMarca.CustomButton.Name = "";
+            this.txtPruebasSinMarca.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtPruebasSinMarca.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtPruebasSinMarca.CustomButton.TabIndex = 1;
+            this.txtPruebasSinMarca.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtPruebasSinMarca.CustomButton.UseSelectable = true;
+            this.txtPruebasSinMarca.CustomButton.Visible = false;
+            this.txtPruebasSinMarca.Lines = new string[0];
+            this.txtPruebasSinMarca.Location = new System.Drawing.Point(188, 118);
+            this.txtPruebasSinMarca.MaxLength = 32767;
+            this.txtPruebasSinMarca.Name = "txtPruebasSinMarca";
+            this.txtPruebasSinMarca.PasswordChar = '\0';
+            this.txtPruebasSinMarca.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtPruebasSinMarca.SelectedText = "";
+            this.txtPruebasSinMarca.SelectionLength = 0;
+            this.txtPruebasSinMarca.SelectionStart = 0;
+            this.txtPruebasSinMarca.ShortcutsEnabled = true;
+            this.txtPruebasSinMarca.Size = new System.Drawing.Size(75, 23);
+            this.txtPruebasSinMarca.TabIndex = 14;
+            this.txtPruebasSinMarca.UseSelectable = true;
+            this.txtPruebasSinMarca.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtPruebasSinMarca.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
             // chkPorLigas
             // 
             this.chkPorLigas.AutoSize = true;
-            this.chkPorLigas.Location = new System.Drawing.Point(450, 87);
+            this.chkPorLigas.Location = new System.Drawing.Point(450, 64);
             this.chkPorLigas.Name = "chkPorLigas";
             this.chkPorLigas.Size = new System.Drawing.Size(108, 15);
             this.chkPorLigas.TabIndex = 13;
@@ -332,54 +380,42 @@
             this.lblResultado.Size = new System.Drawing.Size(0, 0);
             this.lblResultado.TabIndex = 7;
             // 
-            // metroLabel6
+            // chkNoAfiliado
             // 
-            this.metroLabel6.AutoSize = true;
-            this.metroLabel6.BackColor = System.Drawing.Color.Black;
-            this.metroLabel6.FontSize = MetroFramework.MetroLabelSize.Small;
-            this.metroLabel6.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.metroLabel6.Location = new System.Drawing.Point(21, 126);
-            this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(102, 15);
-            this.metroLabel6.TabIndex = 15;
-            this.metroLabel6.Text = "Pruebas sin marcar";
+            this.chkNoAfiliado.AutoSize = true;
+            this.chkNoAfiliado.Location = new System.Drawing.Point(450, 95);
+            this.chkNoAfiliado.Name = "chkNoAfiliado";
+            this.chkNoAfiliado.Size = new System.Drawing.Size(128, 15);
+            this.chkNoAfiliado.TabIndex = 16;
+            this.chkNoAfiliado.Text = "Permite no afiliados";
+            this.chkNoAfiliado.UseSelectable = true;
             // 
-            // txtPruebasSinMarca
+            // chkNoMarca
             // 
+            this.chkNoMarca.AutoSize = true;
+            this.chkNoMarca.Location = new System.Drawing.Point(450, 128);
+            this.chkNoMarca.Name = "chkNoMarca";
+            this.chkNoMarca.Size = new System.Drawing.Size(118, 15);
+            this.chkNoMarca.TabIndex = 17;
+            this.chkNoMarca.Text = "Permite sin marca";
+            this.chkNoMarca.UseSelectable = true;
             // 
+            // chkConMarcaMaxima
             // 
-            // 
-            this.txtPruebasSinMarca.CustomButton.Image = null;
-            this.txtPruebasSinMarca.CustomButton.Location = new System.Drawing.Point(53, 1);
-            this.txtPruebasSinMarca.CustomButton.Name = "";
-            this.txtPruebasSinMarca.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtPruebasSinMarca.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtPruebasSinMarca.CustomButton.TabIndex = 1;
-            this.txtPruebasSinMarca.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtPruebasSinMarca.CustomButton.UseSelectable = true;
-            this.txtPruebasSinMarca.CustomButton.Visible = false;
-            this.txtPruebasSinMarca.Lines = new string[0];
-            this.txtPruebasSinMarca.Location = new System.Drawing.Point(188, 118);
-            this.txtPruebasSinMarca.MaxLength = 32767;
-            this.txtPruebasSinMarca.Name = "txtPruebasSinMarca";
-            this.txtPruebasSinMarca.PasswordChar = '\0';
-            this.txtPruebasSinMarca.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtPruebasSinMarca.SelectedText = "";
-            this.txtPruebasSinMarca.SelectionLength = 0;
-            this.txtPruebasSinMarca.SelectionStart = 0;
-            this.txtPruebasSinMarca.ShortcutsEnabled = true;
-            this.txtPruebasSinMarca.Size = new System.Drawing.Size(75, 23);
-            this.txtPruebasSinMarca.TabIndex = 14;
-            this.txtPruebasSinMarca.UseSelectable = true;
-            this.txtPruebasSinMarca.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtPruebasSinMarca.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.chkConMarcaMaxima.AutoSize = true;
+            this.chkConMarcaMaxima.Location = new System.Drawing.Point(450, 164);
+            this.chkConMarcaMaxima.Name = "chkConMarcaMaxima";
+            this.chkConMarcaMaxima.Size = new System.Drawing.Size(123, 15);
+            this.chkConMarcaMaxima.TabIndex = 18;
+            this.chkConMarcaMaxima.Text = "Usa marca máxima";
+            this.chkConMarcaMaxima.UseSelectable = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(649, 341);
+            this.ClientSize = new System.Drawing.Size(674, 398);
             this.Controls.Add(this.lblResultado);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "Form1";
@@ -417,6 +453,9 @@
         private MetroFramework.Controls.MetroTextBox txtPruebasXTorneo;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroTextBox txtPruebasSinMarca;
+        private MetroFramework.Controls.MetroCheckBox chkNoMarca;
+        private MetroFramework.Controls.MetroCheckBox chkNoAfiliado;
+        private MetroFramework.Controls.MetroCheckBox chkConMarcaMaxima;
     }
 }
 

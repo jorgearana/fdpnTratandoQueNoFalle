@@ -17,69 +17,82 @@ namespace InscripcionNatacion.Controllers
 {
     public class InscritoController : BASEController
     {
-        
+
         Repository repository = new Repository();
+        int AnnoMaximo;
+        int AnnoMinimo;
 
         public ActionResult ListarNadadores(int Meetid)
         {
-
             if (!repository.validarUsuario())
             {
                 return RedirectToAction("Login", "home");
             }
-            SetupTorneo setup = db.SetupTorneo.FirstOrDefault(x=>x.Meetid == Meetid);
-            Club club = Session["Club"] as Club;
-            if(setup.PorLigas && club.AsociacionId!=null )
+            Usuario usuario = Session["Usuario"] as Usuario;
+            Equipos equipo = db.Equipos.FirstOrDefault(x => x.Team_abbr == usuario.Club.Iniciales);
+            if(equipo== null)
             {
-                ErrorViewModel VM = new ErrorViewModel
+                return RedirectToAction("InscribirResponsable", new { MeetId = Meetid });
+            }
+            InscripcionResponsable responsable = db.InscripcionResponsable.FirstOrDefault(x => x.TeamId == equipo.TeamId);
+            if(responsable== null)
+            {
+                return RedirectToAction("InscribirResponsable", new { MeetId = Meetid });
+            }
+
+            List<ListarNadadoresParaSeleccionarlos> VM = new List<ListarNadadoresParaSeleccionarlos>();
+            List<Eventos> ListadoDeEventos = db.Eventos.Where(x => x.MeetId == Meetid).ToList();
+            int EdadMaxima = ListadoDeEventos.Max(x => x.High_Age) ?? 109;
+            int EdadMinima = ListadoDeEventos.Min(x => x.Low_age) ?? 0;
+            int annoActual = DateTime.Now.Year - 1;
+            AnnoMaximo = annoActual - EdadMinima;
+            AnnoMinimo = annoActual - EdadMaxima;
+
+         
+            SetupTorneo setup = db.SetupTorneo.FirstOrDefault(x => x.Meetid == Meetid);
+            Club club = Session["Club"] as Club;
+
+
+            if (setup.PorLigas && club.AsociacionId != null)
+            {
+                ErrorViewModel modeloError = new ErrorViewModel
                 {
                     Principal = "No tiene permiso para inscribir en este torneo",
                     Medio = "Este evento se realiza por asociaciones o ligas",
                     Pie = "Por favor ingrese con el usuario y contraseña de una asociación o liga",
                 };
-                return RedirectToAction("Home/paginadeerroromensaje", new { VM = VM });
+                return RedirectToAction("Home/paginadeerroromensaje", new { modeloError });
             }
-            switch(setup.TipoTorneo.TipoId)
-            {
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                    return RedirectToAction("ListarNadadoresAfiliados", new { Meetid });
-                case 5:
-                    return RedirectToAction("ListarNadadoresNoAfiliados", new { Meetid });
-            }
-            return View();
+
+            List<Inscripciones> ListadoDeNadadores = GetNadadores(setup);
+            VM = GetInscripciones(setup, ListadoDeNadadores);
+            ViewBag.setup = db.SetupTorneo.Where(x => x.Meetid == Meetid).FirstOrDefault();
+
+            return View(VM);
         }
 
-       
-
-
-        public ActionResult ListarNadadoresAfiliados(int Meetid)
+        public List<Inscripciones> GetNadadores(SetupTorneo setup)
         {
-            Torneo torneo = db.Torneo.Find(Meetid);
-            Usuario usuario = Session["usuario"] as Usuario;
-            Club club = db.Club.Where(x => x.ClubID == usuario.ClubId).FirstOrDefault();
-
-            List<Eventos> ListadoDeEventos = db.Eventos.Where(x => x.MeetId == Meetid).ToList();
-            int EdadMaxima = ListadoDeEventos.Max(x => x.High_Age) ?? 109;
-            int EdadMinima = ListadoDeEventos.Min(x => x.Low_age) ?? 0;
-            int annoActual = DateTime.Now.Year - 1;
-            int AnnoMaximo = annoActual - EdadMinima;
-            int AnnoMinimo = annoActual - EdadMaxima;
-
-
+            Usuario usuario = Session["Usuario"] as Usuario;
+            var listado = db
+              .Inscripciones.Where(x => x.ClubID == usuario.Club.ClubID && x.Afiliado.Fecha_de_nacimiento.Year >= AnnoMinimo && x.Afiliado.Fecha_de_nacimiento.Year <= AnnoMaximo)
+              .AsQueryable();
+            if (!setup.PermiteNoAfiliados)
+            {
+                listado = listado.Where(x => x.EstadoID == 3);
+            }
+            List<Inscripciones> listadoNadadores = new List<Inscripciones>();
+            listadoNadadores = listado
+            .OrderBy(x => x.Afiliado.Fecha_de_nacimiento)
+            .ToList();
+            return listadoNadadores;
+        }
+        public List<ListarNadadoresParaSeleccionarlos> GetInscripciones(SetupTorneo torneo, List<Inscripciones> ListadoDeNadadores)
+        {
             List<ListarNadadoresParaSeleccionarlos> VM = new List<ListarNadadoresParaSeleccionarlos>();
-
-
-            List<Inscripciones> listadoNadadores = db
-                .Inscripciones.Where(x => x.ClubID == club.ClubID && x.EstadoID == 3 && x.Afiliado.Fecha_de_nacimiento.Year >= AnnoMinimo && x.Afiliado.Fecha_de_nacimiento.Year <= AnnoMaximo)
-                .OrderBy(x => x.Afiliado.Fecha_de_nacimiento)
-                .ToList();
-
-            List<Entradas> EntradasDeEsteTorneo = db.Entradas.Where(x => x.MeetId == Meetid).ToList();
-            List<atletas> atletasDeEsteTorneo = db.atletas.Where(x => x.Meetid == Meetid).ToList();
-            foreach (Inscripciones afiliado in listadoNadadores)
+            List<Entradas> EntradasDeEsteTorneo = db.Entradas.Where(x => x.MeetId == torneo.Meetid).ToList();
+            List<atletas> atletasDeEsteTorneo = db.atletas.Where(x => x.Meetid == torneo.Meetid).ToList();
+            foreach (Inscripciones afiliado in ListadoDeNadadores)
             {
                 ListarNadadoresParaSeleccionarlos listarnadadorparaafiliar = new ListarNadadoresParaSeleccionarlos
                 {
@@ -91,76 +104,127 @@ namespace InscripcionNatacion.Controllers
                 {
                     atletas atleta = atletasDeEsteTorneo.Where(x => x.Reg_no == afiliado.DNI).FirstOrDefault();
                     listarnadadorparaafiliar.YaEstaInscrito = true;
-                    //if (EntradasDeEsteTorneo.Any(x => x.Ath_no == atleta.Ath_no && x.MeetId == Meetid))
-                    //{
-                    //    listarnadadorparaafiliar.YaEstaInscrito = true;
-                    //}
-
+                }
+                if (torneo.Debutantes)
+                {
+                    if (db.RESULTS.Any(x => x.Athlete1.ID_NO == afiliado.DNI))
+                    {
+                        listarnadadorparaafiliar.TieneResultado = true;
+                    }
                 }
                 VM.Add(listarnadadorparaafiliar);
             }
-            ViewBag.setup = db.SetupTorneo.Where(x => x.Meetid == Meetid).FirstOrDefault();
-
-            return View(VM);
+            return VM;
         }
 
-        public ActionResult ListarNadadoresNoAfiliados(int Meetid)
+       
+
+
+        public InscritoViewModel GetMejortiempoDeLaPrueba(InscritoViewModel NadadorAInscribir, RESULTS resultadoenlarga, RESULTS resultadoencorta, string curso, SetupTorneo setup)
         {
-            Torneo torneo = db.Torneo.Find(Meetid);
-            Usuario usuario = Session["usuario"] as Usuario;
-            Club club = db.Club.Where(x => x.ClubID == usuario.ClubId).FirstOrDefault();
-
-            List<Eventos> ListadoDeEventos = db.Eventos.Where(x => x.MeetId == Meetid).ToList();
-            int EdadMaxima = ListadoDeEventos.Max(x => x.High_Age) ?? 109;
-            int EdadMinima = ListadoDeEventos.Min(x => x.Low_age) ?? 0;
-            int annoActual = DateTime.Now.Year - 1;
-            int AnnoMaximo = annoActual - EdadMinima;
-            int AnnoMinimo = annoActual - EdadMaxima;
-
-
-            List<ListarNadadoresParaSeleccionarlos> VM = new List<ListarNadadoresParaSeleccionarlos>();
-
-
-            List<Inscripciones> listadoNadadores = db
-                .Inscripciones.Where(x => x.ClubID == club.ClubID &&
-                x.Afiliado.Fecha_de_nacimiento.Year >= AnnoMinimo && 
-                x.Afiliado.Fecha_de_nacimiento.Year <= AnnoMaximo  && x.DisciplinaId ==1)
-                .OrderBy(x => x.Afiliado.Fecha_de_nacimiento)
-                .ToList();
-
-            List<Entradas> EntradasDeEsteTorneo = db.Entradas.Where(x => x.MeetId == Meetid).ToList();
-            List<atletas> atletasDeEsteTorneo = db.atletas.Where(x => x.Meetid == Meetid).ToList();
-            foreach (Inscripciones afiliado in listadoNadadores)
+            // Ver si cumple la marca mínima, primero la de la competencia, usando LSY y SLY
+            RESULTS resultado = new RESULTS();
+            string CursoPiscina = setup.Torneo.course_order;
+            for (int i = 0; i < 2; i++)
             {
-                ListarNadadoresParaSeleccionarlos listarnadadorparaafiliar = new ListarNadadoresParaSeleccionarlos
+                float MM = 0;
+                string CursoABuscar = CursoPiscina.Substring(i, 1);
+                if (CursoABuscar == "L")
                 {
-                    afiliado = afiliado,
-                    YaEstaInscrito = false,
-                    TieneResultado = db.RESULTS.Any(x => x.Athlete1.ID_NO == afiliado.DNI && x.NT == 0),
-                };
-
-
-
-                if (atletasDeEsteTorneo.Any(x => x.Reg_no == afiliado.DNI))
+                    resultado = resultadoenlarga;
+                    MM = NadadorAInscribir.MMLarga;
+                }
+                else
                 {
-                    atletas atleta = atletasDeEsteTorneo.Where(x => x.Reg_no == afiliado.DNI).FirstOrDefault();
-                    listarnadadorparaafiliar.YaEstaInscrito = true;
-                    //if (EntradasDeEsteTorneo.Any(x => x.Ath_no == atleta.Ath_no && x.MeetId == Meetid))
-                    //{
-                    //    listarnadadorparaafiliar.YaEstaInscrito = true;
-                    //}
+                    resultado = resultadoencorta;
+                    MM = NadadorAInscribir.MMCorta;
+                }
+
+                // aquí vemos si cumple dependiendo del tipo de torneo
+                //Si es un torneo con marcas mínimas debe de tener marcas mejores, si es con marcas máximas no debe de tener mejores marca
+                //si es un torneo tipo semillero o copa no debe de tener marcas minimas.
+
+                if (setup.PermiteSinMarca)
+                {
+                    NadadorAInscribir.Cumple = true;
+                }
+                else if (setup.UsaMarcaMaxima)
+                {
+                    NadadorAInscribir.Cumple = VerSiCumpleConLaMarcaMaxima(CursoABuscar, resultado, MM);
+                }
+                else
+                {
+                    NadadorAInscribir.Cumple = VerSiCumpleConLaMarca(CursoABuscar, resultado, MM);
+                }
+                if(NadadorAInscribir.Cumple )
+                { break; }
+
+            }
+            if (!NadadorAInscribir.Cumple || setup.PermiteSinMarca)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    resultado = null;
+                    string CursoABuscar = CursoPiscina.Substring(i, 1);
+                    if (CursoABuscar == "L" && resultadoenlarga != null)
+                    {
+                        resultado = resultadoenlarga;
+                        break;
+                    }
+                    if (CursoABuscar == "S" && resultadoencorta != null)
+                    {
+                        resultado = resultadoencorta;
+                        break;
+                    }
+                }
+            }
+
+            if (!NadadorAInscribir.Cumple)
+            {
+                if (resultadoenlarga == null && resultadoencorta == null)
+                {
+                    NadadorAInscribir.tiempo = "0.00";
+                    NadadorAInscribir.segundos = 0;
+                    NadadorAInscribir.torneo = "Sin torneo";
+                    NadadorAInscribir.PiscinaDelTiempo = "";
+                }
+                else
+                {
+
+                    NadadorAInscribir.tiempo = resultado.SCORE;
+                    NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
+                    NadadorAInscribir.torneo = resultado.MEET1.MName;
+                    if (resultado.MEET1.MName.Length > 20)
+                    {
+                        NadadorAInscribir.torneo = resultado.MEET1.MName.Substring(0, 20);
+                    }
+                    NadadorAInscribir.PiscinaDelTiempo = resultado.COURSE;
+                    NadadorAInscribir.Cumple = false;
 
                 }
-               
-                VM.Add(listarnadadorparaafiliar);
+
             }
-            ViewBag.Meet = db.Torneo.Where(x => x.Meetid == Meetid).Select(x => x.Meet_name1).FirstOrDefault();
-            ViewBag.torneo = torneo;
-
-            ViewBag.setup = db.SetupTorneo.Where(x => x.Meetid == Meetid).FirstOrDefault();
-
-
-            return View( VM);
+            if (resultado == null)
+            {
+                resultado = new RESULTS
+                {
+                    SCORE = "0.00",
+                    COURSE = "-",
+                    MEET1 = new MEET
+                    {
+                        MName = "Sin participación",
+                    },
+                };
+            }
+            NadadorAInscribir.tiempo = resultado.SCORE;
+            NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
+            NadadorAInscribir.torneo = resultado.MEET1.MName;
+            if (resultado.MEET1.MName.Length > 20)
+            {
+                NadadorAInscribir.torneo = resultado.MEET1.MName.Substring(0, 20);
+            }
+            NadadorAInscribir.PiscinaDelTiempo = resultado.COURSE;
+            return NadadorAInscribir;
         }
 
         public ActionResult RetirarDelTorneo(int MeetId, int afiliadoId)
@@ -196,36 +260,32 @@ namespace InscripcionNatacion.Controllers
         public ActionResult ListarPruebasParaElNadador(int MeetId, int afiliadoId)
         {
             int annoActual = DateTime.Now.Year - 1; /*Para calcular la edad al año pasado*/
-            
+
+            //Iniciando las variables a usar más adelante
             SetupTorneo setup = db.SetupTorneo.Where(x => x.Meetid == MeetId).FirstOrDefault();
+            List<SessionItem> ListadoDeSessionItem = db.SessionItem.Where(x => x.Meetid == MeetId).ToList();
+            List<int> PruebasYaInscritas = new List<int>();
             RESULTS resultado = new RESULTS();
 
             DateTime fecha = setup.Torneo.entry_deadline ?? DateTime.Now;
             DateTime haceunanno = fecha.AddDays(-15).AddYears(-1);
 
-            List<MarcasMinimas> MarcasMinimasDelTorneo = db.MarcasMinimas.Where(x => x.MeetId == MeetId).ToList();
-            List<SessionItem> ListadoDeSessionItem = db.SessionItem.Where(x => x.Meetid == MeetId).ToList();
-
-            List<int> PruebasYaInscritas = new List<int>();
-
+            List<MarcasMinimas> MarcasMinimasDelTorneo = new List<MarcasMinimas>();
+            if (!setup.PermiteSinMarca)
+            {
+                MarcasMinimasDelTorneo = db.MarcasMinimas.Where(x => x.MeetId == MeetId).ToList();
+            }
             string stroke = "Free";
             //Hallo el tipo de piscina en el que se nadará
 
             int NumeroSesiones = setup.Torneo.Sesion.OrderByDescending(x => x.SessionId).Select(x => x.Sess_day).FirstOrDefault() ?? 1;
-
-            int pruebasXtorneo = setup.pruebasXtorneo; //2 * NumeroSesiones;
-            //if (pruebasXtorneo > 6)
-            //{
-            //    pruebasXtorneo = 6;
-            //}
+            int pruebasXtorneo = setup.pruebasXtorneo;
             int pruebasConMarca = 0;
-
-
 
             //Inicio de variable del modelo
             ListadoInscritoViewModel VM = new ListadoInscritoViewModel
             {
-                afiliado = db.Inscripciones.Where(x => x.InscripcionId == afiliadoId ).FirstOrDefault(),
+                afiliado = db.Inscripciones.Where(x => x.InscripcionId == afiliadoId).FirstOrDefault(),
                 listaDeEventos = new List<ViewModels.Inscrito.InscritoViewModel>(),
                 Sesiones = new List<SesionViewModel>(),
                 PruebasTotales = pruebasXtorneo,
@@ -237,7 +297,7 @@ namespace InscripcionNatacion.Controllers
             };
             //Todos los resultados del nadador en un año
             List<RESULTS> resultados = db.RESULTS
-                       .Where(x => x.Athlete1.ID_NO == VM.afiliado.DNI && x.MEET1.Start > haceunanno && x.SCORE != "" && x.NT==0)
+                       .Where(x => x.Athlete1.ID_NO == VM.afiliado.DNI && x.MEET1.Start > haceunanno && x.SCORE != "" && x.NT == 0)
                        .ToList();
 
             if (setup.Torneo.Meet_course == 1)
@@ -248,9 +308,8 @@ namespace InscripcionNatacion.Controllers
             {
                 VM.Piscina = "S";
             }
-            
 
-            //1 .- buscar al afiliado en la bd de inscripciones
+            //1 .- buscar al afiliado en la bd de inscripciones, sirve para saber si ya está inscrito
             atletas atleta = db.atletas.Where(x => x.Reg_no == VM.afiliado.DNI).FirstOrDefault(); // en la BD de inscripciones
             if (atleta != null)
             {
@@ -259,9 +318,8 @@ namespace InscripcionNatacion.Controllers
             else
             {
                 VM.YaestaInscrito = false;
-
             }
-           
+
 
             //2 .- Buscar los eventos que podría nadar el afiliado
             int edad = annoActual - VM.afiliado.Afiliado.Fecha_de_nacimiento.Year;
@@ -273,18 +331,20 @@ namespace InscripcionNatacion.Controllers
                 {
                     evento = evento,
                     sesion = ListadoDeSessionItem.Where(x => x.Event_ptr == evento.Event_ptr).Select(x => x.Sess_ptr).FirstOrDefault() ?? 0,
-
-                    MMCorta = MarcasMinimasDelTorneo.
-                    Where(x => x.tag_dist == evento.Event_dist && x.tag_stroke == evento.Event_stroke && x.tag_course == "S" && x.low_age <= edad && x.high_Age >= edad && x.tag_gender == evento.Event_gender)
-                    .OrderByDescending(x => x.tag_ptr)
-                    .Select(x => x.tag_time).FirstOrDefault() ?? 0,
-
-                    MMLarga = MarcasMinimasDelTorneo
-                    .Where(x => x.tag_dist == evento.Event_dist && x.tag_stroke == evento.Event_stroke && x.tag_course == "L" && x.low_age <= edad && x.high_Age >= edad && x.tag_gender == evento.Event_gender)
-                    .OrderByDescending(x => x.tag_ptr)
-                    .Select(x => x.tag_time).FirstOrDefault() ?? 0,
-
+                    MMCorta = 0,
+                    MMLarga = 0,
                 };
+
+
+                NadadorAInscribir.MMCorta = (setup.PermiteSinMarca ? 0 : MarcasMinimasDelTorneo.
+                Where(x => x.tag_dist == evento.Event_dist && x.tag_stroke == evento.Event_stroke && x.tag_course == "S" && x.low_age <= edad && x.high_Age >= edad && x.tag_gender == evento.Event_gender)
+               .OrderByDescending(x => x.tag_ptr)
+               .Select(x => x.tag_time).FirstOrDefault() ?? 0);
+
+                NadadorAInscribir.MMLarga = (setup.PermiteSinMarca ? 0 : MarcasMinimasDelTorneo
+                .Where(x => x.tag_dist == evento.Event_dist && x.tag_stroke == evento.Event_stroke && x.tag_course == "L" && x.low_age <= edad && x.high_Age >= edad && x.tag_gender == evento.Event_gender)
+                .OrderByDescending(x => x.tag_ptr)
+                .Select(x => x.tag_time).FirstOrDefault() ?? 0);
 
                 if (atleta != null)
                 {
@@ -329,92 +389,13 @@ namespace InscripcionNatacion.Controllers
                 RESULTS resultadoencorta = resultados
                        .Where(x => x.DISTANCE == distancia && x.STROKE == stroke && x.COURSE == "S")
                        .OrderBy(x => x.SCORE).FirstOrDefault();
-               
+
+
+
                 // Ver si cumple la marca mínima, primero la de la competencia, usando LSY y SLY
                 string CursoPiscina = setup.Torneo.course_order;
-                for (int i = 0; i < 2; i++)
-                {
-                    float MM = 0;
-                    string CursoABuscar = CursoPiscina.Substring(i, 1);
-                    if (CursoABuscar == "L")
-                    {
-                        resultado = resultadoenlarga;
-                        MM = NadadorAInscribir.MMLarga;
-                    }
-                    else
-                    {
-                        resultado = resultadoencorta;
-                        MM = NadadorAInscribir.MMCorta;
-                    }
-                                          
-                    if (resultado != null)
-                    {
-                        NadadorAInscribir.Cumple = VerSiCumpleConLaMarca(CursoABuscar, resultado, MM);
-                    }
+                NadadorAInscribir = GetMejortiempoDeLaPrueba(NadadorAInscribir, resultadoenlarga, resultadoencorta, CursoPiscina, setup);
 
-                    if (NadadorAInscribir.Cumple)
-                    {
-                        NadadorAInscribir.tiempo = resultado.SCORE;
-                        NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
-                        NadadorAInscribir.torneo = resultado.MEET1.MName;
-                        if (resultado.MEET1.MName.Length > 20)
-                        {
-                            NadadorAInscribir.torneo = resultado.MEET1.MName.Substring(0, 20);
-                        }
-                        NadadorAInscribir.PiscinaDelTiempo = resultado.COURSE;
-                        pruebasConMarca += 1;
-                        break;
-                    }
-                }
-                if(!NadadorAInscribir.Cumple)
-                {
-                    for (int i = 0; i < 2; i++)
-                    {
-                        resultado = null;
-                        string CursoABuscar = CursoPiscina.Substring(i, 1);
-                        if (CursoABuscar == "L" && resultadoenlarga != null)
-                        {                           
-                            resultado = resultadoenlarga;
-                            break;
-                        }
-                        if (CursoABuscar == "S" && resultadoencorta != null)
-                        {
-                            resultado = resultadoencorta;
-                            break;
-                        } 
-                    }
-                }
-
-                if(!NadadorAInscribir.Cumple)
-                {
-                    if (resultadoenlarga == null && resultadoencorta == null)
-                    {
-                        NadadorAInscribir.tiempo = "0.00";
-                        NadadorAInscribir.segundos = 0;
-                        NadadorAInscribir.torneo = "Sin torneo";
-                        NadadorAInscribir.PiscinaDelTiempo = "";
-                    }
-                    else
-                    {
-
-                        NadadorAInscribir.tiempo = resultado.SCORE;
-                        NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
-                        NadadorAInscribir.torneo = resultado.MEET1.MName;
-                        if (resultado.MEET1.MName.Length > 20)
-                        {
-                            NadadorAInscribir.torneo = resultado.MEET1.MName.Substring(0, 20);
-                        }
-                        NadadorAInscribir.PiscinaDelTiempo = resultado.COURSE;
-                        NadadorAInscribir.Cumple = false;
-
-                    }
-
-                }
-
-                if (NadadorAInscribir.MMCorta == 0 && NadadorAInscribir.MMLarga == 0)
-                {
-                    NadadorAInscribir.Cumple = true;
-                }
                 VM.listaDeEventos.Add(NadadorAInscribir);
             }
 
@@ -475,20 +456,19 @@ namespace InscripcionNatacion.Controllers
             // Ahora es más simple, si no tienes marcas no nadas.
 
 
-            if (pruebasConMarca > 0)
+            if (!setup.PermiteSinMarca)
             {
-                VM.SinMarca =setup.SinMarca;
+                VM.SinMarca = setup.SinMarca;
             }
             else
             {
-                VM.SinMarca =1;
+                VM.SinMarca = 1;
             }
             ViewBag.setup = setup;
             return View(VM);
-
-
-
         }
+
+
 
         public ActionResult ListarPruebasParaElNadadorSemillero(int MeetId, int afiliadoId)
         {
@@ -531,8 +511,8 @@ namespace InscripcionNatacion.Controllers
                 SinMarca = 0,
                 MeetId = MeetId,
             };
-          
-            
+
+
 
             if (setup.Torneo.Meet_course == 1)
             {
@@ -606,10 +586,10 @@ namespace InscripcionNatacion.Controllers
 
 
                 NadadorAInscribir.tiempo = "0:00.00";
-                        NadadorAInscribir.segundos = 0;
-                        NadadorAInscribir.torneo = "Sin torneo";
-                        NadadorAInscribir.PiscinaDelTiempo = "";
-                    NadadorAInscribir.Cumple = true;
+                NadadorAInscribir.segundos = 0;
+                NadadorAInscribir.torneo = "Sin torneo";
+                NadadorAInscribir.PiscinaDelTiempo = "";
+                NadadorAInscribir.Cumple = true;
                 VM.listaDeEventos.Add(NadadorAInscribir);
             }
 
@@ -844,7 +824,7 @@ namespace InscripcionNatacion.Controllers
                     {
                         NadadorAInscribir.Cumple = true;
                     }
-                    else 
+                    else
                     {
                         NadadorAInscribir.Cumple = VerSiCumpleConLaMarcaMaxima(CursoABuscar, resultado, MM);
                     }
@@ -979,7 +959,7 @@ namespace InscripcionNatacion.Controllers
                 VM.SinMarca = 0;
             }
             ViewBag.setup = setup;
-            return View( VM);
+            return View(VM);
         }
 
 
@@ -1569,8 +1549,8 @@ namespace InscripcionNatacion.Controllers
 
             try
             {
-               int ath_No=  IngresarDeportista(id, MeetId, YaestaInscritoString);
-              
+                int ath_No = IngresarDeportista(id, MeetId, YaestaInscritoString);
+
 
                 List<Entradas> EntradasActuales = db.Entradas.Where(x => x.Ath_no == ath_No).ToList();
                 foreach (Entradas entrada in EntradasActuales)
@@ -1630,7 +1610,7 @@ namespace InscripcionNatacion.Controllers
         {
             Inscripciones inscripcion = db.Inscripciones.Where(x => x.InscripcionId == InscripcionId).FirstOrDefault();
             atletas atleta = db.atletas.Where(x => x.Reg_no == inscripcion.DNI && x.Meetid == meetid).FirstOrDefault();
-            if(atleta == null)
+            if (atleta == null)
             {
                 return Json("No se realizó ninguna acción, Presione regresar al listado", JsonRequestBehavior.AllowGet);
             }
@@ -1687,7 +1667,7 @@ namespace InscripcionNatacion.Controllers
                     dato = tiempo.Substring(posiciondospuntos + 1, 2); // medio extraño pero funciona
                     segundos = Int32.Parse(dato);
                 }
-                else if(posiciondospuntos ==0)
+                else if (posiciondospuntos == 0)
                 {
                     dato = tiempo.Substring(0, posicionpuntdo);
                     segundos = Int32.Parse(dato);
@@ -1735,7 +1715,10 @@ namespace InscripcionNatacion.Controllers
             {
                 return true;
             }
-
+            if(resultado == null)
+            {
+                return false;
+            }
             float Tiempo = ConvertirASegundos(resultado.SCORE);
             if (Tiempo < MM)
             {
@@ -1746,7 +1729,7 @@ namespace InscripcionNatacion.Controllers
 
         public Boolean VerSiCumpleConLaMarcaMaxima(string curso, RESULTS resultado, float MM)
         {
-            if (MM == 0)
+            if (MM == 0 || resultado == null)
             {
                 return true;
             }
@@ -1785,45 +1768,11 @@ namespace InscripcionNatacion.Controllers
             Boolean YaestaInscrito = YaestaInscritoString.ToUpper() == "TRUE";
             if (!YaestaInscrito)
             {
-
-                //Afiliacion afiliacion = af.Afiliacion.Where(x => x.DNI == afiliado.DNI).OrderByDescending(x => x.AfiliacionID).FirstOrDefault();
                 Equipos equipo = db.Equipos.Where(x => x.Team_abbr == afiliado.Club.Iniciales && x.MeetId == MeetId).FirstOrDefault();
-
                 if (equipo == null)
                 {
-                    Equipos ultimoequipo = db.Equipos.OrderByDescending(x => x.Team_no).FirstOrDefault();
-                    equipo = new Equipos
-                    {
-                        Team_name = afiliado.Club.NombreClub,
-                        Team_short= afiliado.Club.NombreUsuario,
-                        Team_abbr = afiliado.Club.Iniciales,
-                        Team_div = 0,
-                        Team_region = 0,
-                        Team_cntry = "PER",
-                        Team_NoPoints = false,
-                        Team_Selected = false,
-                        NoTeam_surcharge = false,
-                        NoFacility_surcharge = false,
-                        NoAthlete_surcharge = false,
-                        NoRelayOnly_surcharge = false,
-                        MeetId = MeetId
-                    };
-                    if (equipo.Team_name.Length > 30)
-                    {
-                        equipo.Team_name = equipo.Team_name.Substring(0, 30);
-
-                    }
-                    if (ultimoequipo == null)
-                    {
-                        equipo.Team_no = 1;
-                    }
-                    else
-                    {
-                        equipo.Team_no = ultimoequipo.Team_no + 1;
-                    }
-
-                    db.Equipos.Add(equipo);
-                    db.SaveChanges();
+                    Club club = db.Club.FirstOrDefault(x => x.ClubID == afiliado.Club.ClubID);
+                    GrabarClub(club, MeetId);
                 }
 
                 int annoActual = DateTime.Now.Year;
@@ -1906,13 +1855,13 @@ namespace InscripcionNatacion.Controllers
             {
                 atleta.First_name = atleta.First_name.Substring(0, 20);
             }
-          
+
 
             if (atleta.Last_name.Length > 20)
             {
                 atleta.Last_name = atleta.Last_name.Substring(0, 20);
             }
-          
+
             db.SaveChanges();
         }
 
@@ -1921,10 +1870,10 @@ namespace InscripcionNatacion.Controllers
             List<Eventos> eventos = db.Eventos.Where(x => x.MeetId == MeetId).ToList();
             string estilo = "";
             UnEventoViewModel VM = new UnEventoViewModel {
-                UnosEventos= new List<UnEvento>(),
-                EventoId =0,
+                UnosEventos = new List<UnEvento>(),
+                EventoId = 0,
             };
-            foreach(var evento in eventos)
+            foreach (var evento in eventos)
             {
                 switch (evento.Event_stroke)
                 {
@@ -1957,22 +1906,22 @@ namespace InscripcionNatacion.Controllers
         public ActionResult DatosDelEvento(int EventId)
         {
             Eventos evento = db.Eventos.Find(EventId);
-            List<MarcasMinimas> MMDelTorneo = db.MarcasMinimas.Where(x => x.MeetId == evento.MeetId && x.tag_dist == evento.Event_dist 
+            List<MarcasMinimas> MMDelTorneo = db.MarcasMinimas.Where(x => x.MeetId == evento.MeetId && x.tag_dist == evento.Event_dist
             && x.tag_stroke == evento.Event_stroke && x.tag_gender == evento.Event_gender).ToList();
             string estilo = "";
             DatosEventoViewModel VM = new DatosEventoViewModel
             {
                 Evento = evento,
-                Marcas= new List<ListadoDeMarcasMinimasViewModel>(),
-                
+                Marcas = new List<ListadoDeMarcasMinimasViewModel>(),
+
             };
 
-            foreach(var item in MMDelTorneo)
+            foreach (var item in MMDelTorneo)
             {
                 ListadoDeMarcasMinimasViewModel modelo = new ListadoDeMarcasMinimasViewModel
                 {
-                    EdadMinima = item.low_age?? 0,
-                    EdadMaxima = item.high_Age?? 109,
+                    EdadMinima = item.low_age ?? 0,
+                    EdadMaxima = item.high_Age ?? 109,
                     Curso = item.tag_course,
                     MM = ConvertirAMinutos(item.tag_time ?? 0),
 
@@ -2001,7 +1950,7 @@ namespace InscripcionNatacion.Controllers
             //        && x.tag_gender == evento.Event_gender)
             //        .Select(x => x.tag_time).FirstOrDefault() ?? 0,
 
-              
+
             //};
             //switch(evento.Event_stroke)
             //    {
@@ -2032,10 +1981,10 @@ namespace InscripcionNatacion.Controllers
             int anno = DateTime.Now.Year;
             Eventos evento = db.Eventos.Find(EventId);
             List<Equipos> Equipos = db.Equipos.Where(x => x.MeetId == evento.MeetId).ToList();
-            List<Entradas> entradas = db.Entradas.Where(x => x.MeetId == evento.MeetId && x.Event_ptr == evento.Event_ptr).OrderBy(x=>x.ConvSeed_time).ToList();
-            List<atletas> atletas = db.atletas.Where(x => x.Meetid == evento.MeetId ).ToList();
+            List<Entradas> entradas = db.Entradas.Where(x => x.MeetId == evento.MeetId && x.Event_ptr == evento.Event_ptr).OrderBy(x => x.ConvSeed_time).ToList();
+            List<atletas> atletas = db.atletas.Where(x => x.Meetid == evento.MeetId).ToList();
             List<NadadorPruebaViewModel> VM = new List<NadadorPruebaViewModel>();
-            foreach(Entradas entrada in entradas)
+            foreach (Entradas entrada in entradas)
             {
                 NadadorPruebaViewModel modelo = new NadadorPruebaViewModel
                 {
@@ -2043,22 +1992,22 @@ namespace InscripcionNatacion.Controllers
                     atleta = atletas.Where(x => x.Ath_no == entrada.Ath_no).FirstOrDefault(),
                 };
                 modelo.equipo = Equipos.Where(x => x.Team_no == modelo.atleta.Team_no).FirstOrDefault();
-                modelo.tiempo = ConvertirAMinutos(modelo.entrada.ConvSeed_time??0);
-                modelo.edad = anno - (modelo.atleta.Birth_date.Value.Year) -1;
+                modelo.tiempo = ConvertirAMinutos(modelo.entrada.ConvSeed_time ?? 0);
+                modelo.edad = anno - (modelo.atleta.Birth_date.Value.Year) - 1;
                 VM.Add(modelo);
             }
 
             return PartialView(VM);
         }
 
-        
+
         public JsonResult SoloParaPostas(int afiliadoId, int MeetId)
         {
             string resultado = "Ya estaba inscrito anteriormente";
-            
+
             Inscripciones inscripciones = db.Inscripciones.Find(afiliadoId);
-            atletas atleta = db.atletas.Where(x => x.Reg_no == inscripciones.DNI && x.Meetid == MeetId) .FirstOrDefault();
-            if(atleta == null)
+            atletas atleta = db.atletas.Where(x => x.Reg_no == inscripciones.DNI && x.Meetid == MeetId).FirstOrDefault();
+            if (atleta == null)
             {
                 IngresarDeportista(afiliadoId, MeetId, "false");
                 resultado = "Se agregpo para postas";
@@ -2066,5 +2015,246 @@ namespace InscripcionNatacion.Controllers
 
             return Json(resultado, JsonRequestBehavior.AllowGet);
         }
+
+        public void GrabarClub(Club club, int MeetId)
+        {
+            //Afiliacion afiliacion = af.Afiliacion.Where(x => x.DNI == afiliado.DNI).OrderByDescending(x => x.AfiliacionID).FirstOrDefault();   
+
+            Equipos ultimoequipo = db.Equipos.OrderByDescending(x => x.Team_no).FirstOrDefault();
+            Equipos equipo = new Equipos
+                {
+                    Team_name = club.NombreClub,
+                    Team_short = club.NombreUsuario,
+                    Team_abbr = club.Iniciales,
+                    Team_div = 0,
+                    Team_region = 0,
+                    Team_cntry = "PER",
+                    Team_NoPoints = false,
+                    Team_Selected = false,
+                    NoTeam_surcharge = false,
+                    NoFacility_surcharge = false,
+                    NoAthlete_surcharge = false,
+                    NoRelayOnly_surcharge = false,
+                    MeetId = MeetId
+                };
+                if (equipo.Team_name.Length > 30)
+                {
+                    equipo.Team_name = equipo.Team_name.Substring(0, 30);
+
+                }
+                if (equipo.Team_short.Length > 15)
+                {
+                    equipo.Team_short = equipo.Team_short.Substring(0, 15);
+
+                }
+
+                if (ultimoequipo == null)
+                {
+                    equipo.Team_no = 1;
+                }
+                else
+                {
+                    equipo.Team_no = ultimoequipo.Team_no + 1;
+                }
+
+                db.Equipos.Add(equipo);
+                db.SaveChanges();
+           
+        }
+        [HttpGet]
+        public ActionResult InscribirResponsable(int MeetId)
+        {
+            Usuario usuario = Session["Usuario"] as Usuario;
+            ViewBag.usuario = usuario;
+            ViewBag.MeetId = MeetId;
+           
+            InscripcionResponsableViewModel VM = new InscripcionResponsableViewModel
+            {
+                InscripcionResponsable = new InscripcionResponsable(),
+                MeetId = MeetId,
+            };
+            return View(VM);
+        }
+
+        [HttpPost]
+        public ActionResult InscribirResponsable(InscripcionResponsableViewModel VM)
+        {
+            Usuario usuario = Session["Usuario"] as Usuario;
+            Club club = db.Club.FirstOrDefault(x => x.ClubID == usuario.ClubId);
+            GrabarClub(club, VM.MeetId);
+
+            if(TryUpdateModel(VM.InscripcionResponsable))
+            {
+                Equipos equipo = db.Equipos.FirstOrDefault(x => x.Team_abbr == club.Iniciales);
+                VM.InscripcionResponsable.TeamId = equipo.TeamId;
+                db.InscripcionResponsable.Add(VM.InscripcionResponsable);
+                db.SaveChanges();
+                return RedirectToAction("ListarNadadores", new { Meetid = VM.MeetId });
+            }
+            return View(VM.MeetId);
+        }
+
+
+
+        //Esto es para borrar posteriormente
+
+        public ActionResult ListarNadadoresAfiliados(int Meetid)
+        {
+            Torneo torneo = db.Torneo.Find(Meetid);
+            Usuario usuario = Session["usuario"] as Usuario;
+            Club club = db.Club.Where(x => x.ClubID == usuario.ClubId).FirstOrDefault();
+
+            List<Eventos> ListadoDeEventos = db.Eventos.Where(x => x.MeetId == Meetid).ToList();
+            int EdadMaxima = ListadoDeEventos.Max(x => x.High_Age) ?? 109;
+            int EdadMinima = ListadoDeEventos.Min(x => x.Low_age) ?? 0;
+            int annoActual = DateTime.Now.Year - 1;
+            int AnnoMaximo = annoActual - EdadMinima;
+            int AnnoMinimo = annoActual - EdadMaxima;
+
+
+            List<ListarNadadoresParaSeleccionarlos> VM = new List<ListarNadadoresParaSeleccionarlos>();
+
+
+            List<Inscripciones> listadoNadadores = db
+                .Inscripciones.Where(x => x.ClubID == club.ClubID && x.EstadoID == 3 && x.Afiliado.Fecha_de_nacimiento.Year >= AnnoMinimo && x.Afiliado.Fecha_de_nacimiento.Year <= AnnoMaximo)
+                .OrderBy(x => x.Afiliado.Fecha_de_nacimiento)
+                .ToList();
+
+            List<Entradas> EntradasDeEsteTorneo = db.Entradas.Where(x => x.MeetId == Meetid).ToList();
+            List<atletas> atletasDeEsteTorneo = db.atletas.Where(x => x.Meetid == Meetid).ToList();
+            foreach (Inscripciones afiliado in listadoNadadores)
+            {
+                ListarNadadoresParaSeleccionarlos listarnadadorparaafiliar = new ListarNadadoresParaSeleccionarlos
+                {
+                    afiliado = afiliado,
+                    YaEstaInscrito = false,
+                    TieneMulta = db.Multas.Any(x => x.InscripcionId == afiliado.InscripcionId && x.Subsanada == false),
+                };
+                if (atletasDeEsteTorneo.Any(x => x.Reg_no == afiliado.DNI))
+                {
+                    atletas atleta = atletasDeEsteTorneo.Where(x => x.Reg_no == afiliado.DNI).FirstOrDefault();
+                    listarnadadorparaafiliar.YaEstaInscrito = true;
+                    //if (EntradasDeEsteTorneo.Any(x => x.Ath_no == atleta.Ath_no && x.MeetId == Meetid))
+                    //{
+                    //    listarnadadorparaafiliar.YaEstaInscrito = true;
+                    //}
+
+                }
+                VM.Add(listarnadadorparaafiliar);
+            }
+            ViewBag.setup = db.SetupTorneo.Where(x => x.Meetid == Meetid).FirstOrDefault();
+
+            return View(VM);
+        }
+
+        public ActionResult ListarNadadoresNoAfiliadosConTiempo(int Meetid)
+        {
+            Torneo torneo = db.Torneo.Find(Meetid);
+            Usuario usuario = Session["usuario"] as Usuario;
+            Club club = db.Club.Where(x => x.ClubID == usuario.ClubId).FirstOrDefault();
+
+            List<Eventos> ListadoDeEventos = db.Eventos.Where(x => x.MeetId == Meetid).ToList();
+            int EdadMaxima = ListadoDeEventos.Max(x => x.High_Age) ?? 109;
+            int EdadMinima = ListadoDeEventos.Min(x => x.Low_age) ?? 0;
+            int annoActual = DateTime.Now.Year - 1;
+            int AnnoMaximo = annoActual - EdadMinima;
+            int AnnoMinimo = annoActual - EdadMaxima;
+
+
+            List<ListarNadadoresParaSeleccionarlos> VM = new List<ListarNadadoresParaSeleccionarlos>();
+
+
+            List<Inscripciones> listadoNadadores = db
+                .Inscripciones.Where(x => x.ClubID == club.ClubID && x.Afiliado.Fecha_de_nacimiento.Year >= AnnoMinimo && x.Afiliado.Fecha_de_nacimiento.Year <= AnnoMaximo)
+                .OrderBy(x => x.Afiliado.Fecha_de_nacimiento)
+                .ToList();
+
+            List<Entradas> EntradasDeEsteTorneo = db.Entradas.Where(x => x.MeetId == Meetid).ToList();
+            List<atletas> atletasDeEsteTorneo = db.atletas.Where(x => x.Meetid == Meetid).ToList();
+            foreach (Inscripciones afiliado in listadoNadadores)
+            {
+                ListarNadadoresParaSeleccionarlos listarnadadorparaafiliar = new ListarNadadoresParaSeleccionarlos
+                {
+                    afiliado = afiliado,
+                    YaEstaInscrito = false,
+                    TieneMulta = db.Multas.Any(x => x.InscripcionId == afiliado.InscripcionId && x.Subsanada == false),
+                };
+                if (atletasDeEsteTorneo.Any(x => x.Reg_no == afiliado.DNI))
+                {
+                    atletas atleta = atletasDeEsteTorneo.Where(x => x.Reg_no == afiliado.DNI).FirstOrDefault();
+                    listarnadadorparaafiliar.YaEstaInscrito = true;
+                    //if (EntradasDeEsteTorneo.Any(x => x.Ath_no == atleta.Ath_no && x.MeetId == Meetid))
+                    //{
+                    //    listarnadadorparaafiliar.YaEstaInscrito = true;
+                    //}
+
+                }
+                VM.Add(listarnadadorparaafiliar);
+            }
+            ViewBag.setup = db.SetupTorneo.Where(x => x.Meetid == Meetid).FirstOrDefault();
+
+            return View("ListarNadadoresNoAfiliados", VM);
+        }
+
+        public ActionResult ListarNadadoresNoAfiliados(int Meetid)
+        {
+            Torneo torneo = db.Torneo.Find(Meetid);
+            Usuario usuario = Session["usuario"] as Usuario;
+            Club club = db.Club.Where(x => x.ClubID == usuario.ClubId).FirstOrDefault();
+
+            List<Eventos> ListadoDeEventos = db.Eventos.Where(x => x.MeetId == Meetid).ToList();
+            int EdadMaxima = ListadoDeEventos.Max(x => x.High_Age) ?? 109;
+            int EdadMinima = ListadoDeEventos.Min(x => x.Low_age) ?? 0;
+            int annoActual = DateTime.Now.Year - 1;
+            int AnnoMaximo = annoActual - EdadMinima;
+            int AnnoMinimo = annoActual - EdadMaxima;
+
+
+            List<ListarNadadoresParaSeleccionarlos> VM = new List<ListarNadadoresParaSeleccionarlos>();
+
+
+            List<Inscripciones> listadoNadadores = db
+                .Inscripciones.Where(x => x.ClubID == club.ClubID &&
+                x.Afiliado.Fecha_de_nacimiento.Year >= AnnoMinimo &&
+                x.Afiliado.Fecha_de_nacimiento.Year <= AnnoMaximo && x.DisciplinaId == 1)
+                .OrderBy(x => x.Afiliado.Fecha_de_nacimiento)
+                .ToList();
+
+            List<Entradas> EntradasDeEsteTorneo = db.Entradas.Where(x => x.MeetId == Meetid).ToList();
+            List<atletas> atletasDeEsteTorneo = db.atletas.Where(x => x.Meetid == Meetid).ToList();
+            foreach (Inscripciones afiliado in listadoNadadores)
+            {
+                ListarNadadoresParaSeleccionarlos listarnadadorparaafiliar = new ListarNadadoresParaSeleccionarlos
+                {
+                    afiliado = afiliado,
+                    YaEstaInscrito = false,
+                    // TieneResultado = db.RESULTS.Any(x => x.Athlete1.ID_NO == afiliado.DNI && x.NT == 0),
+                    TieneMulta = db.Multas.Any(x => x.InscripcionId == afiliado.InscripcionId && x.Subsanada == false),
+                };
+
+
+
+                if (atletasDeEsteTorneo.Any(x => x.Reg_no == afiliado.DNI))
+                {
+                    atletas atleta = atletasDeEsteTorneo.Where(x => x.Reg_no == afiliado.DNI).FirstOrDefault();
+                    listarnadadorparaafiliar.YaEstaInscrito = true;
+                    //if (EntradasDeEsteTorneo.Any(x => x.Ath_no == atleta.Ath_no && x.MeetId == Meetid))
+                    //{
+                    //    listarnadadorparaafiliar.YaEstaInscrito = true;
+                    //}
+
+                }
+
+                VM.Add(listarnadadorparaafiliar);
+            }
+            ViewBag.Meet = db.Torneo.Where(x => x.Meetid == Meetid).Select(x => x.Meet_name1).FirstOrDefault();
+            ViewBag.torneo = torneo;
+
+            ViewBag.setup = db.SetupTorneo.Where(x => x.Meetid == Meetid).FirstOrDefault();
+
+
+            return View(VM);
+        }
+
     }
 }

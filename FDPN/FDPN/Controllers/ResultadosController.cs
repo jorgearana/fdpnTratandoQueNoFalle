@@ -402,7 +402,7 @@ namespace FDPN.Controllers
 
         public ActionResult RendimientoDelNadadorEnUnaPrueba(int athleteid, int pruebaid)
         {
-            List<RESULTS> resultados = db.RESULTS.Where(x => x.AthleteId == athleteid && x.PruebaId == pruebaid && (x.PLACE != 0 || x.I_R=="L")).OrderByDescending(x => x.MEET1.Start).ToList();
+            List<RESULTS> resultados = db.RESULTS.Where(x => x.AthleteId == athleteid && x.PruebaId == pruebaid && (x.PLACE != 0 || x.I_R=="L") && x.TEAM !=0).OrderByDescending(x => x.MEET1.Start).ToList();
             RendimientoDeUnaPruebaViewModel VM = new RendimientoDeUnaPruebaViewModel
             {
                 atleta = db.Athlete.Find(athleteid),

@@ -86,7 +86,7 @@
                                                         Quiero
                                                     </button>
                                                     <ul class="dropdown-menu">
-                                                        @if (setup.TipoTorneo.Nombre == "Div 2" && !item.TieneMulta)
+                                                        @if (setup.TipoTorneo.TipoId== 4 && !item.TieneMulta)
                                                         {
                                                             @Html.ActionLink("Inscribir deportista", "ListarPruebasParaElNadadorDIVISION2", "inscrito", new { MeetId = setup.Torneo.Meetid, afiliadoId = @item.afiliado.InscripcionId }, new { @class = "btn btn-warning" })
                                                             <li>

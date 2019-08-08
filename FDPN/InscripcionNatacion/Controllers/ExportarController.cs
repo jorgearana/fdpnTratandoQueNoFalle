@@ -334,7 +334,7 @@ namespace InscripcionNatacion.Controllers
 
 
 
-            string resultado = "E1" + sex + Nro + Apellido + sex + sex2 + espacio + distancia + stroke + lowage + highAge + cuatro + Fee + number + Seed1 + CourseSeed1 + Seed2 + CourseSeed2 + resto;
+            string resultado = "E1" + sex + Nro + Apellido + sex + sex2 + espacio + distancia + stroke + lowage + highAge + cuatro + Fee + number + Seed2 + CourseSeed2 + Seed1 + CourseSeed1  + resto;
             resultado = AgrandarString(resultado, 128);
             resultado =  EncontrarCheckSum(resultado);
             return resultado;

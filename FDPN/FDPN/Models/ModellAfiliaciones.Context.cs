@@ -30,6 +30,8 @@ namespace FDPN.Models
         public virtual DbSet<Alertas> Alertas { get; set; }
         public virtual DbSet<Antiguo> Antiguo { get; set; }
         public virtual DbSet<Asociaciones> Asociaciones { get; set; }
+        public virtual DbSet<ATFDeportista> ATFDeportista { get; set; }
+        public virtual DbSet<ATFExpediente> ATFExpediente { get; set; }
         public virtual DbSet<Athlete> Athlete { get; set; }
         public virtual DbSet<AthleteMasters> AthleteMasters { get; set; }
         public virtual DbSet<atletas> atletas { get; set; }
@@ -56,6 +58,7 @@ namespace FDPN.Models
         public virtual DbSet<HistorialEntrenador> HistorialEntrenador { get; set; }
         public virtual DbSet<HistorialTraspasos> HistorialTraspasos { get; set; }
         public virtual DbSet<Inscripciones> Inscripciones { get; set; }
+        public virtual DbSet<InscripcionResponsable> InscripcionResponsable { get; set; }
         public virtual DbSet<Landing> Landing { get; set; }
         public virtual DbSet<MarcasMinimas> MarcasMinimas { get; set; }
         public virtual DbSet<MEET> MEET { get; set; }
@@ -64,6 +67,15 @@ namespace FDPN.Models
         public virtual DbSet<Multas> Multas { get; set; }
         public virtual DbSet<MultiEdad> MultiEdad { get; set; }
         public virtual DbSet<Noticias> Noticias { get; set; }
+        public virtual DbSet<OtroAtleta> OtroAtleta { get; set; }
+        public virtual DbSet<OtroCategorias> OtroCategorias { get; set; }
+        public virtual DbSet<OtroEntradas> OtroEntradas { get; set; }
+        public virtual DbSet<OtroEquipo> OtroEquipo { get; set; }
+        public virtual DbSet<OtroEventos> OtroEventos { get; set; }
+        public virtual DbSet<OtroGrupal> OtroGrupal { get; set; }
+        public virtual DbSet<OtroResponsable> OtroResponsable { get; set; }
+        public virtual DbSet<OtroSetupTorneo> OtroSetupTorneo { get; set; }
+        public virtual DbSet<OtroTorneo> OtroTorneo { get; set; }
         public virtual DbSet<PoloEquipos> PoloEquipos { get; set; }
         public virtual DbSet<PoloFechas> PoloFechas { get; set; }
         public virtual DbSet<PoloGoleadores> PoloGoleadores { get; set; }
@@ -74,6 +86,7 @@ namespace FDPN.Models
         public virtual DbSet<PoloPosicionFinal> PoloPosicionFinal { get; set; }
         public virtual DbSet<PoloResultados> PoloResultados { get; set; }
         public virtual DbSet<PoloRondas> PoloRondas { get; set; }
+        public virtual DbSet<PoloSetupTorneo> PoloSetupTorneo { get; set; }
         public virtual DbSet<PoloTorneo> PoloTorneo { get; set; }
         public virtual DbSet<Procesado> Procesado { get; set; }
         public virtual DbSet<Pruebas> Pruebas { get; set; }

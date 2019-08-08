@@ -25,6 +25,7 @@ namespace FDPN.Models
             this.PoloPosicionFinal = new HashSet<PoloPosicionFinal>();
             this.PoloResultados = new HashSet<PoloResultados>();
             this.PoloRondas = new HashSet<PoloRondas>();
+            this.PoloSetupTorneo = new HashSet<PoloSetupTorneo>();
         }
     
         public int TorneoId { get; set; }
@@ -50,5 +51,7 @@ namespace FDPN.Models
         public virtual ICollection<PoloResultados> PoloResultados { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PoloRondas> PoloRondas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PoloSetupTorneo> PoloSetupTorneo { get; set; }
     }
 }

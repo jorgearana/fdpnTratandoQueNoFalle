@@ -27,15 +27,15 @@
                 <div class="site-athleteswidget__athlete fondoceleste">
 
                     <div class="site-athleteswidget__photo">
-                        <img src=@Url.Content(path + "/" + Model.afiliado.RutaFoto + ".jpg")>
+                        <img src=@Url.Content(path + "/" + Model.Inscripciones.RutaFoto + ".jpg")>
                     </div>
 
                     <div class="site-athleteswidget__info ">
                         <h3 class="site-athleteswidget__name"><strong>@Model.nadador.First.ToLower() <span>@Model.nadador.Last.ToUpper()</span></strong> (@Model.nadador.Age años)</h3>
                         <br />
-                        <h5 class="site-athleteswidget__name">Código: @Model.afiliado.DNI</h5>
+                        <h5 class="site-athleteswidget__name">Código: @Model.Inscripciones.DNI</h5>
                         <br />
-                        <h5 class="site-athleteswidget__name">@Model.afiliado.Club.NombreClub</h5>
+                        <h5 class="site-athleteswidget__name">@Model.Inscripciones.Club.NombreClub</h5>
                         <hr />
 
                     </div>

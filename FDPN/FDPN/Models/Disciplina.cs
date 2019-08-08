@@ -20,6 +20,8 @@ namespace FDPN.Models
             this.Calendario = new HashSet<Calendario>();
             this.Inscripciones = new HashSet<Inscripciones>();
             this.Noticias = new HashSet<Noticias>();
+            this.OtroCategorias = new HashSet<OtroCategorias>();
+            this.OtroTorneo = new HashSet<OtroTorneo>();
         }
     
         public int DisciplinaId { get; set; }
@@ -32,5 +34,9 @@ namespace FDPN.Models
         public virtual ICollection<Inscripciones> Inscripciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Noticias> Noticias { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OtroCategorias> OtroCategorias { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OtroTorneo> OtroTorneo { get; set; }
     }
 }

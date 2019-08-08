@@ -53,6 +53,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0-beta1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=4.5.3.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.3.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp, Version=5.0.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.0.5\lib\itextsharp.dll</HintPath>
     </Reference>
@@ -87,6 +90,7 @@
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Bin\Rotativa.dll</HintPath>
@@ -181,6 +185,7 @@
     <Compile Include="Controllers\BannersController.cs" />
     <Compile Include="Controllers\BASEController.cs" />
     <Compile Include="Controllers\CalendariosController.cs" />
+    <Compile Include="Controllers\DirectorController.cs" />
     <Compile Include="Controllers\DisciplinasController.cs" />
     <Compile Include="Controllers\DocumentosController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
@@ -313,6 +318,12 @@
     <Compile Include="Models\AspNetUsers.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ATFDeportista.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ATFExpediente.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Athlete.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
@@ -418,6 +429,9 @@
     <Compile Include="Models\Inscripciones.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\InscripcionResponsable.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Landing.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
@@ -457,6 +471,33 @@
     <Compile Include="Models\Noticias.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OtroAtleta.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OtroCategorias.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OtroEntradas.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OtroEquipo.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OtroEventos.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OtroGrupal.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OtroResponsable.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OtroSetupTorneo.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OtroTorneo.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PoloEquipos.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
@@ -485,6 +526,9 @@
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PoloRondas.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoloSetupTorneo.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PoloTorneo.cs">
@@ -985,7 +1029,9 @@
     <Folder Include="Content\Uploads\" />
     <Folder Include="Models\Metadata\" />
     <Folder Include="Views\BASE\" />
+    <Folder Include="Views\Director\" />
     <Folder Include="Views\FileUpload\" />
+    <Folder Include="Views\OtroTorneo\" />
     <Folder Include="Views\Tecnico\" />
   </ItemGroup>
   <ItemGroup>

@@ -21,6 +21,7 @@ namespace FDPN.Models
             this.HistorialdeAfiliaciones = new HashSet<HistorialdeAfiliaciones>();
             this.HistorialTraspasos = new HashSet<HistorialTraspasos>();
             this.Multas = new HashSet<Multas>();
+            this.OtroAtleta = new HashSet<OtroAtleta>();
             this.TatoInformeAsistencias = new HashSet<TatoInformeAsistencias>();
             this.TatoInformeEntrenador = new HashSet<TatoInformeEntrenador>();
             this.TatoSeleccionado = new HashSet<TatoSeleccionado>();
@@ -54,6 +55,8 @@ namespace FDPN.Models
         public virtual TipoAfiliado TipoAfiliado { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Multas> Multas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OtroAtleta> OtroAtleta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TatoInformeAsistencias> TatoInformeAsistencias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

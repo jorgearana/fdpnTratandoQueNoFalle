@@ -1,0 +1,89 @@
+﻿@model FDPN.Models.OtroSetupTorneo
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Torneo seleccionado:<strong>@Model.OtroTorneo.Nombre</strong></h5>
+                </div>
+                <br />
+                <div class="row flexContainer">
+                    <div class="col-lg-6">
+                        @Html.Action("ListarNadadores", new { TorneoId = Model.TorneoId })
+
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="col-sm-4">
+                            <button class="btn btn-success GrabarInscripciones" style="display: none;"><i class="material-icons"> save</i>Grabar</button>
+                        </div>
+                        <div class="espaciado"></div>
+                        <div id="eventoinscrito"></div>
+                        <div id="NombreDeportistaAInscribir"></div>
+                        <div id="TorneoId" style="visibility:hidden">@Model.TorneoId</div>
+                    </div>
+                </div>
+
+
+                   </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" tabindex="-1" role="dialog" id="IngresarSuplente">
+    <div class="modal-dialog modalmarca" role="document">
+        <div class="modal-content  panel-warning  ">
+            <div class="modal-header panel-heading">
+                @if (Model.OtroTorneo.Disciplina.TipoDisciplina == "Polo acuático")
+                {
+                    <h5 class="modal-title">
+                        Ingrese el número de gorro
+                    </h5>
+
+                }
+                else if (Model.OtroTorneo.Disciplina.TipoDisciplina == "Natación artística")
+                {
+                    <h5 class="modal-title">
+                        Seleccione si es suplente
+                    </h5>
+                }
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div id="fila" style="visibility:hidden"></div>
+            </div>
+            <div class="modal-body">
+                <form id="detailsForm">
+                    @if (Model.OtroTorneo.Disciplina.TipoDisciplina == "Polo acuático")
+                    {
+                        <div class="details-form-field">
+                            <label>Gorro:</label>
+                            <input id="gorro" name="Nombre" type="number" />
+                            <p class="textaviso">
+                                Solo ingrese números sin caracteres ni espacios
+                            </p>
+                        </div>
+                    }
+                    else if (Model.OtroTorneo.Disciplina.TipoDisciplina == "Natación artística")
+                    {
+                        <div class="details-form-field">
+                            <label>Gorro:</label>
+                            <input id="Suplente" name="Nombre" type="checkbox" />
+                        </div>
+                    }
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="btn btn-secondary" data-dismiss="modal">Cerrar</div>
+                <div class="btn btn-primary BtnIngresarSuplente">Aceptar</div>
+            </div>
+        </div>
+    </div>
+</div>

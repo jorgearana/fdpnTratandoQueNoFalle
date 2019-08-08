@@ -4,20 +4,14 @@
             <li class="nav-header">
                 <div class="dropdown profile-element">
                     <img src="~/Content/img/Logo_fdpn.png" style="height:100px;" />
-                    <div class="espaciado"></div>
+                    @*<div class="espaciado"></div>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="block m-t-xs font-bold">Inscripciones</span>
                         <span class="text-muted text-xs block"> Online <b class="caret"></b></span>
                     </a>
                     <div class="espaciado"></div>
                     <div class="espaciado"></div>
-                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                        <li><a class="dropdown-item" href="http://fdpn.org/">Página web</a></li>
-                        <li><a class="dropdown-item" href="http://afiliaciones.fdpn.org">Afiliaciones</a></li>
-                        <li><a class="dropdown-item" href="https://www.facebook.com/FederacionNatacion/">Facebook</a></li>
-                        <li class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="login.html">Logout</a></li>
-                    </ul>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs"></ul>*@
                 </div>
 
             </li>
@@ -26,6 +20,11 @@
                 @Html.ActionLink("Torneos", "Torneos", "Home")
 
             </li>
+            <li><a class="dropdown-item" href="http://fdpn.org/">Página web</a></li>
+            <li><a class="dropdown-item" href="http://afiliaciones.fdpn.org">Afiliaciones</a></li>
+            <li><a class="dropdown-item" href="https://www.facebook.com/FederacionNatacion/">Facebook</a></li>
+            <li class="dropdown-divider"></li>
+           
             <li>
                 @Html.ActionLink("Logout", "logout", "Home")
 

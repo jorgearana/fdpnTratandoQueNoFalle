@@ -36,44 +36,6 @@ table {
   border-collapse: collapse; 
 }
 
-/*@media 
-only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1024px)  {
-
-	table, thead, tbody, th, td, tr { 
-		display: block; 
-	}
-	
-	
-	thead tr { 
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
-	
-	tr { border: 1px solid #999; }
-	
-	td { 
-	
-		border: none;
-		border-bottom: 1px solid #282828;
-		position: relative;
-		padding-left: 50%; 
-	}
-	
-	td:before { 
-		
-		position: absolute;
-		top: 6px;
-		left: 6px;
-		width: 45%; 
-		padding-right: 10px; 
-		white-space: nowrap;
-	}
-	
-	
-}*/
-
 
 .activity-item {
 	overflow: visible;
@@ -112,12 +74,15 @@ table.dataTable tbody tr.selected {
 .nocumplemarca {
     background-color: #e6a0a0;
     }
-.tienemulta{
+.tienemulta {
     background-color: #808080;
+}
+.YaEstaInscrito {
+    background-color: #ed1111;
 }
 
 .YaTieneTiempos {
-    /*background-color: #fbe4d3 !important;*/
+    background-color: #fbe4d3 !important;*/
 }
 
 .FotoNadador {
@@ -189,4 +154,72 @@ table.dataTable tbody tr.selected {
 
 .fechaordenada {
     display:none;
+}
+
+
+.flexContainer {
+    display: flex;
+    max-height: 100px;
+}
+
+.chat-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: column;
+    /*position: absolute;
+    top: 220px;*/
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.flexbody {
+    flex: 6;   
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+.selected {
+    background-color: #aab7d1;
+}
+
+.TieneInscripcion {
+    background-color: #737afe;
+}
+
+.Inscribiendo {
+    background-color: #62f177;
+}
+
+.textaviso {
+    color: #f11;
+}
+
+.panel-warning {
+    background-color: #f8e1ff;
+}
+
+.panel-heading {
+    background-color: #a93ba7;
+    color: white;
+}
+
+.modalmarca {
+    max-width: 300px;
+    border-radius: 10px;
+}
+
+.oculto {
+    visibility: hidden;
+}
+
+.text-danger {
+    color: red;
+    font-style: italic;
+}
+
+.envoltorio {
+    margin-left: 0px;
+    font-family: 'K2D', sans-serif;
 }

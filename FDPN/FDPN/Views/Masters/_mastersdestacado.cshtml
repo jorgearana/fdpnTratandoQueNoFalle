@@ -15,16 +15,16 @@
 
             <div class="site-athleteswidget__athlete">
                 <div class="site-athleteswidget__photo site-athleteswidget__photo--negative">
-                    <img src=@Url.Content(path +"/"+ Model.afiliado.RutaFoto + ".jpg")>
+                    <img src=@Url.Content(path +"/"+ Model.Inscripciones.RutaFoto + ".jpg")>
                 </div>
                 <div class="site-athleteswidget__info site-athleteswidget__info--negative">
-                    @if (@Model.afiliado == null)
+                    @if (@Model.Inscripciones.Afiliado == null)
                     {
                         <h3 class="site-athleteswidget__name">@Model.resultados.AthleteMasters.First   <strong>@Model.resultados.AthleteMasters.Last</strong></h3>
                     }
                     else
                     {
-                        <h3 class="site-athleteswidget__name">@Model.afiliado.Nombre <strong>@Model.afiliado.Apellido_Paterno</strong></h3>
+                        <h3 class="site-athleteswidget__name">@Model.Inscripciones.Afiliado.Nombre <strong>@Model.Inscripciones.Afiliado.Apellido_Paterno</strong></h3>
                     }
 
                     <p class="site-athleteswidget__subtitle">@Model.resultados.AthleteMasters.Age años</p>

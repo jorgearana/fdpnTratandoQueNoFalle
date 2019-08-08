@@ -42,10 +42,13 @@
                                 @foreach (var item in Model)
                                 {
                                     string clase = "";
-
+                                    if(setup.Debutantes && item.TieneResultado )
+                                    {
+                                        clase = "YaTieneTiempos";
+                                    }
                                     if (item.YaEstaInscrito)
                                     {
-                                        clase = "nocumplemarca";
+                                        clase = "YaEstaInscrito";
                                     }
                                     if (item.TieneMulta)
                                     {
@@ -56,6 +59,10 @@
                                     <tr class="@clase">
                                         <td>
                                             @Html.DisplayFor(modelItem => item.afiliado.DNI)
+                                            @if (item.TieneResultado)
+                                            {
+                                                <i class="fa fa-hand-paper-o fa-2x" style="color:blue"></i>
+                                            }
                                             @if (item.YaEstaInscrito)
                                             {
                                                 <i class="fa fa-hand-peace-o fa-2x" style="color:red"></i>
@@ -87,18 +94,11 @@
                                                     </button>
                                                     <ul class="dropdown-menu">
                                                         <li>
-                                                            @if (setup.TipoTorneo.Nombre == "DIv 2" && !item.TieneMulta)
-                                                            {
-                                                                @Html.ActionLink("Inscribir deportista", "ListarPruebasParaElNadadorDIVISION2", "inscrito", new { MeetId = setup.Meetid, afiliadoId = @item.afiliado.InscripcionId }, new { @class = "btn btn-warning" })
-                                                            }
-                                                            else if (!item.TieneMulta)
+                                                            @if( (setup.Debutantes && !item.TieneResultado)|| !item.TieneMulta)
                                                             {
                                                                 @Html.ActionLink("Inscribir deportista", "ListarPruebasParaElNadador", "inscrito", new { MeetId = setup.Meetid, afiliadoId = @item.afiliado.InscripcionId }, new { @class = "btn btn-warning" })
-                                                            }
-                                                        </li>
-                                                        <li>
-                                                            @Html.ActionLink("Inscribir deportista", "ListarPruebasParaElNadador", "inscrito", new { MeetId = setup.Meetid, afiliadoId = @item.afiliado.InscripcionId }, new { @class = "btn btn-primary" })
-                                                        </li>
+                                                            }                                                           
+                                                        </li>                                                       
                                                         <li>
                                                             <button  class="Postas btn btn-danger" data-afiliado=@item.afiliado.InscripcionId data-meet="@setup.Torneo.Meetid">Inscribir solo para postas</button>
                                                         </li> 

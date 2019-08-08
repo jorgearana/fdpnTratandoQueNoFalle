@@ -22,6 +22,10 @@ namespace FDPN.Models
         public bool PorLigas { get; set; }
         public int pruebasXEquipo { get; set; }
         public int SinMarca { get; set; }
+        public bool PermiteNoAfiliados { get; set; }
+        public bool PermiteSinMarca { get; set; }
+        public bool UsaMarcaMaxima { get; set; }
+        public bool Debutantes { get; set; }
     
         public virtual TipoTorneo TipoTorneo { get; set; }
         public virtual Torneo Torneo { get; set; }

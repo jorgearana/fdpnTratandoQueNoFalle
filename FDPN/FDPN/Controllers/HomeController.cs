@@ -140,6 +140,7 @@ namespace FDPN.Controllers
 
         public ActionResult _nadadordestacado()
         {
+            NadadorDestacadoViewModels VM = new NadadorDestacadoViewModels();
             DateTime iniciomes = (new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)).AddMonths(-2);
             RESULTS resultadomejor = new RESULTS();
             Random rnd = new Random();
@@ -187,25 +188,20 @@ namespace FDPN.Controllers
                     && x.Athlete1.Age >= edadminima && x.Athlete1.Age <= edadmaxima).OrderByDescending(x => x.PFina).FirstOrDefault();
                 }
 
-            } while (resultadomejor == null || resultadomejor.PFina <1 );
-
-            string dni = resultadomejor.Athlete1.ID_NO ?? "";
-            dni = dni.Replace(" ", "");
-            NadadorDestacadoViewModels VM = new NadadorDestacadoViewModels
-            {
-                // resultados = tiempos.Where(x => x.AthleteId == athleteID).OrderBy(x => x.PLACE).ThenByDescending(x => x.PFina).ToList(),
-                //afiliado = af.Afiliado.Where(x => x.DNI == dni).FirstOrDefault(),
-                resultados = resultadomejor,
-                Inscripciones = db.Inscripciones.Where(x => x.DNI == dni).FirstOrDefault(),
-            };
-
-            if (VM.Inscripciones == null)
-            {
-                VM.Inscripciones = new Inscripciones
+                string dni = resultadomejor.Athlete1.ID_NO ?? "";
+                dni = dni.Replace(" ", "");
+                 VM = new NadadorDestacadoViewModels
                 {
-                    RutaFoto = "sinfoto"
+                    // resultados = tiempos.Where(x => x.AthleteId == athleteID).OrderBy(x => x.PLACE).ThenByDescending(x => x.PFina).ToList(),
+                    //afiliado = af.Afiliado.Where(x => x.DNI == dni).FirstOrDefault(),
+                    resultados = resultadomejor,
+                    Inscripciones = db.Inscripciones.Where(x => x.DNI == dni).FirstOrDefault(),
                 };
-            }
+
+
+            } while (VM.Inscripciones == null);
+
+            
 
             return PartialView("_nadadordestacado", VM);
         }

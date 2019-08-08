@@ -1,0 +1,73 @@
+﻿@model InscripcionNatacion.ViewModels.Inscrito.InscripcionResponsableViewModel
+@{
+    FDPN.Models.Usuario usuario = ViewBag.usuario;
+    ViewBag.Title = "Inscribir responsable del club";
+    int MeetId = ViewBag.MeetId;
+}
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Club:<strong> @usuario.Club.NombreUsuario</strong></h5>
+                </div>
+                @using (Html.BeginForm())
+                {
+                    <div class="ibox-title">
+                        <h5>Ingrese al responsable de la inscripción <small> La FDPN se contactará con esta persona en caso sea necesario mayor información.</small></h5>
+                    </div>
+                    <div class="ibox-content">
+                        <form method="get">
+                            <div class="form-group  row">
+                                @Html.LabelFor(model => model.InscripcionResponsable.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(model => model.InscripcionResponsable.Nombre, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.InscripcionResponsable.Nombre, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group  row">
+                                @Html.LabelFor(model => model.InscripcionResponsable.Correo, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(model => model.InscripcionResponsable.Correo, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.InscripcionResponsable.Correo, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group  row">
+                                @Html.LabelFor(model => model.InscripcionResponsable.Celular, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(model => model.InscripcionResponsable.Celular, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.InscripcionResponsable.Celular, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group  row">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-6">
+                                    <label class="control-label " style="color:red;">
+                                        En caso se quiera inscribir en pruebas indicadas en el inciso C de las bases, por favor enviar
+                                        un mensaje de cada caso por Whatsapp al número 980599023 para hacer las verificaciones y realizar la inscripción.
+                                    </label>
+                                </div>
+
+                            </div>
+                            <div class="form-group  row">
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-primary block full-width m-b">Grabar responsable</button>
+                                </div>
+
+                            </div>
+
+                            @Html.HiddenFor(model => model.MeetId)
+                            @Html.HiddenFor(model => model.InscripcionResponsable.TeamId)
+                        </form>
+                    </div>
+
+                    
+                }
+            </div>
+            </div>
+        </div>
+    </div>

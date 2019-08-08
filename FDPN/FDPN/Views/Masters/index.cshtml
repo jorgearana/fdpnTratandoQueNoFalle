@@ -10,7 +10,7 @@
         <div class="wrapper site-homepage__pushup">
             <header class="site-homepage__section__header">
                 <h2 class="site-title site-title--ultra site-title--ultra--primary">Nadadores Masters</h2>
-                <p class="u-type--medium u-type--delta">Resultados en línea</p>
+                <p class="u-type--medium u-type--delta">Página de resultados, bases, noticias y más</p>
             </header>
 
         </div>
@@ -31,31 +31,25 @@
             </div>
         </div>
     </div>
+    <div class="espaciado"></div>
+    <div class="espaciado"></div>
+
+    @Html.Action("_BasesMasters", "masters")
+
+    <div class="row u-animation--fadeInSection">
+        @Html.Action("_Records")
+        <div class="espaciado"></div>
+    </div>
+
+
 </div>
+
+
 <div class="row u-animation--fadeInSection">
     @Html.Action("_PreviewNoticias", "home")
     <div class="espaciado"></div>
 </div>
-<div class="row u-animation--fadeInSection">
-    <div class="col-md-12">
-        <div class="col-md-6">
-            <div data-mh="card" class="card-Derecha u-bg--poolpeople u-bg--blueoverlaydark">
-                @Html.Action("_Nadadores")
-            </div>
-        </div>
 
-        <div class="col-md-6">
-            <div data-mh="card" class="card-Derecha u-bg--clavados u-bg--blueoverlay">
-                @Html.Action("_RelacionDeTorneos")
-            </div>
-
-        </div>
-    </div>
-</div>
-<div class="row u-animation--fadeInSection">
-    @Html.Action("_Records")
-    <div class="espaciado"></div>
-</div>
 
 
 @*<div class="site-homepage__split u-group u-animation--fadeInSection">
@@ -69,10 +63,6 @@
 
     </div>*@
 
-<div class="espaciado"></div>
-<div class="espaciado"></div>
-
-@Html.Action("_BasesMasters", "masters")
 
 
 <div class="espaciado"></div>

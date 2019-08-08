@@ -46,13 +46,14 @@ namespace InscripcionNatacion.Controllers
         {
             Session.Clear();
             Usuario usuario = db.Usuario.Where(x => x.Usuario1 == VM.Nombre  && x.Password == VM.Password ).FirstOrDefault();
+          
             if (usuario != null)
             {
                 Rol  rol = db.Rol.Where(x => x.RolId == usuario.RolId).FirstOrDefault();
                 Session["Usuario"] = usuario;
                 Session["Rol"] = rol;
-                return RedirectToAction("Modal");
-                //return RedirectToAction("torneos", "home");
+                //return RedirectToAction("Modal");
+                return RedirectToAction("torneos", "home");
             }
             return View();
         }

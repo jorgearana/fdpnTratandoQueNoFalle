@@ -127,6 +127,26 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.AspNetUsers' no ti
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="ATFDeportista">
+          <Key>
+            <PropertyRef Name="DeportistaId" />
+          </Key>
+          <Property Name="DeportistaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CopiaDNI" Type="bit" Nullable="false" />
+          <Property Name="CopiaDNIApoderado" Type="bit" />
+          <Property Name="AvalMedico" Type="bit" Nullable="false" />
+          <Property Name="CompromisoRetorno" Type="bit" Nullable="false" />
+          <Property Name="Expedienteid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ATFExpediente">
+          <Key>
+            <PropertyRef Name="ExpedienteId" />
+          </Key>
+          <Property Name="ExpedienteId" Type="int" Nullable="false" />
+          <Property Name="EventoId" Type="int" Nullable="false" />
+          <Property Name="Bases" Type="bit" Nullable="false" />
+          <Property Name="Formato" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Athlete">
           <Key>
             <PropertyRef Name="AthleteId" />
@@ -807,6 +827,16 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Empresa' no tiene 
           <Property Name="DisciplinaId" Type="int" Nullable="false" />
           <Property Name="RutaFoto" Type="varchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="InscripcionResponsable">
+          <Key>
+            <PropertyRef Name="ResponsableId" />
+          </Key>
+          <Property Name="ResponsableId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TeamId" Type="int" Nullable="false" />
+          <Property Name="Celular" Type="nchar" MaxLength="15" Nullable="false" />
+        </EntityType>
         <EntityType Name="Landing">
           <Key>
             <PropertyRef Name="LandingId" />
@@ -915,6 +945,101 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Empresa' no tiene 
           <Property Name="Palabrasclaves" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Visible" Type="bit" />
           <Property Name="Youtube" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="OtroAtleta">
+          <Key>
+            <PropertyRef Name="AtletaId" />
+          </Key>
+          <Property Name="AtletaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TorneoId" Type="int" Nullable="false" />
+          <Property Name="InscripcionId" Type="int" Nullable="false" />
+          <Property Name="TeamId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OtroCategorias">
+          <Key>
+            <PropertyRef Name="CategoriaId" />
+          </Key>
+          <Property Name="CategoriaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DisciplinaId" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EdadMaxima" Type="int" Nullable="false" />
+          <Property Name="EdadMinima" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OtroEntradas">
+          <Key>
+            <PropertyRef Name="EntradaId" />
+          </Key>
+          <Property Name="EntradaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventoId" Type="int" Nullable="false" />
+          <Property Name="AtletaId" Type="int" Nullable="false" />
+          <Property Name="Gorro" Type="int" Nullable="false" />
+          <Property Name="Suplente" Type="bit" Nullable="false" />
+          <Property Name="TorneoId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OtroEquipo">
+          <Key>
+            <PropertyRef Name="TeamId" />
+          </Key>
+          <Property Name="TeamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TorneoId" Type="int" Nullable="false" />
+          <Property Name="Team_name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Team_abbr" Type="nvarchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OtroEventos">
+          <Key>
+            <PropertyRef Name="EventoId" />
+          </Key>
+          <Property Name="EventoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventSex" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="EventNombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EventSerie" Type="int" Nullable="false" />
+          <Property Name="TorneoId" Type="int" Nullable="false" />
+          <Property Name="EdadMaxima" Type="int" Nullable="false" />
+          <Property Name="EdadMinima" Type="int" Nullable="false" />
+          <Property Name="Grupal" Type="bit" Nullable="false" />
+          <Property Name="CantidadParticipanes" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OtroGrupal">
+          <Key>
+            <PropertyRef Name="GrupalId" />
+          </Key>
+          <Property Name="GrupalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventoId" Type="int" Nullable="false" />
+          <Property Name="CantidadParticipantes" Type="int" Nullable="false" />
+          <Property Name="Mixto" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OtroResponsable">
+          <Key>
+            <PropertyRef Name="ResponsableId" />
+          </Key>
+          <Property Name="ResponsableId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TeamId" Type="int" Nullable="false" />
+          <Property Name="Celular" Type="nchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OtroSetupTorneo">
+          <Key>
+            <PropertyRef Name="SetupId" />
+          </Key>
+          <Property Name="SetupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TorneoId" Type="int" Nullable="false" />
+          <Property Name="PermiteNoAfiliados" Type="bit" Nullable="false" />
+          <Property Name="PermiteSubirEdad" Type="bit" Nullable="false" />
+          <Property Name="PermiteMixtos" Type="bit" Nullable="false" />
+          <Property Name="PorLigas" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OtroTorneo">
+          <Key>
+            <PropertyRef Name="TorneoId" />
+          </Key>
+          <Property Name="TorneoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="FechaInicio" Type="date" Nullable="false" />
+          <Property Name="FechaCierre" Type="date" Nullable="false" />
+          <Property Name="PorLigas" Type="bit" Nullable="false" />
+          <Property Name="EdadADiciembre" Type="bit" Nullable="false" />
+          <Property Name="DisciplinaId" Type="int" />
         </EntityType>
         <EntityType Name="PoloEquipos">
           <Key>
@@ -1028,6 +1153,17 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Empresa' no tiene 
           <Property Name="RondaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TorneoId" Type="int" />
+        </EntityType>
+        <EntityType Name="PoloSetupTorneo">
+          <Key>
+            <PropertyRef Name="SetupId" />
+          </Key>
+          <Property Name="SetupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TorneoId" Type="int" Nullable="false" />
+          <Property Name="PermiteNoAfiliados" Type="bit" Nullable="false" />
+          <Property Name="PermiteSubirEdad" Type="bit" Nullable="false" />
+          <Property Name="PermiteMixtos" Type="bit" Nullable="false" />
+          <Property Name="PorLigas" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="PoloTorneo">
           <Key>
@@ -1218,6 +1354,10 @@ advertencia 6013: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Records' no tiene 
           <Property Name="PorLigas" Type="bit" Nullable="false" />
           <Property Name="pruebasXEquipo" Type="int" Nullable="false" />
           <Property Name="SinMarca" Type="int" Nullable="false" />
+          <Property Name="PermiteNoAfiliados" Type="bit" Nullable="false" />
+          <Property Name="PermiteSinMarca" Type="bit" Nullable="false" />
+          <Property Name="UsaMarcaMaxima" Type="bit" Nullable="false" />
+          <Property Name="Debutantes" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Suscritos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -1369,6 +1509,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.tblmarca' no tiene
           </Key>
           <Property Name="TipoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Torneo">
           <Key>
@@ -1757,6 +1898,30 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ATFDeportista_ATFExpediente">
+          <End Role="ATFExpediente" Type="Self.ATFExpediente" Multiplicity="1" />
+          <End Role="ATFDeportista" Type="Self.ATFDeportista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ATFExpediente">
+              <PropertyRef Name="ExpedienteId" />
+            </Principal>
+            <Dependent Role="ATFDeportista">
+              <PropertyRef Name="Expedienteid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATFExpediente_Calendario">
+          <End Role="Calendario" Type="Self.Calendario" Multiplicity="1" />
+          <End Role="ATFExpediente" Type="Self.ATFExpediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calendario">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="ATFExpediente">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_atletas_Equipos">
           <End Role="Equipos" Type="Self.Equipos" Multiplicity="1" />
           <End Role="atletas" Type="Self.atletas" Multiplicity="*" />
@@ -2105,6 +2270,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_InscripcionResponsable_Equipos">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="1" />
+          <End Role="InscripcionResponsable" Type="Self.InscripcionResponsable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="TeamId" />
+            </Principal>
+            <Dependent Role="InscripcionResponsable">
+              <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MarcasMinimas_Torneo">
           <End Role="Torneo" Type="Self.Torneo" Multiplicity="1" />
           <End Role="MarcasMinimas" Type="Self.MarcasMinimas" Multiplicity="*" />
@@ -2173,6 +2350,138 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
               <PropertyRef Name="DisciplinaId" />
             </Principal>
             <Dependent Role="Noticias">
+              <PropertyRef Name="DisciplinaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroAtleta_Inscripciones">
+          <End Role="Inscripciones" Type="Self.Inscripciones" Multiplicity="1" />
+          <End Role="OtroAtleta" Type="Self.OtroAtleta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inscripciones">
+              <PropertyRef Name="InscripcionId" />
+            </Principal>
+            <Dependent Role="OtroAtleta">
+              <PropertyRef Name="InscripcionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroAtleta_OtroEquipo">
+          <End Role="OtroEquipo" Type="Self.OtroEquipo" Multiplicity="1" />
+          <End Role="OtroAtleta" Type="Self.OtroAtleta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtroEquipo">
+              <PropertyRef Name="TeamId" />
+            </Principal>
+            <Dependent Role="OtroAtleta">
+              <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroCategorias_Disciplina">
+          <End Role="Disciplina" Type="Self.Disciplina" Multiplicity="1" />
+          <End Role="OtroCategorias" Type="Self.OtroCategorias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplina">
+              <PropertyRef Name="DisciplinaId" />
+            </Principal>
+            <Dependent Role="OtroCategorias">
+              <PropertyRef Name="DisciplinaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroEntradas_OtroAtleta">
+          <End Role="OtroAtleta" Type="Self.OtroAtleta" Multiplicity="1" />
+          <End Role="OtroEntradas" Type="Self.OtroEntradas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtroAtleta">
+              <PropertyRef Name="AtletaId" />
+            </Principal>
+            <Dependent Role="OtroEntradas">
+              <PropertyRef Name="AtletaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroEntradas_OtroEventos">
+          <End Role="OtroEventos" Type="Self.OtroEventos" Multiplicity="1" />
+          <End Role="OtroEntradas" Type="Self.OtroEntradas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtroEventos">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="OtroEntradas">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroEntradas_OtroTorneo">
+          <End Role="OtroTorneo" Type="Self.OtroTorneo" Multiplicity="1" />
+          <End Role="OtroEntradas" Type="Self.OtroEntradas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtroTorneo">
+              <PropertyRef Name="TorneoId" />
+            </Principal>
+            <Dependent Role="OtroEntradas">
+              <PropertyRef Name="TorneoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroEquipo_OtroTorneo">
+          <End Role="OtroTorneo" Type="Self.OtroTorneo" Multiplicity="1" />
+          <End Role="OtroEquipo" Type="Self.OtroEquipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtroTorneo">
+              <PropertyRef Name="TorneoId" />
+            </Principal>
+            <Dependent Role="OtroEquipo">
+              <PropertyRef Name="TorneoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroGrupal_OtroEventos">
+          <End Role="OtroEventos" Type="Self.OtroEventos" Multiplicity="1" />
+          <End Role="OtroGrupal" Type="Self.OtroGrupal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtroEventos">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="OtroGrupal">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroResponsable_OtroEquipo">
+          <End Role="OtroEquipo" Type="Self.OtroEquipo" Multiplicity="1" />
+          <End Role="OtroResponsable" Type="Self.OtroResponsable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtroEquipo">
+              <PropertyRef Name="TeamId" />
+            </Principal>
+            <Dependent Role="OtroResponsable">
+              <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroSetupTorneo_OtroTorneo">
+          <End Role="OtroTorneo" Type="Self.OtroTorneo" Multiplicity="1" />
+          <End Role="OtroSetupTorneo" Type="Self.OtroSetupTorneo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtroTorneo">
+              <PropertyRef Name="TorneoId" />
+            </Principal>
+            <Dependent Role="OtroSetupTorneo">
+              <PropertyRef Name="TorneoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroTorneo_Disciplina">
+          <End Role="Disciplina" Type="Self.Disciplina" Multiplicity="0..1" />
+          <End Role="OtroTorneo" Type="Self.OtroTorneo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplina">
+              <PropertyRef Name="DisciplinaId" />
+            </Principal>
+            <Dependent Role="OtroTorneo">
               <PropertyRef Name="DisciplinaId" />
             </Dependent>
           </ReferentialConstraint>
@@ -2377,6 +2686,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
               <PropertyRef Name="TorneoId" />
             </Principal>
             <Dependent Role="PoloRondas">
+              <PropertyRef Name="TorneoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PoloSetupTorneo_PoloTorneo">
+          <End Role="PoloTorneo" Type="Self.PoloTorneo" Multiplicity="1" />
+          <End Role="PoloSetupTorneo" Type="Self.PoloSetupTorneo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PoloTorneo">
+              <PropertyRef Name="TorneoId" />
+            </Principal>
+            <Dependent Role="PoloSetupTorneo">
               <PropertyRef Name="TorneoId" />
             </Dependent>
           </ReferentialConstraint>
@@ -2687,6 +3008,8 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySet Name="Alertas" EntityType="Self.Alertas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Antiguo" EntityType="Self.Antiguo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Asociaciones" EntityType="Self.Asociaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ATFDeportista" EntityType="Self.ATFDeportista" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ATFExpediente" EntityType="Self.ATFExpediente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Athlete" EntityType="Self.Athlete" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AthleteMasters" EntityType="Self.AthleteMasters" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="atletas" EntityType="Self.atletas" Schema="dbo" store:Type="Tables" />
@@ -2713,6 +3036,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySet Name="HistorialEntrenador" EntityType="Self.HistorialEntrenador" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HistorialTraspasos" EntityType="Self.HistorialTraspasos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Inscripciones" EntityType="Self.Inscripciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InscripcionResponsable" EntityType="Self.InscripcionResponsable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Landing" EntityType="Self.Landing" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MarcasMinimas" EntityType="Self.MarcasMinimas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MEET" EntityType="Self.MEET" Schema="dbo" store:Type="Tables" />
@@ -2721,6 +3045,15 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySet Name="Multas" EntityType="Self.Multas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MultiEdad" EntityType="Self.MultiEdad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Noticias" EntityType="Self.Noticias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OtroAtleta" EntityType="Self.OtroAtleta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OtroCategorias" EntityType="Self.OtroCategorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OtroEntradas" EntityType="Self.OtroEntradas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OtroEquipo" EntityType="Self.OtroEquipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OtroEventos" EntityType="Self.OtroEventos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OtroGrupal" EntityType="Self.OtroGrupal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OtroResponsable" EntityType="Self.OtroResponsable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OtroSetupTorneo" EntityType="Self.OtroSetupTorneo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OtroTorneo" EntityType="Self.OtroTorneo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PoloEquipos" EntityType="Self.PoloEquipos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PoloFechas" EntityType="Self.PoloFechas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PoloGoleadores" EntityType="Self.PoloGoleadores" Schema="dbo" store:Type="Tables" />
@@ -2731,6 +3064,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySet Name="PoloPosicionFinal" EntityType="Self.PoloPosicionFinal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PoloResultados" EntityType="Self.PoloResultados" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PoloRondas" EntityType="Self.PoloRondas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PoloSetupTorneo" EntityType="Self.PoloSetupTorneo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PoloTorneo" EntityType="Self.PoloTorneo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Procesado" EntityType="Self.Procesado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pruebas" EntityType="Self.Pruebas" Schema="dbo" store:Type="Tables" />
@@ -2992,6 +3326,14 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             <End Role="Noticias" EntitySet="Noticias" />
             <End Role="Alertas" EntitySet="Alertas" />
           </AssociationSet>
+          <AssociationSet Name="FK_ATFDeportista_ATFExpediente" Association="Self.FK_ATFDeportista_ATFExpediente">
+            <End Role="ATFExpediente" EntitySet="ATFExpediente" />
+            <End Role="ATFDeportista" EntitySet="ATFDeportista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATFExpediente_Calendario" Association="Self.FK_ATFExpediente_Calendario">
+            <End Role="Calendario" EntitySet="Calendario" />
+            <End Role="ATFExpediente" EntitySet="ATFExpediente" />
+          </AssociationSet>
           <AssociationSet Name="FK_atletas_Equipos" Association="Self.FK_atletas_Equipos">
             <End Role="Equipos" EntitySet="Equipos" />
             <End Role="atletas" EntitySet="atletas" />
@@ -3108,6 +3450,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             <End Role="TipoAfiliado" EntitySet="TipoAfiliado" />
             <End Role="Inscripciones" EntitySet="Inscripciones" />
           </AssociationSet>
+          <AssociationSet Name="FK_InscripcionResponsable_Equipos" Association="Self.FK_InscripcionResponsable_Equipos">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="InscripcionResponsable" EntitySet="InscripcionResponsable" />
+          </AssociationSet>
           <AssociationSet Name="FK_MarcasMinimas_Torneo" Association="Self.FK_MarcasMinimas_Torneo">
             <End Role="Torneo" EntitySet="Torneo" />
             <End Role="MarcasMinimas" EntitySet="MarcasMinimas" />
@@ -3131,6 +3477,50 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <AssociationSet Name="FK_Noticias_Disciplina" Association="Self.FK_Noticias_Disciplina">
             <End Role="Disciplina" EntitySet="Disciplina" />
             <End Role="Noticias" EntitySet="Noticias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroAtleta_Inscripciones" Association="Self.FK_OtroAtleta_Inscripciones">
+            <End Role="Inscripciones" EntitySet="Inscripciones" />
+            <End Role="OtroAtleta" EntitySet="OtroAtleta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroAtleta_OtroEquipo" Association="Self.FK_OtroAtleta_OtroEquipo">
+            <End Role="OtroEquipo" EntitySet="OtroEquipo" />
+            <End Role="OtroAtleta" EntitySet="OtroAtleta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroCategorias_Disciplina" Association="Self.FK_OtroCategorias_Disciplina">
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="OtroCategorias" EntitySet="OtroCategorias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroEntradas_OtroAtleta" Association="Self.FK_OtroEntradas_OtroAtleta">
+            <End Role="OtroAtleta" EntitySet="OtroAtleta" />
+            <End Role="OtroEntradas" EntitySet="OtroEntradas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroEntradas_OtroEventos" Association="Self.FK_OtroEntradas_OtroEventos">
+            <End Role="OtroEventos" EntitySet="OtroEventos" />
+            <End Role="OtroEntradas" EntitySet="OtroEntradas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroEntradas_OtroTorneo" Association="Self.FK_OtroEntradas_OtroTorneo">
+            <End Role="OtroTorneo" EntitySet="OtroTorneo" />
+            <End Role="OtroEntradas" EntitySet="OtroEntradas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroEquipo_OtroTorneo" Association="Self.FK_OtroEquipo_OtroTorneo">
+            <End Role="OtroTorneo" EntitySet="OtroTorneo" />
+            <End Role="OtroEquipo" EntitySet="OtroEquipo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroGrupal_OtroEventos" Association="Self.FK_OtroGrupal_OtroEventos">
+            <End Role="OtroEventos" EntitySet="OtroEventos" />
+            <End Role="OtroGrupal" EntitySet="OtroGrupal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroResponsable_OtroEquipo" Association="Self.FK_OtroResponsable_OtroEquipo">
+            <End Role="OtroEquipo" EntitySet="OtroEquipo" />
+            <End Role="OtroResponsable" EntitySet="OtroResponsable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroSetupTorneo_OtroTorneo" Association="Self.FK_OtroSetupTorneo_OtroTorneo">
+            <End Role="OtroTorneo" EntitySet="OtroTorneo" />
+            <End Role="OtroSetupTorneo" EntitySet="OtroSetupTorneo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroTorneo_Disciplina" Association="Self.FK_OtroTorneo_Disciplina">
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="OtroTorneo" EntitySet="OtroTorneo" />
           </AssociationSet>
           <AssociationSet Name="FK_PoloFechas_PoloTorneo" Association="Self.FK_PoloFechas_PoloTorneo">
             <End Role="PoloTorneo" EntitySet="PoloTorneo" />
@@ -3199,6 +3589,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <AssociationSet Name="FK_PoloRondas_PoloTorneo" Association="Self.FK_PoloRondas_PoloTorneo">
             <End Role="PoloTorneo" EntitySet="PoloTorneo" />
             <End Role="PoloRondas" EntitySet="PoloRondas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PoloSetupTorneo_PoloTorneo" Association="Self.FK_PoloSetupTorneo_PoloTorneo">
+            <End Role="PoloTorneo" EntitySet="PoloTorneo" />
+            <End Role="PoloSetupTorneo" EntitySet="PoloSetupTorneo" />
           </AssociationSet>
           <AssociationSet Name="FK_RESULTS_Athlete" Association="Self.FK_RESULTS_Athlete">
             <End Role="Athlete" EntitySet="Athlete" />
@@ -3311,6 +3705,8 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySet Name="Alertas" EntityType="DB_9B1F4C_comentariosModel.Alertas" />
           <EntitySet Name="Antiguo" EntityType="DB_9B1F4C_comentariosModel.Antiguo" />
           <EntitySet Name="Asociaciones" EntityType="DB_9B1F4C_comentariosModel.Asociaciones" />
+          <EntitySet Name="ATFDeportista" EntityType="DB_9B1F4C_comentariosModel.ATFDeportista" />
+          <EntitySet Name="ATFExpediente" EntityType="DB_9B1F4C_comentariosModel.ATFExpediente" />
           <EntitySet Name="Athlete" EntityType="DB_9B1F4C_comentariosModel.Athlete" />
           <EntitySet Name="AthleteMasters" EntityType="DB_9B1F4C_comentariosModel.AthleteMasters" />
           <EntitySet Name="atletas" EntityType="DB_9B1F4C_comentariosModel.atletas" />
@@ -3337,6 +3733,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySet Name="HistorialEntrenador" EntityType="DB_9B1F4C_comentariosModel.HistorialEntrenador" />
           <EntitySet Name="HistorialTraspasos" EntityType="DB_9B1F4C_comentariosModel.HistorialTraspasos" />
           <EntitySet Name="Inscripciones" EntityType="DB_9B1F4C_comentariosModel.Inscripciones" />
+          <EntitySet Name="InscripcionResponsable" EntityType="DB_9B1F4C_comentariosModel.InscripcionResponsable" />
           <EntitySet Name="Landing" EntityType="DB_9B1F4C_comentariosModel.Landing" />
           <EntitySet Name="MarcasMinimas" EntityType="DB_9B1F4C_comentariosModel.MarcasMinimas" />
           <EntitySet Name="MEET" EntityType="DB_9B1F4C_comentariosModel.MEET" />
@@ -3345,6 +3742,15 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySet Name="Multas" EntityType="DB_9B1F4C_comentariosModel.Multas" />
           <EntitySet Name="MultiEdad" EntityType="DB_9B1F4C_comentariosModel.MultiEdad" />
           <EntitySet Name="Noticias" EntityType="DB_9B1F4C_comentariosModel.Noticias" />
+          <EntitySet Name="OtroAtleta" EntityType="DB_9B1F4C_comentariosModel.OtroAtleta" />
+          <EntitySet Name="OtroCategorias" EntityType="DB_9B1F4C_comentariosModel.OtroCategorias" />
+          <EntitySet Name="OtroEntradas" EntityType="DB_9B1F4C_comentariosModel.OtroEntradas" />
+          <EntitySet Name="OtroEquipo" EntityType="DB_9B1F4C_comentariosModel.OtroEquipo" />
+          <EntitySet Name="OtroEventos" EntityType="DB_9B1F4C_comentariosModel.OtroEventos" />
+          <EntitySet Name="OtroGrupal" EntityType="DB_9B1F4C_comentariosModel.OtroGrupal" />
+          <EntitySet Name="OtroResponsable" EntityType="DB_9B1F4C_comentariosModel.OtroResponsable" />
+          <EntitySet Name="OtroSetupTorneo" EntityType="DB_9B1F4C_comentariosModel.OtroSetupTorneo" />
+          <EntitySet Name="OtroTorneo" EntityType="DB_9B1F4C_comentariosModel.OtroTorneo" />
           <EntitySet Name="PoloEquipos" EntityType="DB_9B1F4C_comentariosModel.PoloEquipos" />
           <EntitySet Name="PoloFechas" EntityType="DB_9B1F4C_comentariosModel.PoloFechas" />
           <EntitySet Name="PoloGoleadores" EntityType="DB_9B1F4C_comentariosModel.PoloGoleadores" />
@@ -3355,6 +3761,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySet Name="PoloPosicionFinal" EntityType="DB_9B1F4C_comentariosModel.PoloPosicionFinal" />
           <EntitySet Name="PoloResultados" EntityType="DB_9B1F4C_comentariosModel.PoloResultados" />
           <EntitySet Name="PoloRondas" EntityType="DB_9B1F4C_comentariosModel.PoloRondas" />
+          <EntitySet Name="PoloSetupTorneo" EntityType="DB_9B1F4C_comentariosModel.PoloSetupTorneo" />
           <EntitySet Name="PoloTorneo" EntityType="DB_9B1F4C_comentariosModel.PoloTorneo" />
           <EntitySet Name="Procesado" EntityType="DB_9B1F4C_comentariosModel.Procesado" />
           <EntitySet Name="Pruebas" EntityType="DB_9B1F4C_comentariosModel.Pruebas" />
@@ -3440,6 +3847,14 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             <End Role="Asociaciones" EntitySet="Asociaciones" />
             <End Role="Club" EntitySet="Club" />
           </AssociationSet>
+          <AssociationSet Name="FK_ATFDeportista_ATFExpediente" Association="DB_9B1F4C_comentariosModel.FK_ATFDeportista_ATFExpediente">
+            <End Role="ATFExpediente" EntitySet="ATFExpediente" />
+            <End Role="ATFDeportista" EntitySet="ATFDeportista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATFExpediente_Calendario" Association="DB_9B1F4C_comentariosModel.FK_ATFExpediente_Calendario">
+            <End Role="Calendario" EntitySet="Calendario" />
+            <End Role="ATFExpediente" EntitySet="ATFExpediente" />
+          </AssociationSet>
           <AssociationSet Name="FK_RESULTS_Athlete" Association="DB_9B1F4C_comentariosModel.FK_RESULTS_Athlete">
             <End Role="Athlete" EntitySet="Athlete" />
             <End Role="RESULTS" EntitySet="RESULTS" />
@@ -3516,6 +3931,14 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             <End Role="Disciplina" EntitySet="Disciplina" />
             <End Role="Noticias" EntitySet="Noticias" />
           </AssociationSet>
+          <AssociationSet Name="FK_OtroCategorias_Disciplina" Association="DB_9B1F4C_comentariosModel.FK_OtroCategorias_Disciplina">
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="OtroCategorias" EntitySet="OtroCategorias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroTorneo_Disciplina" Association="DB_9B1F4C_comentariosModel.FK_OtroTorneo_Disciplina">
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="OtroTorneo" EntitySet="OtroTorneo" />
+          </AssociationSet>
           <AssociationSet Name="FK_Entradas_Torneo" Association="DB_9B1F4C_comentariosModel.FK_Entradas_Torneo">
             <End Role="Torneo" EntitySet="Torneo" />
             <End Role="Entradas" EntitySet="Entradas" />
@@ -3548,6 +3971,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             <End Role="Torneo" EntitySet="Torneo" />
             <End Role="Equipos" EntitySet="Equipos" />
           </AssociationSet>
+          <AssociationSet Name="FK_InscripcionResponsable_Equipos" Association="DB_9B1F4C_comentariosModel.FK_InscripcionResponsable_Equipos">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="InscripcionResponsable" EntitySet="InscripcionResponsable" />
+          </AssociationSet>
           <AssociationSet Name="FK_Inscripciones_Estado" Association="DB_9B1F4C_comentariosModel.FK_Inscripciones_Estado">
             <End Role="Estado" EntitySet="Estado" />
             <End Role="Inscripciones" EntitySet="Inscripciones" />
@@ -3579,6 +4006,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <AssociationSet Name="FK_Multas_Inscripciones" Association="DB_9B1F4C_comentariosModel.FK_Multas_Inscripciones">
             <End Role="Inscripciones" EntitySet="Inscripciones" />
             <End Role="Multas" EntitySet="Multas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroAtleta_Inscripciones" Association="DB_9B1F4C_comentariosModel.FK_OtroAtleta_Inscripciones">
+            <End Role="Inscripciones" EntitySet="Inscripciones" />
+            <End Role="OtroAtleta" EntitySet="OtroAtleta" />
           </AssociationSet>
           <AssociationSet Name="FK_TatoInformeAsistencias_Inscripciones" Association="DB_9B1F4C_comentariosModel.FK_TatoInformeAsistencias_Inscripciones">
             <End Role="Inscripciones" EntitySet="Inscripciones" />
@@ -3619,6 +4050,38 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <AssociationSet Name="FK_MultiEdad_Torneo" Association="DB_9B1F4C_comentariosModel.FK_MultiEdad_Torneo">
             <End Role="Torneo" EntitySet="Torneo" />
             <End Role="MultiEdad" EntitySet="MultiEdad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroAtleta_OtroEquipo" Association="DB_9B1F4C_comentariosModel.FK_OtroAtleta_OtroEquipo">
+            <End Role="OtroEquipo" EntitySet="OtroEquipo" />
+            <End Role="OtroAtleta" EntitySet="OtroAtleta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroEntradas_OtroAtleta" Association="DB_9B1F4C_comentariosModel.FK_OtroEntradas_OtroAtleta">
+            <End Role="OtroAtleta" EntitySet="OtroAtleta" />
+            <End Role="OtroEntradas" EntitySet="OtroEntradas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroEntradas_OtroEventos" Association="DB_9B1F4C_comentariosModel.FK_OtroEntradas_OtroEventos">
+            <End Role="OtroEventos" EntitySet="OtroEventos" />
+            <End Role="OtroEntradas" EntitySet="OtroEntradas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroEntradas_OtroTorneo" Association="DB_9B1F4C_comentariosModel.FK_OtroEntradas_OtroTorneo">
+            <End Role="OtroTorneo" EntitySet="OtroTorneo" />
+            <End Role="OtroEntradas" EntitySet="OtroEntradas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroEquipo_OtroTorneo" Association="DB_9B1F4C_comentariosModel.FK_OtroEquipo_OtroTorneo">
+            <End Role="OtroTorneo" EntitySet="OtroTorneo" />
+            <End Role="OtroEquipo" EntitySet="OtroEquipo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroResponsable_OtroEquipo" Association="DB_9B1F4C_comentariosModel.FK_OtroResponsable_OtroEquipo">
+            <End Role="OtroEquipo" EntitySet="OtroEquipo" />
+            <End Role="OtroResponsable" EntitySet="OtroResponsable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroGrupal_OtroEventos" Association="DB_9B1F4C_comentariosModel.FK_OtroGrupal_OtroEventos">
+            <End Role="OtroEventos" EntitySet="OtroEventos" />
+            <End Role="OtroGrupal" EntitySet="OtroGrupal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroSetupTorneo_OtroTorneo" Association="DB_9B1F4C_comentariosModel.FK_OtroSetupTorneo_OtroTorneo">
+            <End Role="OtroTorneo" EntitySet="OtroTorneo" />
+            <End Role="OtroSetupTorneo" EntitySet="OtroSetupTorneo" />
           </AssociationSet>
           <AssociationSet Name="FK_PoloJugadores_PoloEquipos" Association="DB_9B1F4C_comentariosModel.FK_PoloJugadores_PoloEquipos">
             <End Role="PoloEquipos" EntitySet="PoloEquipos" />
@@ -3687,6 +4150,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <AssociationSet Name="FK_PoloRondas_PoloTorneo" Association="DB_9B1F4C_comentariosModel.FK_PoloRondas_PoloTorneo">
             <End Role="PoloTorneo" EntitySet="PoloTorneo" />
             <End Role="PoloRondas" EntitySet="PoloRondas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PoloSetupTorneo_PoloTorneo" Association="DB_9B1F4C_comentariosModel.FK_PoloSetupTorneo_PoloTorneo">
+            <End Role="PoloTorneo" EntitySet="PoloTorneo" />
+            <End Role="PoloSetupTorneo" EntitySet="PoloSetupTorneo" />
           </AssociationSet>
           <AssociationSet Name="FK_RESULTS_Pruebas" Association="DB_9B1F4C_comentariosModel.FK_RESULTS_Pruebas">
             <End Role="Pruebas" EntitySet="Pruebas" />
@@ -3794,6 +4261,29 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <Property Name="AsociacionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Club" Relationship="DB_9B1F4C_comentariosModel.FK_Club_Asociaciones" FromRole="Asociaciones" ToRole="Club" />
+        </EntityType>
+        <EntityType Name="ATFDeportista">
+          <Key>
+            <PropertyRef Name="DeportistaId" />
+          </Key>
+          <Property Name="DeportistaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CopiaDNI" Type="Boolean" Nullable="false" />
+          <Property Name="CopiaDNIApoderado" Type="Boolean" />
+          <Property Name="AvalMedico" Type="Boolean" Nullable="false" />
+          <Property Name="CompromisoRetorno" Type="Boolean" Nullable="false" />
+          <Property Name="Expedienteid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ATFExpediente" Relationship="DB_9B1F4C_comentariosModel.FK_ATFDeportista_ATFExpediente" FromRole="ATFDeportista" ToRole="ATFExpediente" />
+        </EntityType>
+        <EntityType Name="ATFExpediente">
+          <Key>
+            <PropertyRef Name="ExpedienteId" />
+          </Key>
+          <Property Name="ExpedienteId" Type="Int32" Nullable="false" />
+          <Property Name="EventoId" Type="Int32" Nullable="false" />
+          <Property Name="Bases" Type="Boolean" Nullable="false" />
+          <Property Name="Formato" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ATFDeportista" Relationship="DB_9B1F4C_comentariosModel.FK_ATFDeportista_ATFExpediente" FromRole="ATFExpediente" ToRole="ATFDeportista" />
+          <NavigationProperty Name="Calendario" Relationship="DB_9B1F4C_comentariosModel.FK_ATFExpediente_Calendario" FromRole="ATFExpediente" ToRole="Calendario" />
         </EntityType>
         <EntityType Name="Athlete">
           <Key>
@@ -3907,6 +4397,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <Property Name="EventoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DisciplinaId" Type="Int32" Nullable="false" />
           <Property Name="Internacional" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ATFExpediente" Relationship="DB_9B1F4C_comentariosModel.FK_ATFExpediente_Calendario" FromRole="Calendario" ToRole="ATFExpediente" />
           <NavigationProperty Name="Disciplina" Relationship="DB_9B1F4C_comentariosModel.FK_Calendario_Disciplina" FromRole="Calendario" ToRole="Disciplina" />
         </EntityType>
         <EntityType Name="CambiosDNI">
@@ -4010,6 +4501,8 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <NavigationProperty Name="Calendario" Relationship="DB_9B1F4C_comentariosModel.FK_Calendario_Disciplina" FromRole="Disciplina" ToRole="Calendario" />
           <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_comentariosModel.FK_Inscripciones_Disciplina" FromRole="Disciplina" ToRole="Inscripciones" />
           <NavigationProperty Name="Noticias" Relationship="DB_9B1F4C_comentariosModel.FK_Noticias_Disciplina" FromRole="Disciplina" ToRole="Noticias" />
+          <NavigationProperty Name="OtroCategorias" Relationship="DB_9B1F4C_comentariosModel.FK_OtroCategorias_Disciplina" FromRole="Disciplina" ToRole="OtroCategorias" />
+          <NavigationProperty Name="OtroTorneo" Relationship="DB_9B1F4C_comentariosModel.FK_OtroTorneo_Disciplina" FromRole="Disciplina" ToRole="OtroTorneo" />
         </EntityType>
         <EntityType Name="Entradas">
           <Key>
@@ -4204,6 +4697,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <Property Name="MeetId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="atletas" Relationship="DB_9B1F4C_comentariosModel.FK_atletas_Equipos" FromRole="Equipos" ToRole="atletas" />
           <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_comentariosModel.FK_Equipos_Torneo" FromRole="Equipos" ToRole="Torneo" />
+          <NavigationProperty Name="InscripcionResponsable" Relationship="DB_9B1F4C_comentariosModel.FK_InscripcionResponsable_Equipos" FromRole="Equipos" ToRole="InscripcionResponsable" />
         </EntityType>
         <EntityType Name="Estado">
           <Key>
@@ -4372,11 +4866,23 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <NavigationProperty Name="HistorialTraspasos" Relationship="DB_9B1F4C_comentariosModel.FK_HistorialTraspasos_Inscripciones" FromRole="Inscripciones" ToRole="HistorialTraspasos" />
           <NavigationProperty Name="TipoAfiliado" Relationship="DB_9B1F4C_comentariosModel.FK_Inscripciones_TipoAfiliado" FromRole="Inscripciones" ToRole="TipoAfiliado" />
           <NavigationProperty Name="Multas" Relationship="DB_9B1F4C_comentariosModel.FK_Multas_Inscripciones" FromRole="Inscripciones" ToRole="Multas" />
+          <NavigationProperty Name="OtroAtleta" Relationship="DB_9B1F4C_comentariosModel.FK_OtroAtleta_Inscripciones" FromRole="Inscripciones" ToRole="OtroAtleta" />
           <NavigationProperty Name="TatoInformeAsistencias" Relationship="DB_9B1F4C_comentariosModel.FK_TatoInformeAsistencias_Inscripciones" FromRole="Inscripciones" ToRole="TatoInformeAsistencias" />
           <NavigationProperty Name="TatoInformeEntrenador" Relationship="DB_9B1F4C_comentariosModel.FK_TatoInformeEntrenador_Inscripciones" FromRole="Inscripciones" ToRole="TatoInformeEntrenador" />
           <NavigationProperty Name="TatoSeleccionado" Relationship="DB_9B1F4C_comentariosModel.FK_TatoSeleccionado_Inscripciones" FromRole="Inscripciones" ToRole="TatoSeleccionado" />
           <NavigationProperty Name="Traspasos" Relationship="DB_9B1F4C_comentariosModel.FK_Traspasos_Inscripciones" FromRole="Inscripciones" ToRole="Traspasos" />
           <NavigationProperty Name="TraspasosEnEspera" Relationship="DB_9B1F4C_comentariosModel.FK_TraspasosEnEspera_Inscripciones" FromRole="Inscripciones" ToRole="TraspasosEnEspera" />
+        </EntityType>
+        <EntityType Name="InscripcionResponsable">
+          <Key>
+            <PropertyRef Name="ResponsableId" />
+          </Key>
+          <Property Name="ResponsableId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Correo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TeamId" Type="Int32" Nullable="false" />
+          <Property Name="Celular" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Equipos" Relationship="DB_9B1F4C_comentariosModel.FK_InscripcionResponsable_Equipos" FromRole="InscripcionResponsable" ToRole="Equipos" />
         </EntityType>
         <EntityType Name="Landing">
           <Key>
@@ -4496,6 +5002,120 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <NavigationProperty Name="CategoriaNoticia" Relationship="DB_9B1F4C_comentariosModel.FK_Noticias_CategoriaNoticia" FromRole="Noticias" ToRole="CategoriaNoticia" />
           <NavigationProperty Name="Disciplina" Relationship="DB_9B1F4C_comentariosModel.FK_Noticias_Disciplina" FromRole="Noticias" ToRole="Disciplina" />
           <NavigationProperty Name="Fotos" Relationship="DB_9B1F4C_comentariosModel.FK_Fotos_Noticias" FromRole="Noticias" ToRole="Fotos" />
+        </EntityType>
+        <EntityType Name="OtroAtleta">
+          <Key>
+            <PropertyRef Name="AtletaId" />
+          </Key>
+          <Property Name="AtletaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TorneoId" Type="Int32" Nullable="false" />
+          <Property Name="InscripcionId" Type="Int32" Nullable="false" />
+          <Property Name="TeamId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_comentariosModel.FK_OtroAtleta_Inscripciones" FromRole="OtroAtleta" ToRole="Inscripciones" />
+          <NavigationProperty Name="OtroEquipo" Relationship="DB_9B1F4C_comentariosModel.FK_OtroAtleta_OtroEquipo" FromRole="OtroAtleta" ToRole="OtroEquipo" />
+          <NavigationProperty Name="OtroEntradas" Relationship="DB_9B1F4C_comentariosModel.FK_OtroEntradas_OtroAtleta" FromRole="OtroAtleta" ToRole="OtroEntradas" />
+        </EntityType>
+        <EntityType Name="OtroCategorias">
+          <Key>
+            <PropertyRef Name="CategoriaId" />
+          </Key>
+          <Property Name="CategoriaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DisciplinaId" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EdadMaxima" Type="Int32" Nullable="false" />
+          <Property Name="EdadMinima" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Disciplina" Relationship="DB_9B1F4C_comentariosModel.FK_OtroCategorias_Disciplina" FromRole="OtroCategorias" ToRole="Disciplina" />
+        </EntityType>
+        <EntityType Name="OtroEntradas">
+          <Key>
+            <PropertyRef Name="EntradaId" />
+          </Key>
+          <Property Name="EntradaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventoId" Type="Int32" Nullable="false" />
+          <Property Name="AtletaId" Type="Int32" Nullable="false" />
+          <Property Name="Gorro" Type="Int32" Nullable="false" />
+          <Property Name="Suplente" Type="Boolean" Nullable="false" />
+          <Property Name="TorneoId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OtroAtleta" Relationship="DB_9B1F4C_comentariosModel.FK_OtroEntradas_OtroAtleta" FromRole="OtroEntradas" ToRole="OtroAtleta" />
+          <NavigationProperty Name="OtroEventos" Relationship="DB_9B1F4C_comentariosModel.FK_OtroEntradas_OtroEventos" FromRole="OtroEntradas" ToRole="OtroEventos" />
+          <NavigationProperty Name="OtroTorneo" Relationship="DB_9B1F4C_comentariosModel.FK_OtroEntradas_OtroTorneo" FromRole="OtroEntradas" ToRole="OtroTorneo" />
+        </EntityType>
+        <EntityType Name="OtroEquipo">
+          <Key>
+            <PropertyRef Name="TeamId" />
+          </Key>
+          <Property Name="TeamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TorneoId" Type="Int32" Nullable="false" />
+          <Property Name="Team_name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Team_abbr" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OtroAtleta" Relationship="DB_9B1F4C_comentariosModel.FK_OtroAtleta_OtroEquipo" FromRole="OtroEquipo" ToRole="OtroAtleta" />
+          <NavigationProperty Name="OtroTorneo" Relationship="DB_9B1F4C_comentariosModel.FK_OtroEquipo_OtroTorneo" FromRole="OtroEquipo" ToRole="OtroTorneo" />
+          <NavigationProperty Name="OtroResponsable" Relationship="DB_9B1F4C_comentariosModel.FK_OtroResponsable_OtroEquipo" FromRole="OtroEquipo" ToRole="OtroResponsable" />
+        </EntityType>
+        <EntityType Name="OtroEventos">
+          <Key>
+            <PropertyRef Name="EventoId" />
+          </Key>
+          <Property Name="EventoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventSex" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="EventNombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EventSerie" Type="Int32" Nullable="false" />
+          <Property Name="TorneoId" Type="Int32" Nullable="false" />
+          <Property Name="EdadMaxima" Type="Int32" Nullable="false" />
+          <Property Name="EdadMinima" Type="Int32" Nullable="false" />
+          <Property Name="Grupal" Type="Boolean" Nullable="false" />
+          <Property Name="CantidadParticipanes" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OtroEntradas" Relationship="DB_9B1F4C_comentariosModel.FK_OtroEntradas_OtroEventos" FromRole="OtroEventos" ToRole="OtroEntradas" />
+          <NavigationProperty Name="OtroGrupal" Relationship="DB_9B1F4C_comentariosModel.FK_OtroGrupal_OtroEventos" FromRole="OtroEventos" ToRole="OtroGrupal" />
+        </EntityType>
+        <EntityType Name="OtroGrupal">
+          <Key>
+            <PropertyRef Name="GrupalId" />
+          </Key>
+          <Property Name="GrupalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventoId" Type="Int32" Nullable="false" />
+          <Property Name="CantidadParticipantes" Type="Int32" Nullable="false" />
+          <Property Name="Mixto" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="OtroEventos" Relationship="DB_9B1F4C_comentariosModel.FK_OtroGrupal_OtroEventos" FromRole="OtroGrupal" ToRole="OtroEventos" />
+        </EntityType>
+        <EntityType Name="OtroResponsable">
+          <Key>
+            <PropertyRef Name="ResponsableId" />
+          </Key>
+          <Property Name="ResponsableId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Correo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TeamId" Type="Int32" Nullable="false" />
+          <Property Name="Celular" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="OtroEquipo" Relationship="DB_9B1F4C_comentariosModel.FK_OtroResponsable_OtroEquipo" FromRole="OtroResponsable" ToRole="OtroEquipo" />
+        </EntityType>
+        <EntityType Name="OtroSetupTorneo">
+          <Key>
+            <PropertyRef Name="SetupId" />
+          </Key>
+          <Property Name="SetupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TorneoId" Type="Int32" Nullable="false" />
+          <Property Name="PermiteNoAfiliados" Type="Boolean" Nullable="false" />
+          <Property Name="PermiteSubirEdad" Type="Boolean" Nullable="false" />
+          <Property Name="PermiteMixtos" Type="Boolean" Nullable="false" />
+          <Property Name="PorLigas" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="OtroTorneo" Relationship="DB_9B1F4C_comentariosModel.FK_OtroSetupTorneo_OtroTorneo" FromRole="OtroSetupTorneo" ToRole="OtroTorneo" />
+        </EntityType>
+        <EntityType Name="OtroTorneo">
+          <Key>
+            <PropertyRef Name="TorneoId" />
+          </Key>
+          <Property Name="TorneoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaCierre" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PorLigas" Type="Boolean" Nullable="false" />
+          <Property Name="EdadADiciembre" Type="Boolean" Nullable="false" />
+          <Property Name="DisciplinaId" Type="Int32" />
+          <NavigationProperty Name="Disciplina" Relationship="DB_9B1F4C_comentariosModel.FK_OtroTorneo_Disciplina" FromRole="OtroTorneo" ToRole="Disciplina" />
+          <NavigationProperty Name="OtroEntradas" Relationship="DB_9B1F4C_comentariosModel.FK_OtroEntradas_OtroTorneo" FromRole="OtroTorneo" ToRole="OtroEntradas" />
+          <NavigationProperty Name="OtroEquipo" Relationship="DB_9B1F4C_comentariosModel.FK_OtroEquipo_OtroTorneo" FromRole="OtroTorneo" ToRole="OtroEquipo" />
+          <NavigationProperty Name="OtroSetupTorneo" Relationship="DB_9B1F4C_comentariosModel.FK_OtroSetupTorneo_OtroTorneo" FromRole="OtroTorneo" ToRole="OtroSetupTorneo" />
         </EntityType>
         <EntityType Name="PoloEquipos">
           <Key>
@@ -4636,6 +5256,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <NavigationProperty Name="PoloPartidos" Relationship="DB_9B1F4C_comentariosModel.FK_PoloPartidos_PoloRondas" FromRole="PoloRondas" ToRole="PoloPartidos" />
           <NavigationProperty Name="PoloTorneo" Relationship="DB_9B1F4C_comentariosModel.FK_PoloRondas_PoloTorneo" FromRole="PoloRondas" ToRole="PoloTorneo" />
         </EntityType>
+        <EntityType Name="PoloSetupTorneo">
+          <Key>
+            <PropertyRef Name="SetupId" />
+          </Key>
+          <Property Name="SetupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TorneoId" Type="Int32" Nullable="false" />
+          <Property Name="PermiteNoAfiliados" Type="Boolean" Nullable="false" />
+          <Property Name="PermiteSubirEdad" Type="Boolean" Nullable="false" />
+          <Property Name="PermiteMixtos" Type="Boolean" Nullable="false" />
+          <Property Name="PorLigas" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PoloTorneo" Relationship="DB_9B1F4C_comentariosModel.FK_PoloSetupTorneo_PoloTorneo" FromRole="PoloSetupTorneo" ToRole="PoloTorneo" />
+        </EntityType>
         <EntityType Name="PoloTorneo">
           <Key>
             <PropertyRef Name="TorneoId" />
@@ -4654,6 +5286,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <NavigationProperty Name="PoloPosicionFinal" Relationship="DB_9B1F4C_comentariosModel.FK_PoloPosicionFinal_PoloTorneo" FromRole="PoloTorneo" ToRole="PoloPosicionFinal" />
           <NavigationProperty Name="PoloResultados" Relationship="DB_9B1F4C_comentariosModel.FK_PoloResultados_PoloTorneo" FromRole="PoloTorneo" ToRole="PoloResultados" />
           <NavigationProperty Name="PoloRondas" Relationship="DB_9B1F4C_comentariosModel.FK_PoloRondas_PoloTorneo" FromRole="PoloTorneo" ToRole="PoloRondas" />
+          <NavigationProperty Name="PoloSetupTorneo" Relationship="DB_9B1F4C_comentariosModel.FK_PoloSetupTorneo_PoloTorneo" FromRole="PoloTorneo" ToRole="PoloSetupTorneo" />
         </EntityType>
         <EntityType Name="Procesado">
           <Key>
@@ -4802,6 +5435,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <Property Name="PorLigas" Type="Boolean" Nullable="false" />
           <Property Name="pruebasXEquipo" Type="Int32" Nullable="false" />
           <Property Name="SinMarca" Type="Int32" Nullable="false" />
+          <Property Name="PermiteNoAfiliados" Type="Boolean" Nullable="false" />
+          <Property Name="PermiteSinMarca" Type="Boolean" Nullable="false" />
+          <Property Name="UsaMarcaMaxima" Type="Boolean" Nullable="false" />
+          <Property Name="Debutantes" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="TipoTorneo" Relationship="DB_9B1F4C_comentariosModel.FK__SetupTorn__TipoI__2AA05119" FromRole="SetupTorneo" ToRole="TipoTorneo" />
           <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_comentariosModel.FK_SetupTorneo_Torneo" FromRole="SetupTorneo" ToRole="Torneo" />
         </EntityType>
@@ -4919,6 +5556,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           </Key>
           <Property Name="TipoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="SetupTorneo" Relationship="DB_9B1F4C_comentariosModel.FK__SetupTorn__TipoI__2AA05119" FromRole="TipoTorneo" ToRole="SetupTorneo" />
         </EntityType>
         <EntityType Name="Torneo">
@@ -5631,6 +6269,30 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ATFDeportista_ATFExpediente">
+          <End Type="DB_9B1F4C_comentariosModel.ATFExpediente" Role="ATFExpediente" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.ATFDeportista" Role="ATFDeportista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ATFExpediente">
+              <PropertyRef Name="ExpedienteId" />
+            </Principal>
+            <Dependent Role="ATFDeportista">
+              <PropertyRef Name="Expedienteid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATFExpediente_Calendario">
+          <End Type="DB_9B1F4C_comentariosModel.Calendario" Role="Calendario" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.ATFExpediente" Role="ATFExpediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calendario">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="ATFExpediente">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_RESULTS_Athlete">
           <End Type="DB_9B1F4C_comentariosModel.Athlete" Role="Athlete" Multiplicity="0..1" />
           <End Type="DB_9B1F4C_comentariosModel.RESULTS" Role="RESULTS" Multiplicity="*" />
@@ -5859,6 +6521,30 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_OtroCategorias_Disciplina">
+          <End Type="DB_9B1F4C_comentariosModel.Disciplina" Role="Disciplina" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.OtroCategorias" Role="OtroCategorias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplina">
+              <PropertyRef Name="DisciplinaId" />
+            </Principal>
+            <Dependent Role="OtroCategorias">
+              <PropertyRef Name="DisciplinaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroTorneo_Disciplina">
+          <End Type="DB_9B1F4C_comentariosModel.Disciplina" Role="Disciplina" Multiplicity="0..1" />
+          <End Type="DB_9B1F4C_comentariosModel.OtroTorneo" Role="OtroTorneo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplina">
+              <PropertyRef Name="DisciplinaId" />
+            </Principal>
+            <Dependent Role="OtroTorneo">
+              <PropertyRef Name="DisciplinaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Entradas_Torneo">
           <End Type="DB_9B1F4C_comentariosModel.Torneo" Role="Torneo" Multiplicity="1" />
           <End Type="DB_9B1F4C_comentariosModel.Entradas" Role="Entradas" Multiplicity="*" />
@@ -5955,6 +6641,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_InscripcionResponsable_Equipos">
+          <End Type="DB_9B1F4C_comentariosModel.Equipos" Role="Equipos" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.InscripcionResponsable" Role="InscripcionResponsable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="TeamId" />
+            </Principal>
+            <Dependent Role="InscripcionResponsable">
+              <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Inscripciones_Estado">
           <End Type="DB_9B1F4C_comentariosModel.Estado" Role="Estado" Multiplicity="1" />
           <End Type="DB_9B1F4C_comentariosModel.Inscripciones" Role="Inscripciones" Multiplicity="*" />
@@ -6047,6 +6745,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
               <PropertyRef Name="InscripcionId" />
             </Principal>
             <Dependent Role="Multas">
+              <PropertyRef Name="InscripcionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroAtleta_Inscripciones">
+          <End Type="DB_9B1F4C_comentariosModel.Inscripciones" Role="Inscripciones" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.OtroAtleta" Role="OtroAtleta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inscripciones">
+              <PropertyRef Name="InscripcionId" />
+            </Principal>
+            <Dependent Role="OtroAtleta">
               <PropertyRef Name="InscripcionId" />
             </Dependent>
           </ReferentialConstraint>
@@ -6168,6 +6878,102 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             </Principal>
             <Dependent Role="MultiEdad">
               <PropertyRef Name="MeetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroAtleta_OtroEquipo">
+          <End Type="DB_9B1F4C_comentariosModel.OtroEquipo" Role="OtroEquipo" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.OtroAtleta" Role="OtroAtleta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtroEquipo">
+              <PropertyRef Name="TeamId" />
+            </Principal>
+            <Dependent Role="OtroAtleta">
+              <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroEntradas_OtroAtleta">
+          <End Type="DB_9B1F4C_comentariosModel.OtroAtleta" Role="OtroAtleta" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.OtroEntradas" Role="OtroEntradas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtroAtleta">
+              <PropertyRef Name="AtletaId" />
+            </Principal>
+            <Dependent Role="OtroEntradas">
+              <PropertyRef Name="AtletaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroEntradas_OtroEventos">
+          <End Type="DB_9B1F4C_comentariosModel.OtroEventos" Role="OtroEventos" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.OtroEntradas" Role="OtroEntradas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtroEventos">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="OtroEntradas">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroEntradas_OtroTorneo">
+          <End Type="DB_9B1F4C_comentariosModel.OtroTorneo" Role="OtroTorneo" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.OtroEntradas" Role="OtroEntradas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtroTorneo">
+              <PropertyRef Name="TorneoId" />
+            </Principal>
+            <Dependent Role="OtroEntradas">
+              <PropertyRef Name="TorneoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroEquipo_OtroTorneo">
+          <End Type="DB_9B1F4C_comentariosModel.OtroTorneo" Role="OtroTorneo" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.OtroEquipo" Role="OtroEquipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtroTorneo">
+              <PropertyRef Name="TorneoId" />
+            </Principal>
+            <Dependent Role="OtroEquipo">
+              <PropertyRef Name="TorneoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroResponsable_OtroEquipo">
+          <End Type="DB_9B1F4C_comentariosModel.OtroEquipo" Role="OtroEquipo" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.OtroResponsable" Role="OtroResponsable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtroEquipo">
+              <PropertyRef Name="TeamId" />
+            </Principal>
+            <Dependent Role="OtroResponsable">
+              <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroGrupal_OtroEventos">
+          <End Type="DB_9B1F4C_comentariosModel.OtroEventos" Role="OtroEventos" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.OtroGrupal" Role="OtroGrupal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtroEventos">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="OtroGrupal">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroSetupTorneo_OtroTorneo">
+          <End Type="DB_9B1F4C_comentariosModel.OtroTorneo" Role="OtroTorneo" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.OtroSetupTorneo" Role="OtroSetupTorneo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtroTorneo">
+              <PropertyRef Name="TorneoId" />
+            </Principal>
+            <Dependent Role="OtroSetupTorneo">
+              <PropertyRef Name="TorneoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6375,6 +7181,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PoloSetupTorneo_PoloTorneo">
+          <End Type="DB_9B1F4C_comentariosModel.PoloTorneo" Role="PoloTorneo" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.PoloSetupTorneo" Role="PoloSetupTorneo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PoloTorneo">
+              <PropertyRef Name="TorneoId" />
+            </Principal>
+            <Dependent Role="PoloSetupTorneo">
+              <PropertyRef Name="TorneoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_RESULTS_Pruebas">
           <End Type="DB_9B1F4C_comentariosModel.Pruebas" Role="Pruebas" Multiplicity="0..1" />
           <End Type="DB_9B1F4C_comentariosModel.RESULTS" Role="RESULTS" Multiplicity="*" />
@@ -6575,6 +7393,28 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
               <MappingFragment StoreEntitySet="Asociaciones">
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="AsociacionId" ColumnName="AsociacionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ATFDeportista">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.ATFDeportista">
+              <MappingFragment StoreEntitySet="ATFDeportista">
+                <ScalarProperty Name="Expedienteid" ColumnName="Expedienteid" />
+                <ScalarProperty Name="CompromisoRetorno" ColumnName="CompromisoRetorno" />
+                <ScalarProperty Name="AvalMedico" ColumnName="AvalMedico" />
+                <ScalarProperty Name="CopiaDNIApoderado" ColumnName="CopiaDNIApoderado" />
+                <ScalarProperty Name="CopiaDNI" ColumnName="CopiaDNI" />
+                <ScalarProperty Name="DeportistaId" ColumnName="DeportistaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ATFExpediente">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.ATFExpediente">
+              <MappingFragment StoreEntitySet="ATFExpediente">
+                <ScalarProperty Name="Formato" ColumnName="Formato" />
+                <ScalarProperty Name="Bases" ColumnName="Bases" />
+                <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+                <ScalarProperty Name="ExpedienteId" ColumnName="ExpedienteId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -7127,6 +7967,17 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="InscripcionResponsable">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.InscripcionResponsable">
+              <MappingFragment StoreEntitySet="InscripcionResponsable">
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ResponsableId" ColumnName="ResponsableId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Landing">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Landing">
               <MappingFragment StoreEntitySet="Landing">
@@ -7241,6 +8092,110 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
                 <ScalarProperty Name="Corta" ColumnName="Corta" />
                 <ScalarProperty Name="Titulo" ColumnName="Titulo" />
                 <ScalarProperty Name="NoticiaId" ColumnName="NoticiaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OtroAtleta">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.OtroAtleta">
+              <MappingFragment StoreEntitySet="OtroAtleta">
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+                <ScalarProperty Name="InscripcionId" ColumnName="InscripcionId" />
+                <ScalarProperty Name="TorneoId" ColumnName="TorneoId" />
+                <ScalarProperty Name="AtletaId" ColumnName="AtletaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OtroCategorias">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.OtroCategorias">
+              <MappingFragment StoreEntitySet="OtroCategorias">
+                <ScalarProperty Name="EdadMinima" ColumnName="EdadMinima" />
+                <ScalarProperty Name="EdadMaxima" ColumnName="EdadMaxima" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="DisciplinaId" ColumnName="DisciplinaId" />
+                <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OtroEntradas">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.OtroEntradas">
+              <MappingFragment StoreEntitySet="OtroEntradas">
+                <ScalarProperty Name="TorneoId" ColumnName="TorneoId" />
+                <ScalarProperty Name="Suplente" ColumnName="Suplente" />
+                <ScalarProperty Name="Gorro" ColumnName="Gorro" />
+                <ScalarProperty Name="AtletaId" ColumnName="AtletaId" />
+                <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+                <ScalarProperty Name="EntradaId" ColumnName="EntradaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OtroEquipo">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.OtroEquipo">
+              <MappingFragment StoreEntitySet="OtroEquipo">
+                <ScalarProperty Name="Team_abbr" ColumnName="Team_abbr" />
+                <ScalarProperty Name="Team_name" ColumnName="Team_name" />
+                <ScalarProperty Name="TorneoId" ColumnName="TorneoId" />
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OtroEventos">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.OtroEventos">
+              <MappingFragment StoreEntitySet="OtroEventos">
+                <ScalarProperty Name="CantidadParticipanes" ColumnName="CantidadParticipanes" />
+                <ScalarProperty Name="Grupal" ColumnName="Grupal" />
+                <ScalarProperty Name="EdadMinima" ColumnName="EdadMinima" />
+                <ScalarProperty Name="EdadMaxima" ColumnName="EdadMaxima" />
+                <ScalarProperty Name="TorneoId" ColumnName="TorneoId" />
+                <ScalarProperty Name="EventSerie" ColumnName="EventSerie" />
+                <ScalarProperty Name="EventNombre" ColumnName="EventNombre" />
+                <ScalarProperty Name="EventSex" ColumnName="EventSex" />
+                <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OtroGrupal">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.OtroGrupal">
+              <MappingFragment StoreEntitySet="OtroGrupal">
+                <ScalarProperty Name="Mixto" ColumnName="Mixto" />
+                <ScalarProperty Name="CantidadParticipantes" ColumnName="CantidadParticipantes" />
+                <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+                <ScalarProperty Name="GrupalId" ColumnName="GrupalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OtroResponsable">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.OtroResponsable">
+              <MappingFragment StoreEntitySet="OtroResponsable">
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ResponsableId" ColumnName="ResponsableId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OtroSetupTorneo">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.OtroSetupTorneo">
+              <MappingFragment StoreEntitySet="OtroSetupTorneo">
+                <ScalarProperty Name="PorLigas" ColumnName="PorLigas" />
+                <ScalarProperty Name="PermiteMixtos" ColumnName="PermiteMixtos" />
+                <ScalarProperty Name="PermiteSubirEdad" ColumnName="PermiteSubirEdad" />
+                <ScalarProperty Name="PermiteNoAfiliados" ColumnName="PermiteNoAfiliados" />
+                <ScalarProperty Name="TorneoId" ColumnName="TorneoId" />
+                <ScalarProperty Name="SetupId" ColumnName="SetupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OtroTorneo">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.OtroTorneo">
+              <MappingFragment StoreEntitySet="OtroTorneo">
+                <ScalarProperty Name="DisciplinaId" ColumnName="DisciplinaId" />
+                <ScalarProperty Name="EdadADiciembre" ColumnName="EdadADiciembre" />
+                <ScalarProperty Name="PorLigas" ColumnName="PorLigas" />
+                <ScalarProperty Name="FechaCierre" ColumnName="FechaCierre" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="TorneoId" ColumnName="TorneoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -7364,6 +8319,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
                 <ScalarProperty Name="TorneoId" ColumnName="TorneoId" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="RondaId" ColumnName="RondaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PoloSetupTorneo">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.PoloSetupTorneo">
+              <MappingFragment StoreEntitySet="PoloSetupTorneo">
+                <ScalarProperty Name="PorLigas" ColumnName="PorLigas" />
+                <ScalarProperty Name="PermiteMixtos" ColumnName="PermiteMixtos" />
+                <ScalarProperty Name="PermiteSubirEdad" ColumnName="PermiteSubirEdad" />
+                <ScalarProperty Name="PermiteNoAfiliados" ColumnName="PermiteNoAfiliados" />
+                <ScalarProperty Name="TorneoId" ColumnName="TorneoId" />
+                <ScalarProperty Name="SetupId" ColumnName="SetupId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -7512,6 +8479,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySetMapping Name="SetupTorneo">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.SetupTorneo">
               <MappingFragment StoreEntitySet="SetupTorneo">
+                <ScalarProperty Name="Debutantes" ColumnName="Debutantes" />
+                <ScalarProperty Name="UsaMarcaMaxima" ColumnName="UsaMarcaMaxima" />
+                <ScalarProperty Name="PermiteSinMarca" ColumnName="PermiteSinMarca" />
+                <ScalarProperty Name="PermiteNoAfiliados" ColumnName="PermiteNoAfiliados" />
                 <ScalarProperty Name="SinMarca" ColumnName="SinMarca" />
                 <ScalarProperty Name="pruebasXEquipo" ColumnName="pruebasXEquipo" />
                 <ScalarProperty Name="PorLigas" ColumnName="PorLigas" />
@@ -7632,6 +8603,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySetMapping Name="TipoTorneo">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.TipoTorneo">
               <MappingFragment StoreEntitySet="TipoTorneo">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="TipoId" ColumnName="TipoId" />
               </MappingFragment>

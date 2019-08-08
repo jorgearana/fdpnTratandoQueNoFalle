@@ -21,6 +21,8 @@ namespace FDPN.Controllers
         public PartialViewResult _mastersdestacado()
         {
             DateTime iniciomes = (new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)).AddMonths(-2);
+            RESULTSMasters resultadomejor = new RESULTSMasters();
+
             Random rnd = new Random();
             //int meet = torneodestacado[i].Meet;
             string sexo = "M";
@@ -28,86 +30,94 @@ namespace FDPN.Controllers
             int i = rnd.Next(1, destacados.Count);
             int Meettorneo = destacados[i].Meet;
             MEETMasters torneoAMostrar = db.MEETMasters.Where(x => x.Meet == Meettorneo).FirstOrDefault();
-
-            i = rnd.Next(1, 3);
-            if (i == 2)
-            {
-                sexo = "F";
-            }
-            
-            int edadminima = db.RESULTSMasters.Where(x => x.MEET == Meettorneo).OrderBy(x => x.AGE).Select(x=>x.AGE).FirstOrDefault();
+            int edadminima = db.RESULTSMasters.Where(x => x.MEET == Meettorneo).OrderBy(x => x.AGE).Select(x => x.AGE).FirstOrDefault();
             int edadmaxima = db.RESULTSMasters.Where(x => x.MEET == Meettorneo).OrderByDescending(x => x.AGE).Select(x => x.AGE).FirstOrDefault();
-            int maximoCase = (edadmaxima - 24) / 5;
-            int categoria = rnd.Next(0, maximoCase);
-            switch (categoria)
+
+            do
             {
-                case 0:
-                    edadminima = 24;
-                    edadmaxima = 29;
-                    break;
-                case 1:
-                    edadminima = 30;
-                    edadmaxima = 34;
-                    break;
-                case 2:
-                    edadminima = 35;
-                    edadmaxima = 39;
-                    break;
-                case 3:
-                    edadminima = 40;
-                    edadmaxima = 44;
-                    break;
-                case 4:
-                    edadminima = 45;
-                    edadmaxima = 49;
-                    break;
-                case 5:
-                    edadminima = 50;
-                    edadmaxima = 54;
-                    break;
-                case 6:
-                    edadminima = 55;
-                    edadmaxima = 59;
-                    break;
-                case 7:
-                    edadminima = 60;
-                    edadmaxima = 64;
-                    break;
-                case 8:
-                    edadminima = 65;
-                    edadmaxima = 69;
-                    break;
-                case 9:
-                    edadminima = 70;
-                    edadmaxima = 74;
-                    break;
-                case 10:
-                    edadminima = 75;
-                    edadmaxima = 79;
-                    break;
-                case 11:
-                    edadminima = 80;
-                    edadmaxima = 84;
-                    break;
-                case 12:
-                    edadminima = 85;
-                    edadmaxima = 109;
-                    break;
-            }
+                i = rnd.Next(1, 3);
+                if (i == 2)
+                {
+                    sexo = "F";
+                }
+
+                  int maximoCase = (edadmaxima - 24) / 5;
+                int categoria = rnd.Next(0, maximoCase);
+                switch (categoria)
+                {
+                    case 0:
+                        edadminima = 24;
+                        edadmaxima = 29;
+                        break;
+                    case 1:
+                        edadminima = 30;
+                        edadmaxima = 34;
+                        break;
+                    case 2:
+                        edadminima = 35;
+                        edadmaxima = 39;
+                        break;
+                    case 3:
+                        edadminima = 40;
+                        edadmaxima = 44;
+                        break;
+                    case 4:
+                        edadminima = 45;
+                        edadmaxima = 49;
+                        break;
+                    case 5:
+                        edadminima = 50;
+                        edadmaxima = 54;
+                        break;
+                    case 6:
+                        edadminima = 55;
+                        edadmaxima = 59;
+                        break;
+                    case 7:
+                        edadminima = 60;
+                        edadmaxima = 64;
+                        break;
+                    case 8:
+                        edadminima = 65;
+                        edadmaxima = 69;
+                        break;
+                    case 9:
+                        edadminima = 70;
+                        edadmaxima = 74;
+                        break;
+                    case 10:
+                        edadminima = 75;
+                        edadmaxima = 79;
+                        break;
+                    case 11:
+                        edadminima = 80;
+                        edadmaxima = 84;
+                        break;
+                    case 12:
+                        edadminima = 85;
+                        edadmaxima = 109;
+                        break;
+                }
+
+                 resultadomejor = db.RESULTSMasters.Where(x => x.AthleteMasters.Sex == sexo && x.COURSE != "Y" && x.AthleteMasters.Age >= edadminima && x.AthleteMasters.Age <= edadmaxima && x.MEET == torneoAMostrar.Meet).OrderByDescending(x => x.PFina).FirstOrDefault();
+
+
+                if (resultadomejor == null || resultadomejor.PFina < 100)
+                {
+                    iniciomes = iniciomes.AddMonths(-1);
+                    resultadomejor = db.RESULTSMasters.Where(x => x.AthleteMasters.Sex == sexo && x.MEETMasters.Start > iniciomes && x.COURSE != "Y" && x.AthleteMasters.Age >= edadminima && x.AthleteMasters.Age <= edadmaxima).OrderByDescending(x => x.PFina).FirstOrDefault();
+                }
+
+
+            } while (resultadomejor == null || resultadomejor.PFina < 1);
+
             
-            RESULTSMasters resultadomejor = db.RESULTSMasters.Where(x => x.AthleteMasters.Sex == sexo && x.COURSE != "Y" && x.AthleteMasters.Age >= edadminima && x.AthleteMasters.Age <= edadmaxima && x.MEET == torneoAMostrar.Meet).OrderByDescending(x => x.PFina).FirstOrDefault();
-
-
-            if (resultadomejor == null || resultadomejor.PFina <100)
-            {
-                iniciomes = iniciomes.AddMonths(-1);
-                resultadomejor = db.RESULTSMasters.Where(x => x.AthleteMasters.Sex == sexo && x.MEETMasters.Start > iniciomes && x.COURSE != "Y" && x.AthleteMasters.Age >= edadminima && x.AthleteMasters.Age <= edadmaxima).OrderByDescending(x => x.PFina).FirstOrDefault();
-            }
-
-
+            
+            
 
 
             string dni = resultadomejor.AthleteMasters.ID_NO ?? "";
+            dni = dni.Replace(" ", "");
             NadadorMastersDestacadoViewModels VM = new NadadorMastersDestacadoViewModels
             {
                 // resultados = tiempos.Where(x => x.AthleteId == athleteID).OrderBy(x => x.PLACE).ThenByDescending(x => x.PFina).ToList(),
@@ -122,8 +132,8 @@ namespace FDPN.Controllers
                 {
                     RutaFoto = "sinfoto",
                 };
-                VM.Inscripciones.Afiliado.Nombre = resultadomejor.AthleteMasters.First;
-                VM.Inscripciones.Afiliado.Apellido_Paterno = resultadomejor.AthleteMasters.Last;
+                //VM.Inscripciones.Afiliado.Nombre = resultadomejor.AthleteMasters.First;
+                //VM.Inscripciones.Afiliado.Apellido_Paterno = resultadomejor.AthleteMasters.Last;
             }
 
             return PartialView("_mastersdestacado", VM);
