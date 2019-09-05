@@ -49,39 +49,143 @@
 
 
 
-$("#paisid").change(function () {
-    var paisid = $("#paisid").val();
-    $("#eventoid").val("Escoja un evento");
-    $.ajax({
-        url: 'ResultadoPorPais',
-        type: 'GET',
-        data: {
-            paisid: paisid
-        },
-        async: false,
-        success: function (data) {
-            CArgarResultados(data);
-        }
-    });
 
+
+//Carga la página cuando se selecciona un evento, deportistas e inscritos
+$("#PoloEventoId").change(function () {
+    ResetearTablasDeDeportistasEInscritos();
+    $('#loading-image').css("visibility", "visible");
+    RellenarTablasDeDeportistasEInscritos();
 });
 
-$("#eventoid").change(function () {
-    var eventoid = $("#eventoid").val();
-    $("#paisid").val("Escoja un evento");
+function CargarListadopolo(otroeventoid) {
+   
     $.ajax({
-        url: 'ResultadoPorPruebas',
+        url: '../otrotorneo/ListadoPolistas',
         type: 'GET',
         data: {
-            eventoid: eventoid
+            otroeventoid: otroeventoid
         },
-        async: false,
         success: function (data) {
-            CArgarResultados(data);
+            var partial = data;
+            $("#ListadoPolistas").html(partial);
+            $('#loading-image').css("visibility", "hidden");
         }
+    });
+}
+
+function RellenarTablasDeDeportistasEInscritos() {
+    var PoloEventoId = $("#PoloEventoId").val();
+    CargarListadopolo(PoloEventoId);
+    CargarInscritosPolo(PoloEventoId);
+}
+
+function ResetearTablasDeDeportistasEInscritos() {
+    $("#ListadoPolistas").empty();
+    $("#YaInscritos").empty();
+}
+
+function CargarInscritosPolo(otroeventoid) {
+    $('#loading-image').css("visibility", "visible");
+    $.ajax({
+        url: '../otrotorneo/YaInscritosPolo',
+        type: 'GET',
+        data: {
+            otroeventoid: otroeventoid
+        },
+        success: function (data) {
+            var partial = data;
+            $("#YaInscritos").html(partial);
+            $('#loading-image').css("visibility", "hidden");
+        }
+    });
+  
+}
+
+$(document).on("click", ".BtnInscribirPolo", function (e) {
+    //Para hacer el check in de ingreso
+   
+    var PoloEventoId = $("#PoloEventoId").val();
+    var deportistaid = $(e.target).data('id');
+    $("#ModalPoloEventoId").text(PoloEventoId);
+    $("#modaliddeportistapolo").text(deportistaid);
+    $.ajax({
+        url: '../otrotorneo/Getdeportista',
+        type: 'GET',
+        data: {
+            id: deportistaid
+        },
+        success: function (data) {
+            var nombre = data.Nombre;
+            var apellido = data.Apellido_Paterno;
+            $("#ModalNombreDeportista").text(nombre + " " + apellido);
+        },
+        error: function (data) {
+            var mensaje = data;
+            var id = deportistid;
+        }
+    });
+    $("#ModalGorro").modal({
+        closeClass: 'icon-remove',
+        closeText: 'X'
     });
 });
 
+$(document).on("click", "#BtngrabarPolo", function (e) {
+   
+    var PoloEventoId = $("#PoloEventoId").val();
+    var deportistaid = $("#modaliddeportistapolo").text();
+    var numerogorro = $("#numerogorro").val();
+    if (numerogorro> 0) {+
+    $.ajax({
+        url: '../otrotorneo/GrabarOtraEntrada',
+        type: 'Post',
+        data: {
+            inscripcionid: deportistaid,
+            otroeventoid: PoloEventoId,
+            gorroid: numerogorro,
+            disciplinaid: 2,
+            suplente: false,
+        },
+        success: function (data) {
+           
+            CargarInscritosPolo(PoloEventoId);
+            $("#ModalGorro").modal('hide');
+            $("#numerogorro").val("");
+        }
+    });
+        
+    
+    }
+    
+});
+
+
+$(document).on("click", ".BtnIRetirarPolo", function (e) {
+    //Para hacer el check in de ingreso
+
+    var PoloEventoId = $("#PoloEventoId").val();
+    var DataId = $(e.target).data('id');
+    
+    $.ajax({
+        url: '../otrotorneo/RetirarOtraEntrada',
+        type: 'GET',
+        data: {
+            DataId : DataId,
+            eventoid: PoloEventoId
+        },
+        success: function () {
+            CargarInscritosPolo(PoloEventoId);
+        },
+       
+    });
+});
+
+
+
+
+
+//**************************** FIN  Polo acuatico *********************************
 //Llena la tabla de deportistas con el partial view que viene desde el controlador
 function LLenarTablaDeportists(deportistas) {
     var tabladeportistas = $("#ListadoDeDeportistasDeLaDisciplina");

@@ -33,6 +33,7 @@ namespace FDPN.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OtroEntradas> OtroEntradas { get; set; }
+        public virtual OtroTorneo OtroTorneo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OtroGrupal> OtroGrupal { get; set; }
     }

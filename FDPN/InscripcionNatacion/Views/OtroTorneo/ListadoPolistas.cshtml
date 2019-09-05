@@ -1,0 +1,51 @@
+﻿@model List<FDPN.Models.Inscripciones>
+
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="ibox ">
+
+            <div class="ibox-content flexbody">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        Listado de deportistas
+                    </div>
+
+                    <div class="panel-body">
+                        <table class="table dataTable" id="Tabladeportistas">
+                            <thead>
+                                <tr>
+                                    <th>Deportista</th>
+                                    <th>F.Nac</th>
+                                    <th>Sexo</th>
+                                    <th>Inscribir</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr id="@item.InscripcionId.ToString()deportista">
+
+                                        <td>@item.Afiliado.Apellido_Paterno @item.Afiliado.Nombre</td>
+                                        <td>@item.Afiliado.Fecha_de_nacimiento.ToString("yyyy/MM/dd")</td>
+                                        <td>@item.Afiliado.Sexo</td>
+                                        <td>
+                                            <button type="button"
+                                                    class="BtnInscribirPolo btn btn-primary btn-sm"
+                                                    data-id="@item.InscripcionId"
+                                                    data-target="#ModalGorro"
+                                                    data-trid="@item.InscripcionId.ToString()deportista">
+                                                Inscribir
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>  

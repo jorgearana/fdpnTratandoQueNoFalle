@@ -223,3 +223,33 @@ table.dataTable tbody tr.selected {
     margin-left: 0px;
     font-family: 'K2D', sans-serif;
 }
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+.fade:not(.show) {
+    opacity: 1;
+}
+
+.modal a.close-modal[class*="icon-"] {
+    top: 0px;
+    right: 0px;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    line-height: 1.25;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+    background: #900;
+    border: 2px solid #fff;
+    -webkit-border-radius: 26px;
+    -moz-border-radius: 26px;
+    -o-border-radius: 26px;
+    -ms-border-radius: 26px;
+    -moz-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}

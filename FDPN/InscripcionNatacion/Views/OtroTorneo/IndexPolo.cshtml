@@ -1,0 +1,72 @@
+﻿@model InscripcionNatacion.ViewModels.OtraInscripcion.Polo.IndexPoloViewModel
+@{
+    ViewBag.Title = "torneos de polo acuático";
+}
+
+
+
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    Inscripción en torneos de polo acuático
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-7">
+
+                        <div>
+                            @Html.DropDownListFor(model => model.PoloEventoId, new SelectList(Model.Eventopolo, "eventoid", "EventNombre"), "Escoja un evento", new { @class = "form-control" })
+                        </div>
+
+                        <div id="ListadoPolistas">
+
+                        </div>
+
+                    </div>
+                    <div class="col-lg-5" id="YaInscritos">
+
+                    </div>
+                    <div id="loading-image" style="visibility:hidden" class="center">
+                        <img src="~/Content/plugins/blueimp/img/loading.gif" />
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="ModalGorro" class="modal fade" role="dialog">
+        <br />
+
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content animated flipInY">
+                <div class="modal-header">
+                    <h4 class="modal-title " id="ModalNombreDeportista"></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <input type="number" class="form-control validate col-6" id="numerogorro">
+                        <label class="col-6" data-error="wrong" data-success="right" for="form3">Número de gorro</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal" id="BtnCerrarModal" style="visibility:hidden;">Cerrar ventana</button>
+                    <button type="button" class="btn btn-primary" id="BtngrabarPolo" style="visibility:visible;">Grabar</button>
+                    <div style="visibility:hidden" id="modaliddeportistapolo"></div>
+                    <div style="visibility:hidden" id="ModalPoloEventoId"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+

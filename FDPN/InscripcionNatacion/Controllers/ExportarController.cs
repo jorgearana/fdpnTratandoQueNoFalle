@@ -588,71 +588,37 @@ namespace InscripcionNatacion.Controllers
             return respuesta;
         }
 
-     
+        public ActionResult ImprimirOtroResumen(int meetid)
+        {
+            if (!repository.validarUsuario()) return RedirectToAction("login", "home");
+            Usuario usuario = Session["Usuario"] as Usuario;
+            var p = new ActionAsPdf("ExportarOtroResumen", new { meetid = meetid, usuarioid = usuario.UsuarioID });
+            //{
+            //    PageSize = Rotativa.Options.Size.A4,
+            //    PageOrientation = Rotativa.Options.Orientation.Portrait,
+            //    FileName = "Resumen.pdf",
+            //    CustomSwitches = "--disable-smart-shrinking",
+            //    PageMargins = new Rotativa.Options.Margins(10, 20, 0,20),
+
+            //};
+            return p;
+        }
+
+        public ActionResult ExportarOtroResumen(int meetid, int usuarioid)
+        {
+
+            Usuario usuario = db.Usuario.Find(usuarioid);
+            OtroEquipo equipo = db.OtroEquipo.Where(x => x.Team_abbr == usuario.Club.Iniciales && x.TorneoId == meetid).FirstOrDefault();
+            List<OtroEntradas> entradas = db.OtroEntradas.Where(x => x.TorneoId == meetid && x.OtroAtleta.TeamId == equipo.TeamId).OrderBy(x => x.Gorro).ToList();
+            var VM = entradas.GroupBy(x => x.EventoId);
+            string nombreequipo = equipo.Team_name;
+            var nombretorneo = db.OtroTorneo.Where(x => x.TorneoId == meetid).Select(x => x.Nombre).FirstOrDefault();
+            ViewBag.equipo = nombreequipo;
+            ViewBag.Torneo = nombretorneo;
+            return View(VM);
+        }
+
     }
-
-
-    //public void ExportarResumen(int meetid)
-    //{
-    //    Usuario usuario = Session["usuario"] as Usuario;
-
-    //    Equipos equipo = db.Equipos.Where(x => x.Team_abbr == usuario.Club.Iniciales && x.MeetId == meetid).FirstOrDefault();
-    //    Torneo torneo = db.Torneo.Find(meetid);
-
-
-    //    List<atletas> atletas = db.atletas.Where(x => x.Meetid == meetid && x.Team_no == equipo.Team_no).OrderBy(x => x.Last_name).ThenBy(x => x.First_name).ThenByDescending(x => x.Birth_date).ToList();
-    //    List<Eventos> eventos = db.Eventos.Where(x => x.MeetId == meetid).OrderBy(x => x.Event_ptr).ToList();
-    //    List<Entradas> entradas = db.Entradas.Where(x => x.MeetId == meetid).ToList();
-    //    List<Estilos> estilos = db.Estilos.ToList();
-
-    //    ExcelPackage ExcelFile = new ExcelPackage();
-    //    ExcelWorksheet resumen = ExcelFile.Workbook.Worksheets.Add("Resumen");
-    //    resumen.Cells[1, 1].Value = "Resumen del proceso de inscripción en";
-    //    resumen.Cells[2, 1].Value = torneo.Meet_name1;
-    //    resumen.Cells[3, 1].Value = "Club";
-    //    resumen.Cells[3, 2].Value = equipo.Team_name;
-
-    //    int i = 5; // a partir de la línea 5 se escribirán las inscripciones
-    //    int numeroDeAtleta = 0;
-    //    foreach (atletas atleta in atletas)
-    //    {
-    //        numeroDeAtleta += 1;
-    //        i += 1;
-    //        DateTime FN = atleta.Birth_date ?? DateTime.Now;
-    //        List<Entradas> EntradasDelAtleta = entradas.Where(x => x.Ath_no == atleta.Ath_no).ToList();
-    //        resumen.Cells[i, 1].Value = numeroDeAtleta + " " + ;
-    //        resumen.Cells[i, 2].Value = atleta.First_name;
-    //        resumen.Cells[i, 3].Value = atleta.Last_name;
-    //        resumen.Cells[i, 5].Value = ().ToString("dd/MM/yyyy");
-    //        foreach (Entradas entrada in EntradasDelAtleta)
-    //        {
-
-    //            i += 1;
-    //            Eventos evento = eventos.Where(x => x.Event_ptr == entrada.Event_ptr).FirstOrDefault();
-    //            Estilos estilo = estilos.Where(x => x.tag_stroke == evento.Event_stroke).FirstOrDefault();
-    //            resumen.Cells[i, 1].Value = "# " + entrada.Event_ptr;
-    //            resumen.Cells[i, 2].Value = evento.Event_sex;
-    //            resumen.Cells[i, 3].Value = evento.Event_dist + " " + estilo.Estilo;
-    //            resumen.Cells[i, 5].Value = entrada.ConvSeed_time;
-    //        }
-    //    }
-
-
-    //    string handle = Guid.NewGuid().ToString();
-
-    //    using (var memoryStream = new MemoryStream())
-    //    {
-    //        Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-    //        Response.AddHeader("content-disposition", "attachment; filename=" + resumen + ".xlsx");
-    //        ExcelFile.SaveAs(memoryStream);
-    //        memoryStream.WriteTo(Response.OutputStream);
-    //        Response.Flush();
-    //        Response.End();
-    //    }
-
-
-    //}
-
 
 
 }

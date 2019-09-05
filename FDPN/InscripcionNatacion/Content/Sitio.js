@@ -1,5 +1,8 @@
 ﻿var clock;
 $(document).ready(function () {
+    //esto es para mostrar un modal de aviso en torneos
+    //$('#modalaviso').modal('show');
+
     //Esto muestra el reloj en cada torneo
     var clocks = [];
 
@@ -37,6 +40,11 @@ $(document).ready(function () { //Al inicio cuando se recarga la página de insc
         responsive: true,
 
     });
+    //var table2 = $('.dataTable').DataTable({
+    //    pageLength: 50,
+    //    responsive: true,
+
+    //});
     var sesion = new Array();
     var pruebasXsesion = $("#pruebasXsesion").text();
     var pruebasXtorneo = $("#pruebasXtorneo").text();
@@ -135,7 +143,7 @@ $(document).ready(function () { //Al inicio cuando se recarga la página de insc
             $.each(selectedRows, function (i, val) {
                 var celdasseleccionadas = new Array();
                 for (var j = 0; j < val.length ; j++) {
-                    if (j == 1 || j == 5 || j == 6) {
+                    if (j === 1 || j === 5 || j === 6) {
                         celdasseleccionadas.push(val[j])
                     }
                 }
@@ -210,7 +218,7 @@ $(document).ready(function () { //Al inicio cuando se recarga la página de insc
         var resultado = false;
         var setup = $("#setuptorneo").text();
 
-        if(setup == "Div 1")
+        if(setup === "Div 1")
         {
             resultado=    seleccionarUnaPruebaDivision1(fila, cumple);
         }

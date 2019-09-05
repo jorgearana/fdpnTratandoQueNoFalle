@@ -7,96 +7,173 @@
 
 <div class="wrapper wrapper-content">
 
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item ">
+            <a class="nav-link active " id="home-tab" data-toggle="pill" href="#natacion" role="tab" aria-controls="natacion" aria-selected="true">Natación</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="pill" href="#polo" role="tab" aria-controls="polo" aria-selected="false">Polo acuático</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="pill" href="#Clavados" role="tab" aria-controls="Clavados" aria-selected="false">Clavados</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="pill" href="#artistica" role="tab" aria-controls="artistica" aria-selected="false">Artística</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="natacion" role="tabpanel" aria-labelledby="home-tab">
+            @foreach (var @item in Model)
+            {
+                <div class="wrapper wrapper-content  animated fadeInRight">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ibox ">
+                                <div class="ibox-title">
+                                    <span class="label label-warning float-right">Natación</span>
+                                    <h3>@item.torneo.Meet_name1</h3>
+                                    <h5> @item.torneo.Meet_state - @item.torneo.Meet_location</h5>
+                                    @item.torneo.Meet_state - @item.torneo.Meet_location
+                                    <div class="dropdown">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Quiero
+                                            </button>
+                                                <ul class="dropdown-menu" style="width: 360px;">
+                                                    <li>@Html.ActionLink("VER DATOS", "Detalle", "torneo", new { id = item.torneo.Meetid }, null)</li>
+                                                    <li>@Html.ActionLink("VER LAS PRUEBAS", "Eventos", "torneo", new { id = item.torneo.Meetid }, null)</li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li>@Html.ActionLink("VER LOS INSCRITOS", "ListadosPorPrueba", "Inscrito", new { MeetId = item.torneo.Meetid }, null)</li>
+                                                    <li role="separator" class="divider"></li>
+                                                    @if (item.diferencia > 0)
+                                                    {
+                                                        <li>@Html.ActionLink("INSCRIBIR", "ListarNadadores", "Inscrito", new { MeetId = item.torneo.Meetid }, null)</li>
+                                                        <li>@Html.ActionLink("INSCRIBIR ENTRENADORES", "INDEX", "entrenador", new { MeetId = item.torneo.Meetid }, null)</li>
+                                                    }
+                                                    <li role="separator" class="divider"></li>
 
-    @foreach (var @item in Model)
-    {
-        <div class="wrapper wrapper-content  animated fadeInRight">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ibox ">
-                        <div class="ibox-title">
-                            <span class="label label-warning float-right">Natación</span>
-                            <h3>@item.torneo.Meet_name1</h3>
-                            <h5> @item.torneo.Meet_state - @item.torneo.Meet_location</h5>
-                            @item.torneo.Meet_state - @item.torneo.Meet_location
-                            <div class="dropdown">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Quiero
-                                    </button>
-                                    <ul class="dropdown-menu" style="width: 360px;">
-                                        <li>@Html.ActionLink("VER DATOS", "Detalle", "torneo", new { id = item.torneo.Meetid }, null)</li>
-                                        <li>@Html.ActionLink("VER LAS PRUEBAS", "Eventos", "torneo", new { id = item.torneo.Meetid }, null)</li>
-                                        <li role="separator" class="divider"></li>
-                                        <li>@Html.ActionLink("VER LOS INSCRITOS", "ListadosPorPrueba", "Inscrito", new { MeetId = item.torneo.Meetid }, null)</li>
-                                        <li role="separator" class="divider"></li>
-                                        @if (item.diferencia > 0)
-                                        {
-                                            <li>@Html.ActionLink("INSCRIBIR", "ListarNadadores", "Inscrito", new { MeetId = item.torneo.Meetid }, null)</li>
-                                            <li>@Html.ActionLink("INSCRIBIR ENTRENADORES", "INDEX", "entrenador", new { MeetId = item.torneo.Meetid }, null)</li>
-                                        }
-                                        <li role="separator" class="divider"></li>
+                                                    @if (rol.Rol1 == "meet" || rol.Rol1 == "admin")
+                                                    {
+                                                        <li>@Html.ActionLink("EXPORTAR", "CrearArchivo", "Exportar", new { MeetId = item.torneo.Meetid }, null)</li>
 
-                                        @if (rol.Rol1 == "meet" || rol.Rol1 == "admin")
-                                        {
-                                            <li>@Html.ActionLink("EXPORTAR", "CrearArchivo", "Exportar", new { MeetId = item.torneo.Meetid }, null)</li>
-
-                                            <li> <a href="#" id="btnExportarDelegados" data-meetid=@item.torneo.Meetid>EXPORTAR ENTRENADORES</a></li>
-                                        }
-                                        else
-                                        {
-                                            if (item.Tieneinscritos)
-                                            {
-                                                <li>@Html.ActionLink("EXPORTAR RESUMEN PDF", "ImprimirResumen", "Exportar", new { MeetId = item.torneo.Meetid }, new { @target = "blank" })</li>
-                                            }
-                                        }
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ibox-content">
-                            <div class="activity-stream">
-                                <div class="stream">
-                                    <div class="stream-badge">
-                                        <i class="fa fa-clock-o bg-primary"></i>
-                                    </div>
-
-                                    <div class="stream-panel">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="stream-info">
-
-                                                    <h4>Inicio del torneo</h4>
-                                                    <h3>@string.Format("{0:ddd dd MMM yyyy}", item.torneo.Meet_start)</h3>
-                                                    @*<h3>@item.torneo.Meet_start.ToString("dd/MMM/yyyy")</h3>*@
-                                                    <h4>Cierre de inscripciones</h4>
-                                                    <h3>@string.Format("{0:ddd dd MMM yyyy}", item.torneo.entry_deadline)</h3>
-
-                                                </div>
-
-                                            </div>
-                                            <div class="col-lg-8">
-                                                @if (item.diferencia > 0)
-                                                {
-                                                    <h3>Tiempo faltante para el cierre de inscripciones</h3>
-                                                    <div class="clock red" style="margin:2em;" data-countdown="@item.diferencia"></div>
-                                                }
-                                            </div>
-
+                                                        <li> <a href="#" id="btnExportarDelegados" data-meetid=@item.torneo.Meetid>EXPORTAR ENTRENADORES</a></li>
+                                                    }
+                                                    else
+                                                    {
+                                                        if (item.Tieneinscritos)
+                                                        {
+                                                            <li>@Html.ActionLink("EXPORTAR RESUMEN PDF", "ImprimirResumen", "Exportar", new { MeetId = item.torneo.Meetid }, new { @target = "blank" })</li>
+                                                        }
+                                                    }
+                                                </ul>
                                         </div>
-
                                     </div>
                                 </div>
+                                <div class="ibox-content">
+                                    <div class="activity-stream">
+                                        <div class="stream">
+                                            <div class="stream-badge">
+                                                <i class="fa fa-clock-o bg-primary"></i>
+                                            </div>
+                                            <div class="stream-panel">
+                                                <div class="row">
+                                                    <div class="col-lg-4">
+                                                        <div class="stream-info">
 
+                                                            <h4>Inicio del torneo</h4>
+                                                            <h3>@string.Format("{0:ddd dd MMM yyyy}", item.torneo.Meet_start)</h3>
+                                                            <h3>@item.Start.ToString("dd/MMM/yyyy")</h3>
+                                                            <h4>Cierre de inscripciones</h4>
+                                                            <h3>@string.Format("{0:ddd dd MMM yyyy}", item.torneo.entry_deadline)</h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-8">
+                                                        @if (item.diferencia > 0)
+                                                        {
+                                                            <h3>Tiempo faltante para el cierre de inscripciones</h3>
+                                                            <div class="clock red" style="margin:2em;" data-countdown="@item.diferencia"></div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            }
+        </div>
+        <div class="tab-pane fade" id="polo" role="tabpanel" aria-labelledby="polo-tab">@Html.Action("Index", "OtroTorneo", new { disciplina = 2 })</div>
+        <div class="tab-pane fade" id="Clavados" role="tabpanel" aria-labelledby="Clavados-tab">@Html.Action("Index", "OtroTorneo", new { disciplina = 4 })</div>
+        <div class="tab-pane fade" id="artistica" role="tabpanel" aria-labelledby="contact-tab">@Html.Action("Index", "OtroTorneo", new { disciplina = 3 })</div>
+    </div>
 
+
+
+</div>
+
+
+
+@*Modal*@
+<div class="modal bd-example-modal-lg" id="modalaviso" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content animated flipInY">
+            <div class="modal-header btn-info"">
+                <h5 class="modal-title">AVISO</h5>               
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <h3> Aunque el programa permite la inscripción, las bases permiten algunas pruebas según la categoría.</h3>
+
+                </div>
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Categorías</th>
+                            <th>Pruebas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Infantil B 1 e
+                                Infantil B 2
+                            </td>
+                            <td>
+                                50, 100 Y 200 M-E-P-L, 400, 800 Libre, 200 Y 400 C
+                                Los nadadores de Infantil B 1 no compiten en 800 L y
+                                400 C
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Juvenil A
+                            </td>
+                            <td>
+                                Todas las pruebas
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2> Se retirarán a los nadadores que no cumplan con la restricción. </h2>
+            </div>
+            <div class="modal-footer">              
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
-
-    }
-
-    @*@Html.Action("Index", "OtroTorneo");*@
+    </div>
 </div>
+
+
+
+@section scripts {
+    <script>
+        $(window).on('load', function () {
+            $('#modalaviso').modal('show');
+        });
+    </script>
+}
+

@@ -811,6 +811,20 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Empresa' no tiene 
           <Property Name="FechaTraspaso" Type="date" Nullable="false" />
           <Property Name="InscripcionId" Type="int" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Hoja2' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Hoja2">
+          <Property Name="UNO" Type="int" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="1" />
+          <Property Name="Indi" Type="nvarchar" MaxLength="1" />
+          <Property Name="distancia" Type="int" />
+          <Property Name="estilo" Type="nvarchar" MaxLength="1" />
+          <Property Name="mini" Type="smallint" />
+          <Property Name="max" Type="smallint" />
+          <Property Name="segundos" Type="real" />
+          <Property Name="Piscina" Type="nvarchar" MaxLength="1" />
+          <Property Name="Meet" Type="int" />
+        </EntityType>-->
         <EntityType Name="Inscripciones">
           <Key>
             <PropertyRef Name="InscripcionId" />
@@ -2438,6 +2452,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_OtroEventos_OtroTorneo">
+          <End Role="OtroTorneo" Type="Self.OtroTorneo" Multiplicity="1" />
+          <End Role="OtroEventos" Type="Self.OtroEventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtroTorneo">
+              <PropertyRef Name="TorneoId" />
+            </Principal>
+            <Dependent Role="OtroEventos">
+              <PropertyRef Name="TorneoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_OtroGrupal_OtroEventos">
           <End Role="OtroEventos" Type="Self.OtroEventos" Multiplicity="1" />
           <End Role="OtroGrupal" Type="Self.OtroGrupal" Multiplicity="*" />
@@ -3506,6 +3532,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             <End Role="OtroTorneo" EntitySet="OtroTorneo" />
             <End Role="OtroEquipo" EntitySet="OtroEquipo" />
           </AssociationSet>
+          <AssociationSet Name="FK_OtroEventos_OtroTorneo" Association="Self.FK_OtroEventos_OtroTorneo">
+            <End Role="OtroTorneo" EntitySet="OtroTorneo" />
+            <End Role="OtroEventos" EntitySet="OtroEventos" />
+          </AssociationSet>
           <AssociationSet Name="FK_OtroGrupal_OtroEventos" Association="Self.FK_OtroGrupal_OtroEventos">
             <End Role="OtroEventos" EntitySet="OtroEventos" />
             <End Role="OtroGrupal" EntitySet="OtroGrupal" />
@@ -4074,6 +4104,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <AssociationSet Name="FK_OtroResponsable_OtroEquipo" Association="DB_9B1F4C_comentariosModel.FK_OtroResponsable_OtroEquipo">
             <End Role="OtroEquipo" EntitySet="OtroEquipo" />
             <End Role="OtroResponsable" EntitySet="OtroResponsable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtroEventos_OtroTorneo" Association="DB_9B1F4C_comentariosModel.FK_OtroEventos_OtroTorneo">
+            <End Role="OtroTorneo" EntitySet="OtroTorneo" />
+            <End Role="OtroEventos" EntitySet="OtroEventos" />
           </AssociationSet>
           <AssociationSet Name="FK_OtroGrupal_OtroEventos" Association="DB_9B1F4C_comentariosModel.FK_OtroGrupal_OtroEventos">
             <End Role="OtroEventos" EntitySet="OtroEventos" />
@@ -5066,6 +5100,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <Property Name="Grupal" Type="Boolean" Nullable="false" />
           <Property Name="CantidadParticipanes" Type="Int32" Nullable="false" />
           <NavigationProperty Name="OtroEntradas" Relationship="DB_9B1F4C_comentariosModel.FK_OtroEntradas_OtroEventos" FromRole="OtroEventos" ToRole="OtroEntradas" />
+          <NavigationProperty Name="OtroTorneo" Relationship="DB_9B1F4C_comentariosModel.FK_OtroEventos_OtroTorneo" FromRole="OtroEventos" ToRole="OtroTorneo" />
           <NavigationProperty Name="OtroGrupal" Relationship="DB_9B1F4C_comentariosModel.FK_OtroGrupal_OtroEventos" FromRole="OtroEventos" ToRole="OtroGrupal" />
         </EntityType>
         <EntityType Name="OtroGrupal">
@@ -5115,6 +5150,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <NavigationProperty Name="Disciplina" Relationship="DB_9B1F4C_comentariosModel.FK_OtroTorneo_Disciplina" FromRole="OtroTorneo" ToRole="Disciplina" />
           <NavigationProperty Name="OtroEntradas" Relationship="DB_9B1F4C_comentariosModel.FK_OtroEntradas_OtroTorneo" FromRole="OtroTorneo" ToRole="OtroEntradas" />
           <NavigationProperty Name="OtroEquipo" Relationship="DB_9B1F4C_comentariosModel.FK_OtroEquipo_OtroTorneo" FromRole="OtroTorneo" ToRole="OtroEquipo" />
+          <NavigationProperty Name="OtroEventos" Relationship="DB_9B1F4C_comentariosModel.FK_OtroEventos_OtroTorneo" FromRole="OtroTorneo" ToRole="OtroEventos" />
           <NavigationProperty Name="OtroSetupTorneo" Relationship="DB_9B1F4C_comentariosModel.FK_OtroSetupTorneo_OtroTorneo" FromRole="OtroTorneo" ToRole="OtroSetupTorneo" />
         </EntityType>
         <EntityType Name="PoloEquipos">
@@ -6950,6 +6986,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             </Principal>
             <Dependent Role="OtroResponsable">
               <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtroEventos_OtroTorneo">
+          <End Type="DB_9B1F4C_comentariosModel.OtroTorneo" Role="OtroTorneo" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.OtroEventos" Role="OtroEventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtroTorneo">
+              <PropertyRef Name="TorneoId" />
+            </Principal>
+            <Dependent Role="OtroEventos">
+              <PropertyRef Name="TorneoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

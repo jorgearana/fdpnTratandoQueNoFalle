@@ -42,6 +42,12 @@
             </div>
 
 
+            <h6 class="control-label col-md-6 btn--ghost espaciado">Sexo</h6>
+            <div class="col-md-6 espaciado">
+                @Html.DropDownListFor(model => model.Sexo, new SelectList(Model.Sexos, "Key", "Value"), "Escoja el sexo", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
+            </div>
+
+
 
             <center>
                 <input id="buscarRankingFINA" type="submit" class="btn btn--primaryapnea btn--lrg u-rounded" value="Ver ranking">

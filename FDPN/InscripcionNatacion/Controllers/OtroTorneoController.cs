@@ -9,6 +9,10 @@ using InscripcionNatacion.Helpers;
 using InscripcionNatacion.ViewModels.Home;
 using InscripcionNatacion.ViewModels.OtraInscripcion;
 using System.Web.Script.Serialization;
+using InscripcionNatacion.ViewModels.OtraInscripcion.Polo;
+using System.Threading.Tasks;
+using System.Data.Entity;
+using System.Web.Helpers;
 
 namespace InscripcionNatacion.Controllers
 {
@@ -21,10 +25,10 @@ namespace InscripcionNatacion.Controllers
 
         // GET: OtroTorneo
         //************************Esto es para ver si se graba en todas las pcs
-        public ActionResult Index()
+        public ActionResult Index(int disciplina)
         {
             DateTime hoy = convertidor.ToPeru(DateTime.UtcNow);
-            List<OtroTorneo> Torneos = db.OtroTorneo.Where(x => x.FechaCierre > hoy).ToList();
+            List<OtroTorneo> Torneos = db.OtroTorneo.Where(x => x.DisciplinaId == disciplina).ToList();
             List<OtroTorneoViewModel> VM = new List<OtroTorneoViewModel>();
             foreach (var torneo in Torneos)
             {
@@ -46,12 +50,23 @@ namespace InscripcionNatacion.Controllers
             return PartialView(VM);
         }
 
-
+        
 
         public ActionResult HacerIncscripciones(int TorneoId)
         {
             OtroSetupTorneo setup = db.OtroSetupTorneo.Where(x => x.TorneoId == TorneoId).FirstOrDefault();
+            switch(setup.OtroTorneo.DisciplinaId)
+            {
+                case 2:
+                    return RedirectToAction("IndexPolo", new { setupid = setup.SetupId });
+                case 3:
+                    return RedirectToAction("Indexsincro", new { setupid = setup.SetupId });
+                case 4:
+                    return RedirectToAction("Indexclavados", new { setupid = setup.SetupId });
 
+
+
+            }
             return View(setup);
         }
 
@@ -94,6 +109,15 @@ namespace InscripcionNatacion.Controllers
             return PartialView(VM);
         }
 
+        public async Task<JsonResult> Getdeportista(int id)
+        {
+            var deportista = await db.Inscripciones
+                .Where(x=>x.InscripcionId == id)
+                .Select(i => new { i.Afiliado.Nombre, i.Afiliado.Apellido_Paterno, i.Afiliado.DNI, i.InscripcionId })
+                .FirstOrDefaultAsync();
+            var jsonData = Json(deportista, JsonRequestBehavior.AllowGet);
+            return jsonData;
+        }
         public List<Inscripciones> GetNadadores(OtroSetupTorneo setup)
         {
             Usuario usuario = Session["Usuario"] as Usuario;
@@ -110,6 +134,12 @@ namespace InscripcionNatacion.Controllers
             .OrderBy(x => x.Afiliado.Fecha_de_nacimiento)
             .ToList();
             return listadoNadadores;
+        }
+
+        public List<OtroEventos> GetEventosGrupales(int setupid)
+        {
+            OtroSetupTorneo setup = db.OtroSetupTorneo.Find(setupid);
+            return db.OtroEventos.Where(x => x.TorneoId == setup.TorneoId).ToList();
         }
 
         public List<ListadoDeportistasParaSeleccionarlos> GetInscripciones(OtroSetupTorneo setup, List<Inscripciones> ListadoDeNadadores)
@@ -242,52 +272,174 @@ namespace InscripcionNatacion.Controllers
             return View(responsable.Equipos.MeetId);
         }
 
+        //********************  INSCRIPCION DE POLO ACUATICO ***************************
+        public ActionResult IndexPolo(int setupid)
+        {
+            List<OtroEventos> eventos = GetEventosGrupales(setupid);
+            IndexPoloViewModel VM = new IndexPoloViewModel
+            {
+                Eventopolo = new List<EventoPolo>(),
+        };
+            foreach(var evento in eventos)
+            {
+                EventoPolo epolo = new EventoPolo
+                {
+                    EventNombre = evento.EventNombre + " " + evento.EventSex + " Edad: " + evento.EdadMinima + " - " + evento.EdadMaxima,
+                    EventoId = evento.EventoId,
+                };
+                VM.Eventopolo.Add(epolo);
+            }
+           
+
+            return View(VM);
+        }
+
+        public async Task<PartialViewResult> ListadoPolistas(int otroeventoid)
+        {
+            OtroEventos evento = db.OtroEventos.Find(otroeventoid);
+            Usuario usuario = Session["Usuario"] as Usuario;
+            int annoActual = DateTime.Now.Year;
+           
+            AnnoMaximo = annoActual - evento.EdadMinima;
+            AnnoMinimo = annoActual - evento.EdadMaxima;
 
 
-        //[HttpGet]
-        //public JsonResult GrabarPruebasParaElDeportista(int deportistaid, int[] Ids, string[] marcas, int torneoid)
-        //{
-        //    string respuesta = "Sin";
-        //    try
-        //    {
-        //        OtroTorneo torneo = db.OtroTorneo.Find(torneoid);
-        //        BorrarInscripcionesAntiguas(deportistaid, torneoid);
-        //        DateTime hoy = convertidor.ToPeru(DateTime.Now);
-        //        if (Ids != null)
-        //        {
-        //            for (int i = 0; i < Ids.Count(); i++)
-        //            {
+            // disciplinaid de polo es 2
+            var listado = db
+              .Inscripciones.Where(x => x.ClubID == usuario.Club.ClubID && x.Afiliado.Fecha_de_nacimiento.Year >= AnnoMinimo
+              && x.Afiliado.Fecha_de_nacimiento.Year <= AnnoMaximo && x.Afiliado.Sexo == evento.EventSex && x.DisciplinaId == 2)
+              .AsQueryable();
 
-        //                marcas[i] = marcas[i].Replace(" ", "");
-        //                OtroEntradas entrada = new OtroEntradas
-        //                {
-        //                    EventoId = Ids[i],
-        //                    AtletaId = deportistaid,
-        //                    TorneoId = torneoid,
+            List<Inscripciones> polistas = await listado.OrderBy(x => x.Afiliado.Apellido_Paterno).ThenBy(x => x.Afiliado.Nombre).ToListAsync();
+            return PartialView(polistas);
+        }
+        public async Task<PartialViewResult> YaInscritosPolo(int otroeventoid)
+        {
+            List<OtroEntradas> entradas =await db.OtroEntradas.Where(x => x.EventoId == otroeventoid).OrderBy(x => x.Gorro).ToListAsync();
+            List<OtroEntradas> VM = new List<OtroEntradas>();
+            for (int i = 1; i<12; i++)
+            {
+                if(entradas.Any(x=>x.Gorro == i ))
+                {
+                    OtroEntradas modelo =  entradas.Where(x => x.Gorro == i).FirstOrDefault();
+                    VM.Add(modelo);
+                }
+                else
+                {
+                    OtroEntradas modelo = new OtroEntradas
+                    {
+                        Gorro = i,
+                        AtletaId = 0,
+                    };
+                    VM.Add(modelo);
+                }
+            }
+            return PartialView(VM);
+        }
 
-        //                };
-        //                switch(torneo.DisciplinaId)
-        //                {
+        
+        public async Task 
+            GrabarOtraEntrada(int inscripcionid, int otroeventoid, int gorroid, int disciplinaid, bool suplente )
+        {
+            Usuario usuario = Session["Usuario"] as Usuario;
+            OtroEventos evento = db.OtroEventos.FindAsync(otroeventoid).Result;
+            OtroEquipo equipo;
+            OtroAtleta atleta;
+            OtroEntradas entrada;
 
-        //                }
+            if (!db.OtroEquipo.AnyAsync(x=>x.Team_abbr == usuario.Club.Iniciales && x.TorneoId == evento.TorneoId).Result)
+            {
+                 equipo = new OtroEquipo
+                {
+                    TorneoId = evento.TorneoId,
+                    Team_name = usuario.Club.NombreClub,
+                    Team_abbr = usuario.Club.Iniciales,
+                };
+                db.OtroEquipo.Add(equipo);
+              await  db.SaveChangesAsync();
+            }
+            else
+            {
+                equipo = db.OtroEquipo.Where(x => x.Team_abbr == usuario.Club.Iniciales && x.TorneoId == evento.TorneoId).FirstOrDefaultAsync().Result;
+            }
+            
+            if(!db.OtroAtleta.AnyAsync(x=>x.InscripcionId==inscripcionid && x.TorneoId == evento.TorneoId).Result)
+            {
+                atleta = new OtroAtleta
+                {
+                    InscripcionId = inscripcionid,
+                    TorneoId = evento.TorneoId,
+                    TeamId = equipo.TeamId,
+                };
+                db.OtroAtleta.Add(atleta);
+               await db.SaveChangesAsync();
+            }
+            else
+            {
+                atleta = db.OtroAtleta.Where(x => x.InscripcionId == inscripcionid && x.TorneoId == evento.TorneoId).FirstOrDefaultAsync().Result;
+            }
+
+            //Buscamos si ya hay alguien ingresado con ese gorro
+            if(db.OtroEntradas.AnyAsync(x=>x.EventoId ==otroeventoid && x.Gorro == gorroid).Result)
+            {
+                await RetirarOtroGorro(otroeventoid, gorroid);
+            }
+            //Buscamos si este deportista está con otro gorro
+            if (db.OtroEntradas.AnyAsync(x => x.EventoId == otroeventoid && x.AtletaId == atleta.AtletaId).Result)
+            {
+                await RetirarOtraEntrada(otroeventoid, atleta.AtletaId.ToString());
+            }
 
 
-        //                db.Inscripciones.Add(inscripcion);
-        //            }
-        //            db.SaveChanges();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Json("Hubo un error", JsonRequestBehavior.AllowGet);
-        //    }
-        //    if (db.Inscripciones.Any(x => x.DeportistaId == deportistaid))
-        //    {
-        //        respuesta = "Con";
-        //    }
-        //    return Json(respuesta, JsonRequestBehavior.AllowGet);
-        //}
+            if (db.OtroEntradas.AnyAsync(x=>x.AtletaId == atleta.AtletaId && x.EventoId == evento.EventoId) .Result)
+            {
+                entrada = db.OtroEntradas.Where(x => x.AtletaId == atleta.AtletaId && x.EventoId == evento.EventoId)
+                   .FirstOrDefaultAsync().Result;
+                db.OtroEntradas.Remove(entrada);
+                await db.SaveChangesAsync();
+                
+            }
+            else
+            {
+                entrada = new OtroEntradas
+                {
+                    AtletaId = atleta.AtletaId,
+                    EventoId = otroeventoid,
+                    Gorro = gorroid,
+                    TorneoId = evento.TorneoId,
+                    Suplente = suplente,
 
+                };
+                db.OtroEntradas.Add(entrada);
+                await db.SaveChangesAsync();
+            }
+
+        }
+       
+        public async Task RetirarOtraEntrada(int eventoid, string DataId)
+        {
+            int id = 0;
+            if (DataId.Contains("retirar"))
+            {
+                int inicio = DataId.IndexOf("retirar");
+                id = int.Parse(DataId.Substring(0, inicio));
+            }
+            else
+            {
+                id = int.Parse(DataId);
+            }
+           
+            OtroEntradas entrada = await db.OtroEntradas.Where(x => x.EventoId == eventoid && x.AtletaId == id).FirstOrDefaultAsync();
+            db.OtroEntradas.Remove(entrada);
+            await db.SaveChangesAsync();
+        }
+
+        public async Task RetirarOtroGorro(int eventoid, int id)
+        {
+            OtroEntradas entrada = await db.OtroEntradas.Where(x => x.EventoId == eventoid && x.Gorro == id).FirstOrDefaultAsync();
+            db.OtroEntradas.Remove(entrada);
+            await db.SaveChangesAsync();
+        }
         public int IngresarDeportista(int id, int TorneoId, int TeamId, bool YaestaInscrito)
         {
             if (!YaestaInscrito)

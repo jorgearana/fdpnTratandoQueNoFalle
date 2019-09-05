@@ -11,6 +11,7 @@ namespace InscripcionNatacion.ViewModels.Home
         public FDPN.Models.Torneo torneo { get; set; }
         public int diferencia { get; set; }
         public DateTime FechaFin{ get; set; }
+        public DateTime Start { get; set; }
         public Boolean Tieneinscritos { get; set; }
     }
 }

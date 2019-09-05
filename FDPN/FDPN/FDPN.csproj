@@ -209,6 +209,9 @@
     <Content Include="Content\img\covermask2.png" />
     <Content Include="Content\img\En Mantenimiento.png" />
     <Content Include="Content\img\EnVivo.jpg" />
+    <Content Include="Content\img\fondo 1.jpg" />
+    <Content Include="Content\img\fondo2.jpg" />
+    <Content Include="Content\img\fondo3.jpg" />
     <Content Include="Content\img\fondoJaked - copia.jpg" />
     <Content Include="Content\img\fondoJaked.jpg" />
     <Content Include="Content\img\fondoJakedcelu.jpg" />
@@ -260,6 +263,7 @@
     <Content Include="Content\img\Imgsmall\premio1.png" />
     <Content Include="Content\img\Imgsmall\premio2.png" />
     <Content Include="Content\img\Imgsmall\premio3.png" />
+    <Content Include="Content\img\jaked.jpg" />
     <Content Include="Content\img\logo-JJBB-2xb.png" />
     <Content Include="Content\img\logocolor.png" />
     <Content Include="Content\img\logometal.png" />

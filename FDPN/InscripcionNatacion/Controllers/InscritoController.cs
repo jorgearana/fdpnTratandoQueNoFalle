@@ -268,7 +268,7 @@ namespace InscripcionNatacion.Controllers
             RESULTS resultado = new RESULTS();
 
             DateTime fecha = setup.Torneo.entry_deadline ?? DateTime.Now;
-            DateTime haceunanno = fecha.AddDays(-15).AddYears(-1);
+            DateTime haceunanno = fecha.AddDays(-30).AddYears(-1);
 
             List<MarcasMinimas> MarcasMinimasDelTorneo = new List<MarcasMinimas>();
             if (!setup.PermiteSinMarca)
@@ -310,7 +310,7 @@ namespace InscripcionNatacion.Controllers
             }
 
             //1 .- buscar al afiliado en la bd de inscripciones, sirve para saber si ya está inscrito
-            atletas atleta = db.atletas.Where(x => x.Reg_no == VM.afiliado.DNI).FirstOrDefault(); // en la BD de inscripciones
+            atletas atleta = db.atletas.Where(x => x.Reg_no == VM.afiliado.DNI && x.Meetid == MeetId).FirstOrDefault(); // en la BD de inscripciones
             if (atleta != null)
             {
                 VM.YaestaInscrito = db.Entradas.Any(x => x.MeetId == MeetId && x.Ath_no == atleta.Ath_no);
@@ -337,12 +337,12 @@ namespace InscripcionNatacion.Controllers
 
 
                 NadadorAInscribir.MMCorta = (setup.PermiteSinMarca ? 0 : MarcasMinimasDelTorneo.
-                Where(x => x.tag_dist == evento.Event_dist && x.tag_stroke == evento.Event_stroke && x.tag_course == "S" && x.low_age <= edad && x.high_Age >= edad && x.tag_gender == evento.Event_gender)
+                Where(x => x.tag_dist == evento.Event_dist && x.tag_stroke == evento.Event_stroke && x.tag_course == "S" && x.low_age <= edad && x.high_Age >= edad && x.tag_gender == evento.Event_gender && x.MeetId == evento.MeetId)
                .OrderByDescending(x => x.tag_ptr)
                .Select(x => x.tag_time).FirstOrDefault() ?? 0);
 
                 NadadorAInscribir.MMLarga = (setup.PermiteSinMarca ? 0 : MarcasMinimasDelTorneo
-                .Where(x => x.tag_dist == evento.Event_dist && x.tag_stroke == evento.Event_stroke && x.tag_course == "L" && x.low_age <= edad && x.high_Age >= edad && x.tag_gender == evento.Event_gender)
+                .Where(x => x.tag_dist == evento.Event_dist && x.tag_stroke == evento.Event_stroke && x.tag_course == "L" && x.low_age <= edad && x.high_Age >= edad && x.tag_gender == evento.Event_gender && x.MeetId == evento.MeetId)
                 .OrderByDescending(x => x.tag_ptr)
                 .Select(x => x.tag_time).FirstOrDefault() ?? 0);
 
@@ -1639,7 +1639,8 @@ namespace InscripcionNatacion.Controllers
             {
                 tiempo = hor.ToString();
             }
-            tiempo += min.ToString("00") + ":" + seg.ToString("00") + "." + ((int)cent).ToString("00");
+            string centesimas = ((int)cent).ToString("00");
+            tiempo += min.ToString("00") + ":" + seg.ToString("00") + "." + centesimas;
             return tiempo;
         }
 
@@ -1907,7 +1908,7 @@ namespace InscripcionNatacion.Controllers
         {
             Eventos evento = db.Eventos.Find(EventId);
             List<MarcasMinimas> MMDelTorneo = db.MarcasMinimas.Where(x => x.MeetId == evento.MeetId && x.tag_dist == evento.Event_dist
-            && x.tag_stroke == evento.Event_stroke && x.tag_gender == evento.Event_gender).ToList();
+            && x.tag_stroke == evento.Event_stroke && x.tag_gender == evento.Event_gender && x.MeetId == evento.MeetId).ToList();
             string estilo = "";
             DatosEventoViewModel VM = new DatosEventoViewModel
             {

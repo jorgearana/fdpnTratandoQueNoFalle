@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace FDPN.ViewModels.Resultados
 {
@@ -13,6 +14,9 @@ namespace FDPN.ViewModels.Resultados
         public List<int> edadesminimas { get; set; }
         public List<int> edadesmaximas { get; set; }
 
+        public Dictionary<int, string> Sexos { get; set; }
+
+        public string Sexo { get; set; }
 
         public int edadminima { get; set; }
         public int edadmaxima { get; set; }
@@ -20,5 +24,7 @@ namespace FDPN.ViewModels.Resultados
 
         public List<RESULTS> resultados { get; set; }
         public int[] torneosId { get; set; }
+
+        
     }
 }

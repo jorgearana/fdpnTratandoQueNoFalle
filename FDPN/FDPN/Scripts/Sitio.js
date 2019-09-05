@@ -74,7 +74,7 @@ $(document).ready(function () {
                 "sNext": "Siguiente página",
                 "sPrevious": "Página anterior"
             }
-        },
+        }
     });
     $('.datatablacorta').DataTable({
         "order": [[0, "desc"]],
@@ -91,7 +91,7 @@ $(document).ready(function () {
                 "sNext": "Siguiente página",
                 "sPrevious": "Página anterior"
             }
-        },
+        }
     });
 
     $('.datatablaReves').DataTable({
@@ -109,7 +109,7 @@ $(document).ready(function () {
                 "sNext": "Siguiente página",
                 "sPrevious": "Página anterior"
             }
-        },
+        }
     });
     $('.datatablaLarga').DataTable({
         "pageLength": 100,
@@ -125,7 +125,7 @@ $(document).ready(function () {
                 "sNext": "Siguiente página",
                 "sPrevious": "Página anterior"
             }
-        },
+        }
     });
 
 
@@ -192,16 +192,20 @@ $('#buscarRankingFINA').on('click', function (e) {
     var periodoid = $("#periodoid").val();
     var edadminima = $("#edadminima").val();
     var edadmaxima = $("#edadmaxima").val();
+    var sexo = $("#Sexo").val();
+
+    if (periodoid === "") { periodoid = "1"; }
+    if (sexo === "") { sexo = "1"; }
 
     $.ajax({
         url: '/Resultados/CalcularRankignFina',
         type: 'POST',
         //dataType: 'JsonSendAfiliar',
-        data: { torneosid: Ids, periodoid: periodoid, edadminima, edadmaxima },
+        data: { torneosid: Ids, periodoid: periodoid, edadminima, edadmaxima, sexo },
                 async: false,
         success: function (result) {
             $('#rankingPuntoFINA').html(result);
-        },
+        }
 
     });
 });

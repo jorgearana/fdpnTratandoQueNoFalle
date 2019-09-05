@@ -219,6 +219,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Entrenador\EntrenadoresInscritosViewModel.cs" />
     <Compile Include="ViewModels\Entrenador\EscogerEntrenadorViewModel.cs" />
+    <Compile Include="ViewModels\Exportar\OtroResumenViewModel.cs" />
     <Compile Include="ViewModels\Exportar\ResumenViewModel.cs" />
     <Compile Include="ViewModels\Home\ErrorViewModel.cs" />
     <Compile Include="ViewModels\Home\LoginViewModel.cs" />
@@ -237,6 +238,7 @@
     <Compile Include="ViewModels\OtraInscripcion\ListadoDeportistasParaSeleccionarlos.cs" />
     <Compile Include="ViewModels\OtraInscripcion\ListadoInscritoViewModel.cs" />
     <Compile Include="ViewModels\OtraInscripcion\OtroTorneoViewModel.cs" />
+    <Compile Include="ViewModels\OtraInscripcion\Polo\IndexPoloViewModel.cs" />
     <Compile Include="ViewModels\Torneo\EventosViewModel.cs" />
     <Compile Include="ViewModels\Torneo\ListadoDeTorneosViewModel.cs" />
     <Compile Include="ViewModels\Torneo\ListadoNadadoresConTiempoViewModel.cs" />
@@ -589,6 +591,11 @@
     <Content Include="Views\OtroTorneo\ListarPruebasParaelDeportista.cshtml" />
     <Content Include="Views\Inscrito\InscribirResponsable.cshtml" />
     <Content Include="Views\OtroTorneo\Index.cshtml" />
+    <Content Include="Views\OtroTorneo\IndexPolo.cshtml" />
+    <Content Include="Views\Home\ActualizandoDatos.cshtml" />
+    <Content Include="Views\OtroTorneo\YaInscritosPolo.cshtml" />
+    <Content Include="Views\OtroTorneo\ListadoPolistas.cshtml" />
+    <Content Include="Views\Exportar\ExportarOtroResumen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

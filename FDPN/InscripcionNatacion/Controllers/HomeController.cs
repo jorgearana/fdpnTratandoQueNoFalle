@@ -21,8 +21,8 @@ namespace InscripcionNatacion.Controllers
 
         public ActionResult index(string returnUrl)
         {
-            //return RedirectToAction("construccion");
-            if (repository.validarUsuario() )
+            //return RedirectToAction("Actualizandodatos");
+            if (repository.validarUsuario())
             {
                 return RedirectToAction("torneos");
             }
@@ -84,6 +84,7 @@ namespace InscripcionNatacion.Controllers
                     diferencia = seconds,
                     FechaFin = dt,
                     Tieneinscritos = false,
+                    Start = setup.Torneo.Meet_start ?? dtNow,
                 };
                 torneoviewmodel.Tieneinscritos = db.Equipos.Any(x => x.MeetId == torneoviewmodel.torneo.Meetid && x.Team_abbr == usuario.Club.Iniciales);
                 VM.Add(torneoviewmodel);
@@ -97,7 +98,7 @@ namespace InscripcionNatacion.Controllers
             return RedirectToAction("login");
         }        
 
-        public ActionResult construccion()
+        public ActionResult Actualizandodatos()
         {
             return View();
         }

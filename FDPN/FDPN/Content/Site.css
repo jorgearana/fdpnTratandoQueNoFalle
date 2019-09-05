@@ -776,22 +776,23 @@ aside {
 .BannerJaked {
     box-sizing: border-box;
     text-align: center;
-    background: #182671 url("/Content/img/fondoJakedchico.jpg") no-repeat top;
+    background: #182671 url("/Content/img/fondo 1.jpg") no-repeat top;
     width: 100%;
 }
 @media screen and (min-width: 1600px) {
     .BannerJaked {
         box-sizing: border-box;
         text-align: center;
-        background: #182671 url("/Content/img/fondoJaked.jpg") no-repeat top;
+        background: #182671 url("/Content/img/fondo3.jpg") no-repeat top;
         width: 100%;
+       
     }
 }
 @media screen and (max-width: 600px) {
     .BannerJaked {
         box-sizing: border-box;
         text-align: center;
-        background: #182671 url("/Content/img/fondoJakedcelu.jpg") no-repeat top;
+        background: #182671 url("/Content/img/fondo2.jpg") no-repeat top;
         width: 100%;
     }
 }

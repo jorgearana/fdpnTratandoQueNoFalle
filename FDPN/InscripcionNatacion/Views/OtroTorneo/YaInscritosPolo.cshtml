@@ -1,0 +1,60 @@
+﻿@model List<FDPN.Models.OtroEntradas>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="ibox ">
+
+        <div class="ibox-content flexbody">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    Listado de inscritos
+                </div>
+
+                <div class="panel-body">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Gorro</th>
+                                <th>Deportista</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < 11; i++)
+                            {
+                            <tr>
+                                <td>
+                                    @(i + 1)
+                                </td>
+
+                                @if (Model[i].OtroAtleta != null)
+                                {
+                            <td>
+                                @Model[i].OtroAtleta.Inscripciones.Afiliado.Apellido_Paterno @Model[i].OtroAtleta.Inscripciones.Afiliado.Nombre
+                            </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                       --
+                                    </td>
+                                }
+
+
+                            <td>
+                                <button type="button"
+                                        class="BtnIRetirarPolo btn btn-primary btn-sm"
+                                        data-id="@Model[i].AtletaId.ToString()retirar">
+                                        Retirar
+                                </button>
+                               
+                            </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

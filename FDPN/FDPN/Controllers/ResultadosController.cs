@@ -349,13 +349,14 @@ namespace FDPN.Controllers
                 edadesmaximas = new List<int> { 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 109 },
                 torneos = db.MEET.Where(x => x.Start > haceunanno).OrderByDescending(x=>x.Start).ToList(),
                 periodo = new Dictionary<int, string> { { 1, "12 meses" }, { 2, "6 meses" }, { 3, "Elegir torneos" } },
+                Sexos = new Dictionary<int, string> { { 1, "Ambos" }, { 2, "Varones" }, { 3, "Mujeres" } },
                 resultados = new List<RESULTS>(),
             };
             return View(VM);
         }
 
 
-        public ActionResult CalcularRankignFina( int[] torneosid, int periodoid, int? edadminima, int? edadmaxima )
+        public ActionResult CalcularRankignFina( int[] torneosid, int periodoid, int? edadminima, int? edadmaxima, int sexo )
         {
             DateTime haceunanno = DateTime.Now.AddYears(-1).AddDays(-15);
             
@@ -377,6 +378,18 @@ namespace FDPN.Controllers
                     break;
                 case 3:
                     Query = Query.Where(x => torneosid.Contains(x.MeetId ?? 0));
+                    break;
+            }
+
+            switch(sexo)
+            {
+                case 2:
+                    Query = Query.Where(x => x.Athlete1.Sex=="M");
+
+                    break;
+                case 3:
+                    Query = Query.Where(x => x.Athlete1.Sex == "F");
+
                     break;
             }
             List<RESULTS> provisional = Query.ToList();
@@ -416,7 +429,7 @@ namespace FDPN.Controllers
 
         public ActionResult ResultadosDeUnTorneo(int meetid)
         {
-            List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == meetid && x.PLACE != 0 && x.ATHLETE != 0 && x.TEAM != 0).ToList();
+            List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == meetid && x.PLACE != 0 && x.ATHLETE != 0 && x.TEAM != 0 && x.SCORE != "").ToList();
             SortedDictionary<float, DiccionarioPruebas> pruebasdesordenadas = new SortedDictionary<float, DiccionarioPruebas>();
             ResultadoDeUnTorneoViewModel VM = new ResultadoDeUnTorneoViewModel
             {
@@ -568,8 +581,11 @@ namespace FDPN.Controllers
         {
             List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == VM.meetid && x.PLACE != 0).ToList();
 
-            VM.resultadoFinales = resultados.Where(x => x.TeamId == VM.clubid && x.NT==0 && x.F_P =="F" && x.Athlete1 != null).OrderBy(x => x.MTEV).ThenBy(x => x.PLACE).ToList();
-            VM.resultadoPreliminares = resultados.Where(x => x.TeamId == VM.clubid && x.NT == 0 && x.F_P == "P" && x.Athlete1 != null).OrderBy(x => x.MTEV).ThenBy(x => x.PLACE).ToList();
+            VM.resultadoFinales = resultados.Where(x => x.TeamId == VM.clubid && x.NT==0 && x.F_P =="F" && x.Athlete1 != null && x.TEAM !=0 && x.ATHLETE!=0).OrderBy(x => x.MTEV)
+                .ThenBy(x => x.PLACE).ToList();
+            VM.resultadoPreliminares = resultados.Where(x => x.TeamId == VM.clubid && x.NT == 0 && x.F_P == "P" && x.Athlete1 != null && x.TEAM != 0 && x.ATHLETE != 0)
+                .OrderBy(x => x.MTEV)
+                .ThenBy(x => x.PLACE).ToList();
             VM.EquiposParticipantes = resultados.Select(x => x.TEAM1)
                 .DistinctBy(x => x.TeamId)
                 .OrderBy(x => x.TName).ToList();

@@ -19,6 +19,7 @@ namespace FDPN.Models
         {
             this.OtroEntradas = new HashSet<OtroEntradas>();
             this.OtroEquipo = new HashSet<OtroEquipo>();
+            this.OtroEventos = new HashSet<OtroEventos>();
             this.OtroSetupTorneo = new HashSet<OtroSetupTorneo>();
         }
     
@@ -35,6 +36,8 @@ namespace FDPN.Models
         public virtual ICollection<OtroEntradas> OtroEntradas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OtroEquipo> OtroEquipo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OtroEventos> OtroEventos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OtroSetupTorneo> OtroSetupTorneo { get; set; }
     }

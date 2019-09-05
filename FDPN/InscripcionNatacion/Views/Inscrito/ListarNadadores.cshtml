@@ -10,7 +10,7 @@
         <div class="col-lg-12">
             <div class="ibox ">
                 <div class="ibox-title">
-                    <h5>Torneo seleccionado:<strong>@setup.Torneo.Meet_name1</strong></h5>
+                    <h5>Torneo seleccionado: <strong>@setup.Torneo.Meet_name1</strong></h5>
                 </div>
                 <div class="ibox-content">
 
@@ -94,13 +94,21 @@
                                                     </button>
                                                     <ul class="dropdown-menu">
                                                         <li>
-                                                            @if( (setup.Debutantes && !item.TieneResultado)|| !item.TieneMulta)
+                                                            @if( setup.Debutantes && !item.TieneResultado ||!item.TieneMulta)
                                                             {
                                                                 @Html.ActionLink("Inscribir deportista", "ListarPruebasParaElNadador", "inscrito", new { MeetId = setup.Meetid, afiliadoId = @item.afiliado.InscripcionId }, new { @class = "btn btn-warning" })
-                                                            }                                                           
+                                                            }
+                                                            
                                                         </li>                                                       
                                                         <li>
-                                                            <button  class="Postas btn btn-danger" data-afiliado=@item.afiliado.InscripcionId data-meet="@setup.Torneo.Meetid">Inscribir solo para postas</button>
+                                                            @if (item.TieneMulta)
+                                                            {
+                                                                <button class="btn btn-primary">Este nadador tiene multa</button>
+                                                            }
+                                                            else
+                                                            {
+                                                                <button class="Postas btn btn-danger" data-afiliado=@item.afiliado.InscripcionId data-meet="@setup.Torneo.Meetid">Inscribir solo para postas</button>
+                                                            }
                                                         </li> 
                                                         @if (item.YaEstaInscrito)
                                                         {
