@@ -46,6 +46,13 @@
           <Property Name="AntiguoId" Type="int" Nullable="false" />
           <Property Name="Detalle" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Apagado">
+          <Key>
+            <PropertyRef Name="ConfiguraId" />
+          </Key>
+          <Property Name="ConfiguraId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Apagado" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Asociaciones">
           <Key>
             <PropertyRef Name="AsociacionId" />
@@ -1012,6 +1019,7 @@ advertencia 6013: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Hoja2' no tiene de
           <Property Name="EdadMinima" Type="int" Nullable="false" />
           <Property Name="Grupal" Type="bit" Nullable="false" />
           <Property Name="CantidadParticipanes" Type="int" Nullable="false" />
+          <Property Name="NumeroSaltos" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="OtroGrupal">
           <Key>
@@ -1317,6 +1325,18 @@ advertencia 6013: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Records' no tiene 
           <Property Name="Rol" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Detalle" Type="varchar" MaxLength="150" Nullable="false" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Saltos' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Saltos">
+          <Property Name="Codigo" Type="float" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="255" />
+          <Property Name="A" Type="float" />
+          <Property Name="B" Type="float" />
+          <Property Name="C" Type="float" />
+          <Property Name="D" Type="float" />
+          <Property Name="Altura" Type="float" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
         <EntityType Name="Sesion">
           <Key>
             <PropertyRef Name="SessionId" />
@@ -1372,6 +1392,8 @@ advertencia 6013: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Records' no tiene 
           <Property Name="PermiteSinMarca" Type="bit" Nullable="false" />
           <Property Name="UsaMarcaMaxima" Type="bit" Nullable="false" />
           <Property Name="Debutantes" Type="bit" Nullable="false" />
+          <Property Name="Masters" Type="bit" Nullable="false" />
+          <Property Name="FechaMarcas" Type="date" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Suscritos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -3033,6 +3055,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySet Name="Afiliado" EntityType="Self.Afiliado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Alertas" EntityType="Self.Alertas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Antiguo" EntityType="Self.Antiguo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Apagado" EntityType="Self.Apagado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Asociaciones" EntityType="Self.Asociaciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATFDeportista" EntityType="Self.ATFDeportista" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ATFExpediente" EntityType="Self.ATFExpediente" Schema="dbo" store:Type="Tables" />
@@ -3734,6 +3757,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySet Name="Afiliado" EntityType="DB_9B1F4C_comentariosModel.Afiliado" />
           <EntitySet Name="Alertas" EntityType="DB_9B1F4C_comentariosModel.Alertas" />
           <EntitySet Name="Antiguo" EntityType="DB_9B1F4C_comentariosModel.Antiguo" />
+          <EntitySet Name="Apagado" EntityType="DB_9B1F4C_comentariosModel.Apagado" />
           <EntitySet Name="Asociaciones" EntityType="DB_9B1F4C_comentariosModel.Asociaciones" />
           <EntitySet Name="ATFDeportista" EntityType="DB_9B1F4C_comentariosModel.ATFDeportista" />
           <EntitySet Name="ATFExpediente" EntityType="DB_9B1F4C_comentariosModel.ATFExpediente" />
@@ -4287,6 +4311,13 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <Property Name="Detalle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Entrenadores" Relationship="DB_9B1F4C_comentariosModel.FK_Entrenadores_Antiguo" FromRole="Antiguo" ToRole="Entrenadores" />
           <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_comentariosModel.FK_Inscripciones_Antiguo" FromRole="Antiguo" ToRole="Inscripciones" />
+        </EntityType>
+        <EntityType Name="Apagado">
+          <Key>
+            <PropertyRef Name="ConfiguraId" />
+          </Key>
+          <Property Name="ConfiguraId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Apagado1" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Asociaciones">
           <Key>
@@ -5099,6 +5130,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <Property Name="EdadMinima" Type="Int32" Nullable="false" />
           <Property Name="Grupal" Type="Boolean" Nullable="false" />
           <Property Name="CantidadParticipanes" Type="Int32" Nullable="false" />
+          <Property Name="NumeroSaltos" Type="Int32" Nullable="false" />
           <NavigationProperty Name="OtroEntradas" Relationship="DB_9B1F4C_comentariosModel.FK_OtroEntradas_OtroEventos" FromRole="OtroEventos" ToRole="OtroEntradas" />
           <NavigationProperty Name="OtroTorneo" Relationship="DB_9B1F4C_comentariosModel.FK_OtroEventos_OtroTorneo" FromRole="OtroEventos" ToRole="OtroTorneo" />
           <NavigationProperty Name="OtroGrupal" Relationship="DB_9B1F4C_comentariosModel.FK_OtroGrupal_OtroEventos" FromRole="OtroEventos" ToRole="OtroGrupal" />
@@ -5475,6 +5507,8 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <Property Name="PermiteSinMarca" Type="Boolean" Nullable="false" />
           <Property Name="UsaMarcaMaxima" Type="Boolean" Nullable="false" />
           <Property Name="Debutantes" Type="Boolean" Nullable="false" />
+          <Property Name="Masters" Type="Boolean" Nullable="false" />
+          <Property Name="FechaMarcas" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="TipoTorneo" Relationship="DB_9B1F4C_comentariosModel.FK__SetupTorn__TipoI__2AA05119" FromRole="SetupTorneo" ToRole="TipoTorneo" />
           <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_comentariosModel.FK_SetupTorneo_Torneo" FromRole="SetupTorneo" ToRole="Torneo" />
         </EntityType>
@@ -7436,6 +7470,14 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Apagado">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Apagado">
+              <MappingFragment StoreEntitySet="Apagado">
+                <ScalarProperty Name="Apagado1" ColumnName="Apagado" />
+                <ScalarProperty Name="ConfiguraId" ColumnName="ConfiguraId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Asociaciones">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Asociaciones">
               <MappingFragment StoreEntitySet="Asociaciones">
@@ -8189,6 +8231,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySetMapping Name="OtroEventos">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.OtroEventos">
               <MappingFragment StoreEntitySet="OtroEventos">
+                <ScalarProperty Name="NumeroSaltos" ColumnName="NumeroSaltos" />
                 <ScalarProperty Name="CantidadParticipanes" ColumnName="CantidadParticipanes" />
                 <ScalarProperty Name="Grupal" ColumnName="Grupal" />
                 <ScalarProperty Name="EdadMinima" ColumnName="EdadMinima" />
@@ -8527,6 +8570,8 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySetMapping Name="SetupTorneo">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.SetupTorneo">
               <MappingFragment StoreEntitySet="SetupTorneo">
+                <ScalarProperty Name="FechaMarcas" ColumnName="FechaMarcas" />
+                <ScalarProperty Name="Masters" ColumnName="Masters" />
                 <ScalarProperty Name="Debutantes" ColumnName="Debutantes" />
                 <ScalarProperty Name="UsaMarcaMaxima" ColumnName="UsaMarcaMaxima" />
                 <ScalarProperty Name="PermiteSinMarca" ColumnName="PermiteSinMarca" />

@@ -205,6 +205,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InscritoController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MastersController.cs" />
     <Compile Include="Controllers\OtroTorneoController.cs" />
     <Compile Include="Controllers\TorneoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -233,6 +234,7 @@
     <Compile Include="ViewModels\Inscrito\NadadorPruebaViewModel.cs" />
     <Compile Include="ViewModels\Inscrito\pruebasViewModel.cs" />
     <Compile Include="ViewModels\Inscrito\SesionViewModel.cs" />
+    <Compile Include="ViewModels\Masters\NadadorMasterViewModel.cs" />
     <Compile Include="ViewModels\OtraInscripcion\DeportistaViewModel.cs" />
     <Compile Include="ViewModels\OtraInscripcion\EventoInscritoViewModel.cs" />
     <Compile Include="ViewModels\OtraInscripcion\ListadoDeportistasParaSeleccionarlos.cs" />
@@ -596,6 +598,9 @@
     <Content Include="Views\OtroTorneo\YaInscritosPolo.cshtml" />
     <Content Include="Views\OtroTorneo\ListadoPolistas.cshtml" />
     <Content Include="Views\Exportar\ExportarOtroResumen.cshtml" />
+    <Content Include="Views\Masters\GetNadadores.cshtml" />
+    <Content Include="Views\Masters\ListarMasters.cshtml" />
+    <Content Include="Views\Masters\ListarPruebasParaElNadador.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

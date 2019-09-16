@@ -139,7 +139,6 @@ namespace FDPN.Controllers
             return PartialView("_mastersdestacado", VM);
         }
 
-
         public ActionResult Nadadores(string sortOrder, string currentFilter, string searchString, string letra, int? page)
         {
             ViewBag.CurrentSort = sortOrder;

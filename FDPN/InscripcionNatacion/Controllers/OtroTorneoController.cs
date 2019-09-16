@@ -279,8 +279,8 @@ namespace InscripcionNatacion.Controllers
             IndexPoloViewModel VM = new IndexPoloViewModel
             {
                 Eventopolo = new List<EventoPolo>(),
-        };
-            foreach(var evento in eventos)
+            };
+            foreach (var evento in eventos)
             {
                 EventoPolo epolo = new EventoPolo
                 {
@@ -289,7 +289,28 @@ namespace InscripcionNatacion.Controllers
                 };
                 VM.Eventopolo.Add(epolo);
             }
-           
+
+
+            return View(VM);
+        }
+
+        public ActionResult IndexClavados(int setupid)
+        {
+            List<OtroEventos> eventos = GetEventosGrupales(setupid);
+            IndexPoloViewModel VM = new IndexPoloViewModel
+            {
+                Eventopolo = new List<EventoPolo>(),
+            };
+            foreach (var evento in eventos)
+            {
+                EventoPolo epolo = new EventoPolo
+                {
+                    EventNombre = evento.EventNombre + " " + evento.EventSex + " Edad: " + evento.EdadMinima + " - " + evento.EdadMaxima,
+                    EventoId = evento.EventoId,
+                };
+                VM.Eventopolo.Add(epolo);
+            }
+
 
             return View(VM);
         }

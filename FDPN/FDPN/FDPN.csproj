@@ -304,6 +304,9 @@
     <Compile Include="Models\Antiguo.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Apagado.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Asociaciones.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
@@ -927,6 +930,7 @@
     <Content Include="Models\ModellAfiliaciones.edmx.diagram">
       <DependentUpon>ModellAfiliaciones.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\pdf\formato inscripcion.xls" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

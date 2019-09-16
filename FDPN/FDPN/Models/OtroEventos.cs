@@ -30,6 +30,7 @@ namespace FDPN.Models
         public int EdadMinima { get; set; }
         public bool Grupal { get; set; }
         public int CantidadParticipanes { get; set; }
+        public int NumeroSaltos { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OtroEntradas> OtroEntradas { get; set; }

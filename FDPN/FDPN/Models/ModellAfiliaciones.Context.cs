@@ -29,6 +29,7 @@ namespace FDPN.Models
         public virtual DbSet<Afiliado> Afiliado { get; set; }
         public virtual DbSet<Alertas> Alertas { get; set; }
         public virtual DbSet<Antiguo> Antiguo { get; set; }
+        public virtual DbSet<Apagado> Apagado { get; set; }
         public virtual DbSet<Asociaciones> Asociaciones { get; set; }
         public virtual DbSet<ATFDeportista> ATFDeportista { get; set; }
         public virtual DbSet<ATFExpediente> ATFExpediente { get; set; }

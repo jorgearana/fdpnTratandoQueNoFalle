@@ -100,10 +100,11 @@ namespace ImportarInicial
                 pruebasXEquipo = Int32.Parse(txtPruebasXEquipo.Text),
                 SinMarca = Int32.Parse(txtPruebasSinMarca.Text),
                 Meetid = torneo.Meetid,
-                PorLigas= chkPorLigas.Checked,
-                PermiteNoAfiliados= chkNoAfiliado.Checked,
-                PermiteSinMarca=chkNoMarca.Checked,
-                UsaMarcaMaxima=chkConMarcaMaxima.Checked,                
+                PorLigas = chkPorLigas.Checked,
+                PermiteNoAfiliados = chkNoAfiliado.Checked,
+                PermiteSinMarca = chkNoMarca.Checked,
+                UsaMarcaMaxima = chkConMarcaMaxima.Checked,
+                Masters = chkMasters.Checked,
             };
             db.SetupTorneo.Add(setup);
             db.SaveChanges();

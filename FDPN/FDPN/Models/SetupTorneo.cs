@@ -26,6 +26,8 @@ namespace FDPN.Models
         public bool PermiteSinMarca { get; set; }
         public bool UsaMarcaMaxima { get; set; }
         public bool Debutantes { get; set; }
+        public bool Masters { get; set; }
+        public System.DateTime FechaMarcas { get; set; }
     
         public virtual TipoTorneo TipoTorneo { get; set; }
         public virtual Torneo Torneo { get; set; }

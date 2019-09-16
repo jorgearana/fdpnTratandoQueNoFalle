@@ -1,0 +1,117 @@
+﻿@model List<InscripcionNatacion.ViewModels.Masters. NadadorMasterViewModel>
+@{
+    int MeetId = ViewBag.meetid;
+}
+<table id="dataTables1" class="table table-hover display  datatabla " cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>
+                DNI
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Apellidos
+            </th>
+
+            <th>
+                Fecha de nacimiento
+            </th>
+            <th>
+                Sexo
+            </th>
+
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            string clase = "";
+            if (item.TieneResultado)
+            {
+                clase = "YaTieneTiempos";
+            }
+            if (item.YaEstaInscrito)
+            {
+                clase = "YaEstaInscrito";
+            }
+            if (item.TieneMulta)
+            {
+                clase = "tienemulta";
+            }
+
+
+            <tr class="@clase">
+                <td>
+                    @Html.DisplayFor(modelItem => item.DNI)
+                    @if (item.TieneResultado)
+                    {
+                        <i class="fa fa-hand-paper-o fa-2x" style="color:blue"></i>
+                    }
+                    @if (item.YaEstaInscrito)
+                    {
+                        <i class="fa fa-hand-peace-o fa-2x" style="color:red"></i>
+                    }
+                    @if (item.TieneMulta)
+                    {
+                        <i class="fa fa-hand-paper-o fa-2x" style="color:black"></i>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido_Paterno)
+                </td>
+
+                <td>
+                    <span class="fechaordenada">@item.Fecha_de_nacimiento.ToString("yyyy/MM/dd")</span> @item.Fecha_de_nacimiento.ToShortDateString()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sexo)
+                </td>
+
+                <td>
+                    <div class="dropdown">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Quiero
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    @if ( !item.TieneMulta)
+                                    {
+                                        @Html.ActionLink("Inscribir deportista", "ListarPruebasParaElNadador", "Masters", new { MeetId = MeetId, inscripcionid = @item.InscripcionId }, new { @class = "btn btn-warning" })
+                                    }
+
+                                </li>
+                                <li>
+                                    @if (item.TieneMulta)
+                                    {
+                                        <button class="btn btn-primary">Este nadador tiene multa</button>
+                                    }
+                                    else
+                                    {
+                                        <button class="Postas btn btn-danger" data-afiliado=@item.InscripcionId data-meet="@MeetId">Inscribir solo para postas</button>
+                                    }
+                                </li>
+                                @if (item.YaEstaInscrito)
+                                {
+                                    <li>
+                                        @Html.ActionLink("Retirar del torneo", "RetirarDelTorneo", "Masters", new { MeetId = MeetId, inscripcionid = @item.InscripcionId }, new { @class = "btn btn-danger" })
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

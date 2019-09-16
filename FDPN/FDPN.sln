@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29209.152
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FDPN", "FDPN\FDPN.csproj", "{78955757-CD90-4EF7-BDEA-2AAFB9BD9B94}"
 EndProject
@@ -12,6 +12,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InscripcionNatacion", "InscripcionNatacion\InscripcionNatacion.csproj", "{10642C27-2F89-46EF-993D-35CAAE58A5B6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportarInicial", "ImportarInicial\ImportarInicial.csproj", "{6A51D281-7590-4EDB-97FB-155FACF45514}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Borrar", "Borrar\Borrar.csproj", "{093DF81F-A757-4B9F-B433-D5C31BE93146}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "AdministradorDeDatos", "AdministradorDeDatos\AdministradorDeDatos\AdministradorDeDatos.vbproj", "{6F9451E8-54A1-404C-9481-0FFAE2B3DAA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{6A51D281-7590-4EDB-97FB-155FACF45514}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A51D281-7590-4EDB-97FB-155FACF45514}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A51D281-7590-4EDB-97FB-155FACF45514}.Release|Any CPU.Build.0 = Release|Any CPU
+		{093DF81F-A757-4B9F-B433-D5C31BE93146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{093DF81F-A757-4B9F-B433-D5C31BE93146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{093DF81F-A757-4B9F-B433-D5C31BE93146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{093DF81F-A757-4B9F-B433-D5C31BE93146}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F9451E8-54A1-404C-9481-0FFAE2B3DAA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F9451E8-54A1-404C-9481-0FFAE2B3DAA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F9451E8-54A1-404C-9481-0FFAE2B3DAA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F9451E8-54A1-404C-9481-0FFAE2B3DAA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

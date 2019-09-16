@@ -21,24 +21,39 @@ namespace InscripcionNatacion.Controllers
 
         public ActionResult index(string returnUrl)
         {
-            //return RedirectToAction("Actualizandodatos");
-            if (repository.validarUsuario())
+            Apagado apagado = db.Apagado.FirstOrDefault();
+            if (apagado.Apagado1)
             {
-                return RedirectToAction("torneos");
+                return RedirectToAction("Actualizandodatos");
             }
             else
             {
-                return RedirectToAction("Login");
+                if (repository.validarUsuario())
+                {
+                    return RedirectToAction("torneos");
+                }
+                else
+                {
+                    return RedirectToAction("Login");
+                }
             }
         }
 
         [HttpGet]
         public ActionResult Login(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
-            Club club = Session["Club"] as Club;
-            Usuario usuario = Session["Usuario"] as Usuario;
-            return View();
+            Apagado apagado = db.Apagado.FirstOrDefault();
+            if (apagado.Apagado1)
+            {
+                return RedirectToAction("Actualizandodatos");
+            }
+            else
+            {
+                ViewBag.ReturnUrl = returnUrl;
+                Club club = Session["Club"] as Club;
+                Usuario usuario = Session["Usuario"] as Usuario;
+                return View();
+            }
         }
           
         [HttpPost]
@@ -85,6 +100,7 @@ namespace InscripcionNatacion.Controllers
                     FechaFin = dt,
                     Tieneinscritos = false,
                     Start = setup.Torneo.Meet_start ?? dtNow,
+                    Masters = setup.Masters,
                 };
                 torneoviewmodel.Tieneinscritos = db.Equipos.Any(x => x.MeetId == torneoviewmodel.torneo.Meetid && x.Team_abbr == usuario.Club.Iniciales);
                 VM.Add(torneoviewmodel);
