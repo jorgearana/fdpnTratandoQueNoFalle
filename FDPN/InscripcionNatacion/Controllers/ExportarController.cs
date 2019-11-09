@@ -305,7 +305,7 @@ namespace InscripcionNatacion.Controllers
 
         public string EventEntryE1(Entradas entrada, atletas atleta, Eventos evento, MultiEdad multiedad, string letra)
         {
-            string number = FormatearString((evento.Event_ptr + letra), 4);
+            string number = FormatearString((evento.Event_no + letra), 4);
 
             string sex = atleta.Ath_Sex;
             string Nro = AgrandarNumero(atleta.Ath_no, 5);
@@ -521,9 +521,8 @@ namespace InscripcionNatacion.Controllers
                     Nadador.detalle.Add(detalle);
                 }
                 VM.resumenentradas.Add(Nadador);
-                
-                ViewBag.equipo = equipo;
             }
+            ViewBag.equipo = equipo.Team_name;
             return View(VM);
         }
 

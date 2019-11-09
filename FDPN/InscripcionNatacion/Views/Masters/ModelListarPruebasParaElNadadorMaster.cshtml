@@ -1,0 +1,135 @@
+﻿
+@model InscripcionNatacion.ViewModels.Inscrito.ListadoInscritoViewModel
+@{
+    string path = "http://afiliaciones.fdpn.org/Content/Images/";
+    FDPN.Models.SetupTorneo setup = ViewBag.setup;
+    FDPN.Models.Rol rol = Session["Rol"] as FDPN.Models.Rol;
+}
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title"> </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="widget-head-color-box navy-bg p-lg text-center">
+                    <div class="m-b-md">
+                        <h3 class="font-bold no-margins">
+                            @Model.afiliado.Afiliado.Nombre
+                        </h3>
+                        <h3 class="font-bold no-margins">
+                            @Model.afiliado.Afiliado.Apellido_Paterno
+                        </h3>
+                        <h4>@Model.afiliado.Afiliado.Fecha_de_nacimiento.ToString("dd / MMMM / yyyy")</h4>
+                    </div>
+                    <img src=@Url.Content(path + @Model.afiliado.RutaFoto + ".jpg") class="rounded m-b-md fotocarnet" alt="No tiene foto en la aplicación de afiliaciones">
+                    <h4>Código: @Model.afiliado.DNI</h4>
+                    <h6>código interno: @Model.afiliado.InscripcionId</h6>
+                    @if (Model.afiliado.Afiliado.Sexo == "F")
+                    {
+                        <h2>DAMA</h2>
+                    }
+                    else
+                    {
+                        <h2>VARÓN</h2>
+                    }
+                </div>
+                <h2>Datos de la inscripción</h2>
+                <small>Pruebas máximas en las que puede inscribirse.</small>
+                <ul class="list-group clear-list m-t">
+                    <li class="list-group-item">
+                        <span class="float-right label label-danger" id="permitido">@setup.pruebasXsesion</span>
+                        <span class="">Pruebas Máximas por sesión</span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="float-right label label-danger" id="PruebasTotales">
+                            @setup.pruebasXtorneo
+                        </span>
+                        <span class="">Número máximos de pruebas en el torneo</span>
+                    </li>
+
+                    <li class="dropdown-divider"></li>
+                    <li class="list-group-item">
+                        <span class="float-right label label-warning" id="inscripciontotal">
+                            @Model.PruebasInscritas
+                        </span>
+                        <span class="">Pruebas inscritas totales</span>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="col-lg-8">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h3>Relación de pruebas en las que puede inscribirse</h3>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table id="dataTables1" class="table table-hover display seleccion datatabla dataTablesmasters" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Sesión</th>
+                                    <th>Prueba</th>
+                                    <th>Distancia</th>
+                                    <th>Estilo</th>
+                                    <th>Edad</th>
+                                    <th>Marca</th>
+                                    <th>Piscina</th>
+                                    <th>Torneo</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var @item in Model.listaDeEventos)
+                                {
+                                    var style = "";
+                                    var clase = "";
+                                    if (!item.Cumple)
+                                    {
+                                        clase = "nocumplemarca";
+                                    }
+
+                                    if (item.entradayainscrita)
+                                    {
+                                        style = "selected";
+                                    }
+                                    else
+                                    {
+                                        style = "";
+                                    }
+                                    <tr class="@style">
+                                        @*<tr>*@
+                                        <td class=@("sesion" + item.sesion.ToString())>@item.sesion</td>
+                                        <td>@item.evento.Event_no</td>
+                                        <td>@item.evento.Event_dist </td>
+                                        <td>@item.estilo</td>
+                                        <td>@item.evento.Low_age - @item.evento.High_Age</td>
+                                        <td class="@clase">@item.tiempo</td>
+                                        <td>@item.PiscinaDelTiempo</td>
+                                        <td>@item.torneo</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Grabar camios</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar sin grabar</button>
+    </div>
+
+    <div style="visibility:hidden">
+        <div id="Piscina">@Model.Piscina</div>
+        <div id="InscripcionId">@Model.afiliado.InscripcionId</div>
+        <div id="MeetId">@Model.MeetId</div>
+        <div id="YaestaInscrito">@Model.YaestaInscrito</div>
+    </div>
+</div>

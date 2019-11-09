@@ -12,6 +12,7 @@ namespace InscripcionNatacion.ViewModels.Exportar
         public List<ResumenViewModel> resumenentradas { get; set; }
         public List<Delegados> delegados { get; set; }
         public List<EntrenadorInscrito> entrenadorInscritos { get; set; }
+
         public List<atletas> SoloPostas { get; set; }
     }
     public class ResumenViewModel

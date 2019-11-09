@@ -1,7 +1,8 @@
 ﻿
 @{
     ViewBag.Title = "ListarMasters";
-    string MeetName = ViewBag.MeetName
+    string MeetName = ViewBag.MeetName;
+    int meetid = ViewBag.meetid;
 }
 
 <h2>ListarMasters</h2>
@@ -9,7 +10,7 @@
 
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-6">
             <div class="ibox ">
                 <div class="ibox-title">
                     <h5>Torneo seleccionado: <strong>@MeetName</strong></h5>
@@ -17,7 +18,21 @@
                 <div class="ibox-content">
 
                     <div class="table-responsive" id="tablaListadoMasters">
-                        @Html.Action("_PreviewJaked")
+                        @Html.Action("GetNadadores")
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Listado de nadadores inscritos</h5>
+                </div>
+                <div class="ibox-content">
+
+                    <div class="table-responsive" id="tablaListadoMasters">
+                        @Html.Action("GetYaInscritos", new { MeetId = meetid })
                     </div>
 
                 </div>
@@ -25,3 +40,13 @@
         </div>
     </div>
 </div>
+
+<div id="modalInscripcionMaster" tabindex="-1" role="dialog" class="modal fade bd-example-modal-lg">
+    <div class="modal-dialog modal-Inscripciones" role="document">
+        <div id="cuerpoInscripcionMaster"></div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Content/SitioMaster.js"></script>
+}

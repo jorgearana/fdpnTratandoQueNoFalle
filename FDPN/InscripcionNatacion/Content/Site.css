@@ -253,3 +253,7 @@ table.dataTable tbody tr.selected {
     -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
     box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
 }
+
+.modal-Inscripciones {
+    max-width: 1200px;
+}

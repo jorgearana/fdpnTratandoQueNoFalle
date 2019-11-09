@@ -19,7 +19,7 @@ namespace InscripcionNatacion.Controllers
             EscogerEntrenadorViewModel VM = new EscogerEntrenadorViewModel
             {
                 torneo = db.Torneo.Where(x => x.Meetid == MeetId).FirstOrDefault(),
-                entrenadores = db.Entrenadores.Where(x => x.Clubid == usuario.ClubId).ToList(),
+                entrenadores = db.Entrenadores.Where(x => x.Clubid == usuario.ClubId && x.EstadoId ==3).ToList(),
             };
             return View(VM);
         }

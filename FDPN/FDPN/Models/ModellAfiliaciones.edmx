@@ -1970,6 +1970,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_atletas_Equipos1">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="1" />
+          <End Role="atletas" Type="Self.atletas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="TeamId" />
+            </Principal>
+            <Dependent Role="atletas">
+              <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_atletas_Torneo">
           <End Role="Torneo" Type="Self.Torneo" Multiplicity="1" />
           <End Role="atletas" Type="Self.atletas" Multiplicity="*" />
@@ -3387,6 +3399,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             <End Role="Equipos" EntitySet="Equipos" />
             <End Role="atletas" EntitySet="atletas" />
           </AssociationSet>
+          <AssociationSet Name="FK_atletas_Equipos1" Association="Self.FK_atletas_Equipos1">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="atletas" EntitySet="atletas" />
+          </AssociationSet>
           <AssociationSet Name="FK_atletas_Torneo" Association="Self.FK_atletas_Torneo">
             <End Role="Torneo" EntitySet="Torneo" />
             <End Role="atletas" EntitySet="atletas" />
@@ -3921,6 +3937,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             <End Role="Equipos" EntitySet="Equipos" />
             <End Role="atletas" EntitySet="atletas" />
           </AssociationSet>
+          <AssociationSet Name="FK_atletas_Equipos1" Association="DB_9B1F4C_comentariosModel.FK_atletas_Equipos1">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="atletas" EntitySet="atletas" />
+          </AssociationSet>
           <AssociationSet Name="FK_atletas_Torneo" Association="DB_9B1F4C_comentariosModel.FK_atletas_Torneo">
             <End Role="Torneo" EntitySet="Torneo" />
             <End Role="atletas" EntitySet="atletas" />
@@ -4424,6 +4444,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <Property Name="Meetid" Type="Int32" Nullable="false" />
           <Property Name="TeamId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Equipos" Relationship="DB_9B1F4C_comentariosModel.FK_atletas_Equipos" FromRole="atletas" ToRole="Equipos" />
+          <NavigationProperty Name="Equipos1" Relationship="DB_9B1F4C_comentariosModel.FK_atletas_Equipos1" FromRole="atletas" ToRole="Equipos" />
           <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_comentariosModel.FK_atletas_Torneo" FromRole="atletas" ToRole="Torneo" />
         </EntityType>
         <EntityType Name="Banners">
@@ -4761,6 +4782,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <Property Name="TeamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MeetId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="atletas" Relationship="DB_9B1F4C_comentariosModel.FK_atletas_Equipos" FromRole="Equipos" ToRole="atletas" />
+          <NavigationProperty Name="atletas1" Relationship="DB_9B1F4C_comentariosModel.FK_atletas_Equipos1" FromRole="Equipos" ToRole="atletas" />
           <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_comentariosModel.FK_Equipos_Torneo" FromRole="Equipos" ToRole="Torneo" />
           <NavigationProperty Name="InscripcionResponsable" Relationship="DB_9B1F4C_comentariosModel.FK_InscripcionResponsable_Equipos" FromRole="Equipos" ToRole="InscripcionResponsable" />
         </EntityType>
@@ -6388,6 +6410,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_atletas_Equipos">
+          <End Type="DB_9B1F4C_comentariosModel.Equipos" Role="Equipos" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.atletas" Role="atletas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="TeamId" />
+            </Principal>
+            <Dependent Role="atletas">
+              <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_atletas_Equipos1">
           <End Type="DB_9B1F4C_comentariosModel.Equipos" Role="Equipos" Multiplicity="1" />
           <End Type="DB_9B1F4C_comentariosModel.atletas" Role="atletas" Multiplicity="*" />
           <ReferentialConstraint>

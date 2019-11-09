@@ -1,0 +1,58 @@
+﻿@model FDPN.Models.Inscripciones
+@{
+    ViewBag.Title = "No tiene DNI";
+    int MeetId = ViewBag.Meetid;
+}
+
+
+<section class="container features landing-page">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <div class="navy-line"></div>
+            <h1>Posible error<br /> <span class="navy">No encontré su DNI</span> </h1>
+            @if (Model.Afiliado.Sexo == "F")
+            {
+                <p>Sin el DNI no es posible encontrar los tiempos las marcas de esta deportista </p>
+            }
+            else
+            {
+                <p>Sin el DNI no es posible encontrar los tiempos las marcas de este deportista </p>
+            }
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 text-center wow fadeInLeft">
+            <div>
+                <i class="fa fa-user features-icon"></i>
+                <h2>@Model.Afiliado.Nombre</h2>
+                <h2>@Model.Afiliado.Apellido_Paterno</h2>
+                <p> Nadador</p>
+            </div>
+            <div class="m-t-lg">
+                <i class="fa fa-address-book features-icon"></i>
+                <h2>DNI: @Model.Afiliado.DNI</h2>
+                <h2>@Model.Afiliado.Fecha_de_nacimiento.ToString("dd/MM/yyyy")</h2>
+                <p>Datos</p>
+            </div>
+        </div>
+        <div class="col-md-6 text-center  wow zoomIn">
+            <img src="~/Content/img/inscripcion natacion.png" />
+            @*<img src="img/landing/perspective.png" alt="dashboard" class="img-fluid">*@
+            @Html.ActionLink("Regresar al listado", "Listarnadadores", "Inscrito", new { Meetid = MeetId }, new { @class = "btn btn-primary" })
+        </div>
+        <div class="col-md-3 text-center wow fadeInRight">
+            <div>
+                <i class="fa fa-search features-icon"></i>
+                <h2>No fue posible encontrar los tiempos de este nadador</h2>
+                <p>Podría ser que sus DNI no esté en la BD de tiempos oficiales.</p>
+            </div>
+            <div class="m-t-lg">
+                <i class="fa fa-whatsapp features-icon"></i>
+                <h2>980599023</h2>
+                <p>Contacte al administrador de la página.</p>
+            </div>
+        </div>
+    </div>
+  
+</section>

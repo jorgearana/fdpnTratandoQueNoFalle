@@ -57,6 +57,7 @@ namespace FDPN.Models
         public int TeamId { get; set; }
     
         public virtual Equipos Equipos { get; set; }
+        public virtual Equipos Equipos1 { get; set; }
         public virtual Torneo Torneo { get; set; }
     }
 }

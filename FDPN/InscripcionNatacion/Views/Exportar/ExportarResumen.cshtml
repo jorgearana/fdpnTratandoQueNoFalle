@@ -6,7 +6,7 @@
     string path = Url.Content("http://afiliaciones.jorgearananeyra.com/Content/Images/");
     string foto = "";
     string torneo = ViewBag.torneo;
-    FDPN.Models.Equipos equipo = ViewBag.equipo;
+    string equipo = ViewBag.equipo;
 }
 
 
@@ -43,7 +43,7 @@
     </div>
 
     <div class="container">
-        <h5 style="margin-left:5px;" class="exportar"><small>Club:</small> @equipo.Team_name</h5>
+        <h5 style="margin-left:5px;" class="exportar"><small>Club: </small> @equipo</h5>
         <div class="row">
 
 
@@ -70,7 +70,7 @@
                                         {
 
                                             <tr>
-                                                <td>@detalle.entrada.Event_ptr</td>
+                                                <td>@detalle.evento.Event_no</td>
                                                 <td>@detalle.evento.Event_gender - @detalle.evento.Event_dist @detalle.estilo.Estilo </td>
                                                 <td>@detalle.Marca </td>
                                             </tr>
@@ -89,41 +89,47 @@
             <br />
         </div>
     </div>
-
+    <hr />
 
     <div class="navbar navbar-dark bg-primary navbar-fixed-top">
         <div class="row">
-            <h4>Relación de entrenadores y delegados inscritos </h4>
+            <h4>Relación de entrenadores afiliados inscritos </h4>
         </div>
 
     </div>
-
+    <hr />
     <div class="container">
-       
-                <h5 style="margin-left:5px;" class="exportar">Entrenadores</h5>
-                @************************ entrenadores ******************@
-                <ul>
-                    @foreach (var item in Model.entrenadorInscritos)
-                    {
-                    <li> @item.Entrenadores.Nombre @item.Entrenadores.Paterno</li>
-                    }
-                    </ul>
-              
-           
-                <h5 style="margin-left:5px;" class="exportar">Delegados</h5>
-                @************************ delegados ******************@
-                <ul>
-                    @foreach (var item in Model.delegados)
-                    {
-                    <li> @item.Nombre @item.Apellido</li>
-                    }
-                </ul>
-               
-           
+
+        <h5 style="margin-left:5px;" class="exportar">Entrenadores</h5>
+        @************************ entrenadores ******************@
+        <ul>
+            @foreach (var item in Model.entrenadorInscritos)
+            {
+                <li> @item.Entrenadores.Nombre @item.Entrenadores.Paterno</li>
+            }
+        </ul>
+    </div>
+    <div class="navbar navbar-dark bg-primary navbar-fixed-top">
+        <div class="row">
+            <h4>Relación de delegados inscritos </h4>
         </div>
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </div>
+    <hr />
+    <div class="container">
+        <h5 style="margin-left:5px;" class="exportar">Delegados</h5>
+        @************************ delegados ******************@
+        <ul>
+            @foreach (var item in Model.delegados)
+            {
+                <li> @item.Nombre @item.Apellido</li>
+            }
+        </ul>
+
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 </body>
 </html>

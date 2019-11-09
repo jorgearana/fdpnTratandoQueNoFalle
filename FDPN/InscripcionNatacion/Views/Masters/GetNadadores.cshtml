@@ -1,7 +1,9 @@
 ﻿@model List<InscripcionNatacion.ViewModels.Masters. NadadorMasterViewModel>
 @{
-    int MeetId = ViewBag.meetid;
+   
+    int meetid = ViewBag.meetid;
 }
+  
 <table id="dataTables1" class="table table-hover display  datatabla " cellspacing="0" width="100%">
     <thead>
         <tr>
@@ -80,29 +82,31 @@
                                 Quiero
                             </button>
                             <ul class="dropdown-menu">
-                                <li>
-                                    @if ( !item.TieneMulta)
-                                    {
-                                        @Html.ActionLink("Inscribir deportista", "ListarPruebasParaElNadador", "Masters", new { MeetId = MeetId, inscripcionid = @item.InscripcionId }, new { @class = "btn btn-warning" })
-                                    }
 
-                                </li>
+                                @if (!item.TieneMulta)
+                                {
+                                    if (item.YaEstaInscrito)
+                                    {
+                                        <li>
+                                            @Html.ActionLink("Retirar del torneo", "RetirarDelTorneo", "Masters", new { MeetId = meetid, inscripcionid = @item.InscripcionId }, new { @class = "btn btn-danger" })
+                                        </li>
+                                    }
+                            <li>
+                                @Html.ActionLink("Inscribir deportista", "ListarPruebasParaElNadadorMaster", "Masters", new { MeetId = meetid, inscripcionid = @item.InscripcionId }, new { @class = "btn btn-danger", target ="blank"})
+                                @*<button data-MeetId=MeetId data-inscripcionid=@item.InscripcionId class="btn btn-warning BtnInscribirMaster">Inscribir deportista</button>*@
+                            </li>
+                                }
                                 <li>
                                     @if (item.TieneMulta)
                                     {
                                         <button class="btn btn-primary">Este nadador tiene multa</button>
                                     }
-                                    else
+                                    @*else
                                     {
                                         <button class="Postas btn btn-danger" data-afiliado=@item.InscripcionId data-meet="@MeetId">Inscribir solo para postas</button>
-                                    }
+                                    }*@
                                 </li>
-                                @if (item.YaEstaInscrito)
-                                {
-                                    <li>
-                                        @Html.ActionLink("Retirar del torneo", "RetirarDelTorneo", "Masters", new { MeetId = MeetId, inscripcionid = @item.InscripcionId }, new { @class = "btn btn-danger" })
-                                    </li>
-                                }
+
                             </ul>
                         </div>
                     </div>
@@ -114,4 +118,4 @@
         }
     </tbody>
 </table>
-
+<div style="visibility:hidden" id="MeetId">@meetid</div>

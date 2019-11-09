@@ -12,15 +12,14 @@
 			MyProject
 				DataModels
 					MyDatabase.tt
-					
+
 		2. Modify the connection settings below to connect to your database.
 
 		3. Add connection string to the web/app.config file:
 
 			<connectionStrings>
 				<add name="MyDatabase" providerName="Access"
-					connectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=MyDatabase.mdb;
-					Locale Identifier=1033;Jet OLEDB:Engine Type=5;Persist Security Info=True" />
+					connectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=MyDatabase.mdb;Locale Identifier=1033;Jet OLEDB:Engine Type=5;Persist Security Info=True" />
 			</connectionStrings>
 
 		4. To access your database use the following code:
@@ -38,12 +37,13 @@
 		5. See more at https://github.com/linq2db/t4models
 	*/
 
-	NamespaceName = "DataModels";
-
+	NamespaceName = "Models";
 	
 	LoadAccessMetadata(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=c:\swmeets7\swmeets5\DATABASEMEET.mdb;
          Jet OLEDB:Database Password=TeP69s)lAd_mW-(J_72u;");
 
+	
+//	LoadAccessMetadata(string connectionString);
 
 	GenerateModel();
 #>

@@ -99,7 +99,9 @@ namespace FDPN.Controllers
                         break;
                 }
 
-                 resultadomejor = db.RESULTSMasters.Where(x => x.AthleteMasters.Sex == sexo && x.COURSE != "Y" && x.AthleteMasters.Age >= edadminima && x.AthleteMasters.Age <= edadmaxima && x.MEET == torneoAMostrar.Meet).OrderByDescending(x => x.PFina).FirstOrDefault();
+                 resultadomejor = db.RESULTSMasters.Where(x => x.AthleteMasters.Sex == sexo 
+                 && x.COURSE != "Y" && x.AthleteMasters.Age >= edadminima && x.AthleteMasters.Age <= edadmaxima 
+                 && x.MEET == torneoAMostrar.Meet && x.PLACE>0).OrderByDescending(x => x.PFina).FirstOrDefault();
 
 
                 if (resultadomejor == null || resultadomejor.PFina < 100)

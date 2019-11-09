@@ -34,7 +34,7 @@ namespace InscripcionNatacion.ViewModels.Inscrito
     public class InscritoViewModelDesSerializado
     {
         public string sesion{ get; set; }
-        public string Event_no { get; set; }
+        public string Event_ptr { get; set; }
 
 
         public string Event_dist { get; set; }

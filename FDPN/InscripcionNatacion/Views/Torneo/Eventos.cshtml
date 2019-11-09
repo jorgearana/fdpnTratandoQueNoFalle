@@ -49,63 +49,62 @@
                             </thead>
                             <tbody>
                                 @foreach (var item in Model)
-    {
-                            <tr>
-                                <td class=@("sesion" + item.Sesion.ToString())>
-                                    @Html.DisplayFor(modelItem => item.Sesion)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Evento.Event_no)
-                                </td>
+                                {
+                                    <tr>
+                                        <td class=@("sesion" + item.Sesion.ToString())>
+                                            @Html.DisplayFor(modelItem => item.Sesion)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Evento.Event_no)
+                                        </td>
 
 
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Evento.Event_gender)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Evento.Event_dist)
-                                </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Evento.Event_gender)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Evento.Event_dist)
+                                        </td>
 
-                                @switch (@item.Evento.Event_stroke)
-    {
-        case "A":
-                            <td> Libre</td>
-break;
-case "B":
-                            <td> Espalda</td>
-break;
-case "C":
-                            <td> Pecho</td>
-break;
-case "D":
-                            <td> Mariposa</td>
-break;
-case "E":
-                            <td> Combinado</td>
-break;
-}
+                                        @switch (@item.Evento.Event_stroke)
+                                        {
+                                            case "A":
+                                                <td> Libre</td>
+                                                break;
+                                            case "B":
+                                                <td> Espalda</td>
+                                                break;
+                                            case "C":
+                                                <td> Pecho</td>
+                                                break;
+                                            case "D":
+                                                <td> Mariposa</td>
+                                                break;
+                                            case "E":
+                                                <td> Combinado</td>
+                                                break;
+                                        }
 
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Evento.Low_age) - @Html.DisplayFor(modelItem => item.Evento.High_Age)
-                                </td>
-                                <td>
-                                    @item.MMlargastring
-                                </td>
-                                <td>
-                                    @item.MMCortastring
-                                </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Evento.Low_age) - @Html.DisplayFor(modelItem => item.Evento.High_Age)
+                                        </td>
+                                        <td>
+                                            @item.MMlargastring
+                                        </td>
+                                        <td>
+                                            @item.MMCortastring
+                                        </td>
 
-                            </tr>
-}
+                                    </tr>
+                                }
                             </tbody>
                         </table>
 
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
     </div>
 
 </div>
 
-              

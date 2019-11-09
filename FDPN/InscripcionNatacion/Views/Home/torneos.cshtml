@@ -61,8 +61,8 @@
 
                                                     @if (rol.Rol1 == "meet" || rol.Rol1 == "admin")
                                                     {
+                                                        <li>@Html.ActionLink("VER INSCRIPCIONES", "ListarNadadoresParaFdnp", "Inscrito", new { MeetId = item.torneo.Meetid }, null)</li>
                                                         <li>@Html.ActionLink("EXPORTAR", "CrearArchivo", "Exportar", new { MeetId = item.torneo.Meetid }, null)</li>
-
                                                         <li> <a href="#" id="btnExportarDelegados" data-meetid=@item.torneo.Meetid>EXPORTAR ENTRENADORES</a></li>
                                                     }
                                                     else
@@ -92,6 +92,8 @@
                                                                 <h3>@item.Start.ToString("dd/MMM/yyyy")</h3>
                                                                 <h4>Cierre de inscripciones</h4>
                                                                 <h3>@string.Format("{0:ddd dd MMM yyyy}", item.torneo.entry_deadline)</h3>
+                                                                <h4>Se consideran los tiempos desde </h4>
+                                                                <h3>@string.Format("{0:ddd dd MMM yyyy}", item.torneo.EntryEligibility_date)</h3>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-8">
@@ -129,7 +131,7 @@
                                 <div class="ibox ">
                                     <div class="ibox-title">
                                         <div class="alert alert-secondary" role="alert">
-                                            Masters
+                                            Masters de prueba
                                         </div>
                                         <h3>@item.torneo.Meet_name1</h3>
                                         <h5> @item.torneo.Meet_state - @item.torneo.Meet_location</h5>
@@ -140,14 +142,20 @@
                                                     Quiero
                                                 </button>
                                                 <ul class="dropdown-menu" style="width: 360px;">
+                                                    @*Borrar esta linea*@
+                                                    <li>@Html.ActionLink("INSCRIBIR", "ListarMasters", "Masters", new { MeetId = item.torneo.Meetid }, null)</li>
+
+
+
                                                     <li>@Html.ActionLink("VER DATOS", "Detalle", "torneo", new { id = item.torneo.Meetid }, null)</li>
                                                     <li>@Html.ActionLink("VER LAS PRUEBAS", "Eventos", "torneo", new { id = item.torneo.Meetid }, null)</li>
                                                     <li role="separator" class="divider"></li>
                                                     <li>@Html.ActionLink("VER LOS INSCRITOS", "ListadosPorPrueba", "Inscrito", new { MeetId = item.torneo.Meetid }, null)</li>
                                                     <li role="separator" class="divider"></li>
+                                                    <li>@Html.ActionLink("INSCRIBIR", "ListarMasters", "Masters", new { MeetId = item.torneo.Meetid }, null)</li>
+
                                                     @if (item.diferencia > 0)
                                                     {
-                                                        <li>@Html.ActionLink("INSCRIBIR", "ListarNadadores", "Inscrito", new { MeetId = item.torneo.Meetid }, null)</li>
                                                         <li>@Html.ActionLink("INSCRIBIR ENTRENADORES", "INDEX", "entrenador", new { MeetId = item.torneo.Meetid }, null)</li>
                                                     }
                                                     <li role="separator" class="divider"></li>
@@ -185,6 +193,8 @@
                                                                 <h3>@item.Start.ToString("dd/MMM/yyyy")</h3>
                                                                 <h4>Cierre de inscripciones</h4>
                                                                 <h3>@string.Format("{0:ddd dd MMM yyyy}", item.torneo.entry_deadline)</h3>
+                                                                <h4>Se consideran los tiempos desde </h4>
+                                                                <h3>@string.Format("{0:ddd dd MMM yyyy}", item.torneo.EntryEligibility_date)</h3>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-8">
@@ -211,7 +221,7 @@
 
 
 
-</div>++
+</div>
 
 
 
@@ -272,9 +282,9 @@
 
 @section scripts {
     <script>
-        $(window).on('load', function () {
-            $('#modalaviso').modal('show');
-        });
+        //$(window).on('load', function () {
+        //    $('#modalaviso').modal('show');
+        //});
     </script>
 }
 

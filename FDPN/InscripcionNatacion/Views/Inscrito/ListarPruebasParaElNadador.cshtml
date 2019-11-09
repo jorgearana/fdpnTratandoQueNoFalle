@@ -6,6 +6,7 @@
     ViewBag.Title = "Listado de pruebas del nadador";
     string path = "http://afiliaciones.fdpn.org/Content/Images/";
     FDPN.Models.SetupTorneo setup = ViewBag.setup;
+    FDPN.Models.Rol rol = Session["Rol"] as FDPN.Models.Rol;
 }
 <div id="setuptorneo" style="visibility:hidden;">@setup.TipoTorneo.Nombre</div>
 

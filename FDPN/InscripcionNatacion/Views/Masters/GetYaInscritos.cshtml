@@ -1,0 +1,58 @@
+﻿@model List<FDPN.Models.atletas>
+@{
+    int MeetId = ViewBag.MeetId;
+}
+<table id="dataTables1" class="table table-hover display  datatabla " cellspacing="0" width="100%">
+    <thead>
+        <tr>          
+            <th>
+                Nombre
+            </th>
+            <th>
+                Apellidos
+            </th>
+            <th>
+                Sexo
+            </th>
+
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>               
+                <td>
+                    @Html.DisplayFor(modelItem => item.First_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Last_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ath_Sex)
+                </td>
+
+                <td>
+                    <div class="dropdown">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Quiero
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <button class="Modificarinscripcionmasters" data-atletaid="@item.AtletaId" data-meetid="@MeetId">Modificar inscripción</button>
+                                     </li>
+                                    <li>
+                                        @Html.ActionLink("Retirar de inscripción", "RetirarDelTorneo", "Masters", new { MeetId = MeetId, inscripcionid = @item.AtletaId }, new { @class = "btn btn-secondary" })
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

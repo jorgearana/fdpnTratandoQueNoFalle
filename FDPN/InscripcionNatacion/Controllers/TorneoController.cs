@@ -21,7 +21,7 @@ namespace InscripcionNatacion.Controllers
                 ListadoDeTorneosViewModel VM = new ListadoDeTorneosViewModel
             {
                 torneo= db.Torneo.Find(Id),
-                sesiones= db.Sesion.Where(x => x.MeetId == Id).ToList(),
+                sesiones= db.Sesion.Where(x => x.MeetId == Id).OrderBy(x=>x.Sess_no).ToList(),
             };
             return View(VM);
         }
@@ -31,9 +31,9 @@ namespace InscripcionNatacion.Controllers
             if (!repository.validarUsuario()) return RedirectToAction("Login", "home");
             List<EventosViewModel> VM = new List<ViewModels.Torneo.EventosViewModel>();
            
-            List<Eventos> Eventos = db.Eventos.Where(x => x.MeetId == id && x.Ind_rel == "I").OrderBy(x => x.EventId).ToList();
+            List<Eventos> Eventos = db.Eventos.Where(x => x.MeetId == id && x.Ind_rel == "I").OrderBy(x => x.Event_no).ToList();
             List<MarcasMinimas> MMDelTorneo = db.MarcasMinimas.Where(x => x.MeetId == id).ToList();
-            List<SessionItem> SesionesDelTorneo = db.SessionItem.Where(x => x.Meetid == id).ToList();
+            List<SessionItem> SesionesDelTorneo = db.SessionItem.Where(x => x.Meetid == id).OrderBy(x=>x.Sess_ptr).ToList();
             foreach (Eventos evento in Eventos)
             {
 
@@ -162,7 +162,7 @@ namespace InscripcionNatacion.Controllers
 
 
 
-            VM.Prueba = "Prueba N° " + evento.Event_no + " : " + distancia.ToString() + " " + estilo + " " + evento.Low_age + " a " + evento.High_Age + " años";
+            VM.Prueba = "Prueba N° " + evento.Event_ptr + " : " + distancia.ToString() + " " + estilo + " " + evento.Low_age + " a " + evento.High_Age + " años";
             VM.Listado = new List<NadadorConTiempoViewModel>();
 
             if (marcaminima1 != 0)

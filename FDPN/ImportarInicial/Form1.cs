@@ -69,8 +69,8 @@ namespace ImportarInicial
         {
             lblResultado.Text = "Espere un momento";
 
-            List<Event> events = access.Events.ToList();
             List<Meet> meet = access.Meets.ToList();
+            List<Event> events = access.Events.ToList();
             List<Session> sessions = access.Sessions.ToList();
             List<Sessitem> SessionItems = access.Sessitems.ToList();
             List<TimeStd> TimeStds = access.TimeStds.ToList();

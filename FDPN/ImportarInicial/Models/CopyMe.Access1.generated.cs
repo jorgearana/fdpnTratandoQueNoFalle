@@ -10,7 +10,7 @@ using System.Linq;
 using LinqToDB;
 using LinqToDB.Mapping;
 
-namespace DataModels
+namespace Models
 {
 	/// <summary>
 	/// Database       : DATABASEMEET
@@ -227,7 +227,7 @@ namespace DataModels
 	public partial class Division
 	{
 		[Column("Div_no"),     Nullable] public int?      DivNo     { get; set; } // Long
-		[Column("Div_abbr"),   Nullable] public string    DivAbbr   { get; set; } // text(10)
+		[Column("Div_abbr"),   Nullable] public string    DivAbbr   { get; set; } // text(3)
 		[Column("Div_name"),   Nullable] public string    DivName   { get; set; } // text(20)
 		[Column("old_date"),   Nullable] public DateTime? OldDate   { get; set; } // DateTime
 		[Column("young_date"), Nullable] public DateTime? YoungDate { get; set; } // DateTime
@@ -423,9 +423,6 @@ namespace DataModels
 		[Column("fin_actualstarttime"),            Nullable            ] public int?      FinActualstarttime            { get; set; } // Long
 		[Column("sem_actualstarttime"),            Nullable            ] public int?      SemActualstarttime            { get; set; } // Long
 		[Column("pre_actualstarttime"),            Nullable            ] public int?      PreActualstarttime            { get; set; } // Long
-		[Column("Swimoff_SourcePtr"),              Nullable            ] public int?      SwimoffSourcePtr              { get; set; } // Long
-		[Column("Swimoff_SourceRndLtr"),           Nullable            ] public char?     SwimoffSourceRndLtr           { get; set; } // text(1)
-		[Column("Swimoff_Created"),                Nullable            ] public DateTime? SwimoffCreated                { get; set; } // DateTime
 	}
 
 	[Table("EventGetTimes")]
@@ -471,221 +468,216 @@ namespace DataModels
 	[Table("Meet")]
 	public partial class Meet
 	{
-		[Column("Meet_name1"),                                     Nullable] public string    MeetName1                                     { get; set; } // text(45)
-		[Column("Meet_header1"),                                   Nullable] public string    MeetHeader1                                   { get; set; } // text(75)
-		[Column("Meet_header2"),                                   Nullable] public string    MeetHeader2                                   { get; set; } // text(75)
-		[Column("Meet_location"),                                  Nullable] public string    MeetLocation                                  { get; set; } // text(45)
-		[Column("Meet_start"),                                     Nullable] public DateTime? MeetStart                                     { get; set; } // DateTime
-		[Column("Meet_end"),                                       Nullable] public DateTime? MeetEnd                                       { get; set; } // DateTime
-		[Column("Meet_idformat"),                                  Nullable] public short?    MeetIdformat                                  { get; set; } // Short
-		[Column("Meet_class"),                                     Nullable] public short?    MeetClass                                     { get; set; } // Short
-		[Column("Meet_meettype"),                                  Nullable] public short?    MeetMeettype                                  { get; set; } // Short
-		[Column("Meet_course"),                                    Nullable] public short?    MeetCourse                                    { get; set; } // Short
-		[Column("Enter_ages"),                                     Identity] public bool      EnterAges                                     { get; set; } // Bit
-		[Column("Enter_birthdate"),                                Identity] public bool      EnterBirthdate                                { get; set; } // Bit
-		[Column("Calc_date"),                                      Nullable] public DateTime? CalcDate                                      { get; set; } // DateTime
-		[Column("Enter_schoolyr"),                                 Identity] public bool      EnterSchoolyr                                 { get; set; } // Bit
-		[Column("A_Relaysonly"),                                   Identity] public bool      ARelaysonly                                   { get; set; } // Bit
-		[Column("Use_hometown"),                                   Identity] public bool      UseHometown                                   { get; set; } // Bit
-		[Column("Show_countrycode"),                               Identity] public bool      ShowCountrycode                               { get; set; } // Bit
-		[Column("Scores_afterevt"),                                Identity] public bool      ScoresAfterevt                                { get; set; } // Bit
-		[Column("Lastname_first"),                                 Identity] public bool      LastnameFirst                                 { get; set; } // Bit
-		[Column("Punct_names"),                                    Identity] public bool      PunctNames                                    { get; set; } // Bit
-		[Column("Punct_teams"),                                    Identity] public bool      PunctTeams                                    { get; set; } // Bit
-		[Column("win_mm"),                                         Identity] public bool      WinMm                                         { get; set; } // Bit
-		[Column("meet_numlanes"),                                  Nullable] public short?    MeetNumlanes                                  { get; set; } // Short
-		[Column("prelimheats_circle"),                             Nullable] public short?    PrelimheatsCircle                             { get; set; } // Short
-		[Column("timedfinal_circleseed"),                          Identity] public bool      TimedfinalCircleseed                          { get; set; } // Bit
-		[Column("foreign_infinal"),                                Identity] public bool      ForeignInfinal                                { get; set; } // Bit
-		[Column("exh_infinal"),                                    Identity] public bool      ExhInfinal                                    { get; set; } // Bit
-		[Column("nonconform_last"),                                Identity] public bool      NonconformLast                                { get; set; } // Bit
-		[Column("course_order"),                                   Nullable] public string    CourseOrder                                   { get; set; } // text(255)
-		[Column("seed_exhlast"),                                   Identity] public bool      SeedExhlast                                   { get; set; } // Bit
-		[Column("dual_evenodd"),                                   Identity] public bool      DualEvenodd                                   { get; set; } // Bit
-		[Column("strict_evenodd"),                                 Identity] public bool      StrictEvenodd                                 { get; set; } // Bit
-		[Column("team_evenlanes"),                                 Nullable] public int?      TeamEvenlanes                                 { get; set; } // Long
-		[Column("team_oddlanes"),                                  Nullable] public int?      TeamOddlanes                                  { get; set; } // Long
-		[Column("masters_bytimeonly"),                             Identity] public bool      MastersBytimeonly                             { get; set; } // Bit
-		[Column("masters_agegrpsskip"),                            Nullable] public short?    MastersAgegrpsskip                            { get; set; } // Short
-		[Column("timer_port"),                                     Nullable] public short?    TimerPort                                     { get; set; } // Short
-		[Column("scbd_port"),                                      Nullable] public short?    ScbdPort                                      { get; set; } // Short
-		[Column("timer_vendor"),                                   Nullable] public string    TimerVendor                                   { get; set; } // text(4)
-		[Column("scbd_vendor"),                                    Nullable] public string    ScbdVendor                                    { get; set; } // text(4)
-		[Column("show_initial"),                                   Identity] public bool      ShowInitial                                   { get; set; } // Bit
-		[Column("ucase_names"),                                    Identity] public bool      UcaseNames                                    { get; set; } // Bit
-		[Column("ucase_teams"),                                    Identity] public bool      UcaseTeams                                    { get; set; } // Bit
-		[Column("open_senior_none"),                               Nullable] public char?     OpenSeniorNone                                { get; set; } // text(1)
-		[Column("entryqual_faster"),                               Identity] public bool      EntryqualFaster                               { get; set; } // Bit
-		[Column("Facility_Surcharge"),                             Nullable] public decimal?  FacilitySurcharge                             { get; set; } // Currency
-		[Column("anyone_onrelay"),                                 Identity] public bool      AnyoneOnrelay                                 { get; set; } // Bit
-		[Column("language_choice"),                                Nullable] public string    LanguageChoice                                { get; set; } // text(20)
-		[Column("military_time"),                                  Identity] public bool      MilitaryTime                                  { get; set; } // Bit
-		[Column("check_times"),                                    Identity] public bool      CheckTimes                                    { get; set; } // Bit
-		[Column("enterkey_astab"),                                 Identity] public bool      EnterkeyAstab                                 { get; set; } // Bit
-		[Column("double_endedsplits"),                             Identity] public bool      DoubleEndedsplits                             { get; set; } // Bit
-		[Column("use_compnumbers"),                                Identity] public bool      UseCompnumbers                                { get; set; } // Bit
-		[Column("flighted_minentries"),                            Nullable] public short?    FlightedMinentries                            { get; set; } // Short
-		[Column("diffpts_malefemale"),                             Identity] public bool      DiffptsMalefemale                             { get; set; } // Bit
-		[Column("diffpts_eachdivision"),                           Identity] public bool      DiffptsEachdivision                           { get; set; } // Bit
-		[Column("scoreonly_ifexceedqualtime"),                     Identity] public bool      ScoreonlyIfexceedqualtime                     { get; set; } // Bit
-		[Column("score_fastestheatonly"),                          Identity] public bool      ScoreFastestheatonly                          { get; set; } // Bit
-		[Column("entrylimits_warn"),                               Identity] public bool      EntrylimitsWarn                               { get; set; } // Bit
-		[Column("pointsbasedon_seedtime"),                         Identity] public bool      PointsbasedonSeedtime                         { get; set; } // Bit
-		[Column("pointsfor_overachievers"),                        Identity] public bool      PointsforOverachievers                        { get; set; } // Bit
-		[Column("pointsfor_underachievers"),                       Identity] public bool      PointsforUnderachievers                       { get; set; } // Bit
-		[Column("indmaxscorers_perteam"),                          Nullable] public short?    IndmaxscorersPerteam                          { get; set; } // Short
-		[Column("relmaxscorers_perteam"),                          Nullable] public short?    RelmaxscorersPerteam                          { get; set; } // Short
-		[Column("indtopmany_awards"),                              Nullable] public short?    IndtopmanyAwards                              { get; set; } // Short
-		[Column("reltopmany_awards"),                              Nullable] public short?    ReltopmanyAwards                              { get; set; } // Short
-		[Column("entrymax_total"),                                 Nullable] public short?    EntrymaxTotal                                 { get; set; } // Short
-		[Column("indmax_perath"),                                  Nullable] public short?    IndmaxPerath                                  { get; set; } // Short
-		[Column("relmax_perath"),                                  Nullable] public short?    RelmaxPerath                                  { get; set; } // Short
-		[Column("foreign_getteampoints"),                          Identity] public bool      ForeignGetteampoints                          { get; set; } // Bit
-		[Column("include_swimupsinteamscore"),                     Identity] public bool      IncludeSwimupsinteamscore                     { get; set; } // Bit
-		[Column("enter_citizenof"),                                Identity] public bool      EnterCitizenof                                { get; set; } // Bit
-		[Column("meet_meetstyle"),                                 Nullable] public short?    MeetMeetstyle                                 { get; set; } // Short
-		[Column("flag_overachievers"),                             Identity] public bool      FlagOverachievers                             { get; set; } // Bit
-		[Column("flag_underachievers"),                            Identity] public bool      FlagUnderachievers                            { get; set; } // Bit
-		[Column("scbd_punctuation"),                               Nullable] public short?    ScbdPunctuation                               { get; set; } // Short
-		[Column("scbd_names"),                                     Nullable] public short?    ScbdNames                                     { get; set; } // Short
-		[Column("scbd_relaynames"),                                Nullable] public short?    ScbdRelaynames                                { get; set; } // Short
-		[Column("scbd_cycle"),                                     Identity] public bool      ScbdCycle                                     { get; set; } // Bit
-		[Column("scbd_cycleseconds"),                              Nullable] public short?    ScbdCycleseconds                              { get; set; } // Short
-		[Column("copies_toprinter"),                               Nullable] public short?    CopiesToprinter                               { get; set; } // Short
-		[Column("report_headersonly"),                             Identity] public bool      ReportHeadersonly                             { get; set; } // Bit
-		[Column("autoinc_compno"),                                 Identity] public bool      AutoincCompno                                 { get; set; } // Bit
-		[Column("pentscoring_usedqtime"),                          Identity] public bool      PentscoringUsedqtime                          { get; set; } // Bit
-		[Column("swimmer_surcharge"),                              Nullable] public decimal?  SwimmerSurcharge                              { get; set; } // Currency
-		[Column("directly_toprinter"),                             Identity] public bool      DirectlyToprinter                             { get; set; } // Bit
-		[Column("lastname_asinitial"),                             Identity] public bool      LastnameAsinitial                             { get; set; } // Bit
-		[Column("under_eventname"),                                Identity] public bool      UnderEventname                                { get; set; } // Bit
-		[Column("suppress_Arelay"),                                Identity] public bool      SuppressArelay                                { get; set; } // Bit
-		[Column("Punct_recholders"),                               Identity] public bool      PunctRecholders                               { get; set; } // Bit
-		[Column("ucase_recholders"),                               Identity] public bool      UcaseRecholders                               { get; set; } // Bit
-		[Column("suppress_lsc"),                                   Identity] public bool      SuppressLsc                                   { get; set; } // Bit
-		[Column("showathlete_status"),                             Identity] public bool      ShowathleteStatus                             { get; set; } // Bit
-		[Column("open_lowage"),                                    Nullable] public short?    OpenLowage                                    { get; set; } // Short
-		[Column("useeventsex_teamscore"),                          Identity] public bool      UseeventsexTeamscore                          { get; set; } // Bit
-		[Column("suppress_smallx"),                                Identity] public bool      SuppressSmallx                                { get; set; } // Bit
-		[Column("score_Arelayonly"),                               Identity] public bool      ScoreArelayonly                               { get; set; } // Bit
-		[Column("thirteenandover_assenior"),                       Identity] public bool      ThirteenandoverAssenior                       { get; set; } // Bit
-		[Column("suppress_jd"),                                    Identity] public bool      SuppressJd                                    { get; set; } // Bit
-		[Column("abcfinal_order"),                                 Nullable] public string    AbcfinalOrder                                 { get; set; } // text(3)
-		[Column("maxagefor_cfinal"),                               Nullable] public short?    MaxageforCfinal                               { get; set; } // Short
-		[Column("Sanction_number"),                                Nullable] public string    SanctionNumber                                { get; set; } // text(30)
-		[Column("include_sanction"),                               Identity] public bool      IncludeSanction                               { get; set; } // Bit
-		[Column("special_points"),                                 Nullable] public short?    SpecialPoints                                 { get; set; } // Short
-		[Column("countrelay_alt"),                                 Identity] public bool      CountrelayAlt                                 { get; set; } // Bit
-		[Column("UseNonConforming_PoolFactor"),                    Identity] public bool      UseNonConformingPoolFactor                    { get; set; } // Bit
-		[Column("NonConforming_PoolFactor"),                       Nullable] public float?    NonConformingPoolFactor                       { get; set; } // Single
-		[Column("apnews_team"),                                    Nullable] public char?     ApnewsTeam                                    { get; set; } // text(1)
-		[Column("PointsAwarded_ForDQ"),                            Nullable] public float?    PointsAwardedForDQ                            { get; set; } // Single
-		[Column("PointsAwarded_ForScratch"),                       Nullable] public float?    PointsAwardedForScratch                       { get; set; } // Single
-		[Column("PointsAwarded_ForNT"),                            Nullable] public float?    PointsAwardedForNT                            { get; set; } // Single
-		[Column("Enter_AthStat"),                                  Identity] public bool      EnterAthStat                                  { get; set; } // Bit
-		[Column("Show_secondclub"),                                Identity] public bool      ShowSecondclub                                { get; set; } // Bit
-		[Column("firstinitial_fulllastname"),                      Identity] public bool      FirstinitialFulllastname                      { get; set; } // Bit
-		[Column("turnon_autobackup"),                              Identity] public bool      TurnonAutobackup                              { get; set; } // Bit
-		[Column("autobackup_interval"),                            Nullable] public short?    AutobackupInterval                            { get; set; } // Short
-		[Column("PointsAwarded_ForExh"),                           Identity] public bool      PointsAwardedForExh                           { get; set; } // Bit
-		[Column("Use_AltTeamAbbr"),                                Identity] public bool      UseAltTeamAbbr                                { get; set; } // Bit
-		[Column("IsCanadian_Masters"),                             Identity] public bool      IsCanadianMasters                             { get; set; } // Bit
-		[Column("entry_msg"),                                      Nullable] public string    EntryMsg                                      { get; set; } // text(80)
-		[Column("timedfinalnonconform_last"),                      Identity] public bool      TimedfinalnonconformLast                      { get; set; } // Bit
-		[Column("referee_name"),                                   Nullable] public string    RefereeName                                   { get; set; } // text(30)
-		[Column("referee_homphone"),                               Nullable] public string    RefereeHomphone                               { get; set; } // text(20)
-		[Column("referee_offphone"),                               Nullable] public string    RefereeOffphone                               { get; set; } // text(20)
-		[Column("Meet_altitude"),                                  Nullable] public int?      MeetAltitude                                  { get; set; } // Long
-		[Column("Import_Dir"),                                     Nullable] public string    ImportDir                                     { get; set; } // text(80)
-		[Column("Export_Dir"),                                     Nullable] public string    ExportDir                                     { get; set; } // text(80)
-		[Column("Backup_Dir"),                                     Nullable] public string    BackupDir                                     { get; set; } // text(80)
-		[Column("RestoreFrom_Dir"),                                Nullable] public string    RestoreFromDir                                { get; set; } // text(80)
-		[Column("RestoreTo_Dir"),                                  Nullable] public string    RestoreToDir                                  { get; set; } // text(80)
-		[Column("FlatHtml_Dir"),                                   Nullable] public string    FlatHtmlDir                                   { get; set; } // text(80)
-		[Column("APNews_Dir"),                                     Nullable] public string    APNewsDir                                     { get; set; } // text(80)
-		[Column("AllowSameEvent_DupRelayNames"),                   Identity] public bool      AllowSameEventDupRelayNames                   { get; set; } // Bit
-		[Column("dualteam_lane1"),                                 Nullable] public int?      DualteamLane1                                 { get; set; } // Long
-		[Column("dualteam_lane2"),                                 Nullable] public int?      DualteamLane2                                 { get; set; } // Long
-		[Column("dualteam_lane3"),                                 Nullable] public int?      DualteamLane3                                 { get; set; } // Long
-		[Column("dualteam_lane4"),                                 Nullable] public int?      DualteamLane4                                 { get; set; } // Long
-		[Column("dualteam_lane5"),                                 Nullable] public int?      DualteamLane5                                 { get; set; } // Long
-		[Column("dualteam_lane6"),                                 Nullable] public int?      DualteamLane6                                 { get; set; } // Long
-		[Column("dualteam_lane7"),                                 Nullable] public int?      DualteamLane7                                 { get; set; } // Long
-		[Column("dualteam_lane8"),                                 Nullable] public int?      DualteamLane8                                 { get; set; } // Long
-		[Column("dualteam_lane9"),                                 Nullable] public int?      DualteamLane9                                 { get; set; } // Long
-		[Column("dualteam_lane10"),                                Nullable] public int?      DualteamLane10                                { get; set; } // Long
-		[Column("strict_evenoddfastestheatonly"),                  Identity] public bool      StrictEvenoddfastestheatonly                  { get; set; } // Bit
-		[Column("dualseeding_altunusedlane"),                      Identity] public bool      DualseedingAltunusedlane                      { get; set; } // Bit
-		[Column("team_surcharge"),                                 Nullable] public decimal?  TeamSurcharge                                 { get; set; } // Currency
-		[Column("Display_ActualEntryTime"),                        Identity] public bool      DisplayActualEntryTime                        { get; set; } // Bit
-		[Column("indmaxadvance_perteam"),                          Nullable] public short?    IndmaxadvancePerteam                          { get; set; } // Short
-		[Column("relmaxadvance_perteam"),                          Nullable] public short?    RelmaxadvancePerteam                          { get; set; } // Short
-		[Column("RelayNames_LinkByLSC"),                           Identity] public bool      RelayNamesLinkByLSC                           { get; set; } // Bit
-		[Column("Read_Only"),                                      Identity] public bool      ReadOnly                                      { get; set; } // Bit
-		[Column("Flighted_BasedOnResultsTime"),                    Identity] public bool      FlightedBasedOnResultsTime                    { get; set; } // Bit
-		[Column("ShowYear_InPlaceOfAge"),                          Identity] public bool      ShowYearInPlaceOfAge                          { get; set; } // Bit
-		[Column("PenaltyPts_ForNS"),                               Nullable] public float?    PenaltyPtsForNS                               { get; set; } // Single
-		[Column("EntryEligibility_date"),                          Nullable] public DateTime? EntryEligibilityDate                          { get; set; } // DateTime
-		[Column("Suppress_TimeStdAbbr"),                           Identity] public bool      SuppressTimeStdAbbr                           { get; set; } // Bit
-		[Column("masters_indlowage"),                              Nullable] public short?    MastersIndlowage                              { get; set; } // Short
-		[Column("masters_rellowage"),                              Nullable] public short?    MastersRellowage                              { get; set; } // Short
-		[Column("Custom_QualTimes"),                               Identity] public bool      CustomQualTimes                               { get; set; } // Bit
-		[Column("Suppress_SplitsForDQs"),                          Identity] public bool      SuppressSplitsForDQs                          { get; set; } // Bit
-		[Column("Suppress_SplitsForDQsRelay"),                     Identity] public bool      SuppressSplitsForDQsRelay                     { get; set; } // Bit
-		[Column("DQCodes_Type"),                                   Nullable] public char?     DQCodesType                                   { get; set; } // text(1)
-		[Column("SuppressTimes_NotMeetQualTime"),                  Identity] public bool      SuppressTimesNotMeetQualTime                  { get; set; } // Bit
-		[Column("Show_AgeandBirthYear"),                           Identity] public bool      ShowAgeandBirthYear                           { get; set; } // Bit
-		[Column("Meet_state"),                                     Nullable] public string    MeetState                                     { get; set; } // text(3)
-		[Column("Meet_country"),                                   Nullable] public string    MeetCountry                                   { get; set; } // text(3)
-		[Column("Meet_lsc"),                                       Nullable] public string    MeetLsc                                       { get; set; } // text(3)
-		[Column("BCSSA_DivbyTimeStd"),                             Identity] public bool      BcssaDivbyTimeStd                             { get; set; } // Bit
-		[Column("Show_HyTekDecimals"),                             Identity] public bool      ShowHyTekDecimals                             { get; set; } // Bit
-		[Column("Suppress_ResultsAdvQ"),                           Identity] public bool      SuppressResultsAdvQ                           { get; set; } // Bit
-		[Column("RelaysAs_4x100Style"),                            Identity] public bool      RelaysAs4x100Style                            { get; set; } // Bit
-		[Column("flighted_flightcount"),                           Nullable] public short?    FlightedFlightcount                           { get; set; } // Short
-		[Column("flighted_inclDQ"),                                Identity] public bool      FlightedInclDQ                                { get; set; } // Bit
-		[Column("RelaysAlternate_TwoFastestFirst"),                Identity] public bool      RelaysAlternateTwoFastestFirst                { get; set; } // Bit
-		[Column("dualteam_lane11"),                                Nullable] public int?      DualteamLane11                                { get; set; } // Long
-		[Column("dualteam_lane12"),                                Nullable] public int?      DualteamLane12                                { get; set; } // Long
-		[Column("entry_deadline"),                                 Nullable] public DateTime? EntryDeadline                                 { get; set; } // DateTime
-		[Column("Meet_addr1"),                                     Nullable] public string    MeetAddr1                                     { get; set; } // text(30)
-		[Column("Meet_addr2"),                                     Nullable] public string    MeetAddr2                                     { get; set; } // text(30)
-		[Column("Meet_city"),                                      Nullable] public string    MeetCity                                      { get; set; } // text(30)
-		[Column("Meet_zip"),                                       Nullable] public string    MeetZip                                       { get; set; } // text(10)
-		[Column("Meet_hostlsc"),                                   Nullable] public string    MeetHostlsc                                   { get; set; } // text(3)
-		[Column("Meet_USMastersMeetID"),                           Nullable] public string    MeetUSMastersMeetID                           { get; set; } // text(20)
-		[Column("ShowFirstName_OverPreferred"),                    Identity] public bool      ShowFirstNameOverPreferred                    { get; set; } // Bit
-		[Column("ExcludeNTEntries_WhenImporting"),                 Identity] public bool      ExcludeNTEntriesWhenImporting                 { get; set; } // Bit
-		[Column("Enter_birthcentury"),                             Identity] public bool      EnterBirthcentury                             { get; set; } // Bit
-		[Column("Using_twopools"),                                 Identity] public bool      UsingTwopools                                 { get; set; } // Bit
-		[Column("Pool1_name"),                                     Nullable] public string    Pool1Name                                     { get; set; } // text(30)
-		[Column("Pool2_name"),                                     Nullable] public string    Pool2Name                                     { get; set; } // text(30)
-		[Column("indtopmany_awardsSr"),                            Nullable] public short?    IndtopmanyAwardsSr                            { get; set; } // Short
-		[Column("reltopmany_awardsSr"),                            Nullable] public short?    ReltopmanyAwardsSr                            { get; set; } // Short
-		[Column("maxforeign_infinal"),                             Nullable] public short?    MaxforeignInfinal                             { get; set; } // Short
-		[Column("Flag_FastestRecordOnly"),                         Identity] public bool      FlagFastestRecordOnly                         { get; set; } // Bit
-		[Column("athlete_earlysurcharge"),                         Nullable] public decimal?  AthleteEarlysurcharge                         { get; set; } // Currency
-		[Column("athlete_latesurcharge"),                          Nullable] public decimal?  AthleteLatesurcharge                          { get; set; } // Currency
-		[Column("athlete_earlysurchargedate"),                     Nullable] public DateTime? AthleteEarlysurchargedate                     { get; set; } // DateTime
-		[Column("athlete_latesurchargedate"),                      Nullable] public DateTime? AthleteLatesurchargedate                      { get; set; } // DateTime
-		[Column("entry_OpenDate"),                                 Nullable] public DateTime? EntryOpenDate                                 { get; set; } // DateTime
-		[Column("DisplayNTfor_TimesUnder5Sec"),                    Identity] public bool      DisplayNTforTimesUnder5Sec                    { get; set; } // Bit
-		[Column("SortTeamCombos_ByTeamName"),                      Identity] public bool      SortTeamCombosByTeamName                      { get; set; } // Bit
-		[Column("FastestHeat_SomeLanesDoNotScore"),                Identity] public bool      FastestHeatSomeLanesDoNotScore                { get; set; } // Bit
-		[Column("RankDisabled_ByPoints"),                          Identity] public bool      RankDisabledByPoints                          { get; set; } // Bit
-		[Column("special_parapoints"),                             Nullable] public short?    SpecialParapoints                             { get; set; } // Short
-		[Column("DisabledDoNot_AdvanceToFinals"),                  Identity] public bool      DisabledDoNotAdvanceToFinals                  { get; set; } // Bit
-		[Column("prelimheats_circledist"),                         Nullable] public short?    PrelimheatsCircledist                         { get; set; } // Short
-		[Column("DisabledIgnoreQualTime_ForScoring"),              Identity] public bool      DisabledIgnoreQualTimeForScoring              { get; set; } // Bit
-		[Column("CountTimeTrial_Events"),                          Identity] public bool      CountTimeTrialEvents                          { get; set; } // Bit
-		[Column("QualNonConformCourse_UseMinStd"),                 Identity] public bool      QualNonConformCourseUseMinStd                 { get; set; } // Bit
-		[Column("Last_updated"),                                   Nullable] public string    LastUpdated                                   { get; set; } // text(40)
-		[Column("MixedRelays_DividedPoints"),                      Identity] public bool      MixedRelaysDividedPoints                      { get; set; } // Bit
-		[Column("RelayOnly_Surcharge"),                            Nullable] public decimal?  RelayOnlySurcharge                            { get; set; } // Currency
-		[Column("TimeAdj_Method"),                                 Nullable] public char?     TimeAdjMethod                                 { get; set; } // text(1)
-		[Column("DisabledSeedWithAgeGroup_IfTimedFinalSuperSeed"), Identity] public bool      DisabledSeedWithAgeGroupIfTimedFinalSuperSeed { get; set; } // Bit
-		[Column("Lock_Reseed"),                                    Identity] public bool      LockReseed                                    { get; set; } // Bit
-		[Column("Competition_Code"),                               Nullable] public string    CompetitionCode                               { get; set; } // text(6)
+		[Column("Meet_name1"),                        Nullable] public string    MeetName1                        { get; set; } // text(45)
+		[Column("Meet_header1"),                      Nullable] public string    MeetHeader1                      { get; set; } // text(75)
+		[Column("Meet_header2"),                      Nullable] public string    MeetHeader2                      { get; set; } // text(75)
+		[Column("Meet_location"),                     Nullable] public string    MeetLocation                     { get; set; } // text(45)
+		[Column("Meet_start"),                        Nullable] public DateTime? MeetStart                        { get; set; } // DateTime
+		[Column("Meet_end"),                          Nullable] public DateTime? MeetEnd                          { get; set; } // DateTime
+		[Column("Meet_idformat"),                     Nullable] public short?    MeetIdformat                     { get; set; } // Short
+		[Column("Meet_class"),                        Nullable] public short?    MeetClass                        { get; set; } // Short
+		[Column("Meet_meettype"),                     Nullable] public short?    MeetMeettype                     { get; set; } // Short
+		[Column("Meet_course"),                       Nullable] public short?    MeetCourse                       { get; set; } // Short
+		[Column("Enter_ages"),                        Identity] public bool      EnterAges                        { get; set; } // Bit
+		[Column("Enter_birthdate"),                   Identity] public bool      EnterBirthdate                   { get; set; } // Bit
+		[Column("Calc_date"),                         Nullable] public DateTime? CalcDate                         { get; set; } // DateTime
+		[Column("Enter_schoolyr"),                    Identity] public bool      EnterSchoolyr                    { get; set; } // Bit
+		[Column("A_Relaysonly"),                      Identity] public bool      ARelaysonly                      { get; set; } // Bit
+		[Column("Use_hometown"),                      Identity] public bool      UseHometown                      { get; set; } // Bit
+		[Column("Show_countrycode"),                  Identity] public bool      ShowCountrycode                  { get; set; } // Bit
+		[Column("Scores_afterevt"),                   Identity] public bool      ScoresAfterevt                   { get; set; } // Bit
+		[Column("Lastname_first"),                    Identity] public bool      LastnameFirst                    { get; set; } // Bit
+		[Column("Punct_names"),                       Identity] public bool      PunctNames                       { get; set; } // Bit
+		[Column("Punct_teams"),                       Identity] public bool      PunctTeams                       { get; set; } // Bit
+		[Column("win_mm"),                            Identity] public bool      WinMm                            { get; set; } // Bit
+		[Column("meet_numlanes"),                     Nullable] public short?    MeetNumlanes                     { get; set; } // Short
+		[Column("prelimheats_circle"),                Nullable] public short?    PrelimheatsCircle                { get; set; } // Short
+		[Column("timedfinal_circleseed"),             Identity] public bool      TimedfinalCircleseed             { get; set; } // Bit
+		[Column("foreign_infinal"),                   Identity] public bool      ForeignInfinal                   { get; set; } // Bit
+		[Column("exh_infinal"),                       Identity] public bool      ExhInfinal                       { get; set; } // Bit
+		[Column("nonconform_last"),                   Identity] public bool      NonconformLast                   { get; set; } // Bit
+		[Column("course_order"),                      Nullable] public string    CourseOrder                      { get; set; } // text(255)
+		[Column("seed_exhlast"),                      Identity] public bool      SeedExhlast                      { get; set; } // Bit
+		[Column("dual_evenodd"),                      Identity] public bool      DualEvenodd                      { get; set; } // Bit
+		[Column("strict_evenodd"),                    Identity] public bool      StrictEvenodd                    { get; set; } // Bit
+		[Column("team_evenlanes"),                    Nullable] public int?      TeamEvenlanes                    { get; set; } // Long
+		[Column("team_oddlanes"),                     Nullable] public int?      TeamOddlanes                     { get; set; } // Long
+		[Column("masters_bytimeonly"),                Identity] public bool      MastersBytimeonly                { get; set; } // Bit
+		[Column("masters_agegrpsskip"),               Nullable] public short?    MastersAgegrpsskip               { get; set; } // Short
+		[Column("timer_port"),                        Nullable] public short?    TimerPort                        { get; set; } // Short
+		[Column("scbd_port"),                         Nullable] public short?    ScbdPort                         { get; set; } // Short
+		[Column("timer_vendor"),                      Nullable] public string    TimerVendor                      { get; set; } // text(4)
+		[Column("scbd_vendor"),                       Nullable] public string    ScbdVendor                       { get; set; } // text(4)
+		[Column("show_initial"),                      Identity] public bool      ShowInitial                      { get; set; } // Bit
+		[Column("ucase_names"),                       Identity] public bool      UcaseNames                       { get; set; } // Bit
+		[Column("ucase_teams"),                       Identity] public bool      UcaseTeams                       { get; set; } // Bit
+		[Column("open_senior_none"),                  Nullable] public char?     OpenSeniorNone                   { get; set; } // text(1)
+		[Column("entryqual_faster"),                  Identity] public bool      EntryqualFaster                  { get; set; } // Bit
+		[Column("Facility_Surcharge"),                Nullable] public decimal?  FacilitySurcharge                { get; set; } // Currency
+		[Column("anyone_onrelay"),                    Identity] public bool      AnyoneOnrelay                    { get; set; } // Bit
+		[Column("language_choice"),                   Nullable] public string    LanguageChoice                   { get; set; } // text(20)
+		[Column("military_time"),                     Identity] public bool      MilitaryTime                     { get; set; } // Bit
+		[Column("check_times"),                       Identity] public bool      CheckTimes                       { get; set; } // Bit
+		[Column("enterkey_astab"),                    Identity] public bool      EnterkeyAstab                    { get; set; } // Bit
+		[Column("double_endedsplits"),                Identity] public bool      DoubleEndedsplits                { get; set; } // Bit
+		[Column("use_compnumbers"),                   Identity] public bool      UseCompnumbers                   { get; set; } // Bit
+		[Column("flighted_minentries"),               Nullable] public short?    FlightedMinentries               { get; set; } // Short
+		[Column("diffpts_malefemale"),                Identity] public bool      DiffptsMalefemale                { get; set; } // Bit
+		[Column("diffpts_eachdivision"),              Identity] public bool      DiffptsEachdivision              { get; set; } // Bit
+		[Column("scoreonly_ifexceedqualtime"),        Identity] public bool      ScoreonlyIfexceedqualtime        { get; set; } // Bit
+		[Column("score_fastestheatonly"),             Identity] public bool      ScoreFastestheatonly             { get; set; } // Bit
+		[Column("entrylimits_warn"),                  Identity] public bool      EntrylimitsWarn                  { get; set; } // Bit
+		[Column("pointsbasedon_seedtime"),            Identity] public bool      PointsbasedonSeedtime            { get; set; } // Bit
+		[Column("pointsfor_overachievers"),           Identity] public bool      PointsforOverachievers           { get; set; } // Bit
+		[Column("pointsfor_underachievers"),          Identity] public bool      PointsforUnderachievers          { get; set; } // Bit
+		[Column("indmaxscorers_perteam"),             Nullable] public short?    IndmaxscorersPerteam             { get; set; } // Short
+		[Column("relmaxscorers_perteam"),             Nullable] public short?    RelmaxscorersPerteam             { get; set; } // Short
+		[Column("indtopmany_awards"),                 Nullable] public short?    IndtopmanyAwards                 { get; set; } // Short
+		[Column("reltopmany_awards"),                 Nullable] public short?    ReltopmanyAwards                 { get; set; } // Short
+		[Column("entrymax_total"),                    Nullable] public short?    EntrymaxTotal                    { get; set; } // Short
+		[Column("indmax_perath"),                     Nullable] public short?    IndmaxPerath                     { get; set; } // Short
+		[Column("relmax_perath"),                     Nullable] public short?    RelmaxPerath                     { get; set; } // Short
+		[Column("foreign_getteampoints"),             Identity] public bool      ForeignGetteampoints             { get; set; } // Bit
+		[Column("include_swimupsinteamscore"),        Identity] public bool      IncludeSwimupsinteamscore        { get; set; } // Bit
+		[Column("enter_citizenof"),                   Identity] public bool      EnterCitizenof                   { get; set; } // Bit
+		[Column("meet_meetstyle"),                    Nullable] public short?    MeetMeetstyle                    { get; set; } // Short
+		[Column("flag_overachievers"),                Identity] public bool      FlagOverachievers                { get; set; } // Bit
+		[Column("flag_underachievers"),               Identity] public bool      FlagUnderachievers               { get; set; } // Bit
+		[Column("scbd_punctuation"),                  Nullable] public short?    ScbdPunctuation                  { get; set; } // Short
+		[Column("scbd_names"),                        Nullable] public short?    ScbdNames                        { get; set; } // Short
+		[Column("scbd_relaynames"),                   Nullable] public short?    ScbdRelaynames                   { get; set; } // Short
+		[Column("scbd_cycle"),                        Identity] public bool      ScbdCycle                        { get; set; } // Bit
+		[Column("scbd_cycleseconds"),                 Nullable] public short?    ScbdCycleseconds                 { get; set; } // Short
+		[Column("copies_toprinter"),                  Nullable] public short?    CopiesToprinter                  { get; set; } // Short
+		[Column("report_headersonly"),                Identity] public bool      ReportHeadersonly                { get; set; } // Bit
+		[Column("autoinc_compno"),                    Identity] public bool      AutoincCompno                    { get; set; } // Bit
+		[Column("pentscoring_usedqtime"),             Identity] public bool      PentscoringUsedqtime             { get; set; } // Bit
+		[Column("swimmer_surcharge"),                 Nullable] public decimal?  SwimmerSurcharge                 { get; set; } // Currency
+		[Column("directly_toprinter"),                Identity] public bool      DirectlyToprinter                { get; set; } // Bit
+		[Column("lastname_asinitial"),                Identity] public bool      LastnameAsinitial                { get; set; } // Bit
+		[Column("under_eventname"),                   Identity] public bool      UnderEventname                   { get; set; } // Bit
+		[Column("suppress_Arelay"),                   Identity] public bool      SuppressArelay                   { get; set; } // Bit
+		[Column("Punct_recholders"),                  Identity] public bool      PunctRecholders                  { get; set; } // Bit
+		[Column("ucase_recholders"),                  Identity] public bool      UcaseRecholders                  { get; set; } // Bit
+		[Column("suppress_lsc"),                      Identity] public bool      SuppressLsc                      { get; set; } // Bit
+		[Column("showathlete_status"),                Identity] public bool      ShowathleteStatus                { get; set; } // Bit
+		[Column("open_lowage"),                       Nullable] public short?    OpenLowage                       { get; set; } // Short
+		[Column("useeventsex_teamscore"),             Identity] public bool      UseeventsexTeamscore             { get; set; } // Bit
+		[Column("suppress_smallx"),                   Identity] public bool      SuppressSmallx                   { get; set; } // Bit
+		[Column("score_Arelayonly"),                  Identity] public bool      ScoreArelayonly                  { get; set; } // Bit
+		[Column("thirteenandover_assenior"),          Identity] public bool      ThirteenandoverAssenior          { get; set; } // Bit
+		[Column("suppress_jd"),                       Identity] public bool      SuppressJd                       { get; set; } // Bit
+		[Column("abcfinal_order"),                    Nullable] public string    AbcfinalOrder                    { get; set; } // text(3)
+		[Column("maxagefor_cfinal"),                  Nullable] public short?    MaxageforCfinal                  { get; set; } // Short
+		[Column("Sanction_number"),                   Nullable] public string    SanctionNumber                   { get; set; } // text(17)
+		[Column("include_sanction"),                  Identity] public bool      IncludeSanction                  { get; set; } // Bit
+		[Column("special_points"),                    Nullable] public short?    SpecialPoints                    { get; set; } // Short
+		[Column("countrelay_alt"),                    Identity] public bool      CountrelayAlt                    { get; set; } // Bit
+		[Column("UseNonConforming_PoolFactor"),       Identity] public bool      UseNonConformingPoolFactor       { get; set; } // Bit
+		[Column("NonConforming_PoolFactor"),          Nullable] public float?    NonConformingPoolFactor          { get; set; } // Single
+		[Column("apnews_team"),                       Nullable] public char?     ApnewsTeam                       { get; set; } // text(1)
+		[Column("PointsAwarded_ForDQ"),               Nullable] public float?    PointsAwardedForDQ               { get; set; } // Single
+		[Column("PointsAwarded_ForScratch"),          Nullable] public float?    PointsAwardedForScratch          { get; set; } // Single
+		[Column("PointsAwarded_ForNT"),               Nullable] public float?    PointsAwardedForNT               { get; set; } // Single
+		[Column("Enter_AthStat"),                     Identity] public bool      EnterAthStat                     { get; set; } // Bit
+		[Column("Show_secondclub"),                   Identity] public bool      ShowSecondclub                   { get; set; } // Bit
+		[Column("firstinitial_fulllastname"),         Identity] public bool      FirstinitialFulllastname         { get; set; } // Bit
+		[Column("turnon_autobackup"),                 Identity] public bool      TurnonAutobackup                 { get; set; } // Bit
+		[Column("autobackup_interval"),               Nullable] public short?    AutobackupInterval               { get; set; } // Short
+		[Column("PointsAwarded_ForExh"),              Identity] public bool      PointsAwardedForExh              { get; set; } // Bit
+		[Column("Use_AltTeamAbbr"),                   Identity] public bool      UseAltTeamAbbr                   { get; set; } // Bit
+		[Column("IsCanadian_Masters"),                Identity] public bool      IsCanadianMasters                { get; set; } // Bit
+		[Column("entry_msg"),                         Nullable] public string    EntryMsg                         { get; set; } // text(80)
+		[Column("timedfinalnonconform_last"),         Identity] public bool      TimedfinalnonconformLast         { get; set; } // Bit
+		[Column("referee_name"),                      Nullable] public string    RefereeName                      { get; set; } // text(30)
+		[Column("referee_homphone"),                  Nullable] public string    RefereeHomphone                  { get; set; } // text(20)
+		[Column("referee_offphone"),                  Nullable] public string    RefereeOffphone                  { get; set; } // text(20)
+		[Column("Meet_altitude"),                     Nullable] public int?      MeetAltitude                     { get; set; } // Long
+		[Column("Import_Dir"),                        Nullable] public string    ImportDir                        { get; set; } // text(80)
+		[Column("Export_Dir"),                        Nullable] public string    ExportDir                        { get; set; } // text(80)
+		[Column("Backup_Dir"),                        Nullable] public string    BackupDir                        { get; set; } // text(80)
+		[Column("RestoreFrom_Dir"),                   Nullable] public string    RestoreFromDir                   { get; set; } // text(80)
+		[Column("RestoreTo_Dir"),                     Nullable] public string    RestoreToDir                     { get; set; } // text(80)
+		[Column("FlatHtml_Dir"),                      Nullable] public string    FlatHtmlDir                      { get; set; } // text(80)
+		[Column("APNews_Dir"),                        Nullable] public string    APNewsDir                        { get; set; } // text(80)
+		[Column("AllowSameEvent_DupRelayNames"),      Identity] public bool      AllowSameEventDupRelayNames      { get; set; } // Bit
+		[Column("dualteam_lane1"),                    Nullable] public int?      DualteamLane1                    { get; set; } // Long
+		[Column("dualteam_lane2"),                    Nullable] public int?      DualteamLane2                    { get; set; } // Long
+		[Column("dualteam_lane3"),                    Nullable] public int?      DualteamLane3                    { get; set; } // Long
+		[Column("dualteam_lane4"),                    Nullable] public int?      DualteamLane4                    { get; set; } // Long
+		[Column("dualteam_lane5"),                    Nullable] public int?      DualteamLane5                    { get; set; } // Long
+		[Column("dualteam_lane6"),                    Nullable] public int?      DualteamLane6                    { get; set; } // Long
+		[Column("dualteam_lane7"),                    Nullable] public int?      DualteamLane7                    { get; set; } // Long
+		[Column("dualteam_lane8"),                    Nullable] public int?      DualteamLane8                    { get; set; } // Long
+		[Column("dualteam_lane9"),                    Nullable] public int?      DualteamLane9                    { get; set; } // Long
+		[Column("dualteam_lane10"),                   Nullable] public int?      DualteamLane10                   { get; set; } // Long
+		[Column("strict_evenoddfastestheatonly"),     Identity] public bool      StrictEvenoddfastestheatonly     { get; set; } // Bit
+		[Column("dualseeding_altunusedlane"),         Identity] public bool      DualseedingAltunusedlane         { get; set; } // Bit
+		[Column("team_surcharge"),                    Nullable] public decimal?  TeamSurcharge                    { get; set; } // Currency
+		[Column("Display_ActualEntryTime"),           Identity] public bool      DisplayActualEntryTime           { get; set; } // Bit
+		[Column("indmaxadvance_perteam"),             Nullable] public short?    IndmaxadvancePerteam             { get; set; } // Short
+		[Column("relmaxadvance_perteam"),             Nullable] public short?    RelmaxadvancePerteam             { get; set; } // Short
+		[Column("RelayNames_LinkByLSC"),              Identity] public bool      RelayNamesLinkByLSC              { get; set; } // Bit
+		[Column("Read_Only"),                         Identity] public bool      ReadOnly                         { get; set; } // Bit
+		[Column("Flighted_BasedOnResultsTime"),       Identity] public bool      FlightedBasedOnResultsTime       { get; set; } // Bit
+		[Column("ShowYear_InPlaceOfAge"),             Identity] public bool      ShowYearInPlaceOfAge             { get; set; } // Bit
+		[Column("PenaltyPts_ForNS"),                  Nullable] public float?    PenaltyPtsForNS                  { get; set; } // Single
+		[Column("EntryEligibility_date"),             Nullable] public DateTime? EntryEligibilityDate             { get; set; } // DateTime
+		[Column("Suppress_TimeStdAbbr"),              Identity] public bool      SuppressTimeStdAbbr              { get; set; } // Bit
+		[Column("masters_indlowage"),                 Nullable] public short?    MastersIndlowage                 { get; set; } // Short
+		[Column("masters_rellowage"),                 Nullable] public short?    MastersRellowage                 { get; set; } // Short
+		[Column("Custom_QualTimes"),                  Identity] public bool      CustomQualTimes                  { get; set; } // Bit
+		[Column("Suppress_SplitsForDQs"),             Identity] public bool      SuppressSplitsForDQs             { get; set; } // Bit
+		[Column("Suppress_SplitsForDQsRelay"),        Identity] public bool      SuppressSplitsForDQsRelay        { get; set; } // Bit
+		[Column("DQCodes_Type"),                      Nullable] public char?     DQCodesType                      { get; set; } // text(1)
+		[Column("SuppressTimes_NotMeetQualTime"),     Identity] public bool      SuppressTimesNotMeetQualTime     { get; set; } // Bit
+		[Column("Show_AgeandBirthYear"),              Identity] public bool      ShowAgeandBirthYear              { get; set; } // Bit
+		[Column("Meet_state"),                        Nullable] public string    MeetState                        { get; set; } // text(3)
+		[Column("Meet_country"),                      Nullable] public string    MeetCountry                      { get; set; } // text(3)
+		[Column("Meet_lsc"),                          Nullable] public string    MeetLsc                          { get; set; } // text(3)
+		[Column("BCSSA_DivbyTimeStd"),                Identity] public bool      BcssaDivbyTimeStd                { get; set; } // Bit
+		[Column("Show_HyTekDecimals"),                Identity] public bool      ShowHyTekDecimals                { get; set; } // Bit
+		[Column("Suppress_ResultsAdvQ"),              Identity] public bool      SuppressResultsAdvQ              { get; set; } // Bit
+		[Column("RelaysAs_4x100Style"),               Identity] public bool      RelaysAs4x100Style               { get; set; } // Bit
+		[Column("flighted_flightcount"),              Nullable] public short?    FlightedFlightcount              { get; set; } // Short
+		[Column("flighted_inclDQ"),                   Identity] public bool      FlightedInclDQ                   { get; set; } // Bit
+		[Column("RelaysAlternate_TwoFastestFirst"),   Identity] public bool      RelaysAlternateTwoFastestFirst   { get; set; } // Bit
+		[Column("dualteam_lane11"),                   Nullable] public int?      DualteamLane11                   { get; set; } // Long
+		[Column("dualteam_lane12"),                   Nullable] public int?      DualteamLane12                   { get; set; } // Long
+		[Column("entry_deadline"),                    Nullable] public DateTime? EntryDeadline                    { get; set; } // DateTime
+		[Column("Meet_addr1"),                        Nullable] public string    MeetAddr1                        { get; set; } // text(30)
+		[Column("Meet_addr2"),                        Nullable] public string    MeetAddr2                        { get; set; } // text(30)
+		[Column("Meet_city"),                         Nullable] public string    MeetCity                         { get; set; } // text(30)
+		[Column("Meet_zip"),                          Nullable] public string    MeetZip                          { get; set; } // text(10)
+		[Column("Meet_hostlsc"),                      Nullable] public string    MeetHostlsc                      { get; set; } // text(3)
+		[Column("Meet_USMastersMeetID"),              Nullable] public string    MeetUSMastersMeetID              { get; set; } // text(20)
+		[Column("ShowFirstName_OverPreferred"),       Identity] public bool      ShowFirstNameOverPreferred       { get; set; } // Bit
+		[Column("ExcludeNTEntries_WhenImporting"),    Identity] public bool      ExcludeNTEntriesWhenImporting    { get; set; } // Bit
+		[Column("Enter_birthcentury"),                Identity] public bool      EnterBirthcentury                { get; set; } // Bit
+		[Column("Using_twopools"),                    Identity] public bool      UsingTwopools                    { get; set; } // Bit
+		[Column("Pool1_name"),                        Nullable] public string    Pool1Name                        { get; set; } // text(30)
+		[Column("Pool2_name"),                        Nullable] public string    Pool2Name                        { get; set; } // text(30)
+		[Column("indtopmany_awardsSr"),               Nullable] public short?    IndtopmanyAwardsSr               { get; set; } // Short
+		[Column("reltopmany_awardsSr"),               Nullable] public short?    ReltopmanyAwardsSr               { get; set; } // Short
+		[Column("maxforeign_infinal"),                Nullable] public short?    MaxforeignInfinal                { get; set; } // Short
+		[Column("Flag_FastestRecordOnly"),            Identity] public bool      FlagFastestRecordOnly            { get; set; } // Bit
+		[Column("athlete_earlysurcharge"),            Nullable] public decimal?  AthleteEarlysurcharge            { get; set; } // Currency
+		[Column("athlete_latesurcharge"),             Nullable] public decimal?  AthleteLatesurcharge             { get; set; } // Currency
+		[Column("athlete_earlysurchargedate"),        Nullable] public DateTime? AthleteEarlysurchargedate        { get; set; } // DateTime
+		[Column("athlete_latesurchargedate"),         Nullable] public DateTime? AthleteLatesurchargedate         { get; set; } // DateTime
+		[Column("entry_OpenDate"),                    Nullable] public DateTime? EntryOpenDate                    { get; set; } // DateTime
+		[Column("DisplayNTfor_TimesUnder5Sec"),       Identity] public bool      DisplayNTforTimesUnder5Sec       { get; set; } // Bit
+		[Column("SortTeamCombos_ByTeamName"),         Identity] public bool      SortTeamCombosByTeamName         { get; set; } // Bit
+		[Column("FastestHeat_SomeLanesDoNotScore"),   Identity] public bool      FastestHeatSomeLanesDoNotScore   { get; set; } // Bit
+		[Column("RankDisabled_ByPoints"),             Identity] public bool      RankDisabledByPoints             { get; set; } // Bit
+		[Column("special_parapoints"),                Nullable] public short?    SpecialParapoints                { get; set; } // Short
+		[Column("DisabledDoNot_AdvanceToFinals"),     Identity] public bool      DisabledDoNotAdvanceToFinals     { get; set; } // Bit
+		[Column("prelimheats_circledist"),            Nullable] public short?    PrelimheatsCircledist            { get; set; } // Short
+		[Column("DisabledIgnoreQualTime_ForScoring"), Identity] public bool      DisabledIgnoreQualTimeForScoring { get; set; } // Bit
+		[Column("CountTimeTrial_Events"),             Identity] public bool      CountTimeTrialEvents             { get; set; } // Bit
+		[Column("QualNonConformCourse_UseMinStd"),    Identity] public bool      QualNonConformCourseUseMinStd    { get; set; } // Bit
+		[Column("Last_updated"),                      Nullable] public string    LastUpdated                      { get; set; } // text(40)
+		[Column("MixedRelays_DividedPoints"),         Identity] public bool      MixedRelaysDividedPoints         { get; set; } // Bit
 	}
 
 	[Table("MEETMOBILE2OPTIONS")]
@@ -926,7 +918,7 @@ namespace DataModels
 		[Column("Relay_Names"),       Nullable] public string RelayNames       { get; set; } // text(50)
 		[Column("Record_Time"),       Nullable] public float? RecordTime       { get; set; } // Single
 		[Column("Record_course"),     Nullable] public char?  RecordCourse     { get; set; } // text(1)
-		[Column("div_abbr"),          Nullable] public string DivAbbr          { get; set; } // text(10)
+		[Column("div_abbr"),          Nullable] public string DivAbbr          { get; set; } // text(3)
 		[Column("Record_teamabbr"),   Nullable] public string RecordTeamabbr   { get; set; } // text(5)
 		[Column("Record_teamlsc"),    Nullable] public string RecordTeamlsc    { get; set; } // text(2)
 	}
@@ -974,7 +966,7 @@ namespace DataModels
 		[Column("Record_course"),     Nullable] public char?  RecordCourse     { get; set; } // text(1)
 		[Column("tag_gender"),        Nullable] public char?  TagGender        { get; set; } // text(1)
 		[Column("hide_me"),           Identity] public bool   HideMe           { get; set; } // Bit
-		[Column("div_abbr"),          Nullable] public string DivAbbr          { get; set; } // text(10)
+		[Column("div_abbr"),          Nullable] public string DivAbbr          { get; set; } // text(3)
 		[Column("Record_teamabbr"),   Nullable] public string RecordTeamabbr   { get; set; } // text(5)
 		[Column("Record_teamlsc"),    Nullable] public string RecordTeamlsc    { get; set; } // text(2)
 	}
@@ -1246,46 +1238,43 @@ namespace DataModels
 	[Table("Team")]
 	public partial class Team
 	{
-		[Column("Team_no"),               PrimaryKey, Identity] public int    TeamNo               { get; set; } // Long
-		[Column("Team_name"),             Nullable            ] public string TeamName             { get; set; } // text(30)
-		[Column("Team_short"),            Nullable            ] public string TeamShort            { get; set; } // text(16)
-		[Column("Team_abbr"),             Nullable            ] public string TeamAbbr             { get; set; } // text(5)
-		[Column("Team_stat"),             Nullable            ] public char?  TeamStat             { get; set; } // text(1)
-		[Column("Team_lsc"),              Nullable            ] public string TeamLsc              { get; set; } // text(3)
-		[Column("Team_div"),              Nullable            ] public short? TeamDiv              { get; set; } // Short
-		[Column("Team_region"),           Nullable            ] public short? TeamRegion           { get; set; } // Short
-		[Column("Team_head"),             Nullable            ] public string TeamHead             { get; set; } // text(30)
-		[Column("Team_asst"),             Nullable            ] public string TeamAsst             { get; set; } // text(30)
-		[Column("Team_addr1"),            Nullable            ] public string TeamAddr1            { get; set; } // text(30)
-		[Column("Team_addr2"),            Nullable            ] public string TeamAddr2            { get; set; } // text(30)
-		[Column("Team_city"),             Nullable            ] public string TeamCity             { get; set; } // text(30)
-		[Column("Team_prov"),             Nullable            ] public string TeamProv             { get; set; } // text(30)
-		[Column("Team_statenew"),         Nullable            ] public string TeamStatenew         { get; set; } // text(3)
-		[Column("Team_zip"),              Nullable            ] public string TeamZip              { get; set; } // text(10)
-		[Column("Team_cntry"),            Nullable            ] public string TeamCntry            { get; set; } // text(3)
-		[Column("Team_daytele"),          Nullable            ] public string TeamDaytele          { get; set; } // text(20)
-		[Column("Team_evetele"),          Nullable            ] public string TeamEvetele          { get; set; } // text(20)
-		[Column("Team_faxtele"),          Nullable            ] public string TeamFaxtele          { get; set; } // text(20)
-		[Column("Team_email"),            Nullable            ] public string TeamEmail            { get; set; } // text(36)
-		[Column("Team_c3"),               Nullable            ] public string TeamC3               { get; set; } // text(30)
-		[Column("Team_c4"),               Nullable            ] public string TeamC4               { get; set; } // text(30)
-		[Column("Team_c5"),               Nullable            ] public string TeamC5               { get; set; } // text(30)
-		[Column("Team_c6"),               Nullable            ] public string TeamC6               { get; set; } // text(30)
-		[Column("Team_c7"),               Nullable            ] public string TeamC7               { get; set; } // text(30)
-		[Column("Team_c8"),               Nullable            ] public string TeamC8               { get; set; } // text(30)
-		[Column("Team_c9"),               Nullable            ] public string TeamC9               { get; set; } // text(30)
-		[Column("Team_c10"),              Nullable            ] public string TeamC10              { get; set; } // text(30)
-		[Column("Team_altabbr"),          Nullable            ] public string TeamAltabbr          { get; set; } // text(5)
-		[Column("Team_NoPoints"),                     Identity] public bool   TeamNoPoints         { get; set; } // Bit
-		[Column("Team_Selected"),                     Identity] public bool   TeamSelected         { get; set; } // Bit
-		[Column("Team_altname"),          Nullable            ] public string TeamAltname          { get; set; } // text(16)
-		[Column("NoTeam_surcharge"),                  Identity] public bool   NoTeamSurcharge      { get; set; } // Bit
-		[Column("NoFacility_surcharge"),              Identity] public bool   NoFacilitySurcharge  { get; set; } // Bit
-		[Column("NoAthlete_surcharge"),               Identity] public bool   NoAthleteSurcharge   { get; set; } // Bit
-		[Column("Team_cell"),             Nullable            ] public string TeamCell             { get; set; } // text(20)
-		[Column("NoRelayOnly_surcharge"),             Identity] public bool   NoRelayOnlySurcharge { get; set; } // Bit
-		[Column("Team_Code"),             Nullable            ] public string TeamCode             { get; set; } // text(30)
-		[Column("Team_Gender"),           Nullable            ] public char?  TeamGender           { get; set; } // text(1)
+		[Column("Team_no"),              PrimaryKey, Identity] public int    TeamNo              { get; set; } // Long
+		[Column("Team_name"),            Nullable            ] public string TeamName            { get; set; } // text(30)
+		[Column("Team_short"),           Nullable            ] public string TeamShort           { get; set; } // text(16)
+		[Column("Team_abbr"),            Nullable            ] public string TeamAbbr            { get; set; } // text(5)
+		[Column("Team_stat"),            Nullable            ] public char?  TeamStat            { get; set; } // text(1)
+		[Column("Team_lsc"),             Nullable            ] public string TeamLsc             { get; set; } // text(3)
+		[Column("Team_div"),             Nullable            ] public short? TeamDiv             { get; set; } // Short
+		[Column("Team_region"),          Nullable            ] public short? TeamRegion          { get; set; } // Short
+		[Column("Team_head"),            Nullable            ] public string TeamHead            { get; set; } // text(30)
+		[Column("Team_asst"),            Nullable            ] public string TeamAsst            { get; set; } // text(30)
+		[Column("Team_addr1"),           Nullable            ] public string TeamAddr1           { get; set; } // text(30)
+		[Column("Team_addr2"),           Nullable            ] public string TeamAddr2           { get; set; } // text(30)
+		[Column("Team_city"),            Nullable            ] public string TeamCity            { get; set; } // text(30)
+		[Column("Team_prov"),            Nullable            ] public string TeamProv            { get; set; } // text(30)
+		[Column("Team_statenew"),        Nullable            ] public string TeamStatenew        { get; set; } // text(3)
+		[Column("Team_zip"),             Nullable            ] public string TeamZip             { get; set; } // text(10)
+		[Column("Team_cntry"),           Nullable            ] public string TeamCntry           { get; set; } // text(3)
+		[Column("Team_daytele"),         Nullable            ] public string TeamDaytele         { get; set; } // text(20)
+		[Column("Team_evetele"),         Nullable            ] public string TeamEvetele         { get; set; } // text(20)
+		[Column("Team_faxtele"),         Nullable            ] public string TeamFaxtele         { get; set; } // text(20)
+		[Column("Team_email"),           Nullable            ] public string TeamEmail           { get; set; } // text(36)
+		[Column("Team_c3"),              Nullable            ] public string TeamC3              { get; set; } // text(30)
+		[Column("Team_c4"),              Nullable            ] public string TeamC4              { get; set; } // text(30)
+		[Column("Team_c5"),              Nullable            ] public string TeamC5              { get; set; } // text(30)
+		[Column("Team_c6"),              Nullable            ] public string TeamC6              { get; set; } // text(30)
+		[Column("Team_c7"),              Nullable            ] public string TeamC7              { get; set; } // text(30)
+		[Column("Team_c8"),              Nullable            ] public string TeamC8              { get; set; } // text(30)
+		[Column("Team_c9"),              Nullable            ] public string TeamC9              { get; set; } // text(30)
+		[Column("Team_c10"),             Nullable            ] public string TeamC10             { get; set; } // text(30)
+		[Column("Team_altabbr"),         Nullable            ] public string TeamAltabbr         { get; set; } // text(5)
+		[Column("Team_NoPoints"),                    Identity] public bool   TeamNoPoints        { get; set; } // Bit
+		[Column("Team_Selected"),                    Identity] public bool   TeamSelected        { get; set; } // Bit
+		[Column("Team_altname"),         Nullable            ] public string TeamAltname         { get; set; } // text(16)
+		[Column("NoTeam_surcharge"),                 Identity] public bool   NoTeamSurcharge     { get; set; } // Bit
+		[Column("NoFacility_surcharge"),             Identity] public bool   NoFacilitySurcharge { get; set; } // Bit
+		[Column("NoAthlete_surcharge"),              Identity] public bool   NoAthleteSurcharge  { get; set; } // Bit
+		[Column("Team_cell"),            Nullable            ] public string TeamCell            { get; set; } // text(20)
 	}
 
 	[Table("TeamCoaches")]
@@ -1325,7 +1314,7 @@ namespace DataModels
 		[Column("high_Age"),   Nullable] public short? HighAge   { get; set; } // Short
 		[Column("tag_time"),   Nullable] public float? TagTime   { get; set; } // Single
 		[Column("tag_course"), Nullable] public char?  TagCourse { get; set; } // text(1)
-		[Column("div_abbr"),   Nullable] public string DivAbbr   { get; set; } // text(10)
+		[Column("div_abbr"),   Nullable] public string DivAbbr   { get; set; } // text(3)
 	}
 
 	[Table("WaveOffset")]

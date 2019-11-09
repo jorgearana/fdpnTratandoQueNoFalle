@@ -35,7 +35,7 @@
 
                 data: {
                     TorneoId: TorneoId,
-                    InscripcionId :deportistaid,
+                    InscripcionId :deportistaid
                 },
                 async: false,
                 success: function (data) {
@@ -46,6 +46,7 @@
     });
 
 });
+
 
 
 

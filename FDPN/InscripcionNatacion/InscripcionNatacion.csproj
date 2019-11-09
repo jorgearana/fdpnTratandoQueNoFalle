@@ -369,6 +369,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\Sitio.js" />
     <Content Include="Content\SitioDataTable.js" />
+    <Content Include="Content\SitioMaster.js" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -601,6 +602,12 @@
     <Content Include="Views\Masters\GetNadadores.cshtml" />
     <Content Include="Views\Masters\ListarMasters.cshtml" />
     <Content Include="Views\Masters\ListarPruebasParaElNadador.cshtml" />
+    <Content Include="Views\Masters\GetYaInscritos.cshtml" />
+    <Content Include="Views\Inscrito\NotieneDNI.cshtml" />
+    <Content Include="Views\Inscrito\ListarNadadoresParaFdnp.cshtml" />
+    <Content Include="Views\Masters\ModelListarPruebasParaElNadadorMaster.cshtml" />
+    <Content Include="Views\Masters\ModelNotieneDNI.cshtml" />
+    <Content Include="Views\Masters\ListarPruebasParaElNadadorMaster.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
