@@ -67,7 +67,7 @@ namespace InscripcionNatacion.Controllers
                 return RedirectToAction("Home/paginadeerroromensaje", new { modeloError });
             }
 
-            List<Inscripciones> ListadoDeNadadores = GetNadadores(setup);
+            List<Inscripciones> ListadoDeNadadores = GetNadadores(setup, EdadMaxima, EdadMinima);
             VM = GetInscripciones(setup, ListadoDeNadadores);
             ViewBag.setup = db.SetupTorneo.Where(x => x.Meetid == Meetid).FirstOrDefault();
 
@@ -99,12 +99,14 @@ namespace InscripcionNatacion.Controllers
         }
 
 
-        public List<Inscripciones> GetNadadores(SetupTorneo setup)
+        public List<Inscripciones> GetNadadores(SetupTorneo setup, int EdadMaxima, int EdadMinima)
         {
-
+            int annoActual = DateTime.Now.Year - 1;
+            AnnoMaximo = annoActual - EdadMinima;
+            AnnoMinimo = annoActual - EdadMaxima;
+            AnnoVinculados = annoActual - 11 + 1;
             IQueryable<Inscripciones> listado;
-            Usuario usuario = Session["Usuario"] as Usuario;
-            int EdadMinima = db.Eventos.Where(x => x.MeetId == setup.Meetid).Min(x => x.Low_age) ?? 0;
+            Usuario usuario = Session["Usuario"] as Usuario;            
 
             if (EdadMinima >= 11)
             {
@@ -342,7 +344,7 @@ namespace InscripcionNatacion.Controllers
             RESULTS resultado = new RESULTS();
 
             DateTime fecha = setup.Torneo.entry_deadline ?? DateTime.Now;
-            DateTime haceunanno = setup.Torneo.EntryEligibility_date ?? DateTime.Now.AddMonths(-12).AddDays(-15);
+            DateTime haceunanno = setup.Torneo.EntryEligibility_date ?? fecha.AddYears(-1).AddDays(-15);
 
             List<MarcasMinimas> MarcasMinimasDelTorneo = new List<MarcasMinimas>();
             if (!setup.PermiteSinMarca)

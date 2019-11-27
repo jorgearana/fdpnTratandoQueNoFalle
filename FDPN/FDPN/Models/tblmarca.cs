@@ -14,7 +14,7 @@ namespace FDPN.Models
     
     public partial class tblmarca
     {
-        public Nullable<double> Id { get; set; }
+        public double Id { get; set; }
         public string Nombre { get; set; }
         public Nullable<int> Notengoidea { get; set; }
         public string Iniciales { get; set; }

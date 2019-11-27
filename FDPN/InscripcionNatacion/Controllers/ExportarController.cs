@@ -126,7 +126,8 @@ namespace InscripcionNatacion.Controllers
 
                 foreach (Equipos equipo in equipos)
                 {
-
+                    if (atletas.Any(x=>x.TeamId  == equipo.TeamId && x.Meetid ==meetid)) 
+                    { 
                     file.WriteLine(SwimTeamNameInformationC1(equipo));
                     file.WriteLine(SwimTeamAddressInformationC2(equipo));
                     file.WriteLine(SwimTeamAddressInformation2C3(equipo));
@@ -167,6 +168,7 @@ namespace InscripcionNatacion.Controllers
                                 file.WriteLine(EventEntryE1(entrada, atleta, evento, multi, letra));
                             }
 
+                            }
 
 
                         }

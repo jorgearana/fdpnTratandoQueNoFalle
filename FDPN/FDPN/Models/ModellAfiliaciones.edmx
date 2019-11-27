@@ -60,80 +60,6 @@
           <Property Name="AsociacionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nchar" MaxLength="10" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.AspNetRoles' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="AspNetRoles">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Name" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
-        </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.AspNetUserClaims' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="AspNetUserClaims">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="ClaimType" />
-            <PropertyRef Name="ClaimValue" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="ClaimType" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="ClaimValue" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.AspNetUserLogins' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="AspNetUserLogins">
-          <Key>
-            <PropertyRef Name="LoginProvider" />
-            <PropertyRef Name="ProviderKey" />
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
-        </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.AspNetUserRoles' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="AspNetUserRoles">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="RoleId" />
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="Id" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.AspNetUsers' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="AspNetUsers">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="EmailConfirmed" />
-            <PropertyRef Name="PhoneNumberConfirmed" />
-            <PropertyRef Name="TwoFactorEnabled" />
-            <PropertyRef Name="AccessFailedCount" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="Name" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="256" />
-          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
-          <Property Name="PasswordHash" Type="nvarchar(max)" />
-          <Property Name="SecurityStamp" Type="nvarchar(max)" />
-          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
-          <Property Name="PhoneNumber" Type="nvarchar(max)" />
-          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
-          <Property Name="LockoutEnabled" Type="bit" />
-          <Property Name="LockoutEndDateUtc" Type="smalldatetime" />
-          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
-        </EntityType>
         <EntityType Name="ATFDeportista">
           <Key>
             <PropertyRef Name="DeportistaId" />
@@ -288,16 +214,11 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.AspNetUsers' no ti
           <Property Name="Edad maxima" Type="int" Nullable="false" />
           <Property Name="Edad minima" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.CategoriasMasters' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="CategoriasMasters">
           <Key>
             <PropertyRef Name="CategoriaId" />
-            <PropertyRef Name="EdadMinima" />
-            <PropertyRef Name="EdadMaxima" />
-            <PropertyRef Name="Nombre" />
           </Key>
-          <Property Name="CategoriaId" Type="int" Nullable="false" />
+          <Property Name="CategoriaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EdadMinima" Type="int" Nullable="false" />
           <Property Name="EdadMaxima" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="nchar" MaxLength="10" Nullable="false" />
@@ -315,7 +236,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.CategoriasMasters'
           <Property Name="FechaPagoAfiliacion" Type="date" Nullable="false" />
           <Property Name="FinVigenciaPoderes" Type="date" Nullable="false" />
           <Property Name="FinVigenciaRenade" Type="date" Nullable="false" />
-          <Property Name="Resolucion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resolucion" Type="nvarchar" MaxLength="100" />
           <Property Name="VoucherPagoAfiliacionAnual" Type="nvarchar" MaxLength="50" />
           <Property Name="Academia" Type="bit" Nullable="false" />
         </EntityType>
@@ -330,30 +251,19 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.CategoriasMasters'
           <Property Name="Mensaje" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="fecha" Type="date" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Comentarios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Comentarios">
           <Key>
             <PropertyRef Name="ComentarioId" />
-            <PropertyRef Name="Comentario" />
-            <PropertyRef Name="UsuarioId" />
-            <PropertyRef Name="NoticiaId" />
-            <PropertyRef Name="Estado" />
-            <PropertyRef Name="Fecha" />
           </Key>
-          <Property Name="ComentarioId" Type="int" Nullable="false" />
+          <Property Name="ComentarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Comentario" Type="nvarchar(max)" Nullable="false" />
           <Property Name="UsuarioId" Type="int" Nullable="false" />
           <Property Name="NoticiaId" Type="int" Nullable="false" />
           <Property Name="Estado" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="Fecha" Type="date" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.ConFechas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="ConFechas">
           <Key>
-            <PropertyRef Name="INICIO" />
-            <PropertyRef Name="FINAL" />
             <PropertyRef Name="CalendarioId" />
           </Key>
           <Property Name="INICIO" Type="datetime" Nullable="false" />
@@ -367,23 +277,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.ConFechas' no tien
           <Property Name="Nota" Type="nvarchar" MaxLength="255" />
           <Property Name="CalendarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Configuracion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Configuracion">
           <Key>
-            <PropertyRef Name="Mantenimiento" />
             <PropertyRef Name="SetupId" />
           </Key>
           <Property Name="Mantenimiento" Type="bit" Nullable="false" />
-          <Property Name="SetupId" Type="int" Nullable="false" />
+          <Property Name="SetupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Contactos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Contactos">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="255" />
           <Property Name="Appaterno" Type="nvarchar" MaxLength="255" />
           <Property Name="Apmaterno" Type="nvarchar" MaxLength="255" />
@@ -398,19 +303,11 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Contactos' no tien
           <Property Name="Observaciones" Type="nvarchar(max)" />
           <Property Name="Email" Type="nvarchar" MaxLength="255" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Curso' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Curso">
           <Key>
             <PropertyRef Name="CursoId" />
-            <PropertyRef Name="Nombre" />
-            <PropertyRef Name="Ciudad" />
-            <PropertyRef Name="Direccion" />
-            <PropertyRef Name="Inicio" />
-            <PropertyRef Name="Fin" />
-            <PropertyRef Name="CantidadMaxima" />
           </Key>
-          <Property Name="CursoId" Type="int" Nullable="false" />
+          <Property Name="CursoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Ciudad" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Direccion" Type="nvarchar" MaxLength="200" Nullable="false" />
@@ -420,32 +317,19 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Curso' no tiene de
           <Property Name="Hora" Type="time" Precision="7" />
           <Property Name="CantidadMaxima" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.CursoInscripcion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="CursoInscripcion">
           <Key>
             <PropertyRef Name="InscripcionId" />
-            <PropertyRef Name="ParticipanteId" />
-            <PropertyRef Name="CursoId" />
           </Key>
-          <Property Name="InscripcionId" Type="int" Nullable="false" />
+          <Property Name="InscripcionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ParticipanteId" Type="int" Nullable="false" />
           <Property Name="CursoId" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.CursoParticipante' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="CursoParticipante">
           <Key>
             <PropertyRef Name="ParticipanteId" />
-            <PropertyRef Name="Nombres" />
-            <PropertyRef Name="Paterno" />
-            <PropertyRef Name="Nacimiento" />
-            <PropertyRef Name="DNI" />
-            <PropertyRef Name="Email" />
-            <PropertyRef Name="Nacionalidad" />
-            <PropertyRef Name="Actividad" />
           </Key>
-          <Property Name="ParticipanteId" Type="int" Nullable="false" />
+          <Property Name="ParticipanteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombres" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Paterno" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Materno" Type="nvarchar" MaxLength="50" />
@@ -487,13 +371,11 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.CursoParticipante'
           <Property Name="TipoDisciplina" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="clase" Type="varchar" MaxLength="50" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Empresa' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Empresa">
           <Key>
             <PropertyRef Name="EmpresaId" />
           </Key>
-          <Property Name="EmpresaId" Type="int" Nullable="false" />
+          <Property Name="EmpresaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Empresa" Type="nvarchar" MaxLength="255" />
           <Property Name="Direccion" Type="nvarchar(max)" />
           <Property Name="Telefono" Type="nvarchar" MaxLength="255" />
@@ -818,20 +700,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Empresa' no tiene 
           <Property Name="FechaTraspaso" Type="date" Nullable="false" />
           <Property Name="InscripcionId" Type="int" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Hoja2' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="Hoja2">
-          <Property Name="UNO" Type="int" />
-          <Property Name="Sex" Type="nvarchar" MaxLength="1" />
-          <Property Name="Indi" Type="nvarchar" MaxLength="1" />
-          <Property Name="distancia" Type="int" />
-          <Property Name="estilo" Type="nvarchar" MaxLength="1" />
-          <Property Name="mini" Type="smallint" />
-          <Property Name="max" Type="smallint" />
-          <Property Name="segundos" Type="real" />
-          <Property Name="Piscina" Type="nvarchar" MaxLength="1" />
-          <Property Name="Meet" Type="int" />
-        </EntityType>-->
         <EntityType Name="Inscripciones">
           <Key>
             <PropertyRef Name="InscripcionId" />
@@ -1237,28 +1105,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <Property Name="ID_NO" Type="nvarchar" MaxLength="17" Nullable="false" />
           <Property Name="AthleteId" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Records' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="Records">
-          <Property Name="tag_ptr" Type="int" />
-          <Property Name="tag_gender" Type="nvarchar" MaxLength="1" />
-          <Property Name="tag_indrel" Type="nvarchar" MaxLength="1" />
-          <Property Name="tag_dist" Type="int" />
-          <Property Name="tag_stroke" Type="nvarchar" MaxLength="1" />
-          <Property Name="low_age" Type="smallint" />
-          <Property Name="high_Age" Type="smallint" />
-          <Property Name="Record_month" Type="smallint" />
-          <Property Name="Record_day" Type="smallint" />
-          <Property Name="Record_year" Type="smallint" />
-          <Property Name="Record_Holder" Type="nvarchar" MaxLength="30" />
-          <Property Name="Record_Holderteam" Type="nvarchar" MaxLength="16" />
-          <Property Name="Relay_Names" Type="nvarchar" MaxLength="50" />
-          <Property Name="Record_Time" Type="real" />
-          <Property Name="Record_course" Type="nvarchar" MaxLength="1" />
-          <Property Name="div_abbr" Type="nvarchar" MaxLength="3" />
-          <Property Name="Record_teamabbr" Type="nvarchar" MaxLength="5" />
-          <Property Name="Record_teamlsc" Type="nvarchar" MaxLength="2" />
-        </EntityType>-->
         <EntityType Name="RESULTS">
           <Key>
             <PropertyRef Name="ResultId" />
@@ -1325,18 +1171,6 @@ advertencia 6013: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Records' no tiene 
           <Property Name="Rol" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Detalle" Type="varchar" MaxLength="150" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Saltos' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="Saltos">
-          <Property Name="Codigo" Type="float" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="255" />
-          <Property Name="A" Type="float" />
-          <Property Name="B" Type="float" />
-          <Property Name="C" Type="float" />
-          <Property Name="D" Type="float" />
-          <Property Name="Altura" Type="float" />
-          <Property Name="Tipo" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
         <EntityType Name="Sesion">
           <Key>
             <PropertyRef Name="SessionId" />
@@ -1395,14 +1229,11 @@ advertencia 6013: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Saltos' no tiene d
           <Property Name="Masters" Type="bit" Nullable="false" />
           <Property Name="FechaMarcas" Type="date" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Suscritos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Suscritos">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="Email" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" />
           <Property Name="Apellido" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
@@ -1417,6 +1248,19 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Suscritos' no tien
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TagNames">
+          <Key>
+            <PropertyRef Name="TagId" />
+          </Key>
+          <Property Name="tag_ptr" Type="int" Nullable="false" />
+          <Property Name="tag_name" Type="nvarchar" MaxLength="4" />
+          <Property Name="for_scoring" Type="bit" Nullable="false" />
+          <Property Name="for_entryqual" Type="bit" Nullable="false" />
+          <Property Name="for_timestd" Type="bit" Nullable="false" />
+          <Property Name="tag_desc" Type="nvarchar" MaxLength="20" />
+          <Property Name="TagId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MeetId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TatoInformeAsistencias">
           <Key>
@@ -1480,28 +1324,22 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Suscritos' no tien
           <Property Name="Piscina" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="nchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.tb_Suscritos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="tb_Suscritos">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="Email" />
-            <PropertyRef Name="EsActivo" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" />
           <Property Name="Apellido" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="FNacimiento" Type="date" />
           <Property Name="EsActivo" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.tblmarca' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="tblmarca">
           <Key>
-            <PropertyRef Name="F12" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="float" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="255" />
           <Property Name="Notengoidea" Type="int" />
           <Property Name="Iniciales" Type="nvarchar" MaxLength="255" />
@@ -1767,24 +1605,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.tblmarca' no tiene
           <Property Name="Meetid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MarcaMaxima" Type="bit" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacado' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="TorneoDestacado">
           <Key>
             <PropertyRef Name="DestacadoId" />
-            <PropertyRef Name="Meet" />
           </Key>
-          <Property Name="DestacadoId" Type="int" Nullable="false" />
+          <Property Name="DestacadoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Meet" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMasters' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="TorneoDestacadoMasters">
           <Key>
             <PropertyRef Name="DestacadoId" />
-            <PropertyRef Name="Meet" />
           </Key>
-          <Property Name="DestacadoId" Type="int" Nullable="false" />
+          <Property Name="DestacadoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Meet" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Traspasos">
@@ -3080,11 +2912,20 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySet Name="CambiosDNI" EntityType="Self.CambiosDNI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CategoriaNoticia" EntityType="Self.CategoriaNoticia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoriasMasters" EntityType="Self.CategoriasMasters" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Club" EntityType="Self.Club" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comentario" EntityType="Self.Comentario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comentarios" EntityType="Self.Comentarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConFechas" EntityType="Self.ConFechas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Configuracion" EntityType="Self.Configuracion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contactos" EntityType="Self.Contactos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Curso" EntityType="Self.Curso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CursoInscripcion" EntityType="Self.CursoInscripcion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CursoParticipante" EntityType="Self.CursoParticipante" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Delegados" EntityType="Self.Delegados" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Directivos" EntityType="Self.Directivos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Disciplina" EntityType="Self.Disciplina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Entradas" EntityType="Self.Entradas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Entrenadores" EntityType="Self.Entrenadores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EntrenadorInscrito" EntityType="Self.EntrenadorInscrito" Schema="dbo" store:Type="Tables" />
@@ -3135,171 +2976,28 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <EntitySet Name="Sesion" EntityType="Self.Sesion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SessionItem" EntityType="Self.SessionItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SetupTorneo" EntityType="Self.SetupTorneo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suscritos" EntityType="Self.Suscritos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TagNames" EntityType="Self.TagNames" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TatoInformeAsistencias" EntityType="Self.TatoInformeAsistencias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TatoInformeEntrenador" EntityType="Self.TatoInformeEntrenador" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TatoRealizacion" EntityType="Self.TatoRealizacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TatoSeleccionado" EntityType="Self.TatoSeleccionado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TatoSeriesEjemplo" EntityType="Self.TatoSeriesEjemplo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Suscritos" EntityType="Self.tb_Suscritos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblmarca" EntityType="Self.tblmarca" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TEAM" EntityType="Self.TEAM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TEAMMasters" EntityType="Self.TEAMMasters" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoAfiliado" EntityType="Self.TipoAfiliado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoTorneo" EntityType="Self.TipoTorneo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Torneo" EntityType="Self.Torneo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TorneoDestacado" EntityType="Self.TorneoDestacado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TorneoDestacadoMasters" EntityType="Self.TorneoDestacadoMasters" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Traspasos" EntityType="Self.Traspasos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TraspasosEnEspera" EntityType="Self.TraspasosEnEspera" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vivo" EntityType="Self.Vivo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vouchers" EntityType="Self.Vouchers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AspNetRoles].[Id] AS [Id], 
-    [AspNetRoles].[Name] AS [Name]
-    FROM [dbo].[AspNetRoles] AS [AspNetRoles]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AspNetUserClaims].[Id] AS [Id], 
-    [AspNetUserClaims].[UserId] AS [UserId], 
-    [AspNetUserClaims].[ClaimType] AS [ClaimType], 
-    [AspNetUserClaims].[ClaimValue] AS [ClaimValue]
-    FROM [dbo].[AspNetUserClaims] AS [AspNetUserClaims]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AspNetUserLogins].[LoginProvider] AS [LoginProvider], 
-    [AspNetUserLogins].[ProviderKey] AS [ProviderKey], 
-    [AspNetUserLogins].[UserId] AS [UserId]
-    FROM [dbo].[AspNetUserLogins] AS [AspNetUserLogins]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AspNetUserRoles].[UserId] AS [UserId], 
-    [AspNetUserRoles].[RoleId] AS [RoleId], 
-    [AspNetUserRoles].[Id] AS [Id]
-    FROM [dbo].[AspNetUserRoles] AS [AspNetUserRoles]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AspNetUsers].[Id] AS [Id], 
-    [AspNetUsers].[Email] AS [Email], 
-    [AspNetUsers].[EmailConfirmed] AS [EmailConfirmed], 
-    [AspNetUsers].[PasswordHash] AS [PasswordHash], 
-    [AspNetUsers].[SecurityStamp] AS [SecurityStamp], 
-    [AspNetUsers].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
-    [AspNetUsers].[PhoneNumber] AS [PhoneNumber], 
-    [AspNetUsers].[TwoFactorEnabled] AS [TwoFactorEnabled], 
-    [AspNetUsers].[LockoutEnabled] AS [LockoutEnabled], 
-    [AspNetUsers].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
-    [AspNetUsers].[AccessFailedCount] AS [AccessFailedCount], 
-    [AspNetUsers].[UserName] AS [UserName], 
-    [AspNetUsers].[Name] AS [Name]
-    FROM [dbo].[AspNetUsers] AS [AspNetUsers]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="CategoriasMasters" EntityType="Self.CategoriasMasters" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CategoriasMasters].[CategoriaId] AS [CategoriaId], 
-    [CategoriasMasters].[EdadMinima] AS [EdadMinima], 
-    [CategoriasMasters].[EdadMaxima] AS [EdadMaxima], 
-    [CategoriasMasters].[Nombre] AS [Nombre]
-    FROM [dbo].[CategoriasMasters] AS [CategoriasMasters]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Comentarios" EntityType="Self.Comentarios" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Comentarios].[ComentarioId] AS [ComentarioId], 
-    [Comentarios].[Comentario] AS [Comentario], 
-    [Comentarios].[UsuarioId] AS [UsuarioId], 
-    [Comentarios].[NoticiaId] AS [NoticiaId], 
-    [Comentarios].[Estado] AS [Estado], 
-    [Comentarios].[Fecha] AS [Fecha]
-    FROM [dbo].[Comentarios] AS [Comentarios]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="ConFechas" EntityType="Self.ConFechas" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ConFechas].[INICIO] AS [INICIO], 
-    [ConFechas].[FINAL] AS [FINAL], 
-    [ConFechas].[EVENTOS] AS [EVENTOS], 
-    [ConFechas].[CIUDAD] AS [CIUDAD], 
-    [ConFechas].[PAIS] AS [PAIS], 
-    [ConFechas].[MODALIDAD] AS [MODALIDAD], 
-    [ConFechas].[F7] AS [F7], 
-    [ConFechas].[Organiza] AS [Organiza], 
-    [ConFechas].[Nota] AS [Nota], 
-    [ConFechas].[CalendarioId] AS [CalendarioId]
-    FROM [dbo].[ConFechas] AS [ConFechas]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Configuracion" EntityType="Self.Configuracion" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Configuracion].[Mantenimiento] AS [Mantenimiento], 
-    [Configuracion].[SetupId] AS [SetupId]
-    FROM [dbo].[Configuracion] AS [Configuracion]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Contactos" EntityType="Self.Contactos" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Contactos].[Id] AS [Id], 
-    [Contactos].[Nombre] AS [Nombre], 
-    [Contactos].[Appaterno] AS [Appaterno], 
-    [Contactos].[Apmaterno] AS [Apmaterno], 
-    [Contactos].[Telefono] AS [Telefono], 
-    [Contactos].[Extension] AS [Extension], 
-    [Contactos].[Planta] AS [Planta], 
-    [Contactos].[Asiento] AS [Asiento], 
-    [Contactos].[Cargo] AS [Cargo], 
-    [Contactos].[Ubicacion] AS [Ubicacion], 
-    [Contactos].[EmpresaId] AS [EmpresaId], 
-    [Contactos].[Celular] AS [Celular], 
-    [Contactos].[Observaciones] AS [Observaciones], 
-    [Contactos].[Email] AS [Email]
-    FROM [dbo].[Contactos] AS [Contactos]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Curso" EntityType="Self.Curso" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Curso].[CursoId] AS [CursoId], 
-    [Curso].[Nombre] AS [Nombre], 
-    [Curso].[Ciudad] AS [Ciudad], 
-    [Curso].[Direccion] AS [Direccion], 
-    [Curso].[Inicio] AS [Inicio], 
-    [Curso].[Fin] AS [Fin], 
-    [Curso].[DisciplinaId] AS [DisciplinaId], 
-    [Curso].[Hora] AS [Hora], 
-    [Curso].[CantidadMaxima] AS [CantidadMaxima]
-    FROM [dbo].[Curso] AS [Curso]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="CursoInscripcion" EntityType="Self.CursoInscripcion" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CursoInscripcion].[InscripcionId] AS [InscripcionId], 
-    [CursoInscripcion].[ParticipanteId] AS [ParticipanteId], 
-    [CursoInscripcion].[CursoId] AS [CursoId]
-    FROM [dbo].[CursoInscripcion] AS [CursoInscripcion]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="CursoParticipante" EntityType="Self.CursoParticipante" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CursoParticipante].[ParticipanteId] AS [ParticipanteId], 
-    [CursoParticipante].[Nombres] AS [Nombres], 
-    [CursoParticipante].[Paterno] AS [Paterno], 
-    [CursoParticipante].[Materno] AS [Materno], 
-    [CursoParticipante].[Nacimiento] AS [Nacimiento], 
-    [CursoParticipante].[DNI] AS [DNI], 
-    [CursoParticipante].[Email] AS [Email], 
-    [CursoParticipante].[Celular] AS [Celular], 
-    [CursoParticipante].[Nacionalidad] AS [Nacionalidad], 
-    [CursoParticipante].[Actividad] AS [Actividad]
-    FROM [dbo].[CursoParticipante] AS [CursoParticipante]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Empresa" EntityType="Self.Empresa" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Empresa].[EmpresaId] AS [EmpresaId], 
-    [Empresa].[Empresa] AS [Empresa], 
-    [Empresa].[Direccion] AS [Direccion], 
-    [Empresa].[Telefono] AS [Telefono], 
-    [Empresa].[Telefono2] AS [Telefono2], 
-    [Empresa].[Ciudad] AS [Ciudad], 
-    [Empresa].[Pais] AS [Pais], 
-    [Empresa].[Ubicacion] AS [Ubicacion], 
-    [Empresa].[Web] AS [Web], 
-    [Empresa].[Notas] AS [Notas]
-    FROM [dbo].[Empresa] AS [Empresa]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="Query" EntityType="Self.Query" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Query].[Athlete] AS [Athlete], 
@@ -3311,53 +3009,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
     [Query].[ID_NO] AS [ID_NO], 
     [Query].[AthleteId] AS [AthleteId]
     FROM [dbo].[Query] AS [Query]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Suscritos" EntityType="Self.Suscritos" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Suscritos].[Id] AS [Id], 
-    [Suscritos].[Nombre] AS [Nombre], 
-    [Suscritos].[Apellido] AS [Apellido], 
-    [Suscritos].[Email] AS [Email], 
-    [Suscritos].[FNacimiento] AS [FNacimiento]
-    FROM [dbo].[Suscritos] AS [Suscritos]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tb_Suscritos" EntityType="Self.tb_Suscritos" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tb_Suscritos].[Id] AS [Id], 
-    [tb_Suscritos].[Nombre] AS [Nombre], 
-    [tb_Suscritos].[Apellido] AS [Apellido], 
-    [tb_Suscritos].[Email] AS [Email], 
-    [tb_Suscritos].[FNacimiento] AS [FNacimiento], 
-    [tb_Suscritos].[EsActivo] AS [EsActivo]
-    FROM [dbo].[tb_Suscritos] AS [tb_Suscritos]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tblmarca" EntityType="Self.tblmarca" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tblmarca].[Id] AS [Id], 
-    [tblmarca].[Nombre] AS [Nombre], 
-    [tblmarca].[Notengoidea] AS [Notengoidea], 
-    [tblmarca].[Iniciales] AS [Iniciales], 
-    [tblmarca].[familia1] AS [familia1], 
-    [tblmarca].[familia2] AS [familia2], 
-    [tblmarca].[familia3] AS [familia3], 
-    [tblmarca].[familia4] AS [familia4], 
-    [tblmarca].[familia5] AS [familia5], 
-    [tblmarca].[familia6] AS [familia6], 
-    [tblmarca].[Familia] AS [Familia], 
-    [tblmarca].[F12] AS [F12]
-    FROM [dbo].[tblmarca] AS [tblmarca]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="TorneoDestacado" EntityType="Self.TorneoDestacado" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [TorneoDestacado].[DestacadoId] AS [DestacadoId], 
-    [TorneoDestacado].[Meet] AS [Meet]
-    FROM [dbo].[TorneoDestacado] AS [TorneoDestacado]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="TorneoDestacadoMasters" EntityType="Self.TorneoDestacadoMasters" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [TorneoDestacadoMasters].[DestacadoId] AS [DestacadoId], 
-    [TorneoDestacadoMasters].[Meet] AS [Meet]
-    FROM [dbo].[TorneoDestacadoMasters] AS [TorneoDestacadoMasters]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__SetupTorn__TipoI__2AA05119" Association="Self.FK__SetupTorn__TipoI__2AA05119">
             <End Role="TipoTorneo" EntitySet="TipoTorneo" />
@@ -4281,6 +3932,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Vouchers" EntitySet="Vouchers" />
           </AssociationSet>
+          <EntitySet Name="TagNames" EntityType="DB_9B1F4C_comentariosModel.TagNames" />
         </EntityContainer>
         <EntityType Name="Afiliacion">
           <Key>
@@ -4525,7 +4177,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <Property Name="FechaPagoAfiliacion" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="FinVigenciaPoderes" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="FinVigenciaRenade" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Resolucion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resolucion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="VoucherPagoAfiliacionAnual" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Academia" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Afiliacion" Relationship="DB_9B1F4C_comentariosModel.FK_Afiliacion_Club" FromRole="Club" ToRole="Afiliacion" />
@@ -6212,7 +5864,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
           <Key>
             <PropertyRef Name="F12" />
           </Key>
-          <Property Name="Id" Type="Double" />
+          <Property Name="Id" Type="Double" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Notengoidea" Type="Int32" />
           <Property Name="Iniciales" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -7453,6 +7105,19 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TagNames">
+          <Key>
+            <PropertyRef Name="TagId" />
+          </Key>
+          <Property Name="tag_ptr" Type="Int32" Nullable="false" />
+          <Property Name="tag_name" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="for_scoring" Type="Boolean" Nullable="false" />
+          <Property Name="for_entryqual" Type="Boolean" Nullable="false" />
+          <Property Name="for_timestd" Type="Boolean" Nullable="false" />
+          <Property Name="tag_desc" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TagId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MeetId" Type="Int32" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -9025,61 +8690,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.AspNetRoles">
-              <MappingFragment StoreEntitySet="AspNetRoles">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.AspNetUserClaims">
-              <MappingFragment StoreEntitySet="AspNetUserClaims">
-                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.AspNetUserLogins">
-              <MappingFragment StoreEntitySet="AspNetUserLogins">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
-                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserRoles">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.AspNetUserRoles">
-              <MappingFragment StoreEntitySet="AspNetUserRoles">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.AspNetUsers">
-              <MappingFragment StoreEntitySet="AspNetUsers">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CategoriasMasters">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.CategoriasMasters">
               <MappingFragment StoreEntitySet="CategoriasMasters">
@@ -9270,6 +8880,20 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.TorneoDestacadoMas
               <MappingFragment StoreEntitySet="TorneoDestacadoMasters">
                 <ScalarProperty Name="Meet" ColumnName="Meet" />
                 <ScalarProperty Name="DestacadoId" ColumnName="DestacadoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TagNames">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.TagNames">
+              <MappingFragment StoreEntitySet="TagNames">
+                <ScalarProperty Name="MeetId" ColumnName="MeetId" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="tag_desc" ColumnName="tag_desc" />
+                <ScalarProperty Name="for_timestd" ColumnName="for_timestd" />
+                <ScalarProperty Name="for_entryqual" ColumnName="for_entryqual" />
+                <ScalarProperty Name="for_scoring" ColumnName="for_scoring" />
+                <ScalarProperty Name="tag_name" ColumnName="tag_name" />
+                <ScalarProperty Name="tag_ptr" ColumnName="tag_ptr" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -574,6 +574,9 @@
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TagNames.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TatoInformeAsistencias.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>

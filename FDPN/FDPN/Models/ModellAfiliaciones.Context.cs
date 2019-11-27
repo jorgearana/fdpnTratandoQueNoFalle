@@ -133,5 +133,6 @@ namespace FDPN.Models
         public virtual DbSet<tblmarca> tblmarca { get; set; }
         public virtual DbSet<TorneoDestacado> TorneoDestacado { get; set; }
         public virtual DbSet<TorneoDestacadoMasters> TorneoDestacadoMasters { get; set; }
+        public virtual DbSet<TagNames> TagNames { get; set; }
     }
 }
