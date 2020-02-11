@@ -95,7 +95,7 @@ namespace InscripcionNatacion.Controllers
                 int seconds = Convert.ToInt32(result.TotalSeconds);
                 TorneoViewModel torneoviewmodel = new TorneoViewModel
                 {
-                    torneo = setup.Torneo,
+                    torneo = setup,
                     diferencia = seconds,
                     FechaFin = dt,
                     Tieneinscritos = false,

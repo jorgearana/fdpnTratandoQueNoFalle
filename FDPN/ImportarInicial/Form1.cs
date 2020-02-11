@@ -105,6 +105,7 @@ namespace ImportarInicial
                 PermiteSinMarca = chkNoMarca.Checked,
                 UsaMarcaMaxima = chkConMarcaMaxima.Checked,
                 Masters = chkMasters.Checked,
+                Debutantes= chkDebutantes.Checked,
             };
             db.SetupTorneo.Add(setup);
             db.SaveChanges();

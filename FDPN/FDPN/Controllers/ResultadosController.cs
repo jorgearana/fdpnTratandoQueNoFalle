@@ -324,7 +324,7 @@ namespace FDPN.Controllers
             List<RESULTS> resultadoEnlista = resultado
                 .DistinctBy(x => x.AthleteId).ToList();
 
-            VM.resultados = resultadoEnlista.Take(100).ToList();
+            VM.resultados = resultadoEnlista.Take(300).ToList();
 
 
             VM.distancia = Int32.Parse(distance);

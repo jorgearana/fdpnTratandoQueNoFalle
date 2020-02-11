@@ -12,19 +12,18 @@ namespace FDPN.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblmarca
+    public partial class RecordTipo
     {
-        public double Id { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public RecordTipo()
+        {
+            this.RecordsActuales = new HashSet<RecordsActuales>();
+        }
+    
+        public int TipoId { get; set; }
         public string Nombre { get; set; }
-        public Nullable<int> Notengoidea { get; set; }
-        public string Iniciales { get; set; }
-        public Nullable<int> familia1 { get; set; }
-        public Nullable<int> familia2 { get; set; }
-        public Nullable<int> familia3 { get; set; }
-        public Nullable<int> familia4 { get; set; }
-        public Nullable<int> familia5 { get; set; }
-        public Nullable<int> familia6 { get; set; }
-        public Nullable<int> Familia { get; set; }
-        public int F12 { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RecordsActuales> RecordsActuales { get; set; }
     }
 }

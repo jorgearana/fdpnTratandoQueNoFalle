@@ -206,6 +206,9 @@
     <Content Include="Content\bootstrap\bootstrap.min.css" />
     <Content Include="Content\bootstrap\ionicons.css" />
     <Content Include="Content\bootstrap\main.min.css" />
+    <Content Include="Content\img\academia1.jpg" />
+    <Content Include="Content\img\academia2.jpg" />
+    <Content Include="Content\img\carnet.jpg" />
     <Content Include="Content\img\covermask2.png" />
     <Content Include="Content\img\En Mantenimiento.png" />
     <Content Include="Content\img\EnVivo.jpg" />
@@ -232,6 +235,7 @@
     <Content Include="Content\img\fondos\logoIPD.jpg" />
     <Content Include="Content\img\fondos\logoUana.jpg" />
     <Content Include="Content\img\fondos\piscinalibre.jpg" />
+    <Content Include="Content\img\formaciontalentos.jpeg" />
     <Content Include="Content\img\Fotos\1.JPG" />
     <Content Include="Content\img\Fotos\10.jpg" />
     <Content Include="Content\img\Fotos\11.jpg" />
@@ -271,13 +275,11 @@
     <Content Include="Content\img\sort_asc.png" />
     <Content Include="Content\img\sort_both.png" />
     <Content Include="Content\img\sort_desc.png" />
+    <Content Include="Content\img\trujillocolores.jpg" />
     <Content Include="Content\img\vertical1.jpg" />
     <Content Include="Content\img\vertical2.jpg" />
     <Content Include="Content\img\vertical3.jpg" />
     <Content Include="Content\img\vertical4.jpg" />
-    <Content Include="Content\pdf\Calendario Masters.pdf" />
-    <Content Include="Content\pdf\Calendario Natacion.pdf" />
-    <Content Include="Content\pdf\Calendario Polo.pdf" />
     <Content Include="Content\slick\config.rb" />
     <Content Include="Content\slick\fonts\slick.eot" />
     <Content Include="Content\slick\fonts\slick.ttf" />
@@ -287,10 +289,6 @@
     <Content Include="Content\slick\slick.less" />
     <Content Include="Content\slick\slick.scss" />
     <Content Include="Content\slick\Thumbs.db" />
-    <Content Include="Content\pdf\Calendario aguas.pdf" />
-    <Content Include="Content\pdf\Calendario todas.pdf" />
-    <Content Include="Content\pdf\calendario artistico.pdf" />
-    <Content Include="Content\pdf\calendario clavados.pdf" />
     <Content Include="App_Browsers\qt.browser" />
     <Compile Include="Models\Afiliacion.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
@@ -308,21 +306,6 @@
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Asociaciones.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetRoles.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserClaims.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserLogins.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserRoles.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUsers.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ATFDeportista.cs">
@@ -505,6 +488,9 @@
     <Compile Include="Models\OtroTorneo.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Piscinas.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PoloEquipos.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
@@ -550,6 +536,21 @@
     <Compile Include="Models\Query.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Records.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecordsActuales.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecordsEdades.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecordsPruebas.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecordTipo.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RESULTS.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
@@ -559,6 +560,9 @@
     <Compile Include="Models\Rol.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Saltos.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Sesion.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
@@ -566,6 +570,9 @@
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SetupTorneo.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sheet1_.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Suscritos.cs">
@@ -590,9 +597,6 @@
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TatoSeriesEjemplo.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblmarca.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tb_Suscritos.cs">
@@ -934,6 +938,8 @@
       <DependentUpon>ModellAfiliaciones.edmx</DependentUpon>
     </Content>
     <Content Include="Content\pdf\formato inscripcion.xls" />
+    <Content Include="Content\pdf\CalendarioFDPN2019.pdf" />
+    <Content Include="Content\pdf\Procedimiento de renovación de afiliación anual 2020.pdf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1033,6 +1039,7 @@
     <Content Include="Views\Banners\Edit.cshtml" />
     <Content Include="Views\Documentos\habiles.cshtml" />
     <Content Include="Views\Documentos\Convocatorias.cshtml" />
+    <Content Include="Views\Documentos\Formatos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

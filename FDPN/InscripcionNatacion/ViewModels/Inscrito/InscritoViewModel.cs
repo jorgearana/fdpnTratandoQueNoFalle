@@ -28,7 +28,10 @@ namespace InscripcionNatacion.ViewModels.Inscrito
         public string torneo { get; set; }
         public string PiscinaDelTiempo { get; set; }
 
+        public string MejorCursoDePiscina { get; set; }
+
         public Boolean  Cumple { get; set; }
+
 
     }
     public class InscritoViewModelDesSerializado

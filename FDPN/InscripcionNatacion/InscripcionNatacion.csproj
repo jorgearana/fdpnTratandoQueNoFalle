@@ -577,7 +577,6 @@
     <Content Include="Views\Home\construccion.cshtml" />
     <Content Include="Views\Inscrito\ListarNadadoresAfiliados.cshtml" />
     <Content Include="Views\Inscrito\ListarPruebasParaElNadadorSemillero.cshtml" />
-    <Content Include="Views\Inscrito\ListarNadadoresNoAfiliados.cshtml" />
     <Content Include="Views\Home\PaginaDeErrorOMensaje.cshtml" />
     <Content Include="Views\Inscrito\ListadosPorPrueba.cshtml" />
     <Content Include="Views\Inscrito\DatosDelEvento.cshtml" />
@@ -608,6 +607,7 @@
     <Content Include="Views\Masters\ModelListarPruebasParaElNadadorMaster.cshtml" />
     <Content Include="Views\Masters\ModelNotieneDNI.cshtml" />
     <Content Include="Views\Masters\ListarPruebasParaElNadadorMaster.cshtml" />
+    <Content Include="Views\Inscrito\ListarNadadoresParaSemillero.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

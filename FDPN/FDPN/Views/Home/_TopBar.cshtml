@@ -67,7 +67,7 @@
                                     @Html.ActionLink("Clubes hábiles", "habiles", "documentos")
                                 </li>
                                 <li class="nav-item">
-                                    <a href="~/Content/pdf/formato inscripcion.xls">Formato inscripción en Excel</a>
+                                    @Html.ActionLink("Formatos", "formatos", "documentos")
                                 </li>
                             </ul>
                         </li>
@@ -165,6 +165,9 @@
                                 <li class="nav-item">
                                     @Html.ActionLink("Calendarios", "Calendarios", "resultados", null, new { @class = "nav-link" })
                                 </li>
+                                <li class="nav-item">
+                                    <a href="~/Content/pdf/CalendarioFDPN2019.pdf">Calendario 2019 </a>
+                                </li>
                             </ul>
                         </li>
 
@@ -172,7 +175,8 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Afiliación <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
-                                    @Html.ActionLink("Como afiliarte", "afiliarClub", "documentos", null, new { @class = "nav-link" })
+                                    <a href="~/Content/pdf/Procedimiento de renovación de afiliación anual 2020.pdf">Como afiliarte</a>
+                                    @*@Html.ActionLink("Como afiliarte", "afiliarClub", "documentos", null, new { @class = "nav-link" })*@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="http://afiliaciones.fdpn.org">Afiliaciones</a>
@@ -183,17 +187,20 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Academia <span class="caret"></span></a>
                             <ul class="dropdown-menu">
+
                                 <li class="nav-item">
-                                    <a href="~/Content/img/Fotos/LISTO1 (1)-001.jpg" target="_blank"> Academia página 1</a>
+                                    <a href="~/Content/img/formaciontalentos.jpeg" target="_blank"> VIDENA</a>
+                                </li>
+                                <li class="nav-item">                                  
+                                    <a href="~/Content/img/academia1.jpg" target="_blank"> Academia página 1</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="~/Content/img/Fotos/FINAL (1)-001.jpg" target="_blank">Academia página 2</a>
+                                    <a href="~/Content/img/academia2.jpg" target="_blank">Academia página 2</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="~/Content/img/Fotos/Academiatrujillo.jpeg" target="_blank">Academia en Trujillo</a>
+                                    <a href="~/Content/img/trujillocolores.jpg" target="_blank">Academia en Trujillo 2020</a>
                                 </li>
 
-                               
                             </ul>
                         </li>
                         @Html.Action("_PreviewAlertas")

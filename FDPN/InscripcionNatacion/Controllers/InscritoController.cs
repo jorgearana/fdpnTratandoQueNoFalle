@@ -40,6 +40,11 @@ namespace InscripcionNatacion.Controllers
             {
                 return RedirectToAction("InscribirResponsable", new { MeetId = Meetid });
             }
+            SetupTorneo setup = db.SetupTorneo.FirstOrDefault(x => x.Meetid == Meetid);
+            if (setup.Debutantes)
+            {
+                return RedirectToAction("ListarNadadoresParaSemillero", new { MeetId = Meetid });
+            }
 
             List<ListarNadadoresParaSeleccionarlos> VM = new List<ListarNadadoresParaSeleccionarlos>();
             List<Eventos> ListadoDeEventos = db.Eventos.Where(x => x.MeetId == Meetid).ToList();
@@ -52,7 +57,7 @@ namespace InscripcionNatacion.Controllers
 
 
 
-            SetupTorneo setup = db.SetupTorneo.FirstOrDefault(x => x.Meetid == Meetid);
+            
             Club club = Session["Club"] as Club;
 
 
@@ -73,9 +78,71 @@ namespace InscripcionNatacion.Controllers
 
             return View(VM);
         }
+
+
+        public ActionResult ListarNadadoresParaSemillero(int Meetid)
+        {
+            Torneo torneo = db.Torneo.Find(Meetid);
+            Usuario usuario = Session["usuario"] as Usuario;
+            Club club = db.Club.Where(x => x.ClubID == usuario.ClubId).FirstOrDefault();
+
+            List<Eventos> ListadoDeEventos = db.Eventos.Where(x => x.MeetId == Meetid).ToList();
+            int EdadMaxima = ListadoDeEventos.Max(x => x.High_Age) ?? 109;
+            int EdadMinima = ListadoDeEventos.Min(x => x.Low_age) ?? 0;
+            int annoActual = DateTime.Now.Year - 1;
+            int AnnoMaximo = annoActual - EdadMinima;
+            int AnnoMinimo = annoActual - EdadMaxima;
+
+
+            List<ListarNadadoresParaSeleccionarlos> VM = new List<ListarNadadoresParaSeleccionarlos>();
+
+
+            List<Inscripciones> listadoNadadores = db
+                .Inscripciones.Where(x => x.ClubID == club.ClubID &&
+                x.Afiliado.Fecha_de_nacimiento.Year >= AnnoMinimo &&
+                x.Afiliado.Fecha_de_nacimiento.Year <= AnnoMaximo && x.DisciplinaId == 1)
+                .OrderBy(x => x.Afiliado.Fecha_de_nacimiento)
+                .ToList();
+
+            List<Entradas> EntradasDeEsteTorneo = db.Entradas.Where(x => x.MeetId == Meetid).ToList();
+            List<atletas> atletasDeEsteTorneo = db.atletas.Where(x => x.Meetid == Meetid).ToList();
+            foreach (Inscripciones afiliado in listadoNadadores)
+            {
+                ListarNadadoresParaSeleccionarlos listarnadadorparaafiliar = new ListarNadadoresParaSeleccionarlos
+                {
+                    afiliado = afiliado,
+                    YaEstaInscrito = false,
+                    TieneResultado = db.RESULTS.Any(x => x.Athlete1.ID_NO == afiliado.DNI && x.NT == 0),
+                    TieneMulta = db.Multas.Any(x => x.InscripcionId == afiliado.InscripcionId && x.Subsanada == false),
+                };
+
+
+
+                if (atletasDeEsteTorneo.Any(x => x.Reg_no == afiliado.DNI))
+                {
+                    atletas atleta = atletasDeEsteTorneo.Where(x => x.Reg_no == afiliado.DNI).FirstOrDefault();
+                    listarnadadorparaafiliar.YaEstaInscrito = true;
+                    //if (EntradasDeEsteTorneo.Any(x => x.Ath_no == atleta.Ath_no && x.MeetId == Meetid))
+                    //{
+                    //    listarnadadorparaafiliar.YaEstaInscrito = true;
+                    //}
+
+                }
+
+                VM.Add(listarnadadorparaafiliar);
+            }
+            ViewBag.Meet = db.Torneo.Where(x => x.Meetid == Meetid).Select(x => x.Meet_name1).FirstOrDefault();
+            ViewBag.torneo = torneo;
+
+            ViewBag.setup = db.SetupTorneo.Where(x => x.Meetid == Meetid).FirstOrDefault();
+
+
+            return View(VM);
+        }
+
         public ActionResult ListarNadadoresParaFdnp(int Meetid)
         {
-            if (!repository.validarMeet())
+            if (!repository.validarUsuario())
             {
                 return RedirectToAction("Login", "home");
             }
@@ -98,7 +165,6 @@ namespace InscripcionNatacion.Controllers
             return View(VM);
         }
 
-
         public List<Inscripciones> GetNadadores(SetupTorneo setup, int EdadMaxima, int EdadMinima)
         {
             int annoActual = DateTime.Now.Year - 1;
@@ -106,7 +172,7 @@ namespace InscripcionNatacion.Controllers
             AnnoMinimo = annoActual - EdadMaxima;
             AnnoVinculados = annoActual - 11 + 1;
             IQueryable<Inscripciones> listado;
-            Usuario usuario = Session["Usuario"] as Usuario;            
+            Usuario usuario = Session["Usuario"] as Usuario;
 
             if (EdadMinima >= 11)
             {
@@ -172,136 +238,28 @@ namespace InscripcionNatacion.Controllers
             return VM;
         }
 
-        public InscritoViewModel GetMejortiempoDeLaPrueba(InscritoViewModel NadadorAInscribir, RESULTS resultadoenlarga, RESULTS resultadoencorta, string curso, SetupTorneo setup)
+
+        public InscritoViewModel ObenerElMejorTiempo(InscritoViewModel NadadorAInscribir, RESULTS resultadoenlarga, RESULTS resultadoencorta, string curso, SetupTorneo setup)
         {
             // Ver si cumple la marca mínima, primero la de la competencia, usando LSY y SLY
             RESULTS resultado = new RESULTS();
-            string CursoPiscina = setup.Torneo.course_order;
+            float segundoslarga = 0;
+            float segundoscorta = 0;
+            int pruebaid = resultadoenlarga.PruebaId ?? resultadoencorta.PruebaId ?? 0;
 
 
-            for (int i = 0; i < 2; i++)
+            if (resultadoenlarga != null)
             {
-                float MM = 0;
-                string CursoABuscar = CursoPiscina.Substring(i, 1);
-                if (CursoABuscar == "L")
-                {
-                    resultado = resultadoenlarga;
-                    MM = NadadorAInscribir.MMLarga;
-                }
-                else
-                {
-                    resultado = resultadoencorta;
-                    MM = NadadorAInscribir.MMCorta;
-                }
-
-                // aquí vemos si cumple dependiendo del tipo de torneo
-                //Si es un torneo con marcas mínimas debe de tener marcas mejores, si es con marcas máximas no debe de tener mejores marca
-                //si es un torneo tipo semillero o copa no debe de tener marcas minimas.
-
-                if (setup.PermiteSinMarca)
-                {
-                    NadadorAInscribir.Cumple = true;
-                }
-                else if (setup.UsaMarcaMaxima)
-                {
-                    NadadorAInscribir.Cumple = VerSiCumpleConLaMarcaMaxima(NadadorAInscribir, resultadoenlarga, resultadoencorta);
-                }
-                else
-                {
-                    NadadorAInscribir.Cumple = VerSiCumpleConLaMarca(CursoABuscar, resultado, MM);
-                }
-
-                if (NadadorAInscribir.Cumple)
-                { break; }
-
+                segundoslarga = ConvertirASegundos(resultadoenlarga.SCORE ?? "00:00.00");
+            }
+            if (resultadoenlarga != null)
+            {
+                segundoscorta = ConvertirASegundos(resultadoencorta.SCORE ?? "00:00.00");
             }
 
-
-
-            if ((!NadadorAInscribir.Cumple || setup.PermiteSinMarca) && (!setup.UsaMarcaMaxima))
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    resultado = null;
-                    string CursoABuscar = CursoPiscina.Substring(i, 1);
-                    if (CursoABuscar == "L" && resultadoenlarga != null)
-                    {
-                        resultado = resultadoenlarga;
-                        break;
-                    }
-                    if (CursoABuscar == "S" && resultadoencorta != null)
-                    {
-                        resultado = resultadoencorta;
-                        break;
-                    }
-                }
-            }
-            if ((!NadadorAInscribir.Cumple || setup.PermiteSinMarca) && (setup.UsaMarcaMaxima))
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    resultado = null;
-                    string CursoABuscar = CursoPiscina.Substring(i, 1);
-                    if (CursoABuscar == "L" && resultadoenlarga != null && NadadorAInscribir.PiscinaDelTiempo == "L")
-                    {
-                        resultado = resultadoenlarga;
-                        break;
-                    }
-                    if (CursoABuscar == "S" && resultadoencorta != null && NadadorAInscribir.PiscinaDelTiempo == "C")
-                    {
-                        resultado = resultadoencorta;
-                        break;
-                    }
-                }
-            }
-
-            if (!NadadorAInscribir.Cumple)
-            {
-                if (resultadoenlarga == null && resultadoencorta == null)
-                {
-                    NadadorAInscribir.tiempo = "0.00";
-                    NadadorAInscribir.segundos = 0;
-                    NadadorAInscribir.torneo = "Sin torneo";
-                    NadadorAInscribir.PiscinaDelTiempo = "";
-                }
-                else
-                {
-
-                    NadadorAInscribir.tiempo = resultado.SCORE;
-                    NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
-                    NadadorAInscribir.torneo = resultado.MEET1.MName;
-                    if (resultado.MEET1.MName.Length > 20)
-                    {
-                        NadadorAInscribir.torneo = resultado.MEET1.MName.Substring(0, 20);
-                    }
-                    NadadorAInscribir.PiscinaDelTiempo = resultado.COURSE;
-                    NadadorAInscribir.Cumple = false;
-
-                }
-
-            }
-            if (resultado == null)
-            {
-                resultado = new RESULTS
-                {
-                    SCORE = "0.00",
-                    COURSE = "-",
-                    MEET1 = new MEET
-                    {
-                        MName = "Sin participación",
-                    },
-                };
-            }
-            NadadorAInscribir.tiempo = resultado.SCORE;
-            NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
-            NadadorAInscribir.torneo = resultado.MEET1.MName;
-            if (resultado.MEET1.MName.Length > 20)
-            {
-                NadadorAInscribir.torneo = resultado.MEET1.MName.Substring(0, 20);
-            }
-            NadadorAInscribir.PiscinaDelTiempo = resultado.COURSE;
             return NadadorAInscribir;
         }
+
 
         public ActionResult RetirarDelTorneo(int MeetId, int afiliadoId)
         {
@@ -347,7 +305,7 @@ namespace InscripcionNatacion.Controllers
             DateTime haceunanno = setup.Torneo.EntryEligibility_date ?? fecha.AddYears(-1).AddDays(-15);
 
             List<MarcasMinimas> MarcasMinimasDelTorneo = new List<MarcasMinimas>();
-            if (!setup.PermiteSinMarca)
+            if (!setup.Debutantes)
             {
                 MarcasMinimasDelTorneo = db.MarcasMinimas.Where(x => x.MeetId == MeetId).ToList();
             }
@@ -385,7 +343,9 @@ namespace InscripcionNatacion.Controllers
                        .ToList();
 
 
-
+            List<RESULTS> CienEspalda = db.RESULTS
+                .Where(x => x.Athlete1.ID_NO == VM.afiliado.DNI && x.MEET1.Start > haceunanno && x.NT == 0
+                && x.DISTANCE == "100" && x.STROKE == "Back").ToList();
 
             if (setup.Torneo.Meet_course == 1)
             {
@@ -411,8 +371,8 @@ namespace InscripcionNatacion.Controllers
             //2 .- Buscar los eventos que podría nadar el afiliado
             int edad = annoActual - VM.afiliado.Afiliado.Fecha_de_nacimiento.Year;
             List<Eventos> eventosDelNadador = db.Eventos
-      .Where(x => x.MeetId == MeetId && x.Low_age <= edad && x.High_Age >= edad && x.Event_gender == VM.afiliado.Afiliado.Sexo && x.Ind_rel == "i")
-      .OrderBy(x => x.Event_no).ToList();
+            .Where(x => x.MeetId == MeetId && x.Low_age <= edad && x.High_Age >= edad && x.Event_gender == VM.afiliado.Afiliado.Sexo && x.Ind_rel == "i")
+            .OrderBy(x => x.Event_no).ToList();
 
             foreach (Eventos evento in eventosDelNadador)
             {
@@ -424,16 +384,11 @@ namespace InscripcionNatacion.Controllers
                     MMLarga = 0,
                 };
 
-
-                NadadorAInscribir.MMCorta = (setup.PermiteSinMarca ? 0 : MarcasMinimasDelTorneo.
-                Where(x => x.tag_dist == evento.Event_dist && x.tag_stroke == evento.Event_stroke && x.tag_course == "S" && x.low_age <= edad && x.high_Age >= edad && x.tag_gender == evento.Event_gender && x.MeetId == evento.MeetId)
-               .OrderByDescending(x => x.tag_ptr)
-               .Select(x => x.tag_time).FirstOrDefault() ?? 0);
-
-                NadadorAInscribir.MMLarga = (setup.PermiteSinMarca ? 0 : MarcasMinimasDelTorneo
-                .Where(x => x.tag_dist == evento.Event_dist && x.tag_stroke == evento.Event_stroke && x.tag_course == "L" && x.low_age <= edad && x.high_Age >= edad && x.tag_gender == evento.Event_gender && x.MeetId == evento.MeetId)
-                .OrderByDescending(x => x.tag_ptr)
-                .Select(x => x.tag_time).FirstOrDefault() ?? 0);
+                if (!setup.Debutantes && setup.SinMarca!=1)
+                {
+                    NadadorAInscribir = ConseguirMarcaDelEvento(NadadorAInscribir, setup, MarcasMinimasDelTorneo, evento, edad);
+                }
+                             
 
                 if (atleta != null)
                 {
@@ -480,10 +435,10 @@ namespace InscripcionNatacion.Controllers
                        .OrderBy(x => x.SCORE).FirstOrDefault();
 
 
-
                 // Ver si cumple la marca mínima, primero la de la competencia, usando LSY y SLY
                 string CursoPiscina = setup.Torneo.course_order;
-                NadadorAInscribir = GetMejortiempoDeLaPrueba(NadadorAInscribir, resultadoenlarga, resultadoencorta, CursoPiscina, setup);
+                NadadorAInscribir = BuscarMejorTiempoDelEvento(NadadorAInscribir, setup, resultadoenlarga, resultadoencorta, evento);
+                //NadadorAInscribir = GetMejortiempoDeLaPrueba(NadadorAInscribir, resultadoenlarga, resultadoencorta, CursoPiscina, setup);
                 if (NadadorAInscribir.Cumple)
                 {
                     pruebasConMarca += 1;
@@ -524,14 +479,10 @@ namespace InscripcionNatacion.Controllers
                             sesionVM.Inscritos += 1;
                             sesionVM.Pendiente -= 1;
 
-                            if (numeroDeEvento.segundos == 0 && (numeroDeEvento.MMCorta > 0 || numeroDeEvento.MMLarga > 0))
+                            if(!numeroDeEvento.Cumple)
                             {
                                 VM.PruebasInscritasSinMarca += 1;
-                            }
-                            else if (!(numeroDeEvento.segundos < numeroDeEvento.MMCorta || numeroDeEvento.segundos < numeroDeEvento.MMLarga))
-                            {
-                                VM.PruebasInscritasSinMarca += 1;
-                            }
+                            }                     
                             VM.PruebasInscritas += 1;
 
                         }
@@ -556,7 +507,7 @@ namespace InscripcionNatacion.Controllers
                 }
                 else
                 {
-                    VM.SinMarca = 1;
+                    VM.SinMarca = 0;
                 }
 
             }
@@ -564,6 +515,7 @@ namespace InscripcionNatacion.Controllers
             ViewBag.setup = setup;
             return View(VM);
         }
+
 
         public ActionResult ListarPruebasParaElNadadorSemillero(int MeetId, int afiliadoId)
         {
@@ -759,6 +711,305 @@ namespace InscripcionNatacion.Controllers
 
 
         }
+
+
+        public InscritoViewModel BuscarMejorTiempoDelEvento(InscritoViewModel NadadorAInscribir, SetupTorneo setup, RESULTS resultadoenlarga, RESULTS resultadoencorta, Eventos evento)
+        {
+            string CursoPiscina = setup.Torneo.course_order.Substring(0,1);
+            string CumpleEnCurso = "";
+            float RLarga = 0;
+            float RCorta = 0;
+            double factor = 0;
+            
+            if(resultadoenlarga!= null)
+            {
+                factor = resultadoenlarga.Pruebas.FactorF ??0;
+            }
+            else if (resultadoencorta != null)
+            {
+                factor = resultadoencorta.Pruebas.FactorM ?? 0;
+
+            }
+            
+
+            // 1.- convertir los tiempos a segundos
+            if (resultadoenlarga != null && resultadoenlarga.SCORE != null)
+            {
+                RLarga = ConvertirASegundos(resultadoenlarga.SCORE);
+            }
+            if (resultadoencorta != null && resultadoencorta.SCORE != null)
+            {
+                RCorta = ConvertirASegundos(resultadoencorta.SCORE);
+            }
+
+            // 2.- ver si cumple la marca dependiendo si busca marca mínima o marca máxima
+            if (setup.UsaMarcaMaxima)
+            {
+                CumpleEnCurso = VerSiCumpleMarcaMaxima(NadadorAInscribir, setup, RLarga, RCorta, factor);
+            }
+            else if (!setup.UsaMarcaMaxima && setup.SinMarca == 0) //revisar que es sin marca Creo que esto es para ver si el torneo no tiene marca mínima ni máxima
+            {
+                CumpleEnCurso = VerSiCumpleMarcaMinima(NadadorAInscribir, setup, RLarga, RCorta, factor);
+            }
+            else if(setup.SinMarca !=0)  
+            {
+
+                CumpleEnCurso = VerSiCumpleSinMarca(NadadorAInscribir, setup, RLarga, RCorta, factor);
+            }
+
+            // 3.- Luego buscar el torneo donde hizo la marca
+            if (CumpleEnCurso == "L")
+            {
+                NadadorAInscribir.torneo = resultadoenlarga.MEET1.MName;
+                NadadorAInscribir.tiempo = resultadoenlarga.SCORE;
+                NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
+                NadadorAInscribir.Cumple = true;
+                NadadorAInscribir.PiscinaDelTiempo = "L";
+            }
+            else if (CumpleEnCurso == "S")
+            {
+                NadadorAInscribir.torneo = resultadoencorta.MEET1.MName;
+                NadadorAInscribir.tiempo = resultadoencorta.SCORE;
+                NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
+                NadadorAInscribir.Cumple = true;
+                NadadorAInscribir.PiscinaDelTiempo = "S";
+            }
+            else
+            {
+                if(NadadorAInscribir.MejorCursoDePiscina =="L")
+                {
+                    NadadorAInscribir.torneo = resultadoenlarga.MEET1.MName;
+                    NadadorAInscribir.tiempo = resultadoenlarga.SCORE;
+                    NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
+                    NadadorAInscribir.Cumple = false;
+                    NadadorAInscribir.PiscinaDelTiempo = "L";
+                }
+                else if (NadadorAInscribir.MejorCursoDePiscina == "S")
+                {
+                    NadadorAInscribir.torneo = resultadoencorta.MEET1.MName;
+                    NadadorAInscribir.tiempo = resultadoencorta.SCORE;
+                    NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
+                    NadadorAInscribir.Cumple = false;
+                    NadadorAInscribir.PiscinaDelTiempo = "S";
+                }
+                else
+                {
+                    NadadorAInscribir.torneo = "Sin torneo";
+                    NadadorAInscribir.tiempo = "0:00.00";
+                    NadadorAInscribir.segundos = 0;
+                    NadadorAInscribir.Cumple = false;
+                }
+              
+                if(setup.SinMarca != 0)
+                {
+                    NadadorAInscribir.Cumple = true;
+                }
+            }
+            return NadadorAInscribir;
+        }
+
+
+        public InscritoViewModel ConseguirMarcaDelEvento(InscritoViewModel NadadorAInscribir, SetupTorneo setup, List<MarcasMinimas> MarcasMinimasDelTorneo, Eventos evento, int edad)
+        {
+            float MML = 0;
+            float MMC = 0;
+
+            List<MarcasMinimas> Marcas = MarcasMinimasDelTorneo.
+                Where(x => x.tag_dist == evento.Event_dist && x.tag_stroke == evento.Event_stroke && x.tag_course == "L" && x.low_age <= edad && x.high_Age >= edad && x.tag_gender == evento.Event_gender && x.MeetId == evento.MeetId)
+               .OrderByDescending(x => x.tag_ptr)
+               .ToList();
+
+            if (Marcas.Count() > 0)
+            {
+                NadadorAInscribir.MMLarga = SeleccionarLaMejorMM(Marcas, edad);
+            }
+            else
+            {
+                NadadorAInscribir.MMLarga = Marcas[0].tag_time ?? 0;
+            }
+            Marcas = MarcasMinimasDelTorneo.
+                Where(x => x.tag_dist == evento.Event_dist && x.tag_stroke == evento.Event_stroke && x.tag_course == "S" && x.low_age <= edad && x.high_Age >= edad && x.tag_gender == evento.Event_gender && x.MeetId == evento.MeetId)
+               .OrderByDescending(x => x.tag_ptr)
+               .ToList();
+
+            if (Marcas.Count() > 0)
+            {
+                NadadorAInscribir.MMCorta = SeleccionarLaMejorMM(Marcas, edad);
+            }
+            return NadadorAInscribir;
+
+        }
+
+
+      
+
+
+        public string VerSiCumpleMarcaMinima(InscritoViewModel NadadorAInscribir, SetupTorneo setup, float RLarga, float RCorta, double factor)
+        {
+            string CursoPiscina = setup.Torneo.course_order.Substring(0,1);
+            bool cumplelarga = false;
+            bool cumplecorta = false;
+
+
+            if (RLarga < NadadorAInscribir.MMLarga && RLarga > 0)
+            {
+                cumplelarga = true;
+            }
+            if (RCorta < NadadorAInscribir.MMCorta && RCorta > 0)
+            {
+                cumplecorta = true;
+            }
+
+            if (CursoPiscina == "L")
+            {
+                RCorta = ConvertirLaMarcaEntrePiscinas(RCorta, factor, "S");
+            }
+            else
+            {
+                RLarga = ConvertirLaMarcaEntrePiscinas(RLarga, factor, CursoPiscina);
+            }
+
+
+            if (cumplelarga && cumplecorta) //Si se cumplen en corta y larga
+            {
+               
+
+                if (RLarga < RCorta)
+                {
+                    return "L";
+                }
+                else
+                {
+                    return "S";
+                }
+            }
+            else
+            {
+                if (cumplelarga) //Si solo cumple en larga
+                {
+                    return "L";
+                }
+                else if (cumplecorta) // si solo cumple en corta
+                {
+                    return "S";
+                }
+
+                if ((RLarga < RCorta && RLarga >0) || (RLarga > 0 && RCorta == 0)) // si no cumple ninguna de las dos al menos trataré de colocar el mejor curso donde buscaré su tiempo
+                {
+                    NadadorAInscribir.MejorCursoDePiscina = "L";
+                }
+                else if((RCorta < RLarga && RCorta > 0) || (RCorta>0 && RLarga ==0))
+                {
+                    NadadorAInscribir.MejorCursoDePiscina = "S";
+                }
+                return "";
+            }
+
+        }
+        public string VerSiCumpleMarcaMaxima(InscritoViewModel NadadorAInscribir, SetupTorneo setup, float RLarga, float RCorta, double factor)
+        {
+            string CursoPiscina = setup.Torneo.course_order;
+            bool cumplelarga = false;
+            bool cumplecorta = false;
+
+            if (RLarga > NadadorAInscribir.MMLarga)
+            {
+                cumplelarga = true;
+            }
+            if (RCorta > NadadorAInscribir.MMLarga)
+            {
+                cumplecorta = true;
+            }
+            if (cumplelarga && cumplecorta)
+            {
+                if (CursoPiscina == "L")
+                {
+                    RCorta = ConvertirLaMarcaEntrePiscinas(RCorta, factor, CursoPiscina);
+                }
+                else
+                {
+                    RLarga = ConvertirLaMarcaEntrePiscinas(RLarga, factor, CursoPiscina);
+                }
+                if (RLarga < RCorta)
+                {
+                    return "L";
+                }
+                else
+                {
+                    return "S";
+                }
+            }
+            else
+            {
+                if (cumplelarga)
+                {
+                    return "L";
+                }
+                else if(cumplecorta)
+                {
+                    return "S";
+                }
+
+                if (RLarga < RCorta) // si no cumple ninguna de las dos al menos trataré de colocar el mejor curso donde buscaré su tiempo
+                {
+                    NadadorAInscribir.MejorCursoDePiscina = "L";
+                }
+                else if (RCorta < RLarga)
+                {
+                    NadadorAInscribir.MejorCursoDePiscina = "S";
+                }
+                return "";
+            }
+
+        }
+
+        public string VerSiCumpleSinMarca(InscritoViewModel NadadorAInscribir, SetupTorneo setup, float RLarga, float RCorta, double factor)
+        {
+            string CursoPiscina = setup.Torneo.course_order.Substring(0,1);
+
+           
+                if (CursoPiscina == "L")
+                {
+                    RCorta = ConvertirLaMarcaEntrePiscinas(RCorta, factor, CursoPiscina);
+                }
+                else
+                {
+                    RLarga = ConvertirLaMarcaEntrePiscinas(RLarga, factor, CursoPiscina);
+                }
+                if ((RLarga < RCorta && RLarga>0) || (RLarga > 0 && RCorta == 0))
+            {
+                    return "L";
+                }
+                else if ((RLarga > RCorta && RCorta >0)||(RCorta>0 && RLarga==0))
+            {
+                    return "S";
+                }
+
+            return "";
+        }
+
+        public string VerSiEsDebutante(InscritoViewModel NadadorAInscribir, SetupTorneo setup, float RLarga, float RCorta)
+        {
+
+            return " ";
+        }
+
+        public float SeleccionarLaMejorMM(List<MarcasMinimas> Marcas, int edad)
+        {
+            int contador = 0;
+            Dictionary<int, int> diferencia = new Dictionary<int, int>();
+            foreach (var item in Marcas)
+            {
+                diferencia.Add(contador, (item.high_Age ?? 0) + (item.low_age ?? 0));
+                contador += 1;
+
+            }
+            int menordiferencia = diferencia.Min(x => x.Value);
+            int posicion = diferencia.FirstOrDefault(x => x.Value == menordiferencia).Key;
+            float mejorMM = Marcas[posicion].tag_time ?? 0;
+            return mejorMM;
+        }
+
 
 
         public ActionResult ListarPruebasParaElNadadorDivision2(int MeetId, int afiliadoId)
@@ -1360,6 +1611,151 @@ namespace InscripcionNatacion.Controllers
 
         }
 
+        public InscritoViewModel GetMejortiempoDeLaPrueba(InscritoViewModel NadadorAInscribir, RESULTS resultadoenlarga, RESULTS resultadoencorta, string curso, SetupTorneo setup)
+        {
+            // Ver si cumple la marca mínima, primero la de la competencia, usando LSY y SLY
+            RESULTS resultado = new RESULTS();
+            string CursoPiscina = setup.Torneo.course_order;
+            string CursoABuscar = "L";
+
+            for (int i = 0; i < 2; i++)
+            {
+                float MM = 0;
+                CursoABuscar = CursoPiscina.Substring(i, 1);
+                if (CursoABuscar == "L")
+                {
+                    resultado = resultadoenlarga;
+                    MM = NadadorAInscribir.MMLarga;
+                }
+                else
+                {
+                    resultado = resultadoencorta;
+                    MM = NadadorAInscribir.MMCorta;
+                }
+
+                // aquí vemos si cumple dependiendo del tipo de torneo
+                //Si es un torneo con marcas mínimas debe de tener marcas mejores, si es con marcas máximas no debe de tener mejores marca
+                //si es un torneo tipo semillero o copa no debe de tener marcas minimas.
+
+                if (setup.PermiteSinMarca)
+                {
+                    NadadorAInscribir.Cumple = true;
+                }
+                else if (setup.UsaMarcaMaxima)
+                {
+                    NadadorAInscribir.Cumple = VerSiCumpleConLaMarcaMaxima(NadadorAInscribir, resultadoenlarga, resultadoencorta);
+                }
+
+                else
+                {
+                    NadadorAInscribir.Cumple = VerSiCumpleConLaMarca(CursoABuscar, resultado, MM);
+                }
+
+                if (NadadorAInscribir.Cumple)
+                { break; }
+
+            }
+
+
+
+            if ((!NadadorAInscribir.Cumple || setup.PermiteSinMarca) && (!setup.UsaMarcaMaxima))
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    resultado = null;
+                    CursoABuscar = CursoPiscina.Substring(i, 1);
+                    if (CursoABuscar == "L" && resultadoenlarga != null)
+                    {
+                        resultado = resultadoenlarga;
+                        break;
+                    }
+                    if (CursoABuscar == "S" && resultadoencorta != null)
+                    {
+                        resultado = resultadoencorta;
+                        break;
+                    }
+                }
+            }
+            if ((!NadadorAInscribir.Cumple || setup.PermiteSinMarca) && (setup.UsaMarcaMaxima))
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    resultado = null;
+                    CursoABuscar = CursoPiscina.Substring(i, 1);
+                    if (CursoABuscar == "L" && resultadoenlarga != null && NadadorAInscribir.PiscinaDelTiempo == "L")
+                    {
+                        resultado = resultadoenlarga;
+                        break;
+                    }
+                    if (CursoABuscar == "S" && resultadoencorta != null && NadadorAInscribir.PiscinaDelTiempo == "C")
+                    {
+                        resultado = resultadoencorta;
+                        break;
+                    }
+                }
+            }
+
+
+            if (!NadadorAInscribir.Cumple)
+            {
+                if (resultadoenlarga == null && resultadoencorta == null)
+                {
+                    NadadorAInscribir.tiempo = "0.00";
+                    NadadorAInscribir.segundos = 0;
+                    NadadorAInscribir.torneo = "Sin torneo";
+                    NadadorAInscribir.PiscinaDelTiempo = "";
+                }
+                else
+                {
+
+                    NadadorAInscribir.tiempo = resultado.SCORE;
+                    NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
+                    NadadorAInscribir.torneo = resultado.MEET1.MName;
+                    if (resultado.MEET1.MName.Length > 20)
+                    {
+                        NadadorAInscribir.torneo = resultado.MEET1.MName.Substring(0, 20);
+                    }
+                    NadadorAInscribir.PiscinaDelTiempo = resultado.COURSE;
+                    NadadorAInscribir.Cumple = false;
+
+                }
+
+            }
+            if (resultado == null)
+            {
+                resultado = new RESULTS
+                {
+                    SCORE = "0.00",
+                    COURSE = "-",
+                    MEET1 = new MEET
+                    {
+                        MName = "Sin participación",
+                    },
+                };
+            }
+            if (setup.SinMarca == 1)
+            {
+                NadadorAInscribir = BuscarTiempoDeTorneoSinMarca(NadadorAInscribir, resultadoenlarga, resultadoencorta, CursoABuscar);
+                if (NadadorAInscribir.torneo.Length > 20)
+                {
+                    NadadorAInscribir.torneo = NadadorAInscribir.torneo.Substring(0, 20);
+                }
+            }
+            else
+            {
+                NadadorAInscribir.tiempo = resultado.SCORE;
+                NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
+                NadadorAInscribir.torneo = resultado.MEET1.MName;
+                if (resultado.MEET1.MName.Length > 20)
+                {
+                    NadadorAInscribir.torneo = resultado.MEET1.MName.Substring(0, 20);
+                }
+                NadadorAInscribir.PiscinaDelTiempo = resultado.COURSE;
+            }
+
+
+            return NadadorAInscribir;
+        }
 
         [HttpGet]
         public JsonResult GrabarPruebasParaElNadador(string listado, string MeetString, string InscripcionId, string Piscina, string YaestaInscritoString)
@@ -1426,7 +1822,7 @@ namespace InscripcionNatacion.Controllers
                     {
                         Eventos evento = eventos.Where(x => x.Event_ptr == entrada.Event_ptr).FirstOrDefault();
                         Pruebas prueba = pruebas.Where(x => x.EstiloMeet == evento.Event_stroke && x.distancia == evento.Event_dist).FirstOrDefault();
-                        entrada.ConvSeed_time = ConvertirMarca(ConvertirASegundos(inscrito[1]), prueba.FactorF, course);
+                        entrada.ConvSeed_time = ConvertirLaMarcaEntrePiscinas(ConvertirASegundos(inscrito[1]), prueba.FactorF, course);
                     }
 
                     db.Entradas.Add(entrada);
@@ -1600,14 +1996,83 @@ namespace InscripcionNatacion.Controllers
 
         }
 
+        public InscritoViewModel BuscarTiempoDeTorneoSinMarca(InscritoViewModel NadadorAInscribir, RESULTS resultadoenlarga, RESULTS resultadoencorta, string curso)
+        {
+            float larga = 0;
+            float corta = 0;
+            if (resultadoenlarga != null)
+            {
+                larga = ConvertirASegundos(resultadoenlarga.SCORE ?? "0");
+                if (curso == "L")
+                {
+                    NadadorAInscribir.segundos = larga;
+                    NadadorAInscribir.tiempo = resultadoenlarga.SCORE;
+                    NadadorAInscribir.torneo = resultadoenlarga.MEET1.MName;
+                    NadadorAInscribir.PiscinaDelTiempo = "L";
+                }
+            }
+            if (resultadoencorta != null)
+            {
+                corta = ConvertirASegundos(resultadoencorta.SCORE ?? "0");
+                if (curso == "S")
+                {
+                    NadadorAInscribir.segundos = corta;
+                    NadadorAInscribir.tiempo = resultadoencorta.SCORE;
+                    NadadorAInscribir.torneo = resultadoencorta.MEET1.MName;
+                    NadadorAInscribir.PiscinaDelTiempo = "S";
+                }
+            }
+            if (larga == 0 && corta > 0)
+            {
+                NadadorAInscribir.segundos = corta;
+                NadadorAInscribir.tiempo = resultadoencorta.SCORE;
+                NadadorAInscribir.torneo = resultadoencorta.MEET1.MName;
+                NadadorAInscribir.PiscinaDelTiempo = "S";
 
+
+            }
+            if (corta == 0 && larga > 0)
+            {
+
+                NadadorAInscribir.segundos = larga;
+                NadadorAInscribir.tiempo = resultadoenlarga.SCORE;
+                NadadorAInscribir.torneo = resultadoenlarga.MEET1.MName;
+                NadadorAInscribir.PiscinaDelTiempo = "L";
+
+            }
+            if (corta > 0 && larga > 0)
+            {
+                if (curso == "L")
+                {
+                    NadadorAInscribir.segundos = larga;
+                    NadadorAInscribir.tiempo = resultadoenlarga.SCORE;
+                    NadadorAInscribir.torneo = resultadoenlarga.MEET1.MName;
+                    NadadorAInscribir.PiscinaDelTiempo = "L";
+                }
+                else
+                {
+                    NadadorAInscribir.segundos = corta;
+                    NadadorAInscribir.tiempo = resultadoencorta.SCORE;
+                    NadadorAInscribir.torneo = resultadoencorta.MEET1.MName;
+                    NadadorAInscribir.PiscinaDelTiempo = "S";
+                }
+            }
+            if (resultadoenlarga == null && resultadoencorta == null)
+            {
+                NadadorAInscribir.tiempo = "00:00.00";
+                NadadorAInscribir.segundos = 0;
+                NadadorAInscribir.torneo = "Sin Marca aún";
+                NadadorAInscribir.PiscinaDelTiempo = "";
+            }
+            return NadadorAInscribir;
+        }
 
         public InscritoViewModel AgregarTorneo(InscritoViewModel NadadorAInscribir, string piscina, RESULTS resultado1, RESULTS resultado2)
         {
             return NadadorAInscribir;
         }
 
-        public float ConvertirMarca(float Segundo, double? FactorNullable, string curso)
+        public float ConvertirLaMarcaEntrePiscinas(float Segundo, double? FactorNullable, string curso)
         {
             float factor = (float)(FactorNullable ?? 0);
             int agregar = 1;
@@ -2067,66 +2532,6 @@ namespace InscripcionNatacion.Controllers
             ViewBag.setup = db.SetupTorneo.Where(x => x.Meetid == Meetid).FirstOrDefault();
 
             return View("ListarNadadoresNoAfiliados", VM);
-        }
-
-        public ActionResult ListarNadadoresNoAfiliados(int Meetid)
-        {
-            Torneo torneo = db.Torneo.Find(Meetid);
-            Usuario usuario = Session["usuario"] as Usuario;
-            Club club = db.Club.Where(x => x.ClubID == usuario.ClubId).FirstOrDefault();
-
-            List<Eventos> ListadoDeEventos = db.Eventos.Where(x => x.MeetId == Meetid).ToList();
-            int EdadMaxima = ListadoDeEventos.Max(x => x.High_Age) ?? 109;
-            int EdadMinima = ListadoDeEventos.Min(x => x.Low_age) ?? 0;
-            int annoActual = DateTime.Now.Year - 1;
-            int AnnoMaximo = annoActual - EdadMinima;
-            int AnnoMinimo = annoActual - EdadMaxima;
-
-
-            List<ListarNadadoresParaSeleccionarlos> VM = new List<ListarNadadoresParaSeleccionarlos>();
-
-
-            List<Inscripciones> listadoNadadores = db
-                .Inscripciones.Where(x => x.ClubID == club.ClubID &&
-                x.Afiliado.Fecha_de_nacimiento.Year >= AnnoMinimo &&
-                x.Afiliado.Fecha_de_nacimiento.Year <= AnnoMaximo && x.DisciplinaId == 1)
-                .OrderBy(x => x.Afiliado.Fecha_de_nacimiento)
-                .ToList();
-
-            List<Entradas> EntradasDeEsteTorneo = db.Entradas.Where(x => x.MeetId == Meetid).ToList();
-            List<atletas> atletasDeEsteTorneo = db.atletas.Where(x => x.Meetid == Meetid).ToList();
-            foreach (Inscripciones afiliado in listadoNadadores)
-            {
-                ListarNadadoresParaSeleccionarlos listarnadadorparaafiliar = new ListarNadadoresParaSeleccionarlos
-                {
-                    afiliado = afiliado,
-                    YaEstaInscrito = false,
-                    // TieneResultado = db.RESULTS.Any(x => x.Athlete1.ID_NO == afiliado.DNI && x.NT == 0),
-                    TieneMulta = db.Multas.Any(x => x.InscripcionId == afiliado.InscripcionId && x.Subsanada == false),
-                };
-
-
-
-                if (atletasDeEsteTorneo.Any(x => x.Reg_no == afiliado.DNI))
-                {
-                    atletas atleta = atletasDeEsteTorneo.Where(x => x.Reg_no == afiliado.DNI).FirstOrDefault();
-                    listarnadadorparaafiliar.YaEstaInscrito = true;
-                    //if (EntradasDeEsteTorneo.Any(x => x.Ath_no == atleta.Ath_no && x.MeetId == Meetid))
-                    //{
-                    //    listarnadadorparaafiliar.YaEstaInscrito = true;
-                    //}
-
-                }
-
-                VM.Add(listarnadadorparaafiliar);
-            }
-            ViewBag.Meet = db.Torneo.Where(x => x.Meetid == Meetid).Select(x => x.Meet_name1).FirstOrDefault();
-            ViewBag.torneo = torneo;
-
-            ViewBag.setup = db.SetupTorneo.Where(x => x.Meetid == Meetid).FirstOrDefault();
-
-
-            return View(VM);
         }
 
     }

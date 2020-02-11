@@ -8,7 +8,7 @@ namespace InscripcionNatacion.ViewModels.Home
 {
     public class TorneoViewModel
     {
-        public FDPN.Models.Torneo torneo { get; set; }
+        public FDPN.Models.SetupTorneo torneo { get; set; }
         public int diferencia { get; set; }
         public DateTime FechaFin{ get; set; }
         public DateTime Start { get; set; }

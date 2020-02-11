@@ -42,11 +42,20 @@ namespace FDPN.Models
         public virtual DbSet<CambiosDNI> CambiosDNI { get; set; }
         public virtual DbSet<CategoriaNoticia> CategoriaNoticia { get; set; }
         public virtual DbSet<Categorias> Categorias { get; set; }
+        public virtual DbSet<CategoriasMasters> CategoriasMasters { get; set; }
         public virtual DbSet<Club> Club { get; set; }
         public virtual DbSet<Comentario> Comentario { get; set; }
+        public virtual DbSet<Comentarios> Comentarios { get; set; }
+        public virtual DbSet<ConFechas> ConFechas { get; set; }
+        public virtual DbSet<Configuracion> Configuracion { get; set; }
+        public virtual DbSet<Contactos> Contactos { get; set; }
+        public virtual DbSet<Curso> Curso { get; set; }
+        public virtual DbSet<CursoInscripcion> CursoInscripcion { get; set; }
+        public virtual DbSet<CursoParticipante> CursoParticipante { get; set; }
         public virtual DbSet<Delegados> Delegados { get; set; }
         public virtual DbSet<Directivos> Directivos { get; set; }
         public virtual DbSet<Disciplina> Disciplina { get; set; }
+        public virtual DbSet<Empresa> Empresa { get; set; }
         public virtual DbSet<Entradas> Entradas { get; set; }
         public virtual DbSet<Entrenadores> Entrenadores { get; set; }
         public virtual DbSet<EntrenadorInscrito> EntrenadorInscrito { get; set; }
@@ -77,6 +86,7 @@ namespace FDPN.Models
         public virtual DbSet<OtroResponsable> OtroResponsable { get; set; }
         public virtual DbSet<OtroSetupTorneo> OtroSetupTorneo { get; set; }
         public virtual DbSet<OtroTorneo> OtroTorneo { get; set; }
+        public virtual DbSet<Piscinas> Piscinas { get; set; }
         public virtual DbSet<PoloEquipos> PoloEquipos { get; set; }
         public virtual DbSet<PoloFechas> PoloFechas { get; set; }
         public virtual DbSet<PoloGoleadores> PoloGoleadores { get; set; }
@@ -91,48 +101,40 @@ namespace FDPN.Models
         public virtual DbSet<PoloTorneo> PoloTorneo { get; set; }
         public virtual DbSet<Procesado> Procesado { get; set; }
         public virtual DbSet<Pruebas> Pruebas { get; set; }
+        public virtual DbSet<Records> Records { get; set; }
+        public virtual DbSet<RecordsActuales> RecordsActuales { get; set; }
+        public virtual DbSet<RecordsEdades> RecordsEdades { get; set; }
+        public virtual DbSet<RecordsPruebas> RecordsPruebas { get; set; }
+        public virtual DbSet<RecordTipo> RecordTipo { get; set; }
         public virtual DbSet<RESULTS> RESULTS { get; set; }
         public virtual DbSet<RESULTSMasters> RESULTSMasters { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
+        public virtual DbSet<Saltos> Saltos { get; set; }
         public virtual DbSet<Sesion> Sesion { get; set; }
         public virtual DbSet<SessionItem> SessionItem { get; set; }
         public virtual DbSet<SetupTorneo> SetupTorneo { get; set; }
+        public virtual DbSet<Suscritos> Suscritos { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<TagNames> TagNames { get; set; }
         public virtual DbSet<TatoInformeAsistencias> TatoInformeAsistencias { get; set; }
         public virtual DbSet<TatoInformeEntrenador> TatoInformeEntrenador { get; set; }
         public virtual DbSet<TatoRealizacion> TatoRealizacion { get; set; }
         public virtual DbSet<TatoSeleccionado> TatoSeleccionado { get; set; }
         public virtual DbSet<TatoSeriesEjemplo> TatoSeriesEjemplo { get; set; }
+        public virtual DbSet<tb_Suscritos> tb_Suscritos { get; set; }
         public virtual DbSet<TEAM> TEAM { get; set; }
         public virtual DbSet<TEAMMasters> TEAMMasters { get; set; }
         public virtual DbSet<TipoAfiliado> TipoAfiliado { get; set; }
         public virtual DbSet<TipoTorneo> TipoTorneo { get; set; }
         public virtual DbSet<Torneo> Torneo { get; set; }
+        public virtual DbSet<TorneoDestacado> TorneoDestacado { get; set; }
+        public virtual DbSet<TorneoDestacadoMasters> TorneoDestacadoMasters { get; set; }
         public virtual DbSet<Traspasos> Traspasos { get; set; }
         public virtual DbSet<TraspasosEnEspera> TraspasosEnEspera { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Vivo> Vivo { get; set; }
         public virtual DbSet<Vouchers> Vouchers { get; set; }
-        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
-        public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
-        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<CategoriasMasters> CategoriasMasters { get; set; }
-        public virtual DbSet<Comentarios> Comentarios { get; set; }
-        public virtual DbSet<ConFechas> ConFechas { get; set; }
-        public virtual DbSet<Configuracion> Configuracion { get; set; }
-        public virtual DbSet<Contactos> Contactos { get; set; }
-        public virtual DbSet<Curso> Curso { get; set; }
-        public virtual DbSet<CursoInscripcion> CursoInscripcion { get; set; }
-        public virtual DbSet<CursoParticipante> CursoParticipante { get; set; }
-        public virtual DbSet<Empresa> Empresa { get; set; }
         public virtual DbSet<Query> Query { get; set; }
-        public virtual DbSet<Suscritos> Suscritos { get; set; }
-        public virtual DbSet<tb_Suscritos> tb_Suscritos { get; set; }
-        public virtual DbSet<tblmarca> tblmarca { get; set; }
-        public virtual DbSet<TorneoDestacado> TorneoDestacado { get; set; }
-        public virtual DbSet<TorneoDestacadoMasters> TorneoDestacadoMasters { get; set; }
-        public virtual DbSet<TagNames> TagNames { get; set; }
+        public virtual DbSet<Sheet1_> Sheet1_ { get; set; }
     }
 }

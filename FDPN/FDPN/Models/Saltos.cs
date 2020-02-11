@@ -12,9 +12,16 @@ namespace FDPN.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetRoles
+    public partial class Saltos
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
+        public Nullable<double> Codigo { get; set; }
+        public string Nombre { get; set; }
+        public Nullable<double> A { get; set; }
+        public Nullable<double> B { get; set; }
+        public Nullable<double> C { get; set; }
+        public Nullable<double> D { get; set; }
+        public Nullable<double> Altura { get; set; }
+        public string Tipo { get; set; }
+        public int SaltoId { get; set; }
     }
 }

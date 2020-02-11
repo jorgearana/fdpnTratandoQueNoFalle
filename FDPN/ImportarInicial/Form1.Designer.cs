@@ -34,6 +34,7 @@
             this.cboTipoTorneo = new MetroFramework.Controls.MetroComboBox();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.chkMasters = new MetroFramework.Controls.MetroCheckBox();
             this.chkConMarcaMaxima = new MetroFramework.Controls.MetroCheckBox();
             this.chkNoMarca = new MetroFramework.Controls.MetroCheckBox();
             this.chkNoAfiliado = new MetroFramework.Controls.MetroCheckBox();
@@ -51,7 +52,7 @@
             this.CboTorneos = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.lblResultado = new MetroFramework.Controls.MetroLabel();
-            this.chkMasters = new MetroFramework.Controls.MetroCheckBox();
+            this.chkDebutantes = new MetroFramework.Controls.MetroCheckBox();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
@@ -82,7 +83,7 @@
             this.metroButton1.DialogResult = System.Windows.Forms.DialogResult.Ignore;
             this.metroButton1.ForeColor = System.Drawing.Color.Red;
             this.metroButton1.Location = new System.Drawing.Point(544, 272);
-            this.metroButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroButton1.Margin = new System.Windows.Forms.Padding(4);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(227, 28);
             this.metroButton1.Style = MetroFramework.MetroColorStyle.Green;
@@ -96,7 +97,7 @@
             this.cboTipoTorneo.FormattingEnabled = true;
             this.cboTipoTorneo.ItemHeight = 24;
             this.cboTipoTorneo.Location = new System.Drawing.Point(600, 16);
-            this.cboTipoTorneo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboTipoTorneo.Margin = new System.Windows.Forms.Padding(4);
             this.cboTipoTorneo.Name = "cboTipoTorneo";
             this.cboTipoTorneo.Size = new System.Drawing.Size(160, 30);
             this.cboTipoTorneo.TabIndex = 5;
@@ -108,7 +109,7 @@
             this.metroTabControl1.Controls.Add(this.metroTabPage2);
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.metroTabControl1.Location = new System.Drawing.Point(27, 77);
-            this.metroTabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroTabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(845, 388);
@@ -119,6 +120,7 @@
             // metroTabPage1
             // 
             this.metroTabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.metroTabPage1.Controls.Add(this.chkDebutantes);
             this.metroTabPage1.Controls.Add(this.chkMasters);
             this.metroTabPage1.Controls.Add(this.chkConMarcaMaxima);
             this.metroTabPage1.Controls.Add(this.chkNoMarca);
@@ -140,7 +142,7 @@
             this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.HorizontalScrollbarSize = 12;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroTabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.metroTabPage1.Name = "metroTabPage1";
             this.metroTabPage1.Size = new System.Drawing.Size(837, 346);
             this.metroTabPage1.TabIndex = 0;
@@ -149,11 +151,22 @@
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 13;
             // 
+            // chkMasters
+            // 
+            this.chkMasters.AutoSize = true;
+            this.chkMasters.Location = new System.Drawing.Point(28, 242);
+            this.chkMasters.Margin = new System.Windows.Forms.Padding(4);
+            this.chkMasters.Name = "chkMasters";
+            this.chkMasters.Size = new System.Drawing.Size(71, 17);
+            this.chkMasters.TabIndex = 19;
+            this.chkMasters.Text = "Masters";
+            this.chkMasters.UseSelectable = true;
+            // 
             // chkConMarcaMaxima
             // 
             this.chkConMarcaMaxima.AutoSize = true;
             this.chkConMarcaMaxima.Location = new System.Drawing.Point(600, 202);
-            this.chkConMarcaMaxima.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkConMarcaMaxima.Margin = new System.Windows.Forms.Padding(4);
             this.chkConMarcaMaxima.Name = "chkConMarcaMaxima";
             this.chkConMarcaMaxima.Size = new System.Drawing.Size(135, 17);
             this.chkConMarcaMaxima.TabIndex = 18;
@@ -164,7 +177,7 @@
             // 
             this.chkNoMarca.AutoSize = true;
             this.chkNoMarca.Location = new System.Drawing.Point(600, 158);
-            this.chkNoMarca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkNoMarca.Margin = new System.Windows.Forms.Padding(4);
             this.chkNoMarca.Name = "chkNoMarca";
             this.chkNoMarca.Size = new System.Drawing.Size(128, 17);
             this.chkNoMarca.TabIndex = 17;
@@ -175,7 +188,7 @@
             // 
             this.chkNoAfiliado.AutoSize = true;
             this.chkNoAfiliado.Location = new System.Drawing.Point(600, 117);
-            this.chkNoAfiliado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkNoAfiliado.Margin = new System.Windows.Forms.Padding(4);
             this.chkNoAfiliado.Name = "chkNoAfiliado";
             this.chkNoAfiliado.Size = new System.Drawing.Size(140, 17);
             this.chkNoAfiliado.TabIndex = 16;
@@ -201,10 +214,10 @@
             // 
             // 
             this.txtPruebasSinMarca.CustomButton.Image = null;
-            this.txtPruebasSinMarca.CustomButton.Location = new System.Drawing.Point(99, 2);
-            this.txtPruebasSinMarca.CustomButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtPruebasSinMarca.CustomButton.Location = new System.Drawing.Point(74, 2);
+            this.txtPruebasSinMarca.CustomButton.Margin = new System.Windows.Forms.Padding(5);
             this.txtPruebasSinMarca.CustomButton.Name = "";
-            this.txtPruebasSinMarca.CustomButton.Size = new System.Drawing.Size(31, 28);
+            this.txtPruebasSinMarca.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.txtPruebasSinMarca.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtPruebasSinMarca.CustomButton.TabIndex = 1;
             this.txtPruebasSinMarca.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -212,7 +225,7 @@
             this.txtPruebasSinMarca.CustomButton.Visible = false;
             this.txtPruebasSinMarca.Lines = new string[0];
             this.txtPruebasSinMarca.Location = new System.Drawing.Point(251, 145);
-            this.txtPruebasSinMarca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPruebasSinMarca.Margin = new System.Windows.Forms.Padding(4);
             this.txtPruebasSinMarca.MaxLength = 32767;
             this.txtPruebasSinMarca.Name = "txtPruebasSinMarca";
             this.txtPruebasSinMarca.PasswordChar = '\0';
@@ -231,7 +244,7 @@
             // 
             this.chkPorLigas.AutoSize = true;
             this.chkPorLigas.Location = new System.Drawing.Point(600, 79);
-            this.chkPorLigas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkPorLigas.Margin = new System.Windows.Forms.Padding(4);
             this.chkPorLigas.Name = "chkPorLigas";
             this.chkPorLigas.Size = new System.Drawing.Size(121, 17);
             this.chkPorLigas.TabIndex = 13;
@@ -257,10 +270,10 @@
             // 
             // 
             this.txtPruebasXEquipo.CustomButton.Image = null;
-            this.txtPruebasXEquipo.CustomButton.Location = new System.Drawing.Point(99, 2);
-            this.txtPruebasXEquipo.CustomButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtPruebasXEquipo.CustomButton.Location = new System.Drawing.Point(74, 2);
+            this.txtPruebasXEquipo.CustomButton.Margin = new System.Windows.Forms.Padding(5);
             this.txtPruebasXEquipo.CustomButton.Name = "";
-            this.txtPruebasXEquipo.CustomButton.Size = new System.Drawing.Size(31, 28);
+            this.txtPruebasXEquipo.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.txtPruebasXEquipo.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtPruebasXEquipo.CustomButton.TabIndex = 1;
             this.txtPruebasXEquipo.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -268,7 +281,7 @@
             this.txtPruebasXEquipo.CustomButton.Visible = false;
             this.txtPruebasXEquipo.Lines = new string[0];
             this.txtPruebasXEquipo.Location = new System.Drawing.Point(251, 107);
-            this.txtPruebasXEquipo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPruebasXEquipo.Margin = new System.Windows.Forms.Padding(4);
             this.txtPruebasXEquipo.MaxLength = 32767;
             this.txtPruebasXEquipo.Name = "txtPruebasXEquipo";
             this.txtPruebasXEquipo.PasswordChar = '\0';
@@ -302,10 +315,10 @@
             // 
             // 
             this.txtPruebasXTorneo.CustomButton.Image = null;
-            this.txtPruebasXTorneo.CustomButton.Location = new System.Drawing.Point(99, 2);
-            this.txtPruebasXTorneo.CustomButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtPruebasXTorneo.CustomButton.Location = new System.Drawing.Point(74, 2);
+            this.txtPruebasXTorneo.CustomButton.Margin = new System.Windows.Forms.Padding(5);
             this.txtPruebasXTorneo.CustomButton.Name = "";
-            this.txtPruebasXTorneo.CustomButton.Size = new System.Drawing.Size(31, 28);
+            this.txtPruebasXTorneo.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.txtPruebasXTorneo.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtPruebasXTorneo.CustomButton.TabIndex = 1;
             this.txtPruebasXTorneo.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -313,7 +326,7 @@
             this.txtPruebasXTorneo.CustomButton.Visible = false;
             this.txtPruebasXTorneo.Lines = new string[0];
             this.txtPruebasXTorneo.Location = new System.Drawing.Point(251, 71);
-            this.txtPruebasXTorneo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPruebasXTorneo.Margin = new System.Windows.Forms.Padding(4);
             this.txtPruebasXTorneo.MaxLength = 32767;
             this.txtPruebasXTorneo.Name = "txtPruebasXTorneo";
             this.txtPruebasXTorneo.PasswordChar = '\0';
@@ -347,10 +360,10 @@
             // 
             // 
             this.TxtPruebasXSesion.CustomButton.Image = null;
-            this.TxtPruebasXSesion.CustomButton.Location = new System.Drawing.Point(99, 2);
-            this.TxtPruebasXSesion.CustomButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtPruebasXSesion.CustomButton.Location = new System.Drawing.Point(74, 2);
+            this.TxtPruebasXSesion.CustomButton.Margin = new System.Windows.Forms.Padding(5);
             this.TxtPruebasXSesion.CustomButton.Name = "";
-            this.TxtPruebasXSesion.CustomButton.Size = new System.Drawing.Size(31, 28);
+            this.TxtPruebasXSesion.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.TxtPruebasXSesion.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.TxtPruebasXSesion.CustomButton.TabIndex = 1;
             this.TxtPruebasXSesion.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -358,7 +371,7 @@
             this.TxtPruebasXSesion.CustomButton.Visible = false;
             this.TxtPruebasXSesion.Lines = new string[0];
             this.TxtPruebasXSesion.Location = new System.Drawing.Point(251, 33);
-            this.TxtPruebasXSesion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtPruebasXSesion.Margin = new System.Windows.Forms.Padding(4);
             this.TxtPruebasXSesion.MaxLength = 32767;
             this.TxtPruebasXSesion.Name = "TxtPruebasXSesion";
             this.TxtPruebasXSesion.PasswordChar = '\0';
@@ -383,7 +396,7 @@
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.HorizontalScrollbarSize = 12;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.metroTabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.metroTabPage2.Name = "metroTabPage2";
             this.metroTabPage2.Size = new System.Drawing.Size(837, 346);
             this.metroTabPage2.TabIndex = 1;
@@ -395,7 +408,7 @@
             // btnBorrar
             // 
             this.btnBorrar.Location = new System.Drawing.Point(535, 140);
-            this.btnBorrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBorrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(227, 28);
             this.btnBorrar.Style = MetroFramework.MetroColorStyle.Green;
@@ -409,7 +422,7 @@
             this.CboTorneos.FormattingEnabled = true;
             this.CboTorneos.ItemHeight = 23;
             this.CboTorneos.Location = new System.Drawing.Point(29, 49);
-            this.CboTorneos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CboTorneos.Margin = new System.Windows.Forms.Padding(4);
             this.CboTorneos.Name = "CboTorneos";
             this.CboTorneos.Size = new System.Drawing.Size(731, 29);
             this.CboTorneos.TabIndex = 8;
@@ -438,16 +451,16 @@
             this.lblResultado.Size = new System.Drawing.Size(0, 0);
             this.lblResultado.TabIndex = 7;
             // 
-            // chkMasters
+            // chkDebutantes
             // 
-            this.chkMasters.AutoSize = true;
-            this.chkMasters.Location = new System.Drawing.Point(28, 242);
-            this.chkMasters.Margin = new System.Windows.Forms.Padding(4);
-            this.chkMasters.Name = "chkMasters";
-            this.chkMasters.Size = new System.Drawing.Size(71, 17);
-            this.chkMasters.TabIndex = 19;
-            this.chkMasters.Text = "Masters";
-            this.chkMasters.UseSelectable = true;
+            this.chkDebutantes.AutoSize = true;
+            this.chkDebutantes.Location = new System.Drawing.Point(28, 283);
+            this.chkDebutantes.Margin = new System.Windows.Forms.Padding(4);
+            this.chkDebutantes.Name = "chkDebutantes";
+            this.chkDebutantes.Size = new System.Drawing.Size(169, 17);
+            this.chkDebutantes.TabIndex = 20;
+            this.chkDebutantes.Text = "Crear torneo Debutantes";
+            this.chkDebutantes.UseSelectable = true;
             // 
             // Form1
             // 
@@ -457,7 +470,7 @@
             this.ClientSize = new System.Drawing.Size(899, 490);
             this.Controls.Add(this.lblResultado);
             this.Controls.Add(this.metroTabControl1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Style = MetroFramework.MetroColorStyle.Lime;
@@ -498,6 +511,7 @@
         private MetroFramework.Controls.MetroCheckBox chkNoAfiliado;
         private MetroFramework.Controls.MetroCheckBox chkConMarcaMaxima;
         private MetroFramework.Controls.MetroCheckBox chkMasters;
+        private MetroFramework.Controls.MetroCheckBox chkDebutantes;
     }
 }
 

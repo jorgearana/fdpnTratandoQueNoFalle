@@ -12,10 +12,16 @@ namespace FDPN.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetUserRoles
+    public partial class Sheet1_
     {
-        public string UserId { get; set; }
-        public string RoleId { get; set; }
-        public int Id { get; set; }
+        public System.DateTime Inicio { get; set; }
+        public System.DateTime Fin { get; set; }
+        public string Evento { get; set; }
+        public string Sede { get; set; }
+        public string Carácter { get; set; }
+        public string Observación { get; set; }
+        public string Organizador { get; set; }
+        public int disciplina { get; set; }
+        public bool internacional { get; set; }
     }
 }

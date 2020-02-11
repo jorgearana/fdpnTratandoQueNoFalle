@@ -700,6 +700,20 @@
           <Property Name="FechaTraspaso" Type="date" Nullable="false" />
           <Property Name="InscripcionId" Type="int" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Hoja2' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Hoja2">
+          <Property Name="UNO" Type="int" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="1" />
+          <Property Name="Indi" Type="nvarchar" MaxLength="1" />
+          <Property Name="distancia" Type="int" />
+          <Property Name="estilo" Type="nvarchar" MaxLength="1" />
+          <Property Name="mini" Type="smallint" />
+          <Property Name="max" Type="smallint" />
+          <Property Name="segundos" Type="real" />
+          <Property Name="Piscina" Type="nvarchar" MaxLength="1" />
+          <Property Name="Meet" Type="int" />
+        </EntityType>-->
         <EntityType Name="Inscripciones">
           <Key>
             <PropertyRef Name="InscripcionId" />
@@ -931,6 +945,13 @@
           <Property Name="EdadADiciembre" Type="bit" Nullable="false" />
           <Property Name="DisciplinaId" Type="int" />
         </EntityType>
+        <EntityType Name="Piscinas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
         <EntityType Name="PoloEquipos">
           <Key>
             <PropertyRef Name="EquipoId" />
@@ -1105,6 +1126,78 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <Property Name="ID_NO" Type="nvarchar" MaxLength="17" Nullable="false" />
           <Property Name="AthleteId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Records">
+          <Key>
+            <PropertyRef Name="RecordId" />
+          </Key>
+          <Property Name="tag_ptr" Type="int" />
+          <Property Name="tag_gender" Type="nvarchar" MaxLength="1" />
+          <Property Name="tag_indrel" Type="nvarchar" MaxLength="1" />
+          <Property Name="tag_dist" Type="int" />
+          <Property Name="tag_stroke" Type="nvarchar" MaxLength="1" />
+          <Property Name="low_age" Type="smallint" />
+          <Property Name="high_Age" Type="smallint" />
+          <Property Name="Record_month" Type="smallint" />
+          <Property Name="Record_day" Type="smallint" />
+          <Property Name="Record_year" Type="smallint" />
+          <Property Name="Record_Holder" Type="nvarchar" MaxLength="30" />
+          <Property Name="Record_Holderteam" Type="nvarchar" MaxLength="16" />
+          <Property Name="Relay_Names" Type="nvarchar" MaxLength="50" />
+          <Property Name="Record_Time" Type="real" />
+          <Property Name="Record_course" Type="nvarchar" MaxLength="1" />
+          <Property Name="div_abbr" Type="nvarchar" MaxLength="3" />
+          <Property Name="Record_teamabbr" Type="nvarchar" MaxLength="5" />
+          <Property Name="Record_teamlsc" Type="nvarchar" MaxLength="2" />
+          <Property Name="RecordId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RecordsActuales">
+          <Key>
+            <PropertyRef Name="RecordId" />
+          </Key>
+          <Property Name="RecordId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Torneo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PruebaId" Type="int" Nullable="false" />
+          <Property Name="EdadId" Type="int" Nullable="false" />
+          <Property Name="TiempoSegundos" Type="float" Nullable="false" />
+          <Property Name="Nombre1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre3" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre4" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="split1" Type="float" />
+          <Property Name="split2" Type="float" />
+          <Property Name="split3" Type="float" />
+          <Property Name="Equipo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TipoId" Type="int" Nullable="false" />
+          <Property Name="PiscinaId" Type="nchar" MaxLength="1" />
+          <Property Name="split4" Type="float" />
+        </EntityType>
+        <EntityType Name="RecordsEdades">
+          <Key>
+            <PropertyRef Name="EdadId" />
+          </Key>
+          <Property Name="EdadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EdadMinima" Type="int" Nullable="false" />
+          <Property Name="EdadMaxima" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="RecordsPruebas">
+          <Key>
+            <PropertyRef Name="PruebaId" />
+          </Key>
+          <Property Name="PruebaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sexo" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="Distancia" Type="int" Nullable="false" />
+          <Property Name="Estilo" Type="nchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RecordTipo">
+          <Key>
+            <PropertyRef Name="TipoId" />
+          </Key>
+          <Property Name="TipoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="RESULTS">
           <Key>
             <PropertyRef Name="ResultId" />
@@ -1171,6 +1264,20 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <Property Name="Rol" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Detalle" Type="varchar" MaxLength="150" Nullable="false" />
         </EntityType>
+        <EntityType Name="Saltos">
+          <Key>
+            <PropertyRef Name="SaltoId" />
+          </Key>
+          <Property Name="Codigo" Type="float" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="255" />
+          <Property Name="A" Type="float" />
+          <Property Name="B" Type="float" />
+          <Property Name="C" Type="float" />
+          <Property Name="D" Type="float" />
+          <Property Name="Altura" Type="float" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="255" />
+          <Property Name="SaltoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
         <EntityType Name="Sesion">
           <Key>
             <PropertyRef Name="SessionId" />
@@ -1228,6 +1335,27 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <Property Name="Debutantes" Type="bit" Nullable="false" />
           <Property Name="Masters" Type="bit" Nullable="false" />
           <Property Name="FechaMarcas" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Sheet1$">
+          <Key>
+            <PropertyRef Name="Inicio" />
+            <PropertyRef Name="Fin" />
+            <PropertyRef Name="Evento" />
+            <PropertyRef Name="Sede" />
+            <PropertyRef Name="disciplina" />
+            <PropertyRef Name="internacional" />
+          </Key>
+          <Property Name="Inicio" Type="datetime" Nullable="false" />
+          <Property Name="Fin" Type="datetime" Nullable="false" />
+          <Property Name="Evento" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Sede" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Carácter" Type="nvarchar" MaxLength="255" />
+          <Property Name="Observación" Type="nvarchar" MaxLength="255" />
+          <Property Name="Organizador" Type="nvarchar" MaxLength="255" />
+          <Property Name="disciplina" Type="int" Nullable="false" />
+          <Property Name="internacional" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Suscritos">
           <Key>
@@ -1334,23 +1462,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="FNacimiento" Type="date" />
           <Property Name="EsActivo" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tblmarca">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="nvarchar" MaxLength="255" />
-          <Property Name="Notengoidea" Type="int" />
-          <Property Name="Iniciales" Type="nvarchar" MaxLength="255" />
-          <Property Name="familia1" Type="int" />
-          <Property Name="familia2" Type="int" />
-          <Property Name="familia3" Type="int" />
-          <Property Name="familia4" Type="int" />
-          <Property Name="familia5" Type="int" />
-          <Property Name="familia6" Type="int" />
-          <Property Name="Familia" Type="int" />
-          <Property Name="F12" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TEAM">
           <Key>
@@ -2594,6 +2705,54 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_RecordsActuales_Piscinas">
+          <End Role="Piscinas" Type="Self.Piscinas" Multiplicity="0..1" />
+          <End Role="RecordsActuales" Type="Self.RecordsActuales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Piscinas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RecordsActuales">
+              <PropertyRef Name="PiscinaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecordsActuales_RecordsEdades">
+          <End Role="RecordsEdades" Type="Self.RecordsEdades" Multiplicity="1" />
+          <End Role="RecordsActuales" Type="Self.RecordsActuales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordsEdades">
+              <PropertyRef Name="EdadId" />
+            </Principal>
+            <Dependent Role="RecordsActuales">
+              <PropertyRef Name="EdadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecordsActuales_RecordsPruebas">
+          <End Role="RecordsPruebas" Type="Self.RecordsPruebas" Multiplicity="1" />
+          <End Role="RecordsActuales" Type="Self.RecordsActuales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordsPruebas">
+              <PropertyRef Name="PruebaId" />
+            </Principal>
+            <Dependent Role="RecordsActuales">
+              <PropertyRef Name="PruebaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecordsActuales_RecordTipo">
+          <End Role="RecordTipo" Type="Self.RecordTipo" Multiplicity="1" />
+          <End Role="RecordsActuales" Type="Self.RecordsActuales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordTipo">
+              <PropertyRef Name="TipoId" />
+            </Principal>
+            <Dependent Role="RecordsActuales">
+              <PropertyRef Name="TipoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_RESULTS_Athlete">
           <End Role="Athlete" Type="Self.Athlete" Multiplicity="0..1" />
           <End Role="RESULTS" Type="Self.RESULTS" Multiplicity="*" />
@@ -2956,6 +3115,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <EntitySet Name="OtroResponsable" EntityType="Self.OtroResponsable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OtroSetupTorneo" EntityType="Self.OtroSetupTorneo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OtroTorneo" EntityType="Self.OtroTorneo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Piscinas" EntityType="Self.Piscinas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PoloEquipos" EntityType="Self.PoloEquipos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PoloFechas" EntityType="Self.PoloFechas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PoloGoleadores" EntityType="Self.PoloGoleadores" Schema="dbo" store:Type="Tables" />
@@ -2970,9 +3130,15 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <EntitySet Name="PoloTorneo" EntityType="Self.PoloTorneo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Procesado" EntityType="Self.Procesado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pruebas" EntityType="Self.Pruebas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Records" EntityType="Self.Records" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecordsActuales" EntityType="Self.RecordsActuales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecordsEdades" EntityType="Self.RecordsEdades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecordsPruebas" EntityType="Self.RecordsPruebas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecordTipo" EntityType="Self.RecordTipo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RESULTS" EntityType="Self.RESULTS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RESULTSMasters" EntityType="Self.RESULTSMasters" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Saltos" EntityType="Self.Saltos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sesion" EntityType="Self.Sesion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SessionItem" EntityType="Self.SessionItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SetupTorneo" EntityType="Self.SetupTorneo" Schema="dbo" store:Type="Tables" />
@@ -2985,7 +3151,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <EntitySet Name="TatoSeleccionado" EntityType="Self.TatoSeleccionado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TatoSeriesEjemplo" EntityType="Self.TatoSeriesEjemplo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Suscritos" EntityType="Self.tb_Suscritos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblmarca" EntityType="Self.tblmarca" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TEAM" EntityType="Self.TEAM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TEAMMasters" EntityType="Self.TEAMMasters" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoAfiliado" EntityType="Self.TipoAfiliado" Schema="dbo" store:Type="Tables" />
@@ -3009,6 +3174,19 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
     [Query].[ID_NO] AS [ID_NO], 
     [Query].[AthleteId] AS [AthleteId]
     FROM [dbo].[Query] AS [Query]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Sheet1$" EntityType="Self.Sheet1$" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Sheet1$].[Inicio] AS [Inicio], 
+    [Sheet1$].[Fin] AS [Fin], 
+    [Sheet1$].[Evento] AS [Evento], 
+    [Sheet1$].[Sede] AS [Sede], 
+    [Sheet1$].[Carácter] AS [Carácter], 
+    [Sheet1$].[Observación] AS [Observación], 
+    [Sheet1$].[Organizador] AS [Organizador], 
+    [Sheet1$].[disciplina] AS [disciplina], 
+    [Sheet1$].[internacional] AS [internacional]
+    FROM [dbo].[Sheet1$] AS [Sheet1$]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__SetupTorn__TipoI__2AA05119" Association="Self.FK__SetupTorn__TipoI__2AA05119">
             <End Role="TipoTorneo" EntitySet="TipoTorneo" />
@@ -3314,6 +3492,22 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
             <End Role="PoloTorneo" EntitySet="PoloTorneo" />
             <End Role="PoloSetupTorneo" EntitySet="PoloSetupTorneo" />
           </AssociationSet>
+          <AssociationSet Name="FK_RecordsActuales_Piscinas" Association="Self.FK_RecordsActuales_Piscinas">
+            <End Role="Piscinas" EntitySet="Piscinas" />
+            <End Role="RecordsActuales" EntitySet="RecordsActuales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecordsActuales_RecordsEdades" Association="Self.FK_RecordsActuales_RecordsEdades">
+            <End Role="RecordsEdades" EntitySet="RecordsEdades" />
+            <End Role="RecordsActuales" EntitySet="RecordsActuales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecordsActuales_RecordsPruebas" Association="Self.FK_RecordsActuales_RecordsPruebas">
+            <End Role="RecordsPruebas" EntitySet="RecordsPruebas" />
+            <End Role="RecordsActuales" EntitySet="RecordsActuales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecordsActuales_RecordTipo" Association="Self.FK_RecordsActuales_RecordTipo">
+            <End Role="RecordTipo" EntitySet="RecordTipo" />
+            <End Role="RecordsActuales" EntitySet="RecordsActuales" />
+          </AssociationSet>
           <AssociationSet Name="FK_RESULTS_Athlete" Association="Self.FK_RESULTS_Athlete">
             <End Role="Athlete" EntitySet="Athlete" />
             <End Role="RESULTS" EntitySet="RESULTS" />
@@ -3437,11 +3631,20 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <EntitySet Name="CambiosDNI" EntityType="DB_9B1F4C_comentariosModel.CambiosDNI" />
           <EntitySet Name="CategoriaNoticia" EntityType="DB_9B1F4C_comentariosModel.CategoriaNoticia" />
           <EntitySet Name="Categorias" EntityType="DB_9B1F4C_comentariosModel.Categorias" />
+          <EntitySet Name="CategoriasMasters" EntityType="DB_9B1F4C_comentariosModel.CategoriasMasters" />
           <EntitySet Name="Club" EntityType="DB_9B1F4C_comentariosModel.Club" />
           <EntitySet Name="Comentario" EntityType="DB_9B1F4C_comentariosModel.Comentario" />
+          <EntitySet Name="Comentarios" EntityType="DB_9B1F4C_comentariosModel.Comentarios" />
+          <EntitySet Name="ConFechas" EntityType="DB_9B1F4C_comentariosModel.ConFechas" />
+          <EntitySet Name="Configuracion" EntityType="DB_9B1F4C_comentariosModel.Configuracion" />
+          <EntitySet Name="Contactos" EntityType="DB_9B1F4C_comentariosModel.Contactos" />
+          <EntitySet Name="Curso" EntityType="DB_9B1F4C_comentariosModel.Curso" />
+          <EntitySet Name="CursoInscripcion" EntityType="DB_9B1F4C_comentariosModel.CursoInscripcion" />
+          <EntitySet Name="CursoParticipante" EntityType="DB_9B1F4C_comentariosModel.CursoParticipante" />
           <EntitySet Name="Delegados" EntityType="DB_9B1F4C_comentariosModel.Delegados" />
           <EntitySet Name="Directivos" EntityType="DB_9B1F4C_comentariosModel.Directivos" />
           <EntitySet Name="Disciplina" EntityType="DB_9B1F4C_comentariosModel.Disciplina" />
+          <EntitySet Name="Empresa" EntityType="DB_9B1F4C_comentariosModel.Empresa" />
           <EntitySet Name="Entradas" EntityType="DB_9B1F4C_comentariosModel.Entradas" />
           <EntitySet Name="Entrenadores" EntityType="DB_9B1F4C_comentariosModel.Entrenadores" />
           <EntitySet Name="EntrenadorInscrito" EntityType="DB_9B1F4C_comentariosModel.EntrenadorInscrito" />
@@ -3472,6 +3675,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <EntitySet Name="OtroResponsable" EntityType="DB_9B1F4C_comentariosModel.OtroResponsable" />
           <EntitySet Name="OtroSetupTorneo" EntityType="DB_9B1F4C_comentariosModel.OtroSetupTorneo" />
           <EntitySet Name="OtroTorneo" EntityType="DB_9B1F4C_comentariosModel.OtroTorneo" />
+          <EntitySet Name="Piscinas" EntityType="DB_9B1F4C_comentariosModel.Piscinas" />
           <EntitySet Name="PoloEquipos" EntityType="DB_9B1F4C_comentariosModel.PoloEquipos" />
           <EntitySet Name="PoloFechas" EntityType="DB_9B1F4C_comentariosModel.PoloFechas" />
           <EntitySet Name="PoloGoleadores" EntityType="DB_9B1F4C_comentariosModel.PoloGoleadores" />
@@ -3486,48 +3690,41 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <EntitySet Name="PoloTorneo" EntityType="DB_9B1F4C_comentariosModel.PoloTorneo" />
           <EntitySet Name="Procesado" EntityType="DB_9B1F4C_comentariosModel.Procesado" />
           <EntitySet Name="Pruebas" EntityType="DB_9B1F4C_comentariosModel.Pruebas" />
+          <EntitySet Name="Records" EntityType="DB_9B1F4C_comentariosModel.Records" />
+          <EntitySet Name="RecordsActuales" EntityType="DB_9B1F4C_comentariosModel.RecordsActuales" />
+          <EntitySet Name="RecordsEdades" EntityType="DB_9B1F4C_comentariosModel.RecordsEdades" />
+          <EntitySet Name="RecordsPruebas" EntityType="DB_9B1F4C_comentariosModel.RecordsPruebas" />
+          <EntitySet Name="RecordTipo" EntityType="DB_9B1F4C_comentariosModel.RecordTipo" />
           <EntitySet Name="RESULTS" EntityType="DB_9B1F4C_comentariosModel.RESULTS" />
           <EntitySet Name="RESULTSMasters" EntityType="DB_9B1F4C_comentariosModel.RESULTSMasters" />
           <EntitySet Name="Rol" EntityType="DB_9B1F4C_comentariosModel.Rol" />
+          <EntitySet Name="Saltos" EntityType="DB_9B1F4C_comentariosModel.Saltos" />
           <EntitySet Name="Sesion" EntityType="DB_9B1F4C_comentariosModel.Sesion" />
           <EntitySet Name="SessionItem" EntityType="DB_9B1F4C_comentariosModel.SessionItem" />
           <EntitySet Name="SetupTorneo" EntityType="DB_9B1F4C_comentariosModel.SetupTorneo" />
+          <EntitySet Name="Suscritos" EntityType="DB_9B1F4C_comentariosModel.Suscritos" />
           <EntitySet Name="sysdiagrams" EntityType="DB_9B1F4C_comentariosModel.sysdiagrams" />
+          <EntitySet Name="TagNames" EntityType="DB_9B1F4C_comentariosModel.TagNames" />
           <EntitySet Name="TatoInformeAsistencias" EntityType="DB_9B1F4C_comentariosModel.TatoInformeAsistencias" />
           <EntitySet Name="TatoInformeEntrenador" EntityType="DB_9B1F4C_comentariosModel.TatoInformeEntrenador" />
           <EntitySet Name="TatoRealizacion" EntityType="DB_9B1F4C_comentariosModel.TatoRealizacion" />
           <EntitySet Name="TatoSeleccionado" EntityType="DB_9B1F4C_comentariosModel.TatoSeleccionado" />
           <EntitySet Name="TatoSeriesEjemplo" EntityType="DB_9B1F4C_comentariosModel.TatoSeriesEjemplo" />
+          <EntitySet Name="tb_Suscritos" EntityType="DB_9B1F4C_comentariosModel.tb_Suscritos" />
           <EntitySet Name="TEAM" EntityType="DB_9B1F4C_comentariosModel.TEAM" />
           <EntitySet Name="TEAMMasters" EntityType="DB_9B1F4C_comentariosModel.TEAMMasters" />
           <EntitySet Name="TipoAfiliado" EntityType="DB_9B1F4C_comentariosModel.TipoAfiliado" />
           <EntitySet Name="TipoTorneo" EntityType="DB_9B1F4C_comentariosModel.TipoTorneo" />
           <EntitySet Name="Torneo" EntityType="DB_9B1F4C_comentariosModel.Torneo" />
+          <EntitySet Name="TorneoDestacado" EntityType="DB_9B1F4C_comentariosModel.TorneoDestacado" />
+          <EntitySet Name="TorneoDestacadoMasters" EntityType="DB_9B1F4C_comentariosModel.TorneoDestacadoMasters" />
           <EntitySet Name="Traspasos" EntityType="DB_9B1F4C_comentariosModel.Traspasos" />
           <EntitySet Name="TraspasosEnEspera" EntityType="DB_9B1F4C_comentariosModel.TraspasosEnEspera" />
           <EntitySet Name="Usuario" EntityType="DB_9B1F4C_comentariosModel.Usuario" />
           <EntitySet Name="Vivo" EntityType="DB_9B1F4C_comentariosModel.Vivo" />
           <EntitySet Name="Vouchers" EntityType="DB_9B1F4C_comentariosModel.Vouchers" />
-          <EntitySet Name="AspNetRoles" EntityType="DB_9B1F4C_comentariosModel.AspNetRoles" />
-          <EntitySet Name="AspNetUserClaims" EntityType="DB_9B1F4C_comentariosModel.AspNetUserClaims" />
-          <EntitySet Name="AspNetUserLogins" EntityType="DB_9B1F4C_comentariosModel.AspNetUserLogins" />
-          <EntitySet Name="AspNetUserRoles" EntityType="DB_9B1F4C_comentariosModel.AspNetUserRoles" />
-          <EntitySet Name="AspNetUsers" EntityType="DB_9B1F4C_comentariosModel.AspNetUsers" />
-          <EntitySet Name="CategoriasMasters" EntityType="DB_9B1F4C_comentariosModel.CategoriasMasters" />
-          <EntitySet Name="Comentarios" EntityType="DB_9B1F4C_comentariosModel.Comentarios" />
-          <EntitySet Name="ConFechas" EntityType="DB_9B1F4C_comentariosModel.ConFechas" />
-          <EntitySet Name="Configuracion" EntityType="DB_9B1F4C_comentariosModel.Configuracion" />
-          <EntitySet Name="Contactos" EntityType="DB_9B1F4C_comentariosModel.Contactos" />
-          <EntitySet Name="Curso" EntityType="DB_9B1F4C_comentariosModel.Curso" />
-          <EntitySet Name="CursoInscripcion" EntityType="DB_9B1F4C_comentariosModel.CursoInscripcion" />
-          <EntitySet Name="CursoParticipante" EntityType="DB_9B1F4C_comentariosModel.CursoParticipante" />
-          <EntitySet Name="Empresa" EntityType="DB_9B1F4C_comentariosModel.Empresa" />
           <EntitySet Name="Query" EntityType="DB_9B1F4C_comentariosModel.Query" />
-          <EntitySet Name="Suscritos" EntityType="DB_9B1F4C_comentariosModel.Suscritos" />
-          <EntitySet Name="tb_Suscritos" EntityType="DB_9B1F4C_comentariosModel.tb_Suscritos" />
-          <EntitySet Name="tblmarca" EntityType="DB_9B1F4C_comentariosModel.tblmarca" />
-          <EntitySet Name="TorneoDestacado" EntityType="DB_9B1F4C_comentariosModel.TorneoDestacado" />
-          <EntitySet Name="TorneoDestacadoMasters" EntityType="DB_9B1F4C_comentariosModel.TorneoDestacadoMasters" />
+          <EntitySet Name="Sheet1_" EntityType="DB_9B1F4C_comentariosModel.Sheet1_" />
           <AssociationSet Name="FK_Afiliacion_Club" Association="DB_9B1F4C_comentariosModel.FK_Afiliacion_Club">
             <End Role="Club" EntitySet="Club" />
             <End Role="Afiliacion" EntitySet="Afiliacion" />
@@ -3812,6 +4009,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
             <End Role="OtroTorneo" EntitySet="OtroTorneo" />
             <End Role="OtroSetupTorneo" EntitySet="OtroSetupTorneo" />
           </AssociationSet>
+          <AssociationSet Name="FK_RecordsActuales_Piscinas" Association="DB_9B1F4C_comentariosModel.FK_RecordsActuales_Piscinas">
+            <End Role="Piscinas" EntitySet="Piscinas" />
+            <End Role="RecordsActuales" EntitySet="RecordsActuales" />
+          </AssociationSet>
           <AssociationSet Name="FK_PoloJugadores_PoloEquipos" Association="DB_9B1F4C_comentariosModel.FK_PoloJugadores_PoloEquipos">
             <End Role="PoloEquipos" EntitySet="PoloEquipos" />
             <End Role="PoloJugadores" EntitySet="PoloJugadores" />
@@ -3888,6 +4089,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
             <End Role="Pruebas" EntitySet="Pruebas" />
             <End Role="RESULTS" EntitySet="RESULTS" />
           </AssociationSet>
+          <AssociationSet Name="FK_RecordsActuales_RecordsEdades" Association="DB_9B1F4C_comentariosModel.FK_RecordsActuales_RecordsEdades">
+            <End Role="RecordsEdades" EntitySet="RecordsEdades" />
+            <End Role="RecordsActuales" EntitySet="RecordsActuales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecordsActuales_RecordsPruebas" Association="DB_9B1F4C_comentariosModel.FK_RecordsActuales_RecordsPruebas">
+            <End Role="RecordsPruebas" EntitySet="RecordsPruebas" />
+            <End Role="RecordsActuales" EntitySet="RecordsActuales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecordsActuales_RecordTipo" Association="DB_9B1F4C_comentariosModel.FK_RecordsActuales_RecordTipo">
+            <End Role="RecordTipo" EntitySet="RecordTipo" />
+            <End Role="RecordsActuales" EntitySet="RecordsActuales" />
+          </AssociationSet>
           <AssociationSet Name="FK_RESULTS_TEAM" Association="DB_9B1F4C_comentariosModel.FK_RESULTS_TEAM">
             <End Role="TEAM" EntitySet="TEAM" />
             <End Role="RESULTS" EntitySet="RESULTS" />
@@ -3932,7 +4145,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Vouchers" EntitySet="Vouchers" />
           </AssociationSet>
-          <EntitySet Name="TagNames" EntityType="DB_9B1F4C_comentariosModel.TagNames" />
         </EntityContainer>
         <EntityType Name="Afiliacion">
           <Key>
@@ -4164,6 +4376,15 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <Property Name="Edad_maxima" Type="Int32" Nullable="false" />
           <Property Name="Edad_minima" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="CategoriasMasters">
+          <Key>
+            <PropertyRef Name="CategoriaId" />
+          </Key>
+          <Property Name="CategoriaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EdadMinima" Type="Int32" Nullable="false" />
+          <Property Name="EdadMaxima" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
         <EntityType Name="Club">
           <Key>
             <PropertyRef Name="ClubID" />
@@ -4203,6 +4424,95 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <Property Name="Mensaje" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="fecha" Type="DateTime" Precision="0" />
         </EntityType>
+        <EntityType Name="Comentarios">
+          <Key>
+            <PropertyRef Name="ComentarioId" />
+          </Key>
+          <Property Name="ComentarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Comentario" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <Property Name="NoticiaId" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="ConFechas">
+          <Key>
+            <PropertyRef Name="CalendarioId" />
+          </Key>
+          <Property Name="INICIO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FINAL" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EVENTOS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CIUDAD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PAIS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MODALIDAD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="F7" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Organiza" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Nota" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CalendarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Configuracion">
+          <Key>
+            <PropertyRef Name="SetupId" />
+          </Key>
+          <Property Name="Mantenimiento" Type="Boolean" Nullable="false" />
+          <Property Name="SetupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Contactos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Appaterno" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Apmaterno" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Extension" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Planta" Type="Int32" />
+          <Property Name="Asiento" Type="Int32" />
+          <Property Name="Cargo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Ubicacion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EmpresaId" Type="Int32" />
+          <Property Name="Celular" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Curso">
+          <Key>
+            <PropertyRef Name="CursoId" />
+          </Key>
+          <Property Name="CursoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ciudad" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Inicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DisciplinaId" Type="Int32" />
+          <Property Name="Hora" Type="Time" Precision="7" />
+          <Property Name="CantidadMaxima" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CursoInscripcion">
+          <Key>
+            <PropertyRef Name="InscripcionId" />
+          </Key>
+          <Property Name="InscripcionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParticipanteId" Type="Int32" Nullable="false" />
+          <Property Name="CursoId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CursoParticipante">
+          <Key>
+            <PropertyRef Name="ParticipanteId" />
+          </Key>
+          <Property Name="ParticipanteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombres" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Paterno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Materno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DNI" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Celular" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Nacionalidad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Actividad" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="Delegados">
           <Key>
             <PropertyRef Name="DelegadoId" />
@@ -4241,6 +4551,21 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <NavigationProperty Name="Noticias" Relationship="DB_9B1F4C_comentariosModel.FK_Noticias_Disciplina" FromRole="Disciplina" ToRole="Noticias" />
           <NavigationProperty Name="OtroCategorias" Relationship="DB_9B1F4C_comentariosModel.FK_OtroCategorias_Disciplina" FromRole="Disciplina" ToRole="OtroCategorias" />
           <NavigationProperty Name="OtroTorneo" Relationship="DB_9B1F4C_comentariosModel.FK_OtroTorneo_Disciplina" FromRole="Disciplina" ToRole="OtroTorneo" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="EmpresaId" />
+          </Key>
+          <Property Name="EmpresaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Empresa1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Ciudad" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Pais" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Ubicacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Web" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Notas" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Entradas">
           <Key>
@@ -4859,6 +5184,14 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <NavigationProperty Name="OtroEventos" Relationship="DB_9B1F4C_comentariosModel.FK_OtroEventos_OtroTorneo" FromRole="OtroTorneo" ToRole="OtroEventos" />
           <NavigationProperty Name="OtroSetupTorneo" Relationship="DB_9B1F4C_comentariosModel.FK_OtroSetupTorneo_OtroTorneo" FromRole="OtroTorneo" ToRole="OtroSetupTorneo" />
         </EntityType>
+        <EntityType Name="Piscinas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="RecordsActuales" Relationship="DB_9B1F4C_comentariosModel.FK_RecordsActuales_Piscinas" FromRole="Piscinas" ToRole="RecordsActuales" />
+        </EntityType>
         <EntityType Name="PoloEquipos">
           <Key>
             <PropertyRef Name="EquipoId" />
@@ -5050,6 +5383,85 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <Property Name="EstiloMeet" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="RESULTS" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTS_Pruebas" FromRole="Pruebas" ToRole="RESULTS" />
         </EntityType>
+        <EntityType Name="Records">
+          <Key>
+            <PropertyRef Name="RecordId" />
+          </Key>
+          <Property Name="tag_ptr" Type="Int32" />
+          <Property Name="tag_gender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="tag_indrel" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="tag_dist" Type="Int32" />
+          <Property Name="tag_stroke" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="low_age" Type="Int16" />
+          <Property Name="high_Age" Type="Int16" />
+          <Property Name="Record_month" Type="Int16" />
+          <Property Name="Record_day" Type="Int16" />
+          <Property Name="Record_year" Type="Int16" />
+          <Property Name="Record_Holder" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Record_Holderteam" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Relay_Names" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Record_Time" Type="Single" />
+          <Property Name="Record_course" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="div_abbr" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Record_teamabbr" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Record_teamlsc" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="RecordId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="RecordsActuales">
+          <Key>
+            <PropertyRef Name="RecordId" />
+          </Key>
+          <Property Name="RecordId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Torneo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PruebaId" Type="Int32" Nullable="false" />
+          <Property Name="EdadId" Type="Int32" Nullable="false" />
+          <Property Name="TiempoSegundos" Type="Double" Nullable="false" />
+          <Property Name="Nombre1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre3" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre4" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="split1" Type="Double" />
+          <Property Name="split2" Type="Double" />
+          <Property Name="split3" Type="Double" />
+          <Property Name="Equipo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TipoId" Type="Int32" Nullable="false" />
+          <Property Name="PiscinaId" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="split4" Type="Double" />
+          <NavigationProperty Name="Piscinas" Relationship="DB_9B1F4C_comentariosModel.FK_RecordsActuales_Piscinas" FromRole="RecordsActuales" ToRole="Piscinas" />
+          <NavigationProperty Name="RecordsEdades" Relationship="DB_9B1F4C_comentariosModel.FK_RecordsActuales_RecordsEdades" FromRole="RecordsActuales" ToRole="RecordsEdades" />
+          <NavigationProperty Name="RecordsPruebas" Relationship="DB_9B1F4C_comentariosModel.FK_RecordsActuales_RecordsPruebas" FromRole="RecordsActuales" ToRole="RecordsPruebas" />
+          <NavigationProperty Name="RecordTipo" Relationship="DB_9B1F4C_comentariosModel.FK_RecordsActuales_RecordTipo" FromRole="RecordsActuales" ToRole="RecordTipo" />
+        </EntityType>
+        <EntityType Name="RecordsEdades">
+          <Key>
+            <PropertyRef Name="EdadId" />
+          </Key>
+          <Property Name="EdadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EdadMinima" Type="Int32" Nullable="false" />
+          <Property Name="EdadMaxima" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RecordsActuales" Relationship="DB_9B1F4C_comentariosModel.FK_RecordsActuales_RecordsEdades" FromRole="RecordsEdades" ToRole="RecordsActuales" />
+        </EntityType>
+        <EntityType Name="RecordsPruebas">
+          <Key>
+            <PropertyRef Name="PruebaId" />
+          </Key>
+          <Property Name="PruebaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sexo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Distancia" Type="Int32" Nullable="false" />
+          <Property Name="Estilo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="RecordsActuales" Relationship="DB_9B1F4C_comentariosModel.FK_RecordsActuales_RecordsPruebas" FromRole="RecordsPruebas" ToRole="RecordsActuales" />
+        </EntityType>
+        <EntityType Name="RecordTipo">
+          <Key>
+            <PropertyRef Name="TipoId" />
+          </Key>
+          <Property Name="TipoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RecordsActuales" Relationship="DB_9B1F4C_comentariosModel.FK_RecordsActuales_RecordTipo" FromRole="RecordTipo" ToRole="RecordsActuales" />
+        </EntityType>
         <EntityType Name="RESULTS">
           <Key>
             <PropertyRef Name="ResultId" />
@@ -5124,6 +5536,20 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <Property Name="Detalle" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Usuario" Relationship="DB_9B1F4C_comentariosModel.FK_Usuario_Rol" FromRole="Rol" ToRole="Usuario" />
         </EntityType>
+        <EntityType Name="Saltos">
+          <Key>
+            <PropertyRef Name="SaltoId" />
+          </Key>
+          <Property Name="Codigo" Type="Double" />
+          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="A" Type="Double" />
+          <Property Name="B" Type="Double" />
+          <Property Name="C" Type="Double" />
+          <Property Name="D" Type="Double" />
+          <Property Name="Altura" Type="Double" />
+          <Property Name="Tipo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SaltoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
         <EntityType Name="Sesion">
           <Key>
             <PropertyRef Name="SessionId" />
@@ -5186,6 +5612,16 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <NavigationProperty Name="TipoTorneo" Relationship="DB_9B1F4C_comentariosModel.FK__SetupTorn__TipoI__2AA05119" FromRole="SetupTorneo" ToRole="TipoTorneo" />
           <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_comentariosModel.FK_SetupTorneo_Torneo" FromRole="SetupTorneo" ToRole="Torneo" />
         </EntityType>
+        <EntityType Name="Suscritos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FNacimiento" Type="DateTime" Precision="0" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -5195,6 +5631,19 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TagNames">
+          <Key>
+            <PropertyRef Name="TagId" />
+          </Key>
+          <Property Name="tag_ptr" Type="Int32" Nullable="false" />
+          <Property Name="tag_name" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="for_scoring" Type="Boolean" Nullable="false" />
+          <Property Name="for_entryqual" Type="Boolean" Nullable="false" />
+          <Property Name="for_timestd" Type="Boolean" Nullable="false" />
+          <Property Name="tag_desc" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TagId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MeetId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="TatoInformeAsistencias">
           <Key>
@@ -5265,6 +5714,17 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <Property Name="Piscina" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="TatoInformeEntrenador" Relationship="DB_9B1F4C_comentariosModel.FK_TatoInformeEntrenador_TatoSeriesEjemplo" FromRole="TatoSeriesEjemplo" ToRole="TatoInformeEntrenador" />
+        </EntityType>
+        <EntityType Name="tb_Suscritos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="EsActivo" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="TEAM">
           <Key>
@@ -5534,6 +5994,20 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <NavigationProperty Name="SessionItem" Relationship="DB_9B1F4C_comentariosModel.FK_SessionItem_Torneo" FromRole="Torneo" ToRole="SessionItem" />
           <NavigationProperty Name="SetupTorneo" Relationship="DB_9B1F4C_comentariosModel.FK_SetupTorneo_Torneo" FromRole="Torneo" ToRole="SetupTorneo" />
         </EntityType>
+        <EntityType Name="TorneoDestacado">
+          <Key>
+            <PropertyRef Name="DestacadoId" />
+          </Key>
+          <Property Name="DestacadoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Meet" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TorneoDestacadoMasters">
+          <Key>
+            <PropertyRef Name="DestacadoId" />
+          </Key>
+          <Property Name="DestacadoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Meet" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityType Name="Traspasos">
           <Key>
             <PropertyRef Name="TraspasoId" />
@@ -5614,209 +6088,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <NavigationProperty Name="Club" Relationship="DB_9B1F4C_comentariosModel.FK_Vouchers_Club" FromRole="Vouchers" ToRole="Club" />
           <NavigationProperty Name="Usuario" Relationship="DB_9B1F4C_comentariosModel.FK_Vouchers_Usuario" FromRole="Vouchers" ToRole="Usuario" />
         </EntityType>
-        <EntityType Name="AspNetRoles">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Name" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="AspNetUserClaims">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="ClaimType" />
-            <PropertyRef Name="ClaimValue" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ClaimType" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ClaimValue" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="AspNetUserLogins">
-          <Key>
-            <PropertyRef Name="LoginProvider" />
-            <PropertyRef Name="ProviderKey" />
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="AspNetUserRoles">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="RoleId" />
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Id" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AspNetUsers">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="EmailConfirmed" />
-            <PropertyRef Name="PhoneNumberConfirmed" />
-            <PropertyRef Name="TwoFactorEnabled" />
-            <PropertyRef Name="AccessFailedCount" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="Name" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="LockoutEnabled" Type="Boolean" />
-          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="0" />
-          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="CategoriasMasters">
-          <Key>
-            <PropertyRef Name="CategoriaId" />
-            <PropertyRef Name="EdadMinima" />
-            <PropertyRef Name="EdadMaxima" />
-            <PropertyRef Name="Nombre" />
-          </Key>
-          <Property Name="CategoriaId" Type="Int32" Nullable="false" />
-          <Property Name="EdadMinima" Type="Int32" Nullable="false" />
-          <Property Name="EdadMaxima" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Comentarios">
-          <Key>
-            <PropertyRef Name="ComentarioId" />
-            <PropertyRef Name="Comentario" />
-            <PropertyRef Name="UsuarioId" />
-            <PropertyRef Name="NoticiaId" />
-            <PropertyRef Name="Estado" />
-            <PropertyRef Name="Fecha" />
-          </Key>
-          <Property Name="ComentarioId" Type="Int32" Nullable="false" />
-          <Property Name="Comentario" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
-          <Property Name="NoticiaId" Type="Int32" Nullable="false" />
-          <Property Name="Estado" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
-        </EntityType>
-        <EntityType Name="ConFechas">
-          <Key>
-            <PropertyRef Name="INICIO" />
-            <PropertyRef Name="FINAL" />
-            <PropertyRef Name="CalendarioId" />
-          </Key>
-          <Property Name="INICIO" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="FINAL" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EVENTOS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="CIUDAD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="PAIS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="MODALIDAD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="F7" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Organiza" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Nota" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="CalendarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="Configuracion">
-          <Key>
-            <PropertyRef Name="Mantenimiento" />
-            <PropertyRef Name="SetupId" />
-          </Key>
-          <Property Name="Mantenimiento" Type="Boolean" Nullable="false" />
-          <Property Name="SetupId" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Contactos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Appaterno" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Apmaterno" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Extension" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Planta" Type="Int32" />
-          <Property Name="Asiento" Type="Int32" />
-          <Property Name="Cargo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Ubicacion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="EmpresaId" Type="Int32" />
-          <Property Name="Celular" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Curso">
-          <Key>
-            <PropertyRef Name="CursoId" />
-            <PropertyRef Name="Nombre" />
-            <PropertyRef Name="Ciudad" />
-            <PropertyRef Name="Direccion" />
-            <PropertyRef Name="Inicio" />
-            <PropertyRef Name="Fin" />
-            <PropertyRef Name="CantidadMaxima" />
-          </Key>
-          <Property Name="CursoId" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Ciudad" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Inicio" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Fin" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="DisciplinaId" Type="Int32" />
-          <Property Name="Hora" Type="Time" Precision="7" />
-          <Property Name="CantidadMaxima" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="CursoInscripcion">
-          <Key>
-            <PropertyRef Name="InscripcionId" />
-            <PropertyRef Name="ParticipanteId" />
-            <PropertyRef Name="CursoId" />
-          </Key>
-          <Property Name="InscripcionId" Type="Int32" Nullable="false" />
-          <Property Name="ParticipanteId" Type="Int32" Nullable="false" />
-          <Property Name="CursoId" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="CursoParticipante">
-          <Key>
-            <PropertyRef Name="ParticipanteId" />
-            <PropertyRef Name="Nombres" />
-            <PropertyRef Name="Paterno" />
-            <PropertyRef Name="Nacimiento" />
-            <PropertyRef Name="DNI" />
-            <PropertyRef Name="Email" />
-            <PropertyRef Name="Nacionalidad" />
-            <PropertyRef Name="Actividad" />
-          </Key>
-          <Property Name="ParticipanteId" Type="Int32" Nullable="false" />
-          <Property Name="Nombres" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Paterno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Materno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Nacimiento" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="DNI" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Celular" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Nacionalidad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Actividad" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Empresa">
-          <Key>
-            <PropertyRef Name="EmpresaId" />
-          </Key>
-          <Property Name="EmpresaId" Type="Int32" Nullable="false" />
-          <Property Name="Empresa1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Telefono2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Ciudad" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Pais" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Ubicacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Web" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Notas" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Query">
           <Key>
             <PropertyRef Name="Athlete" />
@@ -5836,62 +6107,24 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <Property Name="ID_NO" Type="String" Nullable="false" MaxLength="17" FixedLength="false" Unicode="true" />
           <Property Name="AthleteId" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="Suscritos">
+        <EntityType Name="Sheet1_">
           <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Email" />
+            <PropertyRef Name="Inicio" />
+            <PropertyRef Name="Fin" />
+            <PropertyRef Name="Evento" />
+            <PropertyRef Name="Sede" />
+            <PropertyRef Name="disciplina" />
+            <PropertyRef Name="internacional" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="FNacimiento" Type="DateTime" Precision="0" />
-        </EntityType>
-        <EntityType Name="tb_Suscritos">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Email" />
-            <PropertyRef Name="EsActivo" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="FNacimiento" Type="DateTime" Precision="0" />
-          <Property Name="EsActivo" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tblmarca">
-          <Key>
-            <PropertyRef Name="F12" />
-          </Key>
-          <Property Name="Id" Type="Double" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Notengoidea" Type="Int32" />
-          <Property Name="Iniciales" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="familia1" Type="Int32" />
-          <Property Name="familia2" Type="Int32" />
-          <Property Name="familia3" Type="Int32" />
-          <Property Name="familia4" Type="Int32" />
-          <Property Name="familia5" Type="Int32" />
-          <Property Name="familia6" Type="Int32" />
-          <Property Name="Familia" Type="Int32" />
-          <Property Name="F12" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="TorneoDestacado">
-          <Key>
-            <PropertyRef Name="DestacadoId" />
-            <PropertyRef Name="Meet" />
-          </Key>
-          <Property Name="DestacadoId" Type="Int32" Nullable="false" />
-          <Property Name="Meet" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="TorneoDestacadoMasters">
-          <Key>
-            <PropertyRef Name="DestacadoId" />
-            <PropertyRef Name="Meet" />
-          </Key>
-          <Property Name="DestacadoId" Type="Int32" Nullable="false" />
-          <Property Name="Meet" Type="Int32" Nullable="false" />
+          <Property Name="Inicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Evento" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Sede" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Carácter" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Observación" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Organizador" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="disciplina" Type="Int32" Nullable="false" />
+          <Property Name="internacional" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_Afiliacion_Club">
           <End Type="DB_9B1F4C_comentariosModel.Club" Role="Club" Multiplicity="1" />
@@ -6745,6 +6978,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_RecordsActuales_Piscinas">
+          <End Type="DB_9B1F4C_comentariosModel.Piscinas" Role="Piscinas" Multiplicity="0..1" />
+          <End Type="DB_9B1F4C_comentariosModel.RecordsActuales" Role="RecordsActuales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Piscinas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RecordsActuales">
+              <PropertyRef Name="PiscinaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PoloJugadores_PoloEquipos">
           <End Type="DB_9B1F4C_comentariosModel.PoloEquipos" Role="PoloEquipos" Multiplicity="1" />
           <End Type="DB_9B1F4C_comentariosModel.PoloJugadores" Role="PoloJugadores" Multiplicity="*" />
@@ -6973,6 +7218,42 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_RecordsActuales_RecordsEdades">
+          <End Type="DB_9B1F4C_comentariosModel.RecordsEdades" Role="RecordsEdades" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.RecordsActuales" Role="RecordsActuales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordsEdades">
+              <PropertyRef Name="EdadId" />
+            </Principal>
+            <Dependent Role="RecordsActuales">
+              <PropertyRef Name="EdadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecordsActuales_RecordsPruebas">
+          <End Type="DB_9B1F4C_comentariosModel.RecordsPruebas" Role="RecordsPruebas" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.RecordsActuales" Role="RecordsActuales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordsPruebas">
+              <PropertyRef Name="PruebaId" />
+            </Principal>
+            <Dependent Role="RecordsActuales">
+              <PropertyRef Name="PruebaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecordsActuales_RecordTipo">
+          <End Type="DB_9B1F4C_comentariosModel.RecordTipo" Role="RecordTipo" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.RecordsActuales" Role="RecordsActuales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordTipo">
+              <PropertyRef Name="TipoId" />
+            </Principal>
+            <Dependent Role="RecordsActuales">
+              <PropertyRef Name="TipoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_RESULTS_TEAM">
           <End Type="DB_9B1F4C_comentariosModel.TEAM" Role="TEAM" Multiplicity="0..1" />
           <End Type="DB_9B1F4C_comentariosModel.RESULTS" Role="RESULTS" Multiplicity="*" />
@@ -7105,19 +7386,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="TagNames">
-          <Key>
-            <PropertyRef Name="TagId" />
-          </Key>
-          <Property Name="tag_ptr" Type="Int32" Nullable="false" />
-          <Property Name="tag_name" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
-          <Property Name="for_scoring" Type="Boolean" Nullable="false" />
-          <Property Name="for_entryqual" Type="Boolean" Nullable="false" />
-          <Property Name="for_timestd" Type="Boolean" Nullable="false" />
-          <Property Name="tag_desc" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="TagId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MeetId" Type="Int32" Nullable="false" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -7350,6 +7618,16 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CategoriasMasters">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.CategoriasMasters">
+              <MappingFragment StoreEntitySet="CategoriasMasters">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="EdadMaxima" ColumnName="EdadMaxima" />
+                <ScalarProperty Name="EdadMinima" ColumnName="EdadMinima" />
+                <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Club">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Club">
               <MappingFragment StoreEntitySet="Club">
@@ -7377,6 +7655,102 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="ComentarioId" ColumnName="ComentarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comentarios">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Comentarios">
+              <MappingFragment StoreEntitySet="Comentarios">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="NoticiaId" ColumnName="NoticiaId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="ComentarioId" ColumnName="ComentarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConFechas">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.ConFechas">
+              <MappingFragment StoreEntitySet="ConFechas">
+                <ScalarProperty Name="CalendarioId" ColumnName="CalendarioId" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="Organiza" ColumnName="Organiza" />
+                <ScalarProperty Name="F7" ColumnName="F7" />
+                <ScalarProperty Name="MODALIDAD" ColumnName="MODALIDAD" />
+                <ScalarProperty Name="PAIS" ColumnName="PAIS" />
+                <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+                <ScalarProperty Name="EVENTOS" ColumnName="EVENTOS" />
+                <ScalarProperty Name="FINAL" ColumnName="FINAL" />
+                <ScalarProperty Name="INICIO" ColumnName="INICIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Configuracion">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Configuracion">
+              <MappingFragment StoreEntitySet="Configuracion">
+                <ScalarProperty Name="SetupId" ColumnName="SetupId" />
+                <ScalarProperty Name="Mantenimiento" ColumnName="Mantenimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contactos">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Contactos">
+              <MappingFragment StoreEntitySet="Contactos">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="Asiento" ColumnName="Asiento" />
+                <ScalarProperty Name="Planta" ColumnName="Planta" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Apmaterno" ColumnName="Apmaterno" />
+                <ScalarProperty Name="Appaterno" ColumnName="Appaterno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Curso">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Curso">
+              <MappingFragment StoreEntitySet="Curso">
+                <ScalarProperty Name="CantidadMaxima" ColumnName="CantidadMaxima" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="DisciplinaId" ColumnName="DisciplinaId" />
+                <ScalarProperty Name="Fin" ColumnName="Fin" />
+                <ScalarProperty Name="Inicio" ColumnName="Inicio" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CursoInscripcion">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.CursoInscripcion">
+              <MappingFragment StoreEntitySet="CursoInscripcion">
+                <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+                <ScalarProperty Name="ParticipanteId" ColumnName="ParticipanteId" />
+                <ScalarProperty Name="InscripcionId" ColumnName="InscripcionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CursoParticipante">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.CursoParticipante">
+              <MappingFragment StoreEntitySet="CursoParticipante">
+                <ScalarProperty Name="Actividad" ColumnName="Actividad" />
+                <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="Nacimiento" ColumnName="Nacimiento" />
+                <ScalarProperty Name="Materno" ColumnName="Materno" />
+                <ScalarProperty Name="Paterno" ColumnName="Paterno" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="ParticipanteId" ColumnName="ParticipanteId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -7411,6 +7785,22 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
                 <ScalarProperty Name="clase" ColumnName="clase" />
                 <ScalarProperty Name="TipoDisciplina" ColumnName="TipoDisciplina" />
                 <ScalarProperty Name="DisciplinaId" ColumnName="DisciplinaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresa">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="Notas" ColumnName="Notas" />
+                <ScalarProperty Name="Web" ColumnName="Web" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Empresa1" ColumnName="Empresa" />
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -7989,6 +8379,14 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Piscinas">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Piscinas">
+              <MappingFragment StoreEntitySet="Piscinas">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PoloEquipos">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.PoloEquipos">
               <MappingFragment StoreEntitySet="PoloEquipos">
@@ -8156,6 +8554,83 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Records">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Records">
+              <MappingFragment StoreEntitySet="Records">
+                <ScalarProperty Name="RecordId" ColumnName="RecordId" />
+                <ScalarProperty Name="Record_teamlsc" ColumnName="Record_teamlsc" />
+                <ScalarProperty Name="Record_teamabbr" ColumnName="Record_teamabbr" />
+                <ScalarProperty Name="div_abbr" ColumnName="div_abbr" />
+                <ScalarProperty Name="Record_course" ColumnName="Record_course" />
+                <ScalarProperty Name="Record_Time" ColumnName="Record_Time" />
+                <ScalarProperty Name="Relay_Names" ColumnName="Relay_Names" />
+                <ScalarProperty Name="Record_Holderteam" ColumnName="Record_Holderteam" />
+                <ScalarProperty Name="Record_Holder" ColumnName="Record_Holder" />
+                <ScalarProperty Name="Record_year" ColumnName="Record_year" />
+                <ScalarProperty Name="Record_day" ColumnName="Record_day" />
+                <ScalarProperty Name="Record_month" ColumnName="Record_month" />
+                <ScalarProperty Name="high_Age" ColumnName="high_Age" />
+                <ScalarProperty Name="low_age" ColumnName="low_age" />
+                <ScalarProperty Name="tag_stroke" ColumnName="tag_stroke" />
+                <ScalarProperty Name="tag_dist" ColumnName="tag_dist" />
+                <ScalarProperty Name="tag_indrel" ColumnName="tag_indrel" />
+                <ScalarProperty Name="tag_gender" ColumnName="tag_gender" />
+                <ScalarProperty Name="tag_ptr" ColumnName="tag_ptr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecordsActuales">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.RecordsActuales">
+              <MappingFragment StoreEntitySet="RecordsActuales">
+                <ScalarProperty Name="split4" ColumnName="split4" />
+                <ScalarProperty Name="PiscinaId" ColumnName="PiscinaId" />
+                <ScalarProperty Name="TipoId" ColumnName="TipoId" />
+                <ScalarProperty Name="Equipo" ColumnName="Equipo" />
+                <ScalarProperty Name="split3" ColumnName="split3" />
+                <ScalarProperty Name="split2" ColumnName="split2" />
+                <ScalarProperty Name="split1" ColumnName="split1" />
+                <ScalarProperty Name="Nombre4" ColumnName="Nombre4" />
+                <ScalarProperty Name="Nombre3" ColumnName="Nombre3" />
+                <ScalarProperty Name="Nombre2" ColumnName="Nombre2" />
+                <ScalarProperty Name="Nombre1" ColumnName="Nombre1" />
+                <ScalarProperty Name="TiempoSegundos" ColumnName="TiempoSegundos" />
+                <ScalarProperty Name="EdadId" ColumnName="EdadId" />
+                <ScalarProperty Name="PruebaId" ColumnName="PruebaId" />
+                <ScalarProperty Name="Torneo" ColumnName="Torneo" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="RecordId" ColumnName="RecordId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecordsEdades">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.RecordsEdades">
+              <MappingFragment StoreEntitySet="RecordsEdades">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="EdadMaxima" ColumnName="EdadMaxima" />
+                <ScalarProperty Name="EdadMinima" ColumnName="EdadMinima" />
+                <ScalarProperty Name="EdadId" ColumnName="EdadId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecordsPruebas">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.RecordsPruebas">
+              <MappingFragment StoreEntitySet="RecordsPruebas">
+                <ScalarProperty Name="Estilo" ColumnName="Estilo" />
+                <ScalarProperty Name="Distancia" ColumnName="Distancia" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="PruebaId" ColumnName="PruebaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecordTipo">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.RecordTipo">
+              <MappingFragment StoreEntitySet="RecordTipo">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="TipoId" ColumnName="TipoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="RESULTS">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.RESULTS">
               <MappingFragment StoreEntitySet="RESULTS">
@@ -8225,6 +8700,21 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Saltos">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Saltos">
+              <MappingFragment StoreEntitySet="Saltos">
+                <ScalarProperty Name="SaltoId" ColumnName="SaltoId" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Altura" ColumnName="Altura" />
+                <ScalarProperty Name="D" ColumnName="D" />
+                <ScalarProperty Name="C" ColumnName="C" />
+                <ScalarProperty Name="B" ColumnName="B" />
+                <ScalarProperty Name="A" ColumnName="A" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Sesion">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Sesion">
               <MappingFragment StoreEntitySet="Sesion">
@@ -8286,6 +8776,17 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Suscritos">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Suscritos">
+              <MappingFragment StoreEntitySet="Suscritos">
+                <ScalarProperty Name="FNacimiento" ColumnName="FNacimiento" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -8294,6 +8795,20 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TagNames">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.TagNames">
+              <MappingFragment StoreEntitySet="TagNames">
+                <ScalarProperty Name="MeetId" ColumnName="MeetId" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="tag_desc" ColumnName="tag_desc" />
+                <ScalarProperty Name="for_timestd" ColumnName="for_timestd" />
+                <ScalarProperty Name="for_entryqual" ColumnName="for_entryqual" />
+                <ScalarProperty Name="for_scoring" ColumnName="for_scoring" />
+                <ScalarProperty Name="tag_name" ColumnName="tag_name" />
+                <ScalarProperty Name="tag_ptr" ColumnName="tag_ptr" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -8361,6 +8876,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
                 <ScalarProperty Name="Series" ColumnName="Series" />
                 <ScalarProperty Name="Zona" ColumnName="Zona" />
                 <ScalarProperty Name="SerieId" ColumnName="SerieId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Suscritos">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.tb_Suscritos">
+              <MappingFragment StoreEntitySet="tb_Suscritos">
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="FNacimiento" ColumnName="FNacimiento" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -8622,6 +9149,22 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TorneoDestacado">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.TorneoDestacado">
+              <MappingFragment StoreEntitySet="TorneoDestacado">
+                <ScalarProperty Name="Meet" ColumnName="Meet" />
+                <ScalarProperty Name="DestacadoId" ColumnName="DestacadoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TorneoDestacadoMasters">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.TorneoDestacadoMasters">
+              <MappingFragment StoreEntitySet="TorneoDestacadoMasters">
+                <ScalarProperty Name="Meet" ColumnName="Meet" />
+                <ScalarProperty Name="DestacadoId" ColumnName="DestacadoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Traspasos">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Traspasos">
               <MappingFragment StoreEntitySet="Traspasos">
@@ -8690,128 +9233,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CategoriasMasters">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.CategoriasMasters">
-              <MappingFragment StoreEntitySet="CategoriasMasters">
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="EdadMaxima" ColumnName="EdadMaxima" />
-                <ScalarProperty Name="EdadMinima" ColumnName="EdadMinima" />
-                <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Comentarios">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Comentarios">
-              <MappingFragment StoreEntitySet="Comentarios">
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="NoticiaId" ColumnName="NoticiaId" />
-                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
-                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
-                <ScalarProperty Name="ComentarioId" ColumnName="ComentarioId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ConFechas">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.ConFechas">
-              <MappingFragment StoreEntitySet="ConFechas">
-                <ScalarProperty Name="CalendarioId" ColumnName="CalendarioId" />
-                <ScalarProperty Name="Nota" ColumnName="Nota" />
-                <ScalarProperty Name="Organiza" ColumnName="Organiza" />
-                <ScalarProperty Name="F7" ColumnName="F7" />
-                <ScalarProperty Name="MODALIDAD" ColumnName="MODALIDAD" />
-                <ScalarProperty Name="PAIS" ColumnName="PAIS" />
-                <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
-                <ScalarProperty Name="EVENTOS" ColumnName="EVENTOS" />
-                <ScalarProperty Name="FINAL" ColumnName="FINAL" />
-                <ScalarProperty Name="INICIO" ColumnName="INICIO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Configuracion">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Configuracion">
-              <MappingFragment StoreEntitySet="Configuracion">
-                <ScalarProperty Name="SetupId" ColumnName="SetupId" />
-                <ScalarProperty Name="Mantenimiento" ColumnName="Mantenimiento" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Contactos">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Contactos">
-              <MappingFragment StoreEntitySet="Contactos">
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
-                <ScalarProperty Name="Celular" ColumnName="Celular" />
-                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
-                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
-                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
-                <ScalarProperty Name="Asiento" ColumnName="Asiento" />
-                <ScalarProperty Name="Planta" ColumnName="Planta" />
-                <ScalarProperty Name="Extension" ColumnName="Extension" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Apmaterno" ColumnName="Apmaterno" />
-                <ScalarProperty Name="Appaterno" ColumnName="Appaterno" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Curso">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Curso">
-              <MappingFragment StoreEntitySet="Curso">
-                <ScalarProperty Name="CantidadMaxima" ColumnName="CantidadMaxima" />
-                <ScalarProperty Name="Hora" ColumnName="Hora" />
-                <ScalarProperty Name="DisciplinaId" ColumnName="DisciplinaId" />
-                <ScalarProperty Name="Fin" ColumnName="Fin" />
-                <ScalarProperty Name="Inicio" ColumnName="Inicio" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="CursoId" ColumnName="CursoId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CursoInscripcion">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.CursoInscripcion">
-              <MappingFragment StoreEntitySet="CursoInscripcion">
-                <ScalarProperty Name="CursoId" ColumnName="CursoId" />
-                <ScalarProperty Name="ParticipanteId" ColumnName="ParticipanteId" />
-                <ScalarProperty Name="InscripcionId" ColumnName="InscripcionId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CursoParticipante">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.CursoParticipante">
-              <MappingFragment StoreEntitySet="CursoParticipante">
-                <ScalarProperty Name="Actividad" ColumnName="Actividad" />
-                <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
-                <ScalarProperty Name="Celular" ColumnName="Celular" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="DNI" ColumnName="DNI" />
-                <ScalarProperty Name="Nacimiento" ColumnName="Nacimiento" />
-                <ScalarProperty Name="Materno" ColumnName="Materno" />
-                <ScalarProperty Name="Paterno" ColumnName="Paterno" />
-                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
-                <ScalarProperty Name="ParticipanteId" ColumnName="ParticipanteId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Empresa">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Empresa">
-              <MappingFragment StoreEntitySet="Empresa">
-                <ScalarProperty Name="Notas" ColumnName="Notas" />
-                <ScalarProperty Name="Web" ColumnName="Web" />
-                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
-                <ScalarProperty Name="Pais" ColumnName="Pais" />
-                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
-                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Empresa1" ColumnName="Empresa" />
-                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Query">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Query">
               <MappingFragment StoreEntitySet="Query">
@@ -8826,74 +9247,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Suscritos">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Suscritos">
-              <MappingFragment StoreEntitySet="Suscritos">
-                <ScalarProperty Name="FNacimiento" ColumnName="FNacimiento" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tb_Suscritos">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.tb_Suscritos">
-              <MappingFragment StoreEntitySet="tb_Suscritos">
-                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
-                <ScalarProperty Name="FNacimiento" ColumnName="FNacimiento" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblmarca">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.tblmarca">
-              <MappingFragment StoreEntitySet="tblmarca">
-                <ScalarProperty Name="F12" ColumnName="F12" />
-                <ScalarProperty Name="Familia" ColumnName="Familia" />
-                <ScalarProperty Name="familia6" ColumnName="familia6" />
-                <ScalarProperty Name="familia5" ColumnName="familia5" />
-                <ScalarProperty Name="familia4" ColumnName="familia4" />
-                <ScalarProperty Name="familia3" ColumnName="familia3" />
-                <ScalarProperty Name="familia2" ColumnName="familia2" />
-                <ScalarProperty Name="familia1" ColumnName="familia1" />
-                <ScalarProperty Name="Iniciales" ColumnName="Iniciales" />
-                <ScalarProperty Name="Notengoidea" ColumnName="Notengoidea" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TorneoDestacado">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.TorneoDestacado">
-              <MappingFragment StoreEntitySet="TorneoDestacado">
-                <ScalarProperty Name="Meet" ColumnName="Meet" />
-                <ScalarProperty Name="DestacadoId" ColumnName="DestacadoId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TorneoDestacadoMasters">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.TorneoDestacadoMasters">
-              <MappingFragment StoreEntitySet="TorneoDestacadoMasters">
-                <ScalarProperty Name="Meet" ColumnName="Meet" />
-                <ScalarProperty Name="DestacadoId" ColumnName="DestacadoId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TagNames">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.TagNames">
-              <MappingFragment StoreEntitySet="TagNames">
-                <ScalarProperty Name="MeetId" ColumnName="MeetId" />
-                <ScalarProperty Name="TagId" ColumnName="TagId" />
-                <ScalarProperty Name="tag_desc" ColumnName="tag_desc" />
-                <ScalarProperty Name="for_timestd" ColumnName="for_timestd" />
-                <ScalarProperty Name="for_entryqual" ColumnName="for_entryqual" />
-                <ScalarProperty Name="for_scoring" ColumnName="for_scoring" />
-                <ScalarProperty Name="tag_name" ColumnName="tag_name" />
-                <ScalarProperty Name="tag_ptr" ColumnName="tag_ptr" />
+          <EntitySetMapping Name="Sheet1_">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Sheet1_">
+              <MappingFragment StoreEntitySet="Sheet1$">
+                <ScalarProperty Name="internacional" ColumnName="internacional" />
+                <ScalarProperty Name="disciplina" ColumnName="disciplina" />
+                <ScalarProperty Name="Organizador" ColumnName="Organizador" />
+                <ScalarProperty Name="Observación" ColumnName="Observación" />
+                <ScalarProperty Name="Carácter" ColumnName="Carácter" />
+                <ScalarProperty Name="Sede" ColumnName="Sede" />
+                <ScalarProperty Name="Evento" ColumnName="Evento" />
+                <ScalarProperty Name="Fin" ColumnName="Fin" />
+                <ScalarProperty Name="Inicio" ColumnName="Inicio" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
