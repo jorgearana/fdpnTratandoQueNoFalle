@@ -280,6 +280,7 @@
     <Content Include="Content\img\vertical2.jpg" />
     <Content Include="Content\img\vertical3.jpg" />
     <Content Include="Content\img\vertical4.jpg" />
+    <Content Include="Content\img\VMT.jpg" />
     <Content Include="Content\slick\config.rb" />
     <Content Include="Content\slick\fonts\slick.eot" />
     <Content Include="Content\slick\fonts\slick.ttf" />

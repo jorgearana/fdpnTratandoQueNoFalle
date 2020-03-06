@@ -233,6 +233,7 @@
     <Compile Include="ViewModels\Inscrito\ListarNadadoresParaSeleccionarlos.cs" />
     <Compile Include="ViewModels\Inscrito\NadadorPruebaViewModel.cs" />
     <Compile Include="ViewModels\Inscrito\pruebasViewModel.cs" />
+    <Compile Include="ViewModels\Inscrito\ResumenCantidadesFDPN.cs" />
     <Compile Include="ViewModels\Inscrito\SesionViewModel.cs" />
     <Compile Include="ViewModels\Masters\NadadorMasterViewModel.cs" />
     <Compile Include="ViewModels\OtraInscripcion\DeportistaViewModel.cs" />
@@ -608,6 +609,7 @@
     <Content Include="Views\Masters\ModelNotieneDNI.cshtml" />
     <Content Include="Views\Masters\ListarPruebasParaElNadadorMaster.cshtml" />
     <Content Include="Views\Inscrito\ListarNadadoresParaSemillero.cshtml" />
+    <Content Include="Views\Inscrito\VerCantidadesParaFDPN.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -617,6 +619,10 @@
     <ProjectReference Include="..\FDPN\FDPN.csproj">
       <Project>{78955757-cd90-4ef7-bdea-2aafb9bd9b94}</Project>
       <Name>FDPN</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InscripcionACurso\InscripcionACurso.csproj">
+      <Project>{104191BA-5E25-4520-90EC-DDAC031F8E9D}</Project>
+      <Name>InscripcionACurso</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

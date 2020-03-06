@@ -66,7 +66,7 @@
                                             }
                                             @if (item.TieneResultado)
                                             {
-                                                <i class="fa fa-hand-paper-o fa-2x" style="color:blue" data-toggle="tooltip" title="Ya ha competido antes"></i>
+                                                <i class="fa fa-exclamation fa-2x" style="color:blue" data-toggle="tooltip" title="Ya ha competido antes"></i>
                                             }
                                         </td>
                                         <td>
@@ -90,7 +90,7 @@
                                                         Quiero
                                                     </button>
                                                     <ul class="dropdown-menu">
-                                                        @if (setup.TipoTorneo.TipoId== 4 && !item.TieneMulta)
+                                                        @if (setup.TipoTorneo.TipoId == 4 && !item.TieneMulta)
                                                         {
                                                             @Html.ActionLink("Inscribir deportista", "ListarPruebasParaElNadador", "inscrito", new { MeetId = setup.Torneo.Meetid, afiliadoId = @item.afiliado.InscripcionId }, new { @class = "btn btn-warning" })
                                                             <li>
@@ -99,7 +99,14 @@
                                                         }
                                                         else if (!item.TieneMulta && !item.TieneResultado)
                                                         {
-                                                            @Html.ActionLink("Inscribir deportista", "ListarPruebasParaElNadadorSemillero", "inscrito", new { MeetId = setup.Torneo.Meetid, afiliadoId = @item.afiliado.InscripcionId }, new { @class = "btn btn-warning" , target="blank" })
+                                                            @Html.ActionLink("Inscribir deportista", "ListarPruebasParaElNadadorSemillero", "inscrito", new { MeetId = setup.Torneo.Meetid, afiliadoId = @item.afiliado.InscripcionId }, new { @class = "btn btn-warning", target = "blank" })
+                                                        }
+                                                        else if (item.TieneResultado)
+                                                        {
+
+                                                            <li>
+                                                                <button class="Postas btn btn-secondary">Ya ha competido antes</button>
+                                                            </li>
                                                         }
                                                         else
                                                         {

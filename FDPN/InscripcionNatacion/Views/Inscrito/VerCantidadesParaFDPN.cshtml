@@ -1,0 +1,25 @@
+﻿@model InscripcionNatacion.ViewModels.Inscrito.ResumenCantidadesFDPN
+@{
+    ViewBag.Title = "VerCantidadesParaFDPN";
+}
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>Cantidad de inscritos</h5>
+                    </div>
+                    <div class="ibox-content">
+
+                        <div class="table-responsive">
+                            Equipos = @Model.equipos
+                        </div>
+                        <div class="table-responsive">
+                            Nadadores = @Model.nadadores
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

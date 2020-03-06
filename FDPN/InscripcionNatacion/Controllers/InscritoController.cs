@@ -1,6 +1,5 @@
 ﻿using FDPN.Models;
 using InscripcionNatacion.Helpers;
-
 using InscripcionNatacion.ViewModels.Home;
 using InscripcionNatacion.ViewModels.Inscrito;
 using InscripcionNatacion.ViewModels.Torneo;
@@ -165,6 +164,20 @@ namespace InscripcionNatacion.Controllers
             return View(VM);
         }
 
+        public ActionResult VerCantidadesParaFDPN(int Meetid)
+        {
+            if (!repository.validarUsuario())
+            {
+                return RedirectToAction("Login", "home");
+            }
+
+            ResumenCantidadesFDPN resumen = new ResumenCantidadesFDPN
+            {
+                equipos = db.Equipos.Count(),
+                nadadores = db.atletas.Count(),
+            };
+            return View(resumen);
+        }
         public List<Inscripciones> GetNadadores(SetupTorneo setup, int EdadMaxima, int EdadMinima)
         {
             int annoActual = DateTime.Now.Year - 1;

@@ -123,5 +123,16 @@ namespace InscripcionNatacion.Controllers
         {
             return View(VM);
         }
+
+        public bool ValidarLog ()
+        {
+            Usuario usuario = Session["Usuario"] as Usuario;
+
+            if (usuario== null)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

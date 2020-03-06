@@ -128,7 +128,21 @@ $(document).ready(function () { //Al inicio cuando se recarga la página de insc
     });
 
     $('#buttonGrabarInscripciones').click(function () {
-        //alert(table.rows('.selected').data().length + ' row(s) selected');
+        var loggueado = false;
+        $.ajax({
+            url: '/home/ValidarLog',
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+                if (result === true) {
+                    loggueado = true;
+                    window.location.href = '/Home/login';
+                }
+            },
+           
+        });
 
         MostrarAvisoInicial("Se está grabando las inscripciones");
         var InscripcionId = $("#InscripcionId").text();
@@ -211,7 +225,6 @@ $(document).ready(function () { //Al inicio cuando se recarga la página de insc
         });
     }
 
-    
 
 
     function SeleccionarPrueba(fila, cumple) {

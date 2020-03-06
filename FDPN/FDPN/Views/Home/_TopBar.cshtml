@@ -126,12 +126,41 @@
                             </ul>
                         </li>
 
+
+
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Transparencia <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Calendario <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
-                                    @Html.ActionLink("Subvenciones IPD", "Subvenciones", "Documentos", null, new { @class = "nav-link" })
+                                    @Html.ActionLink("Calendarios", "Calendarios", "resultados", null, new { @class = "nav-link" })
                                 </li>
+                                <li class="nav-item">
+                                    <a href="~/Content/pdf/CalendarioFDPN2019.pdf">Calendario 2019 </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Academia <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+
+                                <li class="nav-item">
+                                    <a href="~/Content/img/formaciontalentos.jpeg" target="_blank"> VIDENA</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="~/Content/img/VMT.jpg" target="_blank"> Complejo VMT</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="~/Content/img/academia1.jpg" target="_blank"> Academia página 1</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="~/Content/img/academia2.jpg" target="_blank">Academia página 2</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="~/Content/img/trujillocolores.jpg" target="_blank">Academia en Trujillo 2020</a>
+                                </li>
+
                             </ul>
                         </li>
 
@@ -145,28 +174,16 @@
                                     @Html.ActionLink("Polo acuático", "Index", "disciplinas", new { disciplina = 2 }, new { @class = "nav-link" })
                                 </li>
                                 <li class="nav-item">
-                                    @Html.ActionLink("Aguas abiertas", "Index", "disciplinas", new { disciplina = 3 }, new { @class = "nav-link" })
+                                    @Html.ActionLink("Aguas abiertas", "Index", "disciplinas", new { disciplina = 5 }, new { @class = "nav-link" })
                                 </li>
                                 <li class="nav-item">
-                                    @Html.ActionLink("Natación artística", "Index", "disciplinas", new { disciplina = 4 }, new { @class = "nav-link" })
+                                    @Html.ActionLink("Natación artística", "Index", "disciplinas", new { disciplina = 3 }, new { @class = "nav-link" })
                                 </li>
                                 <li class="nav-item">
-                                    @Html.ActionLink("Clavados", "Index", "disciplinas", new { disciplina = 5 }, new { @class = "nav-link" })
+                                    @Html.ActionLink("Clavados", "Index", "disciplinas", new { disciplina = 4 }, new { @class = "nav-link" })
                                 </li>
                                 <li class="nav-item">
                                     @Html.ActionLink("Masters", "Index", "masters", null, new { @class = "nav-link destacado" })
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Calendario <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    @Html.ActionLink("Calendarios", "Calendarios", "resultados", null, new { @class = "nav-link" })
-                                </li>
-                                <li class="nav-item">
-                                    <a href="~/Content/pdf/CalendarioFDPN2019.pdf">Calendario 2019 </a>
                                 </li>
                             </ul>
                         </li>
@@ -183,24 +200,12 @@
                                 </li>
                             </ul>
                         </li>
-
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Academia <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Transparencia <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-
                                 <li class="nav-item">
-                                    <a href="~/Content/img/formaciontalentos.jpeg" target="_blank"> VIDENA</a>
+                                    @Html.ActionLink("Subvenciones IPD", "Subvenciones", "Documentos", null, new { @class = "nav-link" })
                                 </li>
-                                <li class="nav-item">                                  
-                                    <a href="~/Content/img/academia1.jpg" target="_blank"> Academia página 1</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="~/Content/img/academia2.jpg" target="_blank">Academia página 2</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="~/Content/img/trujillocolores.jpg" target="_blank">Academia en Trujillo 2020</a>
-                                </li>
-
                             </ul>
                         </li>
                         @Html.Action("_PreviewAlertas")
