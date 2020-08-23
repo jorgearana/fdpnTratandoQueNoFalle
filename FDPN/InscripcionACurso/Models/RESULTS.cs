@@ -41,6 +41,7 @@ namespace InscripcionACurso.Models
     
         public virtual Athlete Athlete1 { get; set; }
         public virtual MEET MEET1 { get; set; }
+        public virtual Pruebas Pruebas { get; set; }
         public virtual TEAM TEAM1 { get; set; }
     }
 }

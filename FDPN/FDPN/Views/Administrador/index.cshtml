@@ -914,6 +914,60 @@
                     <div class="espaciado"></div>
                     <hr />
                 </section>
+
+                @*Resoluciones IPD*@
+                <section class="site-contentpage site-homepage__pushup">
+                    <br />
+                    <p class="u-type--gamma">
+
+                        <table class="tablaNormal">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Fecha
+                                    </th>
+                                    <th>
+                                        Resolución
+                                    </th>
+                                    <th>
+                                        <i class="fa fa-download" aria-hidden="true"></i> Acción
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.ResolucionesIPD)
+                                {
+
+                                    <tr>
+                                        <td>
+                                            <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
+                                            @item.Fecha.ToString("dd/MM/yyyy")
+                                        </td>
+                                        <td>
+
+                                            @item.Titulo
+                                        </td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Action <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </p>
+
+                    <div class="espaciado"></div>
+                    <hr />
+                </section>
             </div>
         </div>
     </div>

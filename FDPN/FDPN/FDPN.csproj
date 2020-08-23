@@ -206,8 +206,8 @@
     <Content Include="Content\bootstrap\bootstrap.min.css" />
     <Content Include="Content\bootstrap\ionicons.css" />
     <Content Include="Content\bootstrap\main.min.css" />
-    <Content Include="Content\img\academia1.jpg" />
-    <Content Include="Content\img\academia2.jpg" />
+    <Content Include="Content\img\campo1.jpg" />
+    <Content Include="Content\img\campo2.jpg" />
     <Content Include="Content\img\carnet.jpg" />
     <Content Include="Content\img\covermask2.png" />
     <Content Include="Content\img\En Mantenimiento.png" />
@@ -435,6 +435,8 @@
     <Compile Include="Models\MEETMasters.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Metadata\AfiliadoMetaData.cs" />
+    <Compile Include="Models\Metadata\DirectivoMetaData.cs" />
     <Compile Include="Models\Modals.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
@@ -639,8 +641,6 @@
     <Compile Include="Models\Vouchers.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
-    <Compile Include="Partial clases\Afiliado.cs" />
-    <Compile Include="Partial clases\Directivos.cs" />
     <Compile Include="Partial clases\InformeParcial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Administrador\BorrarViewModel.cs" />
@@ -1041,12 +1041,12 @@
     <Content Include="Views\Documentos\habiles.cshtml" />
     <Content Include="Views\Documentos\Convocatorias.cshtml" />
     <Content Include="Views\Documentos\Formatos.cshtml" />
+    <Content Include="Views\Documentos\ResolucionesIPD.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\Fotos\thumbs\" />
     <Folder Include="Content\Uploads\" />
-    <Folder Include="Models\Metadata\" />
     <Folder Include="Views\BASE\" />
     <Folder Include="Views\Director\" />
     <Folder Include="Views\FileUpload\" />

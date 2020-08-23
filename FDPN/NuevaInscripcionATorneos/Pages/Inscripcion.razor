@@ -1,0 +1,192 @@
+﻿@page "/inscripcion/{parametroid:int}"
+@inject ServicePrincipal servicio
+@inject NavigationManager NavigationManager
+@inject UsuarioState usuariostate
+@inject IJSRuntime JSRuntime
+
+
+
+<div>
+    <label>
+        Search:
+        <input type="search" class="form-control form-control-sm" placeholder="" @bind="filtro">
+        <button class="btn btn-primary" @onclick="GetNadadoresParaInscribirlos">Buscar deportista</button>
+    </label>
+</div>
+
+
+@if (MostrarPruebasParaElNadador)
+{
+    <ListarPruebasParaElNadador Setup="setup" Model="PruebasParaElNadador" Torneoid="TorneoId" InscripcionId="InscripcionId" Cerrar="@Cerrar"></ListarPruebasParaElNadador>
+}
+
+
+
+
+<br />
+
+
+
+@if (AunNoInscritos == null)
+{
+    <div>No tengo deportistas para listar </div>
+}
+else
+
+{
+    <h2>Listado de deportistas para inscribir</h2>
+    <div class="table-responsive">
+        <table id="example" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>DNI</th>
+                    <th>Nombre</th>
+                    <th>Paterno</th>
+                    <th>Materno</th>
+                    <th>Edad</th>
+                    <th>Nacimiento</th>
+                    <th>Sexo</th>
+                    <th>Estado</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in AunNoInscritos)
+                {
+                    <tr @onclick="@(() => ListarPruebasParaElNadador(item.InscripcionId, item.Estado))">
+                        <td>@item.DNI</td>
+                        <td>@item.Nombre.ToUpper()</td>
+                        <td>@item.Paterno.ToUpper()</td>
+                        <td>@item.Materno</td>
+                        <td>@item.Edad</td>
+                        <td>@item.Nacimiento.ToString("dd/MM/yyyy")</td>
+                        <td>@item.Sexo</td>
+                        <td>@item.Estado</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+}
+
+
+<br />
+
+<h2> Deportistas ya inscritos</h2>
+@if (YaInscritos == null)
+{
+    <div>Aùn no hay inscritos</div>
+}
+else
+{
+    <DxDataGrid Data="@YaInscritos">
+        <DxDataGridColumn Field=@nameof(Atletas.RegNo) />
+        <DxDataGridColumn Field=@nameof(Atletas.FirstName).ToUpper() />
+        <DxDataGridColumn Field=@nameof(Atletas.LastName).ToUpper() />
+        <DxDataGridColumn Field=@nameof(Atletas.AthAge) />
+        <DxDataGridDateEditColumn Field=@nameof(Atletas.BirthDate) />
+        <DxDataGridColumn Field=@nameof(Atletas.AthSex).ToUpper() />
+    </DxDataGrid>
+}
+
+<CascadingValue Value="PopupVisible">
+    <ModalPopup MensajePopup=@MensajePopup TituloPopup=@TituloPopup Cerrar="@(()=>PopupVisible = false)">
+    </ModalPopup>
+</CascadingValue>
+
+
+@code{
+    [Parameter] public int parametroid { get; set; }
+    int TorneoId;
+    int InscripcionId;
+
+    ListadoInscritoViewModel PruebasParaElNadador;
+    List<NadadorParaInscribir> AunNoInscritos;
+    List<Atletas> YaInscritos;
+    SetupTorneo setup;
+    string filtro;
+    bool MostrarPruebasParaElNadador;
+    bool PopupVisible { get; set; } = false;
+    string MensajePopup;
+    string TituloPopup = "Información";
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (usuariostate.Iniciales == "")
+        {
+            NavigationManager.NavigateTo("/login");
+        }
+
+        TorneoId = parametroid;
+
+    }
+
+
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JSDatatabla("example");
+    }
+
+    async Task GetYaInscritos(int meetid)
+    {
+        YaInscritos = await servicio.GetYaInscritos(usuariostate, meetid);
+
+    }
+
+    async Task GetNadadoresParaInscribirlos()
+    {
+        AunNoInscritos = await servicio.GetNadadoresParaInscribirlo(filtro);
+        //await JSDatatabla("example");
+
+    }
+
+    void MostrarModeal()
+    {
+        PopupVisible = true;
+        TituloPopup = "Nadador no afiliado";
+        MensajePopup = "No puede participar un deportista que no esté afiliado a la FDPN";
+    }
+
+
+    async Task ListarPruebasParaElNadador(int _InscripcionId, string estado)
+    {
+        InscripcionId = _InscripcionId;
+
+        //int inscripcionid = args.DataItem.InscripcionId;
+        // string estado = args.DataItem.Estado;
+        if (estado != "Activo")
+        {
+            MostrarModeal();
+            return;
+        }
+        setup = await servicio.GetSetupTorneo(TorneoId);
+        //if (setup.Masters)
+        //{
+        //    PruebasParaElNadador = await servicio.ListarPruebasParaElNadadorMaster(TorneoId, _InscripcionId, setup);
+        //}
+        //else
+        //{
+        PruebasParaElNadador = await servicio.ListarPruebasParaElNadador(TorneoId, _InscripcionId, setup);
+        //}
+
+        MostrarPruebasParaElNadador = true;
+
+    }
+
+
+    async Task JSDatatabla(string nombre)
+    {
+        await JSRuntime.InvokeAsync<object>("TestDataTablesAdd", "#" + nombre);
+    }
+
+    void Cerrar(bool respuesta)
+    {
+        MostrarPruebasParaElNadador = false;
+    }
+
+
+
+}

@@ -12,7 +12,7 @@ namespace InscripcionACurso.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Atletas
+    public partial class atletas
     {
         public int Ath_no { get; set; }
         public string Last_name { get; set; }
@@ -52,9 +52,9 @@ namespace InscripcionACurso.Models
         public string Disab_SDMSID { get; set; }
         public string Disab_Exeptioncodes { get; set; }
         public bool Masters_RegVerified { get; set; }
-        public Nullable<int> TeamId { get; set; }
         public int AtletaId { get; set; }
         public int Meetid { get; set; }
+        public int TeamId { get; set; }
     
         public virtual Equipos Equipos { get; set; }
         public virtual Torneo Torneo { get; set; }

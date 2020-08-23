@@ -17,14 +17,17 @@ namespace InscripcionACurso.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Torneo()
         {
-            this.Atletas = new HashSet<Atletas>();
+            this.atletas = new HashSet<atletas>();
+            this.Delegados = new HashSet<Delegados>();
             this.Entradas = new HashSet<Entradas>();
+            this.EntrenadorInscrito = new HashSet<EntrenadorInscrito>();
             this.Equipos = new HashSet<Equipos>();
             this.Eventos = new HashSet<Eventos>();
             this.MarcasMinimas = new HashSet<MarcasMinimas>();
             this.MultiEdad = new HashSet<MultiEdad>();
             this.Sesion = new HashSet<Sesion>();
             this.SessionItem = new HashSet<SessionItem>();
+            this.SetupTorneo = new HashSet<SetupTorneo>();
         }
     
         public string Meet_name1 { get; set; }
@@ -244,9 +247,13 @@ namespace InscripcionACurso.Models
         public bool MarcaMaxima { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Atletas> Atletas { get; set; }
+        public virtual ICollection<atletas> atletas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Delegados> Delegados { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Entradas> Entradas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EntrenadorInscrito> EntrenadorInscrito { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Equipos> Equipos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -259,5 +266,7 @@ namespace InscripcionACurso.Models
         public virtual ICollection<Sesion> Sesion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SessionItem> SessionItem { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SetupTorneo> SetupTorneo { get; set; }
     }
 }

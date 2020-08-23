@@ -1,0 +1,78 @@
+﻿@page "/"
+@inject ServicePrincipal servicio
+@inject NavigationManager NavigationManager
+@inject UsuarioState usuariostate
+
+
+<div data-role="page" id="homepage" data-theme="b">
+
+    <div role="main" class="ui-content">
+
+        <div class="logo_container">
+            <div class="logo">
+                <img src="/Biotic/images/logo.png" alt="biotic" title="biotic" />
+                <h2>biotic</h2>
+                <span>mobile design</span>
+            </div>
+        </div>
+        <div class="slide_info">SLIDE RIGHT TO NAVIGATE</div>
+
+    </div><!-- /content -->
+
+    <div data-role="panel" id="left-panel" data-display="reveal" data-position="left">
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="/ListarPruebasParaElNadador" data-transition="slidefade"><img src="/Biotic/images/icons/white/team.png" alt="" title="" /><span>About</span></a></li>
+                <li><a href="features.html" data-transition="slidefade"><img src="/Biotic/images/icons/white/settings.png" alt="" title="" /><span>Features</span></a></li>
+                <li><a href="blog.html" data-transition="slidefade"><img src="/Biotic/images/icons/white/blog.png" alt="" title="" /><span>Blog</span></a></li>
+                <li><a href="photos.html" data-transition="slidefade"><img src="/Biotic/images/icons/white/photos.png" alt="" title="" /><span>Photos</span></a></li>
+                <li><a href="videos.html" data-transition="slidefade"><img src="/Biotic/images/icons/white/video.png" alt="" title="" /><span>Videos</span></a></li>
+                <li><a href="login.html" data-transition="slidedown"><img src="/Biotic/images/icons/white/lock.png" alt="" title="" /><span>Login</span></a></li>
+                <li><a href="#right-panel"><img src="/Biotic/images/icons/white/user.png" alt="" title="" /><span>Account</span></a></li>
+                <li><a href="social.html" data-transition="slidefade"><img src="/Biotic/images/icons/white/heart.png" alt="" title="" /><span>Social</span></a></li>
+                <li><a href="tel:1234 5678" class="external"><img src="/Biotic/images/icons/white/phone.png" alt="" title="" /><span>Call Now</span></a></li>
+                <li><a href="contact.html" data-transition="slidefade"><img src="/Biotic/images/icons/white/contact.png" alt="" title="" /><span>Contact</span></a></li>
+            </ul>
+        </nav>
+
+    </div><!-- /panel -->
+
+    <div data-role="panel" id="right-panel" data-display="reveal" data-position="right">
+
+        <div class="user_login_info">
+
+            <div class="user_thumb_container">
+                <img src="/Biotic/images/profile.jpg" alt="" title="" />
+                <div class="user_thumb">
+                    <img src="/Biotic/images/author.jpg" alt="" title="" />
+                </div>
+            </div>
+
+            <div class="user_details">
+                <p>Sarah Williams</p>
+                <ul class="user_social">
+                    <li><a href="social.html"><img src="/Biotic/images/icons/white/twitter.png" alt="" title="" /></a></li>
+                    <li><a href="social.html"><img src="/Biotic/images/icons/white/facebook.png" alt="" title="" /></a></li>
+                    <li><a href="social.html"><img src="/Biotic/images/icons/white/dribbble.png" alt="" title="" /></a></li>
+                </ul>
+            </div>
+
+
+            <nav class="user-nav">
+                <ul>
+                    <li><a href="features.html"><img src="/Biotic/images/icons/white/settings.png" alt="" title="" /><span>Settings</span></a></li>
+                    <li><a href="features.html"><img src="/Biotic/images/icons/white/briefcase.png" alt="" title="" /><span>Account</span></a></li>
+                    <li><a href="features.html"><img src="/Biotic/images/icons/white/message.png" alt="" title="" /><span>Messages</span><strong class="yellow">12</strong></a></li>
+                    <li><a href="features.html"><img src="/Biotic/images/icons/white/download.png" alt="" title="" /><span>Downloads</span><strong class="yellow">5</strong></a></li>
+                    <li><a href="index.html"><img src="/Biotic/images/icons/white/lock.png" alt="" title="" /><span>Logout</span></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="close_loginpopup_button"><a href="#" data-rel="close"><img src="/Biotic/images/icons/white/menu_close.png" alt="" title="" /></a></div>
+
+    </div><!-- /panel -->
+
+</div><!-- /page -->
+
+

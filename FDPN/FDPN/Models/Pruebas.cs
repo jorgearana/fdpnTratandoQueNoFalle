@@ -18,6 +18,7 @@ namespace FDPN.Models
         public Pruebas()
         {
             this.RESULTS = new HashSet<RESULTS>();
+            this.RESULTSMasters = new HashSet<RESULTSMasters>();
         }
     
         public int PruebaId { get; set; }
@@ -29,5 +30,7 @@ namespace FDPN.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RESULTS> RESULTS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RESULTSMasters> RESULTSMasters { get; set; }
     }
 }

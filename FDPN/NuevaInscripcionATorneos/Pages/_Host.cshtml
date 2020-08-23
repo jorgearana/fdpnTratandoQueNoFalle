@@ -1,0 +1,41 @@
+﻿@page "/"
+@namespace NuevaInscripcionATorneos.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es-pe">
+<head>
+    <title>biotic - mobile and tablet web app template</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/Biotic/css/themes/default/jquery.mobile-1.4.5.css">
+    <link href="~/Biotic/css/style.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="~/Biotic/css/colors/yellow.css" />
+    <link type="text/css" rel="stylesheet" href="~/Biotic/css/swipebox.css" />
+</head>
+<body>
+
+    <component type="typeof(App)" render-mode="ServerPrerendered" />
+
+
+    <div id="blazor-error-ui">
+        <environment include="Staging,Production">
+            An error has occurred. This application may no longer respond until reloaded.
+        </environment>
+        <environment include="Development">
+            An unhandled exception has occurred. See browser dev tools for details.
+        </environment>
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <script src="~/Biotic/js/jquery.min.js"></script>
+    <script src="~/Biotic/js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="~/Biotic/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="~/Biotic/js/email.js"></script>
+    <script type="text/javascript" src="~/Biotic/js/jquery.swipebox.js"></script>
+    <script src="~/Biotic/js/jquery.mobile-custom.js"></script>
+</body>
+</html>

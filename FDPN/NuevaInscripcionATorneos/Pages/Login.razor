@@ -1,0 +1,40 @@
+﻿@page "/login"
+@inject UsuarioState usuariostate
+@inject ServicePrincipal servicio
+@inject NavigationManager NavigationManager
+
+<div>
+    <label>
+        Usuario:
+        <input class="form-control form-control-sm" placeholder="" @bind="Nombre">
+    </label>
+</div>
+<div>
+    <label>
+        Contraseña:
+        <input class="form-control form-control-sm" placeholder="" @bind="pass">
+    </label>
+</div>
+<div>
+
+    <button class="btn btn-primary" @onclick="GetLogin"> Login </button>
+</div>
+
+
+@code {
+    private string Nombre;
+    private string pass;
+
+    Usuario usuario;
+
+    async Task GetLogin()
+    {
+        usuario = await servicio.GetLogin(Nombre, pass);
+        if (usuario != null)
+        {
+            usuariostate.Iniciales = usuario.Club.Iniciales;
+            NavigationManager.NavigateTo("/");
+        }
+    }
+
+}

@@ -7,7 +7,9 @@ using MoreLinq;
 using MoreLinq.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -304,13 +306,13 @@ namespace InscripcionNatacion.Controllers
         }
 
 
-        public ActionResult ListarPruebasParaElNadador(int MeetId, int afiliadoId)
+        public async Task< ActionResult> ListarPruebasParaElNadador(int MeetId, int afiliadoId)
         {
             int annoActual = DateTime.Now.Year - 1; /*Para calcular la edad al año pasado*/
 
             //Iniciando las variables a usar más adelante
-            SetupTorneo setup = db.SetupTorneo.Where(x => x.Meetid == MeetId).FirstOrDefault();
-            List<SessionItem> ListadoDeSessionItem = db.SessionItem.Where(x => x.Meetid == MeetId).ToList();
+            SetupTorneo setup =await db.SetupTorneo.Where(x => x.Meetid == MeetId).FirstOrDefaultAsync();
+            List<SessionItem> ListadoDeSessionItem =await db.SessionItem.Where(x => x.Meetid == MeetId).ToListAsync();
             List<int> PruebasYaInscritas = new List<int>();
             RESULTS resultado = new RESULTS();
 
@@ -320,7 +322,7 @@ namespace InscripcionNatacion.Controllers
             List<MarcasMinimas> MarcasMinimasDelTorneo = new List<MarcasMinimas>();
             if (!setup.Debutantes)
             {
-                MarcasMinimasDelTorneo = db.MarcasMinimas.Where(x => x.MeetId == MeetId).ToList();
+                MarcasMinimasDelTorneo =await db.MarcasMinimas.Where(x => x.MeetId == MeetId).ToListAsync();
             }
             string stroke = "Free";
             //Hallo el tipo de piscina en el que se nadará
@@ -343,7 +345,7 @@ namespace InscripcionNatacion.Controllers
 
             };
 
-            if (!db.Athlete.Any(x => x.ID_NO == VM.afiliado.DNI))
+            if (!await db.Athlete.AnyAsync(x => x.ID_NO == VM.afiliado.DNI))
             {
                 ViewBag.Meetid = setup.Meetid;
                 return View("NotieneDNI", VM.afiliado);
@@ -351,14 +353,12 @@ namespace InscripcionNatacion.Controllers
 
 
             //Todos los resultados del nadador en un año
-            List<RESULTS> resultados = db.RESULTS
+            List<RESULTS> resultados =await db.RESULTS
                        .Where(x => x.Athlete1.ID_NO == VM.afiliado.DNI && x.MEET1.Start > haceunanno && x.SCORE != "" && x.NT == 0)
-                       .ToList();
+                       .ToListAsync();
 
 
-            List<RESULTS> CienEspalda = db.RESULTS
-                .Where(x => x.Athlete1.ID_NO == VM.afiliado.DNI && x.MEET1.Start > haceunanno && x.NT == 0
-                && x.DISTANCE == "100" && x.STROKE == "Back").ToList();
+
 
             if (setup.Torneo.Meet_course == 1)
             {
@@ -370,7 +370,7 @@ namespace InscripcionNatacion.Controllers
             }
 
             //1 .- buscar al afiliado en la bd de inscripciones, sirve para saber si ya está inscrito
-            atletas atleta = db.atletas.Where(x => x.Reg_no == VM.afiliado.DNI && x.Meetid == MeetId).FirstOrDefault(); // en la BD de inscripciones
+            atletas atleta =await db.atletas.Where(x => x.Reg_no == VM.afiliado.DNI && x.Meetid == MeetId).FirstOrDefaultAsync(); // en la BD de inscripciones
             if (atleta != null)
             {
                 VM.YaestaInscrito = db.Entradas.Any(x => x.MeetId == MeetId && x.Ath_no == atleta.Ath_no);
@@ -383,9 +383,9 @@ namespace InscripcionNatacion.Controllers
 
             //2 .- Buscar los eventos que podría nadar el afiliado
             int edad = annoActual - VM.afiliado.Afiliado.Fecha_de_nacimiento.Year;
-            List<Eventos> eventosDelNadador = db.Eventos
+            List<Eventos> eventosDelNadador =await db.Eventos
             .Where(x => x.MeetId == MeetId && x.Low_age <= edad && x.High_Age >= edad && x.Event_gender == VM.afiliado.Afiliado.Sexo && x.Ind_rel == "i")
-            .OrderBy(x => x.Event_no).ToList();
+            .OrderBy(x => x.Event_no).ToListAsync();
 
             foreach (Eventos evento in eventosDelNadador)
             {
@@ -460,7 +460,7 @@ namespace InscripcionNatacion.Controllers
             }
 
             //7 .- ahora veo las sesiones y datos para mostrarlos al final de la página
-            List<Sesion> sesiones = db.Sesion.Where(x => x.MeetId == MeetId).ToList();
+            List<Sesion> sesiones =await db.Sesion.Where(x => x.MeetId == MeetId).ToListAsync();
             for (int i = 0; i < sesiones.Count(); i++)
             {
                 SesionViewModel sesionVM = new SesionViewModel
@@ -479,7 +479,7 @@ namespace InscripcionNatacion.Controllers
 
             if (VM.YaestaInscrito)
             {
-                PruebasYaInscritas = db.Entradas.Where(x => x.MeetId == MeetId && x.Ath_no == atleta.Ath_no).Select(x => x.Event_ptr ?? 0).ToList();
+                PruebasYaInscritas =await db.Entradas.Where(x => x.MeetId == MeetId && x.Ath_no == atleta.Ath_no).Select(x => x.Event_ptr ?? 0).ToListAsync();
                 if (PruebasYaInscritas.Count() > 0)
                 {
                     foreach (var numeroDeEvento in VM.listaDeEventos)
@@ -2449,13 +2449,13 @@ namespace InscripcionNatacion.Controllers
 
         //Esto es para borrar posteriormente
 
-        public ActionResult ListarNadadoresAfiliados(int Meetid)
+        public async Task<ActionResult> ListarNadadoresAfiliadosAsync(int Meetid)
         {
             Torneo torneo = db.Torneo.Find(Meetid);
             Usuario usuario = Session["usuario"] as Usuario;
-            Club club = db.Club.Where(x => x.ClubID == usuario.ClubId).FirstOrDefault();
+            Club club = await db.Club.Where(x => x.ClubID == usuario.ClubId).FirstOrDefaultAsync();
 
-            List<Eventos> ListadoDeEventos = db.Eventos.Where(x => x.MeetId == Meetid).ToList();
+            List<Eventos> ListadoDeEventos =await db.Eventos.Where(x => x.MeetId == Meetid).ToListAsync();
             int EdadMaxima = ListadoDeEventos.Max(x => x.High_Age) ?? 109;
             int EdadMinima = ListadoDeEventos.Min(x => x.Low_age) ?? 0;
             int annoActual = DateTime.Now.Year - 1;
@@ -2466,20 +2466,20 @@ namespace InscripcionNatacion.Controllers
             List<ListarNadadoresParaSeleccionarlos> VM = new List<ListarNadadoresParaSeleccionarlos>();
 
 
-            List<Inscripciones> listadoNadadores = db
+            List<Inscripciones> listadoNadadores =await db
                 .Inscripciones.Where(x => x.ClubID == club.ClubID && x.EstadoID == 3 && x.Afiliado.Fecha_de_nacimiento.Year >= AnnoMinimo && x.Afiliado.Fecha_de_nacimiento.Year <= AnnoMaximo)
                 .OrderBy(x => x.Afiliado.Fecha_de_nacimiento)
-                .ToList();
+                .ToListAsync();
 
-            List<Entradas> EntradasDeEsteTorneo = db.Entradas.Where(x => x.MeetId == Meetid).ToList();
-            List<atletas> atletasDeEsteTorneo = db.atletas.Where(x => x.Meetid == Meetid).ToList();
+            List<Entradas> EntradasDeEsteTorneo =await db.Entradas.Where(x => x.MeetId == Meetid).ToListAsync();
+            List<atletas> atletasDeEsteTorneo =await db.atletas.Where(x => x.Meetid == Meetid).ToListAsync();
             foreach (Inscripciones afiliado in listadoNadadores)
             {
                 ListarNadadoresParaSeleccionarlos listarnadadorparaafiliar = new ListarNadadoresParaSeleccionarlos
                 {
                     afiliado = afiliado,
                     YaEstaInscrito = false,
-                    TieneMulta = db.Multas.Any(x => x.InscripcionId == afiliado.InscripcionId && x.Subsanada == false),
+                    TieneMulta =await db.Multas.AnyAsync(x => x.InscripcionId == afiliado.InscripcionId && x.Subsanada == false),
                 };
                 if (atletasDeEsteTorneo.Any(x => x.Reg_no == afiliado.DNI))
                 {
@@ -2493,7 +2493,7 @@ namespace InscripcionNatacion.Controllers
                 }
                 VM.Add(listarnadadorparaafiliar);
             }
-            ViewBag.setup = db.SetupTorneo.Where(x => x.Meetid == Meetid).FirstOrDefault();
+            ViewBag.setup =await db.SetupTorneo.Where(x => x.Meetid == Meetid).FirstOrDefaultAsync();
 
             return View(VM);
         }

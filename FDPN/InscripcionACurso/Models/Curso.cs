@@ -29,8 +29,10 @@ namespace InscripcionACurso.Models
         public Nullable<int> DisciplinaId { get; set; }
         public Nullable<System.TimeSpan> Hora { get; set; }
         public int CantidadMaxima { get; set; }
+        public bool ParaAfiliados { get; set; }
+        public string Enlace { get; set; }
+        public string PassWord { get; set; }
     
-        public virtual Disciplina Disciplina { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CursoInscripcion> CursoInscripcion { get; set; }
     }

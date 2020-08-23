@@ -1,0 +1,93 @@
+﻿@model InscripcionACurso.ViewModels.Inscripcion.ViewModelInscripcionParaEntrenador
+@{
+    ViewBag.Title = "GetNadador";
+    int cursoid = Model.curso.CursoId;
+    string path = Url.Content("http://afiliaciones.fdpn.org/Content/Images/");
+}
+
+
+<div class="row default-style">
+    <div id="left-block" class="col-md-6 col-sm-12 left-block">
+        <div class="left-content">
+            <h1>Federación Deportiva Peruana de Natación</h1>
+            <img src="~/Content/images/Logo_fdpn.png" style="height:100px;" />
+            <h3>Inscripción en </h3>
+            <h2> @Model.curso.Nombre</h2>
+            <div class="row">
+                <div class="col-sm-offset-1 col-sm-11">
+                    <dl class="dl-horizontal">
+                        <dt><i class="fas fa-book"></i>Cierre de inscripciones</dt>
+                        <dd> @Model.curso.Fin.ToString("dd MMMM yyyy hh:mm")</dd>
+                        <dt><i class="fas fa-calendar-alt"></i>Fecha de incio</dt>
+                        <dd>@Model.curso.Inicio.ToString("dd MMMM yyyy")</dd>
+                        <dt><i class="fas fa-home"></i>Dirección</dt>
+                        <dd>@Model.curso.Direccion @Model.curso.Ciudad</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <!-- /.left-content -->
+    </div>
+    <!-- /.left-block -->
+
+
+
+    <div id="right-block" class="col-md-6 col-sm-12 right-block">
+        <div class="right-content">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    @using (Html.BeginForm("GrabarEntrenador", "inscripcion", FormMethod.Post))
+                    {
+                        @Html.ValidationSummary(true)
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.curso.CursoId)
+                        @Html.HiddenFor(model => model.Entrenador.EntrenadorId)
+                        <div class="col-sm-3">
+                            <h4 class="mb-1">Datos del entrenador</h4>
+                            <div class="text-center pb-4">
+                                <img src=@Url.Content(path + Model.Entrenador.RutaFoto + ".jpg") alt="sin foto" class="media-object avatar">
+                            </div>
+                            <p class="text-dark font-weight-medium pt-4 mb-2">@Model.Entrenador.Nombre @Model.Entrenador.Paterno</p>
+                            <p>@Model.Entrenador.Fecha_de_nacimiento.ToString("dd/MM/yyyy")</p>
+                            <p class="text-dark font-weight-medium pt-4 mb-2"> @Model.Entrenador.DNI</p>
+                            <p>@Model.Entrenador.Club.NombreUsuario</p>
+                            @if (Model.Entrenador.Club.Activo == 3)
+                            {
+                                <p>Club Afiliado</p>
+                            }
+                            else
+                            {
+                                <p class="text-danger">Club no afiliado</p>
+                            }
+
+
+                        </div>
+                        <div class="col-sm-9">
+                           
+                            <br />
+                            <p class="text-dark font-weight-medium pt-4 mb-2">@Model.Entrenador.Email1</p>
+                            
+                            <p class="text-dark font-weight-medium pt-4 mb-2"> @Model.Entrenador.Celular1</p>
+                            <p>@Model.Entrenador.Club.NombreUsuario</p>
+                            <div class="text-danger">@Model.mensaje</div>
+
+                        </div>
+
+                        <br /><br />
+                        <button type="submit" class="btn btn-success">Inscribir</button>
+
+                    }
+
+                </div>
+            </div>
+            <p class="followus">Síguenos en</p>
+            <ul class="social-icon">
+                <li><a href="http://fdpn.org/" data-toggle="tooltip" title="¡Visita nuestra página!"><i class="fa fa-box-open"></i></a></li>
+                <li><a href="https://www.facebook.com/FederacionNatacion/" data-toggle="tooltip" title="¡Síguenos en Facebook!"><i class="fab fa-facebook-f"></i></a></li>
+            </ul>
+        </div>
+        <!-- /.right-content -->
+    </div>
+    <!-- ./right-block -->
+</div>

@@ -308,3 +308,4 @@ C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.csprojAssemblyReference
 C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.csproj.CopyComplete
 C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.dll
 C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.pdb
+C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.csproj.CoreCompileInputs.cache

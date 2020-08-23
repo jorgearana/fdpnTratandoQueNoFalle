@@ -1,0 +1,278 @@
+﻿@page "/ListarPruebasParaElNadador"
+@inject ServicePrincipal servicio
+@inject NavigationManager NavigationManager
+@inject UsuarioState usuariostate
+@inject IJSRuntime JSRuntime
+@*Datos del deportista, resumen de inscripcion*@
+
+@if (Model == null )
+{
+    <div class="loader-background">
+        <div class="loader"></div>
+    </div>
+}
+else
+{
+
+    @if (Model != null && Setup != null)
+    {
+
+        <div class="wrapper wrapper-content animated fadeInRight  border-bottom white-bg dashboard-header">
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-12">
+                    <h2>@Setup.Meet.MeetName1</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="widget-head-color-box navy-bg p-lg text-center">
+                        <div class="m-b-md">
+                            <h3 class="font-bold no-margins">
+                                @Model.afiliado.DniNavigation.Nombre
+                            </h3>
+                            <h3 class="font-bold no-margins">
+                                @Model.afiliado.DniNavigation.ApellidoPaterno
+                            </h3>
+                            <h4>@Model.afiliado.DniNavigation.FechaDeNacimiento.ToString("dd/MMMM/yyyy")</h4>
+                        </div>
+                        @*<img src=@Url.Content(path + @Model.afiliado.RutaFoto + ".jpg") class="rounded m-b-md fotocarnet" alt="No tiene foto en la aplicación de afiliaciones">*@
+                        <h4>Código: @Model.afiliado.Dni</h4>
+                        <h6>código interno: @Model.afiliado.InscripcionId</h6>
+                        @if (Model.afiliado.DniNavigation.Sexo == "F")
+                        {
+                            <h2>DAMA</h2>
+                        }
+                        else
+                        {
+                            <h2>VARÓN</h2>
+                        }
+                    </div>
+
+                    <div class="espaciado"></div>
+
+                </div>
+                <div class="col-md-4">
+                    @*Resumen*@
+
+                    <h2>Datos de la inscripción</h2>
+                    <small>Pruebas máximas en las que puede inscribirse.</small>
+                    <ul class="list-group clear-list m-t">
+                        <li class="list-group-item">
+                            <span class="float-right label label-danger" id="permitido">@Setup.PruebasXsesion</span>
+                            <span class="">Pruebas Máximas por sesión</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="float-right label label-danger" id="MaximoSinMarca">
+                                @Model.SinMarca
+                            </span>
+                            <span class="">Número máximos de pruebas sin marca</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="float-right label label-danger" id="PruebasTotales">
+                                @Setup.PruebasXtorneo
+                            </span>
+                            <span class="">Número máximos de pruebas en el torneo</span>
+                        </li>
+
+                        <li class="dropdown-divider"></li>
+
+                        <li class="list-group-item">
+                            <span class="float-right label label-warning" id="inscripcionPruebasSinMarca">
+                                @Model.PruebasInscritasSinMarca
+                            </span>
+                            <span class="">Pruebas ingresadas sin marca</span>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="float-right label label-warning" id="inscripciontotal">
+                                @Model.PruebasInscritas
+                            </span>
+                            <span class="">Pruebas inscritas totales</span>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <h2>Inscripción por sesión</h2>
+                    <small>Número de pruebas en cada sesión.</small>
+                    <ul class="list-group clear-list m-t">
+
+                        @for (int i = 0; i < Model.Sesiones.Count(); i++)
+                        {
+
+                            //Estos son los nombres de los ids que se usarán más abajo
+                            var inscritoid = "inscrito" + @Model.Sesiones[i].Sesion.ToString();
+                            var permitidoid = "permitido" + @Model.Sesiones[i].Sesion.ToString();
+
+                            <li class="list-group-item fist-item">
+                                <span class="float-right label label-success" id=@inscritoid>
+                                    @Model.Sesiones[i].Inscritos
+                                </span>
+                                <span class="">Sesión @Model.Sesiones[i].Sesion</span>
+                                Pruebas :
+                            </li>
+
+
+                        }
+                    </ul>
+                    <button class="btn btn-warning" @onclick="@(() => Cerrar.InvokeAsync(false))">Cancelar</button>
+                    <button class="btn btn-primary" @onclick="@(() => GrabarPruebas(true))">Grabar</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Tabla de Team Manager -->
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h3>Relación de pruebas en las que puede inscribirse</h3>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="table-responsive">
+                            <table id="dataTables1" class="table table-hover display seleccion datatabla" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Sesión</th>
+                                        <th>Prueba</th>
+                                        <th>Distancia</th>
+                                        <th>Estilo</th>
+                                        <th>Edad</th>
+                                        <th>Marca</th>
+                                        @if (!Setup.Masters)
+                                        {
+                                            <th>M mínima</th>
+                                            <th>M máxima</th>
+                                        }
+                                        <th>Piscina</th>
+                                        <th>Torneo</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var @item in Model.listaDeEventos)
+                                    {
+
+                                        <tr class="@item.Clase" @onclick="@(() => AgregarRetirarPrueba(item))">
+
+                                            <td class=@("sesion" + item.sesion.ToString())>@item.sesion</td>
+                                            <td>@item.evento.EventNo</td>
+                                            <td>@item.evento.EventDist </td>
+                                            <td>@item.estilo</td>
+                                            <td>@item.evento.LowAge - @item.evento.HighAge</td>
+                                            <td class="@item.Cumple">@item.tiempo</td>
+                                            @if (!Setup.Masters && !Setup.Debutantes)
+                                            {
+                                                <td>@item.MMCortaString</td>
+                                                <td>@item.MMLargaString</td>
+                                            }
+                                            <td>@item.PiscinaDelTiempo</td>
+                                            <td>@item.torneo</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+
+}
+<CascadingValue Value="PopupVisible">
+    <ModalPopup MensajePopup=@MensajePopup TituloPopup=@TituloPopup Cerrar="@(()=>PopupVisible = false)">
+    </ModalPopup>
+</CascadingValue>
+
+@code {
+
+
+    [Parameter] public EventCallback<bool> Cerrar { get; set; }
+
+    [Parameter] public ListadoInscritoViewModel Model { get; set; }
+    [Parameter] public SetupTorneo Setup { get; set; }
+    [Parameter] public int Torneoid { get; set; }
+    [Parameter] public int InscripcionId { get; set; }
+    string path = "http://afiliaciones.fdpn.org/Content/Images/";
+    List<InscritoViewModel> Filasseleccionadas;
+    string MensajePopup;
+    string TituloPopup = "Información";
+    bool PopupVisible;
+
+    protected override void OnInitialized()
+    {
+        Filasseleccionadas = new List<InscritoViewModel>();
+    }
+
+
+
+    async Task GrabarPruebas(bool respuesta)
+    {
+        foreach(var item in Model.listaDeEventos)
+        {
+            if(item.Clase =="selected")
+            {
+                Filasseleccionadas.Add(item);
+            }
+        }
+
+        await servicio.GrabarPruebasParaElNadador(Filasseleccionadas, Torneoid, InscripcionId, Model.YaestaInscrito, usuariostate.Iniciales, Setup.Masters);
+        await  Cerrar.InvokeAsync(false);
+    }
+
+    void AgregarRetirarPrueba(InscritoViewModel filaTablaInscrito)
+    {
+        if (filaTablaInscrito.Clase == "selected")
+        {
+            filaTablaInscrito.Clase = "";
+            Model.Sesiones[filaTablaInscrito.sesion - 1].Inscritos--;
+            Model.PruebasInscritas--;
+        }
+        else
+        {
+            if (!filaTablaInscrito.Cumple)
+            {
+                PopupVisible = true;
+                MensajePopup = "No puede inscribirse en esta prueba debido por no cumplir con la marca";
+                TituloPopup = "No cumple con la marca";
+            }
+            else
+            {
+
+                if (Model.Sesiones[filaTablaInscrito.sesion - 1].Inscritos < Setup.PruebasXsesion)
+                {
+                    if (Model.PruebasInscritas < Setup.PruebasXtorneo)
+                    {
+                        filaTablaInscrito.Clase = "selected";
+                        Model.Sesiones[filaTablaInscrito.sesion - 1].Inscritos++;
+                        Model.PruebasInscritas++;
+                    }
+                    else
+                    {
+                        PopupVisible = true;
+                        MensajePopup = "Solo puede inscribirse en " + Setup.PruebasXtorneo.ToString() + " pruebas";
+                        TituloPopup = "Límite de pruebas por torneo";
+                    }
+                }
+                else
+                {
+                    PopupVisible = true;
+                    MensajePopup = "Solo se permiten " + Setup.PruebasXsesion.ToString() + " pruebas por sesión";
+                    TituloPopup = "Límite de pruebas esta sesión";
+                }
+            }
+        }
+    }
+
+
+
+}

@@ -41,6 +41,7 @@ namespace FDPN.Models
     
         public virtual AthleteMasters AthleteMasters { get; set; }
         public virtual MEETMasters MEETMasters { get; set; }
+        public virtual Pruebas Pruebas { get; set; }
         public virtual TEAMMasters TEAMMasters { get; set; }
     }
 }

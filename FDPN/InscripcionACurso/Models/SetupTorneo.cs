@@ -15,9 +15,21 @@ namespace InscripcionACurso.Models
     public partial class SetupTorneo
     {
         public int SetupId { get; set; }
-        public int Meetid { get; set; }
         public int TipoId { get; set; }
+        public int pruebasXsesion { get; set; }
+        public int pruebasXtorneo { get; set; }
+        public int Meetid { get; set; }
+        public bool PorLigas { get; set; }
+        public int pruebasXEquipo { get; set; }
+        public Nullable<int> SinMarca { get; set; }
+        public bool PermiteNoAfiliados { get; set; }
+        public bool PermiteSinMarca { get; set; }
+        public bool UsaMarcaMaxima { get; set; }
+        public bool Debutantes { get; set; }
+        public bool Masters { get; set; }
+        public System.DateTime FechaMarcas { get; set; }
     
         public virtual TipoTorneo TipoTorneo { get; set; }
+        public virtual Torneo Torneo { get; set; }
     }
 }

@@ -34,16 +34,16 @@ $(document).ready(function () {
         }
     });
     //$(function () {
-        // This will make every element with the class "date-picker" into a DatePicker element
-        //$('.date-picker').datepicker(
-        //    {
-        //        changeMonth: true,
-        //        changeYear: true,
-        //        showButtonPanel: true,
-        //        yearRange: "-100:+0",
-        //        dateFormat: 'dd/mm/yy'
-        //    }
-        //);
+    // This will make every element with the class "date-picker" into a DatePicker element
+    //$('.date-picker').datepicker(
+    //    {
+    //        changeMonth: true,
+    //        changeYear: true,
+    //        showButtonPanel: true,
+    //        yearRange: "-100:+0",
+    //        dateFormat: 'dd/mm/yy'
+    //    }
+    //);
     //})
     $.validator.addMethod(
         "email",
@@ -55,6 +55,50 @@ $(document).ready(function () {
 
     $.validator.methods.email = function (value, element) {
         return this.optional(element) || /[a-z]+@[a-z]+\.[a-z]+/.test(value);
+    }
+
+    $("#CursoParticipante_DNI").change(function () {
+
+        var DNI = $("#CursoParticipante_DNI").val();
+
+        $.ajax({
+            url: '/Inscripcion/BuscarDNI',
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            data: { 'DNI': DNI },
+            async: false,
+            success: function (result) {
+                LLenarDatosDeInscritos(result)
+            },
+        });
+    });
+
+
+    function LLenarDatosDeInscritos(result) {
+
+        var Nombres = result.Nombres;
+        var Paterno = result.Paterno;
+        var Materno = result.Materno;
+        var Nacimiento = result.Nacimiento;
+        var DNI = result.DNI;
+        var Celular = result.Celular;
+        var Nacionalidad = result.Nacionalidad;
+        var Actividad = result.Actividad;
+        var Email = result.Email;
+
+        $("#CursoParticipante_Nombres").val(Nombres);
+        $("#CursoParticipante_Paterno").val(Paterno);
+        $("#CursoParticipante_Materno").val(Materno);
+        $("#CursoParticipante_DNI").val(DNI);
+        $("#CursoParticipante_Celular").val(Celular);
+        $("#CursoParticipante_Nacionalidad").val(Nacionalidad);
+        $("#CursoParticipante_Actividad").val(Actividad);
+        $("#CursoParticipante_Email").val(Email);
+
+        //Esto convierte el valor de json en formato de fecha
+        var parsed = new Date(parseInt(Nacimiento.substr(6)));
+        var newFormattedDate = $.datepicker.formatDate('dd/mm/yy', parsed);
+        $("#CursoParticipante_Nacimiento").val(newFormattedDate);
     }
 
 

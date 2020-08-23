@@ -10,19 +10,22 @@ namespace InscripcionACurso.Controllers
 {
     public class HomeController : Controller
     {
-        DB_9B1F4C_MVCcompetenciasEntities db = new DB_9B1F4C_MVCcompetenciasEntities();
+        DB_9B1F4C_comentariosEntities db = new DB_9B1F4C_comentariosEntities();
         ConvertirAPeru convertidor = new ConvertirAPeru();
 
         public ActionResult Index()
         {
-            
 
-            DateTime hoy = convertidor.ToPeru(DateTime.UtcNow).AddDays(1);
+            Athlete atleta = db.Athlete.FirstOrDefault();
+            DateTime hoy = convertidor.ToPeru(DateTime.UtcNow);
             List<IndexViewModel> VM = new List<IndexViewModel>();
             List<Curso> cursos = db.Curso.Where(x => x.Fin >= hoy).OrderBy(x => x.Fin).ThenByDescending(x => x.Inicio).ToList();
             List<CursoInscripcion> Inscritos = db.CursoInscripcion.ToList();
             foreach(Curso curso in cursos)
             {
+                curso.Fin = convertidor.ToPeru(curso.Fin);
+
+                //curso.Fin = curso.Fin.AddHours(-6); 
                 IndexViewModel CursoYParticipante = new IndexViewModel
                 {
                     curso = curso,

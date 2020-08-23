@@ -85,7 +85,7 @@ namespace InscripcionNatacion.Controllers
             Usuario usuario = Session["Usuario"] as Usuario;  
             List<TorneoViewModel> VM = new List<TorneoViewModel>();
 
-            List<SetupTorneo> setups = db.SetupTorneo.OrderByDescending(x => x.Torneo.entry_deadline).Take(8).ToList();
+            List<SetupTorneo> setups = db.SetupTorneo. Where(x=>!x.Masters).OrderByDescending(x => x.Torneo.entry_deadline).Take(8).ToList();
             foreach (SetupTorneo setup in setups)
             {
                 DateTime dt = setup.Torneo.entry_deadline ?? convertidor.ToPeru(DateTime.UtcNow);

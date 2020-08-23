@@ -41,6 +41,8 @@ namespace FDPN.Models
         public string Resolucion { get; set; }
         public string VoucherPagoAfiliacionAnual { get; set; }
         public bool Academia { get; set; }
+        public string RutaLogo { get; set; }
+        public string EMailOficial { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Afiliacion> Afiliacion { get; set; }

@@ -18,7 +18,6 @@ namespace InscripcionACurso.Models
         public Noticias()
         {
             this.Alertas = new HashSet<Alertas>();
-            this.Comentarios = new HashSet<Comentarios>();
             this.Fotos = new HashSet<Fotos>();
         }
     
@@ -38,8 +37,6 @@ namespace InscripcionACurso.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Alertas> Alertas { get; set; }
         public virtual CategoriaNoticia CategoriaNoticia { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comentarios> Comentarios { get; set; }
         public virtual Disciplina Disciplina { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Fotos> Fotos { get; set; }

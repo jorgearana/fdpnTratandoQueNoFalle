@@ -37,6 +37,20 @@ namespace FDPN.Controllers
 
             return View(listado);
         }
+        public ActionResult ResolucionesIPD(string searchString)
+        {
+            var query = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "ResolucionesIPD").OrderBy(x => x.Noticias.Fecha).AsQueryable();
+
+            if (searchString != null)
+            {
+                query = query.Where(x => x.Noticias.Titulo.Contains(searchString));
+            }
+
+            List<Fotos> listado = query.ToList();
+
+            return View(listado);
+        }
+
         public ActionResult MarcasMinimas(string searchString)
         {
             var query = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "MarcasMinimas" ).OrderBy(x => x.Noticias.Fecha).AsQueryable();

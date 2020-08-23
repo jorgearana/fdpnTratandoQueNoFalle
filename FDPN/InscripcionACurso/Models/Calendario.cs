@@ -14,6 +14,12 @@ namespace InscripcionACurso.Models
     
     public partial class Calendario
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Calendario()
+        {
+            this.ATFExpediente = new HashSet<ATFExpediente>();
+        }
+    
         public System.DateTime Inicio { get; set; }
         public System.DateTime Fin { get; set; }
         public string Evento { get; set; }
@@ -23,7 +29,10 @@ namespace InscripcionACurso.Models
         public string Organizador { get; set; }
         public int EventoId { get; set; }
         public int DisciplinaId { get; set; }
+        public bool Internacional { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ATFExpediente> ATFExpediente { get; set; }
         public virtual Disciplina Disciplina { get; set; }
     }
 }

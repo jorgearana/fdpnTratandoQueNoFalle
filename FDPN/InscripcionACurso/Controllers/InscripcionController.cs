@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Net.Mail;
 using System.Web;
@@ -7,12 +8,13 @@ using System.Web.Mvc;
 using InscripcionACurso.Helpers;
 using InscripcionACurso.Models;
 using InscripcionACurso.ViewModels.Inscripcion;
+using Microsoft.Ajax.Utilities;
 
 namespace InscripcionACurso.Controllers
 {
     public class InscripcionController : Controller
     {
-        DB_9B1F4C_MVCcompetenciasEntities db = new DB_9B1F4C_MVCcompetenciasEntities();   
+        DB_9B1F4C_comentariosEntities db = new DB_9B1F4C_comentariosEntities();   
         // GET: Inscripcion
         public ActionResult Gracias()
         {
@@ -28,6 +30,11 @@ namespace InscripcionACurso.Controllers
         // GET: Inscripcion/Create
         public ActionResult Create(int meetid)
         {
+            Curso curso = db.Curso.Find(meetid);
+            if (curso.ParaAfiliados)
+            {
+                return RedirectToAction("CreateParaAfiliados", new { meetid });
+            }
             InscripcionViewModel VM = new InscripcionViewModel
             {
 
@@ -46,23 +53,53 @@ namespace InscripcionACurso.Controllers
             {
                 if(TryValidateModel(VM.CursoParticipante))
                 {
+                    
                     if(IsValidEmailAddress(VM.CursoParticipante.Email))
                     {
-                        DateTime hacetiempo = DateTime.Now.AddYears(-18);
+                        DateTime hacetiempo = DateTime.Now.AddYears(-5);
                         DateTime haceunsiglo = new DateTime(1900, 1, 1);
 
                         
+                        
                         if (VM.CursoParticipante.Nacimiento< hacetiempo && VM.CursoParticipante.Nacimiento> haceunsiglo)
                         {
-                            db.CursoParticipante.Add(VM.CursoParticipante);
-                            db.SaveChanges();
-                            CursoInscripcion inscripcion = new CursoInscripcion
+                            CursoParticipante participante;
+                            CursoInscripcion inscripcion;
+                            if (db.CursoParticipante.Any(x=>x.DNI == VM.CursoParticipante.DNI))
                             {
-                                CursoId = VM.curso.CursoId,
-                                ParticipanteId = VM.CursoParticipante.ParticipanteId
-                            };
-                            db.CursoInscripcion.Add(inscripcion);
+                                 participante = db.CursoParticipante.Where(x => x.DNI == VM.CursoParticipante.DNI).FirstOrDefault();
+                                participante.Nombres = VM.CursoParticipante.Nombres;
+                                participante.Paterno = VM.CursoParticipante.Paterno;
+                                participante.Materno = VM.CursoParticipante.Materno;
+                                participante.Nacimiento = VM.CursoParticipante.Nacimiento;
+                                participante.DNI = VM.CursoParticipante.DNI;
+                                participante.Email = VM.CursoParticipante.Email;
+                                participante.Celular = VM.CursoParticipante.Celular;
+                                participante.Nacionalidad = VM.CursoParticipante.Nacionalidad;
+                                participante.Actividad = VM.CursoParticipante.Actividad;
+                             }
+                            else
+                            {                               
+                                participante = VM.CursoParticipante;
+                                db.CursoParticipante.Add(participante);
+                            }
                             db.SaveChanges();
+                            if ( !(db.CursoInscripcion.Any(x => x.CursoId == VM.curso.CursoId && x.CursoParticipante.DNI == VM.CursoParticipante.DNI)))
+                            {
+                                 inscripcion = new CursoInscripcion
+                                {
+                                    CursoId = VM.curso.CursoId,
+                                    ParticipanteId = participante.ParticipanteId
+                                };
+                                db.CursoInscripcion.Add(inscripcion);
+                                db.SaveChanges();
+                            }
+                            else
+                            {
+                                inscripcion = db.CursoInscripcion.Where(x => x.ParticipanteId == participante.ParticipanteId && x.CursoId == VM.curso.CursoId).FirstOrDefault();
+                            }
+                           
+                           
                             string EnviarEmail = EnviarConfirmacion(inscripcion.InscripcionId);
                             if (EnviarEmail.Length>0)
                             {
@@ -73,7 +110,7 @@ namespace InscripcionACurso.Controllers
                         }
                         else
                         {
-                            VM.Mensaje = "Tienes que tener al menos 15 años de edad";
+                            VM.Mensaje = "Verifica tu fecha de nacimiento por favor";
                             return View(VM);
                         }
                     }     
@@ -221,7 +258,134 @@ namespace InscripcionACurso.Controllers
             return PartialView(VM);
         }
 
+        public ActionResult CreateParaAfiliados(int meetid)
+        {
+            ViewModelBuscarDNI VM = new ViewModelBuscarDNI
+            {
+                curso = db.Curso.Find(meetid),
+                DNI = "",
+            };
+            return View(VM);
+        }
         
+        public ActionResult VerificarSiExisteDNI(string DNI, int cursoid)
+        {
 
+            if (db.Inscripciones.Any(x=>x.DNI == DNI && x.EstadoID ==3))
+            {
+               
+                ViewModelInscripcionParaNadador VM = new ViewModelInscripcionParaNadador
+                {
+                    Inscripcion= db.Inscripciones.Where(x => x.DNI == DNI).FirstOrDefault(),
+                    curso = db.Curso.Find(cursoid),
+                };
+
+                return View("GetNadador", VM);
+            }
+            else if( db.Entrenadores.Any(x=>x.DNI== DNI))
+            {
+                Entrenadores entrenador = db.Entrenadores.Where(x => x.DNI == DNI).FirstOrDefault();
+                ViewModelInscripcionParaEntrenador VM = new ViewModelInscripcionParaEntrenador
+                {
+                    Entrenador = entrenador,
+                    curso = db.Curso.Find(cursoid),
+                };
+                return View("GetEntrenador", VM);
+            }
+            return PartialView("NoGetNothing");
+        }
+
+        [HttpPost]
+        public ActionResult GrabarEntrenador(ViewModelInscripcionParaEntrenador VM)
+        {
+            Entrenadores entrenador = db.Entrenadores.Find(VM.Entrenador.EntrenadorId);
+            CursoParticipante participante = new CursoParticipante
+            {
+                Nombres = entrenador.Nombre,
+                Paterno = entrenador.Paterno,
+                Nacimiento = entrenador.Fecha_de_nacimiento,
+                DNI = entrenador.DNI,
+                Email = entrenador.Email1,
+                Celular = entrenador.Celular1,
+                Actividad = "entrenador",
+                Nacionalidad ="",
+            };
+            if (entrenador.Materno != null)
+            {
+                participante.Materno = entrenador.Materno;
+            }
+            else
+            {
+                participante.Materno = "";
+            }
+
+            db.CursoParticipante.Add(participante);
+            db.SaveChanges();
+            CursoInscripcion CursoInscripcion = new CursoInscripcion
+            {
+                ParticipanteId = participante.ParticipanteId,
+                CursoId = VM.curso.CursoId,
+            };
+            db.CursoInscripcion.Add(CursoInscripcion);           
+            db.SaveChanges();
+
+            string EnviarEmail = EnviarConfirmacion(CursoInscripcion.InscripcionId);
+            return RedirectToAction("Gracias");
+
+        }
+
+
+        [HttpPost]
+        public ActionResult GrabarNadador(ViewModelInscripcionParaNadador VM)
+        {
+            if (!TryUpdateModel(VM))
+            {
+                VM.Inscripcion = db.Inscripciones.Find(VM.Inscripcion.InscripcionId);
+                VM.curso = db.Curso.Find(VM.curso.CursoId);
+                VM.mensaje = "Debe de ingresar su celular y correo";
+                return View("GetNadador", VM);
+            }
+            Inscripciones inscripcion = db.Inscripciones.Find(VM.Inscripcion.InscripcionId);
+            CursoParticipante participante = new CursoParticipante
+            {
+                Nombres = inscripcion.Afiliado.Nombre,
+                Paterno = inscripcion.Afiliado.Apellido_Paterno,              
+               
+                Nacimiento = inscripcion.Afiliado.Fecha_de_nacimiento,
+                DNI = inscripcion.Afiliado.DNI,
+                Email = VM.Email,
+                Celular = VM.Celular,
+                Actividad = "deportista",
+                Nacionalidad = "",
+            };
+            if (inscripcion.Afiliado.Apellido_Materno != null)
+            {
+                participante.Materno = inscripcion.Afiliado.Apellido_Materno;
+            }
+            else
+            {
+                participante.Materno = "";
+            }
+            db.CursoParticipante.Add(participante);
+            db.SaveChanges();
+            CursoInscripcion CursoInscripcion = new CursoInscripcion
+            {
+                ParticipanteId = participante.ParticipanteId,
+                CursoId = VM.curso.CursoId,
+            };
+            db.CursoInscripcion.Add(CursoInscripcion);
+            db.SaveChanges();
+
+            string EnviarEmail = EnviarConfirmacion(CursoInscripcion.InscripcionId);
+            return RedirectToAction("Gracias");
+        }
+
+        public JsonResult BuscarDNI(string DNI)
+        {
+            var participante = db.CursoParticipante.Where(x => x.DNI == DNI)
+                .Select(x=> new { x.Nombres, x.DNI, x.Paterno, x.Materno, x.Nacimiento, x.Email, x.Celular, x.Nacionalidad, x.Actividad })
+                .FirstOrDefault();
+            return Json(participante, JsonRequestBehavior.AllowGet);
+        }
     }
 }

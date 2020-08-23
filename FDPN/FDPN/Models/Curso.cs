@@ -14,6 +14,12 @@ namespace FDPN.Models
     
     public partial class Curso
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Curso()
+        {
+            this.CursoInscripcion = new HashSet<CursoInscripcion>();
+        }
+    
         public int CursoId { get; set; }
         public string Nombre { get; set; }
         public string Ciudad { get; set; }
@@ -23,5 +29,11 @@ namespace FDPN.Models
         public Nullable<int> DisciplinaId { get; set; }
         public Nullable<System.TimeSpan> Hora { get; set; }
         public int CantidadMaxima { get; set; }
+        public bool ParaAfiliados { get; set; }
+        public string Enlace { get; set; }
+        public string PassWord { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CursoInscripcion> CursoInscripcion { get; set; }
     }
 }

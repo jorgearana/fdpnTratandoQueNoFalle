@@ -14,10 +14,20 @@ namespace InscripcionACurso.Models
     
     public partial class Pruebas
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Pruebas()
+        {
+            this.RESULTS = new HashSet<RESULTS>();
+        }
+    
         public int PruebaId { get; set; }
         public int distancia { get; set; }
         public string estilo { get; set; }
         public Nullable<double> FactorF { get; set; }
         public Nullable<double> FactorM { get; set; }
+        public string EstiloMeet { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RESULTS> RESULTS { get; set; }
     }
 }

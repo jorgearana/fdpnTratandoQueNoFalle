@@ -20,7 +20,5 @@ namespace InscripcionACurso.Models
         public int NoticiaId { get; set; }
         public string Estado { get; set; }
         public System.DateTime Fecha { get; set; }
-    
-        public virtual Noticias Noticias { get; set; }
     }
 }

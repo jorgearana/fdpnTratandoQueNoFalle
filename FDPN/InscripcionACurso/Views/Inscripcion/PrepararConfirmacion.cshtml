@@ -6,7 +6,8 @@
 
             <h3>Confirmación de inscripción</h3>
             <h2>Hola @Model.participante.Nombres @Model.participante.Paterno  @Model.participante.Materno</h2>
-            <h3>Te has inscrito en el evento <strong>@Model.curso.Nombre</strong></h3>
+            <h3>La Federación Deportiva Peruana de Natacion le está invitando a una reunión de Zoom programada.</h3>
+            <h3>Tema: <strong> Charla preparación física para el deporte</strong> </h3>
             <p>Los datos que ingresaste son:</p>
             <ul>
                 <li> DNI:  @Model.participante.DNI </li>
@@ -17,6 +18,8 @@
 
                 <li> Email : @Model.participante.Email.ToString() </li>
             </ul>
+            <br>
+          
             <br />
             <br />
         </div>
@@ -25,15 +28,28 @@
 
     <div class="col-md-6 col-sm-12" style="padding:30px;">
         <div class="right-content">
-            <h4>El evento empezará el día @Model.curso.Inicio.ToString("dd MMMM yyyy") en @Model.curso.Direccion en la ciudad de @Model.curso.Ciudad </h4>
-            <p>En caso sea necesario se le contactará mediante los datos ingresados.</p>
+            <h4>El evento empezará el día @Model.curso.Inicio.ToString("dd MMMM yyyy") a las @Model.curso.Hora en @Model.curso.Direccion en la ciudad de @Model.curso.Ciudad </h4>
+            <br>
+            @if (Model.curso.Enlace != null)
+            {
+                <p>El enlace de la reunión es: </p>
+                <a href="@Model.curso.Enlace">@Model.curso.Enlace </a>
+                <br>
+                <p>El ID de la reunión: <strong>872 3681 2720</strong></p>
+                <br>
+                <p>Contraseña: <strong>@Model.curso.PassWord</strong></p>
+                <br>
+            }
+
+
             <br>
             <p>
                 Gracias por seguir a la FDPN
             </p>
             <hr>
-            <p>En caso sus datos estén errados, envíe un correo a inscripciones@fdpn.org con los datos correctos. </p>
-            <br><p><strong>Nota.- No responda este correo</strong></p>
+            @*<p>En caso sus datos estén errados, envíe un correo a inscripciones@fdpn.org con los datos correctos. </p>*@
+            <p>En caso sus datos estén errados solo inscríbete otra vez a este curso y actualizaremos tus datos. </p>
+            <br><p><strong>Nota.- Por favor no responda este correo</strong></p>
 
         </div>
     </div>

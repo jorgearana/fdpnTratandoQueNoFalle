@@ -1,0 +1,30 @@
+﻿<DxPopup HeaderText="Header" @bind-Visible="@PopupVisible">
+    <HeaderTemplate>
+        <div class="custom-header bg-primary text-white w-100 tituloModal">
+            <span class="demo-icon-info bg-white"></span>
+            @TituloPopup
+            <a class="close-button oi oi-x text-white" href="javascript:;" aria-hidden="true"
+               role="button" aria-label="Close popup" @onclick="@(() => Cerrar.InvokeAsync(false))"></a>
+        </div>
+    </HeaderTemplate>
+    <Content>
+       
+        <p>
+            @MensajePopup
+        </p>
+       
+    </Content>
+    <FooterTemplate>
+        <div class="modal-footer">
+            <button class="btn btn-primary" @onclick="@(() => Cerrar.InvokeAsync(false))">Cerrar</button>
+        </div>
+    </FooterTemplate>
+</DxPopup>
+
+@code{
+    [CascadingParameter] bool PopupVisible { get; set; }
+    [Parameter] public string MensajePopup { get; set; }
+    [Parameter] public string TituloPopup { get; set; }
+    [Parameter] public EventCallback<bool> Cerrar { get; set; }
+
+}

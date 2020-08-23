@@ -1,0 +1,185 @@
+﻿@page "/componente"
+
+@inject ServicePrincipal servicio
+@inject WeatherForecastService weather 
+@inject HttpClient Http
+@inject IJSRuntime JSRuntime
+
+<button @onclick="cargar" class="@Clase">Presione</button>
+
+<input type="text" id="txt">
+
+<body>
+
+
+    @*<TablaDATA NombreTabla="example">*@
+
+        @if (AunNoInscritos == null)
+        {
+            <div>No tengo deportistas para listar </div>
+        }
+        else
+
+        {
+            <div class="table-responsive">
+                <table id="example" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>DNI</th>
+                            <th>Nombre</th>
+                            <th>Paterno</th>
+                            <th>Materno</th>
+                            <th>Edad</th>
+                            <th>Nacimiento</th>
+                            <th>Sexo</th>
+                            <th>Estado</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in AunNoInscritos)
+                        {
+                            <tr>
+                                <td>@item.DNI</td>
+                                <td>@item.Nombre.ToUpper()</td>
+                                <td>@item.Paterno.ToUpper()</td>
+                                <td>@item.Materno</td>
+                                <td>@item.Edad</td>
+                                <td>@item.Nacimiento.ToString("dd/MM/yyyy")</td>
+                                <td>@item.Sexo</td>
+                                <td>@item.Estado</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+
+        }
+
+    @*</TablaDATA>*@
+
+    <br />
+
+    
+
+
+    @if (AunNoInscritos == null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else
+    {
+        <table id="example2" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>TemperatureC</th>
+                    <th>TemperatureF</th>
+                    <th>Summary</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Forecasts)
+                {
+
+                    <tr class="@item.Clase" @onclick="@(() => CambiarClase(item))">
+                        <td>@item.Date</td>
+
+                        <td>@item.TemperatureC</td>
+                        <td>@item.TemperatureF</td>
+                        <td>@item.Summary</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</body>
+
+
+
+@code {
+
+
+    List<WeatherForecast> Forecasts;
+    List<NadadorParaInscribir> AunNoInscritos;
+    string Clase = "btn btn-primary";
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        AunNoInscritos = await servicio.GetNadadoresParaInscribirlo("davis");
+        //if (AunNoInscritos.Count()>0)
+        //{
+        //    await JSRuntime.InvokeAsync<object>("TestDataTablesAdd", "#example", "tabla nadadores");
+        //}
+
+        Forecasts = weather.GetData(DateTime.Now);
+        //if(Forecasts.Count() > 0)
+        //{
+        //    await JSRuntime.InvokeAsync<object>("TestDataTablesAdd", "#example2", "tabla 2");
+        //}
+
+
+    }
+
+
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JSRuntime.InvokeAsync<object>("TestDataTablesAdd", "#example", "tabla nadadores");
+    }
+
+
+    async Task CambiarClase(WeatherForecast filaTablaInscrito)
+    {
+        if (filaTablaInscrito.Clase == null || filaTablaInscrito.Clase == "selected")
+        {
+            filaTablaInscrito.Clase = "";
+        }
+        else
+        {
+            filaTablaInscrito.Clase = "selected";
+        }
+
+        await JSRuntime.InvokeAsync<object>("TestDataTablesAdd", "#example", "tabla 1");
+
+
+    }
+
+    void cargar()
+    {
+
+        if ( Clase == "btn btn-primary")
+        {
+            Clase = "btn btn-danger";
+        }
+        else
+        {
+            Clase = "btn btn-primary";
+        }
+
+    }
+
+
+    //protected override async Task OnAfterRenderAsync(bool firstRender)
+    //{
+    //    if (firstRender)
+    //    {
+    //        await JSRuntime.InvokeAsync<object>("TestDataTablesAdd", "#example", "luego del render");
+    //        await base.OnAfterRenderAsync(firstRender);
+    //    }
+    //}
+
+    //public class WeatherForecast
+    //{
+    //    public DateTime Date { get; set; }
+
+    //    public int TemperatureC { get; set; }
+
+    //    public string Summary { get; set; }
+
+    //    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    //}
+
+}

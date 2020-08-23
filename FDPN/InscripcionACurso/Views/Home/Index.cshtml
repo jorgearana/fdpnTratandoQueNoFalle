@@ -36,13 +36,15 @@
                 }
 
                 <p>Este curso se dictará en <span>@Model[0].curso.Ciudad</span><br> en @Model[0].curso.Direccion.<br> Empezará el día <span>@Model[0].curso.Inicio.ToString("dd/MMMM/yyyy")</span></p>
-
+                @if (Model[0].curso.ParaAfiliados)
+                {
+                    <p class="danger"> Este evento es solo para deportistas afiliados o entrenadores inscritos en nuestra web de afiliaciones</p>
+                }
                 @if (Model[0].cantidadinscritos < Model[0].curso.CantidadMaxima)
                 {
-
                     <div class="row">
                         <div class="col-sm-offset-2 col-sm-8">
-                           
+
                             <form class="newsletter-signup" role="form">
                                 <div class="input-group">
                                     <span class="input-group-btn">
@@ -77,7 +79,10 @@
                     {
                         <p style="color:#417378"><i class="fas fa-arrow-alt-circle-right"></i> @Model[i].curso.Nombre.ToUpper() </p>
                         <p>Iniciará el día @Model[i].curso.Inicio.ToString("dd MMMM yyyy") @Html.ActionLink("Inscríbite aquí", "Create", "inscripcion", new { meetid = Model[i].curso.CursoId }, new { @class = "btn btn-info" })</p>
-
+                        if (Model[0].curso.ParaAfiliados)
+                        {
+                            <p class="danger"> Este evento es solo para deportistas afiliados o entrenadores inscritos en nuestra web de afiliaciones</p>
+                        }
                     }
                 }
                 <hr />

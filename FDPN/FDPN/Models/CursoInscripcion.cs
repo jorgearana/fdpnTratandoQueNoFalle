@@ -17,5 +17,8 @@ namespace FDPN.Models
         public int InscripcionId { get; set; }
         public int ParticipanteId { get; set; }
         public int CursoId { get; set; }
+    
+        public virtual Curso Curso { get; set; }
+        public virtual CursoParticipante CursoParticipante { get; set; }
     }
 }

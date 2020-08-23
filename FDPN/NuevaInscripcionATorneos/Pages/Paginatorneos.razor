@@ -1,0 +1,78 @@
+﻿@page "/paginatorneos"
+@inject ServicePrincipal servicio
+@inject NavigationManager NavigationManager
+@inject UsuarioState usuariostate
+
+
+
+
+@if (Torneos != null)
+{
+    <div class="table-responsive">
+        <table class="table display">
+            <thead>
+                <tr>
+                    <th>Torneo</th>
+                    <th>Fecha</th>
+                    <th>DeadLine</th>
+                    <th>Disciplina</th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Torneos)
+                {
+                    <tr>
+                        <td>@item.torneo.Meet.MeetName1</td>
+                        <td>@item.torneo.Meet.MeetStart?.ToString("dd/MM/yyyy")</td>
+                        <td>@item.torneo.Meet.EntryDeadline?.ToString("dd/MM/yyyy")</td>
+                        @if (item.Masters)
+                        {
+                            <td>
+                                Masters
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                Natación
+                            </td>
+                        }
+
+                        <td>
+                            <button class="btn btn-primary" @onclick="@(()=>SeleccionarTorneo(item.torneo.Meetid))">Seleccionar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+
+
+
+
+@code{
+    List<TorneoViewModel> Torneos;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (usuariostate.Iniciales == "")
+        {
+            NavigationManager.NavigateTo("/login");
+        }
+
+        Torneos = await servicio.Torneos(usuariostate);
+
+    }
+
+    void SeleccionarTorneo(int meetid)
+    {
+        NavigationManager.NavigateTo("/inscripcion/" + meetid);
+    }
+
+
+}
