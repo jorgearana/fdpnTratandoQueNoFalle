@@ -5,39 +5,42 @@
 }
 
 
-    <div class="site-homepage">
-          @Html.Action("_PreviewJaked")
-        <section class="site-homepage__section site-worldrecords u-animation--fadeInSection">
-            @Html.Action("_PreviewNoticias")
-            <div class="espaciado"></div>
-        </section>
-        @Html.Action("_PreviewCalendario")
-        <section class="site-homepage__section site-worldrecords u-animation--fadeInSection">
-            <div class="wrapper site-homepage__pushup">
-                <header class="site-homepage__section__header">
-                    <h2 class="site-title site-title--ultra site-title--ultra--primary">Nadadores destacados</h2>
-                    <p class="u-type--medium u-type--delta">Resultados en línea</p>
-                 
-                </header>
-                <div class="site-homepage__section__content">
-                    <div class="js-WorldRecords"></div>
-                </div>
+<div class="site-homepage">
+    @Html.Action("_PreviewJaked")
+    <section class="site-homepage__section site-worldrecords u-animation--fadeInSection">
+        @Html.Action("_PreviewNoticias")
+        <div class="espaciado"></div>
+    </section>
+    @Html.Action("_PreviewCalendario")
+
+
+    <section class="site-homepage__section site-worldrecords u-animation--fadeInSection">
+        <div class="wrapper site-homepage__pushup">
+            <header class="site-homepage__section__header">
+                <h2 class="site-title site-title--ultra site-title--ultra--primary">Nadadores destacados</h2>
+                <p class="u-type--medium u-type--delta">Resultados en línea</p>
+
+            </header>
+            <div class="site-homepage__section__content">
+                <div class="js-WorldRecords"></div>
             </div>
-        </section>
-
-        <div class="site-homepage__split u-group u-animation--fadeInSection">
-            <section class="site-homepage__split__item u-bg--pooldiver u-bg--blueoverlay">
-                @Html.Action("_nadadordestacado")
-            </section>
-            <section class="site-homepage__split__item u-bg--surface u-bg--blueoverlaydark">
-                @Html.Action("_indexranking")
-            </section>
         </div>
-
-        @Html.Action("_PreviewEventos")
-
+    </section>
 
 
+    <div class="site-homepage__split u-group u-animation--fadeInSection">
+        <section class="site-homepage__split__item u-bg--pooldiver u-bg--blueoverlay">
+            @Html.Action("_nadadordestacado")
+        </section>
+        <section class="site-homepage__split__item u-bg--surface u-bg--blueoverlaydark">
+            @Html.Action("_indexranking")
+        </section>
     </div>
+    @Html.Action("_PreviewClubesAfiliados")
+    @Html.Action("_PreviewEventos")
+
+
+
+</div>
 
     @Html.Action("_Modal")

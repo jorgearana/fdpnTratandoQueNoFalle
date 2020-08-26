@@ -702,6 +702,7 @@
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\DatePickerReady.js" />
     <Content Include="Scripts\EditorDatatable.js" />
+    <Content Include="Views\Home\_PreviewCalendario.cshtml" />
     <Content Include="Views\Noticias\Eventos.cshtml" />
     <Content Include="Views\Home\_PreviewEnVivo.cshtml" />
     <Content Include="Views\Documentos\EnVivo.cshtml" />
@@ -1019,7 +1020,6 @@
     <Content Include="Views\Home\construccion.cshtml" />
     <Content Include="Views\Home\_indexranking.cshtml" />
     <Content Include="Views\Home\_nadadordestacado.cshtml" />
-    <Content Include="Views\Home\_PreviewCalendario.cshtml" />
     <Content Include="Views\Home\_PreviewComunicados.cshtml" />
     <Content Include="Views\Home\_PreviewEventos.cshtml" />
     <Content Include="Views\Home\_PreviewNoticias.cshtml" />
@@ -1042,6 +1042,8 @@
     <Content Include="Views\Documentos\Convocatorias.cshtml" />
     <Content Include="Views\Documentos\Formatos.cshtml" />
     <Content Include="Views\Documentos\ResolucionesIPD.cshtml" />
+    <Content Include="Views\Nosotros\ListadoClubesAfiliados.cshtml" />
+    <Content Include="Views\Home\_PreviewClubesAfiliados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

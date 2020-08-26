@@ -1,0 +1,68 @@
+﻿@model List<FDPN.Models.Club>
+@{
+    ViewBag.Title = "Listado Clubes Afiliados";
+    int anno = DateTime.Now.Year;
+}
+
+
+
+<section class=" site-news site-homepage__pushup">
+    <header class="site-homepage__section__header">
+        <h2 class="site-title site-title--ultra site-title--ultra">Listado de clubes afiliados</h2>
+        <p class="u-type--medium u-type--delta u-spc-bottom--med">durante el año @anno</p>
+       
+    </header>
+    <div class="wrapper site-athleteswidget__info">
+
+
+
+        <table class="tablaNormal">
+            <tr>
+                <th>
+                    Club
+                </th>
+
+                <th>
+                    Página
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Logo
+                </th>
+
+            </tr>
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @item.NombreClub.ToUpper()
+
+            </td>
+            <td>
+                @item.Paginaweb
+
+            </td>
+            <td>
+                @item.EMailOficial
+            </td>
+            <td>
+                @if (item.RutaLogo != null)
+                {
+                    <img src=@Url.Content("http://afiliaciones.fdpn.org/Content/Logos/" + item.RutaLogo + ".jpg") class="MiniLogo"/>
+                }
+               
+
+            </td>
+        </tr>
+            }
+
+        </table>
+        <br />
+    
+
+    </div>
+</section>
+
+

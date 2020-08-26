@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FDPN.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -42,5 +43,14 @@ namespace FDPN.Controllers
         {
             return View();
         }
+        public ActionResult ListadoClubesAfiliados()
+        {
+           
+            List<Club> clubes = db.Club.Where(x => x.Activo == 3).OrderBy(x => x.NombreClub).ToList();
+            
+
+            return View(clubes);
+        }
+
     }
 }

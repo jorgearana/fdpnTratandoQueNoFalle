@@ -43,6 +43,7 @@ namespace FDPN.Models
         public bool Academia { get; set; }
         public string RutaLogo { get; set; }
         public string EMailOficial { get; set; }
+        public string Paginaweb { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Afiliacion> Afiliacion { get; set; }

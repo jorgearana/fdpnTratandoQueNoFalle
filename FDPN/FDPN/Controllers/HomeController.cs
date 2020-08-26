@@ -214,6 +214,10 @@ namespace FDPN.Controllers
             return PartialView("_PreviewCalendario", calendario);
 
         }
+        public ActionResult _PreviewClubesAfiliados()
+        {
+            return PartialView();
+        }
 
         public PartialViewResult _PreviewJaked()
         {
