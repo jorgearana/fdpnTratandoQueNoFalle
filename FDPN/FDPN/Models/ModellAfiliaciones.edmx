@@ -242,6 +242,7 @@
           <Property Name="RutaLogo" Type="varchar" MaxLength="100" />
           <Property Name="EMailOficial" Type="nvarchar" MaxLength="100" />
           <Property Name="Paginaweb" Type="nvarchar" MaxLength="150" />
+          <Property Name="Renade" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Comentario">
           <Key>
@@ -706,6 +707,20 @@
           <Property Name="FechaTraspaso" Type="date" Nullable="false" />
           <Property Name="InscripcionId" Type="int" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Hoja2' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Hoja2">
+          <Property Name="UNO" Type="int" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="1" />
+          <Property Name="Indi" Type="nvarchar" MaxLength="1" />
+          <Property Name="distancia" Type="int" />
+          <Property Name="estilo" Type="nvarchar" MaxLength="1" />
+          <Property Name="mini" Type="smallint" />
+          <Property Name="max" Type="smallint" />
+          <Property Name="segundos" Type="real" />
+          <Property Name="Piscina" Type="nvarchar" MaxLength="1" />
+          <Property Name="Meet" Type="int" />
+        </EntityType>-->
         <EntityType Name="Inscripciones">
           <Key>
             <PropertyRef Name="InscripcionId" />
@@ -4446,6 +4461,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <NavigationProperty Name="Usuario" Relationship="DB_9B1F4C_comentariosModel.FK_Usuario_Club" FromRole="Club" ToRole="Usuario" />
           <NavigationProperty Name="Vouchers" Relationship="DB_9B1F4C_comentariosModel.FK_Vouchers_Club" FromRole="Club" ToRole="Vouchers" />
           <Property Name="Paginaweb" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Renade" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Comentario">
           <Key>
@@ -7697,6 +7713,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <EntitySetMapping Name="Club">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Club">
               <MappingFragment StoreEntitySet="Club">
+                <ScalarProperty Name="Renade" ColumnName="Renade" />
                 <ScalarProperty Name="Paginaweb" ColumnName="Paginaweb" />
                 <ScalarProperty Name="EMailOficial" ColumnName="EMailOficial" />
                 <ScalarProperty Name="RutaLogo" ColumnName="RutaLogo" />

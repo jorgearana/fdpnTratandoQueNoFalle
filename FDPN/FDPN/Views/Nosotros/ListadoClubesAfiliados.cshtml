@@ -35,27 +35,29 @@
             </tr>
             @foreach (var item in Model)
             {
-        <tr>
-            <td>
-                @item.NombreClub.ToUpper()
+                <tr>
+                    <td>
+                        @item.NombreClub.ToUpper()
 
-            </td>
-            <td>
-                @item.Paginaweb
+                    </td>
+                    <td>
 
-            </td>
-            <td>
-                @item.EMailOficial
-            </td>
-            <td>
-                @if (item.RutaLogo != null)
-                {
-                    <img src=@Url.Content("http://afiliaciones.fdpn.org/Content/Logos/" + item.RutaLogo + ".jpg") class="MiniLogo"/>
-                }
-               
+                        <a href="@item.Paginaweb" target="_blank">@item.Paginaweb</a>
+                    </td>
+                    <td>
+                        @item.EMailOficial
+                    </td>
+                    <td>
+                        @if (item.RutaLogo != null)
+                        {<a href="@Url.Content("http://afiliaciones.fdpn.org/Content/Logos/" + item.RutaLogo + ".jpg")" target="_blank">
+                                <img src=@Url.Content("http://afiliaciones.fdpn.org/Content/Logos/" + item.RutaLogo + ".jpg")
+                                     class="MiniLogo" />
+                            </a>
+                        }
 
-            </td>
-        </tr>
+
+                    </td>
+                </tr>
             }
 
         </table>

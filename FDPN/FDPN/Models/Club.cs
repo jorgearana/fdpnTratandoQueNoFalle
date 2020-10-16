@@ -44,6 +44,7 @@ namespace FDPN.Models
         public string RutaLogo { get; set; }
         public string EMailOficial { get; set; }
         public string Paginaweb { get; set; }
+        public bool Renade { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Afiliacion> Afiliacion { get; set; }
