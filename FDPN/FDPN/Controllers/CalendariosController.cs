@@ -157,7 +157,8 @@ namespace FDPN.Controllers
 
         public ActionResult VersionImprimible(int disciplina)
         {
-            var Query = db.Calendario.AsQueryable();
+            DateTime semanaatras =  DateTime.Now.AddDays(-7);
+            var Query = db.Calendario.Where(x => x.Inicio > semanaatras).AsQueryable();
             Disciplina disciplinaseleccionada = db.Disciplina.Where(x => x.TipoDisciplina == "Todas").FirstOrDefault();
            
           if (disciplina != 0 && disciplina != 7) // osea no es valor vacio ni valor = "todas"
@@ -167,13 +168,13 @@ namespace FDPN.Controllers
             }
 
 
-            CalendarioViewModel VM = new CalendarioViewModel
-            {
-                disciplina = disciplinaseleccionada.TipoDisciplina,
-                disciplinas = db.Disciplina.ToList(),
-                calendario = Query.OrderBy(x => x.Inicio).ToList(),
+            //CalendarioViewModel VM = new CalendarioViewModel
+            //{
+            //    disciplina = disciplinaseleccionada.TipoDisciplina,
+            //    disciplinas = db.Disciplina.ToList(),
+            //    calendario = Query.OrderBy(x => x.Inicio).ToList(),
                 
-            };
+            //};
             Alertas alerta = db.Alertas.Find(1);
             ViewBag.modificacion = alerta.Fecha;
             return PartialView(Query.OrderBy(x => x.Inicio).ToList());
