@@ -223,13 +223,13 @@ namespace FDPN.Controllers
                 Query = Query.Where(x => x.DisciplinaId == valor);
                 disciplinaseleccionada = db.Disciplina.Where(x => x.DisciplinaId == disciplina).FirstOrDefault();
             }
-
+            DateTime haceunasemana = DateTime.Now.AddDays(-7);
 
             CalendarioViewModel VM = new CalendarioViewModel
             {
                 disciplina = disciplinaseleccionada.TipoDisciplina,
                 disciplinas = db.Disciplina.ToList(),
-                calendario = Query.OrderBy(x=>x.Inicio).ToList(),
+                calendario = Query.Where(x=>x.Inicio > haceunasemana).OrderBy(x=>x.Inicio).ToList(),
             };
             
             return View(VM);

@@ -206,6 +206,10 @@
     <Content Include="Content\bootstrap\bootstrap.min.css" />
     <Content Include="Content\bootstrap\ionicons.css" />
     <Content Include="Content\bootstrap\main.min.css" />
+    <Content Include="Content\img\001.jpg" />
+    <Content Include="Content\img\002.jpg" />
+    <Content Include="Content\img\003.jpg" />
+    <Content Include="Content\img\004.jpg" />
     <Content Include="Content\img\campo1.jpg" />
     <Content Include="Content\img\campo2.jpg" />
     <Content Include="Content\img\carnet.jpg" />

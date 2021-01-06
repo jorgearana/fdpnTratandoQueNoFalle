@@ -13,11 +13,11 @@
         {
             <header class="site-homepage__section__header">
                 <h2 class="site-title site-title--ultra site-title--ultra--primary">Calendario anual</h2>
-                @Html.DropDownListFor(model => model.disciplina, new SelectList(Model.disciplinas, "DisciplinaID", "TipoDisciplina"), "Filtre por disciplina", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
-                <input type="submit" value="Buscar" class="btn btn--primaryapnea btn--lrg u-rounded" />
+                @Html.DropDownListFor(model => model.disciplina, new SelectList(Model.disciplinas, "DisciplinaID", "TipoDisciplina"), "Filtre por disciplina", new { @class = "js-calendarFilter js-selectEventType input input--select input--med", onchange = @"form.submit();" })
                 <div class="espaciado"></div>
 
             </header>
+
         }
         <center>
             <p class="u-type--medium u-type--delta u-spc-bottom--med">Vea la versión imprimible de los calendarios</p>
