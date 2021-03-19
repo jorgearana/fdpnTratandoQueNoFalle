@@ -6,38 +6,35 @@
 
 
 <div class="site-homepage">
-    @Html.Action("_PreviewJaked")
-    <section class="site-homepage__section site-worldrecords u-animation--fadeInSection">
-        @Html.Action("_PreviewNoticias")
-        <div class="espaciado"></div>
-    </section>
+    @*@Html.Action("_PreviewJaked")*@
+
+    @Html.Action("_PreviewNoticias")
+
+
+
+    <div class="features-5" style="background-image: url('Content/imagenes/bg9.jpg')">
+        <div class="col-md-8 ml-auto mr-auto text-center">
+            <h2 class="title">Resultados destacados</h2>
+            <p class="title">Ingresa a ver los datos históricos desde el año 2000 en adelante.</p>
+        </div>
+        <div class="container">
+            <div class="row IgualAltura">
+                <div class="col-md-6"> @Html.Action("_nadadordestacado")</div>
+                <div class="col-md-6">  @Html.Action("_indexranking")</div>
+            </div>
+
+        </div>
+    </div>
+
     @Html.Action("_PreviewCalendario")
 
 
-    <section class="site-homepage__section site-worldrecords u-animation--fadeInSection">
-        <div class="wrapper site-homepage__pushup">
-            <header class="site-homepage__section__header">
-                <h2 class="site-title site-title--ultra site-title--ultra--primary">Nadadores destacados</h2>
-                <p class="u-type--medium u-type--delta">Resultados en línea</p>
-
-            </header>
-            <div class="site-homepage__section__content">
-                <div class="js-WorldRecords"></div>
-            </div>
-        </div>
-    </section>
 
 
-    <div class="site-homepage__split u-group u-animation--fadeInSection">
-        <section class="site-homepage__split__item u-bg--pooldiver u-bg--blueoverlay">
-            @Html.Action("_nadadordestacado")
-        </section>
-        <section class="site-homepage__split__item u-bg--surface u-bg--blueoverlaydark">
-            @Html.Action("_indexranking")
-        </section>
-    </div>
+
+
     @Html.Action("_PreviewClubesAfiliados")
-    @Html.Action("_PreviewEventos")
+    @*@Html.Action("_PreviewEventos")*@
 
 
 

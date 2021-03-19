@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.cboTipoTorneo = new MetroFramework.Controls.MetroComboBox();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.chkDebutantes = new MetroFramework.Controls.MetroCheckBox();
             this.chkMasters = new MetroFramework.Controls.MetroCheckBox();
             this.chkConMarcaMaxima = new MetroFramework.Controls.MetroCheckBox();
             this.chkNoMarca = new MetroFramework.Controls.MetroCheckBox();
@@ -52,18 +52,10 @@
             this.CboTorneos = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.lblResultado = new MetroFramework.Controls.MetroLabel();
-            this.chkDebutantes = new MetroFramework.Controls.MetroCheckBox();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "ReportViewer";
-            this.reportViewer1.Size = new System.Drawing.Size(396, 246);
-            this.reportViewer1.TabIndex = 0;
             // 
             // metroLabel1
             // 
@@ -150,6 +142,17 @@
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 13;
+            // 
+            // chkDebutantes
+            // 
+            this.chkDebutantes.AutoSize = true;
+            this.chkDebutantes.Location = new System.Drawing.Point(28, 283);
+            this.chkDebutantes.Margin = new System.Windows.Forms.Padding(4);
+            this.chkDebutantes.Name = "chkDebutantes";
+            this.chkDebutantes.Size = new System.Drawing.Size(169, 17);
+            this.chkDebutantes.TabIndex = 20;
+            this.chkDebutantes.Text = "Crear torneo Debutantes";
+            this.chkDebutantes.UseSelectable = true;
             // 
             // chkMasters
             // 
@@ -451,17 +454,6 @@
             this.lblResultado.Size = new System.Drawing.Size(0, 0);
             this.lblResultado.TabIndex = 7;
             // 
-            // chkDebutantes
-            // 
-            this.chkDebutantes.AutoSize = true;
-            this.chkDebutantes.Location = new System.Drawing.Point(28, 283);
-            this.chkDebutantes.Margin = new System.Windows.Forms.Padding(4);
-            this.chkDebutantes.Name = "chkDebutantes";
-            this.chkDebutantes.Size = new System.Drawing.Size(169, 17);
-            this.chkDebutantes.TabIndex = 20;
-            this.chkDebutantes.Text = "Crear torneo Debutantes";
-            this.chkDebutantes.UseSelectable = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -487,7 +479,6 @@
         }
 
         #endregion
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroComboBox cboTipoTorneo;

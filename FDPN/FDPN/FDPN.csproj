@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -48,10 +49,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0-beta1\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0-beta1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="EPPlus, Version=4.5.3.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.4.5.3.1\lib\net40\EPPlus.dll</HintPath>
@@ -84,8 +85,8 @@
       <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.4\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MoreLinq, Version=2.8.21218.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
-      <HintPath>..\packages\morelinq.2.8.0\lib\net40\MoreLinq.dll</HintPath>
+    <Reference Include="MoreLinq, Version=3.3.2.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
+      <HintPath>..\packages\morelinq.3.3.2\lib\net451\MoreLinq.dll</HintPath>
     </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
@@ -202,98 +203,6 @@
     <Compile Include="Helpers\ConvertirAPeru.cs" />
     <Compile Include="Helpers\FilesHelper.cs" />
     <Compile Include="Helpers\ImageHandler.cs" />
-    <Content Include="Content\bootstrap\bootstrap.css" />
-    <Content Include="Content\bootstrap\bootstrap.min.css" />
-    <Content Include="Content\bootstrap\ionicons.css" />
-    <Content Include="Content\bootstrap\main.min.css" />
-    <Content Include="Content\img\001.jpg" />
-    <Content Include="Content\img\002.jpg" />
-    <Content Include="Content\img\003.jpg" />
-    <Content Include="Content\img\004.jpg" />
-    <Content Include="Content\img\campo1.jpg" />
-    <Content Include="Content\img\campo2.jpg" />
-    <Content Include="Content\img\carnet.jpg" />
-    <Content Include="Content\img\covermask2.png" />
-    <Content Include="Content\img\En Mantenimiento.png" />
-    <Content Include="Content\img\EnVivo.jpg" />
-    <Content Include="Content\img\fondo 1.jpg" />
-    <Content Include="Content\img\fondo2.jpg" />
-    <Content Include="Content\img\fondo3.jpg" />
-    <Content Include="Content\img\fondoJaked - copia.jpg" />
-    <Content Include="Content\img\fondoJaked.jpg" />
-    <Content Include="Content\img\fondoJakedcelu.jpg" />
-    <Content Include="Content\img\fondoJakedchico.jpg" />
-    <Content Include="Content\img\fondos\academia159-001.jpg" />
-    <Content Include="Content\img\fondos\academia159-002.jpg" />
-    <Content Include="Content\img\fondos\academiaadultos.jpg" />
-    <Content Include="Content\img\fondos\academiaaquabebe.jpg" />
-    <Content Include="Content\img\fondos\academiaclavados.jpg" />
-    <Content Include="Content\img\fondos\academiamodal.jpg" />
-    <Content Include="Content\img\fondos\academianinos.jpg" />
-    <Content Include="Content\img\fondos\academiapatera.jpg" />
-    <Content Include="Content\img\fondos\academiapolo.jpg" />
-    <Content Include="Content\img\fondos\academiasincro.jpg" />
-    <Content Include="Content\img\fondos\academiaTrujillo.jpg" />
-    <Content Include="Content\img\fondos\logoConsanat.jpg" />
-    <Content Include="Content\img\fondos\logoFina.jpg" />
-    <Content Include="Content\img\fondos\logoIPD.jpg" />
-    <Content Include="Content\img\fondos\logoUana.jpg" />
-    <Content Include="Content\img\fondos\piscinalibre.jpg" />
-    <Content Include="Content\img\formaciontalentos.jpeg" />
-    <Content Include="Content\img\Fotos\1.JPG" />
-    <Content Include="Content\img\Fotos\10.jpg" />
-    <Content Include="Content\img\Fotos\11.jpg" />
-    <Content Include="Content\img\Fotos\12.jpg" />
-    <Content Include="Content\img\Fotos\13.jpg" />
-    <Content Include="Content\img\Fotos\14.jpg" />
-    <Content Include="Content\img\Fotos\15.jpg" />
-    <Content Include="Content\img\Fotos\16.jpg" />
-    <Content Include="Content\img\Fotos\17.jpg" />
-    <Content Include="Content\img\Fotos\18.jpg" />
-    <Content Include="Content\img\Fotos\1er curso natacion artistica en arequipa.png" />
-    <Content Include="Content\img\Fotos\1ercursonatacionartisticaenarequipa.png" />
-    <Content Include="Content\img\Fotos\2.JPG" />
-    <Content Include="Content\img\Fotos\3.JPG" />
-    <Content Include="Content\img\Fotos\4.JPG" />
-    <Content Include="Content\img\Fotos\5.JPG" />
-    <Content Include="Content\img\Fotos\6.JPG" />
-    <Content Include="Content\img\Fotos\6768666-1080p-wallpapers.jpg" />
-    <Content Include="Content\img\Fotos\7.jpg" />
-    <Content Include="Content\img\Fotos\8.jpg" />
-    <Content Include="Content\img\Fotos\9.jpg" />
-    <Content Include="Content\img\Fotos\FINAL %281%29-001.jpg" />
-    <Content Include="Content\img\Fotos\LISTO1 %281%29-001.jpg" />
-    <Content Include="Content\img\Fotos\Academiatrujillo.jpeg" />
-    <Content Include="Content\img\Imgsmall\favicon.ico" />
-    <Content Include="Content\img\Imgsmall\medal1.png" />
-    <Content Include="Content\img\Imgsmall\medal2.png" />
-    <Content Include="Content\img\Imgsmall\medal3.png" />
-    <Content Include="Content\img\Imgsmall\premio1.png" />
-    <Content Include="Content\img\Imgsmall\premio2.png" />
-    <Content Include="Content\img\Imgsmall\premio3.png" />
-    <Content Include="Content\img\jaked.jpg" />
-    <Content Include="Content\img\logo-JJBB-2xb.png" />
-    <Content Include="Content\img\logocolor.png" />
-    <Content Include="Content\img\logometal.png" />
-    <Content Include="Content\img\pulpito nadando.gif" />
-    <Content Include="Content\img\sort_asc.png" />
-    <Content Include="Content\img\sort_both.png" />
-    <Content Include="Content\img\sort_desc.png" />
-    <Content Include="Content\img\trujillocolores.jpg" />
-    <Content Include="Content\img\vertical1.jpg" />
-    <Content Include="Content\img\vertical2.jpg" />
-    <Content Include="Content\img\vertical3.jpg" />
-    <Content Include="Content\img\vertical4.jpg" />
-    <Content Include="Content\img\VMT.jpg" />
-    <Content Include="Content\slick\config.rb" />
-    <Content Include="Content\slick\fonts\slick.eot" />
-    <Content Include="Content\slick\fonts\slick.ttf" />
-    <Content Include="Content\slick\fonts\slick.woff" />
-    <Content Include="Content\slick\slick-theme.less" />
-    <Content Include="Content\slick\slick-theme.scss" />
-    <Content Include="Content\slick\slick.less" />
-    <Content Include="Content\slick\slick.scss" />
-    <Content Include="Content\slick\Thumbs.db" />
     <Content Include="App_Browsers\qt.browser" />
     <Compile Include="Models\Afiliacion.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
@@ -335,6 +244,9 @@
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Calendario.cs">
+      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CalendarioCursos.cs">
       <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CambiosDNI.cs">
@@ -680,15 +592,368 @@
     <Compile Include="ViewModels\Resultados\ResultadosDeUnaPruebaViewModel.cs" />
     <Compile Include="ViewModels\Shared\IndexViewModels.cs" />
     <Compile Include="Views\Administrador\FilesViewModel.cs" />
-    <Content Include="Content\datatable\datatable.css" />
-    <Content Include="Content\datatable\datatable.js" />
-    <Content Include="Content\slick\ajax-loader.gif" />
-    <Content Include="Content\slick\fonts\slick.svg" />
-    <Content Include="Content\slick\slick-theme.css" />
-    <Content Include="Content\slick\slick.css" />
-    <Content Include="Content\slick\slick.js" />
-    <Content Include="Content\slick\slick.min.js" />
+    <Content Include="Content\css\material-kit.mind1f1.css" />
+    <Content Include="Content\imagenes\apple-icon.png" />
+    <Content Include="Content\imagenes\bg.jpg" />
+    <Content Include="Content\imagenes\bg0.jpg" />
+    <Content Include="Content\imagenes\bg10.jpg" />
+    <Content Include="Content\imagenes\bg11.jpg" />
+    <Content Include="Content\imagenes\bg12.jpg" />
+    <Content Include="Content\imagenes\bg2.jpg" />
+    <Content Include="Content\imagenes\bg3.jpg" />
+    <Content Include="Content\imagenes\bg5.jpg" />
+    <Content Include="Content\imagenes\bg6.jpg" />
+    <Content Include="Content\imagenes\bg7.jpg" />
+    <Content Include="Content\imagenes\bg8.jpg" />
+    <Content Include="Content\imagenes\bg9.jpg" />
+    <Content Include="Content\imagenes\cards-test.png" />
+    <Content Include="Content\imagenes\cd-arrow-bottom.html" />
+    <Content Include="Content\imagenes\city-profile.jpg" />
+    <Content Include="Content\imagenes\Creative-TimLOGO2.png" />
+    <Content Include="Content\imagenes\dg1.jpg" />
+    <Content Include="Content\imagenes\dg10.jpg" />
+    <Content Include="Content\imagenes\dg2.jpg" />
+    <Content Include="Content\imagenes\dg3.jpg" />
+    <Content Include="Content\imagenes\dg6.jpg" />
+    <Content Include="Content\imagenes\dg9.jpg" />
+    <Content Include="Content\imagenes\example-pages\ex-about-us.jpg" />
+    <Content Include="Content\imagenes\example-pages\ex-blog-post.jpg" />
+    <Content Include="Content\imagenes\example-pages\ex-blog-posts.jpg" />
+    <Content Include="Content\imagenes\example-pages\ex-contact.jpg" />
+    <Content Include="Content\imagenes\example-pages\ex-landing.jpg" />
+    <Content Include="Content\imagenes\example-pages\ex-login.jpg" />
+    <Content Include="Content\imagenes\example-pages\ex-pricing.jpg" />
+    <Content Include="Content\imagenes\example-pages\ex-product.jpg" />
+    <Content Include="Content\imagenes\example-pages\ex-profile.jpg" />
+    <Content Include="Content\imagenes\example-pages\ex-register.jpg" />
+    <Content Include="Content\imagenes\example-pages\harvard.jpg" />
+    <Content Include="Content\imagenes\example-pages\microsoft.jpg" />
+    <Content Include="Content\imagenes\example-pages\stanford.jpg" />
+    <Content Include="Content\imagenes\example-pages\vodafone.jpg" />
+    <Content Include="Content\imagenes\examples\bg2.jpg" />
+    <Content Include="Content\imagenes\examples\blog1.jpg" />
+    <Content Include="Content\imagenes\examples\blog3.jpg" />
+    <Content Include="Content\imagenes\examples\blog4.jpg" />
+    <Content Include="Content\imagenes\examples\blog5.jpg" />
+    <Content Include="Content\imagenes\examples\blog6.jpg" />
+    <Content Include="Content\imagenes\examples\blog7.jpg" />
+    <Content Include="Content\imagenes\examples\blog8.jpg" />
+    <Content Include="Content\imagenes\examples\card-blog1.jpg" />
+    <Content Include="Content\imagenes\examples\card-blog2.jpg" />
+    <Content Include="Content\imagenes\examples\card-blog3.jpg" />
+    <Content Include="Content\imagenes\examples\card-blog4.jpg" />
+    <Content Include="Content\imagenes\examples\card-blog5.jpg" />
+    <Content Include="Content\imagenes\examples\card-blog6.jpg" />
+    <Content Include="Content\imagenes\examples\card-product1.jpg" />
+    <Content Include="Content\imagenes\examples\card-product2.jpg" />
+    <Content Include="Content\imagenes\examples\card-product3.jpg" />
+    <Content Include="Content\imagenes\examples\card-product4.jpg" />
+    <Content Include="Content\imagenes\examples\card-profile1.jpg" />
+    <Content Include="Content\imagenes\examples\card-profile2.jpg" />
+    <Content Include="Content\imagenes\examples\card-profile4.jpg" />
+    <Content Include="Content\imagenes\examples\card-project1.jpg" />
+    <Content Include="Content\imagenes\examples\card-project2.jpg" />
+    <Content Include="Content\imagenes\examples\card-project3.jpg" />
+    <Content Include="Content\imagenes\examples\card-project4.jpg" />
+    <Content Include="Content\imagenes\examples\card-project5.jpg" />
+    <Content Include="Content\imagenes\examples\card-project6.jpg" />
+    <Content Include="Content\imagenes\examples\city.jpg" />
+    <Content Include="Content\imagenes\examples\clark-street-merc.jpg" />
+    <Content Include="Content\imagenes\examples\clem-onojegaw.jpg" />
+    <Content Include="Content\imagenes\examples\clem-onojeghuo.jpg" />
+    <Content Include="Content\imagenes\examples\color1.jpg" />
+    <Content Include="Content\imagenes\examples\color2.jpg" />
+    <Content Include="Content\imagenes\examples\color3.jpg" />
+    <Content Include="Content\imagenes\examples\cynthia-del-rio.jpg" />
+    <Content Include="Content\imagenes\examples\darren-coleshill.jpg" />
+    <Content Include="Content\imagenes\examples\dolce.jpg" />
+    <Content Include="Content\imagenes\examples\gucci.jpg" />
+    <Content Include="Content\imagenes\examples\mariya-georgieva.jpg" />
+    <Content Include="Content\imagenes\examples\office1.jpg" />
+    <Content Include="Content\imagenes\examples\office2.jpg" />
+    <Content Include="Content\imagenes\examples\office3.jpg" />
+    <Content Include="Content\imagenes\examples\office4.jpg" />
+    <Content Include="Content\imagenes\examples\office5.jpg" />
+    <Content Include="Content\imagenes\examples\olu-eletu.jpg" />
+    <Content Include="Content\imagenes\examples\product1.jpg" />
+    <Content Include="Content\imagenes\examples\product2.jpg" />
+    <Content Include="Content\imagenes\examples\product3.jpg" />
+    <Content Include="Content\imagenes\examples\product4.jpg" />
+    <Content Include="Content\imagenes\examples\suit-1.jpg" />
+    <Content Include="Content\imagenes\examples\suit-2.jpg" />
+    <Content Include="Content\imagenes\examples\suit-3.jpg" />
+    <Content Include="Content\imagenes\examples\suit-4.jpg" />
+    <Content Include="Content\imagenes\examples\suit-5.jpg" />
+    <Content Include="Content\imagenes\examples\suit-6.jpg" />
+    <Content Include="Content\imagenes\examples\tom-ford.jpg" />
+    <Content Include="Content\imagenes\faces\avatar.jpg" />
+    <Content Include="Content\imagenes\faces\card-profile1-square.jpg" />
+    <Content Include="Content\imagenes\faces\card-profile2-square.jpg" />
+    <Content Include="Content\imagenes\faces\card-profile4-square.jpg" />
+    <Content Include="Content\imagenes\faces\card-profile5-square.jpg" />
+    <Content Include="Content\imagenes\faces\card-profile6-square.jpg" />
+    <Content Include="Content\imagenes\faces\christian.jpg" />
+    <Content Include="Content\imagenes\faces\kendall.jpg" />
+    <Content Include="Content\imagenes\faces\marc.jpg" />
+    <Content Include="Content\imagenes\favicon.png" />
+    <Content Include="Content\imagenes\image_placeholder.jpg" />
+    <Content Include="Content\imagenes\office2.jpg" />
+    <Content Include="Content\imagenes\piscina\academia.jpg" />
+    <Content Include="Content\imagenes\piscina\campo.jpg" />
+    <Content Include="Content\imagenes\piscina\campo2.jpg" />
+    <Content Include="Content\imagenes\piscina\mansiche.jpg" />
+    <Content Include="Content\imagenes\piscina\piscina1.jpg" />
+    <Content Include="Content\imagenes\placeholder.jpg" />
+    <Content Include="Content\imagenes\product1.jpg" />
+    <Content Include="Content\imagenes\product2.jpg" />
+    <Content Include="Content\imagenes\product3.jpg" />
+    <Content Include="Content\imagenes\responsive-nav.gif" />
+    <Content Include="Content\imagenes\section-components\coloured-card-with-btn.jpg" />
+    <Content Include="Content\imagenes\section-components\coloured-card.jpg" />
+    <Content Include="Content\imagenes\section-components\ipad-comments.jpg" />
+    <Content Include="Content\imagenes\section-components\ipad-table.jpg" />
+    <Content Include="Content\imagenes\section-components\laptop-basics.png" />
+    <Content Include="Content\imagenes\section-components\pin-btn.jpg" />
+    <Content Include="Content\imagenes\section-components\presentation-ipad.jpg" />
+    <Content Include="Content\imagenes\section-components\share-btn.jpg" />
+    <Content Include="Content\imagenes\section-components\social-row.jpg" />
+    <Content Include="Content\imagenes\section-components\table.jpg" />
+    <Content Include="Content\imagenes\sections\b_1.jpg" />
+    <Content Include="Content\imagenes\sections\b_2.jpg" />
+    <Content Include="Content\imagenes\sections\b_3.jpg" />
+    <Content Include="Content\imagenes\sections\b_4.jpg" />
+    <Content Include="Content\imagenes\sections\f_1.jpg" />
+    <Content Include="Content\imagenes\sections\f_2.jpg" />
+    <Content Include="Content\imagenes\sections\f_3.jpg" />
+    <Content Include="Content\imagenes\sections\f_4.jpg" />
+    <Content Include="Content\imagenes\sections\f_5.jpg" />
+    <Content Include="Content\imagenes\sections\h_1.jpg" />
+    <Content Include="Content\imagenes\sections\h_2.jpg" />
+    <Content Include="Content\imagenes\sections\h_3.jpg" />
+    <Content Include="Content\imagenes\sections\h_4.jpg" />
+    <Content Include="Content\imagenes\sections\iphone.png" />
+    <Content Include="Content\imagenes\sections\iphone2.png" />
+    <Content Include="Content\imagenes\sections\m_1.jpg" />
+    <Content Include="Content\imagenes\sections\m_2.jpg" />
+    <Content Include="Content\imagenes\sections\pro_1.jpg" />
+    <Content Include="Content\imagenes\sections\pro_2.jpg" />
+    <Content Include="Content\imagenes\sections\pro_3.jpg" />
+    <Content Include="Content\imagenes\sections\pro_4.jpg" />
+    <Content Include="Content\imagenes\sections\p_1.jpg" />
+    <Content Include="Content\imagenes\sections\p_2.jpg" />
+    <Content Include="Content\imagenes\sections\p_3.jpg" />
+    <Content Include="Content\imagenes\sections\p_4.jpg" />
+    <Content Include="Content\imagenes\sections\p_5.jpg" />
+    <Content Include="Content\imagenes\sections\team_1.jpg" />
+    <Content Include="Content\imagenes\sections\team_2.jpg" />
+    <Content Include="Content\imagenes\sections\team_3.jpg" />
+    <Content Include="Content\imagenes\sections\team_4.jpg" />
+    <Content Include="Content\imagenes\sections\team_5.jpg" />
+    <Content Include="Content\imagenes\sections\t_1.jpg" />
+    <Content Include="Content\imagenes\sections\t_2.jpg" />
+    <Content Include="Content\imagenes\sections\t_3.jpg" />
+    <Content Include="Content\imagenes\test1.jpg" />
+    <Content Include="Content\imagenes\test2.jpg" />
+    <Content Include="Content\imagenes\test3.jpg" />
+    <Content Include="Content\imagenes\tim-logo.png" />
+    <Content Include="Content\img\Fotos\img1.jpg" />
+    <Content Include="Content\img\Fotos\img10.jpg" />
+    <Content Include="Content\img\Fotos\img2.jpg" />
+    <Content Include="Content\img\Fotos\img3.jpg" />
+    <Content Include="Content\img\Fotos\img4.jpg" />
+    <Content Include="Content\img\Fotos\img5.jpg" />
+    <Content Include="Content\img\Fotos\img6.jpg" />
+    <Content Include="Content\img\Fotos\img7.jpg" />
+    <Content Include="Content\img\Fotos\img8.jpg" />
+    <Content Include="Content\img\Fotos\img9.jpg" />
+    <Content Include="Content\js\core\bootstrap-material-design.min.js" />
+    <Content Include="Content\js\core\jquery.min.js" />
+    <Content Include="Content\js\core\popper.min.js" />
+    <Content Include="Content\js\material-kit.mind1f1.js" />
+    <Content Include="Content\js\plugins\bootstrap-datetimepicker.js" />
+    <Content Include="Content\js\plugins\bootstrap-selectpicker.js" />
+    <Content Include="Content\js\plugins\bootstrap-tagsinput.js" />
+    <Content Include="Content\js\plugins\jasny-bootstrap.min.js" />
+    <Content Include="Content\js\plugins\jquery.flexisel.js" />
+    <Content Include="Content\js\plugins\jquery.sharrre.js" />
+    <Content Include="Content\js\plugins\moment.min.js" />
+    <Content Include="Content\js\plugins\nouislider.min.js" />
     <Content Include="fdpn.ico" />
+    <Content Include="Content\img\001.jpg" />
+    <Content Include="Content\img\002.jpg" />
+    <Content Include="Content\img\003.jpg" />
+    <Content Include="Content\img\004.jpg" />
+    <Content Include="Content\img\campo1.jpg" />
+    <Content Include="Content\img\campo2.jpg" />
+    <Content Include="Content\img\carnet.jpg" />
+    <Content Include="Content\img\covermask.png" />
+    <Content Include="Content\img\covermask2.png" />
+    <Content Include="Content\img\En Mantenimiento.png" />
+    <Content Include="Content\img\EnVivo.jpg" />
+    <Content Include="Content\img\fondo 1.jpg" />
+    <Content Include="Content\img\fondo2.jpg" />
+    <Content Include="Content\img\fondo3.jpg" />
+    <Content Include="Content\img\fondoconferencia.jpg" />
+    <Content Include="Content\img\fondoJaked - copia.jpg" />
+    <Content Include="Content\img\fondoJaked.jpg" />
+    <Content Include="Content\img\fondoJakedcelu.jpg" />
+    <Content Include="Content\img\fondoJakedchico.jpg" />
+    <Content Include="Content\img\fondolargo.jpg" />
+    <Content Include="Content\img\fondos - Optimized Images\academiaadultos.jpg" />
+    <Content Include="Content\img\fondos - Optimized Images\academiaaquabebe.jpg" />
+    <Content Include="Content\img\fondos - Optimized Images\academiaclavados.jpg" />
+    <Content Include="Content\img\fondos - Optimized Images\academiamodal.jpg" />
+    <Content Include="Content\img\fondos - Optimized Images\academianinos.jpg" />
+    <Content Include="Content\img\fondos - Optimized Images\academiapatera.jpg" />
+    <Content Include="Content\img\fondos - Optimized Images\academiapolo.jpg" />
+    <Content Include="Content\img\fondos - Optimized Images\academiasincro.jpg" />
+    <Content Include="Content\img\fondos - Optimized Images\consanat.jpg" />
+    <Content Include="Content\img\fondos - Optimized Images\Construccion.jpg" />
+    <Content Include="Content\img\fondos - Optimized Images\directiva.jpg" />
+    <Content Include="Content\img\fondos - Optimized Images\fdpn.jpg" />
+    <Content Include="Content\img\fondos - Optimized Images\fina.jpg" />
+    <Content Include="Content\img\fondos - Optimized Images\ipd-banner.jpg" />
+    <Content Include="Content\img\fondos - Optimized Images\logoConsanat.jpg" />
+    <Content Include="Content\img\fondos - Optimized Images\logoFina.jpg" />
+    <Content Include="Content\img\fondos - Optimized Images\logoIPD.jpg" />
+    <Content Include="Content\img\fondos - Optimized Images\logoUana.jpg" />
+    <Content Include="Content\img\fondos - Optimized Images\piscinalibre.jpg" />
+    <Content Include="Content\img\fondos - Optimized Images\uana.jpg" />
+    <Content Include="Content\img\fondos\academia159-001.jpg" />
+    <Content Include="Content\img\fondos\academia159-002.jpg" />
+    <Content Include="Content\img\fondos\academiaadultos.jpg" />
+    <Content Include="Content\img\fondos\academiaaquabebe.jpg" />
+    <Content Include="Content\img\fondos\academiaclavados.jpg" />
+    <Content Include="Content\img\fondos\academiamodal.jpg" />
+    <Content Include="Content\img\fondos\academianinos.jpg" />
+    <Content Include="Content\img\fondos\academiapatera.jpg" />
+    <Content Include="Content\img\fondos\academiapolo.jpg" />
+    <Content Include="Content\img\fondos\academiasincro.jpg" />
+    <Content Include="Content\img\fondos\academiaTrujillo.jpg" />
+    <Content Include="Content\img\fondos\consanat.jpg" />
+    <Content Include="Content\img\fondos\Construccion.jpg" />
+    <Content Include="Content\img\fondos\directiva.jpg" />
+    <Content Include="Content\img\fondos\fdpn.jpg" />
+    <Content Include="Content\img\fondos\fina.jpg" />
+    <Content Include="Content\img\fondos\ipd-banner.jpg" />
+    <Content Include="Content\img\fondos\logoConsanat.jpg" />
+    <Content Include="Content\img\fondos\logoFina.jpg" />
+    <Content Include="Content\img\fondos\logoIPD.jpg" />
+    <Content Include="Content\img\fondos\logoUana.jpg" />
+    <Content Include="Content\img\fondos\pattern.svg" />
+    <Content Include="Content\img\fondos\piscinalibre.jpg" />
+    <Content Include="Content\img\fondos\puzzlePatern.svg" />
+    <Content Include="Content\img\fondos\swoosh-negative.svg" />
+    <Content Include="Content\img\fondos\swoosh-positive.svg" />
+    <Content Include="Content\img\fondos\uana.jpg" />
+    <Content Include="Content\img\fondoTrujillo.jpg" />
+    <Content Include="Content\img\formaciontalentos.jpeg" />
+    <Content Include="Content\img\Fotos\1.JPG" />
+    <Content Include="Content\img\Fotos\10.jpg" />
+    <Content Include="Content\img\Fotos\11.jpg" />
+    <Content Include="Content\img\Fotos\12.jpg" />
+    <Content Include="Content\img\Fotos\13.jpg" />
+    <Content Include="Content\img\Fotos\14.jpg" />
+    <Content Include="Content\img\Fotos\15.jpg" />
+    <Content Include="Content\img\Fotos\16.jpg" />
+    <Content Include="Content\img\Fotos\17.jpg" />
+    <Content Include="Content\img\Fotos\18.jpg" />
+    <Content Include="Content\img\Fotos\1er curso natacion artistica en arequipa.png" />
+    <Content Include="Content\img\Fotos\1ercursonatacionartisticaenarequipa.png" />
+    <Content Include="Content\img\Fotos\2.JPG" />
+    <Content Include="Content\img\Fotos\3.JPG" />
+    <Content Include="Content\img\Fotos\4.JPG" />
+    <Content Include="Content\img\Fotos\5.JPG" />
+    <Content Include="Content\img\Fotos\6.JPG" />
+    <Content Include="Content\img\Fotos\6768666-1080p-wallpapers.jpg" />
+    <Content Include="Content\img\Fotos\7.jpg" />
+    <Content Include="Content\img\Fotos\8.jpg" />
+    <Content Include="Content\img\Fotos\9.jpg" />
+    <Content Include="Content\img\Fotos\Academiatrujillo.jpeg" />
+    <Content Include="Content\img\Fotos\AFILIACIONES3.png" />
+    <Content Include="Content\img\Fotos\AFILIACIONES54.png" />
+    <Content Include="Content\img\Fotos\Apps de finanzas.jpg" />
+    <Content Include="Content\img\Fotos\division2_page00012.jpg" />
+    <Content Include="Content\img\Fotos\FINAL %281%29-001.jpg" />
+    <Content Include="Content\img\Fotos\hoaasdf-adfs.fasdf asdf %24 asf.jpg" />
+    <Content Include="Content\img\Fotos\images %282%29.jpe" />
+    <Content Include="Content\img\Fotos\LISTO1 %281%29-001.jpg" />
+    <Content Include="Content\img\Fotos\mariposas12.jpg" />
+    <Content Include="Content\img\Fotos\mariposas26.jpg" />
+    <Content Include="Content\img\Fotos\medida11.png" />
+    <Content Include="Content\img\Fotos\natacioncursomonitornatacionactividadesacuaticas0157.jpg" />
+    <Content Include="Content\img\Fotos\new-wallpaper-3_lA2aDVm.jpg" />
+    <Content Include="Content\img\Fotos\PC.png" />
+    <Content Include="Content\img\Fotos\s41.png" />
+    <Content Include="Content\img\Fotos\s4130.png" />
+    <Content Include="Content\img\Fotos\server_feature2_3devices3optim_015.png" />
+    <Content Include="Content\img\Fotos\server_feature2_3devices3optim_05.png" />
+    <Content Include="Content\img\Fotos\server_feature2_3devices3optim_09.png" />
+    <Content Include="Content\img\Fotos\Sin título Varon.png" />
+    <Content Include="Content\img\Fotos\SintítuloVaron50.png" />
+    <Content Include="Content\img\Fotos\SintítuloVaron51.png" />
+    <Content Include="Content\img\Fotos\thumbs\1er curso natacion artistica en arequipa80x80.png" />
+    <Content Include="Content\img\Fotos\thumbs\3491680x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\6768666-1080p-wallpapers80x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\AFILIACIONES380x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\AFILIACIONES4780x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\AFILIACIONES5480x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\Apps de finanzas80x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\division2_page0001280x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\hoaasdf-adfs.fasdf asdf %24 asf80x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\mariposas1280x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\mariposas2680x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\medida1180x80.png" />
+    <Content Include="Content\img\Fotos\thumbs\natacioncursomonitornatacionactividadesacuaticas015780x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\new-wallpaper-3_lA2aDVm80x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\PC3580x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\PC80x80.png" />
+    <Content Include="Content\img\Fotos\thumbs\s413080x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\s414980x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\s4180x80.png" />
+    <Content Include="Content\img\Fotos\thumbs\server_feature2_3devices3optim_01580x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\server_feature2_3devices3optim_0580x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\server_feature2_3devices3optim_0980x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\Sin título Varon80x80.png" />
+    <Content Include="Content\img\Fotos\thumbs\SintítuloVaron5180x80.png" />
+    <Content Include="Content\img\Fotos\thumbs\Wallpaper3D165304580x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\Wallpaper3D165304980x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\WhatsAppImage20190306at92680x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\WhatsAppImage20190306at92980x80.jpg" />
+    <Content Include="Content\img\Fotos\thumbs\WhatsAppImage20190306at93480x80.jpg" />
+    <Content Include="Content\img\Imgsmall\aguas.jpg" />
+    <Content Include="Content\img\Imgsmall\clavados.jpg" />
+    <Content Include="Content\img\Imgsmall\facebook_logos_PNG19761.png" />
+    <Content Include="Content\img\Imgsmall\favicon.ico" />
+    <Content Include="Content\img\Imgsmall\fdpn.ico" />
+    <Content Include="Content\img\Imgsmall\ico_fdpn.jpg" />
+    <Content Include="Content\img\Imgsmall\master.jpg" />
+    <Content Include="Content\img\Imgsmall\medal1.png" />
+    <Content Include="Content\img\Imgsmall\medal2.png" />
+    <Content Include="Content\img\Imgsmall\medal3.png" />
+    <Content Include="Content\img\Imgsmall\natacion.jpg" />
+    <Content Include="Content\img\Imgsmall\premio1.png" />
+    <Content Include="Content\img\Imgsmall\premio2.png" />
+    <Content Include="Content\img\Imgsmall\premio3.png" />
+    <Content Include="Content\img\Imgsmall\sincro.jpg" />
+    <Content Include="Content\img\Imgsmall\SinFoto.jpg" />
+    <Content Include="Content\img\Imgsmall\social-facebook.svg" />
+    <Content Include="Content\img\Imgsmall\wp.jpg" />
+    <Content Include="Content\img\jaked.jpg" />
+    <Content Include="Content\img\logo-JJBB-2xb.png" />
+    <Content Include="Content\img\logocolor.png" />
+    <Content Include="Content\img\logometal.png" />
+    <Content Include="Content\img\Logo_fdpn.png" />
+    <Content Include="Content\img\pulpito nadando.gif" />
+    <Content Include="Content\img\sort_asc.png" />
+    <Content Include="Content\img\sort_both.png" />
+    <Content Include="Content\img\sort_desc.png" />
+    <Content Include="Content\img\trujillocolores.jpg" />
+    <Content Include="Content\img\vertical1.jpg" />
+    <Content Include="Content\img\vertical2.jpg" />
+    <Content Include="Content\img\vertical3.jpg" />
+    <Content Include="Content\img\vertical4.jpg" />
+    <Content Include="Content\img\VMT.jpg" />
     <Content Include="Models\ModellAfiliaciones.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModellAfiliaciones.edmx</DependentUpon>
@@ -702,10 +967,6 @@
     <Content Include="Rotativa\msvcp120.dll" />
     <Content Include="Rotativa\msvcr120.dll" />
     <Content Include="Rotativa\wkhtmltopdf.exe" />
-    <Content Include="Scripts\Administrador.js" />
-    <Content Include="Scripts\bootstrap\bootstrap.min.js" />
-    <Content Include="Scripts\DatePickerReady.js" />
-    <Content Include="Scripts\EditorDatatable.js" />
     <Content Include="Views\Home\_PreviewCalendario.cshtml" />
     <Content Include="Views\Noticias\Eventos.cshtml" />
     <Content Include="Views\Home\_PreviewEnVivo.cshtml" />
@@ -775,122 +1036,6 @@
     <Content Include="Views\Administrador\BorrarVivo.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Apnea.css" />
-    <Content Include="Content\Calendario\Calendario.css" />
-    <Content Include="Content\Calendario\Calendario.js" />
-    <Content Include="Content\FileUpload\css\blueimp-gallery.min.css" />
-    <Content Include="Content\FileUpload\css\demo-ie8.css" />
-    <Content Include="Content\FileUpload\css\demo.css" />
-    <Content Include="Content\FileUpload\css\jquery.fileupload-noscript.css" />
-    <Content Include="Content\FileUpload\css\jquery.fileupload-ui-noscript.css" />
-    <Content Include="Content\FileUpload\css\jquery.fileupload-ui.css" />
-    <Content Include="Content\FileUpload\css\jquery.fileupload.css" />
-    <Content Include="Content\FileUpload\css\style.css" />
-    <Content Include="Content\FileUpload\js\app.js" />
-    <Content Include="Content\FileUpload\js\canvas-to-blob.min.js" />
-    <Content Include="Content\FileUpload\js\cors\jquery.postmessage-transport.js" />
-    <Content Include="Content\FileUpload\js\cors\jquery.xdr-transport.js" />
-    <Content Include="Content\FileUpload\js\jquery.blueimp-gallery.min.js" />
-    <Content Include="Content\FileUpload\js\jquery.fileupload-angular.js" />
-    <Content Include="Content\FileUpload\js\jquery.fileupload-audio.js" />
-    <Content Include="Content\FileUpload\js\jquery.fileupload-image.js" />
-    <Content Include="Content\FileUpload\js\jquery.fileupload-jquery-ui.js" />
-    <Content Include="Content\FileUpload\js\jquery.fileupload-process.js" />
-    <Content Include="Content\FileUpload\js\jquery.fileupload-ui.js" />
-    <Content Include="Content\FileUpload\js\jquery.fileupload-validate.js" />
-    <Content Include="Content\FileUpload\js\jquery.fileupload-video.js" />
-    <Content Include="Content\FileUpload\js\jquery.fileupload.js" />
-    <Content Include="Content\FileUpload\js\jquery.iframe-transport.js" />
-    <Content Include="Content\FileUpload\js\load-image.all.min.js" />
-    <Content Include="Content\FileUpload\js\main.js" />
-    <Content Include="Content\FileUpload\js\tmpl.min.js" />
-    <Content Include="Content\FileUpload\js\vendor\jquery.ui.widget.js" />
-    <Content Include="Content\Fonawesome\css\font-awesome.css" />
-    <Content Include="Content\Fonawesome\css\font-awesome.min.css" />
-    <Content Include="Content\Fonawesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="Content\img\covermask.png" />
-    <Content Include="Content\img\fondoconferencia.jpg" />
-    <Content Include="Content\img\fondolargo.jpg" />
-    <Content Include="Content\img\fondos\consanat.jpg" />
-    <Content Include="Content\img\fondos\Construccion.jpg" />
-    <Content Include="Content\img\fondos\directiva.jpg" />
-    <Content Include="Content\img\fondos\fdpn.jpg" />
-    <Content Include="Content\img\fondos\fina.jpg" />
-    <Content Include="Content\img\fondos\ipd-banner.jpg" />
-    <Content Include="Content\img\fondos\pattern.svg" />
-    <Content Include="Content\img\fondos\puzzlePatern.svg" />
-    <Content Include="Content\img\fondos\swoosh-negative.svg" />
-    <Content Include="Content\img\fondos\swoosh-positive.svg" />
-    <Content Include="Content\img\fondos\uana.jpg" />
-    <Content Include="Content\img\fondoTrujillo.jpg" />
-    <Content Include="Content\img\Imgsmall\aguas.jpg" />
-    <Content Include="Content\img\Imgsmall\clavados.jpg" />
-    <Content Include="Content\img\Imgsmall\facebook_logos_PNG19761.png" />
-    <Content Include="Content\img\Imgsmall\fdpn.ico" />
-    <Content Include="Content\img\Imgsmall\ico_fdpn.jpg" />
-    <Content Include="Content\img\Imgsmall\master.jpg" />
-    <Content Include="Content\img\Imgsmall\natacion.jpg" />
-    <Content Include="Content\img\Imgsmall\sincro.jpg" />
-    <Content Include="Content\img\Imgsmall\SinFoto.jpg" />
-    <Content Include="Content\img\Imgsmall\social-facebook.svg" />
-    <Content Include="Content\img\Imgsmall\wp.jpg" />
-    <Content Include="Content\img\Logo_fdpn.png" />
-    <Content Include="Content\PagedList.css" />
-    <Content Include="Content\pdf\Estatuto-FDPN.html" />
-    <Content Include="Content\Summernote\lang\summernote-ar-AR.js" />
-    <Content Include="Content\Summernote\lang\summernote-bg-BG.js" />
-    <Content Include="Content\Summernote\lang\summernote-ca-ES.js" />
-    <Content Include="Content\Summernote\lang\summernote-cs-CZ.js" />
-    <Content Include="Content\Summernote\lang\summernote-da-DK.js" />
-    <Content Include="Content\Summernote\lang\summernote-de-DE.js" />
-    <Content Include="Content\Summernote\lang\summernote-el-GR.js" />
-    <Content Include="Content\Summernote\lang\summernote-es-ES.js" />
-    <Content Include="Content\Summernote\lang\summernote-es-EU.js" />
-    <Content Include="Content\Summernote\lang\summernote-fa-IR.js" />
-    <Content Include="Content\Summernote\lang\summernote-fi-FI.js" />
-    <Content Include="Content\Summernote\lang\summernote-fr-FR.js" />
-    <Content Include="Content\Summernote\lang\summernote-gl-ES.js" />
-    <Content Include="Content\Summernote\lang\summernote-he-IL.js" />
-    <Content Include="Content\Summernote\lang\summernote-hr-HR.js" />
-    <Content Include="Content\Summernote\lang\summernote-hu-HU.js" />
-    <Content Include="Content\Summernote\lang\summernote-id-ID.js" />
-    <Content Include="Content\Summernote\lang\summernote-it-IT.js" />
-    <Content Include="Content\Summernote\lang\summernote-ja-JP.js" />
-    <Content Include="Content\Summernote\lang\summernote-ko-KR.js" />
-    <Content Include="Content\Summernote\lang\summernote-lt-LT.js" />
-    <Content Include="Content\Summernote\lang\summernote-lt-LV.js" />
-    <Content Include="Content\Summernote\lang\summernote-mn-MN.js" />
-    <Content Include="Content\Summernote\lang\summernote-nb-NO.js" />
-    <Content Include="Content\Summernote\lang\summernote-nl-NL.js" />
-    <Content Include="Content\Summernote\lang\summernote-pl-PL.js" />
-    <Content Include="Content\Summernote\lang\summernote-pt-BR.js" />
-    <Content Include="Content\Summernote\lang\summernote-pt-PT.js" />
-    <Content Include="Content\Summernote\lang\summernote-ro-RO.js" />
-    <Content Include="Content\Summernote\lang\summernote-ru-RU.js" />
-    <Content Include="Content\Summernote\lang\summernote-sk-SK.js" />
-    <Content Include="Content\Summernote\lang\summernote-sl-SI.js" />
-    <Content Include="Content\Summernote\lang\summernote-sr-RS-Latin.js" />
-    <Content Include="Content\Summernote\lang\summernote-sr-RS.js" />
-    <Content Include="Content\Summernote\lang\summernote-sv-SE.js" />
-    <Content Include="Content\Summernote\lang\summernote-ta-IN.js" />
-    <Content Include="Content\Summernote\lang\summernote-th-TH.js" />
-    <Content Include="Content\Summernote\lang\summernote-tr-TR.js" />
-    <Content Include="Content\Summernote\lang\summernote-uk-UA.js" />
-    <Content Include="Content\Summernote\lang\summernote-vi-VN.js" />
-    <Content Include="Content\Summernote\lang\summernote-zh-CN.js" />
-    <Content Include="Content\Summernote\lang\summernote-zh-TW.js" />
-    <Content Include="Content\Summernote\plugin\databasic\summernote-ext-databasic.css" />
-    <Content Include="Content\Summernote\plugin\databasic\summernote-ext-databasic.js" />
-    <Content Include="Content\Summernote\plugin\hello\summernote-ext-hello.js" />
-    <Content Include="Content\Summernote\plugin\specialchars\summernote-ext-specialchars.js" />
-    <Content Include="Content\Summernote\summernote-bs4.css" />
-    <Content Include="Content\Summernote\summernote-bs4.js" />
-    <Content Include="Content\Summernote\summernote-bs4.min.js" />
-    <Content Include="Content\Summernote\summernote-lite.css" />
-    <Content Include="Content\Summernote\summernote-lite.js" />
-    <Content Include="Content\Summernote\summernote.css" />
-    <Content Include="Content\Summernote\summernote.js" />
-    <Content Include="Content\Summernote\summernote.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Files\somefiles\descarga %286%29.jpeg" />
     <Content Include="Files\somefiles\images %2810%29.jpeg" />
@@ -927,15 +1072,6 @@
     <Content Include="Files\somefiles\FINA Scholarships for Athletes - Guidelines - 2017-18.pdf" />
     <Content Include="Files\somefiles\ING ARANA CORDINADOR GENERAL.docx" />
     <Content Include="Files\somefiles\LIC. LILIANA.docx" />
-    <Content Include="Content\Fonawesome\fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\Fonawesome\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Content\Fonawesome\fonts\fontawesome-webfont.woff" />
-    <Content Include="Content\Fonawesome\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Content\Fonawesome\fonts\FontAwesome.otf" />
-    <Content Include="Content\pdf\Estatuto FDPN.pdf" />
-    <Content Include="Content\Summernote\font\summernote.eot" />
-    <Content Include="Content\Summernote\font\summernote.ttf" />
-    <Content Include="Content\Summernote\font\summernote.woff" />
     <EntityDeploy Include="Models\ModellAfiliaciones.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModellAfiliaciones.Designer.cs</LastGenOutput>
@@ -943,29 +1079,7 @@
     <Content Include="Models\ModellAfiliaciones.edmx.diagram">
       <DependentUpon>ModellAfiliaciones.edmx</DependentUpon>
     </Content>
-    <Content Include="Content\pdf\formato inscripcion.xls" />
-    <Content Include="Content\pdf\CalendarioFDPN2019.pdf" />
-    <Content Include="Content\pdf\Procedimiento de renovación de afiliación anual 2020.pdf" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\jquery.matchHeight.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\jquery37.js" />
-    <Content Include="Scripts\js-IndexPartialLoad.js" />
-    <Content Include="Scripts\Menu.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\noticaSummerNote.js" />
-    <Content Include="Scripts\PublicPages.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\script-custom-editor.js" />
-    <Content Include="Scripts\Sitio.js" />
-    <Content Include="Scripts\sni0wes.js" />
+    <Content Include="Content\js\Sitio.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1048,11 +1162,10 @@
     <Content Include="Views\Documentos\ResolucionesIPD.cshtml" />
     <Content Include="Views\Nosotros\ListadoClubesAfiliados.cshtml" />
     <Content Include="Views\Home\_PreviewClubesAfiliados.cshtml" />
+    <Content Include="Views\Home\_PreviewCursos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\img\Fotos\thumbs\" />
-    <Folder Include="Content\Uploads\" />
     <Folder Include="Views\BASE\" />
     <Folder Include="Views\Director\" />
     <Folder Include="Views\FileUpload\" />
@@ -1060,8 +1173,19 @@
     <Folder Include="Views\Tecnico\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\img\fondos - Optimized Images\Thumbs.db" />
+    <Content Include="Content\img\fondos\Thumbs.db" />
+    <Content Include="Content\img\Fotos\android.pdn" />
+    <Content Include="Content\img\Fotos\Thumbs.db" />
+    <Content Include="Content\img\Fotos\thumbs\Thumbs.db" />
+    <Content Include="Content\img\Fotos\WhatsAppImage20190306at926.05" />
+    <Content Include="Content\img\Fotos\WhatsAppImage20190306at929.05" />
+    <Content Include="Content\img\Fotos\WhatsAppImage20190306at934.05" />
+    <Content Include="Content\img\Imgsmall\Thumbs.db" />
+    <Content Include="Content\img\Thumbs.db" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FDPN2.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -1071,7 +1195,8 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Content\img\Imgsmall\favicon.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
@@ -1106,11 +1231,14 @@
     <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.10.0-beta3\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.10.0-beta3\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.10.0-beta3\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.10.0-beta3\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.10.0-beta3\build\Microsoft.ApplicationInsights.WindowsServer.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.2.10.0-beta3\build\Microsoft.ApplicationInsights.WindowsServer.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
   <Import Project="..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.10.0-beta3\build\Microsoft.ApplicationInsights.DependencyCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.10.0-beta3\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" />
   <Import Project="..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.10.0-beta3\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.10.0-beta3\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" />
   <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.10.0-beta3\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.10.0-beta3\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" />
   <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.2.10.0-beta3\build\Microsoft.ApplicationInsights.WindowsServer.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.10.0-beta3\build\Microsoft.ApplicationInsights.WindowsServer.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

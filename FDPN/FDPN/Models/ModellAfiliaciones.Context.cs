@@ -136,5 +136,6 @@ namespace FDPN.Models
         public virtual DbSet<Vouchers> Vouchers { get; set; }
         public virtual DbSet<Query> Query { get; set; }
         public virtual DbSet<Sheet1_> Sheet1_ { get; set; }
+        public virtual DbSet<CalendarioCursos> CalendarioCursos { get; set; }
     }
 }

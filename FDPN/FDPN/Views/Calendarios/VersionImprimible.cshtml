@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "VersionImprimible";
     Layout = "~/Views/Shared/_LayoutWYSWYG.cshtml";
-
+    int anno = DateTime.Now.Year;
 
     DateTime fecha = ViewBag.modificacion;
 }
@@ -11,7 +11,7 @@
     <div class="col-lg-10 col-lg-offset-2">
         <h2>
             <img src="~/Content/img/Logo_fdpn.png" style="width:50px;" />
-            Calendario oficial de actividades 2020 <small>Actualizado al @fecha.ToString("dd/MM/yyyy")</small>
+            Calendario oficial de actividades @anno <small>Actualizado al @fecha.ToString("dd/MM/yyyy")</small>
         </h2>
     </div>
 </div>

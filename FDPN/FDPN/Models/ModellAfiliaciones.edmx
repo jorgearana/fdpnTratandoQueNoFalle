@@ -189,6 +189,22 @@
           <Property Name="DisciplinaId" Type="int" Nullable="false" />
           <Property Name="Internacional" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="CalendarioCursos">
+          <Key>
+            <PropertyRef Name="EventoId" />
+          </Key>
+          <Property Name="EventoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Inicio" Type="date" Nullable="false" />
+          <Property Name="Fin" Type="date" Nullable="false" />
+          <Property Name="Sede" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Disciplina" Type="int" Nullable="false" />
+          <Property Name="Evento" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Organizador" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DirigidoA" Type="nvarchar" MaxLength="255" />
+          <Property Name="Requisito" Type="nvarchar" MaxLength="255" />
+          <Property Name="Horarios" Type="nvarchar" MaxLength="255" />
+          <Property Name="Enlace" Type="nvarchar" MaxLength="255" />
+        </EntityType>
         <EntityType Name="CambiosDNI">
           <Key>
             <PropertyRef Name="CambioId" />
@@ -707,20 +723,6 @@
           <Property Name="FechaTraspaso" Type="date" Nullable="false" />
           <Property Name="InscripcionId" Type="int" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Hoja2' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="Hoja2">
-          <Property Name="UNO" Type="int" />
-          <Property Name="Sex" Type="nvarchar" MaxLength="1" />
-          <Property Name="Indi" Type="nvarchar" MaxLength="1" />
-          <Property Name="distancia" Type="int" />
-          <Property Name="estilo" Type="nvarchar" MaxLength="1" />
-          <Property Name="mini" Type="smallint" />
-          <Property Name="max" Type="smallint" />
-          <Property Name="segundos" Type="real" />
-          <Property Name="Piscina" Type="nvarchar" MaxLength="1" />
-          <Property Name="Meet" Type="int" />
-        </EntityType>-->
         <EntityType Name="Inscripciones">
           <Key>
             <PropertyRef Name="InscripcionId" />
@@ -3099,6 +3101,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <EntitySet Name="Banners" EntityType="Self.Banners" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BASETIMES" EntityType="Self.BASETIMES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Calendario" EntityType="Self.Calendario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CalendarioCursos" EntityType="Self.CalendarioCursos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CambiosDNI" EntityType="Self.CambiosDNI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CategoriaNoticia" EntityType="Self.CategoriaNoticia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
@@ -4192,6 +4195,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Vouchers" EntitySet="Vouchers" />
           </AssociationSet>
+          <EntitySet Name="CalendarioCursos" EntityType="DB_9B1F4C_comentariosModel.CalendarioCursos" />
         </EntityContainer>
         <EntityType Name="Afiliacion">
           <Key>
@@ -7468,6 +7472,22 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="CalendarioCursos">
+          <Key>
+            <PropertyRef Name="EventoId" />
+          </Key>
+          <Property Name="EventoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Inicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Sede" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Disciplina" Type="Int32" Nullable="false" />
+          <Property Name="Evento" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Organizador" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DirigidoA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Requisito" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Horarios" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Enlace" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -9348,6 +9368,23 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
                 <ScalarProperty Name="Evento" ColumnName="Evento" />
                 <ScalarProperty Name="Fin" ColumnName="Fin" />
                 <ScalarProperty Name="Inicio" ColumnName="Inicio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CalendarioCursos">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.CalendarioCursos">
+              <MappingFragment StoreEntitySet="CalendarioCursos">
+                <ScalarProperty Name="Enlace" ColumnName="Enlace" />
+                <ScalarProperty Name="Horarios" ColumnName="Horarios" />
+                <ScalarProperty Name="Requisito" ColumnName="Requisito" />
+                <ScalarProperty Name="DirigidoA" ColumnName="DirigidoA" />
+                <ScalarProperty Name="Organizador" ColumnName="Organizador" />
+                <ScalarProperty Name="Evento" ColumnName="Evento" />
+                <ScalarProperty Name="Disciplina" ColumnName="Disciplina" />
+                <ScalarProperty Name="Sede" ColumnName="Sede" />
+                <ScalarProperty Name="Fin" ColumnName="Fin" />
+                <ScalarProperty Name="Inicio" ColumnName="Inicio" />
+                <ScalarProperty Name="EventoId" ColumnName="EventoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

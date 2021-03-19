@@ -53,57 +53,24 @@ namespace FDPN.Controllers
             {
                 Random rnd = new Random();
                 int i = rnd.Next(1, 10);
-                
-                 banners = db.Banners.Find(i);
-                //switch (i)
-                //{
-                //    case 1:
-                //        banner = "site-header--prensa2";
-                //        break;
-                //    case 2:
-                //        banner = "site-header--prensa3";
-                //        break;
-                //    case 3:
-                //        banner = "site-header--prensa4";
-                //        break;
-                //    case 4:
-                //        banner = "site-header--default";
-                //        break;
-                //    case 5:
-                //        banner = "site-header--prensa";
-                //        break;
-                //    case 6:
-                //        banner = "site-header--documentos";
-                //        break;
-                //    case 7:
-                //        banner = "site-header--resultados";
-                //        break;
-                //    case 8:
-                //        banner = "site-header--rankings";
-                //        break;
-                //    case 9:
-                //        banner = "site-header--calendar";
-                //        break;
-                //    case 10:
-                //        banner = "site-header--news";
-                //        break;
-                //}
+                banners = db.Banners.Find(i);
                 ViewBag.Title = "Home";
-                ViewBag.clase = "site-header js-siteHeader";
-                //banner= banner+ " site-header js-siteHeader";
             }
-          
+            banners = new Banners
+            {
+                Foto = "bg6.jpg",
+            };
+
             return PartialView(banners);
         }
 
         public ActionResult _Banner()
         {
-            string titulo = ViewBag.title;
-            if (ViewBag.Title == "Home")
-            {
-                ViewBag.Title = "Home";
-            }
-            return PartialView();
+            Random random = new Random();
+            int numero = random.Next(10, 19);
+            string banner = numero.ToString() + ".jpg";
+            ViewBag.banner = banner;
+            return PartialView(banner);
         }
 
         public ActionResult _TopBarSINBANNER()
@@ -114,26 +81,32 @@ namespace FDPN.Controllers
 
         public ActionResult _indexranking()
         {
-            string sexo = "F";
-            string piscina = "L";
-            Random rnd = new Random();
-            int prueba = rnd.Next(1, 17);
-            int i = rnd.Next(0, 2);
+            List<RESULTS> resultado = new List<RESULTS>();
+            do
+            {
+                string sexo = "F";
+                string piscina = "L";
+                Random rnd = new Random();
+                int prueba = rnd.Next(1, 17);
+                int i = rnd.Next(0, 2);
 
-            if (i == 1)
-            {
-                sexo = "M";
-            }
-            i = rnd.Next(0, 2);
-            if (i == 1)
-            {
-                piscina = "S";
-            }
-            List<RESULTS> resultado = db.RESULTS
-                .Where(x => x.PruebaId == prueba && x.NT == 0 && x.SCORE != "" && x.ATHLETE != 0 && x.Athlete1.Sex == sexo && x.COURSE == piscina && x.PLACE != 0)
-                .OrderBy(x => x.SCORE)
-                .DistinctBy(x => x.AthleteId)
-                .Take(10).ToList();
+                if (i == 1)
+                {
+                    sexo = "M";
+                }
+                i = rnd.Next(0, 2);
+                if (i == 1)
+                {
+                    piscina = "S";
+                }
+                resultado = db.RESULTS
+                    .Where(x => x.PruebaId == prueba && x.NT == 0 && x.SCORE != "" && x.ATHLETE != 0 && x.Athlete1.Sex == sexo && x.COURSE == piscina && x.PLACE != 0)
+                    .OrderBy(x => x.SCORE)
+                    .DistinctBy(x => x.AthleteId)
+                    .Take(10).ToList();
+
+            } while (resultado.Count() == 0);
+
 
             return PartialView("_indexranking", resultado);
         }
@@ -214,6 +187,13 @@ namespace FDPN.Controllers
             return PartialView("_PreviewCalendario", calendario);
 
         }
+
+        public PartialViewResult _PreviewCursos()
+        {
+            DateTime hoy = (DateTime.Now).AddDays(-7); /*Para tomar los eventos que vienen más adelante y una semana atrás*/
+            List<CalendarioCursos> cursos = db.CalendarioCursos.Where(x => x.Inicio > hoy).OrderBy(x => x.Inicio).Take(6).ToList();
+            return PartialView("_PreviewCursos", cursos);
+        }
         public ActionResult _PreviewClubesAfiliados()
         {
             return PartialView();
@@ -227,7 +207,7 @@ namespace FDPN.Controllers
         public ActionResult _PreviewNoticias()
         {
             List<previewNoticiasViewModel> VM = new List<previewNoticiasViewModel>();
-            List<Noticias> noticias = db.Noticias.Where(x => x.CategoriaId == 1).OrderByDescending(x => x.Fecha).ThenByDescending(x => x.NoticiaId).Take(9).ToList();
+            List<Noticias> noticias = db.Noticias.Where(x => x.CategoriaId == 1).OrderByDescending(x => x.Fecha).ThenByDescending(x => x.NoticiaId).Take(6).ToList();
             foreach (Noticias noticia in noticias)
             {
                 previewNoticiasViewModel preview = new previewNoticiasViewModel

@@ -2,236 +2,149 @@
 
 @{
 
-    string path = Url.Content("~/Content/Img/Fotos/" + Model.Foto);
+    string path = Url.Content("~/Content/imagenes/" + Model.Foto);
     string clase = ViewBag.clase;
 }
 
-<div class="layout layout--fullWidth">
-    <header role="banner" style="background-image:url(@path);" class="@clase"  >
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
 
-                    @Html.ActionLink("Inicio", "index", "home", null, new { @class = "navbar-brand" })
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nosotros <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("El directorio", "directorio", "nosotros")</li>
-                                <li>@Html.ActionLink("Estatuto", "estatuto", "nosotros")</li>
-                                <li role="separator" class="divider"></li>
-                                <li>@Html.ActionLink("Clubes afiliados", "ListadoClubesAfiliados", "nosotros")</li>
-                                <li role="separator" class="divider"></li>
-                                <li>@Html.ActionLink("IPD", "ipd", "nosotros")</li>
-                                <li>@Html.ActionLink("FINA", "fina", "nosotros") </li>
-                                <li>@Html.ActionLink("UANA", "uana", "nosotros")</li>
-                                <li>@Html.ActionLink("CONSANAT", "consanat", "nosotros")</li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bases y reglamentos <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    @Html.ActionLink("Bases de torneos", "bases", "documentos")
-                                </li>
-                                <li>
-                                    @Html.ActionLink("Reglamentos", "Reglamentos", "documentos")
-                                </li>
-                                <li>
-                                    @Html.ActionLink("Comunicados", "comunicados", "documentos")
-                                </li>
-                                <li>
-                                    @Html.ActionLink("Criterios de selección", "Criterios", "documentos")
-                                </li>
-                                <li>
-                                    @Html.ActionLink("Marcas mínimas", "MarcasMinimas", "documentos")
-                                </li>
-                                <li>
-                                    @Html.ActionLink("Marcas clasificatorias a eventos internacionales", "Marcasclasificatorias", "documentos")
-                                </li>
-                                <li>
-                                    @Html.ActionLink("Convocatorias", "Convocatorias", "documentos")
-                                </li>
-
-                                <li class="nav-item">
-                                    @Html.ActionLink("Clubes hábiles", "habiles", "documentos")
-                                </li>
-                                <li class="nav-item">
-                                    @Html.ActionLink("Formatos", "formatos", "documentos")
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resultados <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    @Html.ActionLink("Resultados", "resultados", "resultados", null, new { @class = "nav-link" })
-                                </li>
-
-                                <li class="nav-item">
-                                    @Html.ActionLink("Nadadores", "nadadores", "resultados", null, new { @class = "nav-link" })
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li class="nav-item">
-                                    @Html.ActionLink("Rankings por prueba", "Rankings", "resultados", null, new { @class = "nav-link" })
-                                </li>
-                                <li class="nav-item">
-                                    @Html.ActionLink("Rankings Puntos FINA", "RankingsFINA", "resultados", null, new { @class = "nav-link" })
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li class="nav-item">
-                                    @Html.ActionLink("Resultados en pdf", "resultadosPDF", "documentos", null, new { @class = "nav-link" })
-                                </li>
-                                <li class="nav-item">
-                                    @Html.ActionLink("Rankings en pdf", "RankingPDF", "documentos", null, new { @class = "nav-link" })
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li class="nav-item">
-                                    @Html.ActionLink("En vivo", "Envivo", "documentos", null, new { @class = "nav-link" })
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li class="nav-item">
-                                    @Html.ActionLink("Records", "records", "documentos", null, new { @class = "nav-link" })
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentos <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    @Html.ActionLink("Noticias", "Noticias", "Noticias", null, new { @class = "nav-link" })
-                                </li>
-                                <li class="nav-item">
-                                    @Html.ActionLink("Documentos diversos", "Documentos", "Documentos", null, new { @class = "nav-link" })
-                                </li>
-                                <li class="nav-item">
-                                    @Html.ActionLink("Comunicados", "Comunicados", "Documentos", null, new { @class = "nav-link" })
-                                </li>
-                                <li>
-                                    @Html.ActionLink("Criterios de selección", "Criterios", "documentos")
-                                </li>
-                                <li class="nav-item">
-                                    @Html.ActionLink("Reglamentos", "Reglamentos", "Documentos", null, new { @class = "nav-link" })
-                                </li>
-                                <li class="nav-item">
-                                    @Html.ActionLink("Resoluciones del IPD", "ResolucionesIPD", "Documentos", null, new { @class = "nav-link" })
-                                </li>
-                            </ul>
-                        </li>
-
-
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Calendario <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    @Html.ActionLink("Calendarios", "Calendarios", "resultados", null, new { @class = "nav-link" })
-                                </li>
-                                <li class="nav-item">
-                                    @Html.ActionLink("Calendario actual", "PrintCalendario", "Calendarios", new { disciplina = 7, target = "_blank" }, new { @class = "btn btn-default todas" })
-                                </li>
-                            </ul>
-                        </li>
-
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Academia <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-
-                                @*<li class="nav-item">
-            <a href="~/Content/img/formaciontalentos.jpeg" target="_blank"> VIDENA</a>
-        </li>*@
-                                @*<li class="nav-item">
-            <a href="~/Content/img/VMT.jpg" target="_blank"> Complejo VMT</a>
-        </li>*@
-                                <li class="nav-item">
-                                    <a href="~/Content/img/001.jpg" target="_blank">En Campo de Marte 1</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="~/Content/img/002.jpg" target="_blank">En Campo de Marte 2</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="~/Content/img/003.jpg" target="_blank">En Campo de Marte 3</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="~/Content/img/004.jpg" " target="_blank">Academia en Trujillo 2020</a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Disciplinas <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    @Html.ActionLink("Natación", "Index", "disciplinas", new { disciplina = 1 }, new { @class = "nav-link" })
-                                </li>
-                                <li class="nav-item">
-                                    @Html.ActionLink("Polo acuático", "Index", "disciplinas", new { disciplina = 2 }, new { @class = "nav-link" })
-                                </li>
-                                <li class="nav-item">
-                                    @Html.ActionLink("Aguas abiertas", "Index", "disciplinas", new { disciplina = 5 }, new { @class = "nav-link" })
-                                </li>
-                                <li class="nav-item">
-                                    @Html.ActionLink("Natación artística", "Index", "disciplinas", new { disciplina = 3 }, new { @class = "nav-link" })
-                                </li>
-                                <li class="nav-item">
-                                    @Html.ActionLink("Clavados", "Index", "disciplinas", new { disciplina = 4 }, new { @class = "nav-link" })
-                                </li>
-                                <li class="nav-item">
-                                    @Html.ActionLink("Masters", "Index", "masters", null, new { @class = "nav-link destacado" })
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Afiliación <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a href="~/Content/pdf/Procedimiento de renovación de afiliación anual 2020.pdf">Como afiliarte</a>
-                                    @*@Html.ActionLink("Como afiliarte", "afiliarClub", "documentos", null, new { @class = "nav-link" })*@
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="http://afiliaciones.fdpn.org">Afiliaciones</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Transparencia <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    @Html.ActionLink("Subvenciones IPD", "Subvenciones", "Documentos", null, new { @class = "nav-link" })
-                                </li>
-                            </ul>
-                        </li>
-                        @Html.Action("_PreviewAlertas")
-
-                    </ul>
-
-
-
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-
-        @if (clase != "" && clase != null)
-        {
-        <div style="background-color:#260b94; opacity:0.5;" class="ColorBanner">
-            @Html.Partial("_Banner")
+<nav class="navbar navbar-color-on-scroll navbar-transparent    fixed-top  navbar-expand-lg " color-on-scroll="100" id="sectionsNav">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand" href="index.html">
+                FDPN
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </div>
-        }
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+              
+                <li class="dropdown nav-item">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <i class="material-icons">import_contacts</i> Documentos
+                    </a>
+                    <div class="dropdown-menu dropdown-with-icons">
+                        @Html.ActionLink("El directorio", "directorio", "nosotros", null, new { @class = "dropdown-item" })
 
-    </header>
+                        @Html.ActionLink("Estatuto", "estatuto", "nosotros", null, new { @class = "dropdown-item" })
+
+                        @Html.ActionLink("Clubes afiliados", "ListadoClubesAfiliados", "nosotros", null, new { @class = "dropdown-item" })
+
+                        @Html.ActionLink("Bases de torneos", "bases", "documentos", null, new { @class = "dropdown-item" })
+
+                        @Html.ActionLink("Reglamentos", "Reglamentos", "documentos", null, new { @class = "dropdown-item" })
+
+                        @Html.ActionLink("Comunicados", "comunicados", "documentos", null, new { @class = "dropdown-item" })
+
+                        @Html.ActionLink("Criterios de selección", "Criterios", "documentos", null, new { @class = "dropdown-item" })
+
+                        @Html.ActionLink("Marcas mínimas", "MarcasMinimas", "documentos", null, new { @class = "dropdown-item" })
+
+                        @Html.ActionLink("Marcas clasificatorias a eventos internacionales", "Marcasclasificatorias", "documentos", null, new { @class = "dropdown-item" })
+
+                        @Html.ActionLink("Convocatorias", "Convocatorias", "documentos", null, new { @class = "dropdown-item" })
+
+                        @Html.ActionLink("Clubes hábiles", "habiles", "documentos", null, new { @class = "dropdown-item" })
+
+                        @Html.ActionLink("Formatos", "formatos", "documentos", null, new { @class = "dropdown-item" })
+
+                        @Html.ActionLink("Subvenciones IPD", "Subvenciones", "Documentos", null, new { @class = "dropdown-item" })
+
+                    </div>
+                </li>
+                <li class="dropdown nav-item">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <i class="material-icons">emoji_events</i> Resultados
+                    </a>
+                    <div class="dropdown-menu dropdown-with-icons">
+
+                        @Html.ActionLink("Resultados", "resultados", "resultados", null, new { @class = "dropdown-item" })
+
+                        @Html.ActionLink("Nadadores", "nadadores", "resultados", null, new { @class = "dropdown-item" })
+
+                        @Html.ActionLink("Rankings por prueba", "Rankings", "resultados", null, new { @class = "dropdown-item" })
+
+                        @Html.ActionLink("Rankings Puntos FINA", "RankingsFINA", "resultados", null, new { @class = "dropdown-item" })
+
+                        @Html.ActionLink("Resultados en pdf", "resultadosPDF", "documentos", null, new { @class = "dropdown-item" })
+
+                        @Html.ActionLink("Rankings en pdf", "RankingPDF", "documentos", null, new { @class = "dropdown-item" })
+
+                        @Html.ActionLink("En vivo", "Envivo", "documentos", null, new { @class = "dropdown-item" })
+
+                        @Html.ActionLink("Records", "records", "documentos", null, new { @class = "dropdown-item" })
+
+                    </div>
+                </li>
+                <li class="dropdown nav-item">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <i class="material-icons">event_available</i> Calendario
+                    </a>
+                    <div class="dropdown-menu dropdown-with-icons">
+
+                        @Html.ActionLink("Calendarios", "Calendarios", "resultados", null, new { @class = "dropdown-item" })
+
+                        @Html.ActionLink("Calendario actual", "PrintCalendario", "Calendarios", new { disciplina = 7, target = "_blank" }, new { @class = "dropdown-item" })
+
+                    </div>
+                </li>
+                <li class="dropdown nav-item">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <i class="material-icons">people_outline</i> Academia
+                    </a>
+                    <div class="dropdown-menu dropdown-with-icons">
+                        <a href="sections.html#headers" class="dropdown-item">
+                            Headers
+                        </a>
+
+                    </div>
+                </li>
+                <li class="dropdown nav-item">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <i class="material-icons">done_all</i> Apps
+                    </a>
+                    <div class="dropdown-menu dropdown-with-icons">
+                        <a  class="nav-link" href="Content/pdf/AFILIACION POR PRIMERA VEZ.pdf">Como afiliarte</a>
+                        <a class="nav-link" href="http://afiliaciones.fdpn.org">Afiliaciones</a>
+                        <a class="nav-link" href="http://inscripcion.fdpn.org/">Inscripción natación</a>
+                    </div>
+                </li>
+                @Html.Action("_PreviewAlertas")
+            </ul>
+            @using (Html.BeginForm("Noticias", "Noticias", FormMethod.Post))
+            {
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Buscar">
+
+            <button class="btn btn-danger btn-sm my-2 my-sm-0" type="submit">
+                <span class="material-icons">
+                    search
+                </span>
+            </button>
+        </form>
+            }
+            </div>
+    </div>
+</nav>
+
+
+
+
+<div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url(@path);">
+    <div class="container">
+        <div class="row">
+            <img src="~/Content/img/Logo_fdpn.png" class="center ImagenCuarto" />
+            <div class="col-md-8 ml-auto mr-auto">
+                <div class="brand">
+                    <h1 class="title">
+                    Federación Deportiva Peruana de Natación
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

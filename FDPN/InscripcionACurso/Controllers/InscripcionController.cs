@@ -202,29 +202,11 @@ namespace InscripcionACurso.Controllers
                 if (ModelState.IsValid)
                 {
                     string result = RazorViewToString.RenderRazorViewToString(this, "PrepararConfirmacion", VM);
-                    //string mensaje =
-                    //    "<div background: #417378;>" +
-                    //    "<div id='left-block' class='col-md-6 col-sm-12 left-block' style='height: 662px;'><div class='left-content'>"+
-                    //    "img src='http://inscripcionacursos.jorgearananeyra.com/Content/images/Logo_fdpn.png' border='0' class='CToWUd'>" +
-                    //"<h1>Federación Deportiva Peruana de Natación</h1>"+
-
-                    //"<p>Hola " + VM.participante.Nombres + " " + VM.participante.Paterno + " " + VM.participante.Materno + " </p>" +
-                    //"<p> Te has inscrito en el evento <span style = 'font-size: 14pt;'> " + VM.curso.Nombre + "</span></p>" +
-                    //"<p> este evento empezar&aacute; el d&iacute; a <span style = 'font-size: 12pt;' > " + VM.curso.Inicio + "</ span ></p>" +
-                    //"<p> la dirección es: " + VM.curso.Direccion + " en la ciudad de " + VM.curso.Ciudad + "</p>" +
-                    //"<p> Tus datos grabados son:</p>" +
-                    //"<ul> <li> DNI:" + VM.participante.DNI + " </li> " +
-                    //"<li> Fecha de Nacimiento: " + VM.participante.Nacimiento.ToString("dd/MMMM/yyyy") + " </li>" +
-                    //"<li> Celular :" + VM.participante.Celular + "</li>" +
-                    //"<li> Email :" + VM.participante.Email + " </li> </ul> " +
-                    //"<p> Gracias por seguir a la FDPN </ p > " +
-                    //"<hr><p>En caso sus datos estén errados, envíen un correo a inscripciones@fdpn.org con los datos correctos. </p>"+
-                    //"<br><p><strong>Nota.- No responda este correo</strong></p>" +
-                    //"</div>";
+                   
                     MailAddress from = new MailAddress("postmaster@jorgearananeyra.com");
                     MailAddress to = new MailAddress(VM.participante.Email);
 
-                    bool isGenParam = typeof(List<>).GetGenericArguments()[0].IsGenericParameter; ;
+                    bool isGenParam = typeof(List<>).GetGenericArguments()[0].IsGenericParameter; 
 
                     var message = new MailMessage(from, to);
 
@@ -334,6 +316,15 @@ namespace InscripcionACurso.Controllers
 
         }
 
+        public ActionResult ReenviarEMails(int cursoid)
+        {
+            List<CursoInscripcion> ListadoInscritos = db.CursoInscripcion.Where(x => x.CursoId == cursoid && x.ParticipanteId == 460).ToList();
+            foreach (var item in ListadoInscritos)
+            {
+                string EnviarEmail = EnviarConfirmacion(item.InscripcionId);
+            }
+            return RedirectToAction("Gracias");
+        }
 
         [HttpPost]
         public ActionResult GrabarNadador(ViewModelInscripcionParaNadador VM)
@@ -387,5 +378,7 @@ namespace InscripcionACurso.Controllers
                 .FirstOrDefault();
             return Json(participante, JsonRequestBehavior.AllowGet);
         }
+
+        
     }
 }

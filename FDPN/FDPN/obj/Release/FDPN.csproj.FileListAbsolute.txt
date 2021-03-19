@@ -307,3 +307,4 @@ C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Release\FDPN.csproj.CopyComplete
 C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Release\FDPN.dll
 C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Release\FDPN.pdb
 C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Release\FDPN.csproj.CoreCompileInputs.cache
+C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\MoreLinq.pdb

@@ -4,22 +4,16 @@
     int anno = DateTime.Now.Year;
 }
 
-<div class="site-homepage__pushup">
-    <div class="BannerDelgado u-animation--fadeInSection" style="margin-top:10px;">
-
-        <header class="">
-            <div class="row cardsubtitulo-blanca">
-                <div class="col-lg-12" style="text-align:center;"><p class="formatted__hugephoto__title TextoBannerDelgado">Listado de clubes afiliados el año @anno</p></div>
+<div class="social-line social-line-white text-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <h4 class="title">Listado de clubes afiliados el año @anno</h4>
             </div>
-
-        </header>
-        <center>
-            <p class="u-type--medium u-type--delta u-spc-bottom--med cardsubtitulo-blanca">Vea el listado de clubes afiliados</p>
-            @Html.ActionLink("Ver Listado", "ListadoClubesAfiliados", "nosotros", null, new { @class = "btn btn--primaryapnea btn--lrg u-rounded" })
-        </center>
-       </div>
-
-  
+            @Html.ActionLink("Ver Listado", "ListadoClubesAfiliados", "nosotros", null, new { @class = "btn btn-primary tablacenter" })
+        </div>
+    </div>
 </div>
+
 
 

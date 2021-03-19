@@ -223,6 +223,7 @@
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_TatoInformeEntrenador_TatoSeriesEjemplo" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_Traspasos_Usuario" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_Vouchers_Usuario" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.CalendarioCursos" Width="1.5" PointX="27.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
