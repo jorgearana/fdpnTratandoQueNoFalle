@@ -18,18 +18,23 @@ namespace FDPN.Models
         public Disciplina()
         {
             this.Calendario = new HashSet<Calendario>();
+            this.CursoCalentario = new HashSet<CursoCalentario>();
             this.Inscripciones = new HashSet<Inscripciones>();
             this.Noticias = new HashSet<Noticias>();
             this.OtroCategorias = new HashSet<OtroCategorias>();
             this.OtroTorneo = new HashSet<OtroTorneo>();
+            this.PCurso = new HashSet<PCurso>();
         }
     
         public int DisciplinaId { get; set; }
         public string TipoDisciplina { get; set; }
         public string clase { get; set; }
+        public string Icono { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Calendario> Calendario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CursoCalentario> CursoCalentario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Inscripciones> Inscripciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -38,5 +43,7 @@ namespace FDPN.Models
         public virtual ICollection<OtroCategorias> OtroCategorias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OtroTorneo> OtroTorneo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PCurso> PCurso { get; set; }
     }
 }

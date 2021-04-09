@@ -2,12 +2,12 @@
 
 @{
 
-    string path = Url.Content("Content/img/Fotos/");
+    string path = Url.Content("../Content/img/Fotos/");
     string pathicono = Url.Content("../Content/img/ImgSmall/");
 }
 
-<div class="container">
-    <h3 class="title text-center">Noticias</h3>
+<div class="container IgualAltura">
+    <h2 class="title text-center">Noticias</h2>
     <br>
     <div class="row">
         @foreach (var item in Model)
@@ -15,26 +15,52 @@
             <div class="col-md-4">
                 <div class="card card-plain card-blog">
                     <div class="card-header card-header-image">
-                        <a href=@Url.Action("noticia", "noticias", new { @id= item.noticia.NoticiaId})>
-                            <img class="img img-raised" src="@Url.Content(path +  item.fotos[0].Nombrefoto)">
+                        <a href=@Url.Action("Noticia", "Documentos", new { @id = item.noticia.NoticiaId })>
+                            <img class="img img-raised imagenpreviewNoticia" src="@Url.Content(path + item.fotos[0].Nombrefoto)">
                         </a>
                     </div>
                     <div class="card-body">
-                        <h6 class="card-category text-info">
-                            <img class="iconCalendario" src="@Url.Content(path +  item.noticia.Disciplina.clase)">
+                        <h6 class="card-category @item.noticia.Disciplina.clase">
+
                             @item.noticia.Disciplina.TipoDisciplina
                         </h6>
                         <h4 class="card-title">
-                            <a href=@Url.Action("noticia", "noticias", new { @id= item.noticia.NoticiaId})>@item.noticia.Titulo</a>
+                            <a href=@Url.Action("Noticia", "Documentos", new { @id = item.noticia.NoticiaId })>@item.noticia.Titulo</a>
                         </h4>
                         <p class="card-description">
                             @item.noticia.Corta
-                            <a href=@Url.Action("noticia", "noticias", new { @id= item.noticia.NoticiaId})> Leer nota completa </a>
+                            <a href=@Url.Action("Noticia", "Documentos", new { @id = item.noticia.NoticiaId })> Leer nota completa </a>
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> 
         }
     </div>
 </div>
+<div class="row">
+    <div class="col-md-8 ml-auto mr-auto">
+        <div class="row">
+            <div class="col-md-6">
+                @Html.ActionLink("Ver todas las noticias", "Noticias", "Noticias", null, new { @class = "btn btn-primary" })
+            </div>
+            <div class="col-md-6">
+                @using (Html.BeginForm("ListadoNoticias", "Documentos", FormMethod.Post))
+                {
+                <div style="width: 100%;" class="divForm">
+                    <div class="t">
+                        <!-- This is the wrapper div around the text input -->
+                        @Html.TextBox("searchString", null, new { @class = "form-control mr-sm-2" })
+                    </div>
+                  
+                    <button class="btn btn-outline btn-sm my-2 my-sm-0" type="submit">
 
+                        <div class="icon icon-rose">
+                            <i class="material-icons">search</i>Buscar
+                        </div>
+                    </button>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

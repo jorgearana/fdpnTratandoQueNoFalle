@@ -1,0 +1,95 @@
+﻿
+@model FDPN.ViewModels.Documento.formularioBusquedaViewModel
+
+@{
+    ViewBag.Title = "Listado búsqueda";
+    string titulo = ViewBag.Titulo;
+    string path = Url.Content("../Content/img/Fotos/");
+
+}
+
+
+<div class="container">
+    @if (Model.Documentos.Count > 0)
+    {
+    <h2 class="title">@Model.Documentos[0].Noticias.CategoriaNoticia.Detalle</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Descipción
+                    </th>
+                    <th>
+                        Tipo de documento
+                    </th>
+                    <th>
+                        Fecha
+                    </th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Documentos)
+                {
+                    <tr>
+                        <td>
+                            <a href=@Url.Action( path + @item.Nombrefoto ) target="_blank">
+                                @item.Noticias.Titulo
+                            </a>
+                           
+                        </td>
+                        <td>
+                            @item.Noticias.CategoriaNoticia.Detalle
+                        </td>
+                        <td>
+                            @item.Noticias.Fecha.ToString("dd/MM/yyyy")
+                        </td>
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    }
+    <h2 class="title">Noticias</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Descipción
+                </th>
+                <th>
+                    Disciplina
+                </th>
+                <th>
+                    Fecha
+                </th>
+                <th>
+                    Documento
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Noticias)
+            {
+                <tr>
+                    <td>
+                        @item.Titulo
+                    </td>
+                    <td>
+                        @item.Disciplina.TipoDisciplina
+                    </td>
+                    <td>
+                        @item.Fecha.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @Html.ActionLink("Ver documento", "Noticia", "Documentos", new { id = item.NoticiaId }, new { @class = "btn btn-primary btn-sm", target = "_blank" })
+                        @*<a href=@Url.Action(path + item.Nombrefoto) target="_blank">
+                                <i class="fa fa-download" aria-hidden="true"></i> Ver documento
+                            </a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

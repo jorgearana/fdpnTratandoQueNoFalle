@@ -33,7 +33,7 @@
         <div class="row IgualAltura">
             @foreach (var item in Model)
             {
-                <div class="col-md-4 ElementoIgualAltura">
+                <div class="col-md-4 ElementoIgualAltura" @*style="margin-bottom:5px;"*@>
                     <div class="card card-profile @item.Disciplina.clase ElementoIgualAltura">
                        
                         <div class="card-body">
@@ -45,17 +45,19 @@
                             <p class="card-title">
                                 Categorías: @item.Observación
                             </p>
+                            <h6 class="card-title">@item.Disciplina.TipoDisciplina </h6>
                         </div>
                         <div class="card-footer justify-content-center">
                             <img class="iconCalendario" src="@Url.Action(pathiconos + @item.Disciplina.clase + ".jpg")" />
                         </div>
                     </div>
                 </div>
+               
             }
         </div>
       
 
-            @Html.ActionLink("Ver todos los eventos", "calendarios", "resultados", null, new { @class = "btn btn-primary tablacenter" })
+            @Html.ActionLink("Ver todos los eventos", "calendarios", "resultados", null, new { @class = "btn btn-primary float-right" })
        
     </div>
 </div>

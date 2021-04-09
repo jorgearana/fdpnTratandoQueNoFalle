@@ -4,99 +4,50 @@
     string path = "http://afiliaciones.fdpn.org/Content/Images/";
 }
 
-@*<div class="contenedor">
-    <div class="card card-profile card-plain">
-        <h2 class="title">Deportista destacado</h2>
-
-        <div class="card-body ">
-            <a href="">
-                <img class="img ImagenCuarto" src=@Url.Content(path + @Model.Inscripciones.RutaFoto+ ".jpg")>
-            </a>
-            <h4 class="card-title">@Model.Inscripciones.Afiliado.Nombre <strong>@Model.Inscripciones.Afiliado.Apellido_Paterno</strong></h4>
-            <h6 class="card-category text-muted">@Model.resultados.Athlete1.Age años</h6>
-            <h6 class="card-category text-muted">@Model.resultados.MEET1.MName</h6>
-            <div class="">
-                <table class="table  center">
-                    <thead>
-                        <tr>
-
-                            <th>Prueba</th>
-                            <th>Score</th>
-                            <th>Puntos FINA</th>
-                            <th>Equipo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>@Model.resultados.DISTANCE  @Model.resultados.STROKE</td>
-                            <td>
-                                @Model.resultados.SCORE
-                            </td>
-                            <td>@Model.resultados.PFina</td>
-                            <td>@Model.resultados.TEAM1.TName</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+<div class="card card-pricing card-raised">
+    <div class="col-md-8 ml-auto mr-auto">
+        <h2 class="title ">Deportista destacado</h2>
+      
+        <div class="contenedorNadadorDestacado">
+            <img class="img ImagenCuarto center" src=@Url.Content(path + @Model.Inscripciones.RutaFoto+ ".jpg")>
         </div>
+        <h4 class="title ">@Model.Inscripciones.Afiliado.Nombre <strong>@Model.Inscripciones.Afiliado.Apellido_Paterno</strong></h4>
+        <h4 class="title  ">@Model.resultados.Athlete1.Age años</h4>
+        <h4 class="title ">@Model.resultados.MEET1.MName</h4>
 
-        <div class="card-footer justify-content-center">
-            <center>
-                <div class="row">
-                    @Html.ActionLink("Ver todos los nadadores", "Nadadores", "Resultados", null, new { @class = "btn btn-primary" })
-                    <br />
-                </div>
-                <div class="row">
-
-                    <h6>* Se consideran los tiempos registrados a partir del año 2000</h6>
-
-                </div>
-            </center>
-        </div>
     </div>
-</div>*@
 
-<div class="">
-    <h2 class="title center">Deportista destacado</h2>
+    <table class="table ">
+        <thead>
+            <tr>
 
-    <a href="">
-        <img class="img ImagenCuarto center" src=@Url.Content(path + @Model.Inscripciones.RutaFoto+ ".jpg")>
-    </a>
-    <h4 class="title center">@Model.Inscripciones.Afiliado.Nombre <strong>@Model.Inscripciones.Afiliado.Apellido_Paterno</strong></h4>
-    <h6 class="title center ">@Model.resultados.Athlete1.Age años</h6>
-    <h6 class="title center">@Model.resultados.MEET1.MName</h6>
-    <div class="">
-        <table class="table  info-tabla tablacenter">
-            <thead>
-                <tr>
+                <th>Prueba</th>
+                <th>Score</th>
+                <th>Puntos FINA</th>
+                <th>Equipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.resultados.DISTANCE  @Model.resultados.STROKE</td>
+                <td>
+                    @Model.resultados.SCORE
+                </td>
+                <td>@Model.resultados.PFina</td>
+                <td>@Model.resultados.TEAM1.TName</td>
+            </tr>
+        </tbody>
+    </table>
 
-                    <th>Prueba</th>
-                    <th>Score</th>
-                    <th>Puntos FINA</th>
-                    <th>Equipo</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>@Model.resultados.DISTANCE  @Model.resultados.STROKE</td>
-                    <td>
-                        @Model.resultados.SCORE
-                    </td>
-                    <td>@Model.resultados.PFina</td>
-                    <td>@Model.resultados.TEAM1.TName</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <center>
+    <div class="container">
         <div class="row tablacenter">
             @Html.ActionLink("Ver todos los nadadores", "Nadadores", "Resultados", null, new { @class = "btn btn-primary  center" })
             <br />
         </div>
-        <div class="row">
+        <div class="col-md-10 ml-auto mr-auto text-center">
 
-            <h6 center>* Se consideran los tiempos registrados a partir del año 2000</h6>
+            <h6 class="title">* Se consideran los tiempos registrados a partir del año 2000</h6>
 
         </div>
-    </center>
-</div>
+    </div>
+    </div>

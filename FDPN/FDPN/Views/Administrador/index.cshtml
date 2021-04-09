@@ -6,968 +6,975 @@
     string path = Url.Content("../Content/img/Fotos/");
     FDPN.Models.Rol rol = (System.Web.HttpContext.Current.Session["Rol"] as FDPN.Models.Rol);
 }
-    <div class="cuerpoconmargen">
-        <div class="col-lg-12 text-center panel-heading panel-head">
-            <h2 class="section-heading">Administrador de datos</h2>
 
-        </div>
-        <div class="row">
-            <div class="btn-group" role="group" aria-label="Basic example">
-                @Html.ActionLink("Ingresar nuevo dato", "IngresoDatos", "administrador", null, new { @class = "btn btn-primary" })
-                @Html.ActionLink("Banners", "Index", "Banners", null, new { @class = "btn btn-success" })
-                @Html.ActionLink("Ingresar nuevo Modal", "IngresarModal", "administrador", null, new { @class = "btn btn-warning" })
-                @if (rol.RolId == 1 || rol.RolId == 4)
-                {
-                    @Html.ActionLink("Calendario", "Index", "calendarios", null, new { @class = "btn btn-danger" })
-                    @Html.ActionLink("En Vivo", "ResultadosEnVivo", "administrador", null, new { @class = "btn btn-success" })
 
-                }
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                @using (Html.BeginForm())
-                {
-                    <header class="site-homepage__section__header">
-                        <h4 class="section-heading">Buscar en la página</h4>
-                        @Html.TextBox("SearchString", null, new { @class = "btn btn--primaryapnea btn--lrg u-rounded" })
-                        <input type="submit" value="Buscar" class="btn btn--primaryapnea btn--lrg u-rounded" />
-                    </header>
-                }
-            </div>
-        </div>
 
-        <hr />
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="Noticia-tab" data-toggle="tab" href="#Noticia" role="tab" aria-controls="Noticia" aria-selected="false">Noticia</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="base-tab" data-toggle="tab" href="#base" role="tab" aria-controls="base" aria-selected="false">Base</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="resultados-tab" data-toggle="tab" href="#resultados" role="tab" aria-controls="resultados" aria-selected="false">Resultados</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="marcas-tab" data-toggle="tab" href="#marcas" role="tab" aria-controls="marcas" aria-selected="false">Marcas</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="Reglamento-tab" data-toggle="tab" href="#Reglamento" role="tab" aria-controls="Reglamento" aria-selected="false">Reglamento</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="Records-tab" data-toggle="tab" href="#Records" role="tab" aria-controls="Records" aria-selected="false">Records</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="Ranking-tab" data-toggle="tab" href="#Ranking" role="tab" aria-controls="Ranking" aria-selected="false">Ranking</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="Modals-tab" data-toggle="tab" href="#Modals" role="tab" aria-controls="Modals" aria-selected="false">Modals</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="otros-tab" data-toggle="tab" href="#otros" role="tab" aria-controls="otros" aria-selected="false">Otros</a>
-            </li>
-        </ul>
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade active" id="Noticia" role="tabpanel" aria-labelledby="Noticia-tab">
-                @*Noticia*@
-                <section class="site-contentpage site-Noticiapage__pushup">
-                    <br />
-                    <p class="u-type--gamma">
+<div class="container">
+    <div class="col-lg-12 text-center panel-heading panel-head">
+        <h2 class="section-heading">Administrador de datos</h2>
 
-                        <table class="tablaNormal datatabla">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Publicado
-                                    </th>
-                                    <th>
-                                        Noticia
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-download" aria-hidden="true"></i> Acción
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.Noticia)
-                                {
+    </div>
+    <div class="row">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            @Html.ActionLink("Ingresar nuevo dato", "IngresoDatos", "administrador", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Banners", "Index", "Banners", null, new { @class = "btn btn-success" })
+            @Html.ActionLink("Ingresar nuevo Modal", "IngresarModal", "administrador", null, new { @class = "btn btn-warning" })
+            @if (rol.RolId == 1 || rol.RolId == 4)
+            {
+                @Html.ActionLink("Calendario", "Index", "calendarios", null, new { @class = "btn btn-danger" })
+                @Html.ActionLink("En Vivo", "ResultadosEnVivo", "administrador", null, new { @class = "btn btn-success" })
 
-                                    <tr>
-                                        <td>
-                                            @item.Fecha.ToString("yyyy/MM/dd")
-                                        </td>
-                                        <td>
-                                            @item.Titulo
-                                        </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li>@Html.ActionLink("Ver", "Noticia", "noticias", new { @id = item.NoticiaId }, null)</li>
-                                                    <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </p>
-
-                    <div class="espaciado"></div>
-                    <hr />
-                </section>
-            </div>
-            <div class="tab-pane fade" id="base" role="tabpanel" aria-labelledby="base-tab">
-                @*Base*@
-                <section class="site-contentpage site-homepage__pushup">
-                    <br />
-                    <p class="u-type--gamma">
-
-                        <table class="tablaNormal datatabla">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Fecha
-                                    </th>
-                                    <th>
-                                        Base
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-download" aria-hidden="true"></i> Acción
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.Base)
-                                {
-
-                                    <tr>
-                                        <td>
-                                            <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
-                                            @item.Fecha.ToString("dd/MM/yyyy")
-                                        </td>
-                                        <td>
-
-                                            @item.Titulo
-                                        </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </p>
-
-                    <div class="espaciado"></div>
-                    <hr />
-                </section>
-            </div>
-            <div class="tab-pane fade" id="resultados" role="tabpanel" aria-labelledby="resultados-tab">
-                @*Resultados*@
-                <section class="site-contentpage site-homepage__pushup">
-                    <br />
-                    <p class="u-type--gamma">
-
-                        <table class="tablaNormal datatablacorta">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Fecha
-                                    </th>
-                                    <th>
-                                        Resultado
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-download" aria-hidden="true"></i> Acción
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.Resultados)
-                                {
-
-                                    <tr>
-                                        <td>
-                                            <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
-                                            @item.Fecha.ToString("dd/MM/yyyy")
-                                        </td>
-                                        <td>
-
-                                            @item.Titulo
-                                        </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </p>
-
-                    <div class="espaciado"></div>
-                    <hr />
-                </section>
-            </div>
-            <div class="tab-pane fade" id="marcas" role="tabpanel" aria-labelledby="marcas-tab">
-                @*Marcas mínimas*@
-                <section class="site-contentpage site-homepage__pushup">
-                    <br />
-                    <p class="u-type--gamma">
-
-                        <table class="tablaNormal">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Fecha
-                                    </th>
-                                    <th>
-                                        Marcas mínimas
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-download" aria-hidden="true"></i> Acción
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.Marcasminimas)
-                                {
-
-                                    <tr>
-                                        <td>
-                                            <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
-                                            @item.Fecha.ToString("dd/MM/yyyy")
-                                        </td>
-                                        <td>
-
-                                            @item.Titulo
-                                        </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </p>
-
-                    <div class="espaciado"></div>
-                    <hr />
-                </section>
-
-                @*Marcas clasificatorias*@
-                <section class="site-contentpage site-homepage__pushup">
-                    <br />
-                    <p class="u-type--gamma">
-
-                        <table class="tablaNormal">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Fecha
-                                    </th>
-                                    <th>
-                                        Marcas clasificatorias a eventos internacionales
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-download" aria-hidden="true"></i> Acción
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.Marcasclasificatorias)
-                                {
-
-                                    <tr>
-                                        <td>
-                                            <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
-                                            @item.Fecha.ToString("dd/MM/yyyy")
-                                        </td>
-                                        <td>
-
-                                            @item.Titulo
-                                        </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </p>
-
-                    <div class="espaciado"></div>
-                    <hr />
-                </section>
-
-            </div>
-            <div class="tab-pane fade" id="Reglamento" role="tabpanel" aria-labelledby="Reglamento-tab">
-                @*Reglamento*@
-                <section class="site-contentpage site-homepage__pushup">
-                    <br />
-                    <p class="u-type--gamma">
-
-                        <table class="tablaNormal">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Fecha
-                                    </th>
-                                    <th>
-                                        Reglamento
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-download" aria-hidden="true"></i> Acción
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.Reglamento)
-                                {
-
-                                    <tr>
-                                        <td>
-                                            <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
-                                            @item.Fecha.ToString("dd/MM/yyyy")
-                                        </td>
-                                        <td>
-
-                                            @item.Titulo
-                                        </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </p>
-
-                    <div class="espaciado"></div>
-                    <hr />
-                </section>
-            </div>
-            <div class="tab-pane fade" id="Records" role="tabpanel" aria-labelledby="Records-tab">
-                @*Records*@
-                <section class="site-contentpage site-homepage__pushup">
-                    <br />
-                    <p class="u-type--gamma">
-
-                        <table class="tablaNormal ">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Fecha
-                                    </th>
-                                    <th>
-                                        Records
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-download" aria-hidden="true"></i> Acción
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.Records)
-                                {
-
-                                    <tr>
-                                        <td>
-                                            <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
-                                            @item.Fecha.ToString("dd/MM/yyyy")
-                                        </td>
-                                        <td>
-
-                                            @item.Titulo
-                                        </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </p>
-
-                    <div class="espaciado"></div>
-                    <hr />
-                </section>
-            </div>
-            <div class="tab-pane fade" id="Ranking" role="tabpanel" aria-labelledby="Ranking-tab">
-                @*Ranking*@
-                <section class="site-contentpage site-homepage__pushup">
-                    <br />
-                    <p class="u-type--gamma">
-
-                        <table class="tablaNormal ">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Fecha
-                                    </th>
-                                    <th>
-                                        Ranking
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-download" aria-hidden="true"></i> Acción
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.Ranking)
-                                {
-
-                                    <tr>
-                                        <td>
-                                            <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
-                                            @item.Fecha.ToString("dd/MM/yyyy")
-                                        </td>
-                                        <td>
-
-                                            @item.Titulo
-                                        </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </p>
-
-                    <div class="espaciado"></div>
-                    <hr />
-                </section>
-            </div>
-            <div class="tab-pane fade" id="Modals" role="tabpanel" aria-labelledby="Modals-tab">
-                @*Modals*@
-                <section class="site-contentpage site-homepage__pushup">
-                    <br />
-                    <p class="u-type--gamma">
-
-                        <table class="tablaNormal">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Titulo
-                                    </th>
-                                    <th>
-                                        Cuerpo
-                                    </th>
-                                    <th>
-                                        Imagen
-                                    </th>
-                                    <th>
-                                        Enlace
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-download" aria-hidden="true"></i> Activo
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-download" aria-hidden="true"></i> Acción
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.ventanaModal)
-                                {
-
-                                    <tr>
-                                        <td>
-                                            @item.Titulo
-                                        </td>
-                                        <td>
-                                            @item.Cuerpo
-                                        </td>
-                                        <td>
-                                            <img src=@Url.Content( "~/Content/img/Fotos/" + item.Image ) style="width:50px;" />
-
-                                        </td>
-                                        <td>
-                                            @item.Enlace
-                                        </td>
-                                        <td>
-                                            @Html.CheckBox("activo", item.Activo)
-                                        </td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                                                    Quiero
-                                                    <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li>@Html.ActionLink("Borrar", "BorrarModal", "administrador", new { @id = item.Modalid }, null)</li>
-                                                    @if (item.Activo)
-                                                    {
-                                                        <li>@Html.ActionLink("Desactivar", "Desactivar", "administrador", new { @id = item.Modalid }, null)</li>
-                                                    }
-                                                    else
-                                                    {
-                                                        <li>@Html.ActionLink("Activar", "ActivarModal", "administrador", new { @id = item.Modalid }, null)</li>
-                                                    }
-
-                                                </ul>
-                                            </div>
-
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </p>
-
-                    <div class="espaciado"></div>
-                    <hr />
-                </section>
-            </div>
-            <div class="tab-pane fade" id="otros" role="tabpanel" aria-labelledby="otros-tab">
-                @*Comunicado*@
-                <section class="site-contentpage site-homepage__pushup">
-                    <br />
-                    <p class="u-type--gamma">
-
-                        <table class="tablaNormal datatablaReves">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Fecha
-                                    </th>
-                                    <th>
-                                        Comunicado
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-download" aria-hidden="true"></i> Acción
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.Comunicado)
-                                {
-
-                                    <tr>
-                                        <td>
-                                            <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
-                                            @item.Fecha.ToString("dd/MM/yyyy")
-                                        </td>
-                                        <td>
-
-                                            @item.Titulo
-                                        </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId })</li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </p>
-
-                    <div class="espaciado"></div>
-                    <hr />
-                </section>
-                @*Evento*@
-                <section class="site-contentpage site-homepage__pushup">
-                    <br />
-                    <p class="u-type--gamma">
-
-                        <table class="tablaNormal">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Fecha
-                                    </th>
-                                    <th>
-                                        Evento
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-download" aria-hidden="true"></i> Acción
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.Evento)
-                                {
-
-                                    <tr>
-                                        <td>
-                                            <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
-                                            @item.Fecha.ToString("dd/MM/yyyy")
-                                        </td>
-                                        <td>
-
-                                            @item.Titulo
-                                        </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </p>
-
-                    <div class="espaciado"></div>
-                    <hr />
-                </section>
-
-                @*Criterios*@
-                <section class="site-contentpage site-homepage__pushup">
-                    <br />
-                    <p class="u-type--gamma">
-
-                        <table class="tablaNormal ">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Fecha
-                                    </th>
-                                    <th>
-                                        Criterios de selección
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-download" aria-hidden="true"></i> Acción
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.Criterios)
-                                {
-
-                                    <tr>
-                                        <td>
-                                            <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
-                                            @item.Fecha.ToString("dd/MM/yyyy")
-                                        </td>
-                                        <td>
-
-                                            @item.Titulo
-                                        </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </p>
-
-                    <div class="espaciado"></div>
-                    <hr />
-                </section>
-
-
-                @*Convocatorias*@
-                <section class="site-contentpage site-homepage__pushup">
-                    <br />
-                    <p class="u-type--gamma">
-
-                        <table class="tablaNormal ">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Fecha
-                                    </th>
-                                    <th>
-                                        Convocatorias de deportistas seleccionados
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-download" aria-hidden="true"></i> Acción
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.Convocatorias)
-                                {
-
-                                    <tr>
-                                        <td>
-                                            <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
-                                            @item.Fecha.ToString("dd/MM/yyyy")
-                                        </td>
-                                        <td>
-
-                                            @item.Titulo
-                                        </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </p>
-
-                    <div class="espaciado"></div>
-                    <hr />
-                </section>
-
-
-                @*Subvencion*@
-                <section class="site-contentpage site-homepage__pushup">
-                    <br />
-                    <p class="u-type--gamma">
-
-                        <table class="tablaNormal">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Fecha
-                                    </th>
-                                    <th>
-                                        Subvencion
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-download" aria-hidden="true"></i> Acción
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.Subvencion)
-                                {
-
-                                    <tr>
-                                        <td>
-                                            <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
-                                            @item.Fecha.ToString("dd/MM/yyyy")
-                                        </td>
-                                        <td>
-
-                                            @item.Titulo
-                                        </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </p>
-
-                    <div class="espaciado"></div>
-                    <hr />
-                </section>
-
-
-                @*Habiles*@
-                <section class="site-contentpage site-homepage__pushup">
-                    <br />
-                    <p class="u-type--gamma">
-
-                        <table class="tablaNormal">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Fecha
-                                    </th>
-                                    <th>
-                                        Subvencion
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-download" aria-hidden="true"></i> Acción
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.Habiles)
-                                {
-
-                                    <tr>
-                                        <td>
-                                            <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
-                                            @item.Fecha.ToString("dd/MM/yyyy")
-                                        </td>
-                                        <td>
-
-                                            @item.Titulo
-                                        </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </p>
-
-                    <div class="espaciado"></div>
-                    <hr />
-                </section>
-
-                @*Resoluciones IPD*@
-                <section class="site-contentpage site-homepage__pushup">
-                    <br />
-                    <p class="u-type--gamma">
-
-                        <table class="tablaNormal">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Fecha
-                                    </th>
-                                    <th>
-                                        Resolución
-                                    </th>
-                                    <th>
-                                        <i class="fa fa-download" aria-hidden="true"></i> Acción
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.ResolucionesIPD)
-                                {
-
-                                    <tr>
-                                        <td>
-                                            <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
-                                            @item.Fecha.ToString("dd/MM/yyyy")
-                                        </td>
-                                        <td>
-
-                                            @item.Titulo
-                                        </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </p>
-
-                    <div class="espaciado"></div>
-                    <hr />
-                </section>
-            </div>
+            }
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-12">
+            @using (Html.BeginForm())
+            {
+                <header class="site-homepage__section__header">
+                    <h4 class="section-heading">Buscar en la página</h4>
+                    @Html.TextBox("SearchString", null, new { @class = "btn btn--primaryapnea btn--lrg u-rounded" })
+                    <input type="submit" value="Buscar" class="btn btn--primaryapnea btn--lrg u-rounded" />
+                </header>
+            }
+        </div>
+    </div>
+
+    <hr />
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="Noticia-tab" data-toggle="tab" href="#Noticia" role="tab" aria-controls="Noticia" aria-selected="false">Noticia</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="base-tab" data-toggle="tab" href="#base" role="tab" aria-controls="base" aria-selected="false">Base</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="resultados-tab" data-toggle="tab" href="#resultados" role="tab" aria-controls="resultados" aria-selected="false">Resultados</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="marcas-tab" data-toggle="tab" href="#marcas" role="tab" aria-controls="marcas" aria-selected="false">Marcas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="Reglamento-tab" data-toggle="tab" href="#Reglamento" role="tab" aria-controls="Reglamento" aria-selected="false">Reglamento</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="Records-tab" data-toggle="tab" href="#Records" role="tab" aria-controls="Records" aria-selected="false">Records</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="Ranking-tab" data-toggle="tab" href="#Ranking" role="tab" aria-controls="Ranking" aria-selected="false">Ranking</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="Modals-tab" data-toggle="tab" href="#Modals" role="tab" aria-controls="Modals" aria-selected="false">Modals</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="otros-tab" data-toggle="tab" href="#otros" role="tab" aria-controls="otros" aria-selected="false">Otros</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade active" id="Noticia" role="tabpanel" aria-labelledby="Noticia-tab">
+            @*Noticia*@
+            <section class="site-contentpage site-Noticiapage__pushup">
+                <br />
+                <p class="u-type--gamma">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Publicado
+                                </th>
+                                <th>
+                                    Noticia
+                                </th>
+                                <th>
+                                    <i class="fa fa-download" aria-hidden="true"></i> Acción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Noticia)
+                            {
+
+                                <tr>
+                                    <td>
+                                        @item.Fecha.ToString("yyyy/MM/dd")
+                                    </td>
+                                    <td>
+                                        @item.Titulo
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Action <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>@Html.ActionLink("Ver", "Noticia", "noticias", new { @id = item.NoticiaId }, null)</li>
+                                                <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                                <li role="separator" class="divider"></li>
+                                                <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </p>
+
+                <div class="espaciado"></div>
+                <hr />
+            </section>
+        </div>
+        <div class="tab-pane fade" id="base" role="tabpanel" aria-labelledby="base-tab">
+            @*Base*@
+            <section class="site-contentpage site-homepage__pushup">
+                <br />
+                <p class="u-type--gamma">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Fecha
+                                </th>
+                                <th>
+                                    Base
+                                </th>
+                                <th>
+                                    <i class="fa fa-download" aria-hidden="true"></i> Acción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Base)
+                            {
+
+                                <tr>
+                                    <td>
+                                        <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
+                                        @item.Fecha.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td>
+
+                                        @item.Titulo
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Action <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                                <li role="separator" class="divider"></li>
+                                                <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </p>
+
+                <div class="espaciado"></div>
+                <hr />
+            </section>
+        </div>
+        <div class="tab-pane fade" id="resultados" role="tabpanel" aria-labelledby="resultados-tab">
+            @*Resultados*@
+            <section class="site-contentpage site-homepage__pushup">
+                <br />
+                <p class="u-type--gamma">
+
+                    <table class="tablecorta">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Fecha
+                                </th>
+                                <th>
+                                    Resultado
+                                </th>
+                                <th>
+                                    <i class="fa fa-download" aria-hidden="true"></i> Acción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Resultados)
+                            {
+
+                                <tr>
+                                    <td>
+                                        <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
+                                        @item.Fecha.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td>
+
+                                        @item.Titulo
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Action <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                                <li role="separator" class="divider"></li>
+                                                <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </p>
+
+                <div class="espaciado"></div>
+                <hr />
+            </section>
+        </div>
+        <div class="tab-pane fade" id="marcas" role="tabpanel" aria-labelledby="marcas-tab">
+            @*Marcas mínimas*@
+            <section class="site-contentpage site-homepage__pushup">
+                <br />
+                <p class="u-type--gamma">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Fecha
+                                </th>
+                                <th>
+                                    Marcas mínimas
+                                </th>
+                                <th>
+                                    <i class="fa fa-download" aria-hidden="true"></i> Acción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Marcasminimas)
+                            {
+
+                                <tr>
+                                    <td>
+                                        <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
+                                        @item.Fecha.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td>
+
+                                        @item.Titulo
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Action <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                                <li role="separator" class="divider"></li>
+                                                <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </p>
+
+                <div class="espaciado"></div>
+                <hr />
+            </section>
+
+            @*Marcas clasificatorias*@
+            <section class="site-contentpage site-homepage__pushup">
+                <br />
+                <p class="u-type--gamma">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Fecha
+                                </th>
+                                <th>
+                                    Marcas clasificatorias a eventos internacionales
+                                </th>
+                                <th>
+                                    <i class="fa fa-download" aria-hidden="true"></i> Acción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Marcasclasificatorias)
+                            {
+
+                                <tr>
+                                    <td>
+                                        <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
+                                        @item.Fecha.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td>
+
+                                        @item.Titulo
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Action <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                                <li role="separator" class="divider"></li>
+                                                <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </p>
+
+                <div class="espaciado"></div>
+                <hr />
+            </section>
+
+        </div>
+        <div class="tab-pane fade" id="Reglamento" role="tabpanel" aria-labelledby="Reglamento-tab">
+            @*Reglamento*@
+            <section class="site-contentpage site-homepage__pushup">
+                <br />
+                <p class="u-type--gamma">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Fecha
+                                </th>
+                                <th>
+                                    Reglamento
+                                </th>
+                                <th>
+                                    <i class="fa fa-download" aria-hidden="true"></i> Acción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Reglamento)
+                            {
+
+                                <tr>
+                                    <td>
+                                        <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
+                                        @item.Fecha.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td>
+
+                                        @item.Titulo
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Action <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                                <li role="separator" class="divider"></li>
+                                                <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </p>
+
+                <div class="espaciado"></div>
+                <hr />
+            </section>
+        </div>
+        <div class="tab-pane fade" id="Records" role="tabpanel" aria-labelledby="Records-tab">
+            @*Records*@
+            <section class="site-contentpage site-homepage__pushup">
+                <br />
+                <p class="u-type--gamma">
+
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Fecha
+                                </th>
+                                <th>
+                                    Records
+                                </th>
+                                <th>
+                                    <i class="fa fa-download" aria-hidden="true"></i> Acción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Records)
+                            {
+
+                                <tr>
+                                    <td>
+                                        <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
+                                        @item.Fecha.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td>
+
+                                        @item.Titulo
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Action <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                                <li role="separator" class="divider"></li>
+                                                <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </p>
+
+                <div class="espaciado"></div>
+                <hr />
+            </section>
+        </div>
+        <div class="tab-pane fade" id="Ranking" role="tabpanel" aria-labelledby="Ranking-tab">
+            @*Ranking*@
+            <section class="site-contentpage site-homepage__pushup">
+                <br />
+                <p class="u-type--gamma">
+
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Fecha
+                                </th>
+                                <th>
+                                    Ranking
+                                </th>
+                                <th>
+                                    <i class="fa fa-download" aria-hidden="true"></i> Acción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Ranking)
+                            {
+
+                                <tr>
+                                    <td>
+                                        <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
+                                        @item.Fecha.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td>
+
+                                        @item.Titulo
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Action <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                                <li role="separator" class="divider"></li>
+                                                <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </p>
+
+                <div class="espaciado"></div>
+                <hr />
+            </section>
+        </div>
+        <div class="tab-pane fade" id="Modals" role="tabpanel" aria-labelledby="Modals-tab">
+            @*Modals*@
+            <section class="site-contentpage site-homepage__pushup">
+                <br />
+                <p class="u-type--gamma">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Titulo
+                                </th>
+                                <th>
+                                    Cuerpo
+                                </th>
+                                <th>
+                                    Imagen
+                                </th>
+                                <th>
+                                    Enlace
+                                </th>
+                                <th>
+                                    <i class="fa fa-download" aria-hidden="true"></i> Activo
+                                </th>
+                                <th>
+                                    <i class="fa fa-download" aria-hidden="true"></i> Acción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ventanaModal)
+                            {
+
+                                <tr>
+                                    <td>
+                                        @item.Titulo
+                                    </td>
+                                    <td>
+                                        @item.Cuerpo
+                                    </td>
+                                    <td>
+                                        <img src=@Url.Content( "~/Content/img/Fotos/" + item.Image ) style="width:50px;" />
+
+                                    </td>
+                                    <td>
+                                        @item.Enlace
+                                    </td>
+                                    <td>
+                                        @Html.CheckBox("activo", item.Activo)
+                                    </td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                                Quiero
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>@Html.ActionLink("Borrar", "BorrarModal", "administrador", new { @id = item.Modalid }, null)</li>
+                                                @if (item.Activo)
+                                                {
+                                                    <li>@Html.ActionLink("Desactivar", "Desactivar", "administrador", new { @id = item.Modalid }, null)</li>
+                                                }
+                                                else
+                                                {
+                                                    <li>@Html.ActionLink("Activar", "ActivarModal", "administrador", new { @id = item.Modalid }, null)</li>
+                                                }
+
+                                            </ul>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </p>
+
+                <div class="espaciado"></div>
+                <hr />
+            </section>
+        </div>
+        <div class="tab-pane fade" id="otros" role="tabpanel" aria-labelledby="otros-tab">
+            @*Comunicado*@
+            <section class="site-contentpage site-homepage__pushup">
+                <br />
+                <p class="u-type--gamma">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Fecha
+                                </th>
+                                <th>
+                                    Comunicado
+                                </th>
+                                <th>
+                                    <i class="fa fa-download" aria-hidden="true"></i> Acción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Comunicado)
+                            {
+
+                                <tr>
+                                    <td>
+                                        <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
+                                        @item.Fecha.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td>
+
+                                        @item.Titulo
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Action <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId })</li>
+                                                <li role="separator" class="divider"></li>
+                                                <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </p>
+
+                <div class="espaciado"></div>
+                <hr />
+            </section>
+            @*Evento*@
+            <section class="site-contentpage site-homepage__pushup">
+                <br />
+                <p class="u-type--gamma">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Fecha
+                                </th>
+                                <th>
+                                    Evento
+                                </th>
+                                <th>
+                                    <i class="fa fa-download" aria-hidden="true"></i> Acción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Evento)
+                            {
+
+                                <tr>
+                                    <td>
+                                        <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
+                                        @item.Fecha.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td>
+
+                                        @item.Titulo
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Action <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                                <li role="separator" class="divider"></li>
+                                                <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </p>
+
+                <div class="espaciado"></div>
+                <hr />
+            </section>
+
+            @*Criterios*@
+            <section class="site-contentpage site-homepage__pushup">
+                <br />
+                <p class="u-type--gamma">
+
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Fecha
+                                </th>
+                                <th>
+                                    Criterios de selección
+                                </th>
+                                <th>
+                                    <i class="fa fa-download" aria-hidden="true"></i> Acción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Criterios)
+                            {
+
+                                <tr>
+                                    <td>
+                                        <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
+                                        @item.Fecha.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td>
+
+                                        @item.Titulo
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Action <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                                <li role="separator" class="divider"></li>
+                                                <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </p>
+
+                <div class="espaciado"></div>
+                <hr />
+            </section>
+
+
+            @*Convocatorias*@
+            <section class="site-contentpage site-homepage__pushup">
+                <br />
+                <p class="u-type--gamma">
+
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Fecha
+                                </th>
+                                <th>
+                                    Convocatorias de deportistas seleccionados
+                                </th>
+                                <th>
+                                    <i class="fa fa-download" aria-hidden="true"></i> Acción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Convocatorias)
+                            {
+
+                                <tr>
+                                    <td>
+                                        <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
+                                        @item.Fecha.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td>
+
+                                        @item.Titulo
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Action <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                                <li role="separator" class="divider"></li>
+                                                <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </p>
+
+                <div class="espaciado"></div>
+                <hr />
+            </section>
+
+
+            @*Subvencion*@
+            <section class="site-contentpage site-homepage__pushup">
+                <br />
+                <p class="u-type--gamma">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Fecha
+                                </th>
+                                <th>
+                                    Subvencion
+                                </th>
+                                <th>
+                                    <i class="fa fa-download" aria-hidden="true"></i> Acción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Subvencion)
+                            {
+
+                                <tr>
+                                    <td>
+                                        <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
+                                        @item.Fecha.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td>
+
+                                        @item.Titulo
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Action <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                                <li role="separator" class="divider"></li>
+                                                <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </p>
+
+                <div class="espaciado"></div>
+                <hr />
+            </section>
+
+            @*Academia*@
+            <section class="site-contentpage site-homepage__pushup">
+                <br />
+                <p class="u-type--gamma">
+
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Fecha
+                                </th>
+                                <th>
+                                   Academia
+                                </th>
+                                <th>
+                                    <i class="fa fa-download" aria-hidden="true"></i> Acción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Academia)
+                            {
+
+                                <tr>
+                                    <td>
+                                        <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
+                                        @item.Fecha.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td>
+
+                                        @item.Titulo
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Action <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                                <li role="separator" class="divider"></li>
+                                                <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </p>
+
+                <div class="espaciado"></div>
+                <hr />
+            </section>
+
+
+            @*Afiliaciones*@
+            <section class="site-contentpage site-homepage__pushup">
+                <br />
+                <p class="u-type--gamma">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Fecha
+                                </th>
+                                <th>
+                                    Afiliaciones
+                                </th>
+                                <th>
+                                    <i class="fa fa-download" aria-hidden="true"></i> Acción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Afiliaciones)
+                            {
+
+                                <tr>
+                                    <td>
+                                        <div class="FechaOrdenada"> @item.Fecha.ToString("yyyy/MM/dd")</div>
+                                        @item.Fecha.ToString("dd/MM/yyyy")
+                                    </td>
+                                    <td>
+
+                                        @item.Titulo
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Action <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>@Html.ActionLink("Editar", "Editar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                                <li role="separator" class="divider"></li>
+                                                <li>@Html.ActionLink("Borrar", "Borrar", "administrador", new { @id = item.NoticiaId }, null)</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </p>
+
+                <div class="espaciado"></div>
+                <hr />
+            </section>
+
+
+
+
+        </div>
+    </div>
+</div>

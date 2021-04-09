@@ -189,22 +189,6 @@
           <Property Name="DisciplinaId" Type="int" Nullable="false" />
           <Property Name="Internacional" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="CalendarioCursos">
-          <Key>
-            <PropertyRef Name="EventoId" />
-          </Key>
-          <Property Name="EventoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Inicio" Type="date" Nullable="false" />
-          <Property Name="Fin" Type="date" Nullable="false" />
-          <Property Name="Sede" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="Disciplina" Type="int" Nullable="false" />
-          <Property Name="Evento" Type="nvarchar" MaxLength="500" Nullable="false" />
-          <Property Name="Organizador" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="DirigidoA" Type="nvarchar" MaxLength="255" />
-          <Property Name="Requisito" Type="nvarchar" MaxLength="255" />
-          <Property Name="Horarios" Type="nvarchar" MaxLength="255" />
-          <Property Name="Enlace" Type="nvarchar" MaxLength="255" />
-        </EntityType>
         <EntityType Name="CambiosDNI">
           <Key>
             <PropertyRef Name="CambioId" />
@@ -220,6 +204,7 @@
           </Key>
           <Property Name="CategoriaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TipoNoticia" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Detalle" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Categorias">
           <Key>
@@ -340,12 +325,76 @@
           <Property Name="Enlace" Type="varchar" MaxLength="100" />
           <Property Name="PassWord" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="CursoAlumno">
+          <Key>
+            <PropertyRef Name="AlumnoId" />
+          </Key>
+          <Property Name="AlumnoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombres" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApellidoP" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApellidoM" Type="nvarchar" MaxLength="50" />
+          <Property Name="DNI" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sexo" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="Nacimiento" Type="date" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Celular" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FotoId" Type="int" />
+        </EntityType>
+        <EntityType Name="CursoBanner">
+          <Key>
+            <PropertyRef Name="BannerId" />
+          </Key>
+          <Property Name="BannerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CursoId" Type="int" Nullable="false" />
+          <Property Name="Banner" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CursoCalentario">
+          <Key>
+            <PropertyRef Name="CursoId" />
+          </Key>
+          <Property Name="CursoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Inicio" Type="date" Nullable="false" />
+          <Property Name="Fin" Type="date" Nullable="false" />
+          <Property Name="Sede" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DisciplinaId" Type="int" Nullable="false" />
+          <Property Name="Evento" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Organizador" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DirigidoA" Type="nvarchar" MaxLength="255" />
+          <Property Name="CursoRequisito" Type="int" />
+          <Property Name="Enlace" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="CursoFotos">
+          <Key>
+            <PropertyRef Name="FotoId" />
+          </Key>
+          <Property Name="FotoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Foto" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CursoHorario">
+          <Key>
+            <PropertyRef Name="HorarioId" />
+          </Key>
+          <Property Name="HorarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Inicio" Type="float" Nullable="false" />
+          <Property Name="Fin" Type="float" Nullable="false" />
+          <Property Name="CursoId" Type="int" Nullable="false" />
+          <Property Name="Dia" Type="date" Nullable="false" />
+        </EntityType>
         <EntityType Name="CursoInscripcion">
           <Key>
             <PropertyRef Name="InscripcionId" />
           </Key>
           <Property Name="InscripcionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ParticipanteId" Type="int" Nullable="false" />
+          <Property Name="CursoId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CursoObjetivos">
+          <Key>
+            <PropertyRef Name="ObjetivoId" />
+          </Key>
+          <Property Name="ObjetivoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Detalle" Type="nvarchar(max)" Nullable="false" />
           <Property Name="CursoId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CursoParticipante">
@@ -362,6 +411,16 @@
           <Property Name="Celular" Type="nchar" MaxLength="10" />
           <Property Name="Nacionalidad" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Actividad" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CursoProfesor">
+          <Key>
+            <PropertyRef Name="ProfesorId" />
+          </Key>
+          <Property Name="ProfesorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Experiencia" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CursoId" Type="int" Nullable="false" />
+          <Property Name="AlumnoId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Delegados">
           <Key>
@@ -393,6 +452,7 @@
           <Property Name="DisciplinaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TipoDisciplina" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="clase" Type="varchar" MaxLength="50" />
+          <Property Name="Icono" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Empresa">
           <Key>
@@ -954,6 +1014,36 @@
           <Property Name="EdadADiciembre" Type="bit" Nullable="false" />
           <Property Name="DisciplinaId" Type="int" />
         </EntityType>
+        <EntityType Name="PCalendario">
+          <Key>
+            <PropertyRef Name="CalendarioId" />
+          </Key>
+          <Property Name="CalendarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaInicio" Type="date" Nullable="false" />
+          <Property Name="CursoId" Type="int" Nullable="false" />
+          <Property Name="ProfesorId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PCurso">
+          <Key>
+            <PropertyRef Name="CursoId" />
+          </Key>
+          <Property Name="CursoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Objetivos" Type="nchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Requisito" Type="int" Nullable="false" />
+          <Property Name="Mesesduracion" Type="int" Nullable="false" />
+          <Property Name="Diasduracion" Type="int" Nullable="false" />
+          <Property Name="DisciplinaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PHorarios">
+          <Key>
+            <PropertyRef Name="HorarioId" />
+          </Key>
+          <Property Name="HorarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dia" Type="date" Nullable="false" />
+          <Property Name="Hora" Type="float" Nullable="false" />
+          <Property Name="CursoId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Piscinas">
           <Key>
             <PropertyRef Name="ID" />
@@ -1096,6 +1186,15 @@
           <Property Name="EdadMaxima" Type="int" Nullable="false" />
           <Property Name="EdadMinima" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="PProfesor">
+          <Key>
+            <PropertyRef Name="ProfesorId" />
+          </Key>
+          <Property Name="ProfesorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Nacionalidad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DetalleRapido" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
         <EntityType Name="Procesado">
           <Key>
             <PropertyRef Name="ProcesadoId" />
@@ -1114,26 +1213,15 @@
           <Property Name="FactorM" Type="float" />
           <Property Name="EstiloMeet" Type="varchar" MaxLength="1" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="Query">
+        <EntityType Name="PTemas">
           <Key>
-            <PropertyRef Name="Athlete" />
-            <PropertyRef Name="First" />
-            <PropertyRef Name="Last" />
-            <PropertyRef Name="Sex" />
-            <PropertyRef Name="Age" />
-            <PropertyRef Name="ID_NO" />
-            <PropertyRef Name="AthleteId" />
+            <PropertyRef Name="TemaId" />
           </Key>
-          <Property Name="Athlete" Type="int" Nullable="false" />
-          <Property Name="First" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="Last" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="Sex" Type="nvarchar" MaxLength="1" Nullable="false" />
-          <Property Name="Birth" Type="datetime2" Precision="3" />
-          <Property Name="Age" Type="smallint" Nullable="false" />
-          <Property Name="ID_NO" Type="nvarchar" MaxLength="17" Nullable="false" />
-          <Property Name="AthleteId" Type="int" Nullable="false" />
+          <Property Name="TemaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Teorico" Type="bit" Nullable="false" />
+          <Property Name="Practivo" Type="bit" Nullable="false" />
+          <Property Name="Detalle" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="CursoId" Type="int" />
         </EntityType>
         <EntityType Name="Records">
           <Key>
@@ -1344,27 +1432,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <Property Name="Debutantes" Type="bit" Nullable="false" />
           <Property Name="Masters" Type="bit" Nullable="false" />
           <Property Name="FechaMarcas" Type="date" Nullable="false" />
-        </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="Sheet1$">
-          <Key>
-            <PropertyRef Name="Inicio" />
-            <PropertyRef Name="Fin" />
-            <PropertyRef Name="Evento" />
-            <PropertyRef Name="Sede" />
-            <PropertyRef Name="disciplina" />
-            <PropertyRef Name="internacional" />
-          </Key>
-          <Property Name="Inicio" Type="datetime" Nullable="false" />
-          <Property Name="Fin" Type="datetime" Nullable="false" />
-          <Property Name="Evento" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="Sede" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="Carácter" Type="nvarchar" MaxLength="255" />
-          <Property Name="Observación" Type="nvarchar" MaxLength="255" />
-          <Property Name="Organizador" Type="nvarchar" MaxLength="255" />
-          <Property Name="disciplina" Type="int" Nullable="false" />
-          <Property Name="internacional" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Suscritos">
           <Key>
@@ -1958,6 +2025,54 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CursoAlumno_Foto">
+          <End Role="CursoFotos" Type="Self.CursoFotos" Multiplicity="0..1" />
+          <End Role="CursoAlumno" Type="Self.CursoAlumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursoFotos">
+              <PropertyRef Name="FotoId" />
+            </Principal>
+            <Dependent Role="CursoAlumno">
+              <PropertyRef Name="FotoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursoBanner_CursoCalentario">
+          <End Role="CursoCalentario" Type="Self.CursoCalentario" Multiplicity="1" />
+          <End Role="CursoBanner" Type="Self.CursoBanner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursoCalentario">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="CursoBanner">
+              <PropertyRef Name="CursoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursoCalentario_Disciplina">
+          <End Role="Disciplina" Type="Self.Disciplina" Multiplicity="1" />
+          <End Role="CursoCalentario" Type="Self.CursoCalentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplina">
+              <PropertyRef Name="DisciplinaId" />
+            </Principal>
+            <Dependent Role="CursoCalentario">
+              <PropertyRef Name="DisciplinaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursoHorario_CursoCalentario">
+          <End Role="CursoCalentario" Type="Self.CursoCalentario" Multiplicity="1" />
+          <End Role="CursoHorario" Type="Self.CursoHorario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursoCalentario">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="CursoHorario">
+              <PropertyRef Name="CursoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CursoInscripcion_Curso">
           <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
           <End Role="CursoInscripcion" Type="Self.CursoInscripcion" Multiplicity="*" />
@@ -1979,6 +2094,42 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             </Principal>
             <Dependent Role="CursoInscripcion">
               <PropertyRef Name="ParticipanteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursoObjetivos_CursoCalentario">
+          <End Role="CursoCalentario" Type="Self.CursoCalentario" Multiplicity="1" />
+          <End Role="CursoObjetivos" Type="Self.CursoObjetivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursoCalentario">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="CursoObjetivos">
+              <PropertyRef Name="CursoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursoProfesor_CursoAlumno">
+          <End Role="CursoAlumno" Type="Self.CursoAlumno" Multiplicity="1" />
+          <End Role="CursoProfesor" Type="Self.CursoProfesor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursoAlumno">
+              <PropertyRef Name="AlumnoId" />
+            </Principal>
+            <Dependent Role="CursoProfesor">
+              <PropertyRef Name="AlumnoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursoProfesor_CursoCalentario">
+          <End Role="CursoCalentario" Type="Self.CursoCalentario" Multiplicity="1" />
+          <End Role="CursoProfesor" Type="Self.CursoProfesor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursoCalentario">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="CursoProfesor">
+              <PropertyRef Name="CursoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2510,6 +2661,66 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PCalendario_PCurso">
+          <End Role="PCurso" Type="Self.PCurso" Multiplicity="1" />
+          <End Role="PCalendario" Type="Self.PCalendario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PCurso">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="PCalendario">
+              <PropertyRef Name="CursoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PCalendario_PProfesor">
+          <End Role="PProfesor" Type="Self.PProfesor" Multiplicity="1" />
+          <End Role="PCalendario" Type="Self.PCalendario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PProfesor">
+              <PropertyRef Name="ProfesorId" />
+            </Principal>
+            <Dependent Role="PCalendario">
+              <PropertyRef Name="ProfesorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PCurso_Disciplina">
+          <End Role="Disciplina" Type="Self.Disciplina" Multiplicity="1" />
+          <End Role="PCurso" Type="Self.PCurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplina">
+              <PropertyRef Name="DisciplinaId" />
+            </Principal>
+            <Dependent Role="PCurso">
+              <PropertyRef Name="DisciplinaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PCurso_PCurso">
+          <End Role="PCurso" Type="Self.PCurso" Multiplicity="1" />
+          <End Role="PCurso1" Type="Self.PCurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PCurso">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="PCurso1">
+              <PropertyRef Name="Requisito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PHorarios_PCurso">
+          <End Role="PCurso" Type="Self.PCurso" Multiplicity="1" />
+          <End Role="PHorarios" Type="Self.PHorarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PCurso">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="PHorarios">
+              <PropertyRef Name="CursoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PoloFechas_PoloTorneo">
           <End Role="PoloTorneo" Type="Self.PoloTorneo" Multiplicity="0..1" />
           <End Role="PoloFechas" Type="Self.PoloFechas" Multiplicity="*" />
@@ -2723,6 +2934,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             </Principal>
             <Dependent Role="PoloSetupTorneo">
               <PropertyRef Name="TorneoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PTemas_PCurso">
+          <End Role="PCurso" Type="Self.PCurso" Multiplicity="0..1" />
+          <End Role="PTemas" Type="Self.PTemas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PCurso">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="PTemas">
+              <PropertyRef Name="CursoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3101,7 +3324,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <EntitySet Name="Banners" EntityType="Self.Banners" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BASETIMES" EntityType="Self.BASETIMES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Calendario" EntityType="Self.Calendario" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CalendarioCursos" EntityType="Self.CalendarioCursos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CambiosDNI" EntityType="Self.CambiosDNI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CategoriaNoticia" EntityType="Self.CategoriaNoticia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
@@ -3113,8 +3335,15 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <EntitySet Name="Configuracion" EntityType="Self.Configuracion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contactos" EntityType="Self.Contactos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Curso" EntityType="Self.Curso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CursoAlumno" EntityType="Self.CursoAlumno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CursoBanner" EntityType="Self.CursoBanner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CursoCalentario" EntityType="Self.CursoCalentario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CursoFotos" EntityType="Self.CursoFotos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CursoHorario" EntityType="Self.CursoHorario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CursoInscripcion" EntityType="Self.CursoInscripcion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CursoObjetivos" EntityType="Self.CursoObjetivos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CursoParticipante" EntityType="Self.CursoParticipante" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CursoProfesor" EntityType="Self.CursoProfesor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Delegados" EntityType="Self.Delegados" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Directivos" EntityType="Self.Directivos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Disciplina" EntityType="Self.Disciplina" Schema="dbo" store:Type="Tables" />
@@ -3149,6 +3378,9 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <EntitySet Name="OtroResponsable" EntityType="Self.OtroResponsable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OtroSetupTorneo" EntityType="Self.OtroSetupTorneo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OtroTorneo" EntityType="Self.OtroTorneo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PCalendario" EntityType="Self.PCalendario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PCurso" EntityType="Self.PCurso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHorarios" EntityType="Self.PHorarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Piscinas" EntityType="Self.Piscinas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PoloEquipos" EntityType="Self.PoloEquipos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PoloFechas" EntityType="Self.PoloFechas" Schema="dbo" store:Type="Tables" />
@@ -3162,8 +3394,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <EntitySet Name="PoloRondas" EntityType="Self.PoloRondas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PoloSetupTorneo" EntityType="Self.PoloSetupTorneo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PoloTorneo" EntityType="Self.PoloTorneo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PProfesor" EntityType="Self.PProfesor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Procesado" EntityType="Self.Procesado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pruebas" EntityType="Self.Pruebas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PTemas" EntityType="Self.PTemas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Records" EntityType="Self.Records" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RecordsActuales" EntityType="Self.RecordsActuales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RecordsEdades" EntityType="Self.RecordsEdades" Schema="dbo" store:Type="Tables" />
@@ -3197,31 +3431,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vivo" EntityType="Self.Vivo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vouchers" EntityType="Self.Vouchers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Query" EntityType="Self.Query" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Query].[Athlete] AS [Athlete], 
-    [Query].[First] AS [First], 
-    [Query].[Last] AS [Last], 
-    [Query].[Sex] AS [Sex], 
-    [Query].[Birth] AS [Birth], 
-    [Query].[Age] AS [Age], 
-    [Query].[ID_NO] AS [ID_NO], 
-    [Query].[AthleteId] AS [AthleteId]
-    FROM [dbo].[Query] AS [Query]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Sheet1$" EntityType="Self.Sheet1$" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Sheet1$].[Inicio] AS [Inicio], 
-    [Sheet1$].[Fin] AS [Fin], 
-    [Sheet1$].[Evento] AS [Evento], 
-    [Sheet1$].[Sede] AS [Sede], 
-    [Sheet1$].[Carácter] AS [Carácter], 
-    [Sheet1$].[Observación] AS [Observación], 
-    [Sheet1$].[Organizador] AS [Organizador], 
-    [Sheet1$].[disciplina] AS [disciplina], 
-    [Sheet1$].[internacional] AS [internacional]
-    FROM [dbo].[Sheet1$] AS [Sheet1$]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK__SetupTorn__TipoI__2AA05119" Association="Self.FK__SetupTorn__TipoI__2AA05119">
             <End Role="TipoTorneo" EntitySet="TipoTorneo" />
             <End Role="SetupTorneo" EntitySet="SetupTorneo" />
@@ -3274,6 +3483,22 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             <End Role="Asociaciones" EntitySet="Asociaciones" />
             <End Role="Club" EntitySet="Club" />
           </AssociationSet>
+          <AssociationSet Name="FK_CursoAlumno_Foto" Association="Self.FK_CursoAlumno_Foto">
+            <End Role="CursoFotos" EntitySet="CursoFotos" />
+            <End Role="CursoAlumno" EntitySet="CursoAlumno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursoBanner_CursoCalentario" Association="Self.FK_CursoBanner_CursoCalentario">
+            <End Role="CursoCalentario" EntitySet="CursoCalentario" />
+            <End Role="CursoBanner" EntitySet="CursoBanner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursoCalentario_Disciplina" Association="Self.FK_CursoCalentario_Disciplina">
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="CursoCalentario" EntitySet="CursoCalentario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursoHorario_CursoCalentario" Association="Self.FK_CursoHorario_CursoCalentario">
+            <End Role="CursoCalentario" EntitySet="CursoCalentario" />
+            <End Role="CursoHorario" EntitySet="CursoHorario" />
+          </AssociationSet>
           <AssociationSet Name="FK_CursoInscripcion_Curso" Association="Self.FK_CursoInscripcion_Curso">
             <End Role="Curso" EntitySet="Curso" />
             <End Role="CursoInscripcion" EntitySet="CursoInscripcion" />
@@ -3281,6 +3506,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <AssociationSet Name="FK_CursoInscripcion_CursoParticipante" Association="Self.FK_CursoInscripcion_CursoParticipante">
             <End Role="CursoParticipante" EntitySet="CursoParticipante" />
             <End Role="CursoInscripcion" EntitySet="CursoInscripcion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursoObjetivos_CursoCalentario" Association="Self.FK_CursoObjetivos_CursoCalentario">
+            <End Role="CursoCalentario" EntitySet="CursoCalentario" />
+            <End Role="CursoObjetivos" EntitySet="CursoObjetivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursoProfesor_CursoAlumno" Association="Self.FK_CursoProfesor_CursoAlumno">
+            <End Role="CursoAlumno" EntitySet="CursoAlumno" />
+            <End Role="CursoProfesor" EntitySet="CursoProfesor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursoProfesor_CursoCalentario" Association="Self.FK_CursoProfesor_CursoCalentario">
+            <End Role="CursoCalentario" EntitySet="CursoCalentario" />
+            <End Role="CursoProfesor" EntitySet="CursoProfesor" />
           </AssociationSet>
           <AssociationSet Name="FK_Delegados_Torneo" Association="Self.FK_Delegados_Torneo">
             <End Role="Torneo" EntitySet="Torneo" />
@@ -3458,6 +3695,26 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             <End Role="Disciplina" EntitySet="Disciplina" />
             <End Role="OtroTorneo" EntitySet="OtroTorneo" />
           </AssociationSet>
+          <AssociationSet Name="FK_PCalendario_PCurso" Association="Self.FK_PCalendario_PCurso">
+            <End Role="PCurso" EntitySet="PCurso" />
+            <End Role="PCalendario" EntitySet="PCalendario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PCalendario_PProfesor" Association="Self.FK_PCalendario_PProfesor">
+            <End Role="PProfesor" EntitySet="PProfesor" />
+            <End Role="PCalendario" EntitySet="PCalendario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PCurso_Disciplina" Association="Self.FK_PCurso_Disciplina">
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="PCurso" EntitySet="PCurso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PCurso_PCurso" Association="Self.FK_PCurso_PCurso">
+            <End Role="PCurso" EntitySet="PCurso" />
+            <End Role="PCurso1" EntitySet="PCurso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PHorarios_PCurso" Association="Self.FK_PHorarios_PCurso">
+            <End Role="PCurso" EntitySet="PCurso" />
+            <End Role="PHorarios" EntitySet="PHorarios" />
+          </AssociationSet>
           <AssociationSet Name="FK_PoloFechas_PoloTorneo" Association="Self.FK_PoloFechas_PoloTorneo">
             <End Role="PoloTorneo" EntitySet="PoloTorneo" />
             <End Role="PoloFechas" EntitySet="PoloFechas" />
@@ -3529,6 +3786,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <AssociationSet Name="FK_PoloSetupTorneo_PoloTorneo" Association="Self.FK_PoloSetupTorneo_PoloTorneo">
             <End Role="PoloTorneo" EntitySet="PoloTorneo" />
             <End Role="PoloSetupTorneo" EntitySet="PoloSetupTorneo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PTemas_PCurso" Association="Self.FK_PTemas_PCurso">
+            <End Role="PCurso" EntitySet="PCurso" />
+            <End Role="PTemas" EntitySet="PTemas" />
           </AssociationSet>
           <AssociationSet Name="FK_RecordsActuales_Piscinas" Association="Self.FK_RecordsActuales_Piscinas">
             <End Role="Piscinas" EntitySet="Piscinas" />
@@ -3681,8 +3942,15 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <EntitySet Name="Configuracion" EntityType="DB_9B1F4C_comentariosModel.Configuracion" />
           <EntitySet Name="Contactos" EntityType="DB_9B1F4C_comentariosModel.Contactos" />
           <EntitySet Name="Curso" EntityType="DB_9B1F4C_comentariosModel.Curso" />
+          <EntitySet Name="CursoAlumno" EntityType="DB_9B1F4C_comentariosModel.CursoAlumno" />
+          <EntitySet Name="CursoBanner" EntityType="DB_9B1F4C_comentariosModel.CursoBanner" />
+          <EntitySet Name="CursoCalentario" EntityType="DB_9B1F4C_comentariosModel.CursoCalentario" />
+          <EntitySet Name="CursoFotos" EntityType="DB_9B1F4C_comentariosModel.CursoFotos" />
+          <EntitySet Name="CursoHorario" EntityType="DB_9B1F4C_comentariosModel.CursoHorario" />
           <EntitySet Name="CursoInscripcion" EntityType="DB_9B1F4C_comentariosModel.CursoInscripcion" />
+          <EntitySet Name="CursoObjetivos" EntityType="DB_9B1F4C_comentariosModel.CursoObjetivos" />
           <EntitySet Name="CursoParticipante" EntityType="DB_9B1F4C_comentariosModel.CursoParticipante" />
+          <EntitySet Name="CursoProfesor" EntityType="DB_9B1F4C_comentariosModel.CursoProfesor" />
           <EntitySet Name="Delegados" EntityType="DB_9B1F4C_comentariosModel.Delegados" />
           <EntitySet Name="Directivos" EntityType="DB_9B1F4C_comentariosModel.Directivos" />
           <EntitySet Name="Disciplina" EntityType="DB_9B1F4C_comentariosModel.Disciplina" />
@@ -3717,6 +3985,9 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <EntitySet Name="OtroResponsable" EntityType="DB_9B1F4C_comentariosModel.OtroResponsable" />
           <EntitySet Name="OtroSetupTorneo" EntityType="DB_9B1F4C_comentariosModel.OtroSetupTorneo" />
           <EntitySet Name="OtroTorneo" EntityType="DB_9B1F4C_comentariosModel.OtroTorneo" />
+          <EntitySet Name="PCalendario" EntityType="DB_9B1F4C_comentariosModel.PCalendario" />
+          <EntitySet Name="PCurso" EntityType="DB_9B1F4C_comentariosModel.PCurso" />
+          <EntitySet Name="PHorarios" EntityType="DB_9B1F4C_comentariosModel.PHorarios" />
           <EntitySet Name="Piscinas" EntityType="DB_9B1F4C_comentariosModel.Piscinas" />
           <EntitySet Name="PoloEquipos" EntityType="DB_9B1F4C_comentariosModel.PoloEquipos" />
           <EntitySet Name="PoloFechas" EntityType="DB_9B1F4C_comentariosModel.PoloFechas" />
@@ -3730,8 +4001,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <EntitySet Name="PoloRondas" EntityType="DB_9B1F4C_comentariosModel.PoloRondas" />
           <EntitySet Name="PoloSetupTorneo" EntityType="DB_9B1F4C_comentariosModel.PoloSetupTorneo" />
           <EntitySet Name="PoloTorneo" EntityType="DB_9B1F4C_comentariosModel.PoloTorneo" />
+          <EntitySet Name="PProfesor" EntityType="DB_9B1F4C_comentariosModel.PProfesor" />
           <EntitySet Name="Procesado" EntityType="DB_9B1F4C_comentariosModel.Procesado" />
           <EntitySet Name="Pruebas" EntityType="DB_9B1F4C_comentariosModel.Pruebas" />
+          <EntitySet Name="PTemas" EntityType="DB_9B1F4C_comentariosModel.PTemas" />
           <EntitySet Name="Records" EntityType="DB_9B1F4C_comentariosModel.Records" />
           <EntitySet Name="RecordsActuales" EntityType="DB_9B1F4C_comentariosModel.RecordsActuales" />
           <EntitySet Name="RecordsEdades" EntityType="DB_9B1F4C_comentariosModel.RecordsEdades" />
@@ -3765,8 +4038,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <EntitySet Name="Usuario" EntityType="DB_9B1F4C_comentariosModel.Usuario" />
           <EntitySet Name="Vivo" EntityType="DB_9B1F4C_comentariosModel.Vivo" />
           <EntitySet Name="Vouchers" EntityType="DB_9B1F4C_comentariosModel.Vouchers" />
-          <EntitySet Name="Query" EntityType="DB_9B1F4C_comentariosModel.Query" />
-          <EntitySet Name="Sheet1_" EntityType="DB_9B1F4C_comentariosModel.Sheet1_" />
           <AssociationSet Name="FK_Afiliacion_Club" Association="DB_9B1F4C_comentariosModel.FK_Afiliacion_Club">
             <End Role="Club" EntitySet="Club" />
             <End Role="Afiliacion" EntitySet="Afiliacion" />
@@ -3879,6 +4150,34 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             <End Role="Curso" EntitySet="Curso" />
             <End Role="CursoInscripcion" EntitySet="CursoInscripcion" />
           </AssociationSet>
+          <AssociationSet Name="FK_CursoAlumno_Foto" Association="DB_9B1F4C_comentariosModel.FK_CursoAlumno_Foto">
+            <End Role="CursoFotos" EntitySet="CursoFotos" />
+            <End Role="CursoAlumno" EntitySet="CursoAlumno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursoProfesor_CursoAlumno" Association="DB_9B1F4C_comentariosModel.FK_CursoProfesor_CursoAlumno">
+            <End Role="CursoAlumno" EntitySet="CursoAlumno" />
+            <End Role="CursoProfesor" EntitySet="CursoProfesor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursoBanner_CursoCalentario" Association="DB_9B1F4C_comentariosModel.FK_CursoBanner_CursoCalentario">
+            <End Role="CursoCalentario" EntitySet="CursoCalentario" />
+            <End Role="CursoBanner" EntitySet="CursoBanner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursoCalentario_Disciplina" Association="DB_9B1F4C_comentariosModel.FK_CursoCalentario_Disciplina">
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="CursoCalentario" EntitySet="CursoCalentario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursoHorario_CursoCalentario" Association="DB_9B1F4C_comentariosModel.FK_CursoHorario_CursoCalentario">
+            <End Role="CursoCalentario" EntitySet="CursoCalentario" />
+            <End Role="CursoHorario" EntitySet="CursoHorario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursoObjetivos_CursoCalentario" Association="DB_9B1F4C_comentariosModel.FK_CursoObjetivos_CursoCalentario">
+            <End Role="CursoCalentario" EntitySet="CursoCalentario" />
+            <End Role="CursoObjetivos" EntitySet="CursoObjetivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CursoProfesor_CursoCalentario" Association="DB_9B1F4C_comentariosModel.FK_CursoProfesor_CursoCalentario">
+            <End Role="CursoCalentario" EntitySet="CursoCalentario" />
+            <End Role="CursoProfesor" EntitySet="CursoProfesor" />
+          </AssociationSet>
           <AssociationSet Name="FK_CursoInscripcion_CursoParticipante" Association="DB_9B1F4C_comentariosModel.FK_CursoInscripcion_CursoParticipante">
             <End Role="CursoParticipante" EntitySet="CursoParticipante" />
             <End Role="CursoInscripcion" EntitySet="CursoInscripcion" />
@@ -3906,6 +4205,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <AssociationSet Name="FK_OtroTorneo_Disciplina" Association="DB_9B1F4C_comentariosModel.FK_OtroTorneo_Disciplina">
             <End Role="Disciplina" EntitySet="Disciplina" />
             <End Role="OtroTorneo" EntitySet="OtroTorneo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PCurso_Disciplina" Association="DB_9B1F4C_comentariosModel.FK_PCurso_Disciplina">
+            <End Role="Disciplina" EntitySet="Disciplina" />
+            <End Role="PCurso" EntitySet="PCurso" />
           </AssociationSet>
           <AssociationSet Name="FK_Entradas_Torneo" Association="DB_9B1F4C_comentariosModel.FK_Entradas_Torneo">
             <End Role="Torneo" EntitySet="Torneo" />
@@ -4055,6 +4358,26 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             <End Role="OtroTorneo" EntitySet="OtroTorneo" />
             <End Role="OtroSetupTorneo" EntitySet="OtroSetupTorneo" />
           </AssociationSet>
+          <AssociationSet Name="FK_PCalendario_PCurso" Association="DB_9B1F4C_comentariosModel.FK_PCalendario_PCurso">
+            <End Role="PCurso" EntitySet="PCurso" />
+            <End Role="PCalendario" EntitySet="PCalendario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PCalendario_PProfesor" Association="DB_9B1F4C_comentariosModel.FK_PCalendario_PProfesor">
+            <End Role="PProfesor" EntitySet="PProfesor" />
+            <End Role="PCalendario" EntitySet="PCalendario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PCurso_PCurso" Association="DB_9B1F4C_comentariosModel.FK_PCurso_PCurso">
+            <End Role="PCurso" EntitySet="PCurso" />
+            <End Role="PCurso1" EntitySet="PCurso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PHorarios_PCurso" Association="DB_9B1F4C_comentariosModel.FK_PHorarios_PCurso">
+            <End Role="PCurso" EntitySet="PCurso" />
+            <End Role="PHorarios" EntitySet="PHorarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PTemas_PCurso" Association="DB_9B1F4C_comentariosModel.FK_PTemas_PCurso">
+            <End Role="PCurso" EntitySet="PCurso" />
+            <End Role="PTemas" EntitySet="PTemas" />
+          </AssociationSet>
           <AssociationSet Name="FK_RecordsActuales_Piscinas" Association="DB_9B1F4C_comentariosModel.FK_RecordsActuales_Piscinas">
             <End Role="Piscinas" EntitySet="Piscinas" />
             <End Role="RecordsActuales" EntitySet="RecordsActuales" />
@@ -4195,7 +4518,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Vouchers" EntitySet="Vouchers" />
           </AssociationSet>
-          <EntitySet Name="CalendarioCursos" EntityType="DB_9B1F4C_comentariosModel.CalendarioCursos" />
         </EntityContainer>
         <EntityType Name="Afiliacion">
           <Key>
@@ -4415,6 +4737,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           </Key>
           <Property Name="CategoriaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TipoNoticia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Detalle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Noticias" Relationship="DB_9B1F4C_comentariosModel.FK_Noticias_CategoriaNoticia" FromRole="CategoriaNoticia" ToRole="Noticias" />
         </EntityType>
         <EntityType Name="Categorias">
@@ -4453,6 +4776,8 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="Academia" Type="Boolean" Nullable="false" />
           <Property Name="RutaLogo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="EMailOficial" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Paginaweb" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Renade" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Afiliacion" Relationship="DB_9B1F4C_comentariosModel.FK_Afiliacion_Club" FromRole="Club" ToRole="Afiliacion" />
           <NavigationProperty Name="Asociaciones" Relationship="DB_9B1F4C_comentariosModel.FK_Club_Asociaciones" FromRole="Club" ToRole="Asociaciones" />
           <NavigationProperty Name="Directivos" Relationship="DB_9B1F4C_comentariosModel.FK_Directivos_Club" FromRole="Club" ToRole="Directivos" />
@@ -4464,8 +4789,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <NavigationProperty Name="TraspasosEnEspera" Relationship="DB_9B1F4C_comentariosModel.FK_TraspasosEnEspera_Club" FromRole="Club" ToRole="TraspasosEnEspera" />
           <NavigationProperty Name="Usuario" Relationship="DB_9B1F4C_comentariosModel.FK_Usuario_Club" FromRole="Club" ToRole="Usuario" />
           <NavigationProperty Name="Vouchers" Relationship="DB_9B1F4C_comentariosModel.FK_Vouchers_Club" FromRole="Club" ToRole="Vouchers" />
-          <Property Name="Paginaweb" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="Renade" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Comentario">
           <Key>
@@ -4548,6 +4871,72 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CursoInscripcion" Relationship="DB_9B1F4C_comentariosModel.FK_CursoInscripcion_Curso" FromRole="Curso" ToRole="CursoInscripcion" />
         </EntityType>
+        <EntityType Name="CursoAlumno">
+          <Key>
+            <PropertyRef Name="AlumnoId" />
+          </Key>
+          <Property Name="AlumnoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombres" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApellidoP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApellidoM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DNI" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sexo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Nacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Celular" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FotoId" Type="Int32" />
+          <NavigationProperty Name="CursoFotos" Relationship="DB_9B1F4C_comentariosModel.FK_CursoAlumno_Foto" FromRole="CursoAlumno" ToRole="CursoFotos" />
+          <NavigationProperty Name="CursoProfesor" Relationship="DB_9B1F4C_comentariosModel.FK_CursoProfesor_CursoAlumno" FromRole="CursoAlumno" ToRole="CursoProfesor" />
+        </EntityType>
+        <EntityType Name="CursoBanner">
+          <Key>
+            <PropertyRef Name="BannerId" />
+          </Key>
+          <Property Name="BannerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CursoId" Type="Int32" Nullable="false" />
+          <Property Name="Banner" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CursoCalentario" Relationship="DB_9B1F4C_comentariosModel.FK_CursoBanner_CursoCalentario" FromRole="CursoBanner" ToRole="CursoCalentario" />
+        </EntityType>
+        <EntityType Name="CursoCalentario">
+          <Key>
+            <PropertyRef Name="CursoId" />
+          </Key>
+          <Property Name="CursoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Inicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Sede" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DisciplinaId" Type="Int32" Nullable="false" />
+          <Property Name="Evento" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Organizador" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DirigidoA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CursoRequisito" Type="Int32" />
+          <Property Name="Enlace" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CursoBanner" Relationship="DB_9B1F4C_comentariosModel.FK_CursoBanner_CursoCalentario" FromRole="CursoCalentario" ToRole="CursoBanner" />
+          <NavigationProperty Name="Disciplina" Relationship="DB_9B1F4C_comentariosModel.FK_CursoCalentario_Disciplina" FromRole="CursoCalentario" ToRole="Disciplina" />
+          <NavigationProperty Name="CursoHorario" Relationship="DB_9B1F4C_comentariosModel.FK_CursoHorario_CursoCalentario" FromRole="CursoCalentario" ToRole="CursoHorario" />
+          <NavigationProperty Name="CursoObjetivos" Relationship="DB_9B1F4C_comentariosModel.FK_CursoObjetivos_CursoCalentario" FromRole="CursoCalentario" ToRole="CursoObjetivos" />
+          <NavigationProperty Name="CursoProfesor" Relationship="DB_9B1F4C_comentariosModel.FK_CursoProfesor_CursoCalentario" FromRole="CursoCalentario" ToRole="CursoProfesor" />
+        </EntityType>
+        <EntityType Name="CursoFotos">
+          <Key>
+            <PropertyRef Name="FotoId" />
+          </Key>
+          <Property Name="FotoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Foto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CursoAlumno" Relationship="DB_9B1F4C_comentariosModel.FK_CursoAlumno_Foto" FromRole="CursoFotos" ToRole="CursoAlumno" />
+        </EntityType>
+        <EntityType Name="CursoHorario">
+          <Key>
+            <PropertyRef Name="HorarioId" />
+          </Key>
+          <Property Name="HorarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Inicio" Type="Double" Nullable="false" />
+          <Property Name="Fin" Type="Double" Nullable="false" />
+          <Property Name="CursoId" Type="Int32" Nullable="false" />
+          <Property Name="Dia" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="CursoCalentario" Relationship="DB_9B1F4C_comentariosModel.FK_CursoHorario_CursoCalentario" FromRole="CursoHorario" ToRole="CursoCalentario" />
+        </EntityType>
         <EntityType Name="CursoInscripcion">
           <Key>
             <PropertyRef Name="InscripcionId" />
@@ -4557,6 +4946,15 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="CursoId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Curso" Relationship="DB_9B1F4C_comentariosModel.FK_CursoInscripcion_Curso" FromRole="CursoInscripcion" ToRole="Curso" />
           <NavigationProperty Name="CursoParticipante" Relationship="DB_9B1F4C_comentariosModel.FK_CursoInscripcion_CursoParticipante" FromRole="CursoInscripcion" ToRole="CursoParticipante" />
+        </EntityType>
+        <EntityType Name="CursoObjetivos">
+          <Key>
+            <PropertyRef Name="ObjetivoId" />
+          </Key>
+          <Property Name="ObjetivoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Detalle" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CursoId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CursoCalentario" Relationship="DB_9B1F4C_comentariosModel.FK_CursoObjetivos_CursoCalentario" FromRole="CursoObjetivos" ToRole="CursoCalentario" />
         </EntityType>
         <EntityType Name="CursoParticipante">
           <Key>
@@ -4573,6 +4971,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="Nacionalidad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Actividad" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CursoInscripcion" Relationship="DB_9B1F4C_comentariosModel.FK_CursoInscripcion_CursoParticipante" FromRole="CursoParticipante" ToRole="CursoInscripcion" />
+        </EntityType>
+        <EntityType Name="CursoProfesor">
+          <Key>
+            <PropertyRef Name="ProfesorId" />
+          </Key>
+          <Property Name="ProfesorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Experiencia" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CursoId" Type="Int32" Nullable="false" />
+          <Property Name="AlumnoId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CursoAlumno" Relationship="DB_9B1F4C_comentariosModel.FK_CursoProfesor_CursoAlumno" FromRole="CursoProfesor" ToRole="CursoAlumno" />
+          <NavigationProperty Name="CursoCalentario" Relationship="DB_9B1F4C_comentariosModel.FK_CursoProfesor_CursoCalentario" FromRole="CursoProfesor" ToRole="CursoCalentario" />
         </EntityType>
         <EntityType Name="Delegados">
           <Key>
@@ -4607,11 +5017,14 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="DisciplinaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TipoDisciplina" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="clase" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Icono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Calendario" Relationship="DB_9B1F4C_comentariosModel.FK_Calendario_Disciplina" FromRole="Disciplina" ToRole="Calendario" />
+          <NavigationProperty Name="CursoCalentario" Relationship="DB_9B1F4C_comentariosModel.FK_CursoCalentario_Disciplina" FromRole="Disciplina" ToRole="CursoCalentario" />
           <NavigationProperty Name="Inscripciones" Relationship="DB_9B1F4C_comentariosModel.FK_Inscripciones_Disciplina" FromRole="Disciplina" ToRole="Inscripciones" />
           <NavigationProperty Name="Noticias" Relationship="DB_9B1F4C_comentariosModel.FK_Noticias_Disciplina" FromRole="Disciplina" ToRole="Noticias" />
           <NavigationProperty Name="OtroCategorias" Relationship="DB_9B1F4C_comentariosModel.FK_OtroCategorias_Disciplina" FromRole="Disciplina" ToRole="OtroCategorias" />
           <NavigationProperty Name="OtroTorneo" Relationship="DB_9B1F4C_comentariosModel.FK_OtroTorneo_Disciplina" FromRole="Disciplina" ToRole="OtroTorneo" />
+          <NavigationProperty Name="PCurso" Relationship="DB_9B1F4C_comentariosModel.FK_PCurso_Disciplina" FromRole="Disciplina" ToRole="PCurso" />
         </EntityType>
         <EntityType Name="Empresa">
           <Key>
@@ -5244,6 +5657,45 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <NavigationProperty Name="OtroEventos" Relationship="DB_9B1F4C_comentariosModel.FK_OtroEventos_OtroTorneo" FromRole="OtroTorneo" ToRole="OtroEventos" />
           <NavigationProperty Name="OtroSetupTorneo" Relationship="DB_9B1F4C_comentariosModel.FK_OtroSetupTorneo_OtroTorneo" FromRole="OtroTorneo" ToRole="OtroSetupTorneo" />
         </EntityType>
+        <EntityType Name="PCalendario">
+          <Key>
+            <PropertyRef Name="CalendarioId" />
+          </Key>
+          <Property Name="CalendarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CursoId" Type="Int32" Nullable="false" />
+          <Property Name="ProfesorId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PCurso" Relationship="DB_9B1F4C_comentariosModel.FK_PCalendario_PCurso" FromRole="PCalendario" ToRole="PCurso" />
+          <NavigationProperty Name="PProfesor" Relationship="DB_9B1F4C_comentariosModel.FK_PCalendario_PProfesor" FromRole="PCalendario" ToRole="PProfesor" />
+        </EntityType>
+        <EntityType Name="PCurso">
+          <Key>
+            <PropertyRef Name="CursoId" />
+          </Key>
+          <Property Name="CursoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Objetivos" Type="String" Nullable="false" MaxLength="1000" FixedLength="true" Unicode="true" />
+          <Property Name="Requisito" Type="Int32" Nullable="false" />
+          <Property Name="Mesesduracion" Type="Int32" Nullable="false" />
+          <Property Name="Diasduracion" Type="Int32" Nullable="false" />
+          <Property Name="DisciplinaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Disciplina" Relationship="DB_9B1F4C_comentariosModel.FK_PCurso_Disciplina" FromRole="PCurso" ToRole="Disciplina" />
+          <NavigationProperty Name="PCalendario" Relationship="DB_9B1F4C_comentariosModel.FK_PCalendario_PCurso" FromRole="PCurso" ToRole="PCalendario" />
+          <NavigationProperty Name="PCurso1" Relationship="DB_9B1F4C_comentariosModel.FK_PCurso_PCurso" FromRole="PCurso" ToRole="PCurso1" />
+          <NavigationProperty Name="PCurso2" Relationship="DB_9B1F4C_comentariosModel.FK_PCurso_PCurso" FromRole="PCurso1" ToRole="PCurso" />
+          <NavigationProperty Name="PHorarios" Relationship="DB_9B1F4C_comentariosModel.FK_PHorarios_PCurso" FromRole="PCurso" ToRole="PHorarios" />
+          <NavigationProperty Name="PTemas" Relationship="DB_9B1F4C_comentariosModel.FK_PTemas_PCurso" FromRole="PCurso" ToRole="PTemas" />
+        </EntityType>
+        <EntityType Name="PHorarios">
+          <Key>
+            <PropertyRef Name="HorarioId" />
+          </Key>
+          <Property Name="HorarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dia" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Hora" Type="Double" Nullable="false" />
+          <Property Name="CursoId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PCurso" Relationship="DB_9B1F4C_comentariosModel.FK_PHorarios_PCurso" FromRole="PHorarios" ToRole="PCurso" />
+        </EntityType>
         <EntityType Name="Piscinas">
           <Key>
             <PropertyRef Name="ID" />
@@ -5423,6 +5875,16 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <NavigationProperty Name="PoloRondas" Relationship="DB_9B1F4C_comentariosModel.FK_PoloRondas_PoloTorneo" FromRole="PoloTorneo" ToRole="PoloRondas" />
           <NavigationProperty Name="PoloSetupTorneo" Relationship="DB_9B1F4C_comentariosModel.FK_PoloSetupTorneo_PoloTorneo" FromRole="PoloTorneo" ToRole="PoloSetupTorneo" />
         </EntityType>
+        <EntityType Name="PProfesor">
+          <Key>
+            <PropertyRef Name="ProfesorId" />
+          </Key>
+          <Property Name="ProfesorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Nacionalidad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DetalleRapido" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PCalendario" Relationship="DB_9B1F4C_comentariosModel.FK_PCalendario_PProfesor" FromRole="PProfesor" ToRole="PCalendario" />
+        </EntityType>
         <EntityType Name="Procesado">
           <Key>
             <PropertyRef Name="ProcesadoId" />
@@ -5443,6 +5905,17 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="EstiloMeet" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="RESULTS" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTS_Pruebas" FromRole="Pruebas" ToRole="RESULTS" />
           <NavigationProperty Name="RESULTSMasters" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTSMasters_Pruebas" FromRole="Pruebas" ToRole="RESULTSMasters" />
+        </EntityType>
+        <EntityType Name="PTemas">
+          <Key>
+            <PropertyRef Name="TemaId" />
+          </Key>
+          <Property Name="TemaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Teorico" Type="Boolean" Nullable="false" />
+          <Property Name="Practivo" Type="Boolean" Nullable="false" />
+          <Property Name="Detalle" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="CursoId" Type="Int32" />
+          <NavigationProperty Name="PCurso" Relationship="DB_9B1F4C_comentariosModel.FK_PTemas_PCurso" FromRole="PTemas" ToRole="PCurso" />
         </EntityType>
         <EntityType Name="Records">
           <Key>
@@ -6150,44 +6623,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <NavigationProperty Name="Club" Relationship="DB_9B1F4C_comentariosModel.FK_Vouchers_Club" FromRole="Vouchers" ToRole="Club" />
           <NavigationProperty Name="Usuario" Relationship="DB_9B1F4C_comentariosModel.FK_Vouchers_Usuario" FromRole="Vouchers" ToRole="Usuario" />
         </EntityType>
-        <EntityType Name="Query">
-          <Key>
-            <PropertyRef Name="Athlete" />
-            <PropertyRef Name="First" />
-            <PropertyRef Name="Last" />
-            <PropertyRef Name="Sex" />
-            <PropertyRef Name="Age" />
-            <PropertyRef Name="ID_NO" />
-            <PropertyRef Name="AthleteId" />
-          </Key>
-          <Property Name="Athlete" Type="Int32" Nullable="false" />
-          <Property Name="First" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Last" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Sex" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Name="Birth" Type="DateTime" Precision="3" />
-          <Property Name="Age" Type="Int16" Nullable="false" />
-          <Property Name="ID_NO" Type="String" Nullable="false" MaxLength="17" FixedLength="false" Unicode="true" />
-          <Property Name="AthleteId" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Sheet1_">
-          <Key>
-            <PropertyRef Name="Inicio" />
-            <PropertyRef Name="Fin" />
-            <PropertyRef Name="Evento" />
-            <PropertyRef Name="Sede" />
-            <PropertyRef Name="disciplina" />
-            <PropertyRef Name="internacional" />
-          </Key>
-          <Property Name="Inicio" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Fin" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Evento" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Sede" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Carácter" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Observación" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Organizador" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="disciplina" Type="Int32" Nullable="false" />
-          <Property Name="internacional" Type="Boolean" Nullable="false" />
-        </EntityType>
         <Association Name="FK_Afiliacion_Club">
           <End Type="DB_9B1F4C_comentariosModel.Club" Role="Club" Multiplicity="1" />
           <End Type="DB_9B1F4C_comentariosModel.Afiliacion" Role="Afiliacion" Multiplicity="*" />
@@ -6524,6 +6959,90 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CursoAlumno_Foto">
+          <End Type="DB_9B1F4C_comentariosModel.CursoFotos" Role="CursoFotos" Multiplicity="0..1" />
+          <End Type="DB_9B1F4C_comentariosModel.CursoAlumno" Role="CursoAlumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursoFotos">
+              <PropertyRef Name="FotoId" />
+            </Principal>
+            <Dependent Role="CursoAlumno">
+              <PropertyRef Name="FotoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursoProfesor_CursoAlumno">
+          <End Type="DB_9B1F4C_comentariosModel.CursoAlumno" Role="CursoAlumno" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.CursoProfesor" Role="CursoProfesor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursoAlumno">
+              <PropertyRef Name="AlumnoId" />
+            </Principal>
+            <Dependent Role="CursoProfesor">
+              <PropertyRef Name="AlumnoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursoBanner_CursoCalentario">
+          <End Type="DB_9B1F4C_comentariosModel.CursoCalentario" Role="CursoCalentario" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.CursoBanner" Role="CursoBanner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursoCalentario">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="CursoBanner">
+              <PropertyRef Name="CursoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursoCalentario_Disciplina">
+          <End Type="DB_9B1F4C_comentariosModel.Disciplina" Role="Disciplina" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.CursoCalentario" Role="CursoCalentario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplina">
+              <PropertyRef Name="DisciplinaId" />
+            </Principal>
+            <Dependent Role="CursoCalentario">
+              <PropertyRef Name="DisciplinaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursoHorario_CursoCalentario">
+          <End Type="DB_9B1F4C_comentariosModel.CursoCalentario" Role="CursoCalentario" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.CursoHorario" Role="CursoHorario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursoCalentario">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="CursoHorario">
+              <PropertyRef Name="CursoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursoObjetivos_CursoCalentario">
+          <End Type="DB_9B1F4C_comentariosModel.CursoCalentario" Role="CursoCalentario" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.CursoObjetivos" Role="CursoObjetivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursoCalentario">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="CursoObjetivos">
+              <PropertyRef Name="CursoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CursoProfesor_CursoCalentario">
+          <End Type="DB_9B1F4C_comentariosModel.CursoCalentario" Role="CursoCalentario" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.CursoProfesor" Role="CursoProfesor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CursoCalentario">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="CursoProfesor">
+              <PropertyRef Name="CursoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CursoInscripcion_CursoParticipante">
           <End Type="DB_9B1F4C_comentariosModel.CursoParticipante" Role="CursoParticipante" Multiplicity="1" />
           <End Type="DB_9B1F4C_comentariosModel.CursoInscripcion" Role="CursoInscripcion" Multiplicity="*" />
@@ -6604,6 +7123,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
               <PropertyRef Name="DisciplinaId" />
             </Principal>
             <Dependent Role="OtroTorneo">
+              <PropertyRef Name="DisciplinaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PCurso_Disciplina">
+          <End Type="DB_9B1F4C_comentariosModel.Disciplina" Role="Disciplina" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.PCurso" Role="PCurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disciplina">
+              <PropertyRef Name="DisciplinaId" />
+            </Principal>
+            <Dependent Role="PCurso">
               <PropertyRef Name="DisciplinaId" />
             </Dependent>
           </ReferentialConstraint>
@@ -7052,6 +7583,66 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PCalendario_PCurso">
+          <End Type="DB_9B1F4C_comentariosModel.PCurso" Role="PCurso" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.PCalendario" Role="PCalendario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PCurso">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="PCalendario">
+              <PropertyRef Name="CursoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PCalendario_PProfesor">
+          <End Type="DB_9B1F4C_comentariosModel.PProfesor" Role="PProfesor" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.PCalendario" Role="PCalendario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PProfesor">
+              <PropertyRef Name="ProfesorId" />
+            </Principal>
+            <Dependent Role="PCalendario">
+              <PropertyRef Name="ProfesorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PCurso_PCurso">
+          <End Type="DB_9B1F4C_comentariosModel.PCurso" Role="PCurso" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.PCurso" Role="PCurso1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PCurso">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="PCurso1">
+              <PropertyRef Name="Requisito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PHorarios_PCurso">
+          <End Type="DB_9B1F4C_comentariosModel.PCurso" Role="PCurso" Multiplicity="1" />
+          <End Type="DB_9B1F4C_comentariosModel.PHorarios" Role="PHorarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PCurso">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="PHorarios">
+              <PropertyRef Name="CursoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PTemas_PCurso">
+          <End Type="DB_9B1F4C_comentariosModel.PCurso" Role="PCurso" Multiplicity="0..1" />
+          <End Type="DB_9B1F4C_comentariosModel.PTemas" Role="PTemas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PCurso">
+              <PropertyRef Name="CursoId" />
+            </Principal>
+            <Dependent Role="PTemas">
+              <PropertyRef Name="CursoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_RecordsActuales_Piscinas">
           <End Type="DB_9B1F4C_comentariosModel.Piscinas" Role="Piscinas" Multiplicity="0..1" />
           <End Type="DB_9B1F4C_comentariosModel.RecordsActuales" Role="RecordsActuales" Multiplicity="*" />
@@ -7472,22 +8063,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="CalendarioCursos">
-          <Key>
-            <PropertyRef Name="EventoId" />
-          </Key>
-          <Property Name="EventoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Inicio" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Fin" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Sede" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Disciplina" Type="Int32" Nullable="false" />
-          <Property Name="Evento" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Organizador" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="DirigidoA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Requisito" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Horarios" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Enlace" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -7705,6 +8280,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <EntitySetMapping Name="CategoriaNoticia">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.CategoriaNoticia">
               <MappingFragment StoreEntitySet="CategoriaNoticia">
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
                 <ScalarProperty Name="TipoNoticia" ColumnName="TipoNoticia" />
                 <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
               </MappingFragment>
@@ -7838,12 +8414,82 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CursoAlumno">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.CursoAlumno">
+              <MappingFragment StoreEntitySet="CursoAlumno">
+                <ScalarProperty Name="FotoId" ColumnName="FotoId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Nacimiento" ColumnName="Nacimiento" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="ApellidoM" ColumnName="ApellidoM" />
+                <ScalarProperty Name="ApellidoP" ColumnName="ApellidoP" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="AlumnoId" ColumnName="AlumnoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CursoBanner">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.CursoBanner">
+              <MappingFragment StoreEntitySet="CursoBanner">
+                <ScalarProperty Name="Banner" ColumnName="Banner" />
+                <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+                <ScalarProperty Name="BannerId" ColumnName="BannerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CursoCalentario">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.CursoCalentario">
+              <MappingFragment StoreEntitySet="CursoCalentario">
+                <ScalarProperty Name="Enlace" ColumnName="Enlace" />
+                <ScalarProperty Name="CursoRequisito" ColumnName="CursoRequisito" />
+                <ScalarProperty Name="DirigidoA" ColumnName="DirigidoA" />
+                <ScalarProperty Name="Organizador" ColumnName="Organizador" />
+                <ScalarProperty Name="Evento" ColumnName="Evento" />
+                <ScalarProperty Name="DisciplinaId" ColumnName="DisciplinaId" />
+                <ScalarProperty Name="Sede" ColumnName="Sede" />
+                <ScalarProperty Name="Fin" ColumnName="Fin" />
+                <ScalarProperty Name="Inicio" ColumnName="Inicio" />
+                <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CursoFotos">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.CursoFotos">
+              <MappingFragment StoreEntitySet="CursoFotos">
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="FotoId" ColumnName="FotoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CursoHorario">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.CursoHorario">
+              <MappingFragment StoreEntitySet="CursoHorario">
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+                <ScalarProperty Name="Fin" ColumnName="Fin" />
+                <ScalarProperty Name="Inicio" ColumnName="Inicio" />
+                <ScalarProperty Name="HorarioId" ColumnName="HorarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="CursoInscripcion">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.CursoInscripcion">
               <MappingFragment StoreEntitySet="CursoInscripcion">
                 <ScalarProperty Name="CursoId" ColumnName="CursoId" />
                 <ScalarProperty Name="ParticipanteId" ColumnName="ParticipanteId" />
                 <ScalarProperty Name="InscripcionId" ColumnName="InscripcionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CursoObjetivos">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.CursoObjetivos">
+              <MappingFragment StoreEntitySet="CursoObjetivos">
+                <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="ObjetivoId" ColumnName="ObjetivoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -7860,6 +8506,17 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
                 <ScalarProperty Name="Paterno" ColumnName="Paterno" />
                 <ScalarProperty Name="Nombres" ColumnName="Nombres" />
                 <ScalarProperty Name="ParticipanteId" ColumnName="ParticipanteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CursoProfesor">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.CursoProfesor">
+              <MappingFragment StoreEntitySet="CursoProfesor">
+                <ScalarProperty Name="AlumnoId" ColumnName="AlumnoId" />
+                <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+                <ScalarProperty Name="Experiencia" ColumnName="Experiencia" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="ProfesorId" ColumnName="ProfesorId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -7891,6 +8548,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <EntitySetMapping Name="Disciplina">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Disciplina">
               <MappingFragment StoreEntitySet="Disciplina">
+                <ScalarProperty Name="Icono" ColumnName="Icono" />
                 <ScalarProperty Name="clase" ColumnName="clase" />
                 <ScalarProperty Name="TipoDisciplina" ColumnName="TipoDisciplina" />
                 <ScalarProperty Name="DisciplinaId" ColumnName="DisciplinaId" />
@@ -8488,6 +9146,39 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PCalendario">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.PCalendario">
+              <MappingFragment StoreEntitySet="PCalendario">
+                <ScalarProperty Name="ProfesorId" ColumnName="ProfesorId" />
+                <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="CalendarioId" ColumnName="CalendarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PCurso">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.PCurso">
+              <MappingFragment StoreEntitySet="PCurso">
+                <ScalarProperty Name="DisciplinaId" ColumnName="DisciplinaId" />
+                <ScalarProperty Name="Diasduracion" ColumnName="Diasduracion" />
+                <ScalarProperty Name="Mesesduracion" ColumnName="Mesesduracion" />
+                <ScalarProperty Name="Requisito" ColumnName="Requisito" />
+                <ScalarProperty Name="Objetivos" ColumnName="Objetivos" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHorarios">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.PHorarios">
+              <MappingFragment StoreEntitySet="PHorarios">
+                <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Dia" ColumnName="Dia" />
+                <ScalarProperty Name="HorarioId" ColumnName="HorarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Piscinas">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Piscinas">
               <MappingFragment StoreEntitySet="Piscinas">
@@ -8643,6 +9334,16 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PProfesor">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.PProfesor">
+              <MappingFragment StoreEntitySet="PProfesor">
+                <ScalarProperty Name="DetalleRapido" ColumnName="DetalleRapido" />
+                <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ProfesorId" ColumnName="ProfesorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Procesado">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Procesado">
               <MappingFragment StoreEntitySet="Procesado">
@@ -8660,6 +9361,17 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
                 <ScalarProperty Name="estilo" ColumnName="estilo" />
                 <ScalarProperty Name="distancia" ColumnName="distancia" />
                 <ScalarProperty Name="PruebaId" ColumnName="PruebaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PTemas">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.PTemas">
+              <MappingFragment StoreEntitySet="PTemas">
+                <ScalarProperty Name="CursoId" ColumnName="CursoId" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="Practivo" ColumnName="Practivo" />
+                <ScalarProperty Name="Teorico" ColumnName="Teorico" />
+                <ScalarProperty Name="TemaId" ColumnName="TemaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -9339,52 +10051,6 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
                 <ScalarProperty Name="Numero_de_afiliados" ColumnName="Numero de afiliados" />
                 <ScalarProperty Name="Monto" ColumnName="Monto" />
                 <ScalarProperty Name="VoucherId" ColumnName="VoucherId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Query">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Query">
-              <MappingFragment StoreEntitySet="Query">
-                <ScalarProperty Name="AthleteId" ColumnName="AthleteId" />
-                <ScalarProperty Name="ID_NO" ColumnName="ID_NO" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="Birth" ColumnName="Birth" />
-                <ScalarProperty Name="Sex" ColumnName="Sex" />
-                <ScalarProperty Name="Last" ColumnName="Last" />
-                <ScalarProperty Name="First" ColumnName="First" />
-                <ScalarProperty Name="Athlete" ColumnName="Athlete" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sheet1_">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Sheet1_">
-              <MappingFragment StoreEntitySet="Sheet1$">
-                <ScalarProperty Name="internacional" ColumnName="internacional" />
-                <ScalarProperty Name="disciplina" ColumnName="disciplina" />
-                <ScalarProperty Name="Organizador" ColumnName="Organizador" />
-                <ScalarProperty Name="Observación" ColumnName="Observación" />
-                <ScalarProperty Name="Carácter" ColumnName="Carácter" />
-                <ScalarProperty Name="Sede" ColumnName="Sede" />
-                <ScalarProperty Name="Evento" ColumnName="Evento" />
-                <ScalarProperty Name="Fin" ColumnName="Fin" />
-                <ScalarProperty Name="Inicio" ColumnName="Inicio" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CalendarioCursos">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.CalendarioCursos">
-              <MappingFragment StoreEntitySet="CalendarioCursos">
-                <ScalarProperty Name="Enlace" ColumnName="Enlace" />
-                <ScalarProperty Name="Horarios" ColumnName="Horarios" />
-                <ScalarProperty Name="Requisito" ColumnName="Requisito" />
-                <ScalarProperty Name="DirigidoA" ColumnName="DirigidoA" />
-                <ScalarProperty Name="Organizador" ColumnName="Organizador" />
-                <ScalarProperty Name="Evento" ColumnName="Evento" />
-                <ScalarProperty Name="Disciplina" ColumnName="Disciplina" />
-                <ScalarProperty Name="Sede" ColumnName="Sede" />
-                <ScalarProperty Name="Fin" ColumnName="Fin" />
-                <ScalarProperty Name="Inicio" ColumnName="Inicio" />
-                <ScalarProperty Name="EventoId" ColumnName="EventoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

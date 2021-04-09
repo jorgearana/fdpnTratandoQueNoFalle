@@ -4,47 +4,68 @@
     string path = Url.Content("../Resultados/");
 }
 
-<section class="site-contentpage site-homepage__pushup">
-    @using (Html.BeginForm())
-    {
-        <header class="site-homepage__section__header">
-            <h2 class="site-title site-title--ultra site-title--ultra--primary">Resultados en vivo</h2>
-            @Html.TextBox("SearchString", null, new { @class = "btn btn--primaryapnea btn--lrg u-rounded" })
-            <input type="submit" value="Buscar" class="btn btn--primaryapnea btn--lrg u-rounded" />
-        </header>
-    }
-    <br />
-    <p class="u-type--gamma">
-        <table class="tablaNormal">
-            <thead>
+<div class="row">
+    <div class="col-md-10 ml-auto mr-auto">
+        <div class="row">
+            <h2 class="title">Resultados en vivo</h2>
+            @using (Html.BeginForm())
+            {
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="material-icons">search</i>
+                                </span>
+                            </div>
+                            @Html.TextBox("searchString", null, new { @class = "form-control mr-sm-2" })
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-primary ">Buscar</button>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="description">
+                            Busca a un torneo
+                        </p>
+                    </div>
+                </div>
+            }      
+            </div>
+        </div>       
+
+    </div>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>Nombre</th>
+                <th>Fecha</th>
+                <th>Ver</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
                 <tr>
-
-                    <th>Nombre</th>
-                    <th>Fecha</th>
-                    <th>Ver</th>
+                    <td>
+                        @item.Nombre
+                    </td>
+                    <td>
+                        @item.Fecha.ToString("dd/MMM/yyyy")
+                    </td>
+                    <td>
+                        <a href=@Url.Content(path + item.Directorio)>Ver resultados</a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @item.Nombre
-                        </td>
-                        <td>
-                            @item.Fecha.ToString("dd/MMM/yyyy")
-                        </td>
-                        <td>
-                            <a href=@Url.Content(path + item.Directorio)>Ver resultados</a>
-                        </td>
-                    </tr>
-                }
+            }
 
-            </tbody>
-        </table>
-    </p>
+        </tbody>
+    </table>
 
     <div class="espaciado"></div>
 
 
-</section>
+</div>

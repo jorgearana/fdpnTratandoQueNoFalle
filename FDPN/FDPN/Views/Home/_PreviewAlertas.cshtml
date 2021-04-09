@@ -2,70 +2,73 @@
 
 @if (Model.cantidad > 0)
 {
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bell campanaroja"></i> @Model.cantidad</a>
-        <ul class="dropdown-menu">
-            @foreach (var item in Model.alertas)
-            {
-                <li class="nav-item">
-                    @if (item.NoticiaId == null)
+<li class="dropdown">
+    <div class="icon icon-rose">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">notifications</i> @Model.cantidad</a>
+    </div>
+   
+    <ul class="dropdown-menu">
+        @foreach (var item in Model.alertas)
+        {
+            <li class="nav-item">
+                @if (item.NoticiaId == null)
+                {
+                    @Html.ActionLink(item.Alerta, "Calendarios", "resultados");
+                }
+                else
+                {
+
+                    switch (item.Noticias.CategoriaNoticia.CategoriaId)
                     {
-                        @Html.ActionLink(item.Alerta, "Calendarios", "resultados");
-                    }
-                    else
-                    {
+                        case 1:
+                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Noticia", "Noticias", new { id = item.NoticiaId }, null);
+                            break;
+                        case 4:
+                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Reglamentos", "documentos");
+                            break;
 
-                        switch (item.Noticias.CategoriaNoticia.CategoriaId)
-                        {
-                            case 1:
-                                @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Noticia", "Noticias", new { id = item.NoticiaId }, null);
-                                break;
-                            case 4:
-                                @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Reglamentos", "documentos");
-                                break;
+                        case 5:
+                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Normas", "documentos");
+                            break;
 
-                            case 5:
-                                @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Normas", "documentos");
-                                break;
+                        case 6:
+                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Comunicados", "documentos");
+                            break;
 
-                            case 6:
-                                @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Comunicados", "documentos");
-                                break;
+                        case 7:
+                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "bases", "documentos");
+                            break;
+                        case 9:
+                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "records", "documentos");
+                            break;
 
-                            case 7:
-                                @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "bases", "documentos");
-                                break;
-                            case 9:
-                                @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "records", "documentos");
-                                break;
+                        case 11:
+                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "resultadosPDF", "documentos");
+                            break;
+                        case 12:
+                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "rankinpdf", "documentos");
+                            break;
+                        case 13:
+                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "MarcasMinimas", "documentos");
+                            break;
 
-                            case 11:
-                                @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "resultadosPDF", "documentos");
-                                break;
-                            case 12:
-                                @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "rankinpdf", "documentos");
-                                break;
-                            case 13:
-                                @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "MarcasMinimas", "documentos");
-                                break;
+                        case 14:
+                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Marcasclasificatorias", "documentos");
+                            break;
+                        case 15:
+                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Convocatorias", "documentos");
+                            break;
 
-                            case 14:
-                                @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Marcasclasificatorias", "documentos");
-                                break;
-                            case 15:
-                                @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Convocatorias", "documentos");
-                                break;
-
-
-                        }
 
                     }
 
-                </li>
-            }
-        </ul>
+                }
+
+            </li>
+        }
+    </ul>
 
 
-    </li>
+</li>
 }
 

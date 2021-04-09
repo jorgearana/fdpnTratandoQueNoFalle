@@ -50,8 +50,15 @@ namespace FDPN.Models
         public virtual DbSet<Configuracion> Configuracion { get; set; }
         public virtual DbSet<Contactos> Contactos { get; set; }
         public virtual DbSet<Curso> Curso { get; set; }
+        public virtual DbSet<CursoAlumno> CursoAlumno { get; set; }
+        public virtual DbSet<CursoBanner> CursoBanner { get; set; }
+        public virtual DbSet<CursoCalentario> CursoCalentario { get; set; }
+        public virtual DbSet<CursoFotos> CursoFotos { get; set; }
+        public virtual DbSet<CursoHorario> CursoHorario { get; set; }
         public virtual DbSet<CursoInscripcion> CursoInscripcion { get; set; }
+        public virtual DbSet<CursoObjetivos> CursoObjetivos { get; set; }
         public virtual DbSet<CursoParticipante> CursoParticipante { get; set; }
+        public virtual DbSet<CursoProfesor> CursoProfesor { get; set; }
         public virtual DbSet<Delegados> Delegados { get; set; }
         public virtual DbSet<Directivos> Directivos { get; set; }
         public virtual DbSet<Disciplina> Disciplina { get; set; }
@@ -86,6 +93,9 @@ namespace FDPN.Models
         public virtual DbSet<OtroResponsable> OtroResponsable { get; set; }
         public virtual DbSet<OtroSetupTorneo> OtroSetupTorneo { get; set; }
         public virtual DbSet<OtroTorneo> OtroTorneo { get; set; }
+        public virtual DbSet<PCalendario> PCalendario { get; set; }
+        public virtual DbSet<PCurso> PCurso { get; set; }
+        public virtual DbSet<PHorarios> PHorarios { get; set; }
         public virtual DbSet<Piscinas> Piscinas { get; set; }
         public virtual DbSet<PoloEquipos> PoloEquipos { get; set; }
         public virtual DbSet<PoloFechas> PoloFechas { get; set; }
@@ -99,8 +109,10 @@ namespace FDPN.Models
         public virtual DbSet<PoloRondas> PoloRondas { get; set; }
         public virtual DbSet<PoloSetupTorneo> PoloSetupTorneo { get; set; }
         public virtual DbSet<PoloTorneo> PoloTorneo { get; set; }
+        public virtual DbSet<PProfesor> PProfesor { get; set; }
         public virtual DbSet<Procesado> Procesado { get; set; }
         public virtual DbSet<Pruebas> Pruebas { get; set; }
+        public virtual DbSet<PTemas> PTemas { get; set; }
         public virtual DbSet<Records> Records { get; set; }
         public virtual DbSet<RecordsActuales> RecordsActuales { get; set; }
         public virtual DbSet<RecordsEdades> RecordsEdades { get; set; }
@@ -134,8 +146,5 @@ namespace FDPN.Models
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Vivo> Vivo { get; set; }
         public virtual DbSet<Vouchers> Vouchers { get; set; }
-        public virtual DbSet<Query> Query { get; set; }
-        public virtual DbSet<Sheet1_> Sheet1_ { get; set; }
-        public virtual DbSet<CalendarioCursos> CalendarioCursos { get; set; }
     }
 }

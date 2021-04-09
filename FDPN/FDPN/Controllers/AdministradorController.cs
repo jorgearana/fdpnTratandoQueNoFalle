@@ -54,7 +54,9 @@ namespace FDPN.Controllers
                 Convocatorias = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Convocatorias").OrderByDescending(x => x.NoticiaId).ToList(),
                 Habiles = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Hábiles").OrderByDescending(x => x.NoticiaId).ToList(),
                 ResolucionesIPD = query.Where(x => x.CategoriaNoticia.TipoNoticia == "ResolucionesIPD").OrderByDescending(x => x.NoticiaId).ToList(),
-                
+                Academia = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Academia").OrderByDescending(x => x.NoticiaId).ToList(),
+                Afiliaciones = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Afiliaciones").OrderByDescending(x => x.NoticiaId).ToList(),
+
                 ventanaModal = db.Modals.OrderBy(x => x.Titulo).ToList(),
             };
             return View(VM);

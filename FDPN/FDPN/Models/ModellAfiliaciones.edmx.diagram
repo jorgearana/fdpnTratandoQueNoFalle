@@ -5,117 +5,127 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="60cad03be9b84e0bb38f1612cb365233" Name="Diagram1" ZoomLevel="89">
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Afiliacion" Width="1.5" PointX="11.25" PointY="32.5" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Afiliado" Width="1.5" PointX="0.75" PointY="29.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Alertas" Width="1.5" PointX="8.25" PointY="30.875" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Antiguo" Width="1.5" PointX="0.75" PointY="26.75" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Apagado" Width="1.5" PointX="0.75" PointY="2.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Asociaciones" Width="1.5" PointX="1.5" PointY="59.75" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.ATFDeportista" Width="1.5" PointX="7.5" PointY="55.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.ATFExpediente" Width="1.5" PointX="5.25" PointY="55.375" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Athlete" Width="1.5" PointX="0.75" PointY="15.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.AthleteMasters" Width="1.5" PointX="3.75" PointY="47.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.atletas" Width="1.5" PointX="23.25" PointY="41.5" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Banners" Width="1.5" PointX="5.75" PointY="2.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.BASETIMES" Width="1.5" PointX="5.75" PointY="14.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Calendario" Width="1.5" PointX="3" PointY="54.75" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.CambiosDNI" Width="1.5" PointX="13.75" PointY="2.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.CategoriaNoticia" Width="1.5" PointX="3.75" PointY="24.375" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Categorias" Width="1.5" PointX="13.75" PointY="5.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.CategoriasMasters" Width="1.5" PointX="13.75" PointY="13.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Club" Width="1.5" PointX="0.75" PointY="42.625" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Comentario" Width="1.5" PointX="13.75" PointY="16.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Comentarios" Width="1.5" PointX="15.75" PointY="2.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.ConFechas" Width="1.5" PointX="15.75" PointY="5.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Configuracion" Width="1.5" PointX="15.75" PointY="13.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Contactos" Width="1.5" PointX="17.75" PointY="2.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Curso" Width="1.5" PointX="11.75" PointY="14.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.CursoInscripcion" Width="1.5" PointX="14" PointY="10" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.CursoParticipante" Width="1.5" PointX="11.75" PointY="9.375" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Delegados" Width="1.5" PointX="21" PointY="44.125" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Directivos" Width="1.5" PointX="3" PointY="28.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Disciplina" Width="1.5" PointX="0.75" PointY="33.875" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Empresa" Width="1.5" PointX="16.75" PointY="9.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Entradas" Width="1.5" PointX="18" PointY="81.125" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Entrenadores" Width="1.5" PointX="9" PointY="19.375" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.EntrenadorInscrito" Width="1.5" PointX="21" PointY="41.375" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Equipos" Width="1.5" PointX="18" PointY="30.625" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Estado" Width="1.5" PointX="0.75" PointY="37.75" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Estilos" Width="1.5" PointX="0.75" PointY="19.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Eventos" Width="1.5" PointX="18" PointY="64.75" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Fotos" Width="1.5" PointX="8.25" PointY="33.625" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.HistorialdeAfiliaciones" Width="1.5" PointX="5.25" PointY="65.625" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.HistorialEntrenador" Width="1.5" PointX="11.25" PointY="23.875" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.HistorialTraspasos" Width="1.5" PointX="13.25" PointY="36.625" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Inscripciones" Width="1.5" PointX="3" PointY="32" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.InscripcionResponsable" Width="1.5" PointX="20.25" PointY="34.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Landing" Width="1.5" PointX="17.75" PointY="13.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.MarcasMinimas" Width="1.5" PointX="18" PointY="26.375" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.MEET" Width="1.5" PointX="0.75" PointY="4.375" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.MEETMasters" Width="1.5" PointX="3.75" PointY="2.375" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Modals" Width="1.5" PointX="11.75" PointY="19.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Multas" Width="1.5" PointX="10.25" PointY="37" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.MultiEdad" Width="1.5" PointX="18" PointY="43.5" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Noticias" Width="1.5" PointX="6" PointY="31.125" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.OtroAtleta" Width="1.5" PointX="7.5" PointY="36.75" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.OtroCategorias" Width="1.5" PointX="3" PointY="51.875" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.OtroEntradas" Width="1.5" PointX="12.75" PointY="40.375" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.OtroEquipo" Width="1.5" PointX="5.25" PointY="43.5" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.OtroEventos" Width="1.5" PointX="5.25" PointY="39.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.OtroGrupal" Width="1.5" PointX="7.5" PointY="40" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.OtroResponsable" Width="1.5" PointX="7.5" PointY="43.625" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.OtroSetupTorneo" Width="1.5" PointX="5.25" PointY="36.125" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.OtroTorneo" Width="1.5" PointX="3" PointY="39.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Piscinas" Width="1.5" PointX="8.75" PointY="7.375" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloEquipos" Width="1.5" PointX="23.75" PointY="17.75" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloFechas" Width="1.5" PointX="23" PointY="28.5" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloGoleadores" Width="1.5" PointX="25.25" PointY="14.375" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloGrupos" Width="1.5" PointX="23.75" PointY="8.75" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloJugadores" Width="1.5" PointX="23" PointY="14" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloPartidos" Width="1.5" PointX="25.25" PointY="21.125" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloPosicion" Width="1.5" PointX="26" PointY="9.5" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloPosicionFinal" Width="1.5" PointX="26" PointY="17.375" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloResultados" Width="1.5" PointX="28.5" PointY="17.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloRondas" Width="1.5" PointX="23" PointY="22.75" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloSetupTorneo" Width="1.5" PointX="23" PointY="31.125" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloTorneo" Width="1.5" PointX="20.75" PointY="13.5" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Procesado" Width="1.5" PointX="9" PointY="50.75" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Pruebas" Width="1.5" PointX="0.75" PointY="8.5" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Records" Width="1.5" PointX="18.75" PointY="7.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.RecordsActuales" Width="1.5" PointX="11" PointY="2.5" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.RecordsEdades" Width="1.5" PointX="8.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.RecordsPruebas" Width="1.5" PointX="8.75" PointY="58.5" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.RecordTipo" Width="1.5" PointX="8.75" PointY="4.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.RESULTS" Width="1.5" PointX="3" PointY="6.5" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.RESULTSMasters" Width="1.5" PointX="6" PointY="6.5" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Rol" Width="1.5" PointX="3.75" PointY="20.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Saltos" Width="1.5" PointX="13.75" PointY="19.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Sesion" Width="1.5" PointX="18" PointY="21.375" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.SessionItem" Width="1.5" PointX="18" PointY="16.875" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.SetupTorneo" Width="1.5" PointX="18" PointY="47.125" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Suscritos" Width="1.5" PointX="19.75" PointY="2.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="22.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TagNames" Width="1.5" PointX="20.75" PointY="5.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TatoInformeAsistencias" Width="1.5" PointX="5.25" PointY="58.75" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TatoInformeEntrenador" Width="1.5" PointX="11.25" PointY="27.125" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TatoRealizacion" Width="1.5" PointX="9" PointY="16.625" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TatoSeleccionado" Width="1.5" PointX="5.25" PointY="63" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TatoSeriesEjemplo" Width="1.5" PointX="9" PointY="46.875" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.tb_Suscritos" Width="1.5" PointX="20.75" PointY="9.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TEAM" Width="1.5" PointX="0.75" PointY="12.5" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TEAMMasters" Width="1.5" PointX="3.75" PointY="14.5" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TipoAfiliado" Width="1.5" PointX="0.75" PointY="40.375" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TipoTorneo" Width="1.5" PointX="15.75" PointY="24.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Torneo" Width="1.5" PointX="15.75" PointY="26.875" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TorneoDestacado" Width="1.5" PointX="20.75" PointY="18.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TorneoDestacadoMasters" Width="1.5" PointX="21.75" PointY="2.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Traspasos" Width="1.5" PointX="8.25" PointY="26.5" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TraspasosEnEspera" Width="1.5" PointX="5.25" PointY="26.875" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Usuario" Width="1.5" PointX="6" PointY="19.125" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Vivo" Width="1.5" PointX="22.75" PointY="5.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Vouchers" Width="1.5" PointX="9" PointY="10.875" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Query" Width="1.5" PointX="24.75" PointY="2.25" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Sheet1_" Width="1.5" PointX="25.75" PointY="26.25" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Afiliacion" Width="1.5" PointX="14.25" PointY="42.875" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Afiliado" Width="1.5" PointX="0.75" PointY="35.875" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Alertas" Width="1.5" PointX="8.25" PointY="44.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Antiguo" Width="1.5" PointX="0.75" PointY="60.25" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Apagado" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Asociaciones" Width="1.5" PointX="1.5" PointY="57.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.ATFDeportista" Width="1.5" PointX="7.5" PointY="61" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.ATFExpediente" Width="1.5" PointX="5.25" PointY="61.125" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Athlete" Width="1.5" PointX="8.75" PointY="3" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.AthleteMasters" Width="1.5" PointX="11.75" PointY="15.875" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.atletas" Width="1.5" PointX="21.25" PointY="45.125" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Banners" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.BASETIMES" Width="1.5" PointX="4.75" PointY="11.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Calendario" Width="1.5" PointX="3" PointY="60.5" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.CambiosDNI" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.CategoriaNoticia" Width="1.5" PointX="3.75" PointY="17.625" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Categorias" Width="1.5" PointX="0.75" PointY="13.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.CategoriasMasters" Width="1.5" PointX="13.75" PointY="12.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Club" Width="1.5" PointX="0.75" PointY="47.375" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Comentario" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Comentarios" Width="1.5" PointX="15.75" PointY="12.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.ConFechas" Width="1.5" PointX="13.75" PointY="15.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Configuracion" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Contactos" Width="1.5" PointX="15.75" PointY="15.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Curso" Width="1.5" PointX="2.75" PointY="8" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.CursoAlumno" Width="1.5" PointX="3" PointY="26.125" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.CursoBanner" Width="1.5" PointX="5.25" PointY="32.375" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.CursoCalentario" Width="1.5" PointX="3" PointY="31" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.CursoFotos" Width="1.5" PointX="0.75" PointY="27.125" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.CursoHorario" Width="1.5" PointX="5.25" PointY="35" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.CursoInscripcion" Width="1.5" PointX="5" PointY="8.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.CursoObjetivos" Width="1.5" PointX="5.25" PointY="37.875" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.CursoParticipante" Width="1.5" PointX="2.75" PointY="75.25" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.CursoProfesor" Width="1.5" PointX="5.25" PointY="28.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Delegados" Width="1.5" PointX="22" PointY="41" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Directivos" Width="1.5" PointX="3" PointY="37.125" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Disciplina" Width="1.5" PointX="0.75" PointY="42.875" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Empresa" Width="1.5" PointX="0.75" PointY="16.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Entradas" Width="1.5" PointX="19" PointY="63.25" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Entrenadores" Width="1.5" PointX="6" PointY="19.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.EntrenadorInscrito" Width="1.5" PointX="19" PointY="43.875" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Equipos" Width="1.5" PointX="19" PointY="53.25" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Estado" Width="1.5" PointX="0.75" PointY="40.375" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Estilos" Width="1.5" PointX="16.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Eventos" Width="1.5" PointX="19" PointY="85" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Fotos" Width="1.5" PointX="8.25" PointY="42.25" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.HistorialdeAfiliaciones" Width="1.5" PointX="5.25" PointY="64.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.HistorialEntrenador" Width="1.5" PointX="8.25" PointY="34.625" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.HistorialTraspasos" Width="1.5" PointX="11.25" PointY="48" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Inscripciones" Width="1.5" PointX="3" PointY="41.375" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.InscripcionResponsable" Width="1.5" PointX="21.25" PointY="56.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Landing" Width="1.5" PointX="16.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.MarcasMinimas" Width="1.5" PointX="19" PointY="15.5" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.MEET" Width="1.5" PointX="8.75" PointY="10.5" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.MEETMasters" Width="1.5" PointX="11.75" PointY="12.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Modals" Width="1.5" PointX="8.75" PointY="16.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Multas" Width="1.5" PointX="11.25" PointY="42.375" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.MultiEdad" Width="1.5" PointX="19" PointY="35.125" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Noticias" Width="1.5" PointX="6" PointY="42.5" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.OtroAtleta" Width="1.5" PointX="7.5" PointY="57" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.OtroCategorias" Width="1.5" PointX="3" PointY="64.625" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.OtroEntradas" Width="1.5" PointX="9.75" PointY="65.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.OtroEquipo" Width="1.5" PointX="5.25" PointY="70.625" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.OtroEventos" Width="1.5" PointX="5.25" PointY="73.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.OtroGrupal" Width="1.5" PointX="7.5" PointY="74.5" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.OtroResponsable" Width="1.5" PointX="7.5" PointY="70.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.OtroSetupTorneo" Width="1.5" PointX="5.25" PointY="67.5" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.OtroTorneo" Width="1.5" PointX="3" PointY="70.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PCalendario" Width="1.5" PointX="8.25" PointY="53.25" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PCurso" Width="1.5" PointX="3" PointY="52.625" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PHorarios" Width="1.5" PointX="5.25" PointY="51.875" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Piscinas" Width="1.5" PointX="0.75" PointY="6" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloEquipos" Width="1.5" PointX="21.75" PointY="7.375" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloFechas" Width="1.5" PointX="24" PointY="16.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloGoleadores" Width="1.5" PointX="29.25" PointY="12.875" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloGrupos" Width="1.5" PointX="21.75" PointY="3.5" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloJugadores" Width="1.5" PointX="27" PointY="12.5" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloPartidos" Width="1.5" PointX="26.25" PointY="20.25" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloPosicion" Width="1.5" PointX="24" PointY="8" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloPosicionFinal" Width="1.5" PointX="24" PointY="12.875" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloResultados" Width="1.5" PointX="28.5" PointY="17" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloRondas" Width="1.5" PointX="24" PointY="30.125" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloSetupTorneo" Width="1.5" PointX="24" PointY="22.375" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PoloTorneo" Width="1.5" PointX="21.75" PointY="12" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PProfesor" Width="1.5" PointX="6" PointY="83.375" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Procesado" Width="1.5" PointX="12" PointY="35.25" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Pruebas" Width="1.5" PointX="8.75" PointY="7" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.PTemas" Width="1.5" PointX="5.25" PointY="57.5" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Records" Width="1.5" PointX="17.75" PointY="9.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.RecordsActuales" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.RecordsEdades" Width="1.5" PointX="0.75" PointY="8.25" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.RecordsPruebas" Width="1.5" PointX="0.75" PointY="2.5" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.RecordTipo" Width="1.5" PointX="0.75" PointY="11" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.RESULTS" Width="1.5" PointX="11" PointY="5.125" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.RESULTSMasters" Width="1.5" PointX="14" PointY="5.125" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Rol" Width="1.5" PointX="1.5" PointY="21.625" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Saltos" Width="1.5" PointX="18.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Sesion" Width="1.5" PointX="19" PointY="19.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.SessionItem" Width="1.5" PointX="19" PointY="24.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.SetupTorneo" Width="1.5" PointX="19" PointY="46.625" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Suscritos" Width="1.5" PointX="18.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="19.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TagNames" Width="1.5" PointX="10.75" PointY="19.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TatoInformeAsistencias" Width="1.5" PointX="5.25" PointY="78.25" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TatoInformeEntrenador" Width="1.5" PointX="8.25" PointY="37.5" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TatoRealizacion" Width="1.5" PointX="6" PointY="26" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TatoSeleccionado" Width="1.5" PointX="5.25" PointY="48.125" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TatoSeriesEjemplo" Width="1.5" PointX="6" PointY="15.25" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.tb_Suscritos" Width="1.5" PointX="12.75" PointY="19.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TEAM" Width="1.5" PointX="8.75" PointY="13.625" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TEAMMasters" Width="1.5" PointX="11.75" PointY="2" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TipoAfiliado" Width="1.5" PointX="0.75" PointY="54.875" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TipoTorneo" Width="1.5" PointX="16.75" PointY="70.875" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Torneo" Width="1.5" PointX="16.75" PointY="25.5" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TorneoDestacado" Width="1.5" PointX="20.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TorneoDestacadoMasters" Width="1.5" PointX="14.75" PointY="20.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Traspasos" Width="1.5" PointX="11.25" PointY="37.875" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TraspasosEnEspera" Width="1.5" PointX="8.25" PointY="48.25" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Usuario" Width="1.5" PointX="3.75" PointY="20.5" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Vivo" Width="1.5" PointX="21.75" PointY="19.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Vouchers" Width="1.5" PointX="12" PointY="52.625" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_Afiliacion_Club" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_Afiliacion_Inscripciones" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_Afiliacion_Procesado" />
@@ -144,6 +154,13 @@
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_Usuario_Club" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_Vouchers_Club" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_CursoInscripcion_Curso" />
+        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_CursoAlumno_Foto" />
+        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_CursoProfesor_CursoAlumno" />
+        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_CursoBanner_CursoCalentario" />
+        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_CursoCalentario_Disciplina" />
+        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_CursoHorario_CursoCalentario" />
+        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_CursoObjetivos_CursoCalentario" />
+        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_CursoProfesor_CursoCalentario" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_CursoInscripcion_CursoParticipante" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_Delegados_Torneo" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_Delegados_Usuario" />
@@ -151,6 +168,7 @@
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_Noticias_Disciplina" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_OtroCategorias_Disciplina" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_OtroTorneo_Disciplina" />
+        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_PCurso_Disciplina" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_Entradas_Torneo" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_Entrenadores_Estado" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_Entrenadores_Usuario" />
@@ -188,6 +206,11 @@
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_OtroEventos_OtroTorneo" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_OtroGrupal_OtroEventos" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_OtroSetupTorneo_OtroTorneo" />
+        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_PCalendario_PCurso" />
+        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_PCalendario_PProfesor" />
+        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_PCurso_PCurso" />
+        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_PHorarios_PCurso" />
+        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_PTemas_PCurso" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_RecordsActuales_Piscinas" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_PoloJugadores_PoloEquipos" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_PoloPosicion_PoloEquipos" />
@@ -223,7 +246,6 @@
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_TatoInformeEntrenador_TatoSeriesEjemplo" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_Traspasos_Usuario" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_Vouchers_Usuario" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.CalendarioCursos" Width="1.5" PointX="27.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

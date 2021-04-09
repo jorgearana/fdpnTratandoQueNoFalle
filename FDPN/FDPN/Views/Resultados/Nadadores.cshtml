@@ -1,53 +1,77 @@
-﻿@model FDPN.ViewModels.Resultados.NadadoresOrdenadosViewModel
+﻿
+@model PagedList.IPagedList<FDPN.Models.Athlete>
 @using PagedList.Mvc;
 
-<section class="site-homepage__section site-athletes">
-    <div class="wrapper site-homepage__pushup">
-@using (Html.BeginForm())
-{
-        <header class="site-homepage__section__header">
-            <h2 class="site-title site-title--ultra site-title--ultra--primary">Nadadores</h2>
-            <p class="u-type--medium u-type--delta u-spc-bottom--med">Buscar por nombre o apellido</p>
-            @Html.TextBox("SearchString", null, new { @class = "btn btn--primaryapnea btn--lrg u-rounded" })
-            <input type="submit" value="Buscar" class="btn btn--primaryapnea btn--lrg u-rounded" />
-        </header>
-        <div class="site-homepage__section__content">
-          
-            <div class="azlist">
-                <ul class="azlist__letters">
 
-                    @foreach (var item in Model.alphabet)
-                    {
-                        <li class="azlist__letters__item">
-                            @Html.ActionLink(item, "nadadores", "resultados", new { letra = item }, new { @class = "azlist__letters__link" })
-                        </li>
-                    }
+<div class="row">
+    <div class="col-md-8 ml-auto mr-auto">
+        <h2 class="title">Nadadores</h2>
 
-                </ul>
-                <div id="js-athleteList">
-                    <input class="js-filterLetter" id="FilterLetter" name="FilterLetter" type="hidden" value="h" />
 
-                  
-                    <ul class="azlist__people">
-                        @foreach (var item in Model.nadadores)
-                        {
-                            <li class="azlist__people__item">
-                                <a href=@Url.Action("nadador", "resultados", new { id = item.AthleteId }) class="azlist__people__link"><strong>@item.First.ToUpper() @item.Last.ToUpper()</strong><br>(@item.Age años)</a>
-                            </li>
-                        }
-                    </ul>
-
-                    <div class="u-spc-bottom--med u-type--center">
-                        <div class="pagination-container">
-                            Page @(Model.nadadores.PageCount < Model.nadadores.PageNumber ? 0 : Model.nadadores.PageNumber) of @Model.nadadores.PageCount
-
-                            @Html.PagedListPager(Model.nadadores, page => Url.Action("Nadadores", "Resultados", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, letra = ViewBag.Letra }))
+        <div class="card card-plain card-form-horizontal">
+            <div class="card-body">
+                @using (Html.BeginForm())
+                {
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="material-icons">search</i>
+                                    </span>
+                                </div>
+                                @Html.TextBox("searchString", null, new { @class = "form-control mr-sm-2" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary ">Buscar</button>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="description">
+                                Busca a un deportista para observar sus resultados.
+                            </p>
                         </div>
                     </div>
+                }
             </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="section section-text">
+    <div class="row">
+        <div class="col-md-10 ml-auto mr-auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Edad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><a href="@Url.Action("nadador", "resultados", new { id = item.AthleteId })">@item.First</a> </td>
+                            <td><a href="@Url.Action("nadador", "resultados", new { id = item.AthleteId })">@item.Last</a> </td>
+                            <td><a href="@Url.Action("nadador", "resultados", new { id = item.AthleteId })">@item.Age</a> </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <br />
+            Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("Nadadores",
+                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
         </div>
 
     </div>
-}
-        </div>
-</section>
+</div>
+
+

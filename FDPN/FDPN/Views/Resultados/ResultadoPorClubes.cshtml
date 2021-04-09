@@ -3,120 +3,203 @@
 @{
     ViewBag.Title = "Resultado Por clubes";
 }
+<div class="container">
 
+    <div class="row">
+        <div class="col-md-6 ml-auto mr-auto">
 
-<section class="site-homepage__section site-athletedetails">
-
-    <div class="wrapper site-homepage__pushup">
-
-        <header class="site-homepage__section__header">            
-                <h2 class="site-title site-title--ultra site-title--ultra--primary">Resultados del club @Model.club.TName </h2>
-                <p class="u-type--medium u-type--delta u-spc-bottom--med">en el torneo @Model.torneo.MName</p>
-        </header>
-        <div class="site-homepage__section__content">
-           <h3 class="u-type--gamma u-spc-bottom--med">Resultados de pruebas finales</h3>
-            <div class="table">
-                <table class="table__data datatabla">
-                    <thead>
-                        <tr>
-                           
-                            <th>Puesto</th>
-                            <th>Tiempo</th>
-                            <th>Distancia</th>
-                            <th>Estilo</th>
-                            <th>Puntos</th>
-                            <th>Deportista</th>
-                            <th>Sexo</th>
-                            <th>Edad</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.resultadoFinales)
-                        {
-                            <tr>
-                               @if (item.PLACE < 4)
-                               {
-                                <td>
-                                    <div class="row">
-                                        <div class="col-xs-2">@item.PLACE</div>
-                                        <div class="col-xs-2"><div class=@("medalla"+(item.PLACE)) aria-hidden="true"></div></div>
-                                    </div>
-
-                                </td>
-                               }
-                               else
-                               {
-                                <td>@item.PLACE</td>
-                               }
-                               
-                                <td>@item.SCORE</td>
-                                <td>@item.DISTANCE</td>
-                                <td>@item.STROKE</td>
-                                <td>@item.PFina</td>
-                                <td>@Html.ActionLink(@item.Athlete1.First + " " + @item.Athlete1.Last, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { meetid =item.MeetId, athleteid = item.AthleteId }, null)</td>
-                                <td>@item.Athlete1.Sex</td>
-                                <td>@item.Athlete1.Age</td>
-                            </tr>
-                        }
-
-
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <hr />
-        <h3 class="u-type--gamma u-spc-bottom--med">Resultados de pruebas preliminares</h3>
-        <div class="site-homepage__section__content">
-            @*<h2 class="u-type--gamma u-spc-bottom--med">Listado de resultados del club</h2>*@
-            <div class="table">
-                <table class="table__data datatabla">
-                    <thead>
-                        <tr>
-
-                            <th>Puesto</th>
-                            <th>Tiempo</th>
-                            <th>Distancia</th>
-                            <th>Estilo</th>
-                            <th>Puntos</th>
-                            <th>Deportista</th>
-                            <th>Sexo</th>
-                            <th>Edad</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.resultadoPreliminares)
-                        {
-                            <tr>
-                                @if (item.PLACE < 4)
-                                {
-                                    <td>
-                                        <div class="row">
-                                            <div class="col-xs-2">@item.PLACE</div>                                           
-                                        </div>
-
-                                    </td>
-                                }
-                                else
-                                {
-                                    <td>@item.PLACE</td>
-                                }
-
-                                <td>@item.SCORE</td>
-                                <td>@item.DISTANCE</td>
-                                <td>@item.STROKE</td>
-                                <td>@item.PFina</td>
-                                <td>@Html.ActionLink(@item.Athlete1.First + " " + @item.Athlete1.Last, "Nadador", "Resultados", new { id = item.AthleteId }, null)</td>
-                                <td>@item.Athlete1.Sex</td>
-                                <td>@item.Athlete1.Age</td>
-                            </tr>
-                        }
-
-
-                    </tbody>
-                </table>
-            </div>
+            <h2 class="title">Resultados del torneo</h2>
+            <h4></h4>
         </div>
     </div>
-    <div class="espaciadogrande"></div>
-</section>
+    <section class="site-homepage__section site-athletedetails">
+
+        <div class="wrapper site-homepage__pushup">
+
+            <header class="site-homepage__section__header">
+                <h2 class="Header 1 Title">Resultados del club @Model.club.TName </h2>
+                <p class="Header 3">en el torneo @Model.torneo.MName</p>
+            </header>
+            <div class="row">
+                <div class="col-md-9">
+                    <!-- Tablas-->
+                        <h3 class="title">Resultados de pruebas finales</h3>
+                        <div class="table-responsive">
+                            <table class="table datatabla">
+                                <thead>
+                                    <tr>
+
+                                        <th>Puesto</th>
+                                        <th>Tiempo</th>
+                                        <th>Distancia</th>
+                                        <th>Estilo</th>
+                                        <th>Puntos</th>
+                                        <th>Deportista</th>
+                                        <th>Sexo</th>
+                                        <th>Edad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.resultadoFinales)
+                                    {
+                                        <tr>
+                                         
+                                         
+                                                <td>@item.PLACE</td>
+                                          
+
+                                            <td>@item.SCORE</td>
+                                            <td>@item.DISTANCE</td>
+                                            <td>@item.STROKE</td>
+                                            <td>@item.PFina</td>
+                                            <td>@Html.ActionLink(@item.Athlete1.First + " " + @item.Athlete1.Last, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { meetid = item.MeetId, athleteid = item.AthleteId }, null)</td>
+                                            <td>@item.Athlete1.Sex</td>
+                                            <td>@item.Athlete1.Age</td>
+                                        </tr>
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    <hr />
+                    <h3 class="title">Resultados de pruebas preliminares</h3>
+                    <div class="table-responsive">
+                        @*<h2 class="u-type--gamma u-spc-bottom--med">Listado de resultados del club</h2>*@
+                        <div class="table">
+                            <table class="table__data datatabla">
+                                <thead>
+                                    <tr>
+
+                                        <th>Puesto</th>
+                                        <th>Tiempo</th>
+                                        <th>Distancia</th>
+                                        <th>Estilo</th>
+                                        <th>Puntos</th>
+                                        <th>Deportista</th>
+                                        <th>Sexo</th>
+                                        <th>Edad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.resultadoPreliminares)
+                                    {
+                                        <tr>
+                                            <td>@item.PLACE</td>
+
+                                            <td>@item.SCORE</td>
+                                            <td>@item.DISTANCE</td>
+                                            <td>@item.STROKE</td>
+                                            <td>@item.PFina</td>
+                                            <td>@Html.ActionLink(@item.Athlete1.First + " " + @item.Athlete1.Last, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { meetid = item.MeetId, athleteid = item.AthleteId }, null)</td>
+                                            <td>@item.Athlete1.Sex</td>
+                                            <td>@item.Athlete1.Age</td>
+                                        </tr>
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <!-- Resumen-->
+                    <div class="content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card card-pricing card-raised bg-success">
+                                        <div class="card-body">
+                                            <h6 class="card-category">Deportistas</h6>
+                                            <h1 class="card-title">
+                                                @Model.CantidaddeParticipantes <small>Nadadores</small>
+                                            </h1>
+
+                                        </div>
+                                        <div class="card-footer justify-content-center">
+                                            <i class="material-icons text-danger">warning</i>
+                                            <p>del club en el torneo</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="card card-pricing card-raised bg-warning">
+                                        <div class="card-body">
+                                            <h6 class="card-category">Resultados</h6>
+                                            <h1 class="card-title">
+                                                @Model.CantidadDeResultados <small>Pruebas</small>
+                                            </h1>
+
+                                        </div>
+                                        <div class="card-footer justify-content-center">
+                                            <i class="material-icons text-danger">spellcheck</i>
+                                            <p>Pruebas en las que participaron</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card card-pricing card-raised ">
+                                        <div class="card-body">
+                                            <h6 class="card-category">Puestos por nadador</h6>
+                                            <span class="text-success"><i class="fa fa-long-arrow-up"></i> </span> Cantidad de nadadores en los 8 primeros puestos
+
+                                        </div>
+                                        <div id="PorParticipaciones" style="height: 350px;">
+                                           
+                                        </div>
+
+                                    
+                                    </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="espaciadogrande"></div>
+        </div>
+    </section>
+
+    <!--	Morris -->
+
+</div>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+<script>
+
+    window.onload = function () {
+
+        new Morris.Bar({
+            // ID of the element in which to draw the chart.
+            element: 'PorParticipaciones',
+            // Chart data records -- each entry in this array corresponds to a point on
+            // the chart.
+
+            data: [
+@foreach (var item in Model.NadadoresPorPuestos)
+{
+    <text>{ value: '@item.Key', labels: '@item.Value' },</text>}],
+            // The name of the data record attribute that contains x-values.
+            xkey: 'value',
+            // A list of names of data record attributes that contain y-values.
+            ykeys: ['labels'],
+            // Labels for the ykeys -- will be displayed when you hover over the
+            // chart.
+            labels: ['puestos']
+        });
+    };
+
+
+</script>

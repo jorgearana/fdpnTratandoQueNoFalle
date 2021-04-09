@@ -1,0 +1,37 @@
+﻿@model FDPN.ViewModels.Noticia.DetalleNoticiaViewModel
+@{
+    ViewBag.Title = "Noticia";
+    string path = Url.Content("/Content/img/Fotos/");
+    string pathfoto = Url.Content("../Content/img/Fotos/");
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+            <h2 class="title">@Model.noticia.Titulo</h2>
+            <p>
+                @Html.Raw(WebUtility.HtmlDecode(Model.noticia.Corta))
+            </p>
+            <div class="blockquote undefined">
+                <small>
+                    Publicado por Prensa FDPN
+                </small>
+            </div>
+            <div>
+                @Html.Raw(WebUtility.HtmlDecode(Model.noticia.Larga))
+            </div>
+        </div>
+        <div class="col-md-4">
+            @foreach (var item in Model.fotos)
+            {
+                <a href=@Url.Action(pathfoto + item.Nombrefoto) target="_blank">
+                    <img class="img-raised rounded img-fluid" alt="Raised Image" src="@Url.Content(path + item.Nombrefoto)">
+                </a>
+                <div class="espaciado"></div>
+            }
+
+        </div>
+    </div>
+
+
+</div>

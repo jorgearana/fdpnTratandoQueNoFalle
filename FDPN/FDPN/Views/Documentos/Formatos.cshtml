@@ -5,53 +5,36 @@
     string path = Url.Content("../Content/img/Fotos/");
 }
 
-<section class="site-contentpage site-homepage__pushup">
-    @using (Html.BeginForm())
-    {
-        <header class="site-homepage__section__header">
-            <h2 class="site-title site-title--ultra site-title--ultra--primary">Formatos</h2>
-            <p class="u-type--medium u-type--delta u-spc-bottom--med">Buscar</p>
-            @Html.TextBox("SearchString", null, new { @class = "btn btn--primaryapnea btn--lrg u-rounded" })
-            <input type="submit" value="Buscar" class="btn btn--primaryapnea btn--lrg u-rounded" />
-        </header>
-    }
-    <br />
-    <h2 class="u-type--delta u-type--upper u-spc-bottom--sml"><strong> Listado de formatos de inscripción </strong></h2>
 
-
-    <p class="u-type--gamma">
-
-        <table class="datatablaReves">
-            <thead>
+<div class="container">
+    <h2 class="title">Lista de clubes hábiles</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Descipción
+                </th>
+                <th>
+                    Documento
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
                 <tr>
-                    <th>
-                        Descipción
-                    </th>
-                    <th>
-                        Documento
-                    </th>
+                    <td>
+
+                        @item.Noticias.Titulo
+                    </td>
+                    <td>
+                        <a href=@Url.Action(path + item.Nombrefoto) target="_blank">
+                            <i class="fa fa-download" aria-hidden="true"></i> Ver documento
+                        </a>
+                    </td>
+
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            <div class="FechaOrdenada">@item.NoticiaId</div>
-                            @item.Noticias.Titulo
-                        </td>
-                        <td>
-                            <a href=@Url.Action(path + item.Nombrefoto) target="_blank">
-                                <i class="fa fa-download" aria-hidden="true"></i> Ver documento
-                            </a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </p>
-
-    <div class="espaciado"></div>
-
-
-</section>
+            }
+        </tbody>
+    </table>
+</div>

@@ -5,98 +5,113 @@
     string path = "http://afiliaciones.fdpn.org/Content/Images";
 }
 
-
-<section class="site-ranking">
-    <div class="wrapper site-homepage__pushup">
-        <header class="site-homepage__section__header">
-            <h2 class="site-title site-title--ultra site-title--ultra--primary">Rendimiento en una prueba</h2>
-            <p class="u-type--medium u-type--delta u-spc-bottom--med">@Model.atleta.First @Model.atleta.Last</p>
-            <h2 class="site-title">Prueba: @Model.prueba.distancia  @Model.prueba.estilo Piscina Larga</h2>
-            <div class="site-athleteswidget__photo">
-                <img src=@Url.Content(path + "/" + Model.Inscripciones.RutaFoto + ".jpg")>
+<div class="row">
+    <div class="col-md-10 ml-auto mr-auto">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile">
+                    <img src=@Url.Content(path + "/" + Model.Inscripciones.RutaFoto + ".jpg") alt="No tiene foto" class="img-raised  img-fluid imagenperfil">
+                </div>
             </div>
-        </header>
-
-        <div id="js-table" class="js-table table">
-            <table class="table__data">
-                <thead>
-                    <tr>
-                        <th>Tiempo</th>
-                        <th>Prueba</th>
-                        <th>Torneo</th>
-                        <th>Fecha</th>
-                        <th>Equipo</th>
-                        <th>Piscina</th>
-                        <th>Puntos</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.ResultadosLarga)
-                    {
-                        <tr>
-                            <td>@item.SCORE</td>
-                            <td>@item.DISTANCE  @item.STROKE</td>
-                            <td>@item.MEET1.MName</td>
-                            <td>@item.MEET1.Start.ToString("dd/MMM/yyyy")</td>
-                            <td>@item.TEAM1.TName</td>
-                            <td>@item.COURSE</td>
-                            <td>@item.PFina</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-
-
-
-
-        </div>
-        <div class="espaciado"></div>
-        <header class="site-homepage__section__header">
-
-            <p class="u-type--medium u-type--delta u-spc-bottom--med">@Model.atleta.First @Model.atleta.Last</p>
-            <p class="u-type--medium u-type--delta u-spc-bottom--med">Prueba: @Model.prueba.distancia  @Model.prueba.estilo Piscina Corta </p>
-        </header>
-        <div id="js-table" class="js-table table">
-            <table class="table__data">
-                <thead>
-                    <tr>
-                        <th>Tiempo</th>
-                        <th>Prueba</th>
-                        <th>Torneo</th>
-                        <th>Fecha</th>
-                        <th>Equipo</th>
-                        <th>Piscina</th>
-                        <th>Puntos</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.ResultadosCorta)
-                    {
-                        <tr>
-                            <td>@item.SCORE</td>
-                            <td>@item.DISTANCE  @item.STROKE</td>
-                            <td>@item.MEET1.MName</td>
-                            <td>@item.MEET1.Start.ToString("dd/MMM/yyyy")</td>
-                            <td>@item.TEAM1.TName</td>
-                            <td>@item.COURSE</td>
-                            <td>@item.PFina</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-
-
-
-
+            <div class="col-md-8">
+                <div class="name">
+                    <h2 class="title">Rendimiento en una prueba</h2>
+                    <h4 class="title">@Model.atleta.First.ToUpper() @Model.atleta.Last.ToUpper()</h4>
+                    <p class="title">Prueba: @Model.prueba.distancia  @Model.prueba.estilo Piscina Larga</p>
+                </div>
+            </div>
         </div>
 
     </div>
-    <div class="espaciadogrande"></div>
-    <div class="site-homepage__split u-group u-animation--fadeInSection">
-        @Html.ActionLink("Listado de nadadores", "Nadadores", "Resultados", null, new { @class = "btn btn--med btn--primaryapnea u-rounded" })
+</div>
 
+
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tiempo</th>
+                <th>Prueba</th>
+                <th>Torneo</th>
+                <th>Fecha</th>
+                <th>Equipo</th>
+                <th>Piscina</th>
+                <th>Puntos</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ResultadosLarga)
+            {
+                <tr>
+                    <td>@item.SCORE</td>
+                    <td>@item.DISTANCE  @item.STROKE</td>
+                    <td>@item.MEET1.MName</td>
+                    <td>@item.MEET1.Start.ToString("dd/MMM/yyyy")</td>
+                    <td>@item.TEAM1.TName</td>
+                    <td>@item.COURSE</td>
+                    <td>@item.PFina</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    <div class="row">
+        <div class="col-md-10 ml-auto mr-auto">
+            <div class="row">
+              
+                <div class="col-md-12">
+                    <div class="name">                       
+                        <p class="title">Prueba: @Model.prueba.distancia  @Model.prueba.estilo Piscina Corta</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-    <div class="espaciadogrande"></div>
-</section>
+
+</div>
+<div class="espaciado"></div>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tiempo</th>
+                <th>Prueba</th>
+                <th>Torneo</th>
+                <th>Fecha</th>
+                <th>Equipo</th>
+                <th>Piscina</th>
+                <th>Puntos</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ResultadosCorta)
+            {
+                <tr>
+                    <td>@item.SCORE</td>
+                    <td>@item.DISTANCE  @item.STROKE</td>
+                    <td>@item.MEET1.MName</td>
+                    <td>@item.MEET1.Start.ToString("dd/MMM/yyyy")</td>
+                    <td>@item.TEAM1.TName</td>
+                    <td>@item.COURSE</td>
+                    <td>@item.PFina</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+
+</div>
+
+<div class="espaciadogrande"></div>
+<div class="col-md-10 ml-auto mr-auto">
+    @Html.ActionLink("Listado de nadadores", "Nadadores", "Resultados", null, new { @class = "btn btn-primary" })
+
+</div>
+<div class="espaciadogrande"></div>

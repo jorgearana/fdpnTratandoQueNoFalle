@@ -18,7 +18,11 @@ namespace FDPN.ViewModels.Resultados
         public  MEET torneo{ get; set; }
         public TEAM club { get; set; }
 
-
+        public Dictionary<int, int> NadadoresPorPuestos { get; set; }
+        public Dictionary<int, int> HombresPorPuestos { get; set; }
+        public Dictionary<int, int> MujeresPorPuestos { get; set; }
+        public int CantidaddeParticipantes { get; set; }
+        public int CantidadDeResultados { get; set; }
     }
 
     public class DiccionarioPruebas

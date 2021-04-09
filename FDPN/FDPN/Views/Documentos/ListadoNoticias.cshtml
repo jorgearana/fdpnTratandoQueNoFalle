@@ -1,0 +1,58 @@
+﻿@model List<FDPN.ViewModels.Home.previewNoticiasViewModel> 
+@{
+    ViewBag.Title = "Listado de noticias";
+    string path = Url.Content("../Content/img/Fotos/");
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="title text-center">Noticias</h2>
+        <br>
+        @using (Html.BeginForm("ListadoNoticias", "Documentos", FormMethod.Post))
+        {
+            <div class="form-group label-floating bmd-form-group">
+                <label class="form-control-label bmd-label-floating" for="exampleBlogPost">Haz otra búsqueda</label>
+                @Html.TextBox("searchString", null, new { @class = "form-control-label bmd-label-floating" })
+
+            </div>
+            <button class="btn btn-primary  btn-round btn-wd float-right" type="submit">Buscar</button>
+          
+        }
+        <br />
+        <div class="row">
+            @foreach (var item in Model)
+            {
+
+
+                <div class="col-md-4 IgualAltura">
+                    <div class="card card-blog">
+                        <div class="card-header card-header-image">
+                            <a href=@Url.Action("noticia", "noticias", new { @id= item.noticia.NoticiaId})>
+                                @if (item.fotos.Count() > 0)
+                                {
+                                    <img class="img img-raised imagenpreviewNoticia" alt="Raised Image" src="@Url.Content(path + item.fotos[0].Nombrefoto)"
+                                         href=@Url.Action(path + item.fotos[0].Nombrefoto) target="_blank">                                  
+                                }
+                                else
+                                {
+                                    <div class="img img-raised imagenpreviewNoticia" style="background-image: url(@Url.Content(path + "campodemarte.jpg"))"></div>
+                                }
+                              
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="category @item.noticia.Disciplina.clase">@item.noticia.Disciplina.TipoDisciplina</h6>
+                            <h4 class="card-title">
+                                <a href=@Url.Action("noticia", "noticias", new { @id= item.noticia.NoticiaId})>@item.noticia.Titulo</a>
+                            </h4>
+                            <p class="card-description">
+                                @item.noticia.Corta
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -284,6 +284,7 @@ C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Microsoft.AI.Web.xml
 C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Microsoft.AI.WindowsServer.xml
 C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Microsoft.ApplicationInsights.xml
 C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\MoreLinq.pdb
 C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\MoreLinq.xml
 C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\PagedList.xml
 C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\System.Diagnostics.DiagnosticSource.xml
@@ -305,8 +306,7 @@ C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\es\System.Web.WebPages.resources.d
 C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\es\System.Web.WebPages.Razor.resources.dll
 C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.csprojAssemblyReference.cache
+C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.csproj.CoreCompileInputs.cache
 C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.csproj.CopyComplete
 C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.dll
 C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.pdb
-C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\obj\Debug\FDPN.csproj.CoreCompileInputs.cache
-C:\jorge\Repos\Portal Web FDPN2\FDPN\FDPN\bin\MoreLinq.pdb

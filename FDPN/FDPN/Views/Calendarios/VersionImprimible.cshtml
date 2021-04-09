@@ -7,83 +7,86 @@
 
     DateTime fecha = ViewBag.modificacion;
 }
-<div class="row">
-    <div class="col-lg-10 col-lg-offset-2">
-        <h2>
-            <img src="~/Content/img/Logo_fdpn.png" style="width:50px;" />
-            Calendario oficial de actividades @anno <small>Actualizado al @fecha.ToString("dd/MM/yyyy")</small>
-        </h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 ml-auto mr-auto text-center">
+            <h4 class="title">
+                <img src="~/Content/img/Logo_fdpn.png" style="width:50px;" />
+                Calendario oficial de actividades @anno <small>Actualizado al @fecha.ToString("dd/MM/yyyy")</small>
+            </h4>
+
+        </div>
     </div>
 </div>
 
+          
 
-<div class="wrapper">
-    <table class="tablacalendario" >
-        <thead>
-            <tr>
-                <th>
-                    Mes
-                </th>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Mes
+                            </th>
 
-                <th>
-                    Inicio
-                </th>
-                <th>
-                    Fin
-                </th>
+                            <th>
+                                Inicio
+                            </th>
+                            <th>
+                                Fin
+                            </th>
 
-                <th>
-                    Evento
-                </th>
-                <th>
-                    Sede
-                </th>
+                            <th>
+                                Evento
+                            </th>
+                            <th>
+                                Sede
+                            </th>
 
-                <th>
-                    Categorías
-                </th>
-                <th>
-                    Organizador
-                </th>
-                <th>
-                    Disciplina
-                </th>
-               
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-        {
-                <tr >
-                    <td>                        
-                        @item.Inicio.ToString("MMM")
-                    </td>
-                    <td>
-                        @item.Inicio.ToString("dd/MM/yyyy")
-                    </td>
-                    <td>
-                        @item.Fin.ToString("dd/MM/yyyy")
-                    </td>
-                    <td>
-                        @item.Evento
-                    </td>
-                    <td>
-                        @item.Sede
-                    </td>
-                    <td>
-                        @item.Observación
-                    </td>
-                    <td>
-                        @item.Organizador
-                    </td>
-                    <td>
-                        @item.Disciplina.TipoDisciplina
-                    </td>
+                            <th>
+                                Categorías
+                            </th>
+                            <th>
+                                Organizador
+                            </th>
+                            <th>
+                                Disciplina
+                            </th>
 
-                </tr>
-        }
-        </tbody>
-    </table>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Inicio.ToString("MMM")
+                                </td>
+                                <td>
+                                    @item.Inicio.ToString("dd/MM/yyyy")
+                                </td>
+                                <td>
+                                    @item.Fin.ToString("dd/MM/yyyy")
+                                </td>
+                                <td>
+                                    @item.Evento
+                                </td>
+                                <td>
+                                    @item.Sede
+                                </td>
+                                <td>
+                                    @item.Observación
+                                </td>
+                                <td>
+                                    @item.Organizador
+                                </td>
+                                <td>
+                                    @item.Disciplina.TipoDisciplina
+                                </td>
 
-</div>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
 
+     

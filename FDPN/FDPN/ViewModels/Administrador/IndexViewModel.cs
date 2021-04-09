@@ -24,6 +24,9 @@ namespace FDPN.ViewModels.Administrador
         public List<Noticias> Convocatorias { get; set; }
         public List<Noticias> ResolucionesIPD { get; set; }
         public List<Noticias> Habiles { get; set; }
+        public List<Noticias> Academia { get; set; }
+        public List<Noticias> Afiliaciones { get; set; }
+
         public List<Modals> ventanaModal { get; set; }
     }
 }

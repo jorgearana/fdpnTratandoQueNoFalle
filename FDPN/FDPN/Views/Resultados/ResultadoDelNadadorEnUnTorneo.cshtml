@@ -4,65 +4,66 @@
 
     string path = "http://afiliaciones.fdpn.org/Content/Images";
 }
-
-<section class="site-ranking">
-    <div class="wrapper site-homepage__pushup">
-        <header class="site-homepage__section__header">
-            <h2 class="site-title site-title--ultra site-title--ultra--primary">Resultados en un torneo</h2>
-            <p class="u-type--medium u-type--delta u-spc-bottom--med">@Model.atleta.First @Model.atleta.Last en el torneo</p>
-            <div class="site-athleteswidget__photo">
-                <img src=@Url.Content(path + "/" + Model.Inscripciones.RutaFoto + ".jpg")>
+<div class="row">
+    <div class="col-md-10 ml-auto mr-auto">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile">
+                    <img src=@Url.Content(path + "/" + Model.Inscripciones.RutaFoto + ".jpg") alt="No tiene foto" class="img-raised  img-fluid imagenperfil">
+                </div>
             </div>
-            <p class="u-type--medium u-type--delta u-spc-bottom--med">@Model.torneo.MName - @Model.torneo.Start.ToString("dd/MMM/yyyy")</p>
+            <div class="col-md-8">
+                <div class="name">
+                    <h2 class="title">Resultados en un torneo</h2>
+                    <h4 class="title">@Model.atleta.First @Model.atleta.Last en el torneo</h4>
+                    <h4 class="title">@Model.torneo.MName - @Model.torneo.Start.ToString("dd/MMM/yyyy")</h4>
+                </div>
+            </div>
+        </div>
 
-        </header>
 
-        <div id="js-table" class="site-contentpage js-table table">
-            <table class="table__data">
-                <thead>
+    </div>
+</div>
+
+<div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Distancia</th>
+                    <th>Estilo</th>
+                    <th>Puesto</th>
+                    <th>Tiempo</th>
+                    <th>Puntos FINA</th>
+                    <th>Final/Preliminar/Trial</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.resultados)
+                {
                     <tr>
-                        <th>Distancia</th>
-                        <th>Estilo</th>
-                        <th>Puesto</th>
-                        <th>Tiempo</th>
-                        <th>Puntos FINA</th>
-                        <th>Final/Preliminar/Trial</th>
+                        <td>@item.DISTANCE</td>
+                        <td>@item.STROKE</td>
+                        <td>@item.PLACE</td>
+                        <td>@item.SCORE</td>
+                        <td>@item.PFina</td>
+
+                        @if (item.I_R == "L")
+                        {
+                            <td>@item.F_P en una posta  </td>
+                        }
+                        else
+                        {
+                            <td>@item.F_P  </td>
+                        }
 
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.resultados)
-                    {
-                        <tr>
-                            <td>@item.DISTANCE</td>
-                            <td>@item.STROKE</td>
-                            <td>@item.PLACE</td>
-                            <td>@item.SCORE</td>
-                            <td>@item.PFina</td>
-
-                            @if (item.I_R == "L")
-                            {
-                                <td>@item.F_P en una posta  </td>
-                            }
-                            else
-                            {
-                                <td>@item.F_P  </td>
-                            }
-
-                        </tr>
-                    }
-                </tbody>
-            </table>
+                }
+            </tbody>
+        </table>
 
 
 
 
-        </div>
-    </div>
-    <div class="site-homepage__section__header u-animation--fadeInSection">
-        @Html.ActionLink("Listado de nadadores", "Nadadores", "masters", null, new { @class = "btn btn--med btn--primaryapnea u-rounded" })
-
-    </div>
-    <div class="espaciado"></div>
-
-</section>
+</div>
+          

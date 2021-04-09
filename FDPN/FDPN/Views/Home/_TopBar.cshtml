@@ -2,7 +2,7 @@
 
 @{
 
-    string path = Url.Content("~/Content/imagenes/" + Model.Foto);
+    string path = Url.Content("http://fdpn.org/Content/Img/Fotos/" + Model.Foto);
     string clase = ViewBag.clase;
 }
 
@@ -10,9 +10,8 @@
 <nav class="navbar navbar-color-on-scroll navbar-transparent    fixed-top  navbar-expand-lg " color-on-scroll="100" id="sectionsNav">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" href="index.html">
-                FDPN
-            </a>
+            @Html.ActionLink("FDPN", "index", "home", null, new { @class = "navbar-brand" })
+           
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="navbar-toggler-icon"></span>
@@ -22,37 +21,38 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-              
+
                 <li class="dropdown nav-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <i class="material-icons">import_contacts</i> Documentos
                     </a>
                     <div class="dropdown-menu dropdown-with-icons">
+
+
                         @Html.ActionLink("El directorio", "directorio", "nosotros", null, new { @class = "dropdown-item" })
 
                         @Html.ActionLink("Estatuto", "estatuto", "nosotros", null, new { @class = "dropdown-item" })
 
                         @Html.ActionLink("Clubes afiliados", "ListadoClubesAfiliados", "nosotros", null, new { @class = "dropdown-item" })
 
-                        @Html.ActionLink("Bases de torneos", "bases", "documentos", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Bases de torneos", "ListadoDocumentos", "Documentos", new { categoriaid = 7 }, new { @class = "dropdown-item" })
 
-                        @Html.ActionLink("Reglamentos", "Reglamentos", "documentos", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Reglamentos", "ListadoDocumentos", "Documentos", new { categoriaid = 4 }, new { @class = "dropdown-item" })
 
-                        @Html.ActionLink("Comunicados", "comunicados", "documentos", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Comunicados", "ListadoDocumentos", "documentos", new { categoriaid = 6 }, new { @class = "dropdown-item" })
 
-                        @Html.ActionLink("Criterios de selección", "Criterios", "documentos", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Marcas mínimas", "ListadoDocumentos", "Documentos", new { categoriaid = 13 }, new { @class = "dropdown-item" })
 
-                        @Html.ActionLink("Marcas mínimas", "MarcasMinimas", "documentos", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Marcas clasificatorias a eventos internacionales", "ListadoDocumentos", "Documentos", new { categoriaid = 14 }, new { @class = "dropdown-item" })
 
-                        @Html.ActionLink("Marcas clasificatorias a eventos internacionales", "Marcasclasificatorias", "documentos", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Convocatorias", "ListadoDocumentos", "Documentos", new { categoriaid = 15 }, new { @class = "dropdown-item" })
 
-                        @Html.ActionLink("Convocatorias", "Convocatorias", "documentos", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Clubes hábiles", "habiles", "documentos", new { categoriaid = 16 }, new { @class = "dropdown-item" })
 
-                        @Html.ActionLink("Clubes hábiles", "habiles", "documentos", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Formatos", "formatos", "documentos", new { categoriaid = 17 }, new { @class = "dropdown-item" })
 
-                        @Html.ActionLink("Formatos", "formatos", "documentos", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Subvenciones IPD", "ListadoDocumentos", "Documentos", new { categoriaid = 8 }, new { @class = "dropdown-item" })
 
-                        @Html.ActionLink("Subvenciones IPD", "Subvenciones", "Documentos", null, new { @class = "dropdown-item" })
 
                     </div>
                 </li>
@@ -70,13 +70,13 @@
 
                         @Html.ActionLink("Rankings Puntos FINA", "RankingsFINA", "resultados", null, new { @class = "dropdown-item" })
 
-                        @Html.ActionLink("Resultados en pdf", "resultadosPDF", "documentos", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Resultados en pdf", "ListadoDocumentos", "Documentos", new { categoriaid = 11 }, new { @class = "dropdown-item" })
 
-                        @Html.ActionLink("Rankings en pdf", "RankingPDF", "documentos", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Rankings en pdf", "ListadoDocumentos", "Documentos", new { categoriaid = 12 }, new { @class = "dropdown-item" })
 
                         @Html.ActionLink("En vivo", "Envivo", "documentos", null, new { @class = "dropdown-item" })
 
-                        @Html.ActionLink("Records", "records", "documentos", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Records", "ListadoDocumentos", "Documentos", new { categoriaid = 9 }, new { @class = "dropdown-item" })
 
                     </div>
                 </li>
@@ -93,41 +93,35 @@
                     </div>
                 </li>
                 <li class="dropdown nav-item">
-                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        <i class="material-icons">people_outline</i> Academia
-                    </a>
-                    <div class="dropdown-menu dropdown-with-icons">
-                        <a href="sections.html#headers" class="dropdown-item">
-                            Headers
-                        </a>
-
-                    </div>
+                  @Html.Action("_PreviewAcademia")
                 </li>
                 <li class="dropdown nav-item">
-                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        <i class="material-icons">done_all</i> Apps
-                    </a>
-                    <div class="dropdown-menu dropdown-with-icons">
-                        <a  class="nav-link" href="Content/pdf/AFILIACION POR PRIMERA VEZ.pdf">Como afiliarte</a>
-                        <a class="nav-link" href="http://afiliaciones.fdpn.org">Afiliaciones</a>
-                        <a class="nav-link" href="http://inscripcion.fdpn.org/">Inscripción natación</a>
+                    @Html.Action("_PreviewAfiliaciones")
+                </li>
+                <li class="dropdown nav-item">
+                    @using (Html.BeginForm("FormularioBusqueda", "Documentos", FormMethod.Post))
+                    {
+                     
+                    <div style="width: 200px;" class="divForm">
+                        <div class="t">
+                            <!-- This is the wrapper div around the text input -->
+                            @Html.TextBox("searchString", null, new { @class = "form-control mr-sm-2" })
+                        </div>
+                       
+                        <button class="btn btn-outline btn-sm my-2 my-sm-0" type="submit">
+                            <div class="icon icon-rose">
+                                <i class="material-icons">search</i>
+                            </div>
+                        </button>
                     </div>
+                    }
                 </li>
                 @Html.Action("_PreviewAlertas")
             </ul>
-            @using (Html.BeginForm("Noticias", "Noticias", FormMethod.Post))
-            {
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Buscar">
 
-            <button class="btn btn-danger btn-sm my-2 my-sm-0" type="submit">
-                <span class="material-icons">
-                    search
-                </span>
-            </button>
-        </form>
-            }
-            </div>
+
+           
+        </div>
     </div>
 </nav>
 
@@ -135,15 +129,23 @@
 
 
 <div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url(@path);">
-    <div class="container">
+    <div class="contenedorFraseInicial">
         <div class="row">
-            <img src="~/Content/img/Logo_fdpn.png" class="center ImagenCuarto" />
-            <div class="col-md-8 ml-auto mr-auto">
-                <div class="brand">
-                    <h1 class="title">
-                    Federación Deportiva Peruana de Natación
+            <div class="col-lg-4">
+                <div class="contenedorLogo">
+
+                    <img src="~/Content/img/Logo_fdpn.png" class="ImagenCuarto" />
+
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="brand" style="justify-content: center">
+                    <h1 class="title tituloResponsivo">
+                        Federación Deportiva Peruana de Natación
                     </h1>
                 </div>
+            </div>
+            <div class="col-lg-1">
             </div>
         </div>
     </div>

@@ -1,0 +1,122 @@
+﻿@model List<FDPN.Models.PCalendario>
+
+@{
+    ViewBag.Title = "Calendario de capacitaciones";
+}
+
+    <!--     *********     BLOGS 1      *********      -->
+    <div class="blogs-1" id="blogs-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 ml-auto mr-auto">
+                    <h2 class="title">Cursos recientes</h2>
+                    <br>
+                    @for (int i = 0; i < 2; i++)
+                    {
+                        if (Model[0] != null && i == 0)
+                        {
+                            <div class="card card-plain card-blog">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="card-header card-header-image">
+                                            <a href="#pablito">
+                                                <img class="img" src="~/Content/imagenes/coach1.jpg" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <h4 class="card-category @Model[i].PCurso.Disciplina.clase">@Model[i].PCurso.Disciplina.TipoDisciplina</h4>
+                                        <h3 class="card-title">
+                                            <a href="#pablo">@Model[i].PCurso.Nombre</a>
+                                        </h3>
+                                        <p class="card-description">
+                                            @Model[i].PCurso.Objetivos
+                                            @Html.ActionLink("Ver más", "DetalleCurso", "Calendario", new { calendarioid = Model[i].CalendarioId }, null);
+                                        </p>
+                                        <p class="author">
+                                            Dictado por
+                                            <a href="">
+                                                <b>@Model[i].PProfesor.Nombre - @Model[i].PProfesor.Nacionalidad</b>
+                                            </a>
+                                            Inicio: @Model[i].FechaInicio.ToString("dd/MM/yyyy")
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                        if (Model[1] != null && i == 1)
+                        {
+                            <div class="card card-plain card-blog">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <h4 class="card-category @Model[i].PCurso.Disciplina.clase">@Model[i].PCurso.Disciplina.TipoDisciplina</h4>
+                                        <h3 class="card-title">
+                                            <a href="#pablo">@Model[i].PCurso.Nombre</a>
+                                        </h3>
+                                        <p class="card-description">
+                                            @Model[i].PCurso.Objetivos
+                                            @Html.ActionLink("Ver más", "DetalleCurso", "Calendario", new { calendarioid = Model[i].CalendarioId }, null);
+                                        </p>
+                                        <p class="author">
+                                            Dictado por
+                                            <a href="">
+                                                <b>@Model[i].PProfesor.Nombre - @Model[i].PProfesor.Nacionalidad</b>
+                                            </a>
+                                            Inicio: @Model[i].FechaInicio.ToString("dd/MM/yyyy")
+                                        </p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="card-header card-header-image">
+                                            <a href="#pablito">
+                                                <img class="img" src="~/Content/imagenes/coach2.jpg" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--     *********    END BLOGS 1      *********      -->
+    <!--     *********     BLOGS 2      *********      -->
+    <div class="blogs-2" id="blogs-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 ml-auto mr-auto">
+                    <h2 class="title">Próximos cursos</h2>
+                    <br>
+                    <div class="row">
+                        @for (int i = 2; i < Model.Count; i++)
+                        {
+                            <div class="col-md-4">
+                                <div class="card card-plain card-blog">
+                                    <div class="card-header card-header-image">
+                                        <a href="#pablo">
+                                            <img class="img" src="~/Content/imagenes/coach3.jpg" />
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-category @Model[i].PCurso.Disciplina.clase">@Model[i].PCurso.Disciplina.TipoDisciplina</h4>
+                                        <h4 class="card-title">
+                                            <a href="#pablo">  @Model[i].PCurso.Nombre</a>
+                                        </h4>
+                                        <p class="card-description">
+                                            @Model[i].PCurso.Objetivos
+                                            Inicio: @Model[i].FechaInicio.ToString("dd/MM/yyyy")
+                                            @Html.ActionLink("Ver más", "DetalleCurso", "Calendario", new { calendarioid = Model[i].CalendarioId }, null);
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

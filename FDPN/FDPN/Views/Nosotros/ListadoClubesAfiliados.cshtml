@@ -4,67 +4,62 @@
     int anno = DateTime.Now.Year;
 }
 
+<div class="container">
+    <div class="card card-plain">
+        <div class="card-body">
+            <h3 class="card-title">Shopping Cart</h3>
+            <br />
+            <div class="table-responsive">
+                <table class="table table-shopping">
+                    <thead>
+                        <tr>
+                            <th>
+                                Logo
+                            </th>
+                            <th>
+                                Club
+                            </th>
+
+                            <th>
+                                Página
+                            </th>
+                            <th>
+                                Email
+                            </th>
 
 
-<section class=" site-news site-homepage__pushup">
-    <header class="site-homepage__section__header">
-        <h2 class="site-title site-title--ultra site-title--ultra">Listado de clubes afiliados</h2>
-        <p class="u-type--medium u-type--delta u-spc-bottom--med">durante el año @anno</p>
-       
-    </header>
-    <div class="wrapper site-athleteswidget__info">
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td class="text-center">
+                                @if (item.RutaLogo != null)
+                                {<a href="@Url.Content("http://afiliaciones.fdpn.org/Content/Logos/" + item.RutaLogo + ".jpg")" target="_blank">
+                                        <img src=@Url.Content("http://afiliaciones.fdpn.org/Content/Logos/" + item.RutaLogo + ".jpg")
+                                             class="MiniLogo" />
+                                    </a>
+                                }
+                            </td>
+                            <td>
+                                @item.NombreClub.ToUpper()
 
-
-
-        <table class="tablaNormal">
-            <tr>
-                <th>
-                    Club
-                </th>
-
-                <th>
-                    Página
-                </th>
-                <th>
-                    Email
-                </th>
-                <th>
-                    Logo
-                </th>
-
-            </tr>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @item.NombreClub.ToUpper()
-
-                    </td>
-                    <td>
-
-                        <a href="@item.Paginaweb" target="_blank">@item.Paginaweb</a>
-                    </td>
-                    <td>
-                        @item.EMailOficial
-                    </td>
-                    <td>
-                        @if (item.RutaLogo != null)
-                        {<a href="@Url.Content("http://afiliaciones.fdpn.org/Content/Logos/" + item.RutaLogo + ".jpg")" target="_blank">
-                                <img src=@Url.Content("http://afiliaciones.fdpn.org/Content/Logos/" + item.RutaLogo + ".jpg")
-                                     class="MiniLogo" />
-                            </a>
+                            </td>
+                            <td>
+                                <a href="@item.Paginaweb" target="_blank">@item.Paginaweb</a>
+                            </td>
+                            <td>
+                                @item.EMailOficial
+                            </td>                          
+                        </tr>
+                         
                         }
 
-
-                    </td>
-                </tr>
-            }
-
-        </table>
-        <br />
-    
-
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-</section>
-
+</div>
 

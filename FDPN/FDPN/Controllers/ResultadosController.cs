@@ -19,7 +19,7 @@ namespace FDPN.Controllers
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.Letra = letra ?? "A";
+          
 
             if (searchString != null)
             {
@@ -32,56 +32,26 @@ namespace FDPN.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            NadadoresOrdenadosViewModel VM = new NadadoresOrdenadosViewModel
-            {
-                alphabet = Enumerable.Range(65, 26).Select(i => ((char)i).ToString()).ToList(),
-            };
+            NadadoresOrdenadosViewModel VM = new NadadoresOrdenadosViewModel();
 
-
-            VM.alphabet.Insert(14, "Ñ");
 
 
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
 
-            var nadadores = db.Athlete.AsQueryable();
+            List<Athlete> nadadores = new List<Athlete>();
 
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                nadadores = nadadores.Where(s => s.Last.Contains(searchString)
-                                       || s.First.Contains(searchString));
+                nadadores = db.Athlete.Where(s => s.Last.Contains(searchString)
+                                       || s.First.Contains(searchString)).OrderBy(s => s.First).ToList();
             }
-            else
-            {
-                if (letra == null)
-                {
-                    letra = "A";
-                }
-                nadadores = nadadores.Where(x => x.Last.Substring(0, 1) == letra);
-            }
-
-            //switch (sortOrder)
-            //{
-            //    case "name_desc":
-            //        nadadores = nadadores.OrderByDescending(s => s.Last);
-            //        break;
-
-            //    default:
-            //        nadadores = nadadores.OrderBy(s => s.Last);
-            //        break;
-            //}
-
-            nadadores = nadadores.OrderBy(s => s.First);
-
-            int pageSize = 50;
+            int pageSize = 25;
             int pageNumber = (page ?? 1);
 
+            return View(nadadores.ToPagedList(pageNumber, pageSize));
 
-
-            VM.nadadores = nadadores.ToPagedList(pageNumber, pageSize);
-
-
-            return View(VM);
+          
         }
 
         public ActionResult Nadador(int id)
@@ -258,16 +228,17 @@ namespace FDPN.Controllers
                 .AsQueryable();
 
 
-            VM.sex = "M";
-            if (sexo != null)
+            VM.sex = "";
+            if (sexo != "")
             {
                 VM.sex = sexo;
+                resultado = resultado.Where(x => x.Athlete1.Sex == VM.sex);
             }
-            resultado = resultado.Where(x => x.Athlete1.Sex == VM.sex);
+            
 
 
             VM.piscina = "L";
-            if (piscina != null)
+            if (piscina != "")
             {
                 VM.piscina = piscina;
             }
@@ -321,10 +292,9 @@ namespace FDPN.Controllers
 
             //Aquí convierto en lista la Query
             resultado = resultado.OrderBy(x => x.SCORE);
-            List<RESULTS> resultadoEnlista = resultado
-                .DistinctBy(x => x.AthleteId).ToList();
 
-            VM.resultados = resultadoEnlista.Take(300).ToList();
+
+            VM.resultados = resultado.DistinctBy(x => x.AthleteId).Take(300).ToList();
 
 
             VM.distancia = Int32.Parse(distance);
@@ -429,7 +399,7 @@ namespace FDPN.Controllers
 
         public ActionResult ResultadosDeUnTorneo(int meetid)
         {
-            List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == meetid && x.PLACE != 0 && x.ATHLETE != 0 && x.TEAM != 0 && x.SCORE != "").ToList();
+            List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == meetid && x.ATHLETE != 0 && x.TEAM != 0 && x.SCORE != "").ToList();
             SortedDictionary<float, DiccionarioPruebas> pruebasdesordenadas = new SortedDictionary<float, DiccionarioPruebas>();
             ResultadoDeUnTorneoViewModel VM = new ResultadoDeUnTorneoViewModel
             {
@@ -539,47 +509,60 @@ namespace FDPN.Controllers
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = sortOrder == "name" ? "name_desc" : "name";
             ViewBag.DateSortParm = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
+            try
+            {
 
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
 
-            ViewBag.CurrentFilter = searchString;
-            var torneos = db.MEET.AsQueryable();
+                if (searchString != null)
+                {
+                    page = 1;
+                }
+                else
+                {
+                    searchString = currentFilter;
+                }
 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                torneos = torneos.Where(s => s.MName.Contains(searchString));
+                ViewBag.CurrentFilter = searchString;
+                var torneos = db.MEET.AsQueryable();
+
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    torneos = torneos.Where(s => s.MName.Contains(searchString));
+                }
+                switch (sortOrder)
+                {
+                    case "name_desc":
+                        torneos = torneos.OrderByDescending(s => s.MName);
+                        break;
+                    case "name":
+                        torneos = torneos.OrderBy(s => s.MName);
+                        break;
+                    case "date":
+                        torneos = torneos.OrderBy(s => s.Start);
+                        break;
+                    default:
+                        torneos = torneos.OrderByDescending(s => s.Start);
+                        break;
+                }
+                int pageSize = 25;
+                int pageNumber = (page ?? 1);
+                return View(torneos.ToPagedList(pageNumber, pageSize));
             }
-            switch (sortOrder)
+            catch (Exception ex)
             {
-                case "name_desc":
-                    torneos = torneos.OrderByDescending(s => s.MName);
-                    break;
-                case "name":
-                    torneos = torneos.OrderBy(s => s.MName);
-                    break;
-                case "date":
-                    torneos = torneos.OrderBy(s => s.Start);
-                    break;
-                default:
-                    torneos = torneos.OrderByDescending(s => s.Start);
-                    break;
+                string mensaje = ex.Message;
+                if (mensaje == "" && ex.InnerException != null)
+                {
+                    mensaje = ex.InnerException.ToString();
+                }
+                return RedirectToAction("MostrarError", "Home", new { @mensaje = ex.Message });
             }
-            int pageSize = 25;
-            int pageNumber = (page ?? 1);
-            return View(torneos.ToPagedList(pageNumber, pageSize));
         }
 
         [HttpPost]
         public ActionResult ResultadoPorClubes(ResultadoDeUnTorneoViewModel VM)
         {
-            List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == VM.meetid && x.PLACE != 0).ToList();
+            List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == VM.meetid ).ToList();
 
             VM.resultadoFinales = resultados.Where(x => x.TeamId == VM.clubid && x.NT==0 && x.F_P =="F" && x.Athlete1 != null && x.TEAM !=0 && x.ATHLETE!=0).OrderBy(x => x.MTEV)
                 .ThenBy(x => x.PLACE).ToList();
@@ -591,6 +574,16 @@ namespace FDPN.Controllers
                 .OrderBy(x => x.TName).ToList();
             VM.torneo = db.MEET.Find(VM.meetid);
             VM.club = db.TEAM.Find(VM.clubid);
+
+            VM.CantidaddeParticipantes = VM.resultadoFinales.DistinctBy(x => x.ATHLETE).Count();
+            VM.CantidadDeResultados = VM.resultadoFinales.Count();
+            VM.NadadoresPorPuestos = new Dictionary<int, int>();
+            for (int i = 1; i < 9; i++)
+            {
+                VM.NadadoresPorPuestos.Add(i, VM.resultadoFinales.Where(x => x.PLACE == i).Count());
+                       }
+
+
             return View(VM);
         }
 

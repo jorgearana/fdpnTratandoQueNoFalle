@@ -45,22 +45,17 @@ namespace FDPN.Controllers
             return View();
         }
 
-        public ActionResult _TopBar(string titulo)
+        public ActionResult _TopBar()
         {
             Banners banners = new Banners();
             ViewBag.clase = "";
-            if (titulo == "Home")
-            {
+            
                 Random rnd = new Random();
                 int i = rnd.Next(1, 10);
                 banners = db.Banners.Find(i);
                 ViewBag.Title = "Home";
-            }
-            banners = new Banners
-            {
-                Foto = "bg6.jpg",
-            };
-
+            
+         
             return PartialView(banners);
         }
 
@@ -123,9 +118,12 @@ namespace FDPN.Controllers
             MEET torneoAMostrar = db.MEET.Where(x => x.Meet1 == Meettorneo).FirstOrDefault();
             do
             {
-               
-                //List< TorneoDestacado> torneodestacado = db.TorneoDestacado.OrderByDescending(x => x.DestacadoId).Take(3).ToList();
 
+                //List< TorneoDestacado> torneodestacado = db.TorneoDestacado.OrderByDescending(x => x.DestacadoId).Take(3).ToList();
+                try
+                {
+
+                
                 int categoria = rnd.Next(0, 3);
                 int edadminima = 0;
                 int edadmaxima = 109;
@@ -170,6 +168,11 @@ namespace FDPN.Controllers
                     resultados = resultadomejor,
                     Inscripciones = db.Inscripciones.Where(x => x.DNI == dni).FirstOrDefault(),
                 };
+                }
+                catch (Exception ex)
+                {
+                    string mensaje = ex.Message;
+                }
 
 
             } while (VM.Inscripciones == null);
@@ -191,7 +194,7 @@ namespace FDPN.Controllers
         public PartialViewResult _PreviewCursos()
         {
             DateTime hoy = (DateTime.Now).AddDays(-7); /*Para tomar los eventos que vienen más adelante y una semana atrás*/
-            List<CalendarioCursos> cursos = db.CalendarioCursos.Where(x => x.Inicio > hoy).OrderBy(x => x.Inicio).Take(6).ToList();
+            List<CursoCalentario> cursos = db.CursoCalentario.Where(x => x.Inicio > hoy).OrderBy(x => x.Inicio).Take(6).ToList();
             return PartialView("_PreviewCursos", cursos);
         }
         public ActionResult _PreviewClubesAfiliados()
@@ -260,6 +263,19 @@ namespace FDPN.Controllers
             }
             return PartialView("_PreviewEventos", VM);
         }
+        public ActionResult _PreviewAcademia()
+        {
+           
+            List<Noticias> noticias = db.Noticias.Where(x => x.CategoriaNoticia.TipoNoticia == "Academia").OrderByDescending(x => x.NoticiaId).ToList();
+            return PartialView(noticias);
+        }
+        public ActionResult _PreviewAfiliaciones()
+        {
+
+            List<Noticias> noticias = db.Noticias.Where(x => x.CategoriaNoticia.TipoNoticia == "Afiliaciones").OrderByDescending(x => x.NoticiaId).ToList();
+            return PartialView(noticias);
+        }
+
 
         public ActionResult _PreviewEnVivo()
         {
@@ -279,6 +295,11 @@ namespace FDPN.Controllers
         {
             return View();
 
+        }
+
+        public ActionResult MostrarError(string mensaje)
+        {
+            return View(mensaje);
         }
     }
 }

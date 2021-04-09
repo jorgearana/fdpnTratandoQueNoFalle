@@ -1,0 +1,80 @@
+﻿@model FDPN.ViewModels.PCalendario.DetalleDeCursoViewModel
+@{
+    ViewBag.Title = "DetalleCurso";
+}
+
+<div class="blogs-1" id="blogs-1">
+    <div class="container">
+        <div class="row">
+
+            <div class="card card-plain card-blog">
+                <div class="row">
+                    <div class="col-md-7">
+                        <h4 class="card-category @Model.calendario.PCurso.Disciplina.clase">@Model.calendario.PCurso.Disciplina.TipoDisciplina</h4>
+                        <h3 class="card-title">
+                            <a href="#pablo">@Model.calendario.PCurso.Nombre</a>
+                        </h3>
+                        <p class="card-description">
+                            @Model.calendario.PCurso.Objetivos
+                            <a href="#"> Read More </a>
+                        </p>
+                        <p class="author">
+                            Dictado por
+                            <a href="">
+                                <b>@Model.calendario.PProfesor.Nombre - @Model.calendario.PProfesor.Nacionalidad</b>
+                            </a>
+                            Inicio: @Model.calendario.FechaInicio.ToString("dd/MM/yyyy")
+                        </p>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card-header card-header-image">
+                            <a href="#pablito">
+                                <img class="img" src="~/Content/imagenes/coach2.jpg" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="card card-plain card-blog">
+                <div class="row">
+                    <div class="col-md-5">
+                        @foreach (var item in Model.Horarios)
+                        {
+                            <div class="card-header card-header-image">
+                                <a href="">
+                                    <p>@item.Dia.ToString("dd/MM/yyyy") String.Format("{0:0.00}", @item.Hora)  </p>
+                                </a>
+                            </div>
+                        }
+
+                    </div>
+                    <div class="col-md-7">
+
+                        <h3 class="card-title">
+                            <a href="#pablo">Temas</a>
+                        </h3>
+                        @foreach (var item in Model.Temas)
+                        {
+                            if (item.Teorico)
+                            {
+                                <h4>Tema teórico</h4>
+                            }
+                            else
+                            {
+                                <h4>Tema práctico</h4>
+                            }
+                            <p class="card-description">
+                              @item.Detalle
+                            </p>
+                        }
+
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>

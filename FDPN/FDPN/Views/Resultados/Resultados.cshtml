@@ -1,29 +1,53 @@
 ﻿@model PagedList.IPagedList<FDPN.Models.MEET>
 
 @using PagedList.Mvc;
+
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "Resultados";
 }
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+
+            <h2 class="title">Resultados <small>- Listado de torneos disponibles</small></h2>
+
+            <div class="card card-plain card-form-horizontal">
+                <div class="card-body">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">search</i>
+                                        </span>
+                                    </div>
+                                    @Html.TextBox("searchString", null, new { @class = "form-control mr-sm-2", placeholder = "Buscar por palabras claves" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-primary btn-round btn-block">Buscar</button>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="description">
+                                    Busca un torneo.
+                                </p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-<section class="site-contentpage site-news site-homepage__pushup">
-    <header class="site-homepage__section__header">
-        <h2 class="site-title site-title--ultra site-title--ultra">Resultados</h2>
-        <p class="u-type--medium u-type--delta u-spc-bottom--med">Listado de torneos disponibles</p>
-        @using (Html.BeginForm())
-        {
-            <p class="u-type--medium u-type--delta u-spc-bottom--med">Buscar en los torneos</p>
-            @Html.TextBox("SearchString", null, new { @class = "btn btn--primaryapnea btn--lrg u-rounded" })
-            <input type="submit" value="Buscar" class="btn btn--primaryapnea btn--lrg u-rounded" />
-        }
-    </header>
-    <div class="wrapper site-athleteswidget__info">
-       
-      
 
-        <table class="tablaNormal">
+
+    <div class="table">
+        <table class="table table-striped">
             <tr>
                 <th>
                     @Html.ActionLink("Torneo", "Resultados", new { sortOrder = ViewBag.NameSortParm })
@@ -41,8 +65,8 @@
             {
                 <tr>
                     <td>
-                        @Html.ActionLink(@item.MName, "ResultadosDeUnTorneo", "Resultados", new { @meetid = item.MeetId}, null)
-                       
+                        @Html.ActionLink(@item.MName, "ResultadosDeUnTorneo", "Resultados", new { @meetid = item.MeetId }, null)
+
                     </td>
                     <td>
                         @item.Start.ToString("dd/MM/yyyy")
@@ -55,7 +79,7 @@
                     {
                         <td>Corta</td>
                     }
-                    
+
                 </tr>
             }
 
@@ -64,10 +88,9 @@
         Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
         @Html.PagedListPager(Model, page => Url.Action("Resultados",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+         new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
 
     </div>
-</section>
 
-
+</div>

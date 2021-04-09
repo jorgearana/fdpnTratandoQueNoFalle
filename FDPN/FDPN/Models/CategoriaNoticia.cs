@@ -22,6 +22,7 @@ namespace FDPN.Models
     
         public int CategoriaId { get; set; }
         public string TipoNoticia { get; set; }
+        public string Detalle { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Noticias> Noticias { get; set; }
