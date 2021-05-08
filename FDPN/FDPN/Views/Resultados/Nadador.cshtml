@@ -53,25 +53,25 @@
 
                     </td>
                     <td>
-                        <a href="@Url.Action("ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.Mejortiempolarga.MeetId, athleteid = item.Value.Mejortiempolarga.AthleteId })"
+                        <a href="@Url.Action("ResultadoDelNadadorEnUnTorneo", "Resultados", new { @MeetId = item.Value.Mejortiempolarga.MeetId, athleteid = item.Value.Mejortiempolarga.AthleteId })"
                            data-toggle="tooltip" data-placement="top" title="" data-container="body" data-original-title="Detalles del torneo">
                             @item.Value.Mejortiempolarga.SCORE
                         </a>
                     </td>
                     <td>
-                        <a href="@Url.Action("ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.Mejortiempocorta.MeetId, athleteid = item.Value.Mejortiempocorta.AthleteId })"
+                        <a href="@Url.Action("ResultadoDelNadadorEnUnTorneo", "Resultados", new { @MeetId = item.Value.Mejortiempocorta.MeetId, athleteid = item.Value.Mejortiempocorta.AthleteId })"
                            data-toggle="tooltip" data-placement="top" title="" data-container="body" data-original-title="Detalles del torneo">
                             @item.Value.Mejortiempocorta.SCORE
                         </a>
                     </td>
                     <td>
-                        <a href="@Url.Action("ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.Ultimoannolarga.MeetId, athleteid = item.Value.Ultimoannolarga.AthleteId })"
+                        <a href="@Url.Action("ResultadoDelNadadorEnUnTorneo", "Resultados", new { @MeetId = item.Value.Ultimoannolarga.MeetId, athleteid = item.Value.Ultimoannolarga.AthleteId })"
                            data-toggle="tooltip" data-placement="top" title="" data-container="body" data-original-title="Detalles del torneo">
                             @item.Value.Ultimoannolarga.SCORE
                         </a>
                     </td>
                     <td>
-                        <a href="@Url.Action("ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.Ultimoannocorta.MeetId, athleteid = item.Value.Ultimoannocorta.AthleteId })"
+                        <a href="@Url.Action("ResultadoDelNadadorEnUnTorneo", "Resultados", new { @MeetId = item.Value.Ultimoannocorta.MeetId, athleteid = item.Value.Ultimoannocorta.AthleteId })"
                            data-toggle="tooltip" data-placement="top" title="" data-container="body" data-original-title="Detalles del torneo">
                             @item.Value.Ultimoannocorta.SCORE
                         </a>
@@ -100,11 +100,11 @@
             {
                 <tr>
                     <td>@Html.ActionLink(@item.Key.distancia.ToString() + " " + @item.Key.estilo.ToString(), "RendimientoDelNadadorEnUnaPrueba", "Resultados", new { athleteid = Model.nadador.AthleteId, pruebaid = item.Key.PruebaId }, null)</td>
-                    <td>@Html.ActionLink(item.Value.uno.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.uno.MeetId, athleteid = item.Value.uno.AthleteId }, null) </td>
-                    <td>@Html.ActionLink(item.Value.dos.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.dos.MeetId, athleteid = item.Value.dos.AthleteId }, null) </td>
-                    <td>@Html.ActionLink(item.Value.tres.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.tres.MeetId, athleteid = item.Value.tres.AthleteId }, null) </td>
-                    <td>@Html.ActionLink(item.Value.cuatro.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.cuatro.MeetId, athleteid = item.Value.cuatro.AthleteId }, null) </td>
-                    <td>@Html.ActionLink(item.Value.cinco.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.cinco.MeetId, athleteid = item.Value.cinco.AthleteId }, null) </td>
+                    <td>@Html.ActionLink(item.Value.uno.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @MeetId = item.Value.uno.MeetId, athleteid = item.Value.uno.AthleteId }, null) </td>
+                    <td>@Html.ActionLink(item.Value.dos.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @MeetId = item.Value.dos.MeetId, athleteid = item.Value.dos.AthleteId }, null) </td>
+                    <td>@Html.ActionLink(item.Value.tres.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @MeetId = item.Value.tres.MeetId, athleteid = item.Value.tres.AthleteId }, null) </td>
+                    <td>@Html.ActionLink(item.Value.cuatro.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @MeetId = item.Value.cuatro.MeetId, athleteid = item.Value.cuatro.AthleteId }, null) </td>
+                    <td>@Html.ActionLink(item.Value.cinco.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @MeetId = item.Value.cinco.MeetId, athleteid = item.Value.cinco.AthleteId }, null) </td>
 
                 </tr>
             }
@@ -130,11 +130,11 @@
             {
                 <tr>
                     <td>@Html.ActionLink(@item.Key.distancia.ToString() + " " + @item.Key.estilo.ToString(), "RendimientoDelNadadorEnUnaPrueba", "Resultados", new { athleteid = Model.nadador.AthleteId, pruebaid = item.Key.PruebaId }, null)</td>
-                    <td>@Html.ActionLink(item.Value.uno.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.uno.MeetId, athleteid = item.Value.uno.AthleteId }, null) </td>
-                    <td>@Html.ActionLink(item.Value.dos.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.dos.MeetId, athleteid = item.Value.dos.AthleteId }, null) </td>
-                    <td>@Html.ActionLink(item.Value.tres.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.tres.MeetId, athleteid = item.Value.tres.AthleteId }, null) </td>
-                    <td>@Html.ActionLink(item.Value.cuatro.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.cuatro.MeetId, athleteid = item.Value.cuatro.AthleteId }, null) </td>
-                    <td>@Html.ActionLink(item.Value.cinco.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.Value.cinco.MeetId, athleteid = item.Value.cinco.AthleteId }, null) </td>
+                    <td>@Html.ActionLink(item.Value.uno.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @MeetId = item.Value.uno.MeetId, athleteid = item.Value.uno.AthleteId }, null) </td>
+                    <td>@Html.ActionLink(item.Value.dos.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @MeetId = item.Value.dos.MeetId, athleteid = item.Value.dos.AthleteId }, null) </td>
+                    <td>@Html.ActionLink(item.Value.tres.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @MeetId = item.Value.tres.MeetId, athleteid = item.Value.tres.AthleteId }, null) </td>
+                    <td>@Html.ActionLink(item.Value.cuatro.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @MeetId = item.Value.cuatro.MeetId, athleteid = item.Value.cuatro.AthleteId }, null) </td>
+                    <td>@Html.ActionLink(item.Value.cinco.SCORE, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @MeetId = item.Value.cinco.MeetId, athleteid = item.Value.cinco.AthleteId }, null) </td>
 
                 </tr>
             }
@@ -157,9 +157,9 @@
             @foreach (var item in Model.UltimasParticipaciones)
             {
                 <tr>
-                    <td>@Html.ActionLink(item.MEET1.MName, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @meetid = item.MeetId, athleteid = item.AthleteId }, null)</td>
-                    <td>@item.MEET1.Start.ToString("dd/MMM/yyyy")</td>
-                    <td class="weak">@item.TEAM1.TName</td>
+                    <td>@Html.ActionLink(item.Meet1.MName, "ResultadoDelNadadorEnUnTorneo", "Resultados", new { @MeetId = item.MeetId, athleteid = item.AthleteId }, null)</td>
+                    <td>@item.Meet1.Start.ToString("dd/MMM/yyyy")</td>
+                    <td class="weak">@item.Team1.TName</td>
                 </tr>
             }
         </tbody>

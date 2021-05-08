@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<FDPN.Models.MEETMasters>
+﻿@model PagedList.IPagedList<FDPN.Models.MeetMasters>
 
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
@@ -41,7 +41,7 @@
             {
                 <tr>
                     <td>
-                        @Html.ActionLink(@item.MName, "ResultadosDeUnTorneo", "masters", new { @meetid = item.MeetId }, null)
+                        @Html.ActionLink(@item.MName, "ResultadosDeUnTorneo", "masters", new { @MeetId = item.MeetId }, null)
 
                     </td>
                     <td>

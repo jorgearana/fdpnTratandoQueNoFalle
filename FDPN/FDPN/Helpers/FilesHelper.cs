@@ -99,7 +99,7 @@ namespace FDPN.Helpers
             return files;
         }
 
-        public void UploadAndShowResults(HttpContextBase ContentBase, List<ViewDataUploadFilesResult> resultList)
+        public void UploadAndShowRESULTS(HttpContextBase ContentBase, List<ViewDataUploadFilesResult> resultList)
         {
             var httpRequest = ContentBase.Request;
             System.Diagnostics.Debug.WriteLine(Directory.Exists(tempPath));

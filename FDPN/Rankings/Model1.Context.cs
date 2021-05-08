@@ -72,8 +72,8 @@ namespace Rankings
         public virtual DbSet<InscripcionResponsable> InscripcionResponsable { get; set; }
         public virtual DbSet<Landing> Landing { get; set; }
         public virtual DbSet<MarcasMinimas> MarcasMinimas { get; set; }
-        public virtual DbSet<MEET> MEET { get; set; }
-        public virtual DbSet<MEETMasters> MEETMasters { get; set; }
+        public virtual DbSet<Meet> Meet { get; set; }
+        public virtual DbSet<MeetMasters> MeetMasters { get; set; }
         public virtual DbSet<Modals> Modals { get; set; }
         public virtual DbSet<Multas> Multas { get; set; }
         public virtual DbSet<MultiEdad> MultiEdad { get; set; }
@@ -123,8 +123,8 @@ namespace Rankings
         public virtual DbSet<TatoSeleccionado> TatoSeleccionado { get; set; }
         public virtual DbSet<TatoSeriesEjemplo> TatoSeriesEjemplo { get; set; }
         public virtual DbSet<tb_Suscritos> tb_Suscritos { get; set; }
-        public virtual DbSet<TEAM> TEAM { get; set; }
-        public virtual DbSet<TEAMMasters> TEAMMasters { get; set; }
+        public virtual DbSet<Team> Team { get; set; }
+        public virtual DbSet<TeamMasters> TeamMasters { get; set; }
         public virtual DbSet<TipoAfiliado> TipoAfiliado { get; set; }
         public virtual DbSet<TipoTorneo> TipoTorneo { get; set; }
         public virtual DbSet<Torneo> Torneo { get; set; }

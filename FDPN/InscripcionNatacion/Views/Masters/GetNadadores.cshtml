@@ -1,7 +1,7 @@
 ﻿@model List<InscripcionNatacion.ViewModels.Masters. NadadorMasterViewModel>
 @{
    
-    int meetid = ViewBag.meetid;
+    int Meetid = ViewBag.Meetid;
 }
   
 <table id="dataTables1" class="table table-hover display  datatabla " cellspacing="0" width="100%">
@@ -88,11 +88,11 @@
                                     if (item.YaEstaInscrito)
                                     {
                                         <li>
-                                            @Html.ActionLink("Retirar del torneo", "RetirarDelTorneo", "Masters", new { MeetId = meetid, inscripcionid = @item.InscripcionId }, new { @class = "btn btn-danger" })
+                                            @Html.ActionLink("Retirar del torneo", "RetirarDelTorneo", "Masters", new { MeetId = Meetid, inscripcionid = @item.InscripcionId }, new { @class = "btn btn-danger" })
                                         </li>
                                     }
                             <li>
-                                @Html.ActionLink("Inscribir deportista", "ListarPruebasParaElNadadorMaster", "Masters", new { MeetId = meetid, inscripcionid = @item.InscripcionId }, new { @class = "btn btn-danger", target ="blank"})
+                                @Html.ActionLink("Inscribir deportista", "ListarPruebasParaElNadadorMaster", "Masters", new { MeetId = Meetid, inscripcionid = @item.InscripcionId }, new { @class = "btn btn-danger", target ="blank"})
                                 @*<button data-MeetId=MeetId data-inscripcionid=@item.InscripcionId class="btn btn-warning BtnInscribirMaster">Inscribir deportista</button>*@
                             </li>
                                 }
@@ -103,7 +103,7 @@
                                     }
                                     @*else
                                     {
-                                        <button class="Postas btn btn-danger" data-afiliado=@item.InscripcionId data-meet="@MeetId">Inscribir solo para postas</button>
+                                        <button class="Postas btn btn-danger" data-afiliado=@item.InscripcionId data-Meet="@MeetId">Inscribir solo para postas</button>
                                     }*@
                                 </li>
 
@@ -118,4 +118,4 @@
         }
     </tbody>
 </table>
-<div style="visibility:hidden" id="MeetId">@meetid</div>
+<div style="visibility:hidden" id="MeetId">@Meetid</div>

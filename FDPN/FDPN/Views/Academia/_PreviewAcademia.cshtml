@@ -1,0 +1,12 @@
+﻿@model List<FDPN.Models.Noticias>
+
+<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+    <i class="material-icons">people_outline</i> Academia
+</a>
+<div class="dropdown-menu dropdown-with-icons">
+    @foreach (var item in Model)
+    {
+        <a class="nav-link" href=@Url.Action("academia",  new { @id= item.NoticiaId})>@item.Titulo</a>
+    }
+  
+</div>

@@ -9,7 +9,7 @@ namespace FDPN.ViewModels.Resultados
 {
     public class RankingFInaViewModel
     {
-        public List<MEET> torneos { get; set; }
+        public List<Meet> torneos { get; set; }
         public Dictionary<int, string> periodo { get; set; }
         public List<int> edadesminimas { get; set; }
         public List<int> edadesmaximas { get; set; }

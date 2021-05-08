@@ -445,15 +445,15 @@
      * @param {Array} array
      */
     var unique = function (array) {
-      var results = [];
+      var RESULTS = [];
 
       for (var idx = 0, len = array.length; idx < len; idx ++) {
-        if (!contains(results, array[idx])) {
-          results.push(array[idx]);
+        if (!contains(RESULTS, array[idx])) {
+          RESULTS.push(array[idx]);
         }
       }
 
-      return results;
+      return RESULTS;
     };
 
     /**
@@ -4198,10 +4198,10 @@
     * @return {string} Copied string elements.
     */
     this.recoverAttributes = function (el) {
-      var resultStr = '';
+      var RESULTStr = '';
 
       if (!el) {
-        return resultStr;
+        return RESULTStr;
       }
 
       var attrList = el.attributes || [];
@@ -4212,11 +4212,11 @@
         }
 
         if (attrList[i].specified) {
-          resultStr += ' ' + attrList[i].name + '=\'' + attrList[i].value + '\'';
+          RESULTStr += ' ' + attrList[i].name + '=\'' + attrList[i].value + '\'';
         }
       }
 
-      return resultStr;
+      return RESULTStr;
     };
 
     /**

@@ -46,7 +46,7 @@ namespace FDPN.Controllers
             {
                 foreach(var prueba in pruebas)
                 {
-                    List<RESULTS> resultadosprueba = db.RESULTS.Where(x => x.MEET1.Start > haceunanno && x.NT == 0 && x.PFina > 400 && x.PruebaId == prueba.PruebaId && x.Athlete1.Sex == sexo && x.COURSE == piscina)
+                    List<RESULTS> resultadosprueba = db.RESULTS.Where(x => x.Meet1.Start > haceunanno && x.NT == 0 && x.PFina > 400 && x.PruebaId == prueba.PruebaId && x.Athlete1.Sex == sexo && x.COURSE == piscina)
                         
                         .OrderBy(x=>x.SCORE)
                         .DistinctBy(x=>x.ATHLETE)
@@ -64,12 +64,12 @@ namespace FDPN.Controllers
                         resumen.Cells[fila, 7].Value = resultado.Athlete1.Age;
                         resumen.Cells[fila, 8].Value = resultado.PLACE;
                         resumen.Cells[fila, 9].Value = resultado.PFina;
-                        resumen.Cells[fila, 10].Value = resultado.MEET1.MName;
-                        if(resultado.TEAM1 != null)
+                        resumen.Cells[fila, 10].Value = resultado.Meet1.MName;
+                        if(resultado.Team1 != null)
                         {
-                            resumen.Cells[fila, 11].Value = resultado.TEAM1.TCode ;
+                            resumen.Cells[fila, 11].Value = resultado.Team1.TCode ;
                         }
-                        resumen.Cells[fila, 12].Value = resultado.MEET1.Start;
+                        resumen.Cells[fila, 12].Value = resultado.Meet1.Start;
                             resumen.Cells[fila, 13].Value = resultado.COURSE;
                         }                  
 

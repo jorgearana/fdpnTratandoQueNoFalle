@@ -1,0 +1,12 @@
+﻿@model List<FDPN.Models.CursoProfesor>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (var item in Model)
+{
+   <p>@item.Titulo</p>
+}
+

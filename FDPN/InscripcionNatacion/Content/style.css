@@ -6414,11 +6414,11 @@ table.issue-tracker tbody tr td {
 .issue-info small {
   display: block;
 }
-/* TEAMS */
-.team-members {
+/* TeamS */
+.Team-members {
   margin: 10px 0;
 }
-.team-members img.rounded-circle {
+.Team-members img.rounded-circle {
   width: 42px;
   height: 42px;
   margin-bottom: 5px;
@@ -8139,10 +8139,10 @@ body.landing-page {
   background: #f4f4f4;
   margin-top: 60px;
 }
-.landing-page .team-member {
+.landing-page .Team-member {
   text-align: center;
 }
-.landing-page .team-member img {
+.landing-page .Team-member img {
   margin: auto;
 }
 .landing-page .social-icon a {

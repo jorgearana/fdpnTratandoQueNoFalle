@@ -25,13 +25,13 @@ namespace InscripcionACurso.Models
         public Nullable<short> Record_day { get; set; }
         public Nullable<short> Record_year { get; set; }
         public string Record_Holder { get; set; }
-        public string Record_Holderteam { get; set; }
+        public string Record_HolderTeam { get; set; }
         public string Relay_Names { get; set; }
         public Nullable<float> Record_Time { get; set; }
         public string Record_course { get; set; }
         public string div_abbr { get; set; }
-        public string Record_teamabbr { get; set; }
-        public string Record_teamlsc { get; set; }
+        public string Record_Teamabbr { get; set; }
+        public string Record_Teamlsc { get; set; }
         public int RecordId { get; set; }
     }
 }

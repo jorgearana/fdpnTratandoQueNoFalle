@@ -14,10 +14,10 @@ namespace InscripcionACurso.Models
     
     public partial class RESULTSMasters
     {
-        public int MEET { get; set; }
+        public int Meet { get; set; }
         public int ATHLETE { get; set; }
         public string I_R { get; set; }
-        public int TEAM { get; set; }
+        public int Team { get; set; }
         public string SCORE { get; set; }
         public string F_P { get; set; }
         public string EX { get; set; }
@@ -40,7 +40,7 @@ namespace InscripcionACurso.Models
         public Nullable<double> Tiempobase { get; set; }
     
         public virtual AthleteMasters AthleteMasters { get; set; }
-        public virtual MEETMasters MEETMasters { get; set; }
-        public virtual TEAMMasters TEAMMasters { get; set; }
+        public virtual MeetMasters MeetMasters { get; set; }
+        public virtual TeamMasters TeamMasters { get; set; }
     }
 }

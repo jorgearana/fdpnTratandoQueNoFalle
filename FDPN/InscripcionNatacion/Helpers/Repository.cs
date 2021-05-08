@@ -26,7 +26,7 @@ namespace InscripcionNatacion.Helpers
             {
                 Rol rol = HttpContext.Current.Session["Rol"] as Rol;
 
-                return (rol.Rol1 == "meet" ||  rol.Rol1 == "admin");
+                return (rol.Rol1 == "Meet" ||  rol.Rol1 == "admin");
             }
             return false;
         }

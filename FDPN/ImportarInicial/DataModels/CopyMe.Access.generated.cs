@@ -13,11 +13,11 @@ using LinqToDB.Mapping;
 namespace DataModels
 {
 	/// <summary>
-	/// Database       : DATABASEMEET
-	/// Data Source    : c:\swmeets7\swmeets5\DATABASEMEET.mdb
+	/// Database       : DATABASEMeet
+	/// Data Source    : c:\swMeets7\swMeets5\DATABASEMeet.mdb
 	/// Server Version : 04.00.0000
 	/// </summary>
-	public partial class DATABASEMEETDB : LinqToDB.Data.DataConnection
+	public partial class DATABASEMeetDB : LinqToDB.Data.DataConnection
 	{
 		public ITable<Agegroup>           Agegroups           { get { return this.GetTable<Agegroup>(); } }
 		public ITable<AltScoring>         AltScorings         { get { return this.GetTable<AltScoring>(); } }
@@ -27,7 +27,7 @@ namespace DataModels
 		public ITable<CheckList>          CheckLists          { get { return this.GetTable<CheckList>(); } }
 		public ITable<CombinedEvent>      CombinedEvents      { get { return this.GetTable<CombinedEvent>(); } }
 		public ITable<Division>           Divisions           { get { return this.GetTable<Division>(); } }
-		public ITable<Dualteam>           Dualteams           { get { return this.GetTable<Dualteam>(); } }
+		public ITable<DualTeam>           DualTeams           { get { return this.GetTable<DualTeam>(); } }
 		public ITable<Entry>              Entries             { get { return this.GetTable<Entry>(); } }
 		public ITable<Event>              Events              { get { return this.GetTable<Event>(); } }
 		public ITable<EventGetTime>       EventGetTimes       { get { return this.GetTable<EventGetTime>(); } }
@@ -59,12 +59,12 @@ namespace DataModels
 		public ITable<TimeStd>            TimeStds            { get { return this.GetTable<TimeStd>(); } }
 		public ITable<WaveOffset>         WaveOffsets         { get { return this.GetTable<WaveOffset>(); } }
 
-		public DATABASEMEETDB()
+		public DATABASEMeetDB()
 		{
 			InitDataContext();
 		}
 
-		public DATABASEMEETDB(string configuration)
+		public DATABASEMeetDB(string configuration)
 			: base(configuration)
 		{
 			InitDataContext();
@@ -233,12 +233,12 @@ namespace DataModels
 		[Column("young_date"), Nullable] public DateTime? YoungDate { get; set; } // DateTime
 	}
 
-	[Table("Dualteams")]
-	public partial class Dualteam
+	[Table("DualTeams")]
+	public partial class DualTeam
 	{
-		[Column("team_gender"), Nullable] public char? TeamGender { get; set; } // text(1)
-		[Column("ateam_no"),    Nullable] public int?  AteamNo    { get; set; } // Long
-		[Column("bteam_no"),    Nullable] public int?  BteamNo    { get; set; } // Long
+		[Column("Team_gender"), Nullable] public char? TeamGender { get; set; } // text(1)
+		[Column("aTeam_no"),    Nullable] public int?  ATeamNo    { get; set; } // Long
+		[Column("bTeam_no"),    Nullable] public int?  BTeamNo    { get; set; } // Long
 	}
 
 	[Table("Entry")]
@@ -275,7 +275,6 @@ namespace DataModels
 		[Column("Pre_back3"),         Nullable] public float? PreBack3         { get; set; } // Single
 		[Column("Pre_watch1"),        Nullable] public float? PreWatch1        { get; set; } // Single
 		[Column("Pre_pad"),           Nullable] public float? PrePad           { get; set; } // Single
-		[Column("Pre_reactiontime1"), Nullable] public string PreReactiontime1 { get; set; } // text(5)
 		[Column("Pre_dqcode"),        Nullable] public string PreDqcode        { get; set; } // text(2)
 		[Column("Pre_dqcodeSecond"),  Nullable] public string PreDqcodeSecond  { get; set; } // text(2)
 		[Column("Pre_TimeType"),      Nullable] public char?  PreTimeType      { get; set; } // text(1)
@@ -295,7 +294,6 @@ namespace DataModels
 		[Column("Fin_back3"),         Nullable] public float? FinBack3         { get; set; } // Single
 		[Column("Fin_watch1"),        Nullable] public float? FinWatch1        { get; set; } // Single
 		[Column("Fin_pad"),           Nullable] public float? FinPad           { get; set; } // Single
-		[Column("Fin_reactiontime1"), Nullable] public string FinReactiontime1 { get; set; } // text(5)
 		[Column("Fin_dqcode"),        Nullable] public string FinDqcode        { get; set; } // text(2)
 		[Column("Fin_dqcodeSecond"),  Nullable] public string FinDqcodeSecond  { get; set; } // text(2)
 		[Column("Fin_ptsplace"),      Nullable] public short? FinPtsplace      { get; set; } // Short
@@ -316,7 +314,6 @@ namespace DataModels
 		[Column("Sem_back3"),         Nullable] public float? SemBack3         { get; set; } // Single
 		[Column("Sem_watch1"),        Nullable] public float? SemWatch1        { get; set; } // Single
 		[Column("Sem_pad"),           Nullable] public float? SemPad           { get; set; } // Single
-		[Column("Sem_reactiontime1"), Nullable] public string SemReactiontime1 { get; set; } // text(5)
 		[Column("Sem_dqcode"),        Nullable] public string SemDqcode        { get; set; } // text(2)
 		[Column("Sem_dqcodeSecond"),  Nullable] public string SemDqcodeSecond  { get; set; } // text(2)
 		[Column("Sem_TimeType"),      Nullable] public char?  SemTimeType      { get; set; } // text(1)
@@ -345,6 +342,9 @@ namespace DataModels
 		[Column("pre_dqofficial"),    Nullable] public int?   PreDqofficial    { get; set; } // Long
 		[Column("sem_dqofficial"),    Nullable] public int?   SemDqofficial    { get; set; } // Long
 		[Column("pre_contacted"),     Identity] public bool   PreContacted     { get; set; } // Bit
+		[Column("Fin_reactiontime1"), Nullable] public string FinReactiontime1 { get; set; } // text(8)
+		[Column("Pre_reactiontime1"), Nullable] public string PreReactiontime1 { get; set; } // text(8)
+		[Column("Sem_reactiontime1"), Nullable] public string SemReactiontime1 { get; set; } // text(8)
 	}
 
 	[Table("Event")]
@@ -491,7 +491,7 @@ namespace DataModels
 		[Column("Scores_afterevt"),                                Identity] public bool      ScoresAfterevt                                { get; set; } // Bit
 		[Column("Lastname_first"),                                 Identity] public bool      LastnameFirst                                 { get; set; } // Bit
 		[Column("Punct_names"),                                    Identity] public bool      PunctNames                                    { get; set; } // Bit
-		[Column("Punct_teams"),                                    Identity] public bool      PunctTeams                                    { get; set; } // Bit
+		[Column("Punct_Teams"),                                    Identity] public bool      PunctTeams                                    { get; set; } // Bit
 		[Column("win_mm"),                                         Identity] public bool      WinMm                                         { get; set; } // Bit
 		[Column("meet_numlanes"),                                  Nullable] public short?    MeetNumlanes                                  { get; set; } // Short
 		[Column("prelimheats_circle"),                             Nullable] public short?    PrelimheatsCircle                             { get; set; } // Short
@@ -503,8 +503,8 @@ namespace DataModels
 		[Column("seed_exhlast"),                                   Identity] public bool      SeedExhlast                                   { get; set; } // Bit
 		[Column("dual_evenodd"),                                   Identity] public bool      DualEvenodd                                   { get; set; } // Bit
 		[Column("strict_evenodd"),                                 Identity] public bool      StrictEvenodd                                 { get; set; } // Bit
-		[Column("team_evenlanes"),                                 Nullable] public int?      TeamEvenlanes                                 { get; set; } // Long
-		[Column("team_oddlanes"),                                  Nullable] public int?      TeamOddlanes                                  { get; set; } // Long
+		[Column("Team_evenlanes"),                                 Nullable] public int?      TeamEvenlanes                                 { get; set; } // Long
+		[Column("Team_oddlanes"),                                  Nullable] public int?      TeamOddlanes                                  { get; set; } // Long
 		[Column("masters_bytimeonly"),                             Identity] public bool      MastersBytimeonly                             { get; set; } // Bit
 		[Column("masters_agegrpsskip"),                            Nullable] public short?    MastersAgegrpsskip                            { get; set; } // Short
 		[Column("timer_port"),                                     Nullable] public short?    TimerPort                                     { get; set; } // Short
@@ -513,7 +513,7 @@ namespace DataModels
 		[Column("scbd_vendor"),                                    Nullable] public string    ScbdVendor                                    { get; set; } // text(4)
 		[Column("show_initial"),                                   Identity] public bool      ShowInitial                                   { get; set; } // Bit
 		[Column("ucase_names"),                                    Identity] public bool      UcaseNames                                    { get; set; } // Bit
-		[Column("ucase_teams"),                                    Identity] public bool      UcaseTeams                                    { get; set; } // Bit
+		[Column("ucase_Teams"),                                    Identity] public bool      UcaseTeams                                    { get; set; } // Bit
 		[Column("open_senior_none"),                               Nullable] public char?     OpenSeniorNone                                { get; set; } // text(1)
 		[Column("entryqual_faster"),                               Identity] public bool      EntryqualFaster                               { get; set; } // Bit
 		[Column("Facility_Surcharge"),                             Nullable] public decimal?  FacilitySurcharge                             { get; set; } // Currency
@@ -533,15 +533,15 @@ namespace DataModels
 		[Column("pointsbasedon_seedtime"),                         Identity] public bool      PointsbasedonSeedtime                         { get; set; } // Bit
 		[Column("pointsfor_overachievers"),                        Identity] public bool      PointsforOverachievers                        { get; set; } // Bit
 		[Column("pointsfor_underachievers"),                       Identity] public bool      PointsforUnderachievers                       { get; set; } // Bit
-		[Column("indmaxscorers_perteam"),                          Nullable] public short?    IndmaxscorersPerteam                          { get; set; } // Short
-		[Column("relmaxscorers_perteam"),                          Nullable] public short?    RelmaxscorersPerteam                          { get; set; } // Short
+		[Column("indmaxscorers_perTeam"),                          Nullable] public short?    IndmaxscorersPerTeam                          { get; set; } // Short
+		[Column("relmaxscorers_perTeam"),                          Nullable] public short?    RelmaxscorersPerTeam                          { get; set; } // Short
 		[Column("indtopmany_awards"),                              Nullable] public short?    IndtopmanyAwards                              { get; set; } // Short
 		[Column("reltopmany_awards"),                              Nullable] public short?    ReltopmanyAwards                              { get; set; } // Short
 		[Column("entrymax_total"),                                 Nullable] public short?    EntrymaxTotal                                 { get; set; } // Short
 		[Column("indmax_perath"),                                  Nullable] public short?    IndmaxPerath                                  { get; set; } // Short
 		[Column("relmax_perath"),                                  Nullable] public short?    RelmaxPerath                                  { get; set; } // Short
-		[Column("foreign_getteampoints"),                          Identity] public bool      ForeignGetteampoints                          { get; set; } // Bit
-		[Column("include_swimupsinteamscore"),                     Identity] public bool      IncludeSwimupsinteamscore                     { get; set; } // Bit
+		[Column("foreign_getTeampoints"),                          Identity] public bool      ForeignGetTeampoints                          { get; set; } // Bit
+		[Column("include_swimupsinTeamscore"),                     Identity] public bool      IncludeSwimupsinTeamscore                     { get; set; } // Bit
 		[Column("enter_citizenof"),                                Identity] public bool      EnterCitizenof                                { get; set; } // Bit
 		[Column("meet_meetstyle"),                                 Nullable] public short?    MeetMeetstyle                                 { get; set; } // Short
 		[Column("flag_overachievers"),                             Identity] public bool      FlagOverachievers                             { get; set; } // Bit
@@ -565,7 +565,7 @@ namespace DataModels
 		[Column("suppress_lsc"),                                   Identity] public bool      SuppressLsc                                   { get; set; } // Bit
 		[Column("showathlete_status"),                             Identity] public bool      ShowathleteStatus                             { get; set; } // Bit
 		[Column("open_lowage"),                                    Nullable] public short?    OpenLowage                                    { get; set; } // Short
-		[Column("useeventsex_teamscore"),                          Identity] public bool      UseeventsexTeamscore                          { get; set; } // Bit
+		[Column("useeventsex_Teamscore"),                          Identity] public bool      UseeventsexTeamscore                          { get; set; } // Bit
 		[Column("suppress_smallx"),                                Identity] public bool      SuppressSmallx                                { get; set; } // Bit
 		[Column("score_Arelayonly"),                               Identity] public bool      ScoreArelayonly                               { get; set; } // Bit
 		[Column("thirteenandover_assenior"),                       Identity] public bool      ThirteenandoverAssenior                       { get; set; } // Bit
@@ -578,7 +578,7 @@ namespace DataModels
 		[Column("countrelay_alt"),                                 Identity] public bool      CountrelayAlt                                 { get; set; } // Bit
 		[Column("UseNonConforming_PoolFactor"),                    Identity] public bool      UseNonConformingPoolFactor                    { get; set; } // Bit
 		[Column("NonConforming_PoolFactor"),                       Nullable] public float?    NonConformingPoolFactor                       { get; set; } // Single
-		[Column("apnews_team"),                                    Nullable] public char?     ApnewsTeam                                    { get; set; } // text(1)
+		[Column("apnews_Team"),                                    Nullable] public char?     ApnewsTeam                                    { get; set; } // text(1)
 		[Column("PointsAwarded_ForDQ"),                            Nullable] public float?    PointsAwardedForDQ                            { get; set; } // Single
 		[Column("PointsAwarded_ForScratch"),                       Nullable] public float?    PointsAwardedForScratch                       { get; set; } // Single
 		[Column("PointsAwarded_ForNT"),                            Nullable] public float?    PointsAwardedForNT                            { get; set; } // Single
@@ -604,22 +604,22 @@ namespace DataModels
 		[Column("FlatHtml_Dir"),                                   Nullable] public string    FlatHtmlDir                                   { get; set; } // text(80)
 		[Column("APNews_Dir"),                                     Nullable] public string    APNewsDir                                     { get; set; } // text(80)
 		[Column("AllowSameEvent_DupRelayNames"),                   Identity] public bool      AllowSameEventDupRelayNames                   { get; set; } // Bit
-		[Column("dualteam_lane1"),                                 Nullable] public int?      DualteamLane1                                 { get; set; } // Long
-		[Column("dualteam_lane2"),                                 Nullable] public int?      DualteamLane2                                 { get; set; } // Long
-		[Column("dualteam_lane3"),                                 Nullable] public int?      DualteamLane3                                 { get; set; } // Long
-		[Column("dualteam_lane4"),                                 Nullable] public int?      DualteamLane4                                 { get; set; } // Long
-		[Column("dualteam_lane5"),                                 Nullable] public int?      DualteamLane5                                 { get; set; } // Long
-		[Column("dualteam_lane6"),                                 Nullable] public int?      DualteamLane6                                 { get; set; } // Long
-		[Column("dualteam_lane7"),                                 Nullable] public int?      DualteamLane7                                 { get; set; } // Long
-		[Column("dualteam_lane8"),                                 Nullable] public int?      DualteamLane8                                 { get; set; } // Long
-		[Column("dualteam_lane9"),                                 Nullable] public int?      DualteamLane9                                 { get; set; } // Long
-		[Column("dualteam_lane10"),                                Nullable] public int?      DualteamLane10                                { get; set; } // Long
+		[Column("dualTeam_lane1"),                                 Nullable] public int?      DualTeamLane1                                 { get; set; } // Long
+		[Column("dualTeam_lane2"),                                 Nullable] public int?      DualTeamLane2                                 { get; set; } // Long
+		[Column("dualTeam_lane3"),                                 Nullable] public int?      DualTeamLane3                                 { get; set; } // Long
+		[Column("dualTeam_lane4"),                                 Nullable] public int?      DualTeamLane4                                 { get; set; } // Long
+		[Column("dualTeam_lane5"),                                 Nullable] public int?      DualTeamLane5                                 { get; set; } // Long
+		[Column("dualTeam_lane6"),                                 Nullable] public int?      DualTeamLane6                                 { get; set; } // Long
+		[Column("dualTeam_lane7"),                                 Nullable] public int?      DualTeamLane7                                 { get; set; } // Long
+		[Column("dualTeam_lane8"),                                 Nullable] public int?      DualTeamLane8                                 { get; set; } // Long
+		[Column("dualTeam_lane9"),                                 Nullable] public int?      DualTeamLane9                                 { get; set; } // Long
+		[Column("dualTeam_lane10"),                                Nullable] public int?      DualTeamLane10                                { get; set; } // Long
 		[Column("strict_evenoddfastestheatonly"),                  Identity] public bool      StrictEvenoddfastestheatonly                  { get; set; } // Bit
 		[Column("dualseeding_altunusedlane"),                      Identity] public bool      DualseedingAltunusedlane                      { get; set; } // Bit
-		[Column("team_surcharge"),                                 Nullable] public decimal?  TeamSurcharge                                 { get; set; } // Currency
+		[Column("Team_surcharge"),                                 Nullable] public decimal?  TeamSurcharge                                 { get; set; } // Currency
 		[Column("Display_ActualEntryTime"),                        Identity] public bool      DisplayActualEntryTime                        { get; set; } // Bit
-		[Column("indmaxadvance_perteam"),                          Nullable] public short?    IndmaxadvancePerteam                          { get; set; } // Short
-		[Column("relmaxadvance_perteam"),                          Nullable] public short?    RelmaxadvancePerteam                          { get; set; } // Short
+		[Column("indmaxadvance_perTeam"),                          Nullable] public short?    IndmaxadvancePerTeam                          { get; set; } // Short
+		[Column("relmaxadvance_perTeam"),                          Nullable] public short?    RelmaxadvancePerTeam                          { get; set; } // Short
 		[Column("RelayNames_LinkByLSC"),                           Identity] public bool      RelayNamesLinkByLSC                           { get; set; } // Bit
 		[Column("Read_Only"),                                      Identity] public bool      ReadOnly                                      { get; set; } // Bit
 		[Column("Flighted_BasedOnResultsTime"),                    Identity] public bool      FlightedBasedOnResultsTime                    { get; set; } // Bit
@@ -645,8 +645,8 @@ namespace DataModels
 		[Column("flighted_flightcount"),                           Nullable] public short?    FlightedFlightcount                           { get; set; } // Short
 		[Column("flighted_inclDQ"),                                Identity] public bool      FlightedInclDQ                                { get; set; } // Bit
 		[Column("RelaysAlternate_TwoFastestFirst"),                Identity] public bool      RelaysAlternateTwoFastestFirst                { get; set; } // Bit
-		[Column("dualteam_lane11"),                                Nullable] public int?      DualteamLane11                                { get; set; } // Long
-		[Column("dualteam_lane12"),                                Nullable] public int?      DualteamLane12                                { get; set; } // Long
+		[Column("dualTeam_lane11"),                                Nullable] public int?      DualTeamLane11                                { get; set; } // Long
+		[Column("dualTeam_lane12"),                                Nullable] public int?      DualTeamLane12                                { get; set; } // Long
 		[Column("entry_deadline"),                                 Nullable] public DateTime? EntryDeadline                                 { get; set; } // DateTime
 		[Column("Meet_addr1"),                                     Nullable] public string    MeetAddr1                                     { get; set; } // text(30)
 		[Column("Meet_addr2"),                                     Nullable] public string    MeetAddr2                                     { get; set; } // text(30)
@@ -922,13 +922,13 @@ namespace DataModels
 		[Column("Record_day"),        Nullable] public short? RecordDay        { get; set; } // Short
 		[Column("Record_year"),       Nullable] public short? RecordYear       { get; set; } // Short
 		[Column("Record_Holder"),     Nullable] public string RecordHolder     { get; set; } // text(30)
-		[Column("Record_Holderteam"), Nullable] public string RecordHolderteam { get; set; } // text(16)
+		[Column("Record_HolderTeam"), Nullable] public string RecordHolderTeam { get; set; } // text(16)
 		[Column("Relay_Names"),       Nullable] public string RelayNames       { get; set; } // text(50)
 		[Column("Record_Time"),       Nullable] public float? RecordTime       { get; set; } // Single
 		[Column("Record_course"),     Nullable] public char?  RecordCourse     { get; set; } // text(1)
 		[Column("div_abbr"),          Nullable] public string DivAbbr          { get; set; } // text(10)
-		[Column("Record_teamabbr"),   Nullable] public string RecordTeamabbr   { get; set; } // text(5)
-		[Column("Record_teamlsc"),    Nullable] public string RecordTeamlsc    { get; set; } // text(2)
+		[Column("Record_Teamabbr"),   Nullable] public string RecordTeamabbr   { get; set; } // text(5)
+		[Column("Record_Teamlsc"),    Nullable] public string RecordTeamlsc    { get; set; } // text(2)
 	}
 
 	[Table("RecordsApp")]
@@ -968,15 +968,15 @@ namespace DataModels
 		[Column("Record_day"),        Nullable] public short? RecordDay        { get; set; } // Short
 		[Column("Record_year"),       Nullable] public short? RecordYear       { get; set; } // Short
 		[Column("Record_Holder"),     Nullable] public string RecordHolder     { get; set; } // text(30)
-		[Column("Record_Holderteam"), Nullable] public string RecordHolderteam { get; set; } // text(16)
+		[Column("Record_HolderTeam"), Nullable] public string RecordHolderTeam { get; set; } // text(16)
 		[Column("Relay_Names"),       Nullable] public string RelayNames       { get; set; } // text(50)
 		[Column("Record_Time"),       Nullable] public float? RecordTime       { get; set; } // Single
 		[Column("Record_course"),     Nullable] public char?  RecordCourse     { get; set; } // text(1)
 		[Column("tag_gender"),        Nullable] public char?  TagGender        { get; set; } // text(1)
 		[Column("hide_me"),           Identity] public bool   HideMe           { get; set; } // Bit
 		[Column("div_abbr"),          Nullable] public string DivAbbr          { get; set; } // text(10)
-		[Column("Record_teamabbr"),   Nullable] public string RecordTeamabbr   { get; set; } // text(5)
-		[Column("Record_teamlsc"),    Nullable] public string RecordTeamlsc    { get; set; } // text(2)
+		[Column("Record_Teamabbr"),   Nullable] public string RecordTeamabbr   { get; set; } // text(5)
+		[Column("Record_Teamlsc"),    Nullable] public string RecordTeamlsc    { get; set; } // text(2)
 	}
 
 	[Table("RecordTags")]
@@ -986,7 +986,7 @@ namespace DataModels
 		[Column("tag_order"),       Nullable] public short? TagOrder       { get; set; } // Short
 		[Column("tag_name"),        Nullable] public string TagName        { get; set; } // text(12)
 		[Column("tag_flag"),        Nullable] public char?  TagFlag        { get; set; } // text(1)
-		[Column("team_no"),         Nullable] public int?   TeamNo         { get; set; } // Long
+		[Column("Team_no"),         Nullable] public int?   TeamNo         { get; set; } // Long
 		[Column("allow_exh"),       Identity] public bool   AllowExh       { get; set; } // Bit
 		[Column("allow_foreigner"), Identity] public bool   AllowForeigner { get; set; } // Bit
 		[Column("tag_lsc"),         Nullable] public string TagLsc         { get; set; } // text(3)

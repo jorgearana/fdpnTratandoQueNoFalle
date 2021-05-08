@@ -67,7 +67,7 @@
                                                             <li>@Html.ActionLink("VER INSCRIPCIONES", "ListarNadadoresParaFdnp", "Inscrito", new { MeetId = item.torneo.Meetid }, null)</li>
                                                             <li>@Html.ActionLink("VER CANTIDADES", "VerCantidadesParaFDPN", "Inscrito", new { MeetId = item.torneo.Meetid }, null)</li>
                                                             <li>@Html.ActionLink("EXPORTAR", "CrearArchivo", "Exportar", new { MeetId = item.torneo.Meetid }, null)</li>
-                                                            <li> <a href="#" id="btnExportarDelegados" data-meetid=@item.torneo.Meetid>EXPORTAR ENTRENADORES</a></li>
+                                                            <li> <a href="#" id="btnExportarDelegados" data-Meetid=@item.torneo.Meetid>EXPORTAR ENTRENADORES</a></li>
                                                         }
 
                                                         else
@@ -165,11 +165,11 @@
                                                         }
                                                         <li role="separator" class="divider"></li>
 
-                                                        @if (rol.Rol1 == "meet" || rol.Rol1 == "admin")
+                                                        @if (rol.Rol1 == "Meet" || rol.Rol1 == "admin")
                                                         {
                                                             <li>@Html.ActionLink("EXPORTAR", "CrearArchivo", "Exportar", new { MeetId = item.torneo.Meetid }, null)</li>
 
-                                                            <li> <a href="#" id="btnExportarDelegados" data-meetid=@item.torneo.Meetid>EXPORTAR ENTRENADORES</a></li>
+                                                            <li> <a href="#" id="btnExportarDelegados" data-Meetid=@item.torneo.Meetid>EXPORTAR ENTRENADORES</a></li>
                                                         }
                                                         else
                                                         {
@@ -241,7 +241,7 @@
             <div class="modal-body">
 
                 <div class="row">
-                    <h3> Debe de tener en cuenta que se revisarán las inscripciones.</h3>
+                    <h3> Se realiza un torneo en Lima y otro en Trujillo.</h3>
 
                 </div>
                 @*<table class="table table-striped table-bordered table-hover">
@@ -273,8 +273,8 @@
                         </tr>
                     </tbody>
                 </table>*@
-            <h1 style="color:red;"> ¡Atención! Este torneo es solo para deportistas que compiten por primera vez. </h1>
-                <h4> Si se detecta que un deportista ya ha participado anteriormente, se le retirará de inscripciones sin previo aviso.  </h4>
+            <h1 style="color:red;">Por favor verifique la ciudad donde se inscribirán. </h1>
+                @*<h4> Si se detecta que un deportista ya ha participado anteriormente, se le retirará de inscripciones sin previo aviso.  </h4>*@
             </div>
             <div class="modal-footer">              
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

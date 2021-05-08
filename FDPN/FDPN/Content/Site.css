@@ -160,12 +160,10 @@ input, select, textarea {
 }
 
 .imageProfesor {
-    max-height: 250px;
-    background-image: url('img/Imgsmall/medal2.png');
+    max-height: 250px;   
     height: 100%;
-    margin: 0 auto;
-    transform: translate3d(0,-50%,0);
-    border-radius: 20px !important
+    margin: 0 auto;    
+    border-radius: 15px !important
 }
 
 .imagennoticia {
@@ -178,7 +176,18 @@ input, select, textarea {
     max-width: 100%;
     object-fit: cover
 }
-
+.imagenPreviewBannerCurso {
+    max-width: 100%;
+    object-fit: cover;
+}
+.imagenBannerCurso {
+    border-radius: 15px;
+    max-width: 45vw;
+    height:auto;
+}
+.tab_Banner_Curso {
+    text-align: center;
+}
 .navbar .navbar-nav .nav-item .form-control {
     color: inherit
 }

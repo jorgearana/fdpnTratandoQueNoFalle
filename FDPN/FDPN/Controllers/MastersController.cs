@@ -24,14 +24,14 @@ namespace FDPN.Controllers
             RESULTSMasters resultadomejor = new RESULTSMasters();
 
             Random rnd = new Random();
-            //int meet = torneodestacado[i].Meet;
+            //int Meet = torneodestacado[i].Meet;
             string sexo = "M";
             List<TorneoDestacadoMasters> destacados = db.TorneoDestacadoMasters.OrderByDescending(x => x.Meet).Take(5).ToList();
             int i = rnd.Next(1, destacados.Count);
             int Meettorneo = destacados[i].Meet;
-            MEETMasters torneoAMostrar = db.MEETMasters.Where(x => x.Meet == Meettorneo).FirstOrDefault();
-            int edadminima = db.RESULTSMasters.Where(x => x.MEET == Meettorneo).OrderBy(x => x.AGE).Select(x => x.AGE).FirstOrDefault();
-            int edadmaxima = db.RESULTSMasters.Where(x => x.MEET == Meettorneo).OrderByDescending(x => x.AGE).Select(x => x.AGE).FirstOrDefault();
+            MeetMasters torneoAMostrar = db.MeetMasters.Where(x => x.Meet == Meettorneo).FirstOrDefault();
+            int edadminima = db.RESULTSMasters.Where(x => x.Meet == Meettorneo).OrderBy(x => x.AGE).Select(x => x.AGE).FirstOrDefault();
+            int edadmaxima = db.RESULTSMasters.Where(x => x.Meet == Meettorneo).OrderByDescending(x => x.AGE).Select(x => x.AGE).FirstOrDefault();
 
             do
             {
@@ -101,13 +101,13 @@ namespace FDPN.Controllers
 
                  resultadomejor = db.RESULTSMasters.Where(x => x.AthleteMasters.Sex == sexo 
                  && x.COURSE != "Y" && x.AthleteMasters.Age >= edadminima && x.AthleteMasters.Age <= edadmaxima 
-                 && x.MEET == torneoAMostrar.Meet && x.PLACE>0).OrderByDescending(x => x.PFina).FirstOrDefault();
+                 && x.Meet == torneoAMostrar.Meet && x.PLACE>0).OrderByDescending(x => x.PFina).FirstOrDefault();
 
 
                 if (resultadomejor == null || resultadomejor.PFina < 100)
                 {
                     iniciomes = iniciomes.AddMonths(-1);
-                    resultadomejor = db.RESULTSMasters.Where(x => x.AthleteMasters.Sex == sexo && x.MEETMasters.Start > iniciomes && x.COURSE != "Y" && x.AthleteMasters.Age >= edadminima && x.AthleteMasters.Age <= edadmaxima).OrderByDescending(x => x.PFina).FirstOrDefault();
+                    resultadomejor = db.RESULTSMasters.Where(x => x.AthleteMasters.Sex == sexo && x.MeetMasters.Start > iniciomes && x.COURSE != "Y" && x.AthleteMasters.Age >= edadminima && x.AthleteMasters.Age <= edadmaxima).OrderByDescending(x => x.PFina).FirstOrDefault();
                 }
 
 
@@ -263,7 +263,7 @@ namespace FDPN.Controllers
             VM.Annos.Add(haceuatronnos.Year);
             VM.Annos.Add(hacecincoannos.Year);
 
-            List<RESULTSMasters> resultadosDelNadador = db.RESULTSMasters.Where(x => x.AthleteId == id && x.NT != 2 && x.NT != 5 && x.I_R == "i" && x.SCORE != "" && x.TEAM != 0).ToList();
+            List<RESULTSMasters> resultadosDelNadador = db.RESULTSMasters.Where(x => x.AthleteId == id && x.NT != 2 && x.NT != 5 && x.I_R == "i" && x.SCORE != "" && x.Team != 0).ToList();
             int totalderesultados = resultadosDelNadador.Count();
             RESULTSMasters resultadovacio = new RESULTSMasters
             {
@@ -286,51 +286,51 @@ namespace FDPN.Controllers
                           .OrderBy(x => x.SCORE)
                         .FirstOrDefault() ?? resultadovacio;
                 listatiempos.Ultimoannolarga = resultadosDelNadador
-                        .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "L" && x.MEETMasters.Start > haceunanno)
+                        .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "L" && x.MeetMasters.Start > haceunanno)
                         .OrderBy(x => x.SCORE)
                         .FirstOrDefault() ?? resultadovacio;
                 listatiempos.Ultimoannocorta = resultadosDelNadador
-                        .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "S" && x.MEETMasters.Start > haceunanno)
+                        .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "S" && x.MeetMasters.Start > haceunanno)
                        .OrderBy(x => x.SCORE)
                         .FirstOrDefault() ?? resultadovacio;
                 porannocorta.uno = resultadosDelNadador
-                     .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "S" && x.MEETMasters.Start > Primeroenero)
+                     .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "S" && x.MeetMasters.Start > Primeroenero)
                        .OrderBy(x => x.SCORE)
                         .FirstOrDefault() ?? resultadovacio;
                 porannocorta.dos = resultadosDelNadador
-                    .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "S" && x.MEETMasters.Start > hacedosannos && x.MEETMasters.Start < Primeroenero)
+                    .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "S" && x.MeetMasters.Start > hacedosannos && x.MeetMasters.Start < Primeroenero)
                       .OrderBy(x => x.SCORE)
                         .FirstOrDefault() ?? resultadovacio;
                 porannocorta.tres = resultadosDelNadador
-                    .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "S" && x.MEETMasters.Start > hacetresannos && x.MEETMasters.Start < hacedosannos)
+                    .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "S" && x.MeetMasters.Start > hacetresannos && x.MeetMasters.Start < hacedosannos)
                       .OrderBy(x => x.SCORE)
                         .FirstOrDefault() ?? resultadovacio;
                 porannocorta.cuatro = resultadosDelNadador
-                    .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "S" && x.MEETMasters.Start > haceuatronnos && x.MEETMasters.Start < hacetresannos)
+                    .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "S" && x.MeetMasters.Start > haceuatronnos && x.MeetMasters.Start < hacetresannos)
                       .OrderBy(x => x.SCORE)
                         .FirstOrDefault() ?? resultadovacio;
                 porannocorta.cinco = resultadosDelNadador
-                    .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "S" && x.MEETMasters.Start > hacecincoannos && x.MEETMasters.Start < haceuatronnos)
+                    .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "S" && x.MeetMasters.Start > hacecincoannos && x.MeetMasters.Start < haceuatronnos)
                       .OrderBy(x => x.SCORE)
                         .FirstOrDefault() ?? resultadovacio;
                 porannolarga.uno = resultadosDelNadador
-                    .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "L" && x.MEETMasters.Start > Primeroenero)
+                    .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "L" && x.MeetMasters.Start > Primeroenero)
                       .OrderBy(x => x.SCORE)
                         .FirstOrDefault() ?? resultadovacio;
                 porannolarga.dos = resultadosDelNadador
-                    .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "L" && x.MEETMasters.Start > hacedosannos && x.MEETMasters.Start < Primeroenero)
+                    .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "L" && x.MeetMasters.Start > hacedosannos && x.MeetMasters.Start < Primeroenero)
                       .OrderBy(x => x.SCORE)
                         .FirstOrDefault() ?? resultadovacio;
                 porannolarga.tres = resultadosDelNadador
-                    .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "L" && x.MEETMasters.Start > hacetresannos && x.MEETMasters.Start < hacedosannos)
+                    .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "L" && x.MeetMasters.Start > hacetresannos && x.MeetMasters.Start < hacedosannos)
                       .OrderBy(x => x.SCORE)
                         .FirstOrDefault() ?? resultadovacio;
                 porannolarga.cuatro = resultadosDelNadador
-                    .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "L" && x.MEETMasters.Start > haceuatronnos && x.MEETMasters.Start < hacetresannos)
+                    .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "L" && x.MeetMasters.Start > haceuatronnos && x.MeetMasters.Start < hacetresannos)
                       .OrderBy(x => x.SCORE)
                         .FirstOrDefault() ?? resultadovacio;
                 porannolarga.cinco = resultadosDelNadador
-                    .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "L" && x.MEETMasters.Start > hacecincoannos && x.MEETMasters.Start < haceuatronnos)
+                    .Where(x => x.PruebaId == prueba.PruebaId && x.COURSE == "L" && x.MeetMasters.Start > hacecincoannos && x.MeetMasters.Start < haceuatronnos)
                       .OrderBy(x => x.SCORE)
                         .FirstOrDefault() ?? resultadovacio;
 
@@ -355,7 +355,7 @@ namespace FDPN.Controllers
                 }
             }
 
-            VM.UltimasParticipaciones = resultadosDelNadador.OrderByDescending(x => x.MEETMasters.Start).DistinctBy(x => x.MeetId).Take(20).ToList();
+            VM.UltimasParticipaciones = resultadosDelNadador.OrderByDescending(x => x.MeetMasters.Start).DistinctBy(x => x.MeetId).Take(20).ToList();
             VM.MejoresResultados = resultadosDelNadador.OrderBy(x => x.PLACE).ToList();
             return View(VM);
 
@@ -482,7 +482,7 @@ namespace FDPN.Controllers
 
         public PartialViewResult _RelacionDeTorneos(string searchString)
         {
-            var query = db.MEETMasters.OrderByDescending(x => x.Start).AsQueryable();
+            var query = db.MeetMasters.OrderByDescending(x => x.Start).AsQueryable();
             if (!String.IsNullOrEmpty(searchString))
             {
                 query = query.Where(s => s.MName.Contains(searchString));
@@ -505,13 +505,13 @@ namespace FDPN.Controllers
             return PartialView(listado);
         }
 
-        public ActionResult ResultadosDeUnTorneo(int meetid)
+        public ActionResult ResultadosDeUnTorneo(int MeetId)
         {
-            List<RESULTSMasters > resultados = db.RESULTSMasters.Where(x => x.MeetId == meetid && x.PLACE != 0 && x.ATHLETE != 0 && x.TEAM != 0).ToList();
+            List<RESULTSMasters > resultados = db.RESULTSMasters.Where(x => x.MeetId == MeetId && x.PLACE != 0 && x.ATHLETE != 0 && x.Team != 0).ToList();
             SortedDictionary<float, ViewModels.Masters.DiccionarioPruebas> pruebasdesordenadas = new SortedDictionary<float, ViewModels.Masters.DiccionarioPruebas>();
             ResultadoDeUnTorneoMastersViewModel VM = new ResultadoDeUnTorneoMastersViewModel
             {
-                EquiposParticipantes = resultados.Select(x => x.TEAMMasters)
+                EquiposParticipantes = resultados.Select(x => x.TeamMasters)
                 .DistinctBy(x => x.TeamId)
                 .OrderBy(x => x.TName).ToList(),
 
@@ -615,7 +615,7 @@ namespace FDPN.Controllers
 
         public ActionResult RendimientoDelNadadorEnUnaPrueba(int athleteid, int pruebaid)
         {
-            List<RESULTSMasters> resultados = db.RESULTSMasters.Where(x => x.AthleteId == athleteid && x.PruebaId == pruebaid && x.PLACE != 0).OrderByDescending(x => x.MEETMasters.Start).ToList();
+            List<RESULTSMasters> resultados = db.RESULTSMasters.Where(x => x.AthleteId == athleteid && x.PruebaId == pruebaid && x.PLACE != 0).OrderByDescending(x => x.MeetMasters.Start).ToList();
             RendimientoDeUnaPruebaMastersViewModel VM = new RendimientoDeUnaPruebaMastersViewModel
             {
                 atleta = db.AthleteMasters.Find(athleteid),
@@ -628,13 +628,13 @@ namespace FDPN.Controllers
         }
 
 
-        public ActionResult ResultadoDelNadadorEnUnTorneo(int meetid, int athleteid)
+        public ActionResult ResultadoDelNadadorEnUnTorneo(int MeetId, int athleteid)
         {
             resultadodelnadadorMastersenuntorneoViewModel VM = new resultadodelnadadorMastersenuntorneoViewModel
             {
-                torneo = db.MEETMasters.Find(meetid),
+                torneo = db.MeetMasters.Find(MeetId),
                 atleta = db.AthleteMasters.Find(athleteid),
-                resultados = db.RESULTSMasters.Where(x => x.AthleteId == athleteid && x.MeetId== meetid   && (x.I_R == "L" || x.PLACE != 0))
+                resultados = db.RESULTSMasters.Where(x => x.AthleteId == athleteid && x.MeetId== MeetId   && (x.I_R == "L" || x.PLACE != 0))
                 .OrderBy(x => x.PLACE).ToList()
             };
             VM.Inscripciones = BuscarAfiliado(VM.atleta.ID_NO);
@@ -645,15 +645,15 @@ namespace FDPN.Controllers
         [HttpPost]
         public ActionResult ResultadoPorClubes(ResultadoDeUnTorneoMastersViewModel VM)
         {
-            List<RESULTSMasters> resultados = db.RESULTSMasters.Where(x => x.MeetId == VM.meetid && x.PLACE != 0).ToList();
+            List<RESULTSMasters> resultados = db.RESULTSMasters.Where(x => x.MeetId == VM.MeetId && x.PLACE != 0).ToList();
 
             VM.resultadoFinales = resultados.Where(x => x.TeamId == VM.clubid && x.NT == 0 && x.F_P == "F" && x.AthleteMasters != null).OrderBy(x => x.MTEV).ThenBy(x => x.PLACE).ToList();
             VM.resultadoPreliminares = resultados.Where(x => x.TeamId == VM.clubid && x.NT == 0 && x.F_P == "P" && x.AthleteMasters != null).OrderBy(x => x.MTEV).ThenBy(x => x.PLACE).ToList();
-            VM.EquiposParticipantes = resultados.Select(x => x.TEAMMasters)
+            VM.EquiposParticipantes = resultados.Select(x => x.TeamMasters)
                 .DistinctBy(x => x.TeamId)
                 .OrderBy(x => x.TName).ToList();
-            VM.torneo = db.MEETMasters.Find(VM.meetid);
-            VM.club = db.TEAMMasters.Find(VM.clubid);
+            VM.torneo = db.MeetMasters.Find(VM.MeetId);
+            VM.club = db.TeamMasters.Find(VM.clubid);
             return View(VM);
         }
 
@@ -661,7 +661,7 @@ namespace FDPN.Controllers
         public ActionResult ResultadoPorPruebas(ResultadoDeUnTorneoMastersViewModel modelo)
         {
 
-            MEETMasters meet = db.MEETMasters.Where(x => x.MeetId == modelo.meetid).FirstOrDefault();
+            MeetMasters Meet = db.MeetMasters.Where(x => x.MeetId == modelo.MeetId).FirstOrDefault();
 
 
             int index = modelo.pruebaid.IndexOf(",");
@@ -705,7 +705,7 @@ namespace FDPN.Controllers
                 evento = entero + caracter;
             }
 
-            List<RESULTSMasters> resultados = db.RESULTSMasters.Where(x => x.MeetId == modelo.meetid && x.ATHLETE != 0 && x.PLACE != 0 && x.MTEV.Trim() == evento)
+            List<RESULTSMasters> resultados = db.RESULTSMasters.Where(x => x.MeetId == modelo.MeetId && x.ATHLETE != 0 && x.PLACE != 0 && x.MTEV.Trim() == evento)
                                 .OrderBy(x => x.SCORE).ToList();
             RESULTSMasters resultado = resultados[0];
 
@@ -714,7 +714,7 @@ namespace FDPN.Controllers
             {
                 Resultados = new Dictionary<CategoriasMasters, List<RESULTSMasters>>(),
                 prueba = db.Pruebas.Where(x => x.distancia.ToString() == resultado.DISTANCE && x.estilo == resultado.STROKE).FirstOrDefault(),
-                torneo = db.MEETMasters.Where(x => x.MeetId == modelo.meetid).FirstOrDefault(),
+                torneo = db.MeetMasters.Where(x => x.MeetId == modelo.MeetId).FirstOrDefault(),
             };
 
             List<CategoriasMasters> categorasMasters = db.CategoriasMasters.ToList();
@@ -748,7 +748,7 @@ namespace FDPN.Controllers
             }
 
             ViewBag.CurrentFilter = searchString;
-            var torneos = db.MEETMasters.AsQueryable();
+            var torneos = db.MeetMasters.AsQueryable();
 
             if (!String.IsNullOrEmpty(searchString))
             {

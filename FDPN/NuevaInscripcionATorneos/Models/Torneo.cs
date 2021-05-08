@@ -82,15 +82,15 @@ namespace NuevaInscripcionATorneos.Models
         public bool PointsbasedonSeedtime { get; set; }
         public bool PointsforOverachievers { get; set; }
         public bool PointsforUnderachievers { get; set; }
-        public short? IndmaxscorersPerteam { get; set; }
-        public short? RelmaxscorersPerteam { get; set; }
+        public short? IndmaxscorersPerTeam { get; set; }
+        public short? RelmaxscorersPerTeam { get; set; }
         public short? IndtopmanyAwards { get; set; }
         public short? ReltopmanyAwards { get; set; }
         public short? EntrymaxTotal { get; set; }
         public short? IndmaxPerath { get; set; }
         public short? RelmaxPerath { get; set; }
-        public bool ForeignGetteampoints { get; set; }
-        public bool IncludeSwimupsinteamscore { get; set; }
+        public bool ForeignGetTeampoints { get; set; }
+        public bool IncludeSwimupsinTeamscore { get; set; }
         public bool EnterCitizenof { get; set; }
         public short? MeetMeetstyle { get; set; }
         public bool FlagOverachievers { get; set; }
@@ -153,22 +153,22 @@ namespace NuevaInscripcionATorneos.Models
         public string FlatHtmlDir { get; set; }
         public string ApnewsDir { get; set; }
         public bool AllowSameEventDupRelayNames { get; set; }
-        public int? DualteamLane1 { get; set; }
-        public int? DualteamLane2 { get; set; }
-        public int? DualteamLane3 { get; set; }
-        public int? DualteamLane4 { get; set; }
-        public int? DualteamLane5 { get; set; }
-        public int? DualteamLane6 { get; set; }
-        public int? DualteamLane7 { get; set; }
-        public int? DualteamLane8 { get; set; }
-        public int? DualteamLane9 { get; set; }
-        public int? DualteamLane10 { get; set; }
+        public int? DualTeamLane1 { get; set; }
+        public int? DualTeamLane2 { get; set; }
+        public int? DualTeamLane3 { get; set; }
+        public int? DualTeamLane4 { get; set; }
+        public int? DualTeamLane5 { get; set; }
+        public int? DualTeamLane6 { get; set; }
+        public int? DualTeamLane7 { get; set; }
+        public int? DualTeamLane8 { get; set; }
+        public int? DualTeamLane9 { get; set; }
+        public int? DualTeamLane10 { get; set; }
         public bool StrictEvenoddfastestheatonly { get; set; }
         public bool DualseedingAltunusedlane { get; set; }
         public decimal? TeamSurcharge { get; set; }
         public bool DisplayActualEntryTime { get; set; }
-        public short? IndmaxadvancePerteam { get; set; }
-        public short? RelmaxadvancePerteam { get; set; }
+        public short? IndmaxadvancePerTeam { get; set; }
+        public short? RelmaxadvancePerTeam { get; set; }
         public bool RelayNamesLinkByLsc { get; set; }
         public bool ReadOnly { get; set; }
         public bool FlightedBasedOnResultsTime { get; set; }
@@ -194,8 +194,8 @@ namespace NuevaInscripcionATorneos.Models
         public short? FlightedFlightcount { get; set; }
         public bool FlightedInclDq { get; set; }
         public bool RelaysAlternateTwoFastestFirst { get; set; }
-        public int? DualteamLane11 { get; set; }
-        public int? DualteamLane12 { get; set; }
+        public int? DualTeamLane11 { get; set; }
+        public int? DualTeamLane12 { get; set; }
         public DateTime? EntryDeadline { get; set; }
         public string MeetAddr1 { get; set; }
         public string MeetAddr2 { get; set; }

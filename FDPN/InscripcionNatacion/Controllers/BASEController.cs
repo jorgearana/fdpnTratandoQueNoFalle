@@ -9,7 +9,7 @@ namespace InscripcionNatacion.Controllers
 {
     public class BASEController : Controller
     {
-      public  DB_9B1F4C_comentariosEntities db = new DB_9B1F4C_comentariosEntities();
+      public  DB_9B1F4C_FDPNEntities db = new DB_9B1F4C_FDPNEntities();
        
     }
 }

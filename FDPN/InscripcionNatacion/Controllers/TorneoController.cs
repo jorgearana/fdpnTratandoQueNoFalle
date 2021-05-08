@@ -180,7 +180,7 @@ namespace InscripcionNatacion.Controllers
                 {
                     afiliado = afiliado,
                     resultado = db.RESULTS
-                    .Where(x => x.Athlete1.ID_NO == afiliado.DNI && x.DISTANCE == distancia.ToString() && x.STROKE == stroke && x.MEET1.Start > haceunanno)
+                    .Where(x => x.Athlete1.ID_NO == afiliado.DNI && x.DISTANCE == distancia.ToString() && x.STROKE == stroke && x.Meet1.Start > haceunanno)
                     .OrderByDescending(x => x.SCORE).FirstOrDefault(),
                 };
 

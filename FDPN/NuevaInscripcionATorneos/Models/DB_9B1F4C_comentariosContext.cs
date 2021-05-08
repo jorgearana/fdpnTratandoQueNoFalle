@@ -1938,7 +1938,7 @@ namespace NuevaInscripcionATorneos.Models
 
             modelBuilder.Entity<Meet>(entity =>
             {
-                entity.ToTable("MEET");
+                entity.ToTable("Meet");
 
                 entity.Property(e => e.Course)
                     .IsRequired()
@@ -1960,7 +1960,7 @@ namespace NuevaInscripcionATorneos.Models
             {
                 entity.HasKey(e => e.MeetId);
 
-                entity.ToTable("MEETMasters");
+                entity.ToTable("MeetMasters");
 
                 entity.Property(e => e.Course)
                     .IsRequired()
@@ -2559,18 +2559,18 @@ namespace NuevaInscripcionATorneos.Models
                     .HasColumnName("Record_Holder")
                     .HasMaxLength(30);
 
-                entity.Property(e => e.RecordHolderteam)
-                    .HasColumnName("Record_Holderteam")
+                entity.Property(e => e.RecordHolderTeam)
+                    .HasColumnName("Record_HolderTeam")
                     .HasMaxLength(16);
 
                 entity.Property(e => e.RecordMonth).HasColumnName("Record_month");
 
                 entity.Property(e => e.RecordTeamabbr)
-                    .HasColumnName("Record_teamabbr")
+                    .HasColumnName("Record_Teamabbr")
                     .HasMaxLength(5);
 
                 entity.Property(e => e.RecordTeamlsc)
-                    .HasColumnName("Record_teamlsc")
+                    .HasColumnName("Record_Teamlsc")
                     .HasMaxLength(2);
 
                 entity.Property(e => e.RecordTime).HasColumnName("Record_Time");
@@ -2732,7 +2732,7 @@ namespace NuevaInscripcionATorneos.Models
 
                 entity.Property(e => e.LoHi).HasColumnName("LO_HI");
 
-                entity.Property(e => e.Meet).HasColumnName("MEET");
+                entity.Property(e => e.Meet).HasColumnName("Meet");
 
                 entity.Property(e => e.Mtev)
                     .IsRequired()
@@ -2757,7 +2757,7 @@ namespace NuevaInscripcionATorneos.Models
                     .HasColumnName("STROKE")
                     .HasMaxLength(12);
 
-                entity.Property(e => e.Team).HasColumnName("TEAM");
+                entity.Property(e => e.Team).HasColumnName("Team");
 
                 entity.HasOne(d => d.AthleteNavigation)
                     .WithMany(p => p.Results)
@@ -2767,7 +2767,7 @@ namespace NuevaInscripcionATorneos.Models
                 entity.HasOne(d => d.MeetNavigation)
                     .WithMany(p => p.Results)
                     .HasForeignKey(d => d.MeetId)
-                    .HasConstraintName("FK_RESULTS_MEET");
+                    .HasConstraintName("FK_RESULTS_Meet");
 
                 entity.HasOne(d => d.Prueba)
                     .WithMany(p => p.Results)
@@ -2777,7 +2777,7 @@ namespace NuevaInscripcionATorneos.Models
                 entity.HasOne(d => d.TeamNavigation)
                     .WithMany(p => p.Results)
                     .HasForeignKey(d => d.TeamId)
-                    .HasConstraintName("FK_RESULTS_TEAM");
+                    .HasConstraintName("FK_RESULTS_Team");
             });
 
             modelBuilder.Entity<Resultsmasters>(entity =>
@@ -2820,7 +2820,7 @@ namespace NuevaInscripcionATorneos.Models
 
                 entity.Property(e => e.LoHi).HasColumnName("LO_HI");
 
-                entity.Property(e => e.Meet).HasColumnName("MEET");
+                entity.Property(e => e.Meet).HasColumnName("Meet");
 
                 entity.Property(e => e.Mtev)
                     .IsRequired()
@@ -2845,7 +2845,7 @@ namespace NuevaInscripcionATorneos.Models
                     .HasColumnName("STROKE")
                     .HasMaxLength(12);
 
-                entity.Property(e => e.Team).HasColumnName("TEAM");
+                entity.Property(e => e.Team).HasColumnName("Team");
 
                 entity.HasOne(d => d.AthleteNavigation)
                     .WithMany(p => p.Resultsmasters)
@@ -2855,7 +2855,7 @@ namespace NuevaInscripcionATorneos.Models
                 entity.HasOne(d => d.MeetNavigation)
                     .WithMany(p => p.Resultsmasters)
                     .HasForeignKey(d => d.MeetId)
-                    .HasConstraintName("FK_RESULTSMasters_MEETMasters");
+                    .HasConstraintName("FK_RESULTSMasters_MeetMasters");
 
                 entity.HasOne(d => d.Prueba)
                     .WithMany(p => p.Resultsmasters)
@@ -2865,7 +2865,7 @@ namespace NuevaInscripcionATorneos.Models
                 entity.HasOne(d => d.TeamNavigation)
                     .WithMany(p => p.Resultsmasters)
                     .HasForeignKey(d => d.TeamId)
-                    .HasConstraintName("FK_RESULTSMasters_TEAMMasters");
+                    .HasConstraintName("FK_RESULTSMasters_TeamMasters");
             });
 
             modelBuilder.Entity<Rol>(entity =>
@@ -3179,7 +3179,7 @@ namespace NuevaInscripcionATorneos.Models
 
             modelBuilder.Entity<Team>(entity =>
             {
-                entity.ToTable("TEAM");
+                entity.ToTable("Team");
 
                 entity.Property(e => e.Tcode)
                     .IsRequired()
@@ -3197,7 +3197,7 @@ namespace NuevaInscripcionATorneos.Models
             {
                 entity.HasKey(e => e.TeamId);
 
-                entity.ToTable("TEAMMasters");
+                entity.ToTable("TeamMasters");
 
                 entity.Property(e => e.Tcode)
                     .IsRequired()
@@ -3251,7 +3251,7 @@ namespace NuevaInscripcionATorneos.Models
                     .HasMaxLength(80);
 
                 entity.Property(e => e.ApnewsTeam)
-                    .HasColumnName("apnews_team")
+                    .HasColumnName("apnews_Team")
                     .HasMaxLength(1);
 
                 entity.Property(e => e.AthleteEarlysurcharge)
@@ -3324,29 +3324,29 @@ namespace NuevaInscripcionATorneos.Models
 
                 entity.Property(e => e.DualseedingAltunusedlane).HasColumnName("dualseeding_altunusedlane");
 
-                entity.Property(e => e.DualteamLane1).HasColumnName("dualteam_lane1");
+                entity.Property(e => e.DualTeamLane1).HasColumnName("dualTeam_lane1");
 
-                entity.Property(e => e.DualteamLane10).HasColumnName("dualteam_lane10");
+                entity.Property(e => e.DualTeamLane10).HasColumnName("dualTeam_lane10");
 
-                entity.Property(e => e.DualteamLane11).HasColumnName("dualteam_lane11");
+                entity.Property(e => e.DualTeamLane11).HasColumnName("dualTeam_lane11");
 
-                entity.Property(e => e.DualteamLane12).HasColumnName("dualteam_lane12");
+                entity.Property(e => e.DualTeamLane12).HasColumnName("dualTeam_lane12");
 
-                entity.Property(e => e.DualteamLane2).HasColumnName("dualteam_lane2");
+                entity.Property(e => e.DualTeamLane2).HasColumnName("dualTeam_lane2");
 
-                entity.Property(e => e.DualteamLane3).HasColumnName("dualteam_lane3");
+                entity.Property(e => e.DualTeamLane3).HasColumnName("dualTeam_lane3");
 
-                entity.Property(e => e.DualteamLane4).HasColumnName("dualteam_lane4");
+                entity.Property(e => e.DualTeamLane4).HasColumnName("dualTeam_lane4");
 
-                entity.Property(e => e.DualteamLane5).HasColumnName("dualteam_lane5");
+                entity.Property(e => e.DualTeamLane5).HasColumnName("dualTeam_lane5");
 
-                entity.Property(e => e.DualteamLane6).HasColumnName("dualteam_lane6");
+                entity.Property(e => e.DualTeamLane6).HasColumnName("dualTeam_lane6");
 
-                entity.Property(e => e.DualteamLane7).HasColumnName("dualteam_lane7");
+                entity.Property(e => e.DualTeamLane7).HasColumnName("dualTeam_lane7");
 
-                entity.Property(e => e.DualteamLane8).HasColumnName("dualteam_lane8");
+                entity.Property(e => e.DualTeamLane8).HasColumnName("dualTeam_lane8");
 
-                entity.Property(e => e.DualteamLane9).HasColumnName("dualteam_lane9");
+                entity.Property(e => e.DualTeamLane9).HasColumnName("dualTeam_lane9");
 
                 entity.Property(e => e.EnterAges).HasColumnName("Enter_ages");
 
@@ -3418,7 +3418,7 @@ namespace NuevaInscripcionATorneos.Models
 
                 entity.Property(e => e.FlightedMinentries).HasColumnName("flighted_minentries");
 
-                entity.Property(e => e.ForeignGetteampoints).HasColumnName("foreign_getteampoints");
+                entity.Property(e => e.ForeignGetTeampoints).HasColumnName("foreign_getTeampoints");
 
                 entity.Property(e => e.ForeignInfinal).HasColumnName("foreign_infinal");
 
@@ -3428,13 +3428,13 @@ namespace NuevaInscripcionATorneos.Models
 
                 entity.Property(e => e.IncludeSanction).HasColumnName("include_sanction");
 
-                entity.Property(e => e.IncludeSwimupsinteamscore).HasColumnName("include_swimupsinteamscore");
+                entity.Property(e => e.IncludeSwimupsinTeamscore).HasColumnName("include_swimupsinTeamscore");
 
                 entity.Property(e => e.IndmaxPerath).HasColumnName("indmax_perath");
 
-                entity.Property(e => e.IndmaxadvancePerteam).HasColumnName("indmaxadvance_perteam");
+                entity.Property(e => e.IndmaxadvancePerTeam).HasColumnName("indmaxadvance_perTeam");
 
-                entity.Property(e => e.IndmaxscorersPerteam).HasColumnName("indmaxscorers_perteam");
+                entity.Property(e => e.IndmaxscorersPerTeam).HasColumnName("indmaxscorers_perTeam");
 
                 entity.Property(e => e.IndtopmanyAwards).HasColumnName("indtopmany_awards");
 
@@ -3514,15 +3514,15 @@ namespace NuevaInscripcionATorneos.Models
                     .HasColumnName("Meet_lsc")
                     .HasMaxLength(3);
 
-                entity.Property(e => e.MeetMeetstyle).HasColumnName("meet_meetstyle");
+                entity.Property(e => e.MeetMeetstyle).HasColumnName("Meet_Meetstyle");
 
-                entity.Property(e => e.MeetMeettype).HasColumnName("Meet_meettype");
+                entity.Property(e => e.MeetMeettype).HasColumnName("Meet_Meettype");
 
                 entity.Property(e => e.MeetName1)
                     .HasColumnName("Meet_name1")
                     .HasMaxLength(45);
 
-                entity.Property(e => e.MeetNumlanes).HasColumnName("meet_numlanes");
+                entity.Property(e => e.MeetNumlanes).HasColumnName("Meet_numlanes");
 
                 entity.Property(e => e.MeetStart)
                     .HasColumnName("Meet_start")
@@ -3588,7 +3588,7 @@ namespace NuevaInscripcionATorneos.Models
 
                 entity.Property(e => e.PunctRecholders).HasColumnName("Punct_recholders");
 
-                entity.Property(e => e.PunctTeams).HasColumnName("Punct_teams");
+                entity.Property(e => e.PunctTeams).HasColumnName("Punct_Teams");
 
                 entity.Property(e => e.QualNonConformCourseUseMinStd).HasColumnName("QualNonConformCourse_UseMinStd");
 
@@ -3620,9 +3620,9 @@ namespace NuevaInscripcionATorneos.Models
 
                 entity.Property(e => e.RelmaxPerath).HasColumnName("relmax_perath");
 
-                entity.Property(e => e.RelmaxadvancePerteam).HasColumnName("relmaxadvance_perteam");
+                entity.Property(e => e.RelmaxadvancePerTeam).HasColumnName("relmaxadvance_perTeam");
 
-                entity.Property(e => e.RelmaxscorersPerteam).HasColumnName("relmaxscorers_perteam");
+                entity.Property(e => e.RelmaxscorersPerTeam).HasColumnName("relmaxscorers_perTeam");
 
                 entity.Property(e => e.ReltopmanyAwards).HasColumnName("reltopmany_awards");
 
@@ -3716,12 +3716,12 @@ namespace NuevaInscripcionATorneos.Models
                     .HasColumnName("swimmer_surcharge")
                     .HasColumnType("money");
 
-                entity.Property(e => e.TeamEvenlanes).HasColumnName("team_evenlanes");
+                entity.Property(e => e.TeamEvenlanes).HasColumnName("Team_evenlanes");
 
-                entity.Property(e => e.TeamOddlanes).HasColumnName("team_oddlanes");
+                entity.Property(e => e.TeamOddlanes).HasColumnName("Team_oddlanes");
 
                 entity.Property(e => e.TeamSurcharge)
-                    .HasColumnName("team_surcharge")
+                    .HasColumnName("Team_surcharge")
                     .HasColumnType("money");
 
                 entity.Property(e => e.ThirteenandoverAssenior).HasColumnName("thirteenandover_assenior");
@@ -3746,7 +3746,7 @@ namespace NuevaInscripcionATorneos.Models
 
                 entity.Property(e => e.UcaseRecholders).HasColumnName("ucase_recholders");
 
-                entity.Property(e => e.UcaseTeams).HasColumnName("ucase_teams");
+                entity.Property(e => e.UcaseTeams).HasColumnName("ucase_Teams");
 
                 entity.Property(e => e.UnderEventname).HasColumnName("under_eventname");
 
@@ -3758,7 +3758,7 @@ namespace NuevaInscripcionATorneos.Models
 
                 entity.Property(e => e.UseNonConformingPoolFactor).HasColumnName("UseNonConforming_PoolFactor");
 
-                entity.Property(e => e.UseeventsexTeamscore).HasColumnName("useeventsex_teamscore");
+                entity.Property(e => e.UseeventsexTeamscore).HasColumnName("useeventsex_Teamscore");
 
                 entity.Property(e => e.UsingTwopools).HasColumnName("Using_twopools");
 

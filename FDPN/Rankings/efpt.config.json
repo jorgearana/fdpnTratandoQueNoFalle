@@ -206,11 +206,11 @@
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[MEET]",
+         "Name": "[dbo].[Meet]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[MEETMasters]",
+         "Name": "[dbo].[MeetMasters]",
          "ObjectType": 0
       },
       {
@@ -414,11 +414,11 @@
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[TEAM]",
+         "Name": "[dbo].[Team]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[TEAMMasters]",
+         "Name": "[dbo].[TeamMasters]",
          "ObjectType": 0
       },
       {

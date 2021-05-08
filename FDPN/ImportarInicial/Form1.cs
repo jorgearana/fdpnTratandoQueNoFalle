@@ -18,8 +18,8 @@ namespace ImportarInicial
 {
     public partial class Form1 : MetroForm
     {
-        public DB_9B1F4C_comentariosEntities db = new DB_9B1F4C_comentariosEntities();
-        DATABASEMEETDB access = new DATABASEMEETDB();
+        public DB_9B1F4C_FDPNEntities db = new DB_9B1F4C_FDPNEntities();
+        DATABASEMeetDB access = new DATABASEMeetDB();
         int MeetId = 0;
       
 
@@ -69,7 +69,7 @@ namespace ImportarInicial
         {
             lblResultado.Text = "Espere un momento";
 
-            List<Meet> meet = access.Meets.ToList();
+            List<DataModels.Meet> Meet = access.Meets.ToList();
             List<Event> events = access.Events.ToList();
             List<Session> sessions = access.Sessions.ToList();
             List<Sessitem> SessionItems = access.Sessitems.ToList();
@@ -77,17 +77,17 @@ namespace ImportarInicial
             List<Multiage> multiages = access.Multiages.ToList();
 
             List<Entry> Entries = access.Entries.ToList();
-            List<Team> Teams = access.Teams.ToList();
+            List<DataModels.Team> Teams = access.Teams.ToList();
             List<DataModels.Athlete> Athletes = access.Athletes.ToList();
 
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Meet, Torneo>();
+                cfg.CreateMap<DataModels.Meet, Torneo>();
             });
             IMapper mapper = config.CreateMapper();
 
 
-            Torneo torneo = mapper.Map<Meet, Torneo>(meet[0]);
+            Torneo torneo = mapper.Map<DataModels.Meet, Torneo>(Meet[0]);
             db.Torneo.Add(torneo);
             db.SaveChanges();
 

@@ -10,7 +10,7 @@ namespace InscripcionACurso.Controllers
 {
     public class HomeController : Controller
     {
-        DB_9B1F4C_comentariosEntities db = new DB_9B1F4C_comentariosEntities();
+        DB_9B1F4C_FDPNEntities db = new DB_9B1F4C_FDPNEntities();
         ConvertirAPeru convertidor = new ConvertirAPeru();
 
         public ActionResult Index()

@@ -770,7 +770,7 @@ advertencia 6013: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Hoja2' no tiene de
           <Property Name="TimeStdId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MeetId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="MEET">
+        <EntityType Name="Meet">
           <Key>
             <PropertyRef Name="MeetId" />
           </Key>
@@ -781,7 +781,7 @@ advertencia 6013: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Hoja2' no tiene de
           <Property Name="Course" Type="nvarchar" MaxLength="2" Nullable="false" />
           <Property Name="MeetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
-        <EntityType Name="MEETMasters">
+        <EntityType Name="MeetMasters">
           <Key>
             <PropertyRef Name="MeetId" />
           </Key>
@@ -1144,13 +1144,13 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <Property Name="Record_day" Type="smallint" />
           <Property Name="Record_year" Type="smallint" />
           <Property Name="Record_Holder" Type="nvarchar" MaxLength="30" />
-          <Property Name="Record_Holderteam" Type="nvarchar" MaxLength="16" />
+          <Property Name="Record_HolderTeam" Type="nvarchar" MaxLength="16" />
           <Property Name="Relay_Names" Type="nvarchar" MaxLength="50" />
           <Property Name="Record_Time" Type="real" />
           <Property Name="Record_course" Type="nvarchar" MaxLength="1" />
           <Property Name="div_abbr" Type="nvarchar" MaxLength="3" />
-          <Property Name="Record_teamabbr" Type="nvarchar" MaxLength="5" />
-          <Property Name="Record_teamlsc" Type="nvarchar" MaxLength="2" />
+          <Property Name="Record_Teamabbr" Type="nvarchar" MaxLength="5" />
+          <Property Name="Record_Teamlsc" Type="nvarchar" MaxLength="2" />
           <Property Name="RecordId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="RecordsActuales">
@@ -1205,10 +1205,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <Key>
             <PropertyRef Name="ResultId" />
           </Key>
-          <Property Name="MEET" Type="int" Nullable="false" />
+          <Property Name="Meet" Type="int" Nullable="false" />
           <Property Name="ATHLETE" Type="int" Nullable="false" />
           <Property Name="I_R" Type="nvarchar" MaxLength="1" Nullable="false" />
-          <Property Name="TEAM" Type="int" Nullable="false" />
+          <Property Name="Team" Type="int" Nullable="false" />
           <Property Name="SCORE" Type="nvarchar" MaxLength="12" Nullable="false" />
           <Property Name="F_P" Type="nvarchar" MaxLength="1" Nullable="false" />
           <Property Name="EX" Type="nvarchar" MaxLength="1" />
@@ -1234,10 +1234,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Query' no tiene de
           <Key>
             <PropertyRef Name="ResultId" />
           </Key>
-          <Property Name="MEET" Type="int" Nullable="false" />
+          <Property Name="Meet" Type="int" Nullable="false" />
           <Property Name="ATHLETE" Type="int" Nullable="false" />
           <Property Name="I_R" Type="nvarchar" MaxLength="1" Nullable="false" />
-          <Property Name="TEAM" Type="int" Nullable="false" />
+          <Property Name="Team" Type="int" Nullable="false" />
           <Property Name="SCORE" Type="nvarchar" MaxLength="12" Nullable="false" />
           <Property Name="F_P" Type="nvarchar" MaxLength="1" Nullable="false" />
           <Property Name="EX" Type="nvarchar" MaxLength="1" />
@@ -1466,7 +1466,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="FNacimiento" Type="date" />
           <Property Name="EsActivo" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="TEAM">
+        <EntityType Name="Team">
           <Key>
             <PropertyRef Name="TeamId" />
           </Key>
@@ -1475,7 +1475,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="TCode" Type="nvarchar" MaxLength="5" Nullable="false" />
           <Property Name="TName" Type="nvarchar" MaxLength="30" />
         </EntityType>
-        <EntityType Name="TEAMMasters">
+        <EntityType Name="TeamMasters">
           <Key>
             <PropertyRef Name="TeamId" />
           </Key>
@@ -1511,7 +1511,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="Meet_end" Type="smalldatetime" />
           <Property Name="Meet_idformat" Type="smallint" />
           <Property Name="Meet_class" Type="smallint" />
-          <Property Name="Meet_meettype" Type="smallint" />
+          <Property Name="Meet_Meettype" Type="smallint" />
           <Property Name="Meet_course" Type="smallint" />
           <Property Name="Enter_ages" Type="bit" Nullable="false" />
           <Property Name="Enter_birthdate" Type="bit" Nullable="false" />
@@ -1523,9 +1523,9 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="Scores_afterevt" Type="bit" Nullable="false" />
           <Property Name="Lastname_first" Type="bit" Nullable="false" />
           <Property Name="Punct_names" Type="bit" Nullable="false" />
-          <Property Name="Punct_teams" Type="bit" Nullable="false" />
+          <Property Name="Punct_Teams" Type="bit" Nullable="false" />
           <Property Name="win_mm" Type="bit" Nullable="false" />
-          <Property Name="meet_numlanes" Type="smallint" />
+          <Property Name="Meet_numlanes" Type="smallint" />
           <Property Name="prelimheats_circle" Type="smallint" />
           <Property Name="timedfinal_circleseed" Type="bit" Nullable="false" />
           <Property Name="foreign_infinal" Type="bit" Nullable="false" />
@@ -1535,8 +1535,8 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="seed_exhlast" Type="bit" Nullable="false" />
           <Property Name="dual_evenodd" Type="bit" Nullable="false" />
           <Property Name="strict_evenodd" Type="bit" Nullable="false" />
-          <Property Name="team_evenlanes" Type="int" />
-          <Property Name="team_oddlanes" Type="int" />
+          <Property Name="Team_evenlanes" Type="int" />
+          <Property Name="Team_oddlanes" Type="int" />
           <Property Name="masters_bytimeonly" Type="bit" Nullable="false" />
           <Property Name="masters_agegrpsskip" Type="smallint" />
           <Property Name="timer_port" Type="smallint" />
@@ -1545,7 +1545,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="scbd_vendor" Type="nvarchar" MaxLength="4" />
           <Property Name="show_initial" Type="bit" Nullable="false" />
           <Property Name="ucase_names" Type="bit" Nullable="false" />
-          <Property Name="ucase_teams" Type="bit" Nullable="false" />
+          <Property Name="ucase_Teams" Type="bit" Nullable="false" />
           <Property Name="open_senior_none" Type="nvarchar" MaxLength="1" />
           <Property Name="entryqual_faster" Type="bit" Nullable="false" />
           <Property Name="Facility_Surcharge" Type="money" />
@@ -1565,17 +1565,17 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="pointsbasedon_seedtime" Type="bit" Nullable="false" />
           <Property Name="pointsfor_overachievers" Type="bit" Nullable="false" />
           <Property Name="pointsfor_underachievers" Type="bit" Nullable="false" />
-          <Property Name="indmaxscorers_perteam" Type="smallint" />
-          <Property Name="relmaxscorers_perteam" Type="smallint" />
+          <Property Name="indmaxscorers_perTeam" Type="smallint" />
+          <Property Name="relmaxscorers_perTeam" Type="smallint" />
           <Property Name="indtopmany_awards" Type="smallint" />
           <Property Name="reltopmany_awards" Type="smallint" />
           <Property Name="entrymax_total" Type="smallint" />
           <Property Name="indmax_perath" Type="smallint" />
           <Property Name="relmax_perath" Type="smallint" />
-          <Property Name="foreign_getteampoints" Type="bit" Nullable="false" />
-          <Property Name="include_swimupsinteamscore" Type="bit" Nullable="false" />
+          <Property Name="foreign_getTeampoints" Type="bit" Nullable="false" />
+          <Property Name="include_swimupsinTeamscore" Type="bit" Nullable="false" />
           <Property Name="enter_citizenof" Type="bit" Nullable="false" />
-          <Property Name="meet_meetstyle" Type="smallint" />
+          <Property Name="Meet_Meetstyle" Type="smallint" />
           <Property Name="flag_overachievers" Type="bit" Nullable="false" />
           <Property Name="flag_underachievers" Type="bit" Nullable="false" />
           <Property Name="scbd_punctuation" Type="smallint" />
@@ -1597,7 +1597,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="suppress_lsc" Type="bit" Nullable="false" />
           <Property Name="showathlete_status" Type="bit" Nullable="false" />
           <Property Name="open_lowage" Type="smallint" />
-          <Property Name="useeventsex_teamscore" Type="bit" Nullable="false" />
+          <Property Name="useeventsex_Teamscore" Type="bit" Nullable="false" />
           <Property Name="suppress_smallx" Type="bit" Nullable="false" />
           <Property Name="score_Arelayonly" Type="bit" Nullable="false" />
           <Property Name="thirteenandover_assenior" Type="bit" Nullable="false" />
@@ -1610,7 +1610,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="countrelay_alt" Type="bit" Nullable="false" />
           <Property Name="UseNonConforming_PoolFactor" Type="bit" Nullable="false" />
           <Property Name="NonConforming_PoolFactor" Type="real" />
-          <Property Name="apnews_team" Type="nvarchar" MaxLength="1" />
+          <Property Name="apnews_Team" Type="nvarchar" MaxLength="1" />
           <Property Name="PointsAwarded_ForDQ" Type="real" />
           <Property Name="PointsAwarded_ForScratch" Type="real" />
           <Property Name="PointsAwarded_ForNT" Type="real" />
@@ -1636,22 +1636,22 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="FlatHtml_Dir" Type="nvarchar" MaxLength="80" />
           <Property Name="APNews_Dir" Type="nvarchar" MaxLength="80" />
           <Property Name="AllowSameEvent_DupRelayNames" Type="bit" Nullable="false" />
-          <Property Name="dualteam_lane1" Type="int" />
-          <Property Name="dualteam_lane2" Type="int" />
-          <Property Name="dualteam_lane3" Type="int" />
-          <Property Name="dualteam_lane4" Type="int" />
-          <Property Name="dualteam_lane5" Type="int" />
-          <Property Name="dualteam_lane6" Type="int" />
-          <Property Name="dualteam_lane7" Type="int" />
-          <Property Name="dualteam_lane8" Type="int" />
-          <Property Name="dualteam_lane9" Type="int" />
-          <Property Name="dualteam_lane10" Type="int" />
+          <Property Name="dualTeam_lane1" Type="int" />
+          <Property Name="dualTeam_lane2" Type="int" />
+          <Property Name="dualTeam_lane3" Type="int" />
+          <Property Name="dualTeam_lane4" Type="int" />
+          <Property Name="dualTeam_lane5" Type="int" />
+          <Property Name="dualTeam_lane6" Type="int" />
+          <Property Name="dualTeam_lane7" Type="int" />
+          <Property Name="dualTeam_lane8" Type="int" />
+          <Property Name="dualTeam_lane9" Type="int" />
+          <Property Name="dualTeam_lane10" Type="int" />
           <Property Name="strict_evenoddfastestheatonly" Type="bit" Nullable="false" />
           <Property Name="dualseeding_altunusedlane" Type="bit" Nullable="false" />
-          <Property Name="team_surcharge" Type="money" />
+          <Property Name="Team_surcharge" Type="money" />
           <Property Name="Display_ActualEntryTime" Type="bit" Nullable="false" />
-          <Property Name="indmaxadvance_perteam" Type="smallint" />
-          <Property Name="relmaxadvance_perteam" Type="smallint" />
+          <Property Name="indmaxadvance_perTeam" Type="smallint" />
+          <Property Name="relmaxadvance_perTeam" Type="smallint" />
           <Property Name="RelayNames_LinkByLSC" Type="bit" Nullable="false" />
           <Property Name="Read_Only" Type="bit" Nullable="false" />
           <Property Name="Flighted_BasedOnResultsTime" Type="bit" Nullable="false" />
@@ -1677,8 +1677,8 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="flighted_flightcount" Type="smallint" />
           <Property Name="flighted_inclDQ" Type="bit" Nullable="false" />
           <Property Name="RelaysAlternate_TwoFastestFirst" Type="bit" Nullable="false" />
-          <Property Name="dualteam_lane11" Type="int" />
-          <Property Name="dualteam_lane12" Type="int" />
+          <Property Name="dualTeam_lane11" Type="int" />
+          <Property Name="dualTeam_lane12" Type="int" />
           <Property Name="entry_deadline" Type="smalldatetime" />
           <Property Name="Meet_addr1" Type="nvarchar" MaxLength="30" />
           <Property Name="Meet_addr2" Type="nvarchar" MaxLength="30" />
@@ -2780,11 +2780,11 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RESULTS_MEET">
-          <End Role="MEET" Type="Self.MEET" Multiplicity="0..1" />
+        <Association Name="FK_RESULTS_Meet">
+          <End Role="Meet" Type="Self.Meet" Multiplicity="0..1" />
           <End Role="RESULTS" Type="Self.RESULTS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MEET">
+            <Principal Role="Meet">
               <PropertyRef Name="MeetId" />
             </Principal>
             <Dependent Role="RESULTS">
@@ -2804,11 +2804,11 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RESULTS_TEAM">
-          <End Role="TEAM" Type="Self.TEAM" Multiplicity="0..1" />
+        <Association Name="FK_RESULTS_Team">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
           <End Role="RESULTS" Type="Self.RESULTS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TEAM">
+            <Principal Role="Team">
               <PropertyRef Name="TeamId" />
             </Principal>
             <Dependent Role="RESULTS">
@@ -2828,11 +2828,11 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RESULTSMasters_MEETMasters">
-          <End Role="MEETMasters" Type="Self.MEETMasters" Multiplicity="0..1" />
+        <Association Name="FK_RESULTSMasters_MeetMasters">
+          <End Role="MeetMasters" Type="Self.MeetMasters" Multiplicity="0..1" />
           <End Role="RESULTSMasters" Type="Self.RESULTSMasters" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MEETMasters">
+            <Principal Role="MeetMasters">
               <PropertyRef Name="MeetId" />
             </Principal>
             <Dependent Role="RESULTSMasters">
@@ -2840,11 +2840,11 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RESULTSMasters_TEAMMasters">
-          <End Role="TEAMMasters" Type="Self.TEAMMasters" Multiplicity="0..1" />
+        <Association Name="FK_RESULTSMasters_TeamMasters">
+          <End Role="TeamMasters" Type="Self.TeamMasters" Multiplicity="0..1" />
           <End Role="RESULTSMasters" Type="Self.RESULTSMasters" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TEAMMasters">
+            <Principal Role="TeamMasters">
               <PropertyRef Name="TeamId" />
             </Principal>
             <Dependent Role="RESULTSMasters">
@@ -3115,8 +3115,8 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <EntitySet Name="InscripcionResponsable" EntityType="Self.InscripcionResponsable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Landing" EntityType="Self.Landing" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MarcasMinimas" EntityType="Self.MarcasMinimas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MEET" EntityType="Self.MEET" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MEETMasters" EntityType="Self.MEETMasters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Meet" EntityType="Self.Meet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MeetMasters" EntityType="Self.MeetMasters" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Modals" EntityType="Self.Modals" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Multas" EntityType="Self.Multas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MultiEdad" EntityType="Self.MultiEdad" Schema="dbo" store:Type="Tables" />
@@ -3166,8 +3166,8 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <EntitySet Name="TatoSeleccionado" EntityType="Self.TatoSeleccionado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TatoSeriesEjemplo" EntityType="Self.TatoSeriesEjemplo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_Suscritos" EntityType="Self.tb_Suscritos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TEAM" EntityType="Self.TEAM" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TEAMMasters" EntityType="Self.TEAMMasters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeamMasters" EntityType="Self.TeamMasters" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoAfiliado" EntityType="Self.TipoAfiliado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoTorneo" EntityType="Self.TipoTorneo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Torneo" EntityType="Self.Torneo" Schema="dbo" store:Type="Tables" />
@@ -3531,28 +3531,28 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             <End Role="Athlete" EntitySet="Athlete" />
             <End Role="RESULTS" EntitySet="RESULTS" />
           </AssociationSet>
-          <AssociationSet Name="FK_RESULTS_MEET" Association="Self.FK_RESULTS_MEET">
-            <End Role="MEET" EntitySet="MEET" />
+          <AssociationSet Name="FK_RESULTS_Meet" Association="Self.FK_RESULTS_Meet">
+            <End Role="Meet" EntitySet="Meet" />
             <End Role="RESULTS" EntitySet="RESULTS" />
           </AssociationSet>
           <AssociationSet Name="FK_RESULTS_Pruebas" Association="Self.FK_RESULTS_Pruebas">
             <End Role="Pruebas" EntitySet="Pruebas" />
             <End Role="RESULTS" EntitySet="RESULTS" />
           </AssociationSet>
-          <AssociationSet Name="FK_RESULTS_TEAM" Association="Self.FK_RESULTS_TEAM">
-            <End Role="TEAM" EntitySet="TEAM" />
+          <AssociationSet Name="FK_RESULTS_Team" Association="Self.FK_RESULTS_Team">
+            <End Role="Team" EntitySet="Team" />
             <End Role="RESULTS" EntitySet="RESULTS" />
           </AssociationSet>
           <AssociationSet Name="FK_RESULTSMasters_AthleteMasters" Association="Self.FK_RESULTSMasters_AthleteMasters">
             <End Role="AthleteMasters" EntitySet="AthleteMasters" />
             <End Role="RESULTSMasters" EntitySet="RESULTSMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK_RESULTSMasters_MEETMasters" Association="Self.FK_RESULTSMasters_MEETMasters">
-            <End Role="MEETMasters" EntitySet="MEETMasters" />
+          <AssociationSet Name="FK_RESULTSMasters_MeetMasters" Association="Self.FK_RESULTSMasters_MeetMasters">
+            <End Role="MeetMasters" EntitySet="MeetMasters" />
             <End Role="RESULTSMasters" EntitySet="RESULTSMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK_RESULTSMasters_TEAMMasters" Association="Self.FK_RESULTSMasters_TEAMMasters">
-            <End Role="TEAMMasters" EntitySet="TEAMMasters" />
+          <AssociationSet Name="FK_RESULTSMasters_TeamMasters" Association="Self.FK_RESULTSMasters_TeamMasters">
+            <End Role="TeamMasters" EntitySet="TeamMasters" />
             <End Role="RESULTSMasters" EntitySet="RESULTSMasters" />
           </AssociationSet>
           <AssociationSet Name="FK_Sesion_Torneo" Association="Self.FK_Sesion_Torneo">
@@ -3632,7 +3632,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_9B1F4C_comentariosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="DB_9B1F4C_comentariosEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DB_9B1F4C_FDPNEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Afiliacion" EntityType="DB_9B1F4C_comentariosModel.Afiliacion" />
           <EntitySet Name="Afiliado" EntityType="DB_9B1F4C_comentariosModel.Afiliado" />
           <EntitySet Name="Alertas" EntityType="DB_9B1F4C_comentariosModel.Alertas" />
@@ -3679,8 +3679,8 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <EntitySet Name="InscripcionResponsable" EntityType="DB_9B1F4C_comentariosModel.InscripcionResponsable" />
           <EntitySet Name="Landing" EntityType="DB_9B1F4C_comentariosModel.Landing" />
           <EntitySet Name="MarcasMinimas" EntityType="DB_9B1F4C_comentariosModel.MarcasMinimas" />
-          <EntitySet Name="MEET" EntityType="DB_9B1F4C_comentariosModel.MEET" />
-          <EntitySet Name="MEETMasters" EntityType="DB_9B1F4C_comentariosModel.MEETMasters" />
+          <EntitySet Name="Meet" EntityType="DB_9B1F4C_comentariosModel.Meet" />
+          <EntitySet Name="MeetMasters" EntityType="DB_9B1F4C_comentariosModel.MeetMasters" />
           <EntitySet Name="Modals" EntityType="DB_9B1F4C_comentariosModel.Modals" />
           <EntitySet Name="Multas" EntityType="DB_9B1F4C_comentariosModel.Multas" />
           <EntitySet Name="MultiEdad" EntityType="DB_9B1F4C_comentariosModel.MultiEdad" />
@@ -3730,8 +3730,8 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <EntitySet Name="TatoSeleccionado" EntityType="DB_9B1F4C_comentariosModel.TatoSeleccionado" />
           <EntitySet Name="TatoSeriesEjemplo" EntityType="DB_9B1F4C_comentariosModel.TatoSeriesEjemplo" />
           <EntitySet Name="tb_Suscritos" EntityType="DB_9B1F4C_comentariosModel.tb_Suscritos" />
-          <EntitySet Name="TEAM" EntityType="DB_9B1F4C_comentariosModel.TEAM" />
-          <EntitySet Name="TEAMMasters" EntityType="DB_9B1F4C_comentariosModel.TEAMMasters" />
+          <EntitySet Name="Team" EntityType="DB_9B1F4C_comentariosModel.Team" />
+          <EntitySet Name="TeamMasters" EntityType="DB_9B1F4C_comentariosModel.TeamMasters" />
           <EntitySet Name="TipoAfiliado" EntityType="DB_9B1F4C_comentariosModel.TipoAfiliado" />
           <EntitySet Name="TipoTorneo" EntityType="DB_9B1F4C_comentariosModel.TipoTorneo" />
           <EntitySet Name="Torneo" EntityType="DB_9B1F4C_comentariosModel.Torneo" />
@@ -3980,12 +3980,12 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             <End Role="Torneo" EntitySet="Torneo" />
             <End Role="MarcasMinimas" EntitySet="MarcasMinimas" />
           </AssociationSet>
-          <AssociationSet Name="FK_RESULTS_MEET" Association="DB_9B1F4C_comentariosModel.FK_RESULTS_MEET">
-            <End Role="MEET" EntitySet="MEET" />
+          <AssociationSet Name="FK_RESULTS_Meet" Association="DB_9B1F4C_comentariosModel.FK_RESULTS_Meet">
+            <End Role="Meet" EntitySet="Meet" />
             <End Role="RESULTS" EntitySet="RESULTS" />
           </AssociationSet>
-          <AssociationSet Name="FK_RESULTSMasters_MEETMasters" Association="DB_9B1F4C_comentariosModel.FK_RESULTSMasters_MEETMasters">
-            <End Role="MEETMasters" EntitySet="MEETMasters" />
+          <AssociationSet Name="FK_RESULTSMasters_MeetMasters" Association="DB_9B1F4C_comentariosModel.FK_RESULTSMasters_MeetMasters">
+            <End Role="MeetMasters" EntitySet="MeetMasters" />
             <End Role="RESULTSMasters" EntitySet="RESULTSMasters" />
           </AssociationSet>
           <AssociationSet Name="FK_Multas_Usuario" Association="DB_9B1F4C_comentariosModel.FK_Multas_Usuario">
@@ -4124,12 +4124,12 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             <End Role="RecordTipo" EntitySet="RecordTipo" />
             <End Role="RecordsActuales" EntitySet="RecordsActuales" />
           </AssociationSet>
-          <AssociationSet Name="FK_RESULTS_TEAM" Association="DB_9B1F4C_comentariosModel.FK_RESULTS_TEAM">
-            <End Role="TEAM" EntitySet="TEAM" />
+          <AssociationSet Name="FK_RESULTS_Team" Association="DB_9B1F4C_comentariosModel.FK_RESULTS_Team">
+            <End Role="Team" EntitySet="Team" />
             <End Role="RESULTS" EntitySet="RESULTS" />
           </AssociationSet>
-          <AssociationSet Name="FK_RESULTSMasters_TEAMMasters" Association="DB_9B1F4C_comentariosModel.FK_RESULTSMasters_TEAMMasters">
-            <End Role="TEAMMasters" EntitySet="TEAMMasters" />
+          <AssociationSet Name="FK_RESULTSMasters_TeamMasters" Association="DB_9B1F4C_comentariosModel.FK_RESULTSMasters_TeamMasters">
+            <End Role="TeamMasters" EntitySet="TeamMasters" />
             <End Role="RESULTSMasters" EntitySet="RESULTSMasters" />
           </AssociationSet>
           <AssociationSet Name="FK_Usuario_Rol" Association="DB_9B1F4C_comentariosModel.FK_Usuario_Rol">
@@ -5004,7 +5004,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="MeetId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Torneo" Relationship="DB_9B1F4C_comentariosModel.FK_MarcasMinimas_Torneo" FromRole="MarcasMinimas" ToRole="Torneo" />
         </EntityType>
-        <EntityType Name="MEET">
+        <EntityType Name="Meet">
           <Key>
             <PropertyRef Name="MeetId" />
           </Key>
@@ -5014,9 +5014,9 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="End" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Course" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
           <Property Name="MeetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="RESULTS" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTS_MEET" FromRole="MEET" ToRole="RESULTS" />
+          <NavigationProperty Name="RESULTS" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTS_Meet" FromRole="Meet" ToRole="RESULTS" />
         </EntityType>
-        <EntityType Name="MEETMasters">
+        <EntityType Name="MeetMasters">
           <Key>
             <PropertyRef Name="MeetId" />
           </Key>
@@ -5026,7 +5026,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="End" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Course" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
           <Property Name="MeetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="RESULTSMasters" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTSMasters_MEETMasters" FromRole="MEETMasters" ToRole="RESULTSMasters" />
+          <NavigationProperty Name="RESULTSMasters" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTSMasters_MeetMasters" FromRole="MeetMasters" ToRole="RESULTSMasters" />
         </EntityType>
         <EntityType Name="Modals">
           <Key>
@@ -5426,13 +5426,13 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="Record_day" Type="Int16" />
           <Property Name="Record_year" Type="Int16" />
           <Property Name="Record_Holder" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Record_Holderteam" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Record_HolderTeam" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
           <Property Name="Relay_Names" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Record_Time" Type="Single" />
           <Property Name="Record_course" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
           <Property Name="div_abbr" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Name="Record_teamabbr" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="Record_teamlsc" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Record_Teamabbr" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Record_Teamlsc" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
           <Property Name="RecordId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="RecordsActuales">
@@ -5494,10 +5494,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Key>
             <PropertyRef Name="ResultId" />
           </Key>
-          <Property Name="MEET" Type="Int32" Nullable="false" />
+          <Property Name="Meet" Type="Int32" Nullable="false" />
           <Property Name="ATHLETE" Type="Int32" Nullable="false" />
           <Property Name="I_R" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Name="TEAM" Type="Int32" Nullable="false" />
+          <Property Name="Team" Type="Int32" Nullable="false" />
           <Property Name="SCORE" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
           <Property Name="F_P" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
           <Property Name="EX" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
@@ -5519,18 +5519,18 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="ResultId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Tiempobase" Type="Double" />
           <NavigationProperty Name="Athlete1" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTS_Athlete" FromRole="RESULTS" ToRole="Athlete" />
-          <NavigationProperty Name="MEET1" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTS_MEET" FromRole="RESULTS" ToRole="MEET" />
+          <NavigationProperty Name="Meet1" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTS_Meet" FromRole="RESULTS" ToRole="Meet" />
           <NavigationProperty Name="Pruebas" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTS_Pruebas" FromRole="RESULTS" ToRole="Pruebas" />
-          <NavigationProperty Name="TEAM1" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTS_TEAM" FromRole="RESULTS" ToRole="TEAM" />
+          <NavigationProperty Name="Team1" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTS_Team" FromRole="RESULTS" ToRole="Team" />
         </EntityType>
         <EntityType Name="RESULTSMasters">
           <Key>
             <PropertyRef Name="ResultId" />
           </Key>
-          <Property Name="MEET" Type="Int32" Nullable="false" />
+          <Property Name="Meet" Type="Int32" Nullable="false" />
           <Property Name="ATHLETE" Type="Int32" Nullable="false" />
           <Property Name="I_R" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Name="TEAM" Type="Int32" Nullable="false" />
+          <Property Name="Team" Type="Int32" Nullable="false" />
           <Property Name="SCORE" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
           <Property Name="F_P" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
           <Property Name="EX" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
@@ -5552,8 +5552,8 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="ResultId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Tiempobase" Type="Double" />
           <NavigationProperty Name="AthleteMasters" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTSMasters_AthleteMasters" FromRole="RESULTSMasters" ToRole="AthleteMasters" />
-          <NavigationProperty Name="MEETMasters" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTSMasters_MEETMasters" FromRole="RESULTSMasters" ToRole="MEETMasters" />
-          <NavigationProperty Name="TEAMMasters" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTSMasters_TEAMMasters" FromRole="RESULTSMasters" ToRole="TEAMMasters" />
+          <NavigationProperty Name="MeetMasters" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTSMasters_MeetMasters" FromRole="RESULTSMasters" ToRole="MeetMasters" />
+          <NavigationProperty Name="TeamMasters" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTSMasters_TeamMasters" FromRole="RESULTSMasters" ToRole="TeamMasters" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -5754,7 +5754,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="FNacimiento" Type="DateTime" Precision="0" />
           <Property Name="EsActivo" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="TEAM">
+        <EntityType Name="Team">
           <Key>
             <PropertyRef Name="TeamId" />
           </Key>
@@ -5762,9 +5762,9 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="TeamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="TName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="RESULTS" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTS_TEAM" FromRole="TEAM" ToRole="RESULTS" />
+          <NavigationProperty Name="RESULTS" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTS_Team" FromRole="Team" ToRole="RESULTS" />
         </EntityType>
-        <EntityType Name="TEAMMasters">
+        <EntityType Name="TeamMasters">
           <Key>
             <PropertyRef Name="TeamId" />
           </Key>
@@ -5772,7 +5772,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="TeamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="TName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="RESULTSMasters" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTSMasters_TEAMMasters" FromRole="TEAMMasters" ToRole="RESULTSMasters" />
+          <NavigationProperty Name="RESULTSMasters" Relationship="DB_9B1F4C_comentariosModel.FK_RESULTSMasters_TeamMasters" FromRole="TeamMasters" ToRole="RESULTSMasters" />
         </EntityType>
         <EntityType Name="TipoAfiliado">
           <Key>
@@ -5803,7 +5803,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="Meet_end" Type="DateTime" Precision="0" />
           <Property Name="Meet_idformat" Type="Int16" />
           <Property Name="Meet_class" Type="Int16" />
-          <Property Name="Meet_meettype" Type="Int16" />
+          <Property Name="Meet_Meettype" Type="Int16" />
           <Property Name="Meet_course" Type="Int16" />
           <Property Name="Enter_ages" Type="Boolean" Nullable="false" />
           <Property Name="Enter_birthdate" Type="Boolean" Nullable="false" />
@@ -5815,9 +5815,9 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="Scores_afterevt" Type="Boolean" Nullable="false" />
           <Property Name="Lastname_first" Type="Boolean" Nullable="false" />
           <Property Name="Punct_names" Type="Boolean" Nullable="false" />
-          <Property Name="Punct_teams" Type="Boolean" Nullable="false" />
+          <Property Name="Punct_Teams" Type="Boolean" Nullable="false" />
           <Property Name="win_mm" Type="Boolean" Nullable="false" />
-          <Property Name="meet_numlanes" Type="Int16" />
+          <Property Name="Meet_numlanes" Type="Int16" />
           <Property Name="prelimheats_circle" Type="Int16" />
           <Property Name="timedfinal_circleseed" Type="Boolean" Nullable="false" />
           <Property Name="foreign_infinal" Type="Boolean" Nullable="false" />
@@ -5827,8 +5827,8 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="seed_exhlast" Type="Boolean" Nullable="false" />
           <Property Name="dual_evenodd" Type="Boolean" Nullable="false" />
           <Property Name="strict_evenodd" Type="Boolean" Nullable="false" />
-          <Property Name="team_evenlanes" Type="Int32" />
-          <Property Name="team_oddlanes" Type="Int32" />
+          <Property Name="Team_evenlanes" Type="Int32" />
+          <Property Name="Team_oddlanes" Type="Int32" />
           <Property Name="masters_bytimeonly" Type="Boolean" Nullable="false" />
           <Property Name="masters_agegrpsskip" Type="Int16" />
           <Property Name="timer_port" Type="Int16" />
@@ -5837,7 +5837,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="scbd_vendor" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
           <Property Name="show_initial" Type="Boolean" Nullable="false" />
           <Property Name="ucase_names" Type="Boolean" Nullable="false" />
-          <Property Name="ucase_teams" Type="Boolean" Nullable="false" />
+          <Property Name="ucase_Teams" Type="Boolean" Nullable="false" />
           <Property Name="open_senior_none" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
           <Property Name="entryqual_faster" Type="Boolean" Nullable="false" />
           <Property Name="Facility_Surcharge" Type="Decimal" Precision="19" Scale="4" />
@@ -5857,17 +5857,17 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="pointsbasedon_seedtime" Type="Boolean" Nullable="false" />
           <Property Name="pointsfor_overachievers" Type="Boolean" Nullable="false" />
           <Property Name="pointsfor_underachievers" Type="Boolean" Nullable="false" />
-          <Property Name="indmaxscorers_perteam" Type="Int16" />
-          <Property Name="relmaxscorers_perteam" Type="Int16" />
+          <Property Name="indmaxscorers_perTeam" Type="Int16" />
+          <Property Name="relmaxscorers_perTeam" Type="Int16" />
           <Property Name="indtopmany_awards" Type="Int16" />
           <Property Name="reltopmany_awards" Type="Int16" />
           <Property Name="entrymax_total" Type="Int16" />
           <Property Name="indmax_perath" Type="Int16" />
           <Property Name="relmax_perath" Type="Int16" />
-          <Property Name="foreign_getteampoints" Type="Boolean" Nullable="false" />
-          <Property Name="include_swimupsinteamscore" Type="Boolean" Nullable="false" />
+          <Property Name="foreign_getTeampoints" Type="Boolean" Nullable="false" />
+          <Property Name="include_swimupsinTeamscore" Type="Boolean" Nullable="false" />
           <Property Name="enter_citizenof" Type="Boolean" Nullable="false" />
-          <Property Name="meet_meetstyle" Type="Int16" />
+          <Property Name="Meet_Meetstyle" Type="Int16" />
           <Property Name="flag_overachievers" Type="Boolean" Nullable="false" />
           <Property Name="flag_underachievers" Type="Boolean" Nullable="false" />
           <Property Name="scbd_punctuation" Type="Int16" />
@@ -5889,7 +5889,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="suppress_lsc" Type="Boolean" Nullable="false" />
           <Property Name="showathlete_status" Type="Boolean" Nullable="false" />
           <Property Name="open_lowage" Type="Int16" />
-          <Property Name="useeventsex_teamscore" Type="Boolean" Nullable="false" />
+          <Property Name="useeventsex_Teamscore" Type="Boolean" Nullable="false" />
           <Property Name="suppress_smallx" Type="Boolean" Nullable="false" />
           <Property Name="score_Arelayonly" Type="Boolean" Nullable="false" />
           <Property Name="thirteenandover_assenior" Type="Boolean" Nullable="false" />
@@ -5902,7 +5902,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="countrelay_alt" Type="Boolean" Nullable="false" />
           <Property Name="UseNonConforming_PoolFactor" Type="Boolean" Nullable="false" />
           <Property Name="NonConforming_PoolFactor" Type="Single" />
-          <Property Name="apnews_team" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="apnews_Team" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
           <Property Name="PointsAwarded_ForDQ" Type="Single" />
           <Property Name="PointsAwarded_ForScratch" Type="Single" />
           <Property Name="PointsAwarded_ForNT" Type="Single" />
@@ -5928,22 +5928,22 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="FlatHtml_Dir" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
           <Property Name="APNews_Dir" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
           <Property Name="AllowSameEvent_DupRelayNames" Type="Boolean" Nullable="false" />
-          <Property Name="dualteam_lane1" Type="Int32" />
-          <Property Name="dualteam_lane2" Type="Int32" />
-          <Property Name="dualteam_lane3" Type="Int32" />
-          <Property Name="dualteam_lane4" Type="Int32" />
-          <Property Name="dualteam_lane5" Type="Int32" />
-          <Property Name="dualteam_lane6" Type="Int32" />
-          <Property Name="dualteam_lane7" Type="Int32" />
-          <Property Name="dualteam_lane8" Type="Int32" />
-          <Property Name="dualteam_lane9" Type="Int32" />
-          <Property Name="dualteam_lane10" Type="Int32" />
+          <Property Name="dualTeam_lane1" Type="Int32" />
+          <Property Name="dualTeam_lane2" Type="Int32" />
+          <Property Name="dualTeam_lane3" Type="Int32" />
+          <Property Name="dualTeam_lane4" Type="Int32" />
+          <Property Name="dualTeam_lane5" Type="Int32" />
+          <Property Name="dualTeam_lane6" Type="Int32" />
+          <Property Name="dualTeam_lane7" Type="Int32" />
+          <Property Name="dualTeam_lane8" Type="Int32" />
+          <Property Name="dualTeam_lane9" Type="Int32" />
+          <Property Name="dualTeam_lane10" Type="Int32" />
           <Property Name="strict_evenoddfastestheatonly" Type="Boolean" Nullable="false" />
           <Property Name="dualseeding_altunusedlane" Type="Boolean" Nullable="false" />
-          <Property Name="team_surcharge" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Team_surcharge" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Display_ActualEntryTime" Type="Boolean" Nullable="false" />
-          <Property Name="indmaxadvance_perteam" Type="Int16" />
-          <Property Name="relmaxadvance_perteam" Type="Int16" />
+          <Property Name="indmaxadvance_perTeam" Type="Int16" />
+          <Property Name="relmaxadvance_perTeam" Type="Int16" />
           <Property Name="RelayNames_LinkByLSC" Type="Boolean" Nullable="false" />
           <Property Name="Read_Only" Type="Boolean" Nullable="false" />
           <Property Name="Flighted_BasedOnResultsTime" Type="Boolean" Nullable="false" />
@@ -5969,8 +5969,8 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
           <Property Name="flighted_flightcount" Type="Int16" />
           <Property Name="flighted_inclDQ" Type="Boolean" Nullable="false" />
           <Property Name="RelaysAlternate_TwoFastestFirst" Type="Boolean" Nullable="false" />
-          <Property Name="dualteam_lane11" Type="Int32" />
-          <Property Name="dualteam_lane12" Type="Int32" />
+          <Property Name="dualTeam_lane11" Type="Int32" />
+          <Property Name="dualTeam_lane12" Type="Int32" />
           <Property Name="entry_deadline" Type="DateTime" Precision="0" />
           <Property Name="Meet_addr1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Meet_addr2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
@@ -6862,11 +6862,11 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RESULTS_MEET">
-          <End Type="DB_9B1F4C_comentariosModel.MEET" Role="MEET" Multiplicity="0..1" />
+        <Association Name="FK_RESULTS_Meet">
+          <End Type="DB_9B1F4C_comentariosModel.Meet" Role="Meet" Multiplicity="0..1" />
           <End Type="DB_9B1F4C_comentariosModel.RESULTS" Role="RESULTS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MEET">
+            <Principal Role="Meet">
               <PropertyRef Name="MeetId" />
             </Principal>
             <Dependent Role="RESULTS">
@@ -6874,11 +6874,11 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RESULTSMasters_MEETMasters">
-          <End Type="DB_9B1F4C_comentariosModel.MEETMasters" Role="MEETMasters" Multiplicity="0..1" />
+        <Association Name="FK_RESULTSMasters_MeetMasters">
+          <End Type="DB_9B1F4C_comentariosModel.MeetMasters" Role="MeetMasters" Multiplicity="0..1" />
           <End Type="DB_9B1F4C_comentariosModel.RESULTSMasters" Role="RESULTSMasters" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MEETMasters">
+            <Principal Role="MeetMasters">
               <PropertyRef Name="MeetId" />
             </Principal>
             <Dependent Role="RESULTSMasters">
@@ -7294,11 +7294,11 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RESULTS_TEAM">
-          <End Type="DB_9B1F4C_comentariosModel.TEAM" Role="TEAM" Multiplicity="0..1" />
+        <Association Name="FK_RESULTS_Team">
+          <End Type="DB_9B1F4C_comentariosModel.Team" Role="Team" Multiplicity="0..1" />
           <End Type="DB_9B1F4C_comentariosModel.RESULTS" Role="RESULTS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TEAM">
+            <Principal Role="Team">
               <PropertyRef Name="TeamId" />
             </Principal>
             <Dependent Role="RESULTS">
@@ -7306,11 +7306,11 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RESULTSMasters_TEAMMasters">
-          <End Type="DB_9B1F4C_comentariosModel.TEAMMasters" Role="TEAMMasters" Multiplicity="0..1" />
+        <Association Name="FK_RESULTSMasters_TeamMasters">
+          <End Type="DB_9B1F4C_comentariosModel.TeamMasters" Role="TeamMasters" Multiplicity="0..1" />
           <End Type="DB_9B1F4C_comentariosModel.RESULTSMasters" Role="RESULTSMasters" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TEAMMasters">
+            <Principal Role="TeamMasters">
               <PropertyRef Name="TeamId" />
             </Principal>
             <Dependent Role="RESULTSMasters">
@@ -7431,7 +7431,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DB_9B1F4C_comentariosModelStoreContainer" CdmEntityContainer="DB_9B1F4C_comentariosEntities">
+        <EntityContainerMapping StorageEntityContainer="DB_9B1F4C_comentariosModelStoreContainer" CdmEntityContainer="DB_9B1F4C_FDPNEntities">
           <EntitySetMapping Name="Afiliacion">
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Afiliacion">
               <MappingFragment StoreEntitySet="Afiliacion">
@@ -8229,9 +8229,9 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MEET">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.MEET">
-              <MappingFragment StoreEntitySet="MEET">
+          <EntitySetMapping Name="Meet">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Meet">
+              <MappingFragment StoreEntitySet="Meet">
                 <ScalarProperty Name="MeetId" ColumnName="MeetId" />
                 <ScalarProperty Name="Course" ColumnName="Course" />
                 <ScalarProperty Name="End" ColumnName="End" />
@@ -8241,9 +8241,9 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MEETMasters">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.MEETMasters">
-              <MappingFragment StoreEntitySet="MEETMasters">
+          <EntitySetMapping Name="MeetMasters">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.MeetMasters">
+              <MappingFragment StoreEntitySet="MeetMasters">
                 <ScalarProperty Name="MeetId" ColumnName="MeetId" />
                 <ScalarProperty Name="Course" ColumnName="Course" />
                 <ScalarProperty Name="End" ColumnName="End" />
@@ -8601,13 +8601,13 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
             <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Records">
               <MappingFragment StoreEntitySet="Records">
                 <ScalarProperty Name="RecordId" ColumnName="RecordId" />
-                <ScalarProperty Name="Record_teamlsc" ColumnName="Record_teamlsc" />
-                <ScalarProperty Name="Record_teamabbr" ColumnName="Record_teamabbr" />
+                <ScalarProperty Name="Record_Teamlsc" ColumnName="Record_Teamlsc" />
+                <ScalarProperty Name="Record_Teamabbr" ColumnName="Record_Teamabbr" />
                 <ScalarProperty Name="div_abbr" ColumnName="div_abbr" />
                 <ScalarProperty Name="Record_course" ColumnName="Record_course" />
                 <ScalarProperty Name="Record_Time" ColumnName="Record_Time" />
                 <ScalarProperty Name="Relay_Names" ColumnName="Relay_Names" />
-                <ScalarProperty Name="Record_Holderteam" ColumnName="Record_Holderteam" />
+                <ScalarProperty Name="Record_HolderTeam" ColumnName="Record_HolderTeam" />
                 <ScalarProperty Name="Record_Holder" ColumnName="Record_Holder" />
                 <ScalarProperty Name="Record_year" ColumnName="Record_year" />
                 <ScalarProperty Name="Record_day" ColumnName="Record_day" />
@@ -8697,10 +8697,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
                 <ScalarProperty Name="EX" ColumnName="EX" />
                 <ScalarProperty Name="F_P" ColumnName="F_P" />
                 <ScalarProperty Name="SCORE" ColumnName="SCORE" />
-                <ScalarProperty Name="TEAM" ColumnName="TEAM" />
+                <ScalarProperty Name="Team" ColumnName="Team" />
                 <ScalarProperty Name="I_R" ColumnName="I_R" />
                 <ScalarProperty Name="ATHLETE" ColumnName="ATHLETE" />
-                <ScalarProperty Name="MEET" ColumnName="MEET" />
+                <ScalarProperty Name="Meet" ColumnName="Meet" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -8727,10 +8727,10 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
                 <ScalarProperty Name="EX" ColumnName="EX" />
                 <ScalarProperty Name="F_P" ColumnName="F_P" />
                 <ScalarProperty Name="SCORE" ColumnName="SCORE" />
-                <ScalarProperty Name="TEAM" ColumnName="TEAM" />
+                <ScalarProperty Name="Team" ColumnName="Team" />
                 <ScalarProperty Name="I_R" ColumnName="I_R" />
                 <ScalarProperty Name="ATHLETE" ColumnName="ATHLETE" />
-                <ScalarProperty Name="MEET" ColumnName="MEET" />
+                <ScalarProperty Name="Meet" ColumnName="Meet" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -8934,9 +8934,9 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TEAM">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.TEAM">
-              <MappingFragment StoreEntitySet="TEAM">
+          <EntitySetMapping Name="Team">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.Team">
+              <MappingFragment StoreEntitySet="Team">
                 <ScalarProperty Name="TName" ColumnName="TName" />
                 <ScalarProperty Name="TCode" ColumnName="TCode" />
                 <ScalarProperty Name="TeamId" ColumnName="TeamId" />
@@ -8944,9 +8944,9 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TEAMMasters">
-            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.TEAMMasters">
-              <MappingFragment StoreEntitySet="TEAMMasters">
+          <EntitySetMapping Name="TeamMasters">
+            <EntityTypeMapping TypeName="DB_9B1F4C_comentariosModel.TeamMasters">
+              <MappingFragment StoreEntitySet="TeamMasters">
                 <ScalarProperty Name="TName" ColumnName="TName" />
                 <ScalarProperty Name="TCode" ColumnName="TCode" />
                 <ScalarProperty Name="TeamId" ColumnName="TeamId" />
@@ -9013,8 +9013,8 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
                 <ScalarProperty Name="Meet_addr2" ColumnName="Meet_addr2" />
                 <ScalarProperty Name="Meet_addr1" ColumnName="Meet_addr1" />
                 <ScalarProperty Name="entry_deadline" ColumnName="entry_deadline" />
-                <ScalarProperty Name="dualteam_lane12" ColumnName="dualteam_lane12" />
-                <ScalarProperty Name="dualteam_lane11" ColumnName="dualteam_lane11" />
+                <ScalarProperty Name="dualTeam_lane12" ColumnName="dualTeam_lane12" />
+                <ScalarProperty Name="dualTeam_lane11" ColumnName="dualTeam_lane11" />
                 <ScalarProperty Name="RelaysAlternate_TwoFastestFirst" ColumnName="RelaysAlternate_TwoFastestFirst" />
                 <ScalarProperty Name="flighted_inclDQ" ColumnName="flighted_inclDQ" />
                 <ScalarProperty Name="flighted_flightcount" ColumnName="flighted_flightcount" />
@@ -9040,22 +9040,22 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
                 <ScalarProperty Name="Flighted_BasedOnResultsTime" ColumnName="Flighted_BasedOnResultsTime" />
                 <ScalarProperty Name="Read_Only" ColumnName="Read_Only" />
                 <ScalarProperty Name="RelayNames_LinkByLSC" ColumnName="RelayNames_LinkByLSC" />
-                <ScalarProperty Name="relmaxadvance_perteam" ColumnName="relmaxadvance_perteam" />
-                <ScalarProperty Name="indmaxadvance_perteam" ColumnName="indmaxadvance_perteam" />
+                <ScalarProperty Name="relmaxadvance_perTeam" ColumnName="relmaxadvance_perTeam" />
+                <ScalarProperty Name="indmaxadvance_perTeam" ColumnName="indmaxadvance_perTeam" />
                 <ScalarProperty Name="Display_ActualEntryTime" ColumnName="Display_ActualEntryTime" />
-                <ScalarProperty Name="team_surcharge" ColumnName="team_surcharge" />
+                <ScalarProperty Name="Team_surcharge" ColumnName="Team_surcharge" />
                 <ScalarProperty Name="dualseeding_altunusedlane" ColumnName="dualseeding_altunusedlane" />
                 <ScalarProperty Name="strict_evenoddfastestheatonly" ColumnName="strict_evenoddfastestheatonly" />
-                <ScalarProperty Name="dualteam_lane10" ColumnName="dualteam_lane10" />
-                <ScalarProperty Name="dualteam_lane9" ColumnName="dualteam_lane9" />
-                <ScalarProperty Name="dualteam_lane8" ColumnName="dualteam_lane8" />
-                <ScalarProperty Name="dualteam_lane7" ColumnName="dualteam_lane7" />
-                <ScalarProperty Name="dualteam_lane6" ColumnName="dualteam_lane6" />
-                <ScalarProperty Name="dualteam_lane5" ColumnName="dualteam_lane5" />
-                <ScalarProperty Name="dualteam_lane4" ColumnName="dualteam_lane4" />
-                <ScalarProperty Name="dualteam_lane3" ColumnName="dualteam_lane3" />
-                <ScalarProperty Name="dualteam_lane2" ColumnName="dualteam_lane2" />
-                <ScalarProperty Name="dualteam_lane1" ColumnName="dualteam_lane1" />
+                <ScalarProperty Name="dualTeam_lane10" ColumnName="dualTeam_lane10" />
+                <ScalarProperty Name="dualTeam_lane9" ColumnName="dualTeam_lane9" />
+                <ScalarProperty Name="dualTeam_lane8" ColumnName="dualTeam_lane8" />
+                <ScalarProperty Name="dualTeam_lane7" ColumnName="dualTeam_lane7" />
+                <ScalarProperty Name="dualTeam_lane6" ColumnName="dualTeam_lane6" />
+                <ScalarProperty Name="dualTeam_lane5" ColumnName="dualTeam_lane5" />
+                <ScalarProperty Name="dualTeam_lane4" ColumnName="dualTeam_lane4" />
+                <ScalarProperty Name="dualTeam_lane3" ColumnName="dualTeam_lane3" />
+                <ScalarProperty Name="dualTeam_lane2" ColumnName="dualTeam_lane2" />
+                <ScalarProperty Name="dualTeam_lane1" ColumnName="dualTeam_lane1" />
                 <ScalarProperty Name="AllowSameEvent_DupRelayNames" ColumnName="AllowSameEvent_DupRelayNames" />
                 <ScalarProperty Name="APNews_Dir" ColumnName="APNews_Dir" />
                 <ScalarProperty Name="FlatHtml_Dir" ColumnName="FlatHtml_Dir" />
@@ -9081,7 +9081,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
                 <ScalarProperty Name="PointsAwarded_ForNT" ColumnName="PointsAwarded_ForNT" />
                 <ScalarProperty Name="PointsAwarded_ForScratch" ColumnName="PointsAwarded_ForScratch" />
                 <ScalarProperty Name="PointsAwarded_ForDQ" ColumnName="PointsAwarded_ForDQ" />
-                <ScalarProperty Name="apnews_team" ColumnName="apnews_team" />
+                <ScalarProperty Name="apnews_Team" ColumnName="apnews_Team" />
                 <ScalarProperty Name="NonConforming_PoolFactor" ColumnName="NonConforming_PoolFactor" />
                 <ScalarProperty Name="UseNonConforming_PoolFactor" ColumnName="UseNonConforming_PoolFactor" />
                 <ScalarProperty Name="countrelay_alt" ColumnName="countrelay_alt" />
@@ -9094,7 +9094,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
                 <ScalarProperty Name="thirteenandover_assenior" ColumnName="thirteenandover_assenior" />
                 <ScalarProperty Name="score_Arelayonly" ColumnName="score_Arelayonly" />
                 <ScalarProperty Name="suppress_smallx" ColumnName="suppress_smallx" />
-                <ScalarProperty Name="useeventsex_teamscore" ColumnName="useeventsex_teamscore" />
+                <ScalarProperty Name="useeventsex_Teamscore" ColumnName="useeventsex_Teamscore" />
                 <ScalarProperty Name="open_lowage" ColumnName="open_lowage" />
                 <ScalarProperty Name="showathlete_status" ColumnName="showathlete_status" />
                 <ScalarProperty Name="suppress_lsc" ColumnName="suppress_lsc" />
@@ -9116,17 +9116,17 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
                 <ScalarProperty Name="scbd_punctuation" ColumnName="scbd_punctuation" />
                 <ScalarProperty Name="flag_underachievers" ColumnName="flag_underachievers" />
                 <ScalarProperty Name="flag_overachievers" ColumnName="flag_overachievers" />
-                <ScalarProperty Name="meet_meetstyle" ColumnName="meet_meetstyle" />
+                <ScalarProperty Name="Meet_Meetstyle" ColumnName="Meet_Meetstyle" />
                 <ScalarProperty Name="enter_citizenof" ColumnName="enter_citizenof" />
-                <ScalarProperty Name="include_swimupsinteamscore" ColumnName="include_swimupsinteamscore" />
-                <ScalarProperty Name="foreign_getteampoints" ColumnName="foreign_getteampoints" />
+                <ScalarProperty Name="include_swimupsinTeamscore" ColumnName="include_swimupsinTeamscore" />
+                <ScalarProperty Name="foreign_getTeampoints" ColumnName="foreign_getTeampoints" />
                 <ScalarProperty Name="relmax_perath" ColumnName="relmax_perath" />
                 <ScalarProperty Name="indmax_perath" ColumnName="indmax_perath" />
                 <ScalarProperty Name="entrymax_total" ColumnName="entrymax_total" />
                 <ScalarProperty Name="reltopmany_awards" ColumnName="reltopmany_awards" />
                 <ScalarProperty Name="indtopmany_awards" ColumnName="indtopmany_awards" />
-                <ScalarProperty Name="relmaxscorers_perteam" ColumnName="relmaxscorers_perteam" />
-                <ScalarProperty Name="indmaxscorers_perteam" ColumnName="indmaxscorers_perteam" />
+                <ScalarProperty Name="relmaxscorers_perTeam" ColumnName="relmaxscorers_perTeam" />
+                <ScalarProperty Name="indmaxscorers_perTeam" ColumnName="indmaxscorers_perTeam" />
                 <ScalarProperty Name="pointsfor_underachievers" ColumnName="pointsfor_underachievers" />
                 <ScalarProperty Name="pointsfor_overachievers" ColumnName="pointsfor_overachievers" />
                 <ScalarProperty Name="pointsbasedon_seedtime" ColumnName="pointsbasedon_seedtime" />
@@ -9146,7 +9146,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
                 <ScalarProperty Name="Facility_Surcharge" ColumnName="Facility_Surcharge" />
                 <ScalarProperty Name="entryqual_faster" ColumnName="entryqual_faster" />
                 <ScalarProperty Name="open_senior_none" ColumnName="open_senior_none" />
-                <ScalarProperty Name="ucase_teams" ColumnName="ucase_teams" />
+                <ScalarProperty Name="ucase_Teams" ColumnName="ucase_Teams" />
                 <ScalarProperty Name="ucase_names" ColumnName="ucase_names" />
                 <ScalarProperty Name="show_initial" ColumnName="show_initial" />
                 <ScalarProperty Name="scbd_vendor" ColumnName="scbd_vendor" />
@@ -9155,8 +9155,8 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
                 <ScalarProperty Name="timer_port" ColumnName="timer_port" />
                 <ScalarProperty Name="masters_agegrpsskip" ColumnName="masters_agegrpsskip" />
                 <ScalarProperty Name="masters_bytimeonly" ColumnName="masters_bytimeonly" />
-                <ScalarProperty Name="team_oddlanes" ColumnName="team_oddlanes" />
-                <ScalarProperty Name="team_evenlanes" ColumnName="team_evenlanes" />
+                <ScalarProperty Name="Team_oddlanes" ColumnName="Team_oddlanes" />
+                <ScalarProperty Name="Team_evenlanes" ColumnName="Team_evenlanes" />
                 <ScalarProperty Name="strict_evenodd" ColumnName="strict_evenodd" />
                 <ScalarProperty Name="dual_evenodd" ColumnName="dual_evenodd" />
                 <ScalarProperty Name="seed_exhlast" ColumnName="seed_exhlast" />
@@ -9166,9 +9166,9 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
                 <ScalarProperty Name="foreign_infinal" ColumnName="foreign_infinal" />
                 <ScalarProperty Name="timedfinal_circleseed" ColumnName="timedfinal_circleseed" />
                 <ScalarProperty Name="prelimheats_circle" ColumnName="prelimheats_circle" />
-                <ScalarProperty Name="meet_numlanes" ColumnName="meet_numlanes" />
+                <ScalarProperty Name="Meet_numlanes" ColumnName="Meet_numlanes" />
                 <ScalarProperty Name="win_mm" ColumnName="win_mm" />
-                <ScalarProperty Name="Punct_teams" ColumnName="Punct_teams" />
+                <ScalarProperty Name="Punct_Teams" ColumnName="Punct_Teams" />
                 <ScalarProperty Name="Punct_names" ColumnName="Punct_names" />
                 <ScalarProperty Name="Lastname_first" ColumnName="Lastname_first" />
                 <ScalarProperty Name="Scores_afterevt" ColumnName="Scores_afterevt" />
@@ -9180,7 +9180,7 @@ advertencia 6002: La tabla o vista 'DB_9B1F4C_comentarios.dbo.Sheet1$' no tiene 
                 <ScalarProperty Name="Enter_birthdate" ColumnName="Enter_birthdate" />
                 <ScalarProperty Name="Enter_ages" ColumnName="Enter_ages" />
                 <ScalarProperty Name="Meet_course" ColumnName="Meet_course" />
-                <ScalarProperty Name="Meet_meettype" ColumnName="Meet_meettype" />
+                <ScalarProperty Name="Meet_Meettype" ColumnName="Meet_Meettype" />
                 <ScalarProperty Name="Meet_class" ColumnName="Meet_class" />
                 <ScalarProperty Name="Meet_idformat" ColumnName="Meet_idformat" />
                 <ScalarProperty Name="Meet_end" ColumnName="Meet_end" />

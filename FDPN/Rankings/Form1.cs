@@ -140,9 +140,9 @@ namespace Rankings
 
 
                         Resultados = await db.RESULTS.Where(x => x.PruebaId == item.PruebaId && x.Athlete1.Birth.HasValue &&
-                      x.Athlete1.Birth.Value.Year <= AnnoMaximo && x.Athlete1.Birth.Value.Year >= AnnoMinimo && x.MEET1.Start > FechaDesde 
-                      && x.MEET1.Start<FechaHasta &&
-                      x.Athlete1.Sex == sexo && x.MEET1.Course == piscina)
+                      x.Athlete1.Birth.Value.Year <= AnnoMaximo && x.Athlete1.Birth.Value.Year >= AnnoMinimo && x.Meet1.Start > FechaDesde 
+                      && x.Meet1.Start<FechaHasta &&
+                      x.Athlete1.Sex == sexo && x.Meet1.Course == piscina)
                             .OrderByDescending(x => x.PFina).Take(100).ToListAsync();
 
                    Filtrados=     Resultados.OrderByDescending(x=>x.PFina)
@@ -151,9 +151,9 @@ namespace Rankings
 
                         foreach (var resultado in Filtrados)
                         {
-                            if (resultado.TEAM1 == null)
+                            if (resultado.Team1 == null)
                             {
-                                resultado.TEAM1 = new TEAM
+                                resultado.Team1 = new Team
                                 {
                                     TName = "",
                                 };
@@ -172,8 +172,8 @@ namespace Rankings
                                     break;
                             }
                             Grid1.Rows.Add(ranking, resultado.Athlete1.First, resultado.Athlete1.Last, resultado.DISTANCE,
-                                resultado.STROKE, resultado.SCORE, resultado.PFina, resultado.Athlete1.Sex, resultado.MEET1.Course,
-                                resultado.Athlete1.Birth.Value.Year, resultado.MEET1.Start, resultado.TEAM1.TName, categoriaactual, edad);
+                                resultado.STROKE, resultado.SCORE, resultado.PFina, resultado.Athlete1.Sex, resultado.Meet1.Course,
+                                resultado.Athlete1.Birth.Value.Year, resultado.Meet1.Start, resultado.Team1.TName, categoriaactual, edad);
                             ranking++;
                         }
                     }

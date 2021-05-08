@@ -1,0 +1,108 @@
+﻿@model FDPN.ViewModels.Pcalendario.DetalleDeCursoViewModel
+@{
+    ViewBag.Title = "Detalle del Curso";
+    string path = "../content/img/cursos/";
+}
+
+
+<div class="row">
+   
+    <div class="col-md-6 col-sm-6">
+        <div class="tab_Banner_Curso">
+            <h3 class="title">Curso: @Model.calendario.PCurso.Nombre </h3>
+            <h4 class="main-price">Inicio: @Model.calendario.FechaInicio.ToString("dd/MM/yyyy")</h4>
+            <img class="img img-raised imagenBannerCurso" src="@Url.Content(path + Model.calendario.PCurso.Banner)">
+
+        </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+
+            <div id="accordion" role="tablist">
+                <div class="card card-collapse">
+                    <div class="card-header" role="tab" id="headingOne">
+                        <h5 class="mb-0">
+                            <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Dictado por: @Model.calendario.PCurso.PProfesor.PPersona.Nombre @Model.calendario.PCurso.PProfesor.PPersona.APaterno
+                                <i class="material-icons">keyboard_arrow_down</i>
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <p>@Model.calendario.PCurso.PProfesor.DetalleRapido</p>
+                            <img src="@Url.Content(path +@Model.calendario.PCurso.PProfesor.FotoProfesor)" class="img-raised  img-fluid imageProfesor">
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-collapse">
+                    <div class="card-header" role="tab" id="headingTwo">
+                        <h5 class="mb-0">
+                            <a data-toggle="collapse" href="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
+                                Objetivos
+                                <i class="material-icons">keyboard_arrow_down</i>
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapsetwo" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            @foreach (var item in Model.calendario.PCurso.PObjetivos)
+                            {
+                                <p>@item.Detalle</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-collapse">
+                    <div class="card-header" role="tab" id="headingTwo">
+                        <h5 class="mb-0">
+                            <a data-toggle="collapse" href="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
+                                Temas a dictarse
+                                <i class="material-icons">keyboard_arrow_down</i>
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapsetwo" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            @if (Model.calendario.PCurso.PTemas != null && Model.calendario.PCurso.PTemas.Count>0)
+                            {
+                                foreach (var item in Model.calendario.PCurso.PTemas)
+                                {
+                                    <p>@item.Detalle</p>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-collapse">
+                    <div class="card-header" role="tab" id="headingthree">
+                        <h5 class="mb-0">
+                            <a data-toggle="collapse" href="#collapsethree" aria-expanded="true" aria-controls="collapsethree">
+                                Horarios
+                                <i class="material-icons">keyboard_arrow_down</i>
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapsethree" class="collapse  show" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            <ul>
+                                @foreach (var item in Model.calendario.PCurso.PHorarios)
+                                {
+                                    <li>@item.Dia.ToString("dd/MM/yyyy") - de @item.HoraInicio.ToString("#.00") a @item.HoraFin.ToString("#.00") </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row pull-right">
+                <button class="btn btn-rose ">Quiero participar<i class="material-icons">shopping_cart</i></button>
+            </div>
+        </div>
+    </div>
+
+<div class="espaciadogrande"></div>

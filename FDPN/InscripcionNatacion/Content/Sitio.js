@@ -193,7 +193,7 @@ $(document).ready(function () { //Al inicio cuando se recarga la página de insc
   
         //alert(table.rows('.selected').data().length + ' row(s) selected');
         var afiliadoId = $(e.target).data('afiliado');
-        var MeetId = $(e.target).data('meet');
+        var MeetId = $(e.target).data('Meet');
             $.ajax({
                 url: '/Inscrito/SoloParaPostas',
                 type: 'GET',
@@ -214,7 +214,7 @@ $(document).ready(function () { //Al inicio cuando se recarga la página de insc
             type: 'GET',
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
-            data: { 'InscripcionId': InscripcionId, 'meetid': MeetId },
+            data: { 'InscripcionId': InscripcionId, 'Meetid': MeetId },
             async: false,
             success: function (result) {
                 MostrarMensaje(result);
@@ -479,7 +479,7 @@ $(document).ready(function () { //Al inicio cuando se recarga la página de insc
 
         //alert(table.rows('.selected').data().length + ' row(s) selected');
         var EntrenadorId = $(e.target).data('entrenadorid');
-        var MeetId = $(e.target).data('meetid');
+        var MeetId = $(e.target).data('Meetid');
         $.ajax({
             url: '/Entrenador/InscribirEntrenador',
             type: 'GET',
@@ -511,7 +511,7 @@ $(document).ready(function () { //Al inicio cuando se recarga la página de insc
 
         //alert(table.rows('.selected').data().length + ' row(s) selected');
         var EntrenadorId = $(e.target).data('entrenadorid');
-        var MeetId = $(e.target).data('meetid');
+        var MeetId = $(e.target).data('Meetid');
         $.ajax({
             url: '/Entrenador/RetirarEntrenador',
             type: 'GET',
@@ -615,7 +615,7 @@ $(document).ready(function () { //Al inicio cuando se recarga la página de insc
     //***************************exportar los delegados y entreandores *****************
     $(document).on("click", "#btnExportarDelegados", function (e)   
     {
-        var MeetId = $(e.target).data('meetid');
+        var MeetId = $(e.target).data('Meetid');
         $.ajax({
             url: '../Exportar/ExportarEntrenadoresyDelegados',
             type: 'POST',

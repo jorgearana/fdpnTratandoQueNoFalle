@@ -55,7 +55,7 @@ namespace jQuery_File_Upload.MVC5.Controllers
 
             var CurrentContext = HttpContext;
 
-            filesHelper.UploadAndShowResults(CurrentContext, resultList);
+            filesHelper.UploadAndShowRESULTS(CurrentContext, resultList);
             JsonFiles files = new JsonFiles(resultList);
             List<string> nombrefotos = Session["Fotos"] as List<string> ?? new List<string>();
 

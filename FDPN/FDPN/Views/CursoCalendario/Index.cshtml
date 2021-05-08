@@ -1,0 +1,53 @@
+﻿@model List<FDPN.Models.PCalendario>
+@{
+    ViewBag.Title = "Listado de cursos disponibles";
+    string path = "../content/img/cursos/";
+}
+
+
+<div class="section">
+    <div class="container">
+        <h2 class="section-title">Listado de cursos</h2>
+        <div class="row">
+           
+            <div class="col-md-12">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="card card-plain card-blog">
+                                <div class="card-header card-header-image">
+                                    <a href=@Url.Action("DetalleCurso", "CursoCalendario", new { @calendarioid = item.CalendarioId })>
+                                        <img class="img img-raised imagenPreviewBannerCurso" src="@Url.Content(path + item.PCurso.Banner)">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="card-category @item.PCurso.Disciplina.clase">
+
+                                        @item.PCurso.Disciplina.TipoDisciplina
+                                    </h6>
+                                    <h4 class="card-title">
+                                        <a href=@Url.Action("DetalleCurso", "CursoCalendarioController", new { @id = item.CursoId })>@item.PCurso.Nombre</a>
+                                    </h4>
+                                    <p class="card-description">
+                                        Inicio: @item.FechaInicio.ToString("dd/MM/yyyy")
+                                    </p>
+                                    <p class="card-description">
+                                        Dictado por: <strong>@item.PCurso.PProfesor.PPersona.Nombre   @item.PCurso.PProfesor.PPersona.APaterno</strong>
+                                        @item.PCurso.PProfesor.DetalleRapido
+
+                                    </p>
+                                    <a href=@Url.Action("DetalleCurso", "CursoCalendarioController",new { @calendarioid = item.CursoId })> Ver detalle del curso </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+        <br>
+      
+    </div>
+</div><!-- section -->

@@ -115,7 +115,7 @@ namespace FDPN.Controllers
             List<TorneoDestacado> destacados = db.TorneoDestacado.OrderByDescending(x => x.Meet).Take(5).ToList();
             int i = rnd.Next(1, destacados.Count);
             int Meettorneo = destacados[i].Meet;
-            MEET torneoAMostrar = db.MEET.Where(x => x.Meet1 == Meettorneo).FirstOrDefault();
+            Meet torneoAMostrar = db.Meet.Where(x => x.Meet1 == Meettorneo).FirstOrDefault();
             do
             {
 
@@ -139,7 +139,7 @@ namespace FDPN.Controllers
                         break;
 
                 }
-                //int meet = torneodestacado[i].Meet;
+                //int Meet = torneodestacado[i].Meet;
                 string sexo = "M";
                
 
@@ -149,13 +149,13 @@ namespace FDPN.Controllers
                     sexo = "F";
                 }
                 resultadomejor = db.RESULTS.Where(x => x.Athlete1.Sex == sexo && x.COURSE != "Y" && x.Athlete1.Age >= edadminima && 
-                x.Athlete1.Age <= edadmaxima && x.MEET == torneoAMostrar.Meet1).OrderByDescending(x => x.PFina).FirstOrDefault();
+                x.Athlete1.Age <= edadmaxima && x.Meet == torneoAMostrar.Meet1).OrderByDescending(x => x.PFina).FirstOrDefault();
 
 
                 if (resultadomejor == null || resultadomejor.PFina < 500)
                 {
                     iniciomes = iniciomes.AddMonths(-1);
-                    resultadomejor = db.RESULTS.Where(x => x.Athlete1.Sex == sexo && x.MEET1.Start > iniciomes && x.COURSE != "Y" 
+                    resultadomejor = db.RESULTS.Where(x => x.Athlete1.Sex == sexo && x.Meet1.Start > iniciomes && x.COURSE != "Y" 
                     && x.Athlete1.Age >= edadminima && x.Athlete1.Age <= edadmaxima).OrderByDescending(x => x.PFina).FirstOrDefault();
                 }
 
@@ -194,7 +194,7 @@ namespace FDPN.Controllers
         public PartialViewResult _PreviewCursos()
         {
             DateTime hoy = (DateTime.Now).AddDays(-7); /*Para tomar los eventos que vienen más adelante y una semana atrás*/
-            List<CursoCalentario> cursos = db.CursoCalentario.Where(x => x.Inicio > hoy).OrderBy(x => x.Inicio).Take(6).ToList();
+            List<PCalendario> cursos = db.PCalendario.Where(x => x.FechaInicio > hoy).OrderBy(x => x.FechaInicio).Take(6).ToList();
             return PartialView("_PreviewCursos", cursos);
         }
         public ActionResult _PreviewClubesAfiliados()
@@ -263,12 +263,6 @@ namespace FDPN.Controllers
             }
             return PartialView("_PreviewEventos", VM);
         }
-        public ActionResult _PreviewAcademia()
-        {
-           
-            List<Noticias> noticias = db.Noticias.Where(x => x.CategoriaNoticia.TipoNoticia == "Academia").OrderByDescending(x => x.NoticiaId).ToList();
-            return PartialView(noticias);
-        }
         public ActionResult _PreviewAfiliaciones()
         {
 
@@ -297,9 +291,9 @@ namespace FDPN.Controllers
 
         }
 
-        public ActionResult MostrarError(string mensaje)
+        public ActionResult MostrarError(List<string> errores)
         {
-            return View(mensaje);
+            return View(errores);
         }
     }
 }

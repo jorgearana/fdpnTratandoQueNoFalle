@@ -1,4 +1,4 @@
-﻿@model List<FDPN.Models.MEETMasters>
+﻿@model List<FDPN.Models.MeetMasters>
 
 
 <section class="site-homepage__section site-athletes">
@@ -27,7 +27,7 @@
             {
                 <tr>
 
-                    <td>@Html.ActionLink(@item.MName.ToUpper(), "ResultadosDeUnTorneo", "masters", new { @meetid = item.MeetId }, null)</td>
+                    <td>@Html.ActionLink(@item.MName.ToUpper(), "ResultadosDeUnTorneo", "masters", new { @MeetId = item.MeetId }, null)</td>
 
                     <td>@item.Start.ToString("dd/MMM/yyyy")</td>
                 </tr>

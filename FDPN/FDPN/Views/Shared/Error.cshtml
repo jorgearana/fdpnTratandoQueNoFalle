@@ -1,18 +1,40 @@
-﻿
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    Layout = "_Layout.cshtml";
+    ViewBag.Title = "Error";
+}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Error</title>
-</head>
-<body>
-    <div class="jumbotron">
-        <h1 class="display-4">Error presentado</h1>
-        <h2>Se ha presentado un error de comunicación con la base de datos.</h2>
-        <p>Esto puede originarse por mala conexión de red, un error en un datos de algún deportista o por un error de diseño.</p>
-        <h4>Por favor recargue la página otra vez. De continuar el error comunique a la FDPN.</h4>
-    </div>
-   
-</body>
-</html>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 ml-auto mr-auto">
+            <h2 class="title">Mensaje de error</h2>
+            <div class="col-md-8 ml-auto mr-auto">
+                <div class="alert alert-error">
+                    Se ha presentado un error de comunicación con la base de datos, por favor recargue la página.
+                </div>
+            </div>
+        </div>
+            <div class="col-md-8">
+                <div class="list-sfs-holder">
+
+                    @if (Model != null && HttpContext.Current.IsDebuggingEnabled)
+                    {
+                        <div>
+                            <p>
+                                <b>Exception:</b> @Model.Exception.Message<br />
+                                <b>Controller:</b> @Model.ControllerName<br />
+                                <b>Action:</b> @Model.ActionName
+                            </p>
+                            <div style="overflow:scroll">
+                                <pre>
+                    @Model.Exception.StackTrace
+                </pre>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+               
+         
+        </div>
+</div>

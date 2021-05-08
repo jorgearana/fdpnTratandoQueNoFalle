@@ -11,32 +11,39 @@
 
 <div class="container">
     <h2 class="title">@titulo</h2>
-    <table class="table">
+    <table class="table datatablareves">
         <thead>
             <tr>
                 <th>
                     Descipción
                 </th>
                 <th>
-                    Documento
+                    Categoría
                 </th>
+                <th>
+                    Disciplina
+                </th>
+
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-
+            <tr>
+                <td>
+                    <style display: none;> @item.Noticias.Fecha.ToString("yyyy/MM/dd")</style>
+                    <a href=@Url.Action( path + @item.Nombrefoto ) target="_blank">
                         @item.Noticias.Titulo
-                    </td>
-                    <td>
-                       
-                        <a href=@Url.Action( path + @item.Nombrefoto ) target="_blank">
-                            Ver documento
-                        </a>
-                    </td>
-                </tr>
+                    </a>
+                </td>
+                <td>
+                        @item.Noticias.CategoriaNoticia.Detalle
+                  
+                </td>
+                <td>
+                        @item.Noticias.Disciplina.TipoDisciplina
+                </td>
+            </tr>
             }
         </tbody>
     </table>

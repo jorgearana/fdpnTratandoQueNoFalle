@@ -183,9 +183,10 @@ namespace FDPN.Controllers
         public ActionResult PrintCalendario(int? disciplina)
         {
             int valor = disciplina ?? 0;
-            var report = new  ActionAsPdf("VersionImprimible", new { disciplina = valor })
+            var report = new ActionAsPdf("VersionImprimible", new { disciplina = valor })
             {
                 FileName = "CalendarioFDPN.pdf",
+                
                 PageOrientation = Rotativa.Options.Orientation.Landscape,
                 PageSize = Rotativa.Options.Size.A4,
                 CustomSwitches = "--disable-smart-shrinking",

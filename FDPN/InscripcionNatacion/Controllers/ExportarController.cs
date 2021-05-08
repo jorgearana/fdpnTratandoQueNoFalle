@@ -15,12 +15,13 @@ namespace InscripcionNatacion.Controllers
 {
     public class ExportarController : BASEController
     {
-       
-        Repository repository = new Repository();
+        ConvertirAPeru convertidor = new ConvertirAPeru();
+
+           Repository repository = new Repository();
         // GET: Exportar
-        public ActionResult ExportarHYV(int meetid)
+        public ActionResult ExportarHYV(int Meetid)
         {
-            CrearArchivo(meetid);
+            CrearArchivo(Meetid);
             return View();
         }
 
@@ -96,17 +97,17 @@ namespace InscripcionNatacion.Controllers
             }
         }
 
-        public ActionResult CrearArchivo(int meetid)
+        public ActionResult CrearArchivo(int Meetid)
         {
             using (MemoryStream memoryStream = new MemoryStream())
 
             {
-                Torneo torneo = db.Torneo.Find(meetid);
-                List<atletas> atletas = db.atletas.Where(x => x.Meetid == meetid).OrderBy(x => x.Team_no).ToList();
-                List<Eventos> eventos = db.Eventos.Where(x => x.MeetId == meetid).OrderBy(x => x.Event_ptr).ToList();
-                List<Entradas> entradas = db.Entradas.Where(x => x.MeetId == meetid).ToList();
-                List<Equipos> equipos = db.Equipos.Where(x => x.MeetId == meetid).ToList();
-                List<MultiEdad> multiedades = db.MultiEdad.Where(x => x.MeetId == meetid).ToList();
+                Torneo torneo = db.Torneo.Find(Meetid);
+                List<atletas> atletas = db.atletas.Where(x => x.Meetid == Meetid).OrderBy(x => x.Team_no).ToList();
+                List<Eventos> eventos = db.Eventos.Where(x => x.MeetId == Meetid).OrderBy(x => x.Event_ptr).ToList();
+                List<Entradas> entradas = db.Entradas.Where(x => x.MeetId == Meetid).ToList();
+                List<Equipos> equipos = db.Equipos.Where(x => x.MeetId == Meetid).ToList();
+                List<MultiEdad> multiedades = db.MultiEdad.Where(x => x.MeetId == Meetid).ToList();
 
 
                 string FilePath = "ARchivoHTY3.hy3";
@@ -126,7 +127,7 @@ namespace InscripcionNatacion.Controllers
 
                 foreach (Equipos equipo in equipos)
                 {
-                    if (atletas.Any(x=>x.TeamId  == equipo.TeamId && x.Meetid ==meetid)) 
+                    if (atletas.Any(x=>x.TeamId  == equipo.TeamId && x.Meetid ==Meetid)) 
                     { 
                     file.WriteLine(SwimTeamNameInformationC1(equipo));
                     file.WriteLine(SwimTeamAddressInformationC2(equipo));
@@ -241,14 +242,14 @@ namespace InscripcionNatacion.Controllers
 
         public string SwimTeamNameInformationC1(Equipos equipo)
         {
-            string teamAbbreviation = AgrandarString(equipo.Team_abbr, 5);
-            string teamName = AgrandarString(equipo.Team_name, 30);
-            string teamShort = AgrandarString(equipo.Team_short, 16);
+            string TeamAbbreviation = AgrandarString(equipo.Team_abbr, 5);
+            string TeamName = AgrandarString(equipo.Team_name, 30);
+            string TeamShort = AgrandarString(equipo.Team_short, 16);
             string LSC = AgrandarString(equipo.Team_lsc, 2);
-            string teamHead = AgrandarString(equipo.Team_head, 30);
-            string teamAsistant = AgrandarString(equipo.Team_asst, 30);
+            string TeamHead = AgrandarString(equipo.Team_head, 30);
+            string TeamAsistant = AgrandarString(equipo.Team_asst, 30);
             string resto = "   0  0      ";
-            string resultado = "C1" + teamAbbreviation + teamName + teamShort + LSC + teamHead + teamAsistant + resto;
+            string resultado = "C1" + TeamAbbreviation + TeamName + TeamShort + LSC + TeamHead + TeamAsistant + resto;
             resultado = EncontrarCheckSum(resultado);
             return resultado;
         }
@@ -474,22 +475,22 @@ namespace InscripcionNatacion.Controllers
             return PartialView();
         }
        
-        public ActionResult ExportarResumen(int meetid, int usuarioid)
+        public ActionResult ExportarResumen(int Meetid, int usuarioid)
         {
 
             Usuario usuario = db.Usuario.Find(usuarioid);
-            Equipos equipo = db.Equipos.Where(x => x.Team_abbr == usuario.Club.Iniciales && x.MeetId == meetid).FirstOrDefault();
-            Torneo torneo = db.Torneo.Find(meetid);
-            List<atletas> atletas = db.atletas.Where(x => x.Meetid == meetid && x.Team_no == equipo.Team_no)
+            Equipos equipo = db.Equipos.Where(x => x.Team_abbr == usuario.Club.Iniciales && x.MeetId == Meetid).FirstOrDefault();
+            Torneo torneo = db.Torneo.Find(Meetid);
+            List<atletas> atletas = db.atletas.Where(x => x.Meetid == Meetid && x.Team_no == equipo.Team_no)
                 .OrderBy(x => x.Last_name).ThenBy(x => x.First_name).ThenByDescending(x => x.Birth_date).ToList();
-            List<Eventos> eventos = db.Eventos.Where(x => x.MeetId == meetid).OrderBy(x => x.Event_ptr).ToList();
-            List<Entradas> entradas = db.Entradas.Where(x => x.MeetId == meetid).ToList();
+            List<Eventos> eventos = db.Eventos.Where(x => x.MeetId == Meetid).OrderBy(x => x.Event_ptr).ToList();
+            List<Entradas> entradas = db.Entradas.Where(x => x.MeetId == Meetid).ToList();
             List<Estilos> estilos = db.Estilos.ToList();
           
             ModelAExportar VM = new ModelAExportar
             {
-                entrenadorInscritos = db.EntrenadorInscrito.Where(x => x.MeetId == meetid && x.Entrenadores.Club.Iniciales == equipo.Team_abbr).ToList(),
-                delegados = db.Delegados.Where(x => x.Usuario.Club.Iniciales == equipo.Team_abbr && x.MeetId == meetid).ToList(),
+                entrenadorInscritos = db.EntrenadorInscrito.Where(x => x.MeetId == Meetid && x.Entrenadores.Club.Iniciales == equipo.Team_abbr).ToList(),
+                delegados = db.Delegados.Where(x => x.Usuario.Club.Iniciales == equipo.Team_abbr && x.MeetId == Meetid).ToList(),
                
         };
              VM.resumenentradas = new List<ResumenViewModel>();
@@ -525,16 +526,17 @@ namespace InscripcionNatacion.Controllers
                 VM.resumenentradas.Add(Nadador);
             }
             ViewBag.equipo = equipo.Team_name;
+            ViewBag.fecha = convertidor.ToPeru(DateTime.UtcNow);
             return View(VM);
         }
 
 
 
-        public ActionResult ImprimirResumen(int meetid)
+        public ActionResult ImprimirResumen(int Meetid)
         {
             if (!repository.validarUsuario()) return RedirectToAction("login", "home");
             Usuario usuario = Session["Usuario"] as Usuario;
-            var p = new ActionAsPdf("ExportarResumen", new { meetid = meetid, usuarioid = usuario.UsuarioID });
+            var p = new ActionAsPdf("ExportarResumen", new { Meetid = Meetid, usuarioid = usuario.UsuarioID });
             //{
             //    PageSize = Rotativa.Options.Size.A4,
             //    PageOrientation = Rotativa.Options.Orientation.Portrait,
@@ -546,10 +548,10 @@ namespace InscripcionNatacion.Controllers
             return p;
         }
 
-        public ActionResult PreviewResumen(int meetid)
+        public ActionResult PreviewResumen(int Meetid)
         {
             Usuario usuario = Session["Usuario"] as Usuario;
-            return RedirectToAction("ExportarResumen", new { meetid = meetid, usuarioid = usuario.UsuarioID });
+            return RedirectToAction("ExportarResumen", new { Meetid = Meetid, usuarioid = usuario.UsuarioID });
         }
 
         public string convertirSegundosATiempo(double? tiempo)
@@ -589,11 +591,11 @@ namespace InscripcionNatacion.Controllers
             return respuesta;
         }
 
-        public ActionResult ImprimirOtroResumen(int meetid)
+        public ActionResult ImprimirOtroResumen(int Meetid)
         {
             if (!repository.validarUsuario()) return RedirectToAction("login", "home");
             Usuario usuario = Session["Usuario"] as Usuario;
-            var p = new ActionAsPdf("ExportarOtroResumen", new { meetid = meetid, usuarioid = usuario.UsuarioID });
+            var p = new ActionAsPdf("ExportarOtroResumen", new { Meetid = Meetid, usuarioid = usuario.UsuarioID });
             //{
             //    PageSize = Rotativa.Options.Size.A4,
             //    PageOrientation = Rotativa.Options.Orientation.Portrait,
@@ -605,15 +607,15 @@ namespace InscripcionNatacion.Controllers
             return p;
         }
 
-        public ActionResult ExportarOtroResumen(int meetid, int usuarioid)
+        public ActionResult ExportarOtroResumen(int Meetid, int usuarioid)
         {
 
             Usuario usuario = db.Usuario.Find(usuarioid);
-            OtroEquipo equipo = db.OtroEquipo.Where(x => x.Team_abbr == usuario.Club.Iniciales && x.TorneoId == meetid).FirstOrDefault();
-            List<OtroEntradas> entradas = db.OtroEntradas.Where(x => x.TorneoId == meetid && x.OtroAtleta.TeamId == equipo.TeamId).OrderBy(x => x.Gorro).ToList();
+            OtroEquipo equipo = db.OtroEquipo.Where(x => x.Team_abbr == usuario.Club.Iniciales && x.TorneoId == Meetid).FirstOrDefault();
+            List<OtroEntradas> entradas = db.OtroEntradas.Where(x => x.TorneoId == Meetid && x.OtroAtleta.TeamId == equipo.TeamId).OrderBy(x => x.Gorro).ToList();
             var VM = entradas.GroupBy(x => x.EventoId);
             string nombreequipo = equipo.Team_name;
-            var nombretorneo = db.OtroTorneo.Where(x => x.TorneoId == meetid).Select(x => x.Nombre).FirstOrDefault();
+            var nombretorneo = db.OtroTorneo.Where(x => x.TorneoId == Meetid).Select(x => x.Nombre).FirstOrDefault();
             ViewBag.equipo = nombreequipo;
             ViewBag.Torneo = nombretorneo;
             return View(VM);

@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "ListarMasters";
     string MeetName = ViewBag.MeetName;
-    int meetid = ViewBag.meetid;
+    int Meetid = ViewBag.Meetid;
 }
 
 <h2>ListarMasters</h2>
@@ -32,7 +32,7 @@
                 <div class="ibox-content">
 
                     <div class="table-responsive" id="tablaListadoMasters">
-                        @Html.Action("GetYaInscritos", new { MeetId = meetid })
+                        @Html.Action("GetYaInscritos", new { MeetId = Meetid })
                     </div>
 
                 </div>

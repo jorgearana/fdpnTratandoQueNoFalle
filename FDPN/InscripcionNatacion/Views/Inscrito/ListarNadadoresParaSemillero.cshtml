@@ -94,7 +94,7 @@
                                                         {
                                                             @Html.ActionLink("Inscribir deportista", "ListarPruebasParaElNadador", "inscrito", new { MeetId = setup.Torneo.Meetid, afiliadoId = @item.afiliado.InscripcionId }, new { @class = "btn btn-warning" })
                                                             <li>
-                                                                <button class="Postas btn btn-danger" data-afiliado=@item.afiliado.InscripcionId data-meet="@setup.Torneo.Meetid">Inscribir solo para postas</button>
+                                                                <button class="Postas btn btn-danger" data-afiliado=@item.afiliado.InscripcionId data-Meet="@setup.Torneo.Meetid">Inscribir solo para postas</button>
                                                             </li>
                                                         }
                                                         else if (!item.TieneMulta && !item.TieneResultado)

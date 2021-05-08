@@ -9,7 +9,7 @@ namespace FDPN.ViewModels.Masters
     public class ResultadosDeUnaPruebaMastersViewModel
     {
         public Dictionary<CategoriasMasters, List<RESULTSMasters>> Resultados { get; set; }
-        public MEETMasters torneo { get; set; }
+        public MeetMasters torneo { get; set; }
         public Pruebas prueba { get; set; }
     }
     

@@ -12,7 +12,7 @@
             <h2 class="title">Resultados del torneo</h2>
             @if (@Model.resultadoFinales.Count > 0)
             {
-                <h4 class="title">@Model.resultadoFinales[0].MEET1.MName</h4>
+                <h4 class="title">@Model.resultadoFinales[0].Meet1.MName</h4>
             }
             else
             {
@@ -35,7 +35,7 @@
                 <div class="center">
                     <div class="espaciado"></div>
                     <div class="col-md-6 ml-auto mr-auto text-center">
-                        @Html.HiddenFor(model => model.meetid)
+                        @Html.HiddenFor(model => model.MeetId)
                         @Html.DropDownListFor(model => model.clubid, new SelectList(Model.EquiposParticipantes, "TeamId", "TName"), "Seleccione un club", new { @class = "form-control mr-sm-2" })
                     </div>
                         <input type="submit" value="Ver resultados" name="subscribe" class="btn btn-primary">
@@ -61,7 +61,7 @@
                 <div class="u-type--center">
                     <div class="espaciado"></div>
                     <div class="col-md-6 ml-auto mr-auto text-center">
-                        @Html.HiddenFor(model => model.meetid)
+                        @Html.HiddenFor(model => model.MeetId)
                         @Html.DropDownListFor(model => model.pruebaid, new SelectList(Model.pruebas, "Key", "Value.NombrePrueba"), "Escoja una prueba", new { @class = "form-control mr-sm-2" })
                     </div>
                         <input type="submit" value="Ver resultados" name="subscribe" class="btn btn-rose">

@@ -12,10 +12,10 @@ namespace InscripcionACurso.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class MEET
+    public partial class Meet
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MEET()
+        public Meet()
         {
             this.RESULTS = new HashSet<RESULTS>();
         }

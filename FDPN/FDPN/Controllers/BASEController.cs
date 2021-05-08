@@ -14,7 +14,9 @@ namespace FDPN.Controllers
 {
     public class BASEController : Controller
     {
-      public DB_9B1F4C_comentariosEntities db = new DB_9B1F4C_comentariosEntities();
+        
+        public DB_9B1F4C_FDPNEntities db = new DB_9B1F4C_FDPNEntities();
+       // public DB_9B1F4C_FDPNContext db = new DB_9B1F4C_FDPNContext();
         public ConvertirAPeru convertidor = new ConvertirAPeru();
 
 

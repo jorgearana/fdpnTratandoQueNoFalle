@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using FDPN.Models;
 
 namespace FDPN.ViewModels.Administrador
 {
@@ -9,7 +10,7 @@ namespace FDPN.ViewModels.Administrador
     {
         public int Nadadores{ get; set; }
         public int Participaciones { get; set; }
-        public Models.TEAM club { get; set; }
+        public Team club { get; set; }
 
     }
 }

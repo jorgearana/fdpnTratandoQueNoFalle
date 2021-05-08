@@ -14,7 +14,7 @@ namespace InscripcionACurso.Controllers
 {
     public class InscripcionController : Controller
     {
-        DB_9B1F4C_comentariosEntities db = new DB_9B1F4C_comentariosEntities();   
+        DB_9B1F4C_FDPNEntities db = new DB_9B1F4C_FDPNEntities();   
         // GET: Inscripcion
         public ActionResult Gracias()
         {
@@ -28,18 +28,18 @@ namespace InscripcionACurso.Controllers
         }
 
         // GET: Inscripcion/Create
-        public ActionResult Create(int meetid)
+        public ActionResult Create(int Meetid)
         {
-            Curso curso = db.Curso.Find(meetid);
+            Curso curso = db.Curso.Find(Meetid);
             if (curso.ParaAfiliados)
             {
-                return RedirectToAction("CreateParaAfiliados", new { meetid });
+                return RedirectToAction("CreateParaAfiliados", new { Meetid });
             }
             InscripcionViewModel VM = new InscripcionViewModel
             {
 
                 CursoParticipante = new CursoParticipante(),
-                curso = db.Curso.Find(meetid),
+                curso = db.Curso.Find(Meetid),
                 hacetiempo=DateTime.Now.AddYears(-10),
         };
             return View(VM);
@@ -240,11 +240,11 @@ namespace InscripcionACurso.Controllers
             return PartialView(VM);
         }
 
-        public ActionResult CreateParaAfiliados(int meetid)
+        public ActionResult CreateParaAfiliados(int Meetid)
         {
             ViewModelBuscarDNI VM = new ViewModelBuscarDNI
             {
-                curso = db.Curso.Find(meetid),
+                curso = db.Curso.Find(Meetid),
                 DNI = "",
             };
             return View(VM);

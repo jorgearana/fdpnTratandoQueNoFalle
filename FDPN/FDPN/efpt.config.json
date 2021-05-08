@@ -1,0 +1,512 @@
+﻿{
+  "CodeGenerationMode": 0,
+  //"ContextClassName": "DB_9B1F4C_comentariosEntities",
+  "ContextNamespace": null,
+  "DefaultDacpacSchema": null,
+  "FilterSchemas": false,
+  "IncludeConnectionString": false,
+  "ModelNamespace": null,
+  "OutputContextPath": null,
+  "OutputPath": "Models",
+  "ProceduresReturnList": false,
+  "ProjectRootNamespace": "FDPN",
+  "Schemas": null,
+  "SelectedHandlebarsLanguage": 0,
+  "SelectedToBeGenerated": 0,
+  "Tables": [
+    {
+      "Name": "[dbo].[Afiliacion]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Afiliado]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Alertas]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Antiguo]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Apagado]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Asociaciones]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[ATFDeportista]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[ATFExpediente]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Athlete]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[AthleteMasters]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[atletas]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Banners]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[BASETIMES]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Calendario]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[CambiosDNI]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[CategoriaNoticia]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Categorias]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[CategoriasMasters]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Club]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Comentario]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Comentarios]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[ConFechas]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Configuracion]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Contactos]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Curso]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[CursoAlumno]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[CursoBanner]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[CursoCalentario]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[CursoFotos]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[CursoHorario]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[CursoInscripcion]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[CursoObjetivos]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[CursoParticipante]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[CursoProfesor]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Delegados]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Directivos]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Disciplina]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Empresa]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Entradas]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Entrenadores]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[EntrenadorInscrito]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Equipos]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Estado]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Estilos]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Eventos]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Fotos]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[HistorialdeAfiliaciones]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[HistorialEntrenador]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[HistorialTraspasos]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Inscripciones]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[InscripcionResponsable]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Landing]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[MarcasMinimas]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Meet]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[MeetMasters]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Modals]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Multas]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[MultiEdad]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Noticias]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[OtroAtleta]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[OtroCategorias]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[OtroEntradas]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[OtroEquipo]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[OtroEventos]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[OtroGrupal]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[OtroResponsable]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[OtroSetupTorneo]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[OtroTorneo]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Pcalendario]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[PCurso]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Phorarios]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Piscinas]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[PoloEquipos]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[PoloFechas]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[PoloGoleadores]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[PoloGrupos]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[PoloJugadores]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[PoloPartidos]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[PoloPosicion]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[PoloPosicionFinal]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[PoloResultados]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[PoloRondas]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[PoloSetupTorneo]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[PoloTorneo]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Pprofesor]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Procesado]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Pruebas]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Ptemas]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Records]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[RecordsActuales]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[RecordsEdades]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[RecordsPruebas]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[RecordTipo]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[RESULTS]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[RESULTSMasters]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Rol]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Saltos]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Sesion]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SessionItem]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetupTorneo]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Suscritos]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[TagNames]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[TatoInformeAsistencias]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[TatoInformeEntrenador]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[TatoRealizacion]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[TatoSeleccionado]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[TatoSeriesEjemplo]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[tb_Suscritos]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Team]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[TeamMasters]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[TipoAfiliado]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[TipoTorneo]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Torneo]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[TorneoDestacado]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[TorneoDestacadoMasters]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Traspasos]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[TraspasosEnEspera]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Usuario]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Vivo]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Vouchers]",
+      "ObjectType": 0
+    }
+  ],
+  //"UiHint": "sql5100.DB_9B1F4C_FDPN.dbo",
+  "UseBoolPropertiesWithoutDefaultSql": false,
+  "UseDatabaseNames": false,
+  "UseDbContextSplitting": false,
+  "UseFluentApiOnly": true,
+  "UseHandleBars": false,
+  "UseInflector": false,
+  "UseLegacyPluralizer": false,
+  "UseNoConstructor": false,
+  "UseNoNavigations": false,
+  "UseNoObjectFilter": false,
+  "UseNodaTime": false,
+  "UseNullableReferences": false,
+  "UseSpatial": false
+}

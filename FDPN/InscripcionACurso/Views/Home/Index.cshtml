@@ -48,7 +48,7 @@
                             <form class="newsletter-signup" role="form">
                                 <div class="input-group">
                                     <span class="input-group-btn">
-                                        @Html.ActionLink("Inscríbete aquí", "Create", "inscripcion", new { meetid = Model[0].curso.CursoId }, new { @class = "btn btn-danger btn-submit" })
+                                        @Html.ActionLink("Inscríbete aquí", "Create", "inscripcion", new { Meetid = Model[0].curso.CursoId }, new { @class = "btn btn-danger btn-submit" })
                                     </span>
                                 </div><!-- /input-group -->
                                 <p class="newsletter-success"></p>
@@ -78,7 +78,7 @@
                     for (int i = 1; i < Model.Count; i++)
                     {
                         <p style="color:#417378"><i class="fas fa-arrow-alt-circle-right"></i> @Model[i].curso.Nombre.ToUpper() </p>
-                        <p>Iniciará el día @Model[i].curso.Inicio.ToString("dd MMMM yyyy") @Html.ActionLink("Inscríbite aquí", "Create", "inscripcion", new { meetid = Model[i].curso.CursoId }, new { @class = "btn btn-info" })</p>
+                        <p>Iniciará el día @Model[i].curso.Inicio.ToString("dd MMMM yyyy") @Html.ActionLink("Inscríbite aquí", "Create", "inscripcion", new { Meetid = Model[i].curso.CursoId }, new { @class = "btn btn-info" })</p>
                         if (Model[0].curso.ParaAfiliados)
                         {
                             <p class="danger"> Este evento es solo para deportistas afiliados o entrenadores inscritos en nuestra web de afiliaciones</p>

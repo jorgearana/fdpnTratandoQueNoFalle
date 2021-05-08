@@ -8,7 +8,7 @@ namespace FDPN.ViewModels.Resultados
 {
     public class resultadodelnadadorenuntorneoViewModel
     {
-        public MEET torneo  { get; set; }
+        public Meet torneo  { get; set; }
         public  Athlete atleta { get; set; }
         public List<RESULTS> resultados { get; set; }
         public Inscripciones Inscripciones { get; set; }

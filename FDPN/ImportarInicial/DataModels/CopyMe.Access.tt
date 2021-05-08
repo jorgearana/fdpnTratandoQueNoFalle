@@ -41,7 +41,7 @@
 	NamespaceName = "DataModels";
 
 	
-	LoadAccessMetadata(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=c:\swmeets7\swmeets5\DATABASEMEET.mdb;
+	LoadAccessMetadata(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=c:\swMeets7\swMeets5\DATABASEMeet.mdb;
          Jet OLEDB:Database Password=TeP69s)lAd_mW-(J_72u;");
 
 

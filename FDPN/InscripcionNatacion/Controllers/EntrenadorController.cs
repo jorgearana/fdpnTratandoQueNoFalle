@@ -131,7 +131,7 @@ namespace InscripcionNatacion.Controllers
         {
             Usuario usuario = Session["Usuario"] as Usuario;
             List<Delegados> delegados = db.Delegados.Where(x => x.UsuarioId == usuario.UsuarioID && x.MeetId == MeetId).ToList();
-            ViewBag.meetid = MeetId;
+            ViewBag.Meetid = MeetId;
             return PartialView(delegados);
         }
 
@@ -147,7 +147,7 @@ namespace InscripcionNatacion.Controllers
             };
             db.Delegados.Add(delegado);
             db.SaveChanges();
-            ViewBag.meetid = Meetid;
+            ViewBag.Meetid = Meetid;
             return Json("OK", JsonRequestBehavior.AllowGet);
         }
 

@@ -33,6 +33,24 @@
                 }
             }
         });
+    $(".datatablareves").DataTable({
+        "order": [[0, 'desc']],
+        pageLength: 25,
+        language: {
+            lengthMenu: "Mostrando _MENU_ registros por página",
+            zeroRecords: "No encontramos datos",
+            info: "Mostrando página _PAGE_ de _PAGES_",
+            infoEmpty: "Sin datos disponibles",
+            infoFiltered: "(filtrado de  _MAX_ registros totales)",
+            oPaginate: {
+                sFirst: "Primera página",
+                sLast: "Última página",
+                sNext: "Siguiente página",
+                sPrevious: "Página anterior"
+            }
+        }
+    });
+
        
 }),
     

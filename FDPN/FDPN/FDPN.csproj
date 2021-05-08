@@ -48,6 +48,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AngleSharp, Version=0.9.4.42449, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
+      <HintPath>..\packages\AngleSharp.0.9.4\lib\net45\AngleSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -92,15 +98,14 @@
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
+    </Reference>
     <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Bin\Rotativa.dll</HintPath>
+      <HintPath>..\packages\Rotativa.1.7.4-rc\lib\net45\Rotativa.dll</HintPath>
     </Reference>
     <Reference Include="Rotativa.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Rotativa.Core.2.0.0\lib\net45\Rotativa.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Rotativa.MVC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Rotativa.MVC.2.0.3\lib\net45\Rotativa.MVC.dll</HintPath>
+      <HintPath>..\packages\Rotativa.Core.2.0.2.1\lib\net45\Rotativa.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -185,11 +190,14 @@
     <Compile Include="Controllers\AdministradorController.cs" />
     <Compile Include="Controllers\BannersController.cs" />
     <Compile Include="Controllers\BASEController.cs" />
+    <Compile Include="Controllers\BorrarController.cs" />
     <Compile Include="Controllers\CalendariosController.cs" />
-    <Compile Include="Controllers\CalendarioController.cs" />
+    <Compile Include="Controllers\CursoCalendarioController.cs" />
     <Compile Include="Controllers\DirectorController.cs" />
     <Compile Include="Controllers\DisciplinasController.cs" />
+    <Compile Include="Controllers\AcademiaController.cs" />
     <Compile Include="Controllers\DocumentosController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IncripcionController.cs" />
@@ -204,386 +212,442 @@
     <Compile Include="Helpers\ConvertirAPeru.cs" />
     <Compile Include="Helpers\FilesHelper.cs" />
     <Compile Include="Helpers\ImageHandler.cs" />
-    <Content Include="App_Browsers\qt.browser" />
     <Compile Include="Models\Afiliacion.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Afiliado.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Alertas.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Antiguo.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Apagado.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Asociaciones.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ATFDeportista.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ATFExpediente.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Athlete.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AthleteMasters.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\atletas.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Banners.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BASETIMES.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Calendario.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CambiosDNI.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CategoriaNoticia.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Categorias.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CategoriasMasters.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChopiCategorias.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChopiClubes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChopiClubesParticipantes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChopiDeportistas.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChopiEstados.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChopiEstilos.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChopiEventos.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChopiInscripciones.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChopiOrganizador.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChopiPostas.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChopiPuntajes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChopiRoles.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChopiSexos.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChopiTorneo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Club.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Comentario.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Comentarios.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ConFechas.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Configuracion.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Contactos.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Curso.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CursoAlumno.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CursoBanner.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CursoCalentario.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CursoFotos.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CursoHorario.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CursoInscripcion.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CursoInscripcionPrograma.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CursoObjetivos.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CursoPago.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CursoParticipante.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CursoProfesor.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Delegados.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Directivos.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Disciplina.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Empresa.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entradas.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entrenadores.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EntrenadorInscrito.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Equipos.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Estado.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Estilos.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Eventos.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Fotos.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HistorialdeAfiliaciones.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HistorialEntrenador.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HistorialTraspasos.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Inscripciones.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\InscripcionResponsable.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Landing.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MarcasMinimas.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MEET.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    <Compile Include="Models\Meet.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MEETMasters.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    <Compile Include="Models\MeetMasters.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Metadata\AfiliadoMetaData.cs" />
     <Compile Include="Models\Metadata\DirectivoMetaData.cs" />
     <Compile Include="Models\Modals.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModellAfiliaciones.Context.cs">
+    <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModellAfiliaciones.Context.tt</DependentUpon>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModellAfiliaciones.cs">
+    <Compile Include="Models\Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModellAfiliaciones.Designer.cs">
+    <Compile Include="Models\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModellAfiliaciones.edmx</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Multas.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MultiEdad.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Noticias.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OtroAtleta.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OtroCategorias.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OtroEntradas.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OtroEquipo.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OtroEventos.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OtroGrupal.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OtroResponsable.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OtroSetupTorneo.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OtroTorneo.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PAlumno.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PCalendario.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PCurso.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PHorarios.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Piscinas.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PObjetivos.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PoloEquipos.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PoloFechas.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PoloGoleadores.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PoloGrupos.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PoloJugadores.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PoloPartidos.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PoloPosicion.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PoloPosicionFinal.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PoloResultados.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PoloRondas.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PoloSetupTorneo.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PoloTorneo.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PPersona.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PProfesor.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Procesado.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Pruebas.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PTemas.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Records.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RecordsActuales.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RecordsEdades.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RecordsPruebas.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RecordTipo.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RESULTS.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RESULTSMasters.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rol.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Saltos.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sesion.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SessionItem.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SetupTorneo.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Suscritos.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TagNames.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TatoInformeAsistencias.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TatoInformeEntrenador.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TatoRealizacion.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TatoSeleccionado.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TatoSeriesEjemplo.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tb_Suscritos.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TEAM.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    <Compile Include="Models\Team.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TEAMMasters.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+    <Compile Include="Models\TeamMasters.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoAfiliado.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoTorneo.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Torneo.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TorneoDestacado.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TorneoDestacadoMasters.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Traspasos.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TraspasosEnEspera.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Vivo.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Vouchers.cs">
-      <DependentUpon>ModellAfiliaciones.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Partial clases\InformeParcial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -594,6 +658,8 @@
     <Compile Include="ViewModels\Administrador\IngresoDatosViewModel.cs" />
     <Compile Include="ViewModels\Administrador\ResumenAnnoViewModel.cs" />
     <Compile Include="ViewModels\Calendario\NuevoCalendarioViewModel.cs" />
+    <Compile Include="ViewModels\CursoCalendario\DTOAlumno.cs" />
+    <Compile Include="ViewModels\CursoCalendario\FiltroCursoCalendarioViewModel.cs" />
     <Compile Include="ViewModels\Disciplinas\DisciplinaViewModel.cs" />
     <Compile Include="ViewModels\Documento\BasesViewModel.cs" />
     <Compile Include="ViewModels\Documento\formularioBusquedaViewModel.cs" />
@@ -661,9 +727,25 @@
     <Content Include="Content\Fonawesome\css\font-awesome.css" />
     <Content Include="Content\Fonawesome\css\font-awesome.min.css" />
     <Content Include="Content\Fonawesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\img\Cursos\borges.png" />
+    <Content Include="Content\img\Cursos\clavados.jpg" />
     <Content Include="Content\img\Cursos\curso1.jpg" />
     <Content Include="Content\img\Cursos\curso2.jpg" />
-    <Content Include="Content\img\Cursos\Faroy.jp.jpg" />
+    <Content Include="Content\img\Cursos\Cursopolo.png" />
+    <Content Include="Content\img\Cursos\Faroy.jpg" />
+    <Content Include="Content\img\Cursos\maura.jpg" />
+    <Content Include="Content\img\Cursos\natacion.jpg" />
+    <Content Include="Content\img\Cursos\polo.jpg" />
+    <Content Include="Content\img\Cursos\sincro.jpg" />
+    <Content Include="Content\img\Cursos\tino.png" />
+    <Content Include="Content\img\Fotos\2427712.jpg" />
+    <Content Include="Content\img\Fotos\ACADEMIATODOELAÑO24.jpeg" />
+    <Content Include="Content\img\Fotos\borges.png" />
+    <Content Include="Content\img\Fotos\faroy.jpg" />
+    <Content Include="Content\img\Fotos\HORARIOS2228.jpg" />
+    <Content Include="Content\img\Fotos\HORARIOS228.jpg" />
+    <Content Include="Content\img\Fotos\maura.jpg" />
+    <Content Include="Content\img\Fotos\tino.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\img\aguas.jpg" />
     <Content Include="Content\img\artistica.jpg" />
@@ -882,19 +964,33 @@
     <Content Include="Content\img\sort_asc.png" />
     <Content Include="Content\img\sort_both.png" />
     <Content Include="Content\img\sort_desc.png" />
-    <Content Include="Models\ModellAfiliaciones.Context.tt">
+    <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModellAfiliaciones.edmx</DependentUpon>
-      <LastGenOutput>ModellAfiliaciones.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ModellAfiliaciones.tt">
+    <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModellAfiliaciones.edmx</DependentUpon>
-      <LastGenOutput>ModellAfiliaciones.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Content Include="Rotativa\msvcp120.dll" />
-    <Content Include="Rotativa\msvcr120.dll" />
-    <Content Include="Rotativa\wkhtmltopdf.exe" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\msvcp120.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Rotativa\msvcr120.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Rotativa\wkhtmltoimage.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Rotativa\wkhtmltopdf.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Rotativa\wkhtmltox.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Views\Home\_PreviewCalendario.cshtml" />
     <Content Include="Views\Noticias\Eventos.cshtml" />
     <Content Include="Views\Home\_PreviewEnVivo.cshtml" />
@@ -999,13 +1095,6 @@
     <Content Include="Files\somefiles\FINA Scholarships for Athletes - Guidelines - 2017-18.pdf" />
     <Content Include="Files\somefiles\ING ARANA CORDINADOR GENERAL.docx" />
     <Content Include="Files\somefiles\LIC. LILIANA.docx" />
-    <EntityDeploy Include="Models\ModellAfiliaciones.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModellAfiliaciones.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\ModellAfiliaciones.edmx.diagram">
-      <DependentUpon>ModellAfiliaciones.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\js\Sitio.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1018,7 +1107,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
@@ -1095,7 +1183,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Uploads\" />
     <Folder Include="Views\BASE\" />
-    <Folder Include="Views\Cursos\" />
     <Folder Include="Views\Director\" />
     <Folder Include="Views\FileUpload\" />
     <Folder Include="Views\OtroTorneo\" />
@@ -1131,6 +1218,16 @@
     <Content Include="Content\Summernote\font\summernote.ttf" />
     <Content Include="Content\Summernote\font\summernote.woff" />
     <Content Include="Files\somefiles\Criterios de Seleccion Bolivarianos Copa Pacifico 2017.pdf" />
+    <Content Include="efpt.config.json" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="App_Browsers\qt.browser" />
+    <Content Include="Content\img\Fotos\bases artistica.pdf" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FDPN2.pubxml" />
@@ -1142,9 +1239,16 @@
     <Content Include="Views\Documentos\DetalleBusqueda.cshtml" />
     <Content Include="Views\Calendario\Index.cshtml" />
     <Content Include="Views\Calendario\DetalleCurso.cshtml" />
-    <Content Include="Views\Home\_PreviewAcademia.cshtml" />
+    <Content Include="Views\Academia\_PreviewAcademia.cshtml" />
     <Content Include="Views\Home\_PreviewAfiliaciones.cshtml" />
     <Content Include="Views\Home\MostrarError.cshtml" />
+    <Content Include="Views\CursoCalendario\Index.cshtml" />
+    <Content Include="Views\CursoCalendario\DetalleCurso.cshtml" />
+    <Content Include="Views\Shared\CustomErrorView.cshtml" />
+    <Content Include="Views\Borrar\Index.cshtml" />
+    <Content Include="Views\Error\Error.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Academia\Academia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -1171,7 +1275,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55334</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55334/</IISUrl>
+          <IISUrl>http://localhost:56334/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -1204,4 +1308,12 @@
   </Target>
   <Target Name="AfterBuild">
   </Target> -->
+  <Target Name="SpicNSpan" AfterTargets="Clean">
+    <RemoveDir Directories="$(OUTDIR)" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
 </Project>

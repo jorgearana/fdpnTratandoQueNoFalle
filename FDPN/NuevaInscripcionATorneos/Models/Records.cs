@@ -16,7 +16,7 @@ namespace NuevaInscripcionATorneos.Models
         public short? RecordDay { get; set; }
         public short? RecordYear { get; set; }
         public string RecordHolder { get; set; }
-        public string RecordHolderteam { get; set; }
+        public string RecordHolderTeam { get; set; }
         public string RelayNames { get; set; }
         public float? RecordTime { get; set; }
         public string RecordCourse { get; set; }

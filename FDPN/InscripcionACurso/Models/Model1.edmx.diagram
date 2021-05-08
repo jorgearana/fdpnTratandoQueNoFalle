@@ -51,8 +51,8 @@
         <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.InscripcionResponsable" Width="1.5" PointX="20.25" PointY="20.125" />
         <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Landing" Width="1.5" PointX="5.75" PointY="17.75" />
         <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.MarcasMinimas" Width="1.5" PointX="18" PointY="88.75" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.MEET" Width="1.5" PointX="0.75" PointY="10.875" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.MEETMasters" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Meet" Width="1.5" PointX="0.75" PointY="10.875" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.MeetMasters" Width="1.5" PointX="16.75" PointY="0.75" />
         <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Modals" Width="1.5" PointX="13.75" PointY="21.75" />
         <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Multas" Width="1.5" PointX="13.25" PointY="27.625" />
         <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.MultiEdad" Width="1.5" PointX="18" PointY="26.5" />
@@ -102,8 +102,8 @@
         <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TatoSeleccionado" Width="1.5" PointX="8.25" PointY="65.125" />
         <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TatoSeriesEjemplo" Width="1.5" PointX="9" PointY="18" />
         <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.tb_Suscritos" Width="1.5" PointX="22.75" PointY="24.75" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TEAM" Width="1.5" PointX="0.75" PointY="8.125" />
-        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TEAMMasters" Width="1.5" PointX="16.75" PointY="7.875" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Team" Width="1.5" PointX="0.75" PointY="8.125" />
+        <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TeamMasters" Width="1.5" PointX="16.75" PointY="7.875" />
         <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TipoAfiliado" Width="1.5" PointX="3.75" PointY="58.75" />
         <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.TipoTorneo" Width="1.5" PointX="20.75" PointY="52.875" />
         <EntityTypeShape EntityType="DB_9B1F4C_comentariosModel.Torneo" Width="1.5" PointX="15.75" PointY="26.5" />
@@ -175,8 +175,8 @@
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_Traspasos_Inscripciones" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_TraspasosEnEspera_Inscripciones" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_MarcasMinimas_Torneo" />
-        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_RESULTS_MEET" />
-        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_RESULTSMasters_MEETMasters" />
+        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_RESULTS_Meet" />
+        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_RESULTSMasters_MeetMasters" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_Multas_Usuario" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_MultiEdad_Torneo" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_OtroAtleta_OtroEquipo" />
@@ -211,8 +211,8 @@
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_RecordsActuales_RecordsEdades" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_RecordsActuales_RecordsPruebas" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_RecordsActuales_RecordTipo" />
-        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_RESULTS_TEAM" />
-        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_RESULTSMasters_TEAMMasters" />
+        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_RESULTS_Team" />
+        <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_RESULTSMasters_TeamMasters" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_Usuario_Rol" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_Sesion_Torneo" />
         <AssociationConnector Association="DB_9B1F4C_comentariosModel.FK_SessionItem_Torneo" />

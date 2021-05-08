@@ -438,21 +438,21 @@ namespace FDPN.Controllers
             DateTime primeroEnero = new DateTime(anno, 01, 01);
             List<ResumenAnnoViewModel> VM = new List<ViewModels.Administrador.ResumenAnnoViewModel>();
 
-            List<RESULTS> resultadosDelAnno = db.RESULTS.Where(x => x.MEET1.Start > primeroEnero && x.PLACE != 0).ToList();
+            List<RESULTS> resultadosDelAnno = db.RESULTS.Where(x => x.Meet1.Start > primeroEnero && x.PLACE != 0).ToList();
 
-            var resultadoporClub = resultadosDelAnno.GroupBy(x => x.TEAM).ToList();
+            var resultadoporClub = resultadosDelAnno.GroupBy(x => x.Team).ToList();
 
             foreach (var resultado in resultadoporClub)
             {
 
-                var club = db.TEAM.Where(x => x.Team1 == resultado.Key).FirstOrDefault();
-                var Nadadores = resultadosDelAnno.Where(x => x.TEAM == resultado.Key).GroupBy(x => x.ATHLETE);
+                var club = db.Team.Where(x => x.Team1 == resultado.Key).FirstOrDefault();
+                var Nadadores = resultadosDelAnno.Where(x => x.Team == resultado.Key).GroupBy(x => x.ATHLETE);
                 var cuenta = Nadadores.Count();
                 ResumenAnnoViewModel resumen = new ViewModels.Administrador.ResumenAnnoViewModel
                 {
-                    club = db.TEAM.Where(x => x.Team1 == resultado.Key).FirstOrDefault(),
-                    Nadadores = resultadosDelAnno.Where(x => x.TEAM == resultado.Key).GroupBy(x => x.ATHLETE).Count(),
-                    Participaciones = resultadosDelAnno.Where(x => x.TEAM == resultado.Key).GroupBy(x => x.MEET).Count(),
+                    club = db.Team.Where(x => x.Team1 == resultado.Key).FirstOrDefault(),
+                    Nadadores = resultadosDelAnno.Where(x => x.Team == resultado.Key).GroupBy(x => x.ATHLETE).Count(),
+                    Participaciones = resultadosDelAnno.Where(x => x.Team == resultado.Key).GroupBy(x => x.Meet).Count(),
 
                 };
             }

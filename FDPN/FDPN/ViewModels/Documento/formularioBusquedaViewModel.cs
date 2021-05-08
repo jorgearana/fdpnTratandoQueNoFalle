@@ -11,6 +11,7 @@ namespace FDPN.ViewModels.Documento
 
         public List<Noticias> Noticias { get; set; }
         public List<Fotos> Documentos { get; set; }
+        public List<Noticias> Otros { get; set; }
 
     }
 }

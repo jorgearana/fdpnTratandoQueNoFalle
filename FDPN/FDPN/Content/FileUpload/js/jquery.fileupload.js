@@ -1101,11 +1101,11 @@
                     }).fail(errorHandler);
                 },
                 readEntries = function () {
-                    dirReader.readEntries(function (results) {
-                        if (!results.length) {
+                    dirReader.readEntries(function (RESULTS) {
+                        if (!RESULTS.length) {
                             successHandler(entries);
                         } else {
-                            entries = entries.concat(results);
+                            entries = entries.concat(RESULTS);
                             readEntries();
                         }
                     }, errorHandler);

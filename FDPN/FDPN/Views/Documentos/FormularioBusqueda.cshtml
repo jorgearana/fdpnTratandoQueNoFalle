@@ -10,9 +10,9 @@
 
 
 <div class="container">
-    @if (Model.Documentos.Count > 0)
+    @if (Model.Documentos!= null && Model.Documentos.Count > 0)
     {
-    <h2 class="title">@Model.Documentos[0].Noticias.CategoriaNoticia.Detalle</h2>
+        <h2 class="title">Documentos</h2>
         <table class="table">
             <thead>
                 <tr>
@@ -25,18 +25,19 @@
                     <th>
                         Fecha
                     </th>
-                   
+
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model.Documentos)
                 {
+
                     <tr>
                         <td>
                             <a href=@Url.Action( path + @item.Nombrefoto ) target="_blank">
                                 @item.Noticias.Titulo
                             </a>
-                           
+
                         </td>
                         <td>
                             @item.Noticias.CategoriaNoticia.Detalle
@@ -44,14 +45,19 @@
                         <td>
                             @item.Noticias.Fecha.ToString("dd/MM/yyyy")
                         </td>
-                        
+
                     </tr>
                 }
             </tbody>
         </table>
 
     }
+
     <h2 class="title">Noticias</h2>
+    @if (Model.Noticias != null && Model.Documentos.Count >0)
+    {
+
+   
     <table class="table">
         <thead>
             <tr>
@@ -83,7 +89,7 @@
                         @item.Fecha.ToString("dd/MM/yyyy")
                     </td>
                     <td>
-                        @Html.ActionLink("Ver documento", "Noticia", "Documentos", new { id = item.NoticiaId }, new { @class = "btn btn-primary btn-sm", target = "_blank" })
+                        @Html.ActionLink("Ver noticia", "Noticia", "Documentos", new { id = item.NoticiaId }, new { @class = "btn btn-primary btn-sm", target = "_blank" })
                         @*<a href=@Url.Action(path + item.Nombrefoto) target="_blank">
                                 <i class="fa fa-download" aria-hidden="true"></i> Ver documento
                             </a>*@
@@ -92,4 +98,48 @@
             }
         </tbody>
     </table>
+    }
+            else
+            {
+                <p>No encontré noticias con estos datos</p>
+            }
+    @if (Model.Otros.Count > 0)
+    {
+        <h2 class="title">Otros documentos</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Descipción
+                    </th>
+                    <th>
+                        Tipo de documento
+                    </th>
+                    <th>
+                        Fecha
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Otros)
+                {
+
+                    <tr>
+                        <td>
+                            @Html.ActionLink(@item.Titulo, "Noticia", "Documentos", new { id = item.NoticiaId }, new { @target = "_blank" })
+                        </td>
+                        <td>
+                            @item.CategoriaNoticia.Detalle
+                        </td>
+                        <td>
+                            @item.Fecha.ToString("dd/MM/yyyy")
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    }
 </div>

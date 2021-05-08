@@ -92,14 +92,14 @@ namespace NuevaInscripcionATorneos.Data
         }
 
 
-        public async Task<List<Atletas>> GetYaInscritos(UsuarioState usuariostate, int meetid)
+        public async Task<List<Atletas>> GetYaInscritos(UsuarioState usuariostate, int Meetid)
         {
             
             Equipos equipo = await db.Equipos.Where(x => x.TeamAbbr == usuariostate.Iniciales).FirstOrDefaultAsync();
             List<Atletas> atletasDeEsteTorneo = new List<Atletas>();
             if (equipo != null)
             {
-               atletasDeEsteTorneo = await db.Atletas.Where(x => x.Meetid == meetid && x.TeamNo == equipo.TeamNo).ToListAsync();
+               atletasDeEsteTorneo = await db.Atletas.Where(x => x.Meetid == Meetid && x.TeamNo == equipo.TeamNo).ToListAsync();
             }
                      
             return atletasDeEsteTorneo;

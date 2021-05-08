@@ -295,6 +295,7 @@ namespace InscripcionNatacion.Controllers
             List<atletas> listado = db.atletas.Where(x => x.Team_no == equipo.Team_no).ToList();
             if (listado == null || listado.Count() == 0)
             {
+                //Aquí tengo que borrar todos los datos del equipo antes de esto, borrar entrenadores, responsables y demás 
                 db.Equipos.Remove(equipo);
                 db.SaveChanges();
             }
@@ -354,7 +355,7 @@ namespace InscripcionNatacion.Controllers
 
             //Todos los resultados del nadador en un año
             List<RESULTS> resultados =await db.RESULTS
-                       .Where(x => x.Athlete1.ID_NO == VM.afiliado.DNI && x.MEET1.Start > haceunanno && x.SCORE != "" && x.NT == 0)
+                       .Where(x => x.Athlete1.ID_NO == VM.afiliado.DNI && x.Meet1.Start > haceunanno && x.SCORE != "" && x.NT == 0)
                        .ToListAsync();
 
 
@@ -773,7 +774,7 @@ namespace InscripcionNatacion.Controllers
             // 3.- Luego buscar el torneo donde hizo la marca
             if (CumpleEnCurso == "L")
             {
-                NadadorAInscribir.torneo = resultadoenlarga.MEET1.MName;
+                NadadorAInscribir.torneo = resultadoenlarga.Meet1.MName;
                 NadadorAInscribir.tiempo = resultadoenlarga.SCORE;
                 NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
                 NadadorAInscribir.Cumple = true;
@@ -781,7 +782,7 @@ namespace InscripcionNatacion.Controllers
             }
             else if (CumpleEnCurso == "S")
             {
-                NadadorAInscribir.torneo = resultadoencorta.MEET1.MName;
+                NadadorAInscribir.torneo = resultadoencorta.Meet1.MName;
                 NadadorAInscribir.tiempo = resultadoencorta.SCORE;
                 NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
                 NadadorAInscribir.Cumple = true;
@@ -791,7 +792,7 @@ namespace InscripcionNatacion.Controllers
             {
                 if(NadadorAInscribir.MejorCursoDePiscina =="L")
                 {
-                    NadadorAInscribir.torneo = resultadoenlarga.MEET1.MName;
+                    NadadorAInscribir.torneo = resultadoenlarga.Meet1.MName;
                     NadadorAInscribir.tiempo = resultadoenlarga.SCORE;
                     NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
                     NadadorAInscribir.Cumple = false;
@@ -799,7 +800,7 @@ namespace InscripcionNatacion.Controllers
                 }
                 else if (NadadorAInscribir.MejorCursoDePiscina == "S")
                 {
-                    NadadorAInscribir.torneo = resultadoencorta.MEET1.MName;
+                    NadadorAInscribir.torneo = resultadoencorta.Meet1.MName;
                     NadadorAInscribir.tiempo = resultadoencorta.SCORE;
                     NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
                     NadadorAInscribir.Cumple = false;
@@ -838,7 +839,7 @@ namespace InscripcionNatacion.Controllers
             }
             else
             {
-                NadadorAInscribir.MMLarga = Marcas[0].tag_time ?? 0;
+                    NadadorAInscribir.MMLarga = 0;
             }
             Marcas = MarcasMinimasDelTorneo.
                 Where(x => x.tag_dist == evento.Event_dist && x.tag_stroke == evento.Event_stroke && x.tag_course == "S" && x.low_age <= edad && x.high_Age >= edad && x.tag_gender == evento.Event_gender && x.MeetId == evento.MeetId)
@@ -1069,7 +1070,7 @@ namespace InscripcionNatacion.Controllers
             };
             //Todos los resultados del nadador en un año
             List<RESULTS> resultados = db.RESULTS
-                       .Where(x => x.Athlete1.ID_NO == VM.afiliado.DNI && x.MEET1.Start > haceunanno && x.SCORE != "" && x.NT == 0)
+                       .Where(x => x.Athlete1.ID_NO == VM.afiliado.DNI && x.Meet1.Start > haceunanno && x.SCORE != "" && x.NT == 0)
                        .ToList();
 
             if (setup.Torneo.Meet_course == 1)
@@ -1192,10 +1193,10 @@ namespace InscripcionNatacion.Controllers
                     {
                         NadadorAInscribir.tiempo = resultado.SCORE;
                         NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
-                        NadadorAInscribir.torneo = resultado.MEET1.MName;
-                        if (resultado.MEET1.MName.Length > 20)
+                        NadadorAInscribir.torneo = resultado.Meet1.MName;
+                        if (resultado.Meet1.MName.Length > 20)
                         {
-                            NadadorAInscribir.torneo = resultado.MEET1.MName.Substring(0, 20);
+                            NadadorAInscribir.torneo = resultado.Meet1.MName.Substring(0, 20);
                         }
                         NadadorAInscribir.PiscinaDelTiempo = resultado.COURSE;
                         pruebasConMarca += 1;
@@ -1234,10 +1235,10 @@ namespace InscripcionNatacion.Controllers
                     {
                         NadadorAInscribir.tiempo = resultado.SCORE;
                         NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
-                        NadadorAInscribir.torneo = resultado.MEET1.MName;
-                        if (resultado.MEET1.MName.Length > 20)
+                        NadadorAInscribir.torneo = resultado.Meet1.MName;
+                        if (resultado.Meet1.MName.Length > 20)
                         {
-                            NadadorAInscribir.torneo = resultado.MEET1.MName.Substring(0, 20);
+                            NadadorAInscribir.torneo = resultado.Meet1.MName.Substring(0, 20);
                         }
                         NadadorAInscribir.PiscinaDelTiempo = resultado.COURSE;
                         NadadorAInscribir.Cumple = true;
@@ -1367,7 +1368,7 @@ namespace InscripcionNatacion.Controllers
             };
             //Todos los resultados del nadador en un año
             List<RESULTS> resultados = db.RESULTS
-                       .Where(x => x.Athlete1.ID_NO == VM.afiliado.DNI && x.MEET1.Start > haceunanno && x.SCORE != "")
+                       .Where(x => x.Athlete1.ID_NO == VM.afiliado.DNI && x.Meet1.Start > haceunanno && x.SCORE != "")
                        .ToList();
 
             if (torneo.Meet_course == 1)
@@ -1488,10 +1489,10 @@ namespace InscripcionNatacion.Controllers
                     {
                         NadadorAInscribir.tiempo = resultado.SCORE;
                         NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
-                        NadadorAInscribir.torneo = resultado.MEET1.MName;
-                        if (resultado.MEET1.MName.Length > 20)
+                        NadadorAInscribir.torneo = resultado.Meet1.MName;
+                        if (resultado.Meet1.MName.Length > 20)
                         {
-                            NadadorAInscribir.torneo = resultado.MEET1.MName.Substring(0, 20);
+                            NadadorAInscribir.torneo = resultado.Meet1.MName.Substring(0, 20);
                         }
                         NadadorAInscribir.PiscinaDelTiempo = resultado.COURSE;
                         pruebasConMarca += 1;
@@ -1531,10 +1532,10 @@ namespace InscripcionNatacion.Controllers
 
                         NadadorAInscribir.tiempo = resultado.SCORE;
                         NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
-                        NadadorAInscribir.torneo = resultado.MEET1.MName;
-                        if (resultado.MEET1.MName.Length > 20)
+                        NadadorAInscribir.torneo = resultado.Meet1.MName;
+                        if (resultado.Meet1.MName.Length > 20)
                         {
-                            NadadorAInscribir.torneo = resultado.MEET1.MName.Substring(0, 20);
+                            NadadorAInscribir.torneo = resultado.Meet1.MName.Substring(0, 20);
                         }
                         NadadorAInscribir.PiscinaDelTiempo = resultado.COURSE;
                         NadadorAInscribir.Cumple = false;
@@ -1723,10 +1724,10 @@ namespace InscripcionNatacion.Controllers
 
                     NadadorAInscribir.tiempo = resultado.SCORE;
                     NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
-                    NadadorAInscribir.torneo = resultado.MEET1.MName;
-                    if (resultado.MEET1.MName.Length > 20)
+                    NadadorAInscribir.torneo = resultado.Meet1.MName;
+                    if (resultado.Meet1.MName.Length > 20)
                     {
-                        NadadorAInscribir.torneo = resultado.MEET1.MName.Substring(0, 20);
+                        NadadorAInscribir.torneo = resultado.Meet1.MName.Substring(0, 20);
                     }
                     NadadorAInscribir.PiscinaDelTiempo = resultado.COURSE;
                     NadadorAInscribir.Cumple = false;
@@ -1740,7 +1741,7 @@ namespace InscripcionNatacion.Controllers
                 {
                     SCORE = "0.00",
                     COURSE = "-",
-                    MEET1 = new MEET
+                    Meet1 = new Meet
                     {
                         MName = "Sin participación",
                     },
@@ -1758,10 +1759,10 @@ namespace InscripcionNatacion.Controllers
             {
                 NadadorAInscribir.tiempo = resultado.SCORE;
                 NadadorAInscribir.segundos = ConvertirASegundos(NadadorAInscribir.tiempo);
-                NadadorAInscribir.torneo = resultado.MEET1.MName;
-                if (resultado.MEET1.MName.Length > 20)
+                NadadorAInscribir.torneo = resultado.Meet1.MName;
+                if (resultado.Meet1.MName.Length > 20)
                 {
-                    NadadorAInscribir.torneo = resultado.MEET1.MName.Substring(0, 20);
+                    NadadorAInscribir.torneo = resultado.Meet1.MName.Substring(0, 20);
                 }
                 NadadorAInscribir.PiscinaDelTiempo = resultado.COURSE;
             }
@@ -1851,15 +1852,15 @@ namespace InscripcionNatacion.Controllers
         }
 
         [HttpGet]
-        public JsonResult BorrarInscripciones(int InscripcionId, int meetid)
+        public JsonResult BorrarInscripciones(int InscripcionId, int Meetid)
         {
             Inscripciones inscripcion = db.Inscripciones.Where(x => x.InscripcionId == InscripcionId).FirstOrDefault();
-            atletas atleta = db.atletas.Where(x => x.Reg_no == inscripcion.DNI && x.Meetid == meetid).FirstOrDefault();
+            atletas atleta = db.atletas.Where(x => x.Reg_no == inscripcion.DNI && x.Meetid == Meetid).FirstOrDefault();
             if (atleta == null)
             {
                 return Json("No se realizó ninguna acción, Presione regresar al listado", JsonRequestBehavior.AllowGet);
             }
-            List<Entradas> entradas = db.Entradas.Where(x => x.Ath_no == atleta.Ath_no && x.MeetId == meetid).ToList();
+            List<Entradas> entradas = db.Entradas.Where(x => x.Ath_no == atleta.Ath_no && x.MeetId == Meetid).ToList();
             foreach (Entradas entrada in entradas)
             {
                 db.Entradas.Remove(entrada);
@@ -2020,7 +2021,7 @@ namespace InscripcionNatacion.Controllers
                 {
                     NadadorAInscribir.segundos = larga;
                     NadadorAInscribir.tiempo = resultadoenlarga.SCORE;
-                    NadadorAInscribir.torneo = resultadoenlarga.MEET1.MName;
+                    NadadorAInscribir.torneo = resultadoenlarga.Meet1.MName;
                     NadadorAInscribir.PiscinaDelTiempo = "L";
                 }
             }
@@ -2031,7 +2032,7 @@ namespace InscripcionNatacion.Controllers
                 {
                     NadadorAInscribir.segundos = corta;
                     NadadorAInscribir.tiempo = resultadoencorta.SCORE;
-                    NadadorAInscribir.torneo = resultadoencorta.MEET1.MName;
+                    NadadorAInscribir.torneo = resultadoencorta.Meet1.MName;
                     NadadorAInscribir.PiscinaDelTiempo = "S";
                 }
             }
@@ -2039,7 +2040,7 @@ namespace InscripcionNatacion.Controllers
             {
                 NadadorAInscribir.segundos = corta;
                 NadadorAInscribir.tiempo = resultadoencorta.SCORE;
-                NadadorAInscribir.torneo = resultadoencorta.MEET1.MName;
+                NadadorAInscribir.torneo = resultadoencorta.Meet1.MName;
                 NadadorAInscribir.PiscinaDelTiempo = "S";
 
 
@@ -2049,7 +2050,7 @@ namespace InscripcionNatacion.Controllers
 
                 NadadorAInscribir.segundos = larga;
                 NadadorAInscribir.tiempo = resultadoenlarga.SCORE;
-                NadadorAInscribir.torneo = resultadoenlarga.MEET1.MName;
+                NadadorAInscribir.torneo = resultadoenlarga.Meet1.MName;
                 NadadorAInscribir.PiscinaDelTiempo = "L";
 
             }
@@ -2059,14 +2060,14 @@ namespace InscripcionNatacion.Controllers
                 {
                     NadadorAInscribir.segundos = larga;
                     NadadorAInscribir.tiempo = resultadoenlarga.SCORE;
-                    NadadorAInscribir.torneo = resultadoenlarga.MEET1.MName;
+                    NadadorAInscribir.torneo = resultadoenlarga.Meet1.MName;
                     NadadorAInscribir.PiscinaDelTiempo = "L";
                 }
                 else
                 {
                     NadadorAInscribir.segundos = corta;
                     NadadorAInscribir.tiempo = resultadoencorta.SCORE;
-                    NadadorAInscribir.torneo = resultadoencorta.MEET1.MName;
+                    NadadorAInscribir.torneo = resultadoencorta.Meet1.MName;
                     NadadorAInscribir.PiscinaDelTiempo = "S";
                 }
             }

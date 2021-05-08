@@ -7,16 +7,18 @@ using System.Web.Mvc;
 using FDPN.ViewModels.Documento;
 using FDPN.ViewModels.Home;
 using FDPN.ViewModels.Noticia;
+using MoreLinq;
 
 namespace FDPN.Controllers
 {
+   
     public class DocumentosController : BASEController
     {
-             // GET: Documentos
-
+       
+      
         public ActionResult ListadoDocumentos(int categoriaid, string searchString)
         {
-            CategoriaNoticia categoria = db.CategoriaNoticia.FirstOrDefault(x=>x.CategoriaId == categoriaid);
+            CategoriaNoticia categoria = db.CategoriaNoticia.FirstOrDefault(x => x.CategoriaId == categoriaid);
             var query = db.Fotos.Where(x => x.Noticias.CategoriaId == categoriaid).OrderByDescending(x => x.Noticias.Fecha).Take(100).AsQueryable();
             if (searchString != null)
             {
@@ -52,25 +54,70 @@ namespace FDPN.Controllers
             }
             return View(VM);
 
-           
+
         }
 
         public ActionResult FormularioBusqueda(string searchString)
         {
-            formularioBusquedaViewModel VM = new formularioBusquedaViewModel
-            {
-                Noticias = db.Noticias
-                .Where(x => (x.Titulo.Contains(searchString) || x.Corta.Contains(searchString) || x.Larga.Contains(searchString)) && x.CategoriaId ==1)
-                .OrderByDescending(x => x.Fecha).Take(50).ToList(),
-                Documentos = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.Detalle.Contains(searchString))
-                .OrderByDescending(x => x.Noticias.Fecha).Take(50).ToList()
-            };
+
+            formularioBusquedaViewModel VM = new formularioBusquedaViewModel();
+          
+            //try
+            //{
+
+
+                if (searchString != null)
+                {
+                    List<string> busqueda = searchString.Split(' ').ToList();
+
+                    busqueda.RemoveAll(BuscarPalabrasQueNoSeBuscan);
+
+                
+
+                    VM.Noticias = db.Noticias.Where(r =>
+                   ( busqueda.Any(s => r.Titulo.Contains(s)) ||
+                    busqueda.Any(s => r.Larga.Contains(s)) ||
+                    busqueda.Any(s => r.Corta.Contains(s)) ) &&
+                    r.CategoriaId == 1).OrderByDescending(x => x.Fecha).Take(50).ToList();
+
+
+
+                    VM.Documentos = db.Fotos.Where(r =>
+                   (busqueda.Any(s => r.Noticias.Titulo.Contains(s)) ||
+                    busqueda.Any(s => r.Noticias.Larga.Contains(s)) ||
+                    busqueda.Any(s => r.Noticias.Corta.Contains(s))) &&
+                    r.Noticias.CategoriaId != 1)
+                        .DistinctBy(x => x.NoticiaId).OrderByDescending(x => x.Noticias.NoticiaId).Take(50).ToList();
+
+
+                   
+                    VM.Otros = db.Noticias.Where(x=> busqueda.Any(b=>x.CategoriaNoticia.Detalle.Contains(b)))
+                        .OrderByDescending(x => x.Fecha).Take(50).ToList();
+
+                }
+            //}
+            //catch (Exception ex)
+            //{
+            //    List<string> errores = new List<string> { ex.Message };
+            //    if (ex.InnerException != null)
+            //    {
+            //        errores.Add(ex.InnerException.Message);
+            //    }
+            //    return RedirectToAction("MostrarError", "Home", new { errores });
+            //}
             return View(VM);
         }
+        private static bool BuscarPalabrasQueNoSeBuscan(String s)
+        {
+            List<string> PalabrasQueNoSeBuscan = new List<string> { "de", "el", "la", "los", "las", "tu", "mi", "su", "yo", "del", "y", "que" };
+            var resultado = PalabrasQueNoSeBuscan.Contains(s);
+            return resultado;
+        }
+
         public ActionResult BusquedaNoticia(string searchString)
         {
             var query = db.Noticias
-                .Where(x => x.Titulo.Contains(searchString) || x.Corta.Contains(searchString) || x.Larga.Contains(searchString) && x.CategoriaId==1)
+                .Where(x => x.Titulo.Contains(searchString) || x.Corta.Contains(searchString) || x.Larga.Contains(searchString) && x.CategoriaId == 1)
                 .OrderByDescending(x => x.Fecha).Take(50).ToList();
             return View(query);
         }
@@ -80,7 +127,7 @@ namespace FDPN.Controllers
             DetalleNoticiaViewModel VM = new DetalleNoticiaViewModel
             {
                 noticia = db.Noticias.Find(id),
-                fotos = db.Fotos.Where(x => x.NoticiaId == id).OrderBy(x=>x.FotoId).ToList(),
+                fotos = db.Fotos.Where(x => x.NoticiaId == id).OrderBy(x => x.FotoId).ToList(),
             };
             return View(VM);
 
@@ -92,14 +139,14 @@ namespace FDPN.Controllers
             return View(noticia);
         }
 
-        #region esto se va a borrar
-     
+      
+
 
         public ActionResult Subvenciones(string searchString)
         {
             var query = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "Subvencion").OrderBy(x => x.Noticias.Fecha).AsQueryable();
 
-            if(searchString != null)
+            if (searchString != null)
             {
                 query = query.Where(x => x.Noticias.Titulo.Contains(searchString));
             }
@@ -137,7 +184,7 @@ namespace FDPN.Controllers
 
         public ActionResult MarcasMinimas(string searchString)
         {
-            var query = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "MarcasMinimas" ).OrderBy(x => x.Noticias.Fecha).AsQueryable();
+            var query = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "MarcasMinimas").OrderBy(x => x.Noticias.Fecha).AsQueryable();
 
             if (searchString != null)
             {
@@ -150,7 +197,7 @@ namespace FDPN.Controllers
         }
         public ActionResult Marcasclasificatorias(string searchString)
         {
-            var query = db.Fotos.Where(x =>  x.Noticias.CategoriaNoticia.TipoNoticia == "MarcasClasificatorias").OrderBy(x => x.Noticias.Fecha).AsQueryable();
+            var query = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "MarcasClasificatorias").OrderBy(x => x.Noticias.Fecha).AsQueryable();
 
             if (searchString != null)
             {
@@ -162,7 +209,7 @@ namespace FDPN.Controllers
             return View(listado);
         }
 
-        
+
         public ActionResult Comunicados(string searchString)
         {
             var query = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "Comunicado").OrderBy(x => x.Noticias.Fecha).AsQueryable();
@@ -224,12 +271,12 @@ namespace FDPN.Controllers
                 fotos = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "Base").OrderBy(x => x.Noticias.Fecha).ToList(),
                 disciplinas = db.Disciplina.ToList(),
             };
-            
+
             return View(VM);
         }
 
         [HttpPost]
-        public ActionResult Bases( BasesViewModel modelo)
+        public ActionResult Bases(BasesViewModel modelo)
         {
             var query = db.Fotos.Where(x => x.Noticias.CategoriaNoticia.TipoNoticia == "Base").OrderBy(x => x.Noticias.Fecha).AsQueryable();
 
@@ -243,8 +290,8 @@ namespace FDPN.Controllers
                 fotos = query.ToList(),
                 disciplinas = db.Disciplina.ToList(),
             };
-           
-        
+
+
 
             return View(VM);
         }
@@ -305,8 +352,8 @@ namespace FDPN.Controllers
             }
             query = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Resultado").OrderByDescending(x => x.Fecha).Take(100);
 
-           var VM = query.OrderByDescending(x=>x.Fecha).GroupBy(x => x.Fecha.Year).OrderByDescending(x=>x.Key).ToList();
-           
+            var VM = query.OrderByDescending(x => x.Fecha).GroupBy(x => x.Fecha.Year).OrderByDescending(x => x.Key).ToList();
+
             return View(VM);
         }
 
@@ -328,9 +375,9 @@ namespace FDPN.Controllers
 
         public ActionResult AfiliarClub()
         {
-            
+
             return View();
         }
-        #endregion
+       
     }
 }

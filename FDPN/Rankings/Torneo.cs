@@ -38,7 +38,7 @@ namespace Rankings
         public Nullable<System.DateTime> Meet_end { get; set; }
         public Nullable<short> Meet_idformat { get; set; }
         public Nullable<short> Meet_class { get; set; }
-        public Nullable<short> Meet_meettype { get; set; }
+        public Nullable<short> Meet_Meettype { get; set; }
         public Nullable<short> Meet_course { get; set; }
         public bool Enter_ages { get; set; }
         public bool Enter_birthdate { get; set; }
@@ -50,9 +50,9 @@ namespace Rankings
         public bool Scores_afterevt { get; set; }
         public bool Lastname_first { get; set; }
         public bool Punct_names { get; set; }
-        public bool Punct_teams { get; set; }
+        public bool Punct_Teams { get; set; }
         public bool win_mm { get; set; }
-        public Nullable<short> meet_numlanes { get; set; }
+        public Nullable<short> Meet_numlanes { get; set; }
         public Nullable<short> prelimheats_circle { get; set; }
         public bool timedfinal_circleseed { get; set; }
         public bool foreign_infinal { get; set; }
@@ -62,8 +62,8 @@ namespace Rankings
         public bool seed_exhlast { get; set; }
         public bool dual_evenodd { get; set; }
         public bool strict_evenodd { get; set; }
-        public Nullable<int> team_evenlanes { get; set; }
-        public Nullable<int> team_oddlanes { get; set; }
+        public Nullable<int> Team_evenlanes { get; set; }
+        public Nullable<int> Team_oddlanes { get; set; }
         public bool masters_bytimeonly { get; set; }
         public Nullable<short> masters_agegrpsskip { get; set; }
         public Nullable<short> timer_port { get; set; }
@@ -72,7 +72,7 @@ namespace Rankings
         public string scbd_vendor { get; set; }
         public bool show_initial { get; set; }
         public bool ucase_names { get; set; }
-        public bool ucase_teams { get; set; }
+        public bool ucase_Teams { get; set; }
         public string open_senior_none { get; set; }
         public bool entryqual_faster { get; set; }
         public Nullable<decimal> Facility_Surcharge { get; set; }
@@ -92,17 +92,17 @@ namespace Rankings
         public bool pointsbasedon_seedtime { get; set; }
         public bool pointsfor_overachievers { get; set; }
         public bool pointsfor_underachievers { get; set; }
-        public Nullable<short> indmaxscorers_perteam { get; set; }
-        public Nullable<short> relmaxscorers_perteam { get; set; }
+        public Nullable<short> indmaxscorers_perTeam { get; set; }
+        public Nullable<short> relmaxscorers_perTeam { get; set; }
         public Nullable<short> indtopmany_awards { get; set; }
         public Nullable<short> reltopmany_awards { get; set; }
         public Nullable<short> entrymax_total { get; set; }
         public Nullable<short> indmax_perath { get; set; }
         public Nullable<short> relmax_perath { get; set; }
-        public bool foreign_getteampoints { get; set; }
-        public bool include_swimupsinteamscore { get; set; }
+        public bool foreign_getTeampoints { get; set; }
+        public bool include_swimupsinTeamscore { get; set; }
         public bool enter_citizenof { get; set; }
-        public Nullable<short> meet_meetstyle { get; set; }
+        public Nullable<short> Meet_Meetstyle { get; set; }
         public bool flag_overachievers { get; set; }
         public bool flag_underachievers { get; set; }
         public Nullable<short> scbd_punctuation { get; set; }
@@ -124,7 +124,7 @@ namespace Rankings
         public bool suppress_lsc { get; set; }
         public bool showathlete_status { get; set; }
         public Nullable<short> open_lowage { get; set; }
-        public bool useeventsex_teamscore { get; set; }
+        public bool useeventsex_Teamscore { get; set; }
         public bool suppress_smallx { get; set; }
         public bool score_Arelayonly { get; set; }
         public bool thirteenandover_assenior { get; set; }
@@ -137,7 +137,7 @@ namespace Rankings
         public bool countrelay_alt { get; set; }
         public bool UseNonConforming_PoolFactor { get; set; }
         public Nullable<float> NonConforming_PoolFactor { get; set; }
-        public string apnews_team { get; set; }
+        public string apnews_Team { get; set; }
         public Nullable<float> PointsAwarded_ForDQ { get; set; }
         public Nullable<float> PointsAwarded_ForScratch { get; set; }
         public Nullable<float> PointsAwarded_ForNT { get; set; }
@@ -163,22 +163,22 @@ namespace Rankings
         public string FlatHtml_Dir { get; set; }
         public string APNews_Dir { get; set; }
         public bool AllowSameEvent_DupRelayNames { get; set; }
-        public Nullable<int> dualteam_lane1 { get; set; }
-        public Nullable<int> dualteam_lane2 { get; set; }
-        public Nullable<int> dualteam_lane3 { get; set; }
-        public Nullable<int> dualteam_lane4 { get; set; }
-        public Nullable<int> dualteam_lane5 { get; set; }
-        public Nullable<int> dualteam_lane6 { get; set; }
-        public Nullable<int> dualteam_lane7 { get; set; }
-        public Nullable<int> dualteam_lane8 { get; set; }
-        public Nullable<int> dualteam_lane9 { get; set; }
-        public Nullable<int> dualteam_lane10 { get; set; }
+        public Nullable<int> dualTeam_lane1 { get; set; }
+        public Nullable<int> dualTeam_lane2 { get; set; }
+        public Nullable<int> dualTeam_lane3 { get; set; }
+        public Nullable<int> dualTeam_lane4 { get; set; }
+        public Nullable<int> dualTeam_lane5 { get; set; }
+        public Nullable<int> dualTeam_lane6 { get; set; }
+        public Nullable<int> dualTeam_lane7 { get; set; }
+        public Nullable<int> dualTeam_lane8 { get; set; }
+        public Nullable<int> dualTeam_lane9 { get; set; }
+        public Nullable<int> dualTeam_lane10 { get; set; }
         public bool strict_evenoddfastestheatonly { get; set; }
         public bool dualseeding_altunusedlane { get; set; }
-        public Nullable<decimal> team_surcharge { get; set; }
+        public Nullable<decimal> Team_surcharge { get; set; }
         public bool Display_ActualEntryTime { get; set; }
-        public Nullable<short> indmaxadvance_perteam { get; set; }
-        public Nullable<short> relmaxadvance_perteam { get; set; }
+        public Nullable<short> indmaxadvance_perTeam { get; set; }
+        public Nullable<short> relmaxadvance_perTeam { get; set; }
         public bool RelayNames_LinkByLSC { get; set; }
         public bool Read_Only { get; set; }
         public bool Flighted_BasedOnResultsTime { get; set; }
@@ -204,8 +204,8 @@ namespace Rankings
         public Nullable<short> flighted_flightcount { get; set; }
         public bool flighted_inclDQ { get; set; }
         public bool RelaysAlternate_TwoFastestFirst { get; set; }
-        public Nullable<int> dualteam_lane11 { get; set; }
-        public Nullable<int> dualteam_lane12 { get; set; }
+        public Nullable<int> dualTeam_lane11 { get; set; }
+        public Nullable<int> dualTeam_lane12 { get; set; }
         public Nullable<System.DateTime> entry_deadline { get; set; }
         public string Meet_addr1 { get; set; }
         public string Meet_addr2 { get; set; }

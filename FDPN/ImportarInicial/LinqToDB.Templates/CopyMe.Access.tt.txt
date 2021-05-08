@@ -39,7 +39,7 @@
 
 	NamespaceName = "Models";
 
-	LoadAccessMetadata(@"D:\swmeets7\swmeets5", "Torneo Selectivo Youth Olympic Games 2018 TEAM.mdb");
+	LoadAccessMetadata(@"D:\swMeets7\swMeets5", "Torneo Selectivo Youth Olympic Games 2018 Team.mdb");
 //	LoadAccessMetadata(string connectionString);
 
 	GenerateModel();

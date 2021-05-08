@@ -2,73 +2,76 @@
 
 @if (Model.cantidad > 0)
 {
-<li class="dropdown">
-    <div class="icon icon-rose">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">notifications</i> @Model.cantidad</a>
-    </div>
-   
-    <ul class="dropdown-menu">
+
+<li class="dropdown nav-item">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="material-icons icon-rose">notifications</i>
+        @Model.cantidad
+    </a>
+  
+    <div class="dropdown-menu dropdown-with-icons">
+
+
         @foreach (var item in Model.alertas)
         {
-            <li class="nav-item">
-                @if (item.NoticiaId == null)
+
+            if (item.NoticiaId == null)
+            {
+                @Html.ActionLink(item.Alerta, "Calendarios", "resultados", null, new { @class = "dropdown-item" })
+            }
+            else
+            {
+
+                switch (item.Noticias.CategoriaNoticia.CategoriaId)
                 {
-                    @Html.ActionLink(item.Alerta, "Calendarios", "resultados");
-                }
-                else
-                {
+                    case 1:
+                        @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Noticia", "Noticias", new { id = item.NoticiaId }, new { @class = "dropdown-item" })
+                        break;
+                    case 4:
+                        @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Reglamentos", "documentos", null, new { @class = "dropdown-item" })
+                        break;
 
-                    switch (item.Noticias.CategoriaNoticia.CategoriaId)
-                    {
-                        case 1:
-                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Noticia", "Noticias", new { id = item.NoticiaId }, null);
-                            break;
-                        case 4:
-                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Reglamentos", "documentos");
-                            break;
+                    case 5:
+                        @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Normas", "documentos", null, new { @class = "dropdown-item" })
+                        break;
 
-                        case 5:
-                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Normas", "documentos");
-                            break;
+                    case 6:
+                        @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Comunicados", "documentos", null, new { @class = "dropdown-item" })
+                        break;
 
-                        case 6:
-                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Comunicados", "documentos");
-                            break;
+                    case 7:
+                        @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "bases", "documentos", null, new { @class = "dropdown-item" })
+                        break;
+                    case 9:
+                        @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "records", "documentos", null, new { @class = "dropdown-item" })
+                        break;
 
-                        case 7:
-                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "bases", "documentos");
-                            break;
-                        case 9:
-                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "records", "documentos");
-                            break;
+                    case 11:
+                        @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "resultadosPDF", "documentos", null, new { @class = "dropdown-item" })
+                        break;
+                    case 12:
+                        @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "rankinpdf", "documentos", null, new { @class = "dropdown-item" })
+                        break;
+                    case 13:
+                        @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "MarcasMinimas", "documentos", null, new { @class = "dropdown-item" })
+                        break;
 
-                        case 11:
-                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "resultadosPDF", "documentos");
-                            break;
-                        case 12:
-                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "rankinpdf", "documentos");
-                            break;
-                        case 13:
-                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "MarcasMinimas", "documentos");
-                            break;
-
-                        case 14:
-                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Marcasclasificatorias", "documentos");
-                            break;
-                        case 15:
-                            @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Convocatorias", "documentos");
-                            break;
-
-
-                    }
-
+                    case 14:
+                        @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Marcasclasificatorias", "documentos", null, new { @class = "dropdown-item" })
+                        break;
+                    case 15:
+                        @Html.ActionLink(item.Noticias.CategoriaNoticia.TipoNoticia + ": " + item.Alerta, "Convocatorias", "documentos", null, new { @class = "dropdown-item" })
+                        break;
                 }
 
-            </li>
+            }
+
+
         }
-    </ul>
 
-
+    </div>
 </li>
+
+
 }
 

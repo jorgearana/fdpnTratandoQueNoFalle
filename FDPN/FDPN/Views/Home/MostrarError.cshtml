@@ -1,9 +1,13 @@
-﻿@model string
+﻿@model List<string>
 @{
     ViewBag.Title = "MostrarError";
 }
 
 <div class="container">
-    <h3 class="title">@Model</h3>
+    @foreach (var item in Model)
+    {
+        <h3 class="title">@item</h3>
+    }
+
 </div>
 

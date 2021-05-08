@@ -9,15 +9,15 @@ namespace FDPN.ViewModels.Masters
 {
     public class ResultadoDeUnTorneoMastersViewModel
     {
-        public List<TEAMMasters > EquiposParticipantes { get; set; }
+        public List<TeamMasters > EquiposParticipantes { get; set; }
         public List<RESULTSMasters> resultadoFinales { get; set; }
         public List<RESULTSMasters> resultadoPreliminares { get; set; }
         public Dictionary<float, DiccionarioPruebas> pruebas { get; set; }
-        public int meetid { get; set; }
+        public int MeetId { get; set; }
         public int clubid { get; set; }
         public string pruebaid { get; set; }
-        public MEETMasters torneo { get; set; }
-        public TEAMMasters club { get; set; }
+        public MeetMasters torneo { get; set; }
+        public TeamMasters club { get; set; }
     }
 
     public class DiccionarioPruebas

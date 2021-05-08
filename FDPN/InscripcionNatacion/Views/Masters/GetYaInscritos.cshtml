@@ -40,7 +40,7 @@
                             </button>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <button class="Modificarinscripcionmasters" data-atletaid="@item.AtletaId" data-meetid="@MeetId">Modificar inscripción</button>
+                                    <button class="Modificarinscripcionmasters" data-atletaid="@item.AtletaId" data-Meetid="@MeetId">Modificar inscripción</button>
                                      </li>
                                     <li>
                                         @Html.ActionLink("Retirar de inscripción", "RetirarDelTorneo", "Masters", new { MeetId = MeetId, inscripcionid = @item.AtletaId }, new { @class = "btn btn-secondary" })
