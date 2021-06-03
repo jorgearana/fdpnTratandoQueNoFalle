@@ -149,7 +149,7 @@ namespace FDPN.Controllers
                     sexo = "F";
                 }
                 resultadomejor = db.RESULTS.Where(x => x.Athlete1.Sex == sexo && x.COURSE != "Y" && x.Athlete1.Age >= edadminima && 
-                x.Athlete1.Age <= edadmaxima && x.Meet == torneoAMostrar.Meet1).OrderByDescending(x => x.PFina).FirstOrDefault();
+                x.Athlete1.Age <= edadmaxima && x.MEET == torneoAMostrar.Meet1).OrderByDescending(x => x.PFina).FirstOrDefault();
 
 
                 if (resultadomejor == null || resultadomejor.PFina < 500)

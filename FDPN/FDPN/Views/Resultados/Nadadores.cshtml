@@ -1,5 +1,8 @@
 ﻿
-@model PagedList.IPagedList<FDPN.Models.Athlete>
+@*@model PagedList.IPagedList<FDPN.Models.Athlete>*@
+
+@model List<FDPN.Models.Athlete>
+
 @using PagedList.Mvc;
 
 
@@ -44,12 +47,13 @@
 <div class="section section-text">
     <div class="row">
         <div class="col-md-10 ml-auto mr-auto">
-            <table class="table">
+            <table class="table datatabla">
                 <thead>
                     <tr>
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Edad</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -65,10 +69,10 @@
                 </tbody>
             </table>
             <br />
-            Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+            @*Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
 
             @Html.PagedListPager(Model, page => Url.Action("Nadadores",
-                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))*@
         </div>
 
     </div>

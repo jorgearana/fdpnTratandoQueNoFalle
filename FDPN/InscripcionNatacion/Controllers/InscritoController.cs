@@ -1795,9 +1795,13 @@ namespace InscripcionNatacion.Controllers
 
             try
             {
+
                 int ath_No = IngresarDeportista(id, MeetId, YaestaInscritoString);
 
-
+                if (ath_No ==0)
+                {
+                    ath_No = db.atletas.Where(x => x.Reg_no == atleta.Reg_no).Select(x => x.Ath_no).FirstOrDefault();
+                }
                 List<Entradas> EntradasActuales = db.Entradas.Where(x => x.Ath_no == ath_No).ToList();
                 foreach (Entradas entrada in EntradasActuales)
                 {
@@ -2250,7 +2254,7 @@ namespace InscripcionNatacion.Controllers
             Eventos evento = db.Eventos.Find(EventId);
             List<MarcasMinimas> MMDelTorneo = db.MarcasMinimas.Where(x => x.MeetId == evento.MeetId && x.tag_dist == evento.Event_dist
             && x.tag_stroke == evento.Event_stroke && x.tag_gender == evento.Event_gender && x.MeetId == evento.MeetId).ToList();
-            string estilo = "";
+           
             DatosEventoViewModel VM = new DatosEventoViewModel
             {
                 Evento = evento,

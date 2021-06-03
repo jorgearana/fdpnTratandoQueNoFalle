@@ -35,16 +35,21 @@ namespace Rankings
             this.Label1 = new System.Windows.Forms.Label();
             this.datepickerDesde = new System.Windows.Forms.DateTimePicker();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.DatepickerHasta = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.CboPiscina = new System.Windows.Forms.ComboBox();
             this.chkopen = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.ChkMinima = new System.Windows.Forms.CheckBox();
+            this.CboSexo = new System.Windows.Forms.ComboBox();
             this.ChkMay = new System.Windows.Forms.CheckBox();
             this.ChkInfA = new System.Windows.Forms.CheckBox();
             this.ChkJuvB = new System.Windows.Forms.CheckBox();
             this.ChkInfB = new System.Windows.Forms.CheckBox();
             this.ChkJuvA = new System.Windows.Forms.CheckBox();
             this.Grid1 = new System.Windows.Forms.DataGridView();
-            this.CboSexo = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Ranking = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,11 +64,6 @@ namespace Rankings
             this.Equipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Edad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label4 = new System.Windows.Forms.Label();
-            this.CboPiscina = new System.Windows.Forms.ComboBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.DatepickerHasta = new System.Windows.Forms.DateTimePicker();
             this.GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -142,6 +142,45 @@ namespace Rankings
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "Categorías";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(638, 18);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(45, 17);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Hasta";
+            // 
+            // DatepickerHasta
+            // 
+            this.DatepickerHasta.CustomFormat = "dd MM yyyy";
+            this.DatepickerHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DatepickerHasta.Location = new System.Drawing.Point(641, 46);
+            this.DatepickerHasta.Name = "DatepickerHasta";
+            this.DatepickerHasta.Size = new System.Drawing.Size(130, 22);
+            this.DatepickerHasta.TabIndex = 15;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(1217, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 17);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Piscina";
+            // 
+            // CboPiscina
+            // 
+            this.CboPiscina.FormattingEnabled = true;
+            this.CboPiscina.Items.AddRange(new object[] {
+            "S",
+            "L"});
+            this.CboPiscina.Location = new System.Drawing.Point(1220, 53);
+            this.CboPiscina.Name = "CboPiscina";
+            this.CboPiscina.Size = new System.Drawing.Size(165, 24);
+            this.CboPiscina.TabIndex = 13;
+            this.CboPiscina.Text = "Ambas";
+            // 
             // chkopen
             // 
             this.chkopen.AutoSize = true;
@@ -152,6 +191,15 @@ namespace Rankings
             this.chkopen.Text = "Open";
             this.chkopen.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1046, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 17);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Sexo";
+            // 
             // ChkMinima
             // 
             this.ChkMinima.AutoSize = true;
@@ -161,6 +209,18 @@ namespace Rankings
             this.ChkMinima.TabIndex = 0;
             this.ChkMinima.Text = "Mínima";
             this.ChkMinima.UseVisualStyleBackColor = true;
+            // 
+            // CboSexo
+            // 
+            this.CboSexo.FormattingEnabled = true;
+            this.CboSexo.Items.AddRange(new object[] {
+            "F",
+            "M"});
+            this.CboSexo.Location = new System.Drawing.Point(1049, 53);
+            this.CboSexo.Name = "CboSexo";
+            this.CboSexo.Size = new System.Drawing.Size(131, 24);
+            this.CboSexo.TabIndex = 11;
+            this.CboSexo.Text = "Ambos";
             // 
             // ChkMay
             // 
@@ -238,26 +298,20 @@ namespace Rankings
             this.Grid1.Size = new System.Drawing.Size(1830, 602);
             this.Grid1.TabIndex = 13;
             // 
-            // CboSexo
+            // tableLayoutPanel1
             // 
-            this.CboSexo.FormattingEnabled = true;
-            this.CboSexo.Items.AddRange(new object[] {
-            "F",
-            "M"});
-            this.CboSexo.Location = new System.Drawing.Point(1049, 53);
-            this.CboSexo.Name = "CboSexo";
-            this.CboSexo.Size = new System.Drawing.Size(131, 24);
-            this.CboSexo.TabIndex = 11;
-            this.CboSexo.Text = "Ambos";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1046, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 17);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Sexo";
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.Grid1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.GroupBox1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1836, 704);
+            this.tableLayoutPanel1.TabIndex = 14;
             // 
             // Ranking
             // 
@@ -357,60 +411,6 @@ namespace Rankings
             this.Edad.Name = "Edad";
             this.Edad.Width = 125;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1217, 25);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 17);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Piscina";
-            // 
-            // CboPiscina
-            // 
-            this.CboPiscina.FormattingEnabled = true;
-            this.CboPiscina.Items.AddRange(new object[] {
-            "S",
-            "L"});
-            this.CboPiscina.Location = new System.Drawing.Point(1220, 53);
-            this.CboPiscina.Name = "CboPiscina";
-            this.CboPiscina.Size = new System.Drawing.Size(165, 24);
-            this.CboPiscina.TabIndex = 13;
-            this.CboPiscina.Text = "Ambas";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.Grid1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.GroupBox1, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1836, 704);
-            this.tableLayoutPanel1.TabIndex = 14;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(638, 18);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(45, 17);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Hasta";
-            // 
-            // DatepickerHasta
-            // 
-            this.DatepickerHasta.CustomFormat = "dd MM yyyy";
-            this.DatepickerHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DatepickerHasta.Location = new System.Drawing.Point(641, 46);
-            this.DatepickerHasta.Name = "DatepickerHasta";
-            this.DatepickerHasta.Size = new System.Drawing.Size(130, 22);
-            this.DatepickerHasta.TabIndex = 15;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -445,6 +445,11 @@ namespace Rankings
         internal System.Windows.Forms.CheckBox chkopen;
         internal System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox CboSexo;
+        internal System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox CboPiscina;
+        internal System.Windows.Forms.Label label5;
+        internal System.Windows.Forms.DateTimePicker DatepickerHasta;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ranking;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
@@ -459,11 +464,6 @@ namespace Rankings
         private System.Windows.Forms.DataGridViewTextBoxColumn Equipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn Edad;
-        internal System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox CboPiscina;
-        internal System.Windows.Forms.Label label5;
-        internal System.Windows.Forms.DateTimePicker DatepickerHasta;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
 

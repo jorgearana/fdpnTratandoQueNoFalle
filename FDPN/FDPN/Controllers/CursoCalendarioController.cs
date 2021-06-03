@@ -47,19 +47,20 @@ namespace FDPN.Controllers
         {
             if (ModelState.IsValid)
             {
-                CursoAlumno cursoAlumno = Mapper.Map<DTOAlumno, CursoAlumno>(Dto);
-                db.CursoAlumno.Add(cursoAlumno);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                //CursoAlumno cursoAlumno = Mapper.Map<DTOAlumno, CursoAlumno>(Dto);
+                //db.CursoAlumno.Add(cursoAlumno);
+                //db.SaveChanges();
+                //return RedirectToAction("Index");
             }
             return View(Dto);
         }
 
         public async Task<ActionResult> BuscarPorDNi(string DNI)
         {
-            CursoAlumno alumno =await db.CursoAlumno.Where(x => x.DNI == DNI).FirstOrDefaultAsync ();
-            DTOAlumno dto = Mapper.Map<CursoAlumno, DTOAlumno>(alumno);
-            return View(dto);
+            //CursoAlumno alumno =await db.CursoAlumno.Where(x => x.DNI == DNI).FirstOrDefaultAsync ();
+            //DTOAlumno dto = Mapper.Map<CursoAlumno, DTOAlumno>(alumno);
+            //return View(dto);
+            return View();
         }
 
         //public ActionResult InscribirAlumno(int DTOID, int cursoid)

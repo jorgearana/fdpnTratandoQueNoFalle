@@ -30,8 +30,8 @@ namespace FDPN.Controllers
             int i = rnd.Next(1, destacados.Count);
             int Meettorneo = destacados[i].Meet;
             MeetMasters torneoAMostrar = db.MeetMasters.Where(x => x.Meet == Meettorneo).FirstOrDefault();
-            int edadminima = db.RESULTSMasters.Where(x => x.Meet == Meettorneo).OrderBy(x => x.AGE).Select(x => x.AGE).FirstOrDefault();
-            int edadmaxima = db.RESULTSMasters.Where(x => x.Meet == Meettorneo).OrderByDescending(x => x.AGE).Select(x => x.AGE).FirstOrDefault();
+            int edadminima = db.RESULTSMasters.Where(x => x.MEET == Meettorneo).OrderBy(x => x.AGE).Select(x => x.AGE).FirstOrDefault();
+            int edadmaxima = db.RESULTSMasters.Where(x => x.MEET == Meettorneo).OrderByDescending(x => x.AGE).Select(x => x.AGE).FirstOrDefault();
 
             do
             {
@@ -101,7 +101,7 @@ namespace FDPN.Controllers
 
                  resultadomejor = db.RESULTSMasters.Where(x => x.AthleteMasters.Sex == sexo 
                  && x.COURSE != "Y" && x.AthleteMasters.Age >= edadminima && x.AthleteMasters.Age <= edadmaxima 
-                 && x.Meet == torneoAMostrar.Meet && x.PLACE>0).OrderByDescending(x => x.PFina).FirstOrDefault();
+                 && x.MEET == torneoAMostrar.Meet && x.PLACE>0).OrderByDescending(x => x.PFina).FirstOrDefault();
 
 
                 if (resultadomejor == null || resultadomejor.PFina < 100)
@@ -263,7 +263,7 @@ namespace FDPN.Controllers
             VM.Annos.Add(haceuatronnos.Year);
             VM.Annos.Add(hacecincoannos.Year);
 
-            List<RESULTSMasters> resultadosDelNadador = db.RESULTSMasters.Where(x => x.AthleteId == id && x.NT != 2 && x.NT != 5 && x.I_R == "i" && x.SCORE != "" && x.Team != 0).ToList();
+            List<RESULTSMasters> resultadosDelNadador = db.RESULTSMasters.Where(x => x.AthleteId == id && x.NT != 2 && x.NT != 5 && x.I_R == "i" && x.SCORE != "" && x.TEAM != 0).ToList();
             int totalderesultados = resultadosDelNadador.Count();
             RESULTSMasters resultadovacio = new RESULTSMasters
             {
@@ -507,7 +507,7 @@ namespace FDPN.Controllers
 
         public ActionResult ResultadosDeUnTorneo(int MeetId)
         {
-            List<RESULTSMasters > resultados = db.RESULTSMasters.Where(x => x.MeetId == MeetId && x.PLACE != 0 && x.ATHLETE != 0 && x.Team != 0).ToList();
+            List<RESULTSMasters > resultados = db.RESULTSMasters.Where(x => x.MeetId == MeetId && x.PLACE != 0 && x.ATHLETE != 0 && x.TEAM != 0).ToList();
             SortedDictionary<float, ViewModels.Masters.DiccionarioPruebas> pruebasdesordenadas = new SortedDictionary<float, ViewModels.Masters.DiccionarioPruebas>();
             ResultadoDeUnTorneoMastersViewModel VM = new ResultadoDeUnTorneoMastersViewModel
             {

@@ -389,6 +389,27 @@
             Releases resources used by this <see cref="T:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.NetworkAvailabilityTransmissionPolicy"/> instance.
             </summary>
         </member>
+        <member name="T:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.SamplingInternals.SamplingIncludesUtility">
+            <summary>
+            This utility will calculate the IncludedTypes bitmask based on the delimited input string.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.SamplingInternals.SamplingIncludesUtility.CalculateFromIncludes(System.String)">
+            <summary>
+            Calculate an Included Bitmask based on the input string.
+            Starts with Enum.None value and adds types.
+            </summary>
+            <param name="includesString">Delimited string of types to be included.</param>
+            <returns>Bitmask representing types to include.</returns>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.SamplingInternals.SamplingIncludesUtility.CalculateFromExcludes(System.String)">
+            <summary>
+            Calculate an Included Bitmask based on the input string.
+            Starts with Enum.ALL (~None) and removes types.
+            </summary>
+            <param name="excludesString">Delimited string of types to be excluded.</param>
+            <returns>Bitmask representing types to include.</returns>
+        </member>
         <member name="T:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.AdaptiveSamplingPercentageEvaluatedCallback">
             <summary>
             Represents a method that is invoked every time sampling percentage is evaluated
@@ -420,6 +441,11 @@
             Average telemetry item counter.
             </summary>
         </member>
+        <member name="F:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.SamplingPercentageEstimatorTelemetryProcessor.proactivelySampledInCount">
+            <summary>
+            Average proactively SampledIn telemetry item counter.
+            </summary>
+        </member>
         <member name="F:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.SamplingPercentageEstimatorTelemetryProcessor.evaluationTimer">
             <summary>
             Evaluation timer.
@@ -428,11 +454,6 @@
         <member name="F:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.SamplingPercentageEstimatorTelemetryProcessor.evaluationInterval">
             <summary>
             Current evaluation interval.
-            </summary>
-        </member>
-        <member name="F:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.SamplingPercentageEstimatorTelemetryProcessor.currenSamplingRate">
-            <summary>
-            Current sampling rate.
             </summary>
         </member>
         <member name="F:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.SamplingPercentageEstimatorTelemetryProcessor.samplingPercentageLastChangeDateTime">
@@ -464,6 +485,11 @@
             Gets or sets current sampling rate.
             </summary>
         </member>
+        <member name="P:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.SamplingPercentageEstimatorTelemetryProcessor.CurrentProactiveSamplingRate">
+            <summary>
+            Gets current proactive sampling rate sampling rate.
+            </summary>
+        </member>
         <member name="M:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.SamplingPercentageEstimatorTelemetryProcessor.Process(Microsoft.ApplicationInsights.Channel.ITelemetry)">
             <summary>
             Processes telemetry item.
@@ -488,18 +514,6 @@
             Callback for sampling percentage evaluation timer.
             </summary>
             <param name="state">Timer state.</param>
-        </member>
-        <member name="T:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.SamplingScoreGenerator">
-            <summary>
-            Utility class for sampling score generation.
-            </summary>
-        </member>
-        <member name="M:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.SamplingScoreGenerator.GetSamplingScore(Microsoft.ApplicationInsights.Channel.ITelemetry)">
-            <summary>
-            Generates telemetry sampling score between 0 and 100.
-            </summary>
-            <param name="telemetry">Telemetry item to score.</param>
-            <returns>Item sampling score.</returns>
         </member>
         <member name="T:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.TaskTimerInternal">
             <summary>
@@ -579,13 +593,25 @@
             Passes all <see cref="T:Microsoft.ApplicationInsights.Channel.ITelemetry"/> items to the <see cref="T:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.TelemetrySerializer"/> and empties the queue.
             </summary>
         </member>
+        <member name="M:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.TelemetryBuffer.FlushAsync(System.Threading.CancellationToken)">
+            <summary>
+            Passes all <see cref="T:Microsoft.ApplicationInsights.Channel.ITelemetry"/> items to the <see cref="T:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.TelemetrySerializer"/>, empties the queue and returns a task.
+            </summary>
+        </member>
         <member name="P:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.TelemetrySerializer.EndpointAddress">
             <summary>
             Gets or sets the endpoint address.  
             </summary>
-            <remarks>
-            If endpoint address is set to null, the default endpoint address will be used. 
-            </remarks>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.TelemetrySerializer.TransmissionStatusEvent">
+            <summary>
+            Gets or Sets the subscriber to an event with Transmission and HttpWebResponseWrapper.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.TelemetrySerializer.SerializeTransmissionAndEnqueue(Microsoft.ApplicationInsights.Channel.Transmission,System.Collections.Generic.ICollection{Microsoft.ApplicationInsights.Channel.ITelemetry},System.Threading.CancellationToken)">
+            <summary>
+            Serializes transmission and enqueue.
+            </summary>
         </member>
         <member name="P:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.TransmissionBuffer.Capacity">
             <summary>
@@ -638,6 +664,16 @@
         <member name="P:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.TransmissionSender.ThrottleWindow">
             <summary>
             Gets or sets the size of the self-limiting throttle window in milliseconds.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.TransmissionSender.WaitForPreviousTransmissionsToComplete(System.Threading.CancellationToken)">
+            <summary>
+            Wait for inflight transmissions to complete. Honors the CancellationToken set by an application on IAsyncFlushable.FlushAsync.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.TransmissionSender.WaitForPreviousTransmissionsToComplete(System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            Wait for inflight transmissions to complete. Honors the CancellationToken set by an application on IAsyncFlushable.FlushAsync.
             </summary>
         </member>
         <member name="M:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.Implementation.TransmissionSender.IsTransmissionSendable(System.Int32,System.Boolean)">
@@ -803,6 +839,7 @@
         <member name="T:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.SamplingTelemetryProcessor">
             <summary>
             Represents a telemetry processor for sampling telemetry at a fixed-rate before sending to Application Insights.
+            Supports telemetry items sampled at head, adjusts gain up accordingly.
             </summary>
         </member>
         <member name="M:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.SamplingTelemetryProcessor.#ctor(Microsoft.ApplicationInsights.Extensibility.ITelemetryProcessor)">
@@ -816,13 +853,16 @@
             Gets or sets a semicolon separated list of telemetry types that should not be sampled.
             Allowed type names: Dependency, Event, Exception, PageView, Request, Trace. 
             Types listed are excluded even if they are set in IncludedTypes.
+            Do not set both ExcludedTypes and IncludedTypes. ExcludedTypes will take precedence over IncludedTypes. 
             </summary>
         </member>
         <member name="P:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.SamplingTelemetryProcessor.IncludedTypes">
             <summary>
             Gets or sets a semicolon separated list of telemetry types that should be sampled. 
+            Allowed type names: Dependency, Event, Exception, PageView, Request, Trace. 
             If left empty all types are included implicitly. 
             Types are not included if they are set in ExcludedTypes.
+            Do not set both ExcludedTypes and IncludedTypes. ExcludedTypes will take precedence over IncludedTypes. 
             </summary>
         </member>
         <member name="P:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.SamplingTelemetryProcessor.SamplingPercentage">
@@ -834,6 +874,11 @@
             All sampling percentage must be in a ratio of 100/N where N is a whole number (2, 3, 4, …). E.g. 50 for 1/2 or 33.33 for 1/3.
             Failure to follow this pattern can result in unexpected / incorrect computation of values in the portal.
             </remarks>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.SamplingTelemetryProcessor.ProactiveSamplingPercentage">
+            <summary>
+            Gets or sets current proactive-sampling percentage of telemetry items.
+            </summary>
         </member>
         <member name="P:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.SamplingTelemetryProcessor.SampledNext">
             <summary>
@@ -879,6 +924,11 @@
         <member name="P:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel.EndpointAddress">
             <summary>
             Gets or sets the HTTP address where the telemetry is sent.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel.TransmissionStatusEvent">
+            <summary>
+            Gets or Sets the subscriber to an event with Transmission and HttpWebResponseWrapper.
             </summary>
         </member>
         <member name="P:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel.MaxTelemetryBufferDelay">
@@ -964,6 +1014,15 @@
             <summary>
             Asynchronously flushes the telemetry buffer. 
             </summary>
+        </member>
+        <member name="M:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel.FlushAsync(System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously flushes the telemetry buffer. 
+            </summary>
+            <returns>
+            Returns true when telemetry data is transferred out of process (application insights server or local storage) and are emitted before the flush invocation.
+            Returns false when transfer of telemetry data to server has failed with non-retriable http status code.
+            </returns>
         </member>
         <member name="M:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel.Initialize(Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration)">
             <summary>
@@ -1124,43 +1183,43 @@
         </member>
         <member name="M:Microsoft.ApplicationInsights.Extensibility.TelemetryProcessorChainBuilderExtensions.UseSampling(Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder,System.Double,System.String,System.String)">
             <summary>
-            Adds <see cref="T:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.SamplingTelemetryProcessor"/> to the given<see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder" />
+            Adds <see cref="T:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.SamplingTelemetryProcessor"/> to the given<see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder" />.
             </summary>
-            <param name="builder">Instance of <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder"/></param>
+            <param name="builder">Instance of <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder"/>.</param>
             <param name="samplingPercentage">Sampling Percentage to configure.</param>     
             <param name="excludedTypes">Semicolon separated list of types that should not be sampled.</param>   
             <param name="includedTypes">Semicolon separated list of types that should be sampled. All types are sampled when left empty.</param> 
-            <return>Instance of <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder"/>.</return>
+            <return>Same instance of <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder"/>.</return>
         </member>
         <member name="M:Microsoft.ApplicationInsights.Extensibility.TelemetryProcessorChainBuilderExtensions.UseAdaptiveSampling(Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder,System.String,System.String)">
             <summary>
-            Adds <see cref="T:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.AdaptiveSamplingTelemetryProcessor"/> to the <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder" />
+            Adds <see cref="T:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.AdaptiveSamplingTelemetryProcessor"/> to the <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder" />.
             </summary>
-            <param name="builder">Instance of <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder"/></param>
+            <param name="builder">Instance of <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder"/>.</param>
             <param name="excludedTypes">Semicolon separated list of types that should not be sampled.</param>
             <param name="includedTypes">Semicolon separated list of types that should be sampled. All types are sampled when left empty.</param> 
-            <return>Instance of <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder"/>.</return>
+            <return>Same instance of <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder"/>.</return>
         </member>
         <member name="M:Microsoft.ApplicationInsights.Extensibility.TelemetryProcessorChainBuilderExtensions.UseAdaptiveSampling(Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder,System.Double,System.String,System.String)">
             <summary>
-            Adds <see cref="T:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.AdaptiveSamplingTelemetryProcessor"/> to the <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder" />
+            Adds <see cref="T:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.AdaptiveSamplingTelemetryProcessor"/> to the <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder" />.
             </summary>
-            <param name="builder">Instance of <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder"/></param>
+            <param name="builder">Instance of <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder"/>.</param>
             <param name="maxTelemetryItemsPerSecond">Maximum number of telemetry items to be generated on this application instance.</param>
             <param name="excludedTypes">Semicolon separated list of types that should not be sampled.</param>
             <param name="includedTypes">Semicolon separated list of types that should be sampled. All types are sampled when left empty.</param> 
-            <return>Instance of <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder"/>.</return>
+            <return>Same instance of <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder"/>.</return>
         </member>
         <member name="M:Microsoft.ApplicationInsights.Extensibility.TelemetryProcessorChainBuilderExtensions.UseAdaptiveSampling(Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder,Microsoft.ApplicationInsights.WindowsServer.Channel.Implementation.SamplingPercentageEstimatorSettings,Microsoft.ApplicationInsights.WindowsServer.Channel.Implementation.AdaptiveSamplingPercentageEvaluatedCallback,System.String,System.String)">
             <summary>
-            Adds <see cref="T:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.AdaptiveSamplingTelemetryProcessor"/> to the <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder" />
+            Adds <see cref="T:Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.AdaptiveSamplingTelemetryProcessor"/> to the <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder" />.
             </summary>
-            <param name="builder">Instance of <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder"/></param>
+            <param name="builder">Instance of <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder"/>.</param>
             <param name="settings">Set of settings applicable to dynamic sampling percentage algorithm.</param>
             <param name="callback">Callback invoked every time sampling percentage evaluation occurs.</param>
             <param name="excludedTypes">Semicolon separated list of types that should not be sampled.</param>
             <param name="includedTypes">Semicolon separated list of types that should be sampled. All types are sampled when left empty.</param> 
-            <return>Instance of <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder"/>.</return>
+            <return>Same instance of <see cref="T:Microsoft.ApplicationInsights.Extensibility.Implementation.TelemetryProcessorChainBuilder"/>.</return>
         </member>
     </members>
 </doc>

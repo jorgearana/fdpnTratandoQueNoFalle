@@ -1,17 +1,16 @@
 ﻿@model List<FDPN.Models.RESULTS>
 
 
-<section>
-    <div class="wrapper site-homepage__pushup">
-        <header class="site-homepage__section__header">
-           
-            <code>Tabla de rankings por puntos FINA</code>
-        </header>
+
+
+<div class="row">
+    <div class="col-md-8 ml-auto mr-auto">
+        <h2 class="title">Tabla de rankings por puntos FINA</h2>
     </div>
-</section>
+</div>
 <div class="container">
     @*El resto del ranking*@
-    <table class="tablaNormal datatablaReves">
+    <table class="table">
         <thead>
             <tr>
                 <th>#</th>
@@ -25,7 +24,7 @@
         </thead>
         <tbody>
             @for (int i = 0; i < Model.Count(); i++)
-        {
+            {
                 <tr>
 
                     <td>@(i + 1)</td>
@@ -41,13 +40,13 @@
                     <td class="weak">@Model[i].Meet1.Start.ToString("dd/MMM/yyyy")</td>
                     <td class="weak">@Model[i].Meet1.MName</td>
                 </tr>
-        }
+            }
         </tbody>
     </table>
 
 </div>
 
-<script>   
+<script>
     $(document).ready(function () {
         $('.datatabla').DataTable({
             "order": [[1, "desc"]]

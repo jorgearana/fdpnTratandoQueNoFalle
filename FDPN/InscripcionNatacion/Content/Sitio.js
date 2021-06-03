@@ -479,7 +479,7 @@ $(document).ready(function () { //Al inicio cuando se recarga la página de insc
 
         //alert(table.rows('.selected').data().length + ' row(s) selected');
         var EntrenadorId = $(e.target).data('entrenadorid');
-        var MeetId = $(e.target).data('Meetid');
+        var MeetId = $(e.target).data('meetid');
         $.ajax({
             url: '/Entrenador/InscribirEntrenador',
             type: 'GET',
@@ -511,7 +511,7 @@ $(document).ready(function () { //Al inicio cuando se recarga la página de insc
 
         //alert(table.rows('.selected').data().length + ' row(s) selected');
         var EntrenadorId = $(e.target).data('entrenadorid');
-        var MeetId = $(e.target).data('Meetid');
+        var MeetId = $(e.target).data('meetid');
         $.ajax({
             url: '/Entrenador/RetirarEntrenador',
             type: 'GET',

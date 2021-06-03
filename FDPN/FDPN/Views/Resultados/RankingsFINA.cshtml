@@ -1,68 +1,87 @@
-﻿@model FDPN.ViewModels.Resultados.RankingFInaViewModel
+﻿
+@model FDPN.ViewModels.Resultados.RankingFInaViewModel
 
 @{
     ViewBag.Title = "Rankings por puntos FINA";
 
 }
 
-<section>
-    <div class="wrapper site-homepage__pushup">
-        <header class="site-homepage__section__header">
-            <h2 class="site-title site-title--ultra site-title--ultra--primary">Rankings por puntos FINA</h2>
-        </header>
 
-    </div>
-</section>
-
-
-@*@using (Html.BeginForm("Rankings", "Resultados", FormMethod.Post))
-    {*@
 
 <div class="container">
+    <!--     *********     FEATURES 1      *********      -->
+
     <div class="row">
-        <div class="col-md-5">
-            @*Aqui esta el problema*@
-            <h6 class="control-label col-md-6 btn--ghost espaciado">Periodo a buscar</h6>
-            <div class="col-md-6 espaciado">
-                @Html.DropDownListFor(model => model.periodoid, new SelectList(Model.periodo, "Key", "Value"), "Escoja el periodo", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
-            </div>
-
-
-
-            <h6 class="control-label col-md-6 btn--ghost espaciado">Edad mínima</h6>
-            <div class="col-md-6 espaciado">
-                @Html.DropDownListFor(model => model.edadminima, new SelectList(Model.edadesminimas), "Escoja la edad inicial", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
-            </div>
-
-
-
-            <h6 class="control-label col-md-6 btn--ghost espaciado">Edad máxima</h6>
-            <div class="col-md-6 espaciado">
-                @Html.DropDownListFor(model => model.edadmaxima, new SelectList(Model.edadesmaximas), "Escoja la edad final", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
-            </div>
-
-
-            <h6 class="control-label col-md-6 btn--ghost espaciado">Sexo</h6>
-            <div class="col-md-6 espaciado">
-                @Html.DropDownListFor(model => model.Sexo, new SelectList(Model.Sexos, "Key", "Value"), "Escoja el sexo", new { @class = "js-calendarFilter js-selectEventType input input--select input--med" })
-            </div>
-
-
-
-            <center>
-                <input id="buscarRankingFINA" type="submit" class="btn btn--primaryapnea btn--lrg u-rounded" value="Ver ranking">
-            </center>
+        <div class="col-md-8 ml-auto mr-auto">
+            <h2 class="title">Rankings por puntos FINA</h2>
 
         </div>
-        <div class="col-md-7">
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="info">
+                        <h4 class="info-title">
+                            Periodo
+                        </h4>
+                        @Html.DropDownListFor(model => model.periodoid, new SelectList(Model.periodo, "Key", "Value"), "Escoja el periodo", new { @class = "dropdown form-control" })
+
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="info">
+                        <h4 class="info-title">
+                            Piscina
+                        </h4>
+                        @Html.DropDownListFor(model => model.piscina, new SelectList(Model.Piscinas), "Escoja la piscina", new { @class = "dropdown form-control", title = "Piscina" })
+
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="info">
+                        <h4 class="info-title">
+                            Edad mínima
+                        </h4>
+                        @Html.DropDownListFor(model => model.edadminima, new SelectList(Model.edadesminimas), "Escoja la edad inicial", new { @class = "dropdown form-control" })
+
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="info">
+                        <h4 class="info-title">
+                            Edad máxima
+                        </h4>
+                        @Html.DropDownListFor(model => model.edadmaxima, new SelectList(Model.edadesmaximas), "Escoja la edad final", new { @class = "dropdown form-control" })
+
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="info">
+                        <h4 class="info-title">
+                            Sexo
+                        </h4>
+                        @Html.DropDownListFor(model => model.Sexo, new SelectList(Model.Sexos, "Key", "Value"), "Escoja el sexo", new { @class = "dropdown form-control" })
+
+                    </div>
+                </div>
 
 
+                <div class="col-sm-6">
+                    <div class="info">
+                        <input type="submit" class="btn btn-primary" value="Ver ranking" id="buscarRankingFINA">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
             <div id="tablaDeshabilitada">
-                @*Torneos*@
-                <table class="tablaNormal  datatablacorta">
+
+                <table class="table datatablacorta">
                     <thead>
                         <tr>
                             <th>Código</th>
+                            <th>Piscina</th>
                             <th>Torneo</th>
                             <th>Fecha</th>
                         </tr>
@@ -72,6 +91,7 @@
                         {
                             <tr>
                                 <td>@item.MeetId</td>
+                                <td>@item.Course</td>
                                 <td>@item.MName</td>
                                 <td>
                                     @item.Start.ToString("dd/MMM/yyyy")
@@ -81,7 +101,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+
         </div>
 
         <div class="col-md-12">
@@ -90,9 +110,8 @@
             </div>
         </div>
     </div>
-@*<div class="espaciadogrande"></div>*@
+
+</div>
 
 
-
-@*}*@
 

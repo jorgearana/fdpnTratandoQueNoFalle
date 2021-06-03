@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using DataModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,13 +12,14 @@ using System.Windows.Forms;
 using MetroFramework.Forms;
 using MetroFramework;
 using FDPN.Models;
+using Models;
 
 namespace ImportarInicial
 {
     public partial class Form1 : MetroForm
     {
         public DB_9B1F4C_FDPNEntities db = new DB_9B1F4C_FDPNEntities();
-        DATABASEMeetDB access = new DATABASEMeetDB();
+       Models. DATABASEMeetDB access = new Models.DATABASEMeetDB();
         int MeetId = 0;
       
 
@@ -69,7 +69,7 @@ namespace ImportarInicial
         {
             lblResultado.Text = "Espere un momento";
 
-            List<DataModels.Meet> Meet = access.Meets.ToList();
+            List<Models. Meet> Meet = access.Meets.ToList();
             List<Event> events = access.Events.ToList();
             List<Session> sessions = access.Sessions.ToList();
             List<Sessitem> SessionItems = access.Sessitems.ToList();
@@ -77,17 +77,17 @@ namespace ImportarInicial
             List<Multiage> multiages = access.Multiages.ToList();
 
             List<Entry> Entries = access.Entries.ToList();
-            List<DataModels.Team> Teams = access.Teams.ToList();
-            List<DataModels.Athlete> Athletes = access.Athletes.ToList();
+            List<Models.Team> Teams = access.Teams.ToList();
+            List<Models.Athlete> Athletes = access.Athletes.ToList();
 
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<DataModels.Meet, Torneo>();
+                cfg.CreateMap<Models.Meet, Torneo>();
             });
             IMapper mapper = config.CreateMapper();
 
 
-            Torneo torneo = mapper.Map<DataModels.Meet, Torneo>(Meet[0]);
+            Torneo torneo = mapper.Map<Models.Meet, Torneo>(Meet[0]);
             db.Torneo.Add(torneo);
             db.SaveChanges();
 
@@ -239,11 +239,11 @@ namespace ImportarInicial
 
                     config = new MapperConfiguration(cfg =>
                     {
-                        cfg.CreateMap<DataModels.Team, Equipos>();
+                        cfg.CreateMap<Models.Team, Equipos>();
                     });
                     mapper = config.CreateMapper();
 
-                    Equipos MM = mapper.Map<DataModels.Team, Equipos>(item);
+                    Equipos MM = mapper.Map<Models.Team, Equipos>(item);
                     MM.MeetId = MeetId;
                     db.Equipos.Add(MM);
                 }
@@ -264,11 +264,11 @@ namespace ImportarInicial
 
                     config = new MapperConfiguration(cfg =>
                     {
-                        cfg.CreateMap<DataModels.Athlete, atletas>();
+                        cfg.CreateMap<Models.Athlete, atletas>();
                     });
                     mapper = config.CreateMapper();
 
-                    atletas MM = mapper.Map<DataModels.Athlete, atletas>(item);
+                    atletas MM = mapper.Map<Models.Athlete, atletas>(item);
                     MM.Meetid = MeetId;
                     db.atletas.Add(MM);
                 }

@@ -16,8 +16,8 @@ namespace FDPN.Controllers
     {
 
         FilesHelper filesHelper;
-        String tempPath = "~/img/Fotos/";
-        String serverMapPath = "~/Content/img/Fotos/";
+        readonly String tempPath = "~/img/Fotos/";
+        readonly String serverMapPath = "~/Content/img/Fotos/";
 
         public ActionResult Index(string searchString)
         {
@@ -36,7 +36,7 @@ namespace FDPN.Controllers
                 x.Larga.Contains(searchString));
             }
             query = query.OrderByDescending(x => x.Fecha).ThenByDescending(x => x.NoticiaId);
-            IndexViewModel VM = new IndexViewModel
+            IndexViewModel VM = new IndexViewModel()
             {
                 Base = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Base").OrderByDescending(x => x.NoticiaId).ToList(),
                 Comunicado = query.Where(x => x.CategoriaNoticia.TipoNoticia == "Comunicado").OrderByDescending(x => x.NoticiaId).ToList(),
@@ -440,19 +440,19 @@ namespace FDPN.Controllers
 
             List<RESULTS> resultadosDelAnno = db.RESULTS.Where(x => x.Meet1.Start > primeroEnero && x.PLACE != 0).ToList();
 
-            var resultadoporClub = resultadosDelAnno.GroupBy(x => x.Team).ToList();
+            var resultadoporClub = resultadosDelAnno.GroupBy(x => x.TEAM).ToList();
 
             foreach (var resultado in resultadoporClub)
             {
 
                 var club = db.Team.Where(x => x.Team1 == resultado.Key).FirstOrDefault();
-                var Nadadores = resultadosDelAnno.Where(x => x.Team == resultado.Key).GroupBy(x => x.ATHLETE);
+                var Nadadores = resultadosDelAnno.Where(x => x.TEAM == resultado.Key).GroupBy(x => x.ATHLETE);
                 var cuenta = Nadadores.Count();
                 ResumenAnnoViewModel resumen = new ViewModels.Administrador.ResumenAnnoViewModel
                 {
                     club = db.Team.Where(x => x.Team1 == resultado.Key).FirstOrDefault(),
-                    Nadadores = resultadosDelAnno.Where(x => x.Team == resultado.Key).GroupBy(x => x.ATHLETE).Count(),
-                    Participaciones = resultadosDelAnno.Where(x => x.Team == resultado.Key).GroupBy(x => x.Meet).Count(),
+                    Nadadores = resultadosDelAnno.Where(x => x.TEAM == resultado.Key).GroupBy(x => x.ATHLETE).Count(),
+                    Participaciones = resultadosDelAnno.Where(x => x.TEAM == resultado.Key).GroupBy(x => x.MEET).Count(),
 
                 };
             }

@@ -13,7 +13,7 @@ namespace FDPN.ViewModels.Resultados
         public Dictionary<int, string> periodo { get; set; }
         public List<int> edadesminimas { get; set; }
         public List<int> edadesmaximas { get; set; }
-
+        public List<string> Piscinas { get; set; }
         public Dictionary<int, string> Sexos { get; set; }
 
         public string Sexo { get; set; }
@@ -25,6 +25,9 @@ namespace FDPN.ViewModels.Resultados
         public List<RESULTS> resultados { get; set; }
         public int[] torneosId { get; set; }
 
-        
+        public string piscina { get; set; }
+
+
     }
+
 }

@@ -15,43 +15,53 @@ namespace FDPN.Controllers
     public class ResultadosController : BASEController
     {   // GET: Resultados
 
-        public ActionResult Nadadores(string sortOrder, string currentFilter, string searchString, string letra, int? page)
-        {
-            ViewBag.CurrentSort = sortOrder;
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+        //public ActionResult Nadadores(string sortOrder, string currentFilter, string searchString, string letra, int? page)
+        //{
+        //    ViewBag.CurrentSort = sortOrder;
+        //    ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
           
 
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
+        //    if (searchString != null)
+        //    {
+        //        page = 1;
+        //    }
+        //    else
+        //    {
+        //        searchString = currentFilter;
+        //    }
 
-            ViewBag.CurrentFilter = searchString;
+        //    ViewBag.CurrentFilter = searchString;
 
-            NadadoresOrdenadosViewModel VM = new NadadoresOrdenadosViewModel();
+        //    NadadoresOrdenadosViewModel VM = new NadadoresOrdenadosViewModel();
 
 
 
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+        //    ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
 
+        //    List<Athlete> nadadores = new List<Athlete>();
+
+
+        //    if (!String.IsNullOrEmpty(searchString))
+        //    {
+        //        nadadores = db.Athlete.Where(s => s.Last.Contains(searchString)
+        //                               || s.First.Contains(searchString)).OrderBy(s => s.First).ToList();
+        //    }
+        //    int pageSize = 25;
+        //    int pageNumber = (page ?? 1);
+
+        //    return View(nadadores.ToPagedList(pageNumber, pageSize));
+
+          
+        //}
+        public ActionResult Nadadores(string searchString)
+        {
             List<Athlete> nadadores = new List<Athlete>();
-
-
             if (!String.IsNullOrEmpty(searchString))
             {
                 nadadores = db.Athlete.Where(s => s.Last.Contains(searchString)
                                        || s.First.Contains(searchString)).OrderBy(s => s.First).ToList();
             }
-            int pageSize = 25;
-            int pageNumber = (page ?? 1);
-
-            return View(nadadores.ToPagedList(pageNumber, pageSize));
-
-          
+            return View(nadadores.ToList());
         }
 
         public ActionResult Nadador(int id)
@@ -85,7 +95,7 @@ namespace FDPN.Controllers
             VM.Annos.Add(haceuatronnos.Year);
             VM.Annos.Add(hacecincoannos.Year);
 
-            List<RESULTS> resultadosDelNadador = db.RESULTS.Where(x => x.AthleteId == id && x.NT != 2 && x.NT != 5  && x.SCORE != "" && x.Team !=0 &&( x.I_R == "l" || x.PLACE!= 0)).ToList();
+            List<RESULTS> resultadosDelNadador = db.RESULTS.Where(x => x.AthleteId == id && x.NT != 2 && x.NT != 5  && x.SCORE != "" && x.TEAM !=0 &&( x.I_R == "l" || x.PLACE!= 0)).ToList();
             int totalderesultados = resultadosDelNadador.Count();
             RESULTS resultadovacio = new RESULTS
             {
@@ -317,6 +327,7 @@ namespace FDPN.Controllers
             {
                 edadesminimas = new List<int> { 0, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 },
                 edadesmaximas = new List<int> { 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 109 },
+                Piscinas = new List<string> { "Larga", "Corta", "Ambos"},
                 torneos = db.Meet.Where(x => x.Start > haceunanno).OrderByDescending(x=>x.Start).ToList(),
                 periodo = new Dictionary<int, string> { { 1, "12 meses" }, { 2, "6 meses" }, { 3, "Elegir torneos" } },
                 Sexos = new Dictionary<int, string> { { 1, "Ambos" }, { 2, "Varones" }, { 3, "Mujeres" } },
@@ -326,14 +337,27 @@ namespace FDPN.Controllers
         }
 
 
-        public ActionResult CalcularRankignFina( int[] torneosid, int periodoid, int? edadminima, int? edadmaxima, int sexo )
+        public ActionResult CalcularRankignFina( int[] torneosid, int periodoid, int? edadminima, int? edadmaxima, int sexo, string piscina )
         {
             DateTime haceunanno = DateTime.Now.AddYears(-1).AddDays(-15);
-            
 
+
+           
             int minima = edadminima ?? 0;
             int maxima = edadmaxima ?? 109;
             var Query = db.RESULTS.Where(x => x.AGE >= minima && x.AGE <= maxima && x.ATHLETE != 0 && x.PLACE!=0).AsQueryable();
+
+            switch (piscina)
+            {
+                case "Larga":
+                    Query = Query.Where(x => x.COURSE == "L");
+                    break;
+                case "Corta":
+                    Query = Query.Where(x => x.COURSE == "S");
+                    break;
+            }
+            
+
 
             switch (periodoid)
             {
@@ -385,7 +409,7 @@ namespace FDPN.Controllers
 
         public ActionResult RendimientoDelNadadorEnUnaPrueba(int athleteid, int pruebaid)
         {
-            List<RESULTS> resultados = db.RESULTS.Where(x => x.AthleteId == athleteid && x.PruebaId == pruebaid && (x.PLACE != 0 || x.I_R=="L") && x.Team !=0).OrderByDescending(x => x.Meet1.Start).ToList();
+            List<RESULTS> resultados = db.RESULTS.Where(x => x.AthleteId == athleteid && x.PruebaId == pruebaid && (x.PLACE != 0 || x.I_R=="L") && x.TEAM != 0).OrderByDescending(x => x.Meet1.Start).ToList();
             RendimientoDeUnaPruebaViewModel VM = new RendimientoDeUnaPruebaViewModel
             {
                 atleta = db.Athlete.Find(athleteid),
@@ -399,7 +423,7 @@ namespace FDPN.Controllers
 
         public ActionResult ResultadosDeUnTorneo(int MeetId)
         {
-            List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == MeetId && x.ATHLETE != 0 && x.Team != 0 && x.SCORE != "").ToList();
+            List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == MeetId && x.ATHLETE != 0 && x.TEAM != 0 && x.SCORE != "").ToList();
             SortedDictionary<float, DiccionarioPruebas> pruebasdesordenadas = new SortedDictionary<float, DiccionarioPruebas>();
             ResultadoDeUnTorneoViewModel VM = new ResultadoDeUnTorneoViewModel
             {
@@ -408,7 +432,7 @@ namespace FDPN.Controllers
                 .OrderBy(x => x.TName).ToList(),
 
                 resultadoFinales = resultados
-                .DistinctBy(m => m.MTEV)
+                .DistinctBy(m => m.MTEV).OrderBy(m=>m.MTEV)
                 .ToList(),
                 pruebas = new Dictionary<float, DiccionarioPruebas>(),
 
@@ -459,30 +483,51 @@ namespace FDPN.Controllers
                 switch (chars)
                 {
                     case "A":
-                        numero = 0.1F;
+                        numero = 0.15F;
                         break;
                     case "B":
                         numero = 0.2F;
                         break;
                     case "C":
-                        numero = 0.3F;
+                        numero = 0.25F;
                         break;
                     case "D":
-                        numero = 0.4F;
+                        numero = 0.3F;
                         break;
                     case "E":
-                        numero = 0.5F;
+                        numero = 0.35F;
                         break;
                     case "F":
-                        numero = 0.6F;
+                        numero = 0.4F;
                         break;
                     case "G":
-                        numero = 0.7F;
+                        numero = 0.45F;
                         break;
                     case "H":
-                        numero = 0.8F;
+                        numero = 0.5F;
                         break;
                     case "I":
+                        numero = 0.55F;
+                        break;
+                    case "J":
+                        numero = 0.6F;
+                        break;
+                    case "K":
+                        numero = 0.65F;
+                        break;
+                    case "L":
+                        numero = 0.7F;
+                        break;
+                    case "M":
+                        numero = 0.75F;
+                        break;
+                    case "N":
+                        numero = 0.8F;
+                        break;
+                    case "O":
+                        numero = 0.85F;
+                        break;
+                    case "P":
                         numero = 0.9F;
                         break;
                 }
@@ -564,9 +609,9 @@ namespace FDPN.Controllers
         {
             List<RESULTS> resultados = db.RESULTS.Where(x => x.MeetId == VM.MeetId ).ToList();
 
-            VM.resultadoFinales = resultados.Where(x => x.TeamId == VM.clubid && x.NT==0 && x.F_P =="F" && x.Athlete1 != null && x.Team !=0 && x.ATHLETE!=0).OrderBy(x => x.MTEV)
+            VM.resultadoFinales = resultados.Where(x => x.TeamId == VM.clubid && x.NT==0 && x.F_P =="F" && x.Athlete1 != null && x.TEAM != 0 && x.ATHLETE!=0).OrderBy(x => x.MTEV)
                 .ThenBy(x => x.PLACE).ToList();
-            VM.resultadoPreliminares = resultados.Where(x => x.TeamId == VM.clubid && x.NT == 0 && x.F_P == "P" && x.Athlete1 != null && x.Team != 0 && x.ATHLETE != 0)
+            VM.resultadoPreliminares = resultados.Where(x => x.TeamId == VM.clubid && x.NT == 0 && x.F_P == "P" && x.Athlete1 != null && x.TEAM != 0 && x.ATHLETE != 0)
                 .OrderBy(x => x.MTEV)
                 .ThenBy(x => x.PLACE).ToList();
             VM.EquiposParticipantes = resultados.Select(x => x.Team1)

@@ -142,7 +142,7 @@ namespace Rankings
                         Resultados = await db.RESULTS.Where(x => x.PruebaId == item.PruebaId && x.Athlete1.Birth.HasValue &&
                       x.Athlete1.Birth.Value.Year <= AnnoMaximo && x.Athlete1.Birth.Value.Year >= AnnoMinimo && x.Meet1.Start > FechaDesde 
                       && x.Meet1.Start<FechaHasta &&
-                      x.Athlete1.Sex == sexo && x.Meet1.Course == piscina)
+                      x.Athlete1.Sex == sexo && x.Meet1.Course == piscina && x.NT != 2 && x.NT != 5 && x.SCORE!= "")
                             .OrderByDescending(x => x.PFina).Take(100).ToListAsync();
 
                    Filtrados=     Resultados.OrderByDescending(x=>x.PFina)

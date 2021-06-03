@@ -7,9 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FDPN.Models
+namespace  FDPN.Models
 {
-    using System;
+using FDPN.Models;
+using System;
     using System.Collections.Generic;
     
     public partial class Afiliacion
